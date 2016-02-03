@@ -8120,7 +8120,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", Helvetica, Roboto, Arial, sans-serif; }
 
 a {
-  color: #005B94; }
+  color: blue; }
 
 /* 'SECTIONS HOME
 ========================================= */
@@ -8959,9 +8959,9 @@ a {
     background-image: url("../images/brand/brand_small.svg"); }
 
 .button {
-  background-color: #005B94; }
+  background-color: blue; }
   .button:hover {
-    background-color: #005285; }
+    background-color: #0000f0; }
   .button .secondary {
     background-color: #47b34f; }
   .button .success {
