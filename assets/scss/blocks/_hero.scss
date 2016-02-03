@@ -1,0 +1,155 @@
+/* 'HERO COURSES
+========================================= */
+.hero-page-course{
+	background-image: url("../images/hero/hero-course-background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+  border-bottom: 1px solid #555;
+
+  width: 100%;
+  float: left;
+
+}
+
+
+.hero-page-course__title{
+	margin-top: 80px;
+	color: #fff;
+	font-weight: 100;
+}
+
+
+
+
+
+
+/* 'HERO HOME
+========================================= */
+.hero-home{ height: 700px;  background: #333; padding-top: 280px; color: #fff; z-index: -1; text-align: center; background-image: url("../images/hero/hero-home-background.jpg"); background-size: cover; background-repeat: no-repeat;}
+.hero-home__intro{	font-size: 20px; font-weight: 100; margin-bottom: 30px;  display: block;}
+.hero-home__title{	font-size: 48px; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 20px; color: #fff;}
+.hero-home__subtitle{	font-size: 22px;    opacity: 0.6;    font-weight: 300;    margin-bottom: 20px;    display: block;}
+.hero-home__button{transition: all 0.5s ease;   	border: 1px solid;    color: #fff;    padding: 10px 20px;    display: inline-block;    border-radius: 4px;    font-size: 14px;
+  &:hover{color: #000; background-color: #fff}
+}
+/*======================================== */
+
+
+
+
+/* 'HERO COURSES
+========================================= */
+	.hero-course{
+    float: left;
+    width: 100%;
+
+    display: inline-block;
+    width: 100%;
+    padding: 40px 0 40px 0;
+    background-color: #575B5D;
+    //background-image: url("../images/courses/courses-banner-presencial.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+		&::before{content: "" }
+    }
+	.hero-course:hover .hero-course__play--image{opacity: 1;}
+	.hero-course__modality{     color: #fff;    font-size: 12px;    font-weight: 600;    opacity: .6;    text-transform: uppercase;}
+	.hero-course__title{ color: #fff;     font-size: 38px; font-weight: 800; line-height: 1;}
+	.hero-course__resume{ color: #fff; opacity: .6; margin-bottom: 10px;}
+  .hero-course__locale{
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 14px;
+     display: inline-block;
+    margin-top: 10px;
+  }
+
+
+	.hero-course__play-container{ text-align: center; border: 1px solid rgba(0, 0, 0, 0.1); height: 200px; padding: 65px; background-color: rgba(0, 0, 0, 0.05);}
+	.hero-course__play{ display: inline-block;}
+ 	.hero-course__play--image{  transition: all 0.5s ease;  display: inline-block;    width: 70%;    opacity: .6;}
+
+  .hero-course__buttons-group{list-style: none;    margin: 0;}
+  .hero-course__buttons-group--item{    display: inline-block;      vertical-align: middle;}
+
+
+
+  .buttom-call{
+    background-color: #fff;
+    padding: 5px 30px 5px 42px;
+    border-radius: 4px;
+    background-image: url("../images/courses/ic_call_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+  }
+
+  .call-label-icon-email{
+    background-image: url("../images/courses/ic_email_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 35px;
+    width: 35px;
+  }
+
+  .call-label-icon-phone{
+    background-image: url("../images/courses/ic_call_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 35px;
+    width: 35px;
+  }
+
+  .call-label-icon-phone{
+    background-image: url("../images/courses/ic_call_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 35px;
+    width: 35px;
+  }
+
+  .call-label-icon-interests{
+    background-image: url("../images/courses/ic_flag_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 35px;
+    width: 35px;
+  }
+
+
+
+
+  .call-label-icon-name{
+    background-image: url("../images/courses/ic_person_black_24px.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    height: 35px;
+    width: 35px;
+  }
+
+  .buttom-favorite {
+    background-color: #fff;
+        border-radius: 4px;
+        background-image: url("../images/courses/ic_star_border_black_24px.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        font-size: 0;
+        display: inline-block;
+        height: 32px;
+        width: 38px;
+        vertical-align: middle;
+        transition: all 0.5s;
+  }
+
+  .buttom-favorite-active{background-image: url("../images/courses/ic_star_black_24px.svg");}
+
+
+  .buttom-price{ opacity:0.95 ; background-color: $accent-color;  color: #fff;  padding: 5px 30px;    border-radius: 4px;}
+  .buttom-price:hover,
+  .buttom-price:focus{color: #fff; opacity: 1;}
+
+ 	.hero-course__controllers{
+
+ 	}
+/*======================================== */

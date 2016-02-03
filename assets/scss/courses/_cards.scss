@@ -1,0 +1,85 @@
+.isotope_content-item--list{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.isotope_content-item{    
+  padding: 0 0.3rem 0.6rem !important;
+  &.isotope_content-item--list{padding: 0 !important;}
+}
+
+/*CARDS*/
+.card-course{
+  transition: all 0.5s;
+   @extend .z-1;  width: 100%; background-color: #fff;    z-index: 1; position: relative;
+   &:hover{ @extend .z-3; @include translate(0, -5px) }
+   &.card-format-line:hover {@include translate(0, 0px); z-index: 10!important; @extend .z-1;  }
+  &:hover * {transition: all 0.5s; }
+ }
+
+.card-course.card-format-line{
+  margin-bottom: 0px; padding: 0;   
+  &:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
+  .card-course-header { display: none}
+  .card-course__play{
+    background-image: url("../images/courses/card-thumb-play-dark.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    float: left;
+    margin-top: 3px;
+    opacity: 0.3;
+    cursor: pointer;
+    }
+  .card-course__modality{ padding-left: 10px; color: #979797; &:after { content: ":"; } }
+  .card-course__name{ font-size: 18px; font-weight: 400; color: #000; }
+  .card-course__instructors{}
+   .card-course--content {    padding: 10px 10px;}
+   &:hover .card-course__button{ color:#fff;   background-color: $accent-color;  border: 1px solid darken($accent-color, 6%);}
+   .card-course__button{background-color: #fff;  border:1px solid #ccc; font-size: 14px; padding: 3px 10px; border-radius: 4px; float: right }
+
+   &.card-format-line-static{
+    box-shadow: none !important;
+    table{border: none !important; }
+  }
+}
+
+.card-course.card-format-block{
+  .card-course-header {
+    height: 150px;
+    background: #444;
+    display: inline-block;
+    width: 100%;
+    padding:0px;
+        float: left;
+        overflow: hidden;
+}
+
+  .card-course__play{}
+  .card-course__modality{ font-size: 11px; font-weight: 800; color: #838384;     float: left;    width: 100%;    display: inline-block; text-transform: uppercase}
+  .card-course__name{
+    font-size: 21px;
+    font-weight: 100;
+    color: #000;
+    display: block;
+    line-height: 1.2;
+    margin: 5px 0 15px 0;
+  }
+  .card-course__instructors{}
+  .card-course__modality{}
+  .card-course--content {
+    padding: 10px 10px 20px 10px;
+  display: inline-block;
+ 
+}
+
+
+
+  //&:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
+  &:hover .card-course__button{ color:#fff;   background-color: $accent-color;  border: 1px solid darken($accent-color, 6%);}
+
+    .card-course__button{  background-color: #fff;  border:1px solid #ccc; font-size: 14px; padding: 5px 10px; border-radius: 4px;  }
+}
+

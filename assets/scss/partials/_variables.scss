@@ -1,0 +1,20 @@
+//TIPOGRAFIA
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,700italic,400italic,800); //tipografia
+
+
+// colors
+/*
+	http://sassme.arc90.com/
+	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+*/
+	$text-color: #333; // main text
+	$background-color: #dfdfdf; // body background color
+	$primary-color: #005B94; // Links botões
+	$primary-color-hover: darken($primary-color, 3); // Links botões hover
+	$secondary-color: #62c169; // anchor tags
+	$secondary-color-hover: darken($secondary-color, 8); // Links botões secundários hover
+	$accent-color: blue; // Cor de destaque
+	$border-radius-global: 3px;
+
+// fonts
+	$primary-font:  'Open Sans',  Helvetica, Roboto, Arial, sans-serif;

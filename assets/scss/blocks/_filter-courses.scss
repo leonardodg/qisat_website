@@ -1,0 +1,15 @@
+//filtro
+.filter_container{
+@extend .z-1;
+@include border-radius($border-radius-global);
+background-color: #fff; width: 100%; margin-top: -120px; padding: 20px;
+}
+
+//lista de filtro
+.isotope_filters--title{    font-size: 11px;    text-transform: uppercase;    font-weight: 800; color: #c9c9c9;}
+.isotope_filter-option-set{margin: 0;     list-style: none;}
+.isotope_filter-item {  cursor: pointer; margin-left: 20px; position: relative}
+.isotope_filter-item--quantity { font-size: 12px; position: absolute; right: 0; background: #fff; padding-left: 5px; top: 3px; color: rgba(0,0,0,.50); }
+.isotope_filter-item.is-checked {   }
+.isotope_filter-item.is-checked::before {background-image: url("../images/courses/ic_radio_button_checked_black_24px.svg");}
+.isotope_filter-item::before { content: ""; background-image: url("../images/courses/ic_radio_button_unchecked_black_24px.svg"); width: 16px; height: 16px; position: absolute; left: -21px; background-size: cover; top: 5px; }
