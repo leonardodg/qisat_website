@@ -21,10 +21,10 @@ $(document).ready(function() {
 
 
 
-  $('.isotope_filters').on('click', '.isotope_filter-item', function() {
+  $('.menu-filter-sidebars').on('click', '.menu-filter-sidebar-item', function() {
     var $this = $(this);
     // get group key
-    var $buttonGroup = $this.parents('.isotope_filter-option-set');
+    var $buttonGroup = $this.parents('.menu-filter-sidebar-option-set');
     var filterGroup = $buttonGroup.attr('data-filter-group');
     // set filter for group
     filters[filterGroup] = $this.attr('data-filter');
@@ -38,9 +38,9 @@ $(document).ready(function() {
   });
 
   // change is-checked class on buttons
-  $('.isotope_filter-option-set').each(function(i, buttonGroup) {
+  $('.menu-filter-sidebar-option-set').each(function(i, buttonGroup) {
     var $buttonGroup = $(buttonGroup);
-    $buttonGroup.on('click', '.isotope_filter-item', function() {
+    $buttonGroup.on('click', '.menu-filter-sidebar-item', function() {
       $buttonGroup.find('.is-checked').removeClass('is-checked');
       $(this).addClass('is-checked');
     });
@@ -56,7 +56,7 @@ $(document).ready(function() {
     isIsotopeInit = true;
     // filter isotope
     $grid.isotope({
-      itemSelector: '.isotope_filter-item',
+      itemSelector: '.menu-filter-sidebar-item',
       //filter: hashFilter || filterValue
       filter: hashFilter
     });

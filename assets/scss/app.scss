@@ -8,8 +8,7 @@
 
 
  
-@import 'qisat/header';
-@import 'qisat/footer';
+
 @import 'qisat/globals';
 @import 'qisat/hero';
 @import 'qisat/filter-courses';
@@ -19,13 +18,16 @@
 @import 'qisat/home__section-numbers';
 @import 'qisat/home__section-testimonials';
 @import 'qisat/modals';
-@import 'qisat/pages';
 
 
-
-//ok
-@import 'qisat/offcanvas';
 @import 'qisat/brands';
 @import 'qisat/cards';
+
+//Structure
+@import 'qisat/structure/header';
+@import 'qisat/structure/footer';
+@import 'qisat/structure/offcanvas';
+@import 'qisat/structure/pages';
+
 
 
