@@ -37,7 +37,7 @@
   .card-course__name{ font-size: 18px; font-weight: 400; color: #000; }
   .card-course__instructors{}
    .card-course--content {    padding: 10px 10px;}
-   &:hover .card-course__button{ color:#fff;   background-color: $accent-color;  border: 1px solid darken($accent-color, 6%);}
+   &:hover .card-course__button{ color:#fff;   background-color: $primary-color;  border: 1px solid darken($primary-color, 6%);}
    .card-course__button{background-color: #fff;  border:1px solid #ccc; font-size: 14px; padding: 3px 10px; border-radius: 4px; float: right }
 
    &.card-format-line-static{
@@ -78,7 +78,7 @@
 
 
   //&:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
-  &:hover .card-course__button{ color:#fff;   background-color: $accent-color;  border: 1px solid darken($accent-color, 6%);}
+  &:hover .card-course__button{ color:#fff;   background-color: $primary-color;  border: 1px solid darken($primary-color, 6%);}
 
     .card-course__button{  background-color: #fff;  border:1px solid #ccc; font-size: 14px; padding: 5px 10px; border-radius: 4px;  }
 }

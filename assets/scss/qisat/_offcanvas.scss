@@ -33,7 +33,7 @@
   transition-duration: 0.4s;
   @extend .z-3;
   position: relative;
-    background-color: $background-color;
+    background-color: $body-bg;
 }
 .site-app.offcanvas-menu-is-open{
     opacity: 1;

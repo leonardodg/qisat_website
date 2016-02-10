@@ -1,7 +1,7 @@
 //filtro
 .filter_container{
 @extend .z-1;
-@include border-radius($border-radius-global);
+@include border-radius($global-radius);
 background-color: #fff; width: 100%; margin-top: -120px; padding: 20px;
 }
 

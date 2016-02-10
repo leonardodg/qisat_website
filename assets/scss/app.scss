@@ -1,52 +1,13 @@
-// Foundation by ZURB
-// foundation.zurb.com
-// Licensed under MIT Open Source
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,700italic,400italic,800); 
+@import 'settings';
+@import 'foundation/import-foundation'; // colors, fonts etc...
 
-// Behold, here are all the Foundation components.
-@import 'foundation/components/grid';
-@import 'foundation/components/accordion';
-@import 'foundation/components/alert-boxes';
-@import 'foundation/components/block-grid';
-@import 'foundation/components/breadcrumbs';
-@import 'foundation/components/button-groups';
-@import 'foundation/components/buttons';
-@import 'foundation/components/clearing';
-@import 'foundation/components/dropdown';
-@import 'foundation/components/dropdown-buttons';
-@import 'foundation/components/flex-video';
-@import 'foundation/components/forms';
-@import 'foundation/components/icon-bar';
-@import 'foundation/components/inline-lists';
-@import 'foundation/components/joyride';
-@import 'foundation/components/keystrokes';
-@import 'foundation/components/labels';
-@import 'foundation/components/magellan';
-@import 'foundation/components/orbit';
-@import 'foundation/components/pagination';
-@import 'foundation/components/panels';
-@import 'foundation/components/pricing-tables';
-@import 'foundation/components/progress-bars';
-@import 'foundation/components/range-slider';
-@import 'foundation/components/reveal';
-@import 'foundation/components/side-nav';
-@import 'foundation/components/split-buttons';
-@import 'foundation/components/sub-nav';
-@import 'foundation/components/switches';
-@import 'foundation/components/tables';
-@import 'foundation/components/tabs';
-@import 'foundation/components/thumbs';
-@import 'foundation/components/tooltips';
-@import 'foundation/components/top-bar';
-@import 'foundation/components/type';
-@import 'foundation/components/offcanvas';
-@import 'foundation/components/visibility';
+ 
 
 
 
-
-
-@import 'qisat/variables'; // colors, fonts etc...
-@import 'qisat/mixins'; // custom mixins
+ 
 @import 'qisat/header';
 @import 'qisat/footer';
 @import 'qisat/globals';
@@ -59,8 +20,12 @@
 @import 'qisat/home__section-testimonials';
 @import 'qisat/modals';
 @import 'qisat/pages';
-@import 'qisat/cards';
-@import 'qisat/home';
-@import 'qisat/brands';
-@import 'qisat/buttons';
+
+
+
+//ok
 @import 'qisat/offcanvas';
+@import 'qisat/brands';
+@import 'qisat/cards';
+
+
