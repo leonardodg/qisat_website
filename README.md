@@ -13,6 +13,9 @@
   * Enter in the directory /assets
   * Insert the command "compass watch"
 
+## Helper
+  * Git: http://rogerdudler.github.io/git-guide/index.pt_BR.html
+
  be happy :)
 
 
