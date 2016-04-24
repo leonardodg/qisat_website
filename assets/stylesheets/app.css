@@ -1,4 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,700italic,400italic,800);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900italic,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,900,900italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,700,700italic,900italic,400italic,900);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -523,7 +527,7 @@ body {
   background: #dfdfdf;
   color: #333333;
   cursor: auto;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -2142,7 +2146,7 @@ select {
   background: #EFEFEF;
   color: #222222;
   display: block;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   padding: 1rem;
 }
@@ -2853,7 +2857,7 @@ button, .button {
   border-style: solid;
   border-width: 0;
   cursor: pointer;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: normal;
   margin: 0 0 1.25rem;
@@ -5589,7 +5593,7 @@ kbd {
 /* line 91, ../bower_components/foundation/scss/foundation/components/_labels.scss */
 .label {
   display: inline-block;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
   line-height: 1;
   margin-bottom: auto;
@@ -6153,7 +6157,7 @@ ul.pagination li {
 .pricing-table .title {
   background-color: #333333;
   color: #EEEEEE;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -6163,7 +6167,7 @@ ul.pagination li {
 .pricing-table .price {
   background-color: #F6F6F6;
   color: #333333;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 2rem;
   font-weight: normal;
   padding: 0.9375rem 1.25rem;
@@ -6559,7 +6563,7 @@ ul.pagination li {
 /* line 118, ../bower_components/foundation/scss/foundation/components/_side-nav.scss */
 .side-nav {
   display: block;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   list-style-position: outside;
   list-style-type: none;
   margin: 0;
@@ -6590,7 +6594,7 @@ ul.pagination li {
 /* line 91, ../bower_components/foundation/scss/foundation/components/_side-nav.scss */
 .side-nav li.active > a:first-child:not(.button) {
   color: #029dff;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-weight: normal;
 }
 /* line 97, ../bower_components/foundation/scss/foundation/components/_side-nav.scss */
@@ -6776,7 +6780,7 @@ ul.pagination li {
 .sub-nav li {
   color: #999999;
   float: left;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: normal;
   margin-left: 1rem;
@@ -7059,7 +7063,7 @@ table tr td {
   display: block;
   background-color: #EFEFEF;
   color: #222222;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 1rem;
   padding: 1rem 2rem;
 }
@@ -7514,7 +7518,7 @@ meta.foundation-mq-topbar {
 .top-bar-section ul li > a {
   color: #FFFFFF;
   display: block;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-size: 0.8125rem;
   font-weight: normal;
   padding-left: 0.9375rem;
@@ -8387,7 +8391,7 @@ p aside {
 /* line 255, ../bower_components/foundation/scss/foundation/components/_type.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #222222;
-  font-family: "Open Sans", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.4;
@@ -10171,6 +10175,444 @@ th.hide-for-touch {
     display: table-cell !important;
   }
 }
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+/* line 9, ../scss/qisat/_normalize.scss */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+/* line 19, ../scss/qisat/_normalize.scss */
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, ../scss/qisat/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 54, ../scss/qisat/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 67, ../scss/qisat/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+/* line 77, ../scss/qisat/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 89, ../scss/qisat/_normalize.scss */
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 97, ../scss/qisat/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+/* line 109, ../scss/qisat/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+/* line 117, ../scss/qisat/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 126, ../scss/qisat/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 135, ../scss/qisat/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 144, ../scss/qisat/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 153, ../scss/qisat/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 161, ../scss/qisat/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 169, ../scss/qisat/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 173, ../scss/qisat/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+/* line 184, ../scss/qisat/_normalize.scss */
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+/* line 192, ../scss/qisat/_normalize.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+/* line 203, ../scss/qisat/_normalize.scss */
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 211, ../scss/qisat/_normalize.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+/* line 221, ../scss/qisat/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 229, ../scss/qisat/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 252, ../scss/qisat/_normalize.scss */
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+/* line 266, ../scss/qisat/_normalize.scss */
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+/* line 277, ../scss/qisat/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+/* line 290, ../scss/qisat/_normalize.scss */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+/* line 302, ../scss/qisat/_normalize.scss */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 311, ../scss/qisat/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 322, ../scss/qisat/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+/* line 334, ../scss/qisat/_normalize.scss */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 346, ../scss/qisat/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+/* line 357, ../scss/qisat/_normalize.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+/* line 370, ../scss/qisat/_normalize.scss */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+/* line 379, ../scss/qisat/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+/* line 390, ../scss/qisat/_normalize.scss */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 399, ../scss/qisat/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 408, ../scss/qisat/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+/* line 419, ../scss/qisat/_normalize.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 424, ../scss/qisat/_normalize.scss */
+td,
+th {
+  padding: 0;
+}
+
 /* line 5, ../scss/qisat/_globals.scss */
 article {
   padding: 30px 0;
@@ -10180,7 +10622,7 @@ article {
 
 /* 1. z-depth official shadows:  (https://www.polymer-project.org/components/paper-elements/demo.html#paper-shadow) */
 /* line 11, ../scss/qisat/_globals.scss */
-.z-1, .menu-filter-sidebar, .shortcut-courses__cards, .home__section-instructors--card, .card-course, .card-course.card-format-line:hover, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image {
+.z-1, .menu-filter-sidebar, .home__section-instructors--card, .card-course, .card-course.card-format-line:hover, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
 }
 
@@ -10204,21 +10646,14 @@ article {
   box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15) !important;
 }
 
-/* 'SECTIONS HOME
-========================================= */
-/* line 21, ../scss/qisat/_globals.scss */
-.section__title, .shortcut-courses__title, .home__section-testimonials__title {
-  font-size: 36px;
-}
-
-/* line 22, ../scss/qisat/_globals.scss */
-.section__subtitle, .shortcut-courses__subtitle, .home__section-testimonials__subtitle {
-  font-size: 18px;
+/* line 18, ../scss/qisat/_globals.scss */
+.material-icons {
+  vertical-align: middle;
 }
 
 /* 'HERO COURSES
 ========================================= */
-/* line 3, ../scss/qisat/_hero.scss */
+/* line 3, ../scss/qisat/_home.scss */
 .hero-page-course {
   background-image: url("../images/hero/hero-course-background.jpg");
   background-size: cover;
@@ -10230,7 +10665,7 @@ article {
   float: left;
 }
 
-/* line 16, ../scss/qisat/_hero.scss */
+/* line 16, ../scss/qisat/_home.scss */
 .hero-page-course__title {
   margin-top: 80px;
   color: #fff;
@@ -10239,11 +10674,11 @@ article {
 
 /* 'HERO HOME
 ========================================= */
-/* line 29, ../scss/qisat/_hero.scss */
+/* line 29, ../scss/qisat/_home.scss */
 .hero-home {
   height: 700px;
   background: #333;
-  padding-top: 280px;
+  padding-top: 230px;
   color: #fff;
   z-index: -1;
   text-align: center;
@@ -10252,53 +10687,61 @@ article {
   background-repeat: no-repeat;
 }
 
-/* line 30, ../scss/qisat/_hero.scss */
+/* line 31, ../scss/qisat/_home.scss */
 .hero-home__intro {
-  font-size: 20px;
-  font-weight: 100;
-  margin-bottom: 30px;
+  font-size: 17px;
+  font-weight: 800;
+  margin-bottom: 0px;
   display: block;
+  text-transform: uppercase;
+  opacity: 0.7;
+  letter-spacing: 1px;
 }
 
-/* line 31, ../scss/qisat/_hero.scss */
+/* line 41, ../scss/qisat/_home.scss */
 .hero-home__title {
+  line-height: 1.1;
+  margin-top: 10px;
+  letter-spacing: -1px;
   font-size: 48px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 800;
   display: block;
+  color: #fff;
   margin-bottom: 20px;
+}
+
+/* line 55, ../scss/qisat/_home.scss */
+.hero-home__subtitle {
+  line-height: 1.3;
+  font-size: 25px;
+  opacity: 0.7;
+  font-weight: 100;
+  margin-bottom: 20px;
+  display: block;
   color: #fff;
 }
 
-/* line 32, ../scss/qisat/_hero.scss */
-.hero-home__subtitle {
-  font-size: 22px;
-  opacity: 0.6;
-  font-weight: 300;
-  margin-bottom: 20px;
-  display: block;
-}
-
-/* line 33, ../scss/qisat/_hero.scss */
+/* line 66, ../scss/qisat/_home.scss */
 .hero-home__button {
   transition: all 0.5s ease;
   border: 1px solid;
-  color: #fff;
+  color: #fff !important;
   padding: 10px 20px;
   display: inline-block;
   border-radius: 4px;
-  font-size: 14px;
+  background-color: transparent !important;
 }
-/* line 34, ../scss/qisat/_hero.scss */
+/* line 74, ../scss/qisat/_home.scss */
 .hero-home__button:hover {
-  color: #000;
-  background-color: #fff;
+  color: #000 !important;
+  background-color: #fff !important;
 }
 
 /*======================================== */
 /* 'HERO COURSES
 ========================================= */
-/* line 43, ../scss/qisat/_hero.scss */
+/* line 87, ../scss/qisat/_home.scss */
 .hero-course {
   float: left;
   width: 100%;
@@ -10310,17 +10753,17 @@ article {
   background-repeat: no-repeat;
   background-position: center center;
 }
-/* line 55, ../scss/qisat/_hero.scss */
+/* line 99, ../scss/qisat/_home.scss */
 .hero-course::before {
   content: "";
 }
 
-/* line 57, ../scss/qisat/_hero.scss */
+/* line 101, ../scss/qisat/_home.scss */
 .hero-course:hover .hero-course__play--image {
   opacity: 1;
 }
 
-/* line 58, ../scss/qisat/_hero.scss */
+/* line 102, ../scss/qisat/_home.scss */
 .hero-course__modality {
   color: #fff;
   font-size: 12px;
@@ -10329,7 +10772,7 @@ article {
   text-transform: uppercase;
 }
 
-/* line 59, ../scss/qisat/_hero.scss */
+/* line 103, ../scss/qisat/_home.scss */
 .hero-course__title {
   color: #fff;
   font-size: 38px;
@@ -10337,14 +10780,14 @@ article {
   line-height: 1;
 }
 
-/* line 60, ../scss/qisat/_hero.scss */
+/* line 104, ../scss/qisat/_home.scss */
 .hero-course__resume {
   color: #fff;
   opacity: .6;
   margin-bottom: 10px;
 }
 
-/* line 61, ../scss/qisat/_hero.scss */
+/* line 105, ../scss/qisat/_home.scss */
 .hero-course__locale {
   color: #fff;
   margin-bottom: 20px;
@@ -10353,7 +10796,7 @@ article {
   margin-top: 10px;
 }
 
-/* line 70, ../scss/qisat/_hero.scss */
+/* line 114, ../scss/qisat/_home.scss */
 .hero-course__play-container {
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -10362,12 +10805,12 @@ article {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* line 71, ../scss/qisat/_hero.scss */
+/* line 115, ../scss/qisat/_home.scss */
 .hero-course__play {
   display: inline-block;
 }
 
-/* line 72, ../scss/qisat/_hero.scss */
+/* line 116, ../scss/qisat/_home.scss */
 .hero-course__play--image {
   transition: all 0.5s ease;
   display: inline-block;
@@ -10375,19 +10818,19 @@ article {
   opacity: .6;
 }
 
-/* line 74, ../scss/qisat/_hero.scss */
+/* line 118, ../scss/qisat/_home.scss */
 .hero-course__buttons-group {
   list-style: none;
   margin: 0;
 }
 
-/* line 75, ../scss/qisat/_hero.scss */
+/* line 119, ../scss/qisat/_home.scss */
 .hero-course__buttons-group--item {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 79, ../scss/qisat/_hero.scss */
+/* line 123, ../scss/qisat/_home.scss */
 .buttom-call {
   background-color: #fff;
   padding: 5px 30px 5px 42px;
@@ -10397,7 +10840,7 @@ article {
   background-position: 10px center;
 }
 
-/* line 88, ../scss/qisat/_hero.scss */
+/* line 132, ../scss/qisat/_home.scss */
 .call-label-icon-email {
   background-image: url("../images/courses/ic_email_black_24px.svg");
   background-repeat: no-repeat;
@@ -10406,7 +10849,7 @@ article {
   width: 35px;
 }
 
-/* line 96, ../scss/qisat/_hero.scss */
+/* line 140, ../scss/qisat/_home.scss */
 .call-label-icon-phone {
   background-image: url("../images/courses/ic_call_black_24px.svg");
   background-repeat: no-repeat;
@@ -10415,7 +10858,7 @@ article {
   width: 35px;
 }
 
-/* line 104, ../scss/qisat/_hero.scss */
+/* line 148, ../scss/qisat/_home.scss */
 .call-label-icon-phone {
   background-image: url("../images/courses/ic_call_black_24px.svg");
   background-repeat: no-repeat;
@@ -10424,7 +10867,7 @@ article {
   width: 35px;
 }
 
-/* line 112, ../scss/qisat/_hero.scss */
+/* line 156, ../scss/qisat/_home.scss */
 .call-label-icon-interests {
   background-image: url("../images/courses/ic_flag_black_24px.svg");
   background-repeat: no-repeat;
@@ -10433,7 +10876,7 @@ article {
   width: 35px;
 }
 
-/* line 123, ../scss/qisat/_hero.scss */
+/* line 167, ../scss/qisat/_home.scss */
 .call-label-icon-name {
   background-image: url("../images/courses/ic_person_black_24px.svg");
   background-repeat: no-repeat;
@@ -10442,7 +10885,7 @@ article {
   width: 35px;
 }
 
-/* line 131, ../scss/qisat/_hero.scss */
+/* line 175, ../scss/qisat/_home.scss */
 .buttom-favorite {
   background-color: #fff;
   border-radius: 4px;
@@ -10457,12 +10900,12 @@ article {
   transition: all 0.5s;
 }
 
-/* line 145, ../scss/qisat/_hero.scss */
+/* line 189, ../scss/qisat/_home.scss */
 .buttom-favorite-active {
   background-image: url("../images/courses/ic_star_black_24px.svg");
 }
 
-/* line 148, ../scss/qisat/_hero.scss */
+/* line 192, ../scss/qisat/_home.scss */
 .buttom-price {
   opacity: 0.95;
   background-color: #005B94;
@@ -10471,7 +10914,7 @@ article {
   border-radius: 4px;
 }
 
-/* line 149, ../scss/qisat/_hero.scss */
+/* line 193, ../scss/qisat/_home.scss */
 .buttom-price:hover,
 .buttom-price:focus {
   color: #fff;
@@ -10479,6 +10922,129 @@ article {
 }
 
 /*======================================== */
+/* 'HOME SHORTCUT
+========================================= */
+/* line 212, ../scss/qisat/_home.scss */
+.shortcut-courses {
+  background-color: #2f3239;
+  display: inline-block;
+  width: 100%;
+  padding: 70px 0;
+}
+
+/* line 213, ../scss/qisat/_home.scss */
+.shortcut-courses__title {
+  text-align: center;
+  color: #fff;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  font-size: 36px;
+  text-align: center;
+  color: #fff;
+}
+
+/* line 214, ../scss/qisat/_home.scss */
+.shortcut-courses__subtitle {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  font-size: 22px;
+  opacity: 0.3;
+}
+
+/* line 222, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div,
+.shortcut-courses__list-second li div,
+.shortcut-courses__list-third li div {
+  padding: 20px;
+  border: 1px solid;
+  border-color: #aaa;
+  transition: all 0.5s;
+}
+/* line 227, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div:hover,
+.shortcut-courses__list-second li div:hover,
+.shortcut-courses__list-third li div:hover {
+  border-color: red;
+}
+/* line 233, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first h4,
+.shortcut-courses__list-second h4,
+.shortcut-courses__list-third h4 {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.3;
+}
+/* line 238, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first h4 span,
+.shortcut-courses__list-second h4 span,
+.shortcut-courses__list-third h4 span {
+  font-weight: 100;
+  display: block;
+}
+/* line 243, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first .action,
+.shortcut-courses__list-second .action,
+.shortcut-courses__list-third .action {
+  color: #fff;
+  border: 1px solid;
+  padding: 2px 0px 4px 15px;
+  display: inline-block;
+  border-radius: 4px;
+  opacity: 0.7;
+  font-size: 16px;
+  font-weight: 100;
+  transition: all 0.5s;
+}
+/* line 255, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first em,
+.shortcut-courses__list-second em,
+.shortcut-courses__list-third em {
+  color: #fff;
+  opacity: 0.4;
+}
+
+/* line 267, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div {
+  text-align: center;
+  background-color: #4e4e4e;
+  padding: 70px 20px 40px 20px;
+}
+/* line 271, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div > .material-icons {
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.44);
+}
+/* line 275, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div h4 {
+  text-transform: uppercase;
+}
+
+/* line 291, ../scss/qisat/_home.scss */
+.shortcut-courses__list-third li h4 {
+  font-size: 17px;
+}
+
+/* line 307, ../scss/qisat/_home.scss */
+.shortcut-courses__cards--first {
+  border-color: #2189a7 !important;
+  text-align: center;
+  height: 240px;
+}
+
+/* line 317, ../scss/qisat/_home.scss */
+.shortcut-courses h4 {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* line 318, ../scss/qisat/_home.scss */
+.shortcut-courses h4 span {
+  font-weight: 100;
+}
+
 /* line 3, ../scss/qisat/_filter-courses.scss */
 .menu-filter-sidebar {
   -moz-border-radius: 3px;
@@ -10541,59 +11107,6 @@ article {
   left: -21px;
   background-size: cover;
   top: 5px;
-}
-
-/* line 1, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses {
-  background-color: #062235;
-  display: inline-block;
-  width: 100%;
-  padding: 70px 0;
-}
-
-/* line 3, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__title {
-  text-align: center;
-  color: #fff;
-}
-
-/* line 9, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__subtitle {
-  color: #aaa;
-  text-align: center;
-}
-
-/* line 12, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__cards {
-  position: relative;
-  transition: all 0.5s;
-}
-
-/* line 13, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__cards--item {
-  border: 2px solid transparent;
-  position: relative;
-}
-
-/* line 14, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__cards--item-title {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  text-align: right;
-  line-height: 1;
-}
-
-/* line 15, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__cards--item-title-link {
-  opacity: 0.9;
-  color: #fff;
-}
-
-/* line 16, ../scss/qisat/_home__shortcut-courses.scss */
-.shortcut-courses__cards--item-title-link:hover {
-  opacity: 1;
-  color: #fff;
 }
 
 /* line 1, ../scss/qisat/_home__top-courses.scss */
@@ -10719,38 +11232,40 @@ article {
 
 /* line 2, ../scss/qisat/_home__section-testimonials.scss */
 .home__section-testimonials__title {
+  font-size: 22px;
   color: #fff;
 }
 
 /* line 7, ../scss/qisat/_home__section-testimonials.scss */
 .home__section-testimonials__subtitle {
+  font-size: 22px;
   color: #aaa;
 }
 
-/* line 12, ../scss/qisat/_home__section-testimonials.scss */
+/* line 13, ../scss/qisat/_home__section-testimonials.scss */
 .home__section-testimonials-info {
   /* min-width 641px, medium screens */
   /* min-width 1025px, large screens */
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 12, ../scss/qisat/_home__section-testimonials.scss */
+  /* line 13, ../scss/qisat/_home__section-testimonials.scss */
   .home__section-testimonials-info {
     margin-top: 60px;
   }
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 12, ../scss/qisat/_home__section-testimonials.scss */
+  /* line 13, ../scss/qisat/_home__section-testimonials.scss */
   .home__section-testimonials-info {
     margin-top: 110px;
   }
 }
 
-/* line 28, ../scss/qisat/_home__section-testimonials.scss */
+/* line 29, ../scss/qisat/_home__section-testimonials.scss */
 .home__section-testimonials--grid-item {
   /* min-width 641px, medium screens */
 }
 @media only screen and (min-width: 40.063em) {
-  /* line 28, ../scss/qisat/_home__section-testimonials.scss */
+  /* line 29, ../scss/qisat/_home__section-testimonials.scss */
   .home__section-testimonials--grid-item {
     float: right;
   }
