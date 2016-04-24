@@ -11080,7 +11080,7 @@ article {
   height: 25px;
   /* border: 1px solid red; */
   font-size: 0;
-  background-image: url("../images/instructors/icon-linkedin.png");
+  background-image: url("../images/instructors/icon-linkedin.svg");
   background-size: cover;
 }
 
@@ -11187,9 +11187,11 @@ article {
 /* line 5, ../scss/qisat/_home__section-numbers.scss */
 .home__section-numbers--list-item strong em {
   font-size: 18px;
+  letter-spacing: 0.2px;
+  text-transform: lowercase;
 }
 
-/* line 6, ../scss/qisat/_home__section-numbers.scss */
+/* line 10, ../scss/qisat/_home__section-numbers.scss */
 .home__section-numbers--list-item span {
   font-size: 14px;
   font-weight: 100;
