@@ -160,26 +160,26 @@ jQuery(document).ready(function($){
 
 
 
- $(function() {
-      $('.owl-carousel-instructors-home').owlCarousel({
-          loop:true,
-          margin:10,
-          nav:false,
-          center: true,
-          responsive:{
-              0:{
-                  items:1
-              },
-              600:{
-                  items:3
-              },
-              1100:{
-                  items:5
-              }
-          }
-      });
+ // $(function() {
+ //      $('.owl-carousel-instructors-home').owlCarousel({
+ //          loop:true,
+ //          margin:10,
+ //          nav:false,
+ //          center: true,
+ //          responsive:{
+ //              0:{
+ //                  items:1
+ //              },
+ //              600:{
+ //                  items:3
+ //              },
+ //              1100:{
+ //                  items:5
+ //              }
+ //          }
+ //      });
 
-  }());
+ //  }());
 
 
 
