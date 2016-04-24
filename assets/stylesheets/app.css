@@ -10622,7 +10622,7 @@ article {
 
 /* 1. z-depth official shadows:  (https://www.polymer-project.org/components/paper-elements/demo.html#paper-shadow) */
 /* line 11, ../scss/qisat/_globals.scss */
-.z-1, .menu-filter-sidebar, .home__section-instructors--card, .card-course, .card-course.card-format-line:hover, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image {
+.z-1, .menu-filter-sidebar, .card-course, .card-course.card-format-line:hover, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
 }
 
@@ -11027,22 +11027,61 @@ article {
   font-size: 17px;
 }
 
+/* 'HOME INSTRUCTORS
+========================================= */
+/* line 305, ../scss/qisat/_home.scss */
+.home__section-instructors {
+  background-color: #2196f3;
+  padding: 70px 0;
+}
+
 /* line 307, ../scss/qisat/_home.scss */
-.shortcut-courses__cards--first {
-  border-color: #2189a7 !important;
-  text-align: center;
-  height: 240px;
+.home__instructors__item {
+  padding: 0px !important;
+}
+
+/* line 308, ../scss/qisat/_home.scss */
+.home__instructors__card {
+  margin: 2px;
+  position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
+  background-color: #fff;
+  transition: all 0.5s;
+}
+
+/* line 316, ../scss/qisat/_home.scss */
+.home__instructors__card-header {
+  z-index: 1000;
+  position: relative;
+  transition: all 0.5s;
+  box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3), 0 11px 7px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 /* line 317, ../scss/qisat/_home.scss */
-.shortcut-courses h4 {
-  color: #fff;
-  font-weight: 500;
+.home__instructors__card:hover .home__instructors__card-header {
+  transform: translateY(-70px);
 }
 
-/* line 318, ../scss/qisat/_home.scss */
-.shortcut-courses h4 span {
-  font-weight: 100;
+/* line 319, ../scss/qisat/_home.scss */
+.home__instructors__card-footer {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  padding: 10px;
+}
+
+/* line 327, ../scss/qisat/_home.scss */
+.home__instructors__linkedin {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 26px;
+  overflow: hidden;
+  height: 25px;
+  /* border: 1px solid red; */
+  font-size: 0;
+  background-image: url("../images/instructors/icon-linkedin.png");
+  background-size: cover;
 }
 
 /* line 3, ../scss/qisat/_filter-courses.scss */
@@ -11112,74 +11151,6 @@ article {
 /* line 1, ../scss/qisat/_home__top-courses.scss */
 .home__section-topcourses {
   padding: 70px 0;
-}
-
-/* line 1, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors {
-  background-color: #2095f2;
-  background-image: url("../images/instructors/instructors-background.png");
-  padding: 70px 0;
-}
-
-/* line 3, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--list-item {
-  display: inline-block;
-  max-width: 190px;
-}
-
-/* line 4, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card {
-  width: 100%;
-  padding-bottom: 10px;
-  position: relative;
-  background: #fff;
-  margin: 5px;
-  overflow: hidden;
-  border-radius: 4px 4px 0 0;
-}
-
-/* line 5, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card-thumb {
-  width: 100%;
-}
-
-/* line 6, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card-name {
-  font-weight: 600;
-  letter-spacing: -1px;
-  padding: 5px;
-  font-size: 14px;
-}
-
-/* line 7, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card-profession {
-  font-weight: 400;
-  letter-spacing: -1px;
-  color: #777;
-  font-size: 14px;
-  padding: 5px;
-}
-
-/* line 8, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card-linkedin {
-  background-image: url("../images/instructors/icon-linkedin.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  width: 25px;
-  height: 25px;
-  font-size: 0;
-  position: absolute;
-  background-color: #0066a1;
-  bottom: 50px;
-  left: 10px;
-  border-radius: 4px;
-  opacity: 0.8;
-  transition: opacity 0.5s ease;
-}
-/* line 24, ../scss/qisat/_home__section-instructors.scss */
-.home__section-instructors--card-linkedin:hover {
-  opacity: 1;
 }
 
 /* line 1, ../scss/qisat/_home__section-numbers.scss */

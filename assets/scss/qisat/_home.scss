@@ -295,136 +295,50 @@
 
 
 
-
-
-
-
-  
-
-// .shortcut-courses__cards--engineering{ height: 180px; text-align: left !important; }
-
  
 
-// .shortcut-courses__cards {
-//     position: relative;
-//     transition: all 0.5s;
-//     padding: 20px;
-//     display: inline-block;
-//     border: 1px solid transparent;
-//     width: 100%;
-// }
-// .shortcut-courses__cards{ @extend .z-1;   }
-
-// .shortcut-courses__cards--item {
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     display: inline-block;
-//     width: 100%;
-//     left: 0;
-// }
-
-// .shortcut-courses__cards--item-label {
-//     opacity: 0.5;
-//     color: #fff;
-//     display: inline-block;
-//     width: 100%;
-// }
-
-// .shortcut-courses__cards--item-icon {
-// 	height: 40px;
-//     display: inline-block;
-//     width: 100%;
-//     text-align: center;
-// }
-// .shortcut-courses__cards--item-icon .material-icons {
-//     margin: 0;
-//     padding: 0;
-//     font-size: 40px;
-//     color: rgba(255, 255, 255, 0.57);
-// }
-// .shortcut-courses__cards--item-title {
-//     color: #fff;
-//     font-weight: 100;
-//     text-align: center;
-//     letter-spacing: -0.3px;
-//     text-transform: uppercase;
-//     margin-bottom: 20px;
-// }
-// .shortcut-courses__cards--item-title strong{  color:#fff; font-weight: 500;     display: block;}
-
-// .shortcut-courses__cards--item-title-link{  }
-// .shortcut-courses__cards--item-title-link:hover{}   
-// .shortcut-courses__cards--item-image{}
-// .shortcut-courses__cards--item-button {
-//     color: #fff;
-//     border: 1px solid;
-//     padding: 2px 0px 4px 15px;
-//     display: inline-block;
-//     border-radius: 4px;
-//     opacity: 0.7;
-//     font-size: 16px;
-//     font-weight: 100;
-//     transition: all 0.5s;
-
-//  	&:hover, &:focus{ opacity: 1;  color: #fff;}
-// 	.material-icons{ border-left:1px solid;     vertical-align: bottom;     margin-left: 10px;}	
-// }
 
 
+/* 'HOME INSTRUCTORS
+========================================= */
 
-
-
-
-
-
-
-
-
-
-.home__section-instructors{  background-color: #2095f2;  background-image:  url("../images/instructors/instructors-background.png");  padding: 70px 0;}
-.home__section-instructors--list{}
-.home__section-instructors--list-item{    display: inline-block; max-width: 190px}
-.home__section-instructors--card{ 
-
-	 width: 100%;
-  padding-bottom: 10px;
-  position: relative;
-  background: #fff;
-  margin: 5px;
-  overflow: hidden;
-  border-radius: 4px 4px 0 0;
-  height: 190px;
-
-
-	@extend .z-1;  
-	 }
-
-.home__section-instructors--card a {
-    position: absolute;
+.home__section-instructors{background-color: #2196f3;     padding: 70px 0;}
+.home__instructors{}
+.home__instructors__item { padding: 0px !important;}
+.home__instructors__card{ 
+	    margin: 2px;
+	position: relative;  
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
+	background-color: #fff;
+	transition: all 0.5s
 }
 
-.home__section-instructors--card-thumb{     width: 100%;   }
-.home__section-instructors--card-name{font-weight: 600; letter-spacing: -1px; padding: 5px; font-size: 14px;}
-.home__section-instructors--card-profession{ font-weight: 400; letter-spacing: -1px; color: #777; font-size: 14px; padding: 5px;}
-.home__section-instructors--card-linkedin{
-  background-image: url("../images/instructors/icon-linkedin.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+.home__instructors__card-header {  z-index: 1000; position: relative; transition: all 0.5s; box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3), 0 11px 7px 0 rgba(0, 0, 0, 0.19) !important;}
+.home__instructors__card:hover .home__instructors__card-header{transform: translateY(-70px);}
+
+.home__instructors__card-footer {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    padding: 10px;
+}
+.home__instructors__thumb{}
+
+.home__instructors__linkedin {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 26px;
     overflow: hidden;
-    width: 25px;
     height: 25px;
+    /* border: 1px solid red; */
     font-size: 0;
-
-    position: absolute;
-    background-color: #0066a1;
-    bottom: 50px;
-    left: 10px;
-    border-radius: 4px;
-    opacity: 0.8;
-    transition: opacity 0.5s ease;
-    &:hover{ opacity: 1}
+    background-image: url("../images/instructors/icon-linkedin.svg");
+    background-size: cover;
 }
+
+.home__instructors__name{}
+.home__instructors__profession{}
 
 
 
