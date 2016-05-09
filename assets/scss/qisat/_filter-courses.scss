@@ -2,7 +2,7 @@
 //.menu-filter-sidebar = .menu-filter-sidebar
 .menu-filter-sidebar{
 @extend .z-1;
-@include border-radius($global-radius);
+border-radius: $global-radius;
 background-color: #fff; width: 100%;  padding: 20px;
 }
 .menu-filter-sidebar.menu-filter-sidebar-up{margin-top: -120px;}
