@@ -10,10 +10,10 @@
 ## Quickstart
  
   * Open the Terminal/Prompt/PowerShell
-  * Enter in the directory /assets
+  * Enter in the root
   * Insert the command "compass watch"
 
-## Helper
+## Precisa de ajuda com Git?
   * Git: http://rogerdudler.github.io/git-guide/index.pt_BR.html
 
  be happy :)
