@@ -2,6 +2,11 @@
 ========================================= */
 .hero-page-course {
     background-image: url("../images/hero/hero-course-background.jpg");
+
+    background: #232526; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -246,6 +251,14 @@
 
 .hero-course__controllers {}
 
+
+
+
+
+
+
+
+
 /*======================================== */
 
 /* 'HOME SHORTCUT
@@ -419,13 +432,22 @@
 
 
 
+
+
+
+
+
 /* 'HOME INSTRUCTORS
 ========================================= */
 
 .home__section-instructors {
-    background-color: #2196f3;
+    //background-color: #2196f3;
     padding: 70px 0;
+    background: #00c6ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 
 .home__instructors {}
 
@@ -439,28 +461,12 @@
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
     background-color: #fff;
     transition: all 0.5s;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.home__instructors__card-header {
-    z-index: 1000;
-    position: relative;
-    transition: all 0.5s;
-    box-shadow: 0 13px 25px 0 rgba(0, 0, 0, 0.3), 0 11px 7px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.home__instructors__card:hover .home__instructors__card-header {
-    transform: translateY(-70px);
-}
-
-.home__instructors__card-footer {
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    padding: 10px;
-}
-
+.home__instructors__card-header {position: relative}
 .home__instructors__thumb {}
-
 .home__instructors__linkedin {
     position: absolute;
     bottom: 5px;
@@ -473,11 +479,16 @@
     font-size: 0;
     background-image: url("../images/instructors/icon-linkedin.svg");
     background-size: cover;
+        cursor: pointer;
 }
+.home__instructors__card-footer { padding:10px;    line-height: 1;}
+.home__instructors__name {font-size: 0.8rem;}
+.home__instructors__profession {font-size: 0.8rem; opacity:0.4}
 
-.home__instructors__name {}
 
-.home__instructors__profession {}
+
+
+
 
 /* 'HOME NUMBERS
 ========================================= */
@@ -500,6 +511,7 @@
     border: 1px solid #444;
      margin-bottom: -6px;
 }
+ 
 
 .home__section-numbers--list-item strong {
     letter-spacing: -3px;
@@ -577,14 +589,4 @@
 }
 
 .home__section-testimonials--grid-info{}
-
-
-
-
-
-
-
-
-
-
 .home__section-topcourses{  padding: 70px 0;}

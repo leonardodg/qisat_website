@@ -17,7 +17,7 @@
 	<div class="site-app--inner">
 
 	<header class="header-main">
-		   <div class="header-main__brand"> <a href="/" class="header-main__logo"> QiSAT</a> </div>
+		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
 	 
 			<nav class="header-main__nav">
 			<ul class="header-main__ul">
@@ -48,7 +48,7 @@
 
 				<div class="large-9 columns">
 							<div class="page-course__box-search">
-								<h2 class="hero-page-course__title">Busque o curso perfeito para você</h2>
+								<h2 class="hero-page-course__title">Encontre o curso perfeito para você</h2>
 
 								<form action="">
 									<div class="row collapse">
@@ -57,8 +57,9 @@
 											</div>
 												<div class="small-2 columns">
 													<ul class="button-group">
-  <li><a href="#" class=" button-transform-list-card transform-courses-card-list">lista</a></li>
-  </ul>
+													      <li><a href="#" class="transform-courses-card-list transform-courses-card-block"><i class="material-icons md-36">view_module</i> </a></li>
+														  <li><a href="#" class="transform-courses-card-list"><i class="material-icons md-36">view_list</i></a></li>
+													  </ul>
 
  												</div>
 													</div><!-- // row -->
@@ -159,7 +160,68 @@
 
 
 		 <ul id="container-isotope" class="filtered-list list-filter small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
- 				<!-- Aqui loopind cards via js -->
+ 				
+ 				<!-- MODELO PARA LOOPING -->
+ 				<li class="isotope_content-item ensino-a-distancia engenharia-estrutural">
+ 					<div class="card-course card-format-block">
+				   		<div class="card-course-inner">
+				   				<a href="course-ead.html">
+				   					<span class="card-course--litle-play"></span> 
+				   					<div class="card-course-header">
+				   						<img src="assets/images/courses/card-thumb-1.jpg">
+				   					</div>  
+				   				</a>
+				   				<div class="card-course--content">
+				   					<a href="course-ead.html">  
+				   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  
+				   						<span class="card-course__modality">{{curso-modalidade}}</span>  
+				   						<span class="card-course__name">{{curso-nome-do-curso}}</span> 
+				   					</a>
+				   					<a href="#" class="card-course__button  has-price_popover">R$ 56,00 
+				   						<span class="card-course__icon-cart">
+				   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+				   							<div class="price_popover">
+				   								<div class="price_popover__header">
+				   									<p class="price_popover__header__info"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p> 
+				   								</div> <!-- //price_popover__header -->
+				   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
+				   							</div> <!-- //price_popover -->
+				   						</span>
+				   					</a> 
+				   				</div>  <!-- //card-course-content -->
+				   		</div> <!-- //card-course-inner -->
+					</div> <!-- //card-course -->
+ 				</li>
+ 				<!-- FIM MODELO PARA LOOPING -->
+
+ 				 
+
+
+ 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural curso-teorico"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-1.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-hidrossanitaria palestra"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-2.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-eletrica"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-3.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-4.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Software Eberick V8</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item palestra engenharia-estrutural curso-de-software"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-5.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">Durabilidade das Estruturas de Concreto</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-hidrossanitaria curso-de-software software-cabeamento-estruturado"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-6.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">{{Nome do curso que pode ter até duas linhas}}</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-eletrica curso-de-software software-cad"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-7.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">Instalações Elétricas Prediais, Telefonia e Infraestrutura para TV</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-estrutural curso-teorico software-gerenciador-de-arquivos"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-8.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">Instalações Elétricas Prediais, Telefonia e Infraestrutura para TV</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-eletrica curso-de-software software-qihidrossanitario"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-9.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural curso-de-software software-qiincendio"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-10.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino a distância</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 1.350,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-geotecnica curso-de-software software-cabeamento-estruturado"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-1.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino a distância</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 650,00</a> </div> </div></div></li>
+
+ 				
 		</ul>
  </div> <!-- // large-9 columns -->
 
@@ -343,47 +405,7 @@
 
 
 
-
  
-
-
-
-
-
-
-
-
-<script>
-(function($) {
-	$.each(coursejson, function(idx, obj) {
-		console.log(obj.id, "|", obj.courseName, "|", obj.courseModality, "|", obj.courseThumbnail);
-
-		var html = "<li class='isotope_content-item "+  obj.courseModalityClass + " " + obj.courseAtuationAreaClass + " " + obj.courseTypeClass + " " + obj.courseSoftwareClass + "'>";
-						html += "<a href=" +  obj.courseUrl + ">";
-								html += "<div class='card-course card-format-block'>";
-										html += "<div class='card-course-inner'>";
-												html += "<span class='card-course--litle-play'></span>";
-													html += " <div class='card-course-header'><img src="+ obj.courseThumbnail + " /></div>  ";
-														html += "<div class='card-course--content'> ";
-																			html += " <span data-reveal-id='modal__trailer' data-tooltip aria-haspopup='true' title='Assista o trailer'  data-options='disable_for_touch:true' class='has-tip tip-top card-course__play'></span> ";
-																			html += " <span class='card-course__modality'>" +  obj.courseModality + "</span> ";
-																			html += " <span class='card-course__name'>" +  obj.courseName + "</span>";
-																			html += " <a href='#' class='card-course__button'>R$ "+ obj.coursePrice +"</a>";
-												html += " </div>";
-										html += " </div>";
-								html += "</div>";
-						html += "</a>";
-				html += "</li>";
-
-					$("#container-isotope").append(html);
-
-		});
-})(jQuery);
-</script>
-
-
-
-
 
 </body>
 </html>

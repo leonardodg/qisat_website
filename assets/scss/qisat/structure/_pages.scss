@@ -40,7 +40,12 @@
  
 
 
-.courses-input-search{@extend .z-1;  border-radius: 4px !important}
+.courses-input-search{
+    @extend .z-1;    
+    border-radius: 4px !important;
+  padding: 0 !important;
+  text-indent: 20px;
+}
 .button-transform-list-card{padding: 0.5rem}
 
 
