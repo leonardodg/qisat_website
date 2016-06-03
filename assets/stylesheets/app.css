@@ -439,7 +439,7 @@ th {
 
 /*
 	http://sassme.arc90.com/
-	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+	Fun├º├Áes cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
 */
 /* line 77, ../scss/qisat/_globals.scss */
 body {
@@ -2487,37 +2487,45 @@ article {
   margin-top: 10px;
 }
 
-/* line 31, ../scss/qisat/layout/_admin.scss */
+/* line 35, ../scss/qisat/layout/_admin.scss */
 .admin_content {
   position: inherit;
   margin: 0 0 0 250px;
   padding: 20px 30px;
   border-left: 1px solid #e7e7e7;
-  min-height: 600px;
+  min-height: calc(100vh - 100px);
   background-color: #dfdfdf;
   box-shadow: -4px 0px 6px 0 rgba(0, 0, 0, 0.2) !important;
   z-index: 1;
+  transition: all 0.5s;
+  /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+}
+@media only screen and (max-width: 40em) {
+  /* line 35, ../scss/qisat/layout/_admin.scss */
+  .admin_content {
+    margin: 0 0 0 45px;
+  }
 }
 
 /* grid ---------------------------------------- */
-/* line 46, ../scss/qisat/layout/_admin.scss */
+/* line 58, ../scss/qisat/layout/_admin.scss */
 .admin_main {
   position: relative;
   display: inline-block;
   background-color: #494949;
 }
 
-/* line 48, ../scss/qisat/layout/_admin.scss */
+/* line 62, ../scss/qisat/layout/_admin.scss */
 .admin__menu {
   list-style: none;
   margin: 0;
 }
-/* line 51, ../scss/qisat/layout/_admin.scss */
-.admin__menu .item.current {
+/* line 65, ../scss/qisat/layout/_admin.scss */
+.admin__menu .item.active {
   background: rgba(0, 0, 0, 0.3);
   color: white;
 }
-/* line 54, ../scss/qisat/layout/_admin.scss */
+/* line 68, ../scss/qisat/layout/_admin.scss */
 .admin__menu .link {
   padding: 20px 10px;
   transition: all 0.5s;
@@ -2526,29 +2534,29 @@ article {
   width: 100%;
   color: rgba(255, 255, 255, 0.6);
 }
-/* line 56, ../scss/qisat/layout/_admin.scss */
+/* line 70, ../scss/qisat/layout/_admin.scss */
 .admin__menu .link:hover {
   background: rgba(0, 0, 0, 0.16);
   color: white;
 }
-/* line 57, ../scss/qisat/layout/_admin.scss */
+/* line 71, ../scss/qisat/layout/_admin.scss */
 .admin__menu .link i {
   margin-right: 10px;
   vertical-align: bottom;
 }
 
-/* line 61, ../scss/qisat/layout/_admin.scss */
+/* line 78, ../scss/qisat/layout/_admin.scss */
 .admin__heading {
   border-bottom: 1px solid #ccc;
   margin-bottom: 30px;
   padding-bottom: 15px;
 }
-/* line 66, ../scss/qisat/layout/_admin.scss */
+/* line 83, ../scss/qisat/layout/_admin.scss */
 .admin__heading .title {
   font-size: 36px;
   margin: 0;
 }
-/* line 67, ../scss/qisat/layout/_admin.scss */
+/* line 84, ../scss/qisat/layout/_admin.scss */
 .admin__heading .subtitle {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.47);

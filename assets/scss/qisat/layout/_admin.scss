@@ -1,4 +1,4 @@
-// .admin_main{ 
+// .admin_main{
 //     background-color: #494949;
 //     display: inline-block;
 //     width: 100%;
@@ -26,6 +26,10 @@ z-index: 1;
 position: absolute;
 width: 250px;
 margin-top: 10px;
+
+
+
+
 }
 
 .admin_content {
@@ -33,45 +37,53 @@ margin-top: 10px;
 	margin: 0 0 0 250px;
 	padding: 20px 30px;
 	border-left: 1px solid #e7e7e7;
-	min-height: 600px;
+	min-height:  calc(100vh - 100px);
 	background-color: #dfdfdf;
 	box-shadow: -4px 0px 6px 0 rgba(0, 0, 0, 0.2) !important;
 	z-index: 1;
+  transition: all 0.5s;
+
+  @media only screen and (max-width: 40em) {
+    margin: 0 0 0 45px;
+    // &:hover{margin: 0 0 0 190px;}
+   } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+
 }
- 
+
 /* grid ---------------------------------------- */
 
 
 
 .admin_main { position: relative; display: inline-block; background-color: #494949;}
 
-.admin__menu{ 
+ 
+
+.admin__menu{
 	list-style: none;  margin: 0;
-	.item{ 
- 		&.current{background: rgba(0, 0, 0, 0.3);  color: rgba(255, 255, 255, 1);}
+	.item{
+ 		&.active{background: rgba(0, 0, 0, 0.3);  color: rgba(255, 255, 255, 1);}
 	}
 
-	.link{  
+	.link{
 		padding: 20px 10px; transition: all 0.5s;  vertical-align: middle;  display: inline-block;    width: 100%;     color: rgba(255, 255, 255, 0.6);
 		&:hover{ background: rgba(0, 0, 0, 0.16);  color: rgba(255, 255, 255, 1);}
 		i{ margin-right: 10px;  vertical-align: bottom;}
-	}  
+
+
+
+	}
 }
 
-.admin__heading{  
+.admin__heading{
 	border-bottom: 1px solid #ccc;
     margin-bottom: 30px;
     padding-bottom: 15px;
 
 	.title{    font-size: 36px;     margin: 0;}
-	.subtitle{    
+	.subtitle{
 	    font-size: 18px;
 	    color: rgba(0, 0, 0, 0.47);
 	    margin: 0 0 -7px 0;
 	}
 }
-
-
- 
-
-
