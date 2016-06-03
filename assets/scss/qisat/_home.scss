@@ -1,5 +1,26 @@
 /* 'HERO COURSES
 ========================================= */
+
+
+
+.hero-page-simple{
+
+    float: left;
+    width: 100%;
+    padding: 20px 0;
+    
+
+    background: #1e3c72; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1e3c72 , #2a5298); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1e3c72 , #2a5298); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .hero-page-simple__title{ text-align: center; font-weight: 100; color: #fff;}
+}
+
+
+
+
+
 .hero-page-course {
     background-image: url("../images/hero/hero-course-background.jpg");
 
@@ -83,6 +104,9 @@
         background-color: #fff !important;
     }
 }
+
+
+
 
 /*======================================== */
 
@@ -273,7 +297,7 @@
 .shortcut-courses__title {
     text-align: center;
     color: #fff;
-    font-weight: 100;
+    font-weight: 300;
     text-transform: uppercase;
     letter-spacing: -1px;
     margin-bottom: 0;
@@ -458,11 +482,22 @@
 .home__instructors__card {
     margin: 2px;
     position: relative;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important;
+    @extend .z-1;
     background-color: #fff;
     transition: all 0.5s;
     border-radius: 4px;
     overflow: hidden;
+
+      -webkit-transition: all 250ms;
+      -moz-transition: all 250ms;
+      transition: all 250ms;
+
+    &:hover{
+        @extend .z-3;
+      -webkit-transform: translateY(-5px);
+          -moz-transform: translateY(-5px);
+         transform: translateY(-5px);
+  }
 }
 
 .home__instructors__card-header {position: relative}

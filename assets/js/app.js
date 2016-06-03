@@ -2,6 +2,9 @@
 // Documentation can be found at: http://foundation.zurb.com/docs
 $(document).foundation();
 
+ $("#menu").metisMenu({
+   collapseInClass: 'in'
+ });
 
 
 /* Temporário

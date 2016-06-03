@@ -82,6 +82,7 @@
 
 
 
+
 h1, h2, h3, h4, h5, h6 {
     color: #222;
     font-family: $font-family-sans-serif;
@@ -94,7 +95,9 @@ h1, h2, h3, h4, h5, h6 {
 
 //define o tamanho da grid
 .row { max-width: 75rem; }
-
+ .footer-main,
+ .content-main,
+ .footer-main {  width: 100%; display: block; float: left;}
 
 article{ padding: 30px 0; display: inline-block; width: 100%;}
 
