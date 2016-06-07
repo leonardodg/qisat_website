@@ -23,22 +23,20 @@
 
 .hero-page-course {
     background-image: url("../images/hero/hero-course-background.jpg");
-
-    background: #232526; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    /* background: #232526; */
+    background: -webkit-linear-gradient(to left, #232526, #414345);
+    /* background: linear-gradient(to left, #232526, #414345); */
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
-    border-bottom: 1px solid #555;
+    background-position: center bottom;
+    /* border-bottom: 1px solid #555; */
     background-color: $primary-color;
     width: 100%;
     float: left;
 }
 
 .hero-page-course__title {
-    margin-top: 80px;
+    margin-top: 110px;
     color: #fff;
     font-weight: 100;
 }

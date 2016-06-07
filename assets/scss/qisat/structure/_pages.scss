@@ -41,10 +41,10 @@
 
 .courses-input-search{
     @extend .z-1;    
-    border-radius: 4px !important;
+    border-radius: 2px !important;
     padding: 0 !important;
     text-indent: 30px;
-    
+    margin-bottom: 10px;
      background-image: url("../images/courses/ic_search_black_24px.svg") !important;
     background-repeat: no-repeat !important;
     background-position: 4px center !important;
@@ -71,6 +71,26 @@
 :-ms-input-placeholder {  
    color: #ccc;  
 }
+
+
+
+.button-toggle-form-type{
+ background-color: white;
+    float: left;
+    display: inline-block;
+    width: 39px;
+    background-position: center center;
+    height: 39px;
+    margin-left: 5px;
+    margin-top: 0;
+    background-size: 32px;
+    border-radius: 2px;
+    background-image: url("../images/courses/ic_view_module_black_24px.svg");
+    background-repeat: no-repeat;
+    &.toggle-form-type--active{background-image: url("../images/courses/ic_view_list_black_24px.svg");}
+ }
+
+ 
 
 
 
