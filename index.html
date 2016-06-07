@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt_BR" class="no-js">
+<html lang="pt_BR" class="no-js" ng-app="appQiSat">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
 	<div class="site-app--inner">
 
 	<header class="header-main">
-		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
+		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a></div>
 
 			<nav class="header-main__nav">
 			<ul class="header-main__ul">
@@ -247,7 +247,7 @@
 
 <!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| -->
 
-			<section class="home__section-topcourses">
+			<section class="home__section-topcourses" ng-non-bindable>
 				<div class="row">
 						<div class="large-3 columns">
 								<div class="home_panel_titles--topcourses">
@@ -330,7 +330,7 @@
 
 
 <!-- |||||||||||||||||||| SECTION-INSTRUCTORS  |||||||||||||||||||||||| -->
-			<section class="home__section-instructors">
+			<section class="home__section-instructors" ng-non-bindable>
 				<div class="row">
 
 
@@ -700,6 +700,8 @@
 
 	<!-- EXECUTA MEUS SCRIPTS -->
 			<script src="assets/js/app.js"></script>
+			<script src="assets/js/angular.js"></script>
+			<script src="assets/js/qisat.js"></script>
 			<!-- // somente para cursos --><script src="assets/js/courses.json"></script>
 	<!-- // EXECUTA MEUS SCRIPTS -->
 
