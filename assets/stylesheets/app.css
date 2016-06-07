@@ -439,7 +439,7 @@ th {
 
 /*
 	http://sassme.arc90.com/
-	Fun├º├Áes cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
 */
 /* line 77, ../scss/qisat/_globals.scss */
 body {
@@ -1669,6 +1669,26 @@ article {
   top: 5px;
 }
 
+/* line 20, ../scss/qisat/_filter-courses.scss */
+.button-toggle-form-type {
+  background-color: white;
+  float: left;
+  display: inline-block;
+  width: 39px;
+  background-position: center center;
+  height: 39px;
+  margin-left: 5px;
+  margin-top: 0;
+  background-size: 32px;
+  border-radius: 4px;
+  background-image: url("../images/courses/ic_view_module_black_24px.svg");
+  background-repeat: no-repeat;
+}
+/* line 33, ../scss/qisat/_filter-courses.scss */
+.button-toggle-form-type.toggle-form-type--active {
+  background-image: url("../images/courses/ic_view_list_black_24px.svg");
+}
+
 /*'HEADER*/
 /* line 3, ../scss/qisat/structure/_header.scss */
 .header-main {
@@ -2212,19 +2232,44 @@ article {
 /* ==================== END COURSE PAGES EAD ==================== */
 /* ==================== COURSE PAGES PRESENCIAL ==================== */
 /* ==================== END COURSE PAGES PRESENCIAL ==================== */
-/* line 43, ../scss/qisat/structure/_pages.scss */
+/* line 42, ../scss/qisat/structure/_pages.scss */
 .courses-input-search {
   border-radius: 4px !important;
   padding: 0 !important;
-  text-indent: 20px;
+  text-indent: 30px;
+  background-image: url("../images/courses/ic_search_black_24px.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position: 4px center !important;
 }
 
-/* line 49, ../scss/qisat/structure/_pages.scss */
+/* line 59, ../scss/qisat/structure/_pages.scss */
+::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+/* line 63, ../scss/qisat/structure/_pages.scss */
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #ccc;
+}
+
+/* line 67, ../scss/qisat/structure/_pages.scss */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #ccc;
+}
+
+/* line 71, ../scss/qisat/structure/_pages.scss */
+:-ms-input-placeholder {
+  color: #ccc;
+}
+
+/* line 77, ../scss/qisat/structure/_pages.scss */
 .button-transform-list-card {
   padding: 0.5rem;
 }
 
-/* line 52, ../scss/qisat/structure/_pages.scss */
+/* line 80, ../scss/qisat/structure/_pages.scss */
 .navigation_courses {
   margin-bottom: 20px;
   /* padding: 20px; */
@@ -2233,35 +2278,35 @@ article {
   background: #fff;
 }
 
-/* line 53, ../scss/qisat/structure/_pages.scss */
+/* line 81, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__title {
   color: #D0CBCB;
   font-size: 16px;
   padding: 30px 15px 0px 20px;
 }
 
-/* line 55, ../scss/qisat/structure/_pages.scss */
+/* line 83, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list {
   list-style: none;
   margin: 0;
 }
 
-/* line 56, ../scss/qisat/structure/_pages.scss */
+/* line 84, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item {
   transition: all 0.5s;
 }
-/* line 58, ../scss/qisat/structure/_pages.scss */
+/* line 86, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item:hover .navigation_courses__list-item--link {
   border-right: 5px solid #ccc;
   transition: all 0.5s;
 }
-/* line 59, ../scss/qisat/structure/_pages.scss */
+/* line 87, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item.navigation_courses__list-item-active .navigation_courses__list-item--link {
   border-right: 5px solid #005B94;
   transition: all 0.5s;
 }
 
-/* line 63, ../scss/qisat/structure/_pages.scss */
+/* line 91, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item--link {
   color: #4e4e4e;
   font-size: 14px;
@@ -2272,7 +2317,7 @@ article {
   border-right: 5px solid transparent;
 }
 
-/* line 69, ../scss/qisat/structure/_pages.scss */
+/* line 97, ../scss/qisat/structure/_pages.scss */
 .course-page__sections {
   background-color: #fff;
   padding: 20px;
@@ -2280,7 +2325,7 @@ article {
   margin-bottom: 20px;
 }
 
-/* line 70, ../scss/qisat/structure/_pages.scss */
+/* line 98, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--title {
   font-size: 26px;
   color: #000;
@@ -2288,30 +2333,30 @@ article {
   opacity: .56;
 }
 
-/* line 72, ../scss/qisat/structure/_pages.scss */
+/* line 100, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim {
   padding: 0px;
 }
-/* line 74, ../scss/qisat/structure/_pages.scss */
+/* line 102, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim .course-page__sections--title {
   padding: 20px 20px 10px 20px;
 }
 
-/* line 85, ../scss/qisat/structure/_pages.scss */
+/* line 113, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery {
   border-top: 1px solid #eee;
   padding-top: 10px;
   margin-top: 30px;
 }
 
-/* line 86, ../scss/qisat/structure/_pages.scss */
+/* line 114, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery--subtitle {
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* line 90, ../scss/qisat/structure/_pages.scss */
+/* line 118, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list {
   padding: 1px !important;
   display: inline-block;
@@ -2320,12 +2365,12 @@ article {
   position: relative;
 }
 
-/* line 91, ../scss/qisat/structure/_pages.scss */
+/* line 119, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link {
   position: relative;
 }
 
-/* line 92, ../scss/qisat/structure/_pages.scss */
+/* line 120, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image {
   position: relative;
   opacity: 0.9;
@@ -2333,14 +2378,14 @@ article {
   transition: transform .2s;
 }
 
-/* line 93, ../scss/qisat/structure/_pages.scss */
+/* line 121, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image:hover {
   opacity: 1;
   transform: scale(1.2);
   z-index: 1;
 }
 
-/* line 95, ../scss/qisat/structure/_pages.scss */
+/* line 123, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active .section__course-gallery-list--link-image {
   position: fixed;
   top: 10%;
@@ -2354,14 +2399,14 @@ article {
   transform: scale(1);
 }
 
-/* line 108, ../scss/qisat/structure/_pages.scss */
+/* line 136, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active {
   position: absolute;
   top: 10%;
   z-index: 10;
 }
 
-/* line 109, ../scss/qisat/structure/_pages.scss */
+/* line 137, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active::before {
   content: "";
   background: rgba(0, 0, 0, 0.5);
@@ -2372,18 +2417,18 @@ article {
   left: 0;
 }
 
-/* line 126, ../scss/qisat/structure/_pages.scss */
+/* line 154, ../scss/qisat/structure/_pages.scss */
 .course-page__sections-about-instructor--avatar {
   border-radius: 50%;
 }
 
 /* FORMATO DO CURSO*/
-/* line 138, ../scss/qisat/structure/_pages.scss */
+/* line 166, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso {
   margin: 0;
 }
 
-/* line 139, ../scss/qisat/structure/_pages.scss */
+/* line 167, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item {
   text-align: center;
   line-height: 1;
@@ -2391,13 +2436,13 @@ article {
   padding: 20px !important;
 }
 
-/* line 140, ../scss/qisat/structure/_pages.scss */
+/* line 168, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--top {
   font-size: 13px;
   display: block;
 }
 
-/* line 141, ../scss/qisat/structure/_pages.scss */
+/* line 169, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--middle {
   font-size: 50px;
   font-weight: 800;
@@ -2405,21 +2450,21 @@ article {
   letter-spacing: -2px;
 }
 
-/* line 142, ../scss/qisat/structure/_pages.scss */
+/* line 170, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--bottom {
   font-size: 16px;
   opacity: 0.7;
   display: block;
 }
 
-/* line 143, ../scss/qisat/structure/_pages.scss */
+/* line 171, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--icon img {
   width: 50px;
   margin-top: 5px;
 }
 
 /*CONTEUDO PROGRAMATICO*/
-/* line 149, ../scss/qisat/structure/_pages.scss */
+/* line 177, ../scss/qisat/structure/_pages.scss */
 .label-free {
   background-color: #005B94;
   border: 1px solid #004875;
@@ -2433,31 +2478,31 @@ article {
 }
 
 /* PERGUNTAS FREQUENTES*/
-/* line 165, ../scss/qisat/structure/_pages.scss */
+/* line 193, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a:hover {
   background: none;
 }
 
-/* line 166, ../scss/qisat/structure/_pages.scss */
+/* line 194, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a {
   background: none;
   border-top: 1px solid #eee;
 }
 
-/* line 167, ../scss/qisat/structure/_pages.scss */
+/* line 195, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation.active > a {
   background: none;
   color: #005B94;
   font-weight: 600;
 }
 
-/* line 168, ../scss/qisat/structure/_pages.scss */
+/* line 196, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation.active > a:after {
   content: "-";
   color: #005B94;
 }
 
-/* line 169, ../scss/qisat/structure/_pages.scss */
+/* line 197, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a:after {
   content: "+";
   color: #005B94;
@@ -2467,7 +2512,7 @@ article {
   float: right;
 }
 
-/* line 170, ../scss/qisat/structure/_pages.scss */
+/* line 198, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > .content {
   display: none;
   padding: 0 40px 40px 40px;

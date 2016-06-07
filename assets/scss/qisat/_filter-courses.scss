@@ -15,3 +15,20 @@ background-color: #fff; width: 100%;  padding: 20px;
 .menu-filter-sidebar-item.is-checked {   }
 .menu-filter-sidebar-item.is-checked::before {background-image: url("../images/courses/ic_radio_button_checked_black_24px.svg");}
 .menu-filter-sidebar-item::before { content: ""; background-image: url("../images/courses/ic_radio_button_unchecked_black_24px.svg"); width: 16px; height: 16px; position: absolute; left: -21px; background-size: cover; top: 5px; }
+
+
+.button-toggle-form-type{
+ background-color: white;
+    float: left;
+    display: inline-block;
+    width: 39px;
+    background-position: center center;
+    height: 39px;
+    margin-left: 5px;
+    margin-top: 0;
+    background-size: 32px;
+    border-radius: 4px;
+    background-image: url("../images/courses/ic_view_module_black_24px.svg");
+    background-repeat: no-repeat;
+ 	&.toggle-form-type--active{background-image: url("../images/courses/ic_view_list_black_24px.svg");}
+ }

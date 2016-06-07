@@ -3,8 +3,7 @@
 .page-course__header-group--suptitle{ color: #ADADAD; text-transform: uppercase; font-size: 11px; display: block; font-weight: 600; margin: 0;  }
 .page-course__header-group--title{ color: #4e4e4e; font-weight: 100; font-size: 24px; display: block; margin: 0; line-height: 1}
 
-
-/* ================== END COURSE PAGES ================== */
+ /* ================== END COURSE PAGES ================== */
 
 
 
@@ -43,9 +42,38 @@
 .courses-input-search{
     @extend .z-1;    
     border-radius: 4px !important;
-  padding: 0 !important;
-  text-indent: 20px;
+    padding: 0 !important;
+    text-indent: 30px;
+    
+     background-image: url("../images/courses/ic_search_black_24px.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: 4px center !important;
+
+    &:focus{
+  
+    }
 }
+
+//placeholder
+
+::-webkit-input-placeholder {
+   color: #ccc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ccc;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ccc;  
+}
+
+:-ms-input-placeholder {  
+   color: #ccc;  
+}
+
+
+
 .button-transform-list-card{padding: 0.5rem}
 
 

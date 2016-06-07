@@ -2,9 +2,9 @@
 // Documentation can be found at: http://foundation.zurb.com/docs
 $(document).foundation();
 
- $("#menu").metisMenu({
-   collapseInClass: 'in'
- });
+ // $("#menu").metisMenu({
+ //   collapseInClass: 'in';
+ // });
 
 
 /* Temporário
@@ -189,10 +189,10 @@ jQuery(document).ready(function($){
 
   ///cards para transformar em card ou linha
      $(function() {
-       $('.transform-courses-card-list').on('click', function(event){
+       $('.toggle-form-type').on('click', function(event){
              event.preventDefault();
-
-
+             $(this).toggleClass('toggle-form-type--active');
+ 
             if($('.card-course').hasClass('card-format-block')) {
               $(".card-course").removeClass("card-format-block").addClass("card-format-line");
               $(".card-course").addClass("card-format-line");
