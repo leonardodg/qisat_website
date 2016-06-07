@@ -1,6 +1,103 @@
+//globals
+	$global-radius: 3px;
+	$global-rounded: 1000px;
+
+// colors
+/*
+	http://sassme.arc90.com/
+	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+*/
+	// $text-color: #333; // main text
+	// $background-color: #dfdfdf; // body background color
+	// $primary-color: #005B94; // Links botões
+	// $primary-color-hover: darken($primary-color, 3); // Links botões hover
+	// $secondary-color: #62c169; // anchor tags
+	// $secondary-color-hover: darken($secondary-color, 8); // Links botões secundários hover
+	// $accent-color: blue; // Cor de destaque
  
+// fonts 
+   $font-family-sans-serif: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
 
  
+//colors
+	$white       : #FFFFFF;
+	$ghost       : #FAFAFA;
+	$snow        : #F9F9F9;
+	$vapor       : #F6F6F6;
+	$white-smoke : #F5F5F5;
+	$silver      : #EFEFEF;
+	$smoke       : #EEEEEE;
+	$gainsboro   : #DDDDDD;
+	$iron        : #CCCCCC;
+	$base        : #AAAAAA;
+	$aluminum    : #999999;
+	$jumbo       : #888888;
+	$monsoon     : #777777;
+	$steel       : #666666;
+	$charcoal    : #555555;
+	$tuatara     : #444444;
+	$oil         : #333333;
+	$jet         : #222222;
+	$black       : #000000;
+
+    
+    $body-bg: #dfdfdf;
+	
+    $primary-color: #005B94;
+    $primary-color-dark: darken($primary-color, 3);
+	$secondary-color: #28B67C;
+
+	$alert-color: #f04124;
+	$success-color: #43AC6A;
+	$warning-color: #f08a24;
+	$info-color: #a0d3e8;
+	 
+
+	//category colors
+    $category-estrutural-color: orange !important;
+    $category-eletrica-color: blue !important;
+    $category-hidrossanitaria-color: yellow !important;
+    $category-agronomica-color: green !important;
+
+	$category-pos-graduation-color: coral !important;
+	$category-software-courses-color: orange !important;
+	$category-theoretical-courses-color: blue !important;
+	$category-solutions-business-color: yellow !important;
+
+	//software colors
+    $software-eberick-color: maroon !important;
+    $software-qibuilder-color: green !important;
+    $software-qieletrico-color: yellow !important;
+    $software-qihidrossanitario-color: blueviolet !important;
+    $software-qiincendio-color: darkorange !important;
+ 
+
+  
+
+ body{
+ 	background-color: $body-bg;
+ 	color: $oil;
+ 	font-family: $font-family-sans-serif;
+ }
+
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: #222;
+    font-family: $font-family-sans-serif;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+}
+
+
+
+//define o tamanho da grid
+.row { max-width: 90rem; }
+ .footer-main,
+ .content-main,
+ .footer-main {  width: 100%; display: block; float: left;}
 
 article{ padding: 30px 0; display: inline-block; width: 100%;}
 
@@ -14,11 +111,102 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 .z-4 { box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3), 0 14px 12px 0 rgba(0, 0, 0, 0.17) !important; }
 .z-5 { box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15) !important; }
 
+.material-icons{vertical-align: middle;}    
+
+
+.section__title {  font-weight: 300;  text-transform: uppercase; font-size:2rem}
+.section__title--dark { @extend .section__title; color:  #1D2668 }
+.section__title--light { @extend .section__title; color: #fff}
+
+
  
 
-/* 'SECTIONS HOME
-========================================= */
-.section__title{ font-size: 36px; }
-.section__subtitle{font-size: 18px}
+//buttons line
+.button-line{  height: 37px; overflow: hidden; transition: all 0.5s; border: 1px solid; padding: 4px 20px; display: inline-block; border-radius: 4px;
+	 &:hover, &:focus{ @extend .z-1; border-color: transparent; }
+}
+.button-line--dark  { 
+	@extend .button-line; color: #1D2668;
+	&:hover, &:focus{ background-color: #1D2668; color:#fff;}
+}
+.button-line--light { 
+	@extend .button-line; color: #fff;
+	&:hover, &:focus{background-color: #fff; color:#1D2668;}
+}
+
+//.button-line--light_big{@extend .button-line--light; font-size: 18px; height: 44px; padding: 7px 20px; }
+
+    
+
+
+//end buttons line
 
  
+
+
+
+.home_panel_titles{ display: inline-block; width: 100%; }
+.home_panel_titles--topcourses{  @extend .home_panel_titles; padding: 70px 0;}
+.home_panel_titles--instructors{ @extend .home_panel_titles; padding: 150px 0;}
+.home_panel_titles--testimonials{@extend .home_panel_titles; padding: 120px 0;}
+
+
+
+
+
+
+
+.has-price_popover{ position: relative;
+	&:hover .price_popover{ display: inline-block}
+	.price_popover{ line-height: auto; display:none}
+}
+
+.card-format-list{}
+.card-format-block{
+	.price_popover{ 
+		right: -40px;
+		&::after {right: 60px;}
+	}
+}
+.price_popover{ 
+	    text-align: center;
+	    position: absolute;
+	    bottom: 38px;
+	    width: 150px;
+	    right: -20px;
+		&::after {
+		    content: "";
+		    border-left: 10px solid transparent;
+		    border-right: 10px solid transparent;
+		    border-top: 10px solid #4E4E4E;
+		    position: absolute;
+		    bottom: -10px;
+		    right: 22px;
+		}
+				.price_popover__header{     
+					background-color: #565555;
+				    padding: 10px;
+				    display: inline-block;
+				    border-radius: 4px 4px 0 0;
+					.price_popover__header__info{   
+						    margin: 0;
+						    padding: 0;
+						    font-size: 10px;
+						    color: #989898;
+					    strong{ color: #fff}
+					}
+				}
+				.price_popover__footer{ 
+				    background-color: #4E4E4E;
+				    color: #fff;
+				    border-radius: 0 0 4px 4px;
+				    font-size: 12px;
+				    padding: 5px;
+				}
+
+
+}
+
+
+
+

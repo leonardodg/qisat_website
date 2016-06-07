@@ -1,57 +1,40 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="pt_BR" class="no-js">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
-	<script src="assets/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
-
-	<title> Cursos: QiSat | O Canal do e-Learning da Engenharia </title>
-
+	<title> QiSat | O Canal do e-Learning da Engenharia </title>
+ 	<link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+ 	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
+	<script src="bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
+ 
 
 <div class="site-app">
 	<div class="site-app--inner">
 
-<header class="header-main ">
-	<div class="header-main__brand">
-		<a  class="header-main__logo"> QiSAT</a>
-	</div>
-
-
-	<ul class="header-main__buttons">
-		<li class="header-main__buttons_item header-main__buttons_item-menu">	<a class="menu-trigger" href="#"><span class="menu-text"> Menu</span><span class="menu-icon"></span></a></li>
-		<li class="header-main__buttons_item header-main__buttons_item-cart">
-			<div class="header-main__buttons_item-cart--container header-main__buttons_item-cart--container-active">
-				<span class="header-main__buttons_item-cart--count-number">2</span>
-			</div> <!-- //header-main__buttons_item-cart-container -->
-		</li>
-	</ul>
-
-	<nav class="header-main__nav">
-		<ul class="header-main__ul">
-			<li class="header-main__list">								<a class="header-main__item" href="index.html">Home</a></li>
-			<li class="header-main__list header-main__list-current header-main__list__has--submenu">
-				<a class="header-main__item header-main__list-item-current" href="courses.html">Cursos</a>
-				<ul class="header-main__list__submenu">
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
-				</ul>
-			</li>
-    		<li class="header-main__list ">						 		<a class="header-main__item" href="course-page.html">Pages</a></li>
-			<li class="hide header-main__list">							<a class="header-main__item" href="pos-graduacao.html">Pós-Graduação</a></li>
-			<li class="header-main__list">								<a class="header-main__item" href="faq.html">FAQ</a></li>
-			<li class="header-main__list">								<a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
-		</ul>
-	</nav>
-
-</header>
+	<header class="header-main">
+		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
+	 
+			<nav class="header-main__nav">
+			<ul class="header-main__ul">
+				<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="index.html">Home</a></li>
+				<li class="show-for-large-up header-main__list header-main__list-current  header-main__list__has--submenu">
+					<a class="header-main__item header-main__list-item-current" href="courses.html">Cursos</a>
+					<ul class="header-main__list__submenu">
+						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
+						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
+					</ul>
+				</li>
+	 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
+				<li class="hide-for-large-up header-main__list"> <a class="menu-trigger header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
+	    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="carrinho.html"><i class="material-icons">shopping_cart</i></a></li>
+			</ul>
+		</nav>
+	</header>
 
 <main class="content-main">
 
@@ -65,20 +48,17 @@
 
 				<div class="large-9 columns">
 							<div class="page-course__box-search">
-								<h2 class="hero-page-course__title">Busque o curso perfeito para você</h2>
+								<h2 class="hero-page-course__title">Encontre o curso perfeito para você</h2>
 
 								<form action="">
 									<div class="row collapse">
 											<div class="small-10 columns">
 												<input class="courses-input-search" type="search" placeholder="Procure um curso" >
 											</div>
-												<div class="small-2 columns">
-													<ul class="button-group">
-  <li><a href="#" class=" button-transform-list-card transform-courses-card-list">lista</a></li>
-  </ul>
-
- 												</div>
-													</div><!-- // row -->
+											<div class="small-2 columns">
+ 											       <a href="#" class="button-toggle-form-type toggle-form-type"> </a>
+ 											</div>
+									</div><!-- // row -->
 								</form>
 
 
@@ -176,7 +156,68 @@
 
 
 		 <ul id="container-isotope" class="filtered-list list-filter small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
- 				<!-- Aqui loopind cards via js -->
+ 				
+ 				<!-- MODELO PARA LOOPING -->
+ 				<li class="isotope_content-item ensino-a-distancia engenharia-estrutural">
+ 					<div class="card-course card-format-block">
+				   		<div class="card-course-inner">
+				   				<a href="course-ead.html">
+				   					<span class="card-course--litle-play"></span> 
+				   					<div class="card-course-header">
+				   						<img src="assets/images/courses/card-thumb-1.jpg">
+				   					</div>  
+				   				</a>
+				   				<div class="card-course--content">
+				   					<a href="course-ead.html">  
+				   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  
+				   						<span class="card-course__modality">{{curso-modalidade}}</span>  
+				   						<span class="card-course__name">{{curso-nome-do-curso}}</span> 
+				   					</a>
+				   					<a href="#" class="card-course__button  has-price_popover">R$ 56,00 
+				   						<span class="card-course__icon-cart">
+				   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+				   							<div class="price_popover">
+				   								<div class="price_popover__header">
+				   									<p class="price_popover__header__info"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p> 
+				   								</div> <!-- //price_popover__header -->
+				   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
+				   							</div> <!-- //price_popover -->
+				   						</span>
+				   					</a> 
+				   				</div>  <!-- //card-course-content -->
+				   		</div> <!-- //card-course-inner -->
+					</div> <!-- //card-course -->
+ 				</li>
+ 				<!-- FIM MODELO PARA LOOPING -->
+
+ 				 
+
+
+ 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural curso-teorico"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-1.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-hidrossanitaria palestra"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-2.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-eletrica"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-3.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-4.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Software Eberick V8</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item palestra engenharia-estrutural curso-de-software"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-5.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">Durabilidade das Estruturas de Concreto</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-hidrossanitaria curso-de-software software-cabeamento-estruturado"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-6.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">{{Nome do curso que pode ter até duas linhas}}</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-eletrica curso-de-software software-cad"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-7.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">Instalações Elétricas Prediais, Telefonia e Infraestrutura para TV</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-estrutural curso-teorico software-gerenciador-de-arquivos"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-8.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">Instalações Elétricas Prediais, Telefonia e Infraestrutura para TV</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-presencial engenharia-eletrica curso-de-software software-qihidrossanitario"><a href="course-presential.html"></a><div class="card-course card-format-block"><a href="course-presential.html"></a><div class="card-course-inner"><a href="course-presential.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-9.jpg"></div>  </a><div class="card-course--content"><a href="course-presential.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino Presencial</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 500,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-estrutural curso-de-software software-qiincendio"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-10.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino a distância</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 1.350,00</a> </div> </div></div></li>
+
+		<li class="isotope_content-item ensino-a-distancia engenharia-geotecnica curso-de-software software-cabeamento-estruturado"><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header"><img src="assets/images/courses/card-thumb-1.jpg"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino a distância</span>  <span class="card-course__name">{{Nome do curso}}</span> </a><a href="#" class="card-course__button">R$ 650,00</a> </div> </div></div></li>
+
+ 				
 		</ul>
  </div> <!-- // large-9 columns -->
 
@@ -185,8 +226,6 @@
 
 </article>
 </main> <!--// main-content -->
-
-
 
 
 
@@ -200,54 +239,54 @@
 
 		<li class="footer-primary__columns--item">
 		 		<ul class="footer-primary__list">
-					<li class="footer-primary__title">Cursos</li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Titulo do Software"> Titulo do Software</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos Teóricos">		  Cursos Teóricos</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos Presenciais"> Cursos Presenciais</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos EAD">				  Cursos EAD</a></li>
+					<li class="footer-primary__title">Sobre o QiSAT</li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional"> Institucional</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos"> Eventos</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">	Parcerias</a></li>
 				</ul>
 		</li>
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title">Soluções</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções para empresas">Soluções para empresas</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções Governamentais">Soluções Governamentais</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções Acadêmicas">Soluções Acadêmicas</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">Parcerias</a></li>
+				 <li class="footer-primary__title">Cursos</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Software">Software</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Teórico">Teórico</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
+				 <li class="footer-primary__title">Modalidades</li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Presencial">Presencial</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="EAD">EAD</a></li>
 		 	</ul>
 		</li> <!-- // -->
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				<li class="footer-primary__title"> Suporte</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Suporte">Suporte</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="FAQ">FAQ</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Contato">Contato</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Requisitos do sistema">Requisitos do sistema</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Feedback do site">Feedback do site</a></li>
-		 	</ul>
-		</li> <!-- // -->
-
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Páginas</li>
+				<li class="footer-primary__title"> Página</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
 		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos">Cursos</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-Graduação">Pós-Graduação</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos">Eventos</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
 		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Área do aluno">Área do aluno</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional">Institucional</a></li>
-		 	</ul>
+ 		 	</ul>
 		</li> <!-- // -->
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Social</li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Youtube">Youtube</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Facebook">Facebook</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="twitter">Twitter</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Linkedin">Linkedin</a></li>
+				 <li class="footer-primary__title"> Soluções</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Empresas">Para Empresas</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Órgãos Governamentais">Para Órgãos Governamentais</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Turma de Formandos">Para Turma de Formandos</a></li>
+  		 	</ul>
+		</li> <!-- // -->
+
+		<li class="footer-primary__columns--item">
+		 	<ul class="footer-primary__list">
+				 <li class="footer-primary__title"> Contato</li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Ligamos para você">Ligamos para você</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Mensagem">Mensagem</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Lista de espera">Lista de espera</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma Funcionalidade">Sugira uma Funcionalidade</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira um Curso">Sugira um Curso</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma nova turma">Sugira uma nova turma</a></li>
 			</ul>
 		</li> <!-- // -->
 
@@ -271,15 +310,14 @@
 											<ul class="footer-secondary__list">
 												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
 												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
-												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">sugira um curso</a></li>
-											</ul>
+ 											</ul>
 						</li>
 
 						<li>
 											<ul class="footer-secondary__list footer-secondary__list--email ">
-												<li class="footer-secondary__list__item">QiSat e-Learing para Engenharia</li>
+												<!-- <li class="footer-secondary__list__item"></li> -->
 												<!-- <li class="separator"></li> -->
-												<li class="footer-secondary__list__item"><a href="mailto:contato@qisat.com.br"  class="footer-secondary__list__item--link">contato@qisat.com.br</a></li>
+												<li class="footer-secondary__list__item"><a href="mailto:contato@qisat.com.br"  class="footer-secondary__list__item--link">QiSat e-Learing para Engenharia: <strong>contato@qisat.com.br</strong></a></li>
 											</ul>
 						</li>
 						<li>
@@ -298,7 +336,6 @@
 </footer> <!-- footer-container -->
 
 
-
 		</div> <!-- //site-app-inner -->
 </div> <!-- //site-app -->
 
@@ -308,7 +345,7 @@
 	<nav class="offcanvas"><!-- your secondary navigation here -->
 		<ul class="mobile-main__ul">
 			<li class="mobile-main__list mobile-main__list-current">						<a class="mobile-main__list--item mobile-main__list--item-current" href="home.html">Home</a></li>
-			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="cursos.html">Cursos</a></li>
+			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="courses.html">Cursos</a></li>
 			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="pos-graduacao.html">Pós-Graduação</a></li>
 			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="faq.html">FAQ</a></li>
 			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="area-do-aluno.html">Área do Aluno</a></li>
@@ -319,89 +356,39 @@
 
 
 
-<!-- /////////////// AREA DO MODAL /////////////// -->
-			<div id="modal__trailer" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam porro aut amet eos excepturi id ratione ullam sunt consectetur ab doloribus corrupti, quibusdam sit distinctio, dolorem aspernatur? Debitis, nulla, delectus!</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam porro aut amet eos excepturi id ratione ullam sunt consectetur ab doloribus corrupti, quibusdam sit distinctio, dolorem aspernatur? Debitis, nulla, delectus!</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam porro aut amet eos excepturi id ratione ullam sunt consectetur ab doloribus corrupti, quibusdam sit distinctio, dolorem aspernatur? Debitis, nulla, delectus!</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam porro aut amet eos excepturi id ratione ullam sunt consectetur ab doloribus corrupti, quibusdam sit distinctio, dolorem aspernatur? Debitis, nulla, delectus!</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam porro aut amet eos excepturi id ratione ullam sunt consectetur ab doloribus corrupti, quibusdam sit distinctio, dolorem aspernatur? Debitis, nulla, delectus!</p>
-		    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-			</div> <!-- // id="modal__trailer"  -->
-<!-- /////////////// END AREA DO MODAL /////////////// -->
+
+
 
 
 
 
 	<!-- GLOBAL -->
-			<script src="assets/bower_components/jquery.min/index.js"></script> <!-- Resource jQuery -->
-			<script src="assets/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+			<script src="bower_components/jquery/dist/jquery.min.js"></script> <!-- Resource jQuery -->
+			<script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 			<!-- // GLOBAL -->
- 
-
-
-	<!-- SOMENTE PÁGINA DE CURSOS -->
-			<script src='assets/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
-			<script src='assets/js/filter-isotope.js'></script>
-			<script src="assets/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
-			<!-- // SOMENTE PÁGINA DE CURSOS -->
-
 
 	<!-- PÁGINA HOME -->
-			<link rel="stylesheet" href="assets/bower_components/owl.carousel/src/css/owl.carousel.css">
-			<link rel="stylesheet" href="assets/bower_components/owl.carousel/src/css/owl.theme.default.css">
-		  <script src='assets/bower_components/owl.carousel/src/js/owl.carousel.js'></script>
+			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css">
+			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.min.css">
+		  <script src='bower_components/owl.carousel/src/js/owl.carousel.js'></script>
 			<!-- // PÁGINA HOME -->
 
 
+	<!-- SOMENTE PÁGINA DE CURSOS -->
+			<script src='bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+			<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+
+			<script src='assets/js/filter-isotope.js'></script>
+			<!-- // SOMENTE PÁGINA DE CURSOS -->
+ 
 	<!-- EXECUTA MEUS SCRIPTS -->
 			<script src="assets/js/app.js"></script>
-			<script src="assets/js/courses.json"></script>
+			<!-- // somente para cursos --><!-- <script src="assets/js/courses.json"></script> -->
 	<!-- // EXECUTA MEUS SCRIPTS -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-<script>
-(function($) {
-	$.each(coursejson, function(idx, obj) {
-		console.log(obj.id, "|", obj.courseName, "|", obj.courseModality, "|", obj.courseThumbnail);
-
-		var html = "<li class='isotope_content-item "+  obj.courseModalityClass + " " + obj.courseAtuationAreaClass + " " + obj.courseTypeClass + " " + obj.courseSoftwareClass + "'>";
-						html += "<a href=" +  obj.courseUrl + ">";
-								html += "<div class='card-course card-format-block'>";
-										html += "<div class='card-course-inner'>";
-												html += "<span class='card-course--litle-play'></span>";
-													html += " <div class='card-course-header'><img src="+ obj.courseThumbnail + " /></div>  ";
-														html += "<div class='card-course--content'> ";
-																			html += " <span data-reveal-id='modal__trailer' data-tooltip aria-haspopup='true' title='Assista o trailer'  data-options='disable_for_touch:true' class='has-tip tip-top card-course__play'></span> ";
-																			html += " <span class='card-course__modality'>" +  obj.courseModality + "</span> ";
-																			html += " <span class='card-course__name'>" +  obj.courseName + "</span>";
-																			html += " <a href='#' class='card-course__button'>R$ "+ obj.coursePrice +"</a>";
-												html += " </div>";
-										html += " </div>";
-								html += "</div>";
-						html += "</a>";
-				html += "</li>";
-
-					$("#container-isotope").append(html);
-
-		});
-})(jQuery);
-</script>
-
-
-
-
+ 
 
 </body>
 </html>

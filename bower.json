@@ -1,0 +1,15 @@
+{
+  "name": "foundation-compass-app",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "datatables.net": "^1.10.10",
+    "datatables.net-zf": "^1.10.10",
+    "owl.carousel": "OwlCarousel2#^2.0.0-beta.3",
+    "jquery.min": "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js",
+    "masonry": "^4.1.0",
+    "sass-bootstrap": "^3.0.2",
+    "isotope": "^3.0.0",
+    "foundation": "^5.5.3"
+  }
+}

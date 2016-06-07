@@ -2,6 +2,9 @@
 // Documentation can be found at: http://foundation.zurb.com/docs
 $(document).foundation();
 
+ // $("#menu").metisMenu({
+ //   collapseInClass: 'in';
+ // });
 
 
 /* Temporário
@@ -66,7 +69,22 @@ $(".accordion").on("click", "dd", function (event) {
 
 
 
-
+//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
+ $(function() {
+  $('.navigation_courses__list-item--link').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: (target.offset().top)-80
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+  //end Smooth Scrolling
 
 
 
@@ -86,27 +104,7 @@ $(".accordion").on("click", "dd", function (event) {
     }());
 
 
-
-
-//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
-/*
-$(function() {
-  $('a[href*=#]:not([href=#])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-*/
-//end Smooth Scrolling
-
+ 
 
 
 
@@ -160,36 +158,36 @@ jQuery(document).ready(function($){
 
 
 
- $(function() {
-      $('.owl-carousel-instructors-home').owlCarousel({
-          loop:true,
-          margin:10,
-          nav:false,
-          center: true,
-          responsive:{
-              0:{
-                  items:1
-              },
-              600:{
-                  items:3
-              },
-              1100:{
-                  items:5
-              }
-          }
-      });
+ // $(function() {
+ //      $('.owl-carousel-instructors-home').owlCarousel({
+ //          loop:true,
+ //          margin:10,
+ //          nav:false,
+ //          center: true,
+ //          responsive:{
+ //              0:{
+ //                  items:1
+ //              },
+ //              600:{
+ //                  items:3
+ //              },
+ //              1100:{
+ //                  items:5
+ //              }
+ //          }
+ //      });
 
-  }());
+ //  }());
 
 
 
 
   ///cards para transformar em card ou linha
      $(function() {
-       $('.transform-courses-card-list').on('click', function(event){
+       $('.toggle-form-type').on('click', function(event){
              event.preventDefault();
-
-
+             $(this).toggleClass('toggle-form-type--active');
+ 
             if($('.card-course').hasClass('card-format-block')) {
               $(".card-course").removeClass("card-format-block").addClass("card-format-line");
               $(".card-course").addClass("card-format-line");

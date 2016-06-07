@@ -2,7 +2,7 @@
 //.menu-filter-sidebar = .menu-filter-sidebar
 .menu-filter-sidebar{
 @extend .z-1;
-@include border-radius($global-radius);
+border-radius: $global-radius;
 background-color: #fff; width: 100%;  padding: 20px;
 }
 .menu-filter-sidebar.menu-filter-sidebar-up{margin-top: -120px;}
@@ -15,3 +15,4 @@ background-color: #fff; width: 100%;  padding: 20px;
 .menu-filter-sidebar-item.is-checked {   }
 .menu-filter-sidebar-item.is-checked::before {background-image: url("../images/courses/ic_radio_button_checked_black_24px.svg");}
 .menu-filter-sidebar-item::before { content: ""; background-image: url("../images/courses/ic_radio_button_unchecked_black_24px.svg"); width: 16px; height: 16px; position: absolute; left: -21px; background-size: cover; top: 5px; }
+

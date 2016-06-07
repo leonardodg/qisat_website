@@ -3,12 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<title> QiSat | O Canal do e-Learning da Engenharia </title>
+ 	<link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
  	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
-	<script src="assets/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
-
-	<title> QiSat | O Canal do e-Learning da Engenharia teste </title>
-
+	<script src="bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 </head>
@@ -17,39 +15,25 @@
 <div class="site-app">
 	<div class="site-app--inner">
 
-<header class="header-main ">
-	<div class="header-main__brand">
-		<a  class="header-main__logo"> QiSAT</a>
-	</div>
+	<header class="header-main">
+		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
 
-
-	<ul class="header-main__buttons">
-		<li class="header-main__buttons_item header-main__buttons_item-menu">	<a class="menu-trigger" href="#"><span class="menu-text"> Menu</span><span class="menu-icon"></span></a></li>
-		<li class="header-main__buttons_item header-main__buttons_item-cart">
-			<div class="header-main__buttons_item-cart--container header-main__buttons_item-cart--container-active">
-				<span class="header-main__buttons_item-cart--count-number">2</span>
-			</div> <!-- //header-main__buttons_item-cart-container -->
-		</li>
-	</ul>
-
-	<nav class="header-main__nav">
-		<ul class="header-main__ul">
-			<li class="header-main__list  header-main__list-current ">								<a class="header-main__item header-main__list-item-current" href="index.html">Home</a></li>
-			<li class="header-main__list header-main__list__has--submenu">
-				<a class="header-main__item " href="courses.html">Cursos</a>
-				<ul class="header-main__list__submenu">
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
-				</ul>
-			</li>
-    		<li class="header-main__list ">						 		<a class="header-main__item" href="course-page.html">Pages</a></li>
-			<li class="hide header-main__list">							<a class="header-main__item" href="pos-graduacao.html">Pós-Graduação</a></li>
-			<li class="header-main__list">								<a class="header-main__item" href="faq.html">FAQ</a></li>
-			<li class="header-main__list">								<a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
-		</ul>
-	</nav>
-
-</header>
+			<nav class="header-main__nav">
+			<ul class="header-main__ul">
+				<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="index.html">Home</a></li>
+				<li class="show-for-large-up header-main__list header-main__list-current  header-main__list__has--submenu">
+					<a class="header-main__item header-main__list-item-current" href="courses.html">Cursos</a>
+					<ul class="header-main__list__submenu">
+						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
+						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
+					</ul>
+				</li>
+	 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
+				<li class="hide-for-large-up header-main__list"> <a class="menu-trigger header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
+	    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="carrinho.html"><i class="material-icons">shopping_cart</i></a></li>
+			</ul>
+		</nav>
+	</header>
 
 <main class="content-main">
 
@@ -72,10 +56,11 @@
 
 			<div class="hero-home">
 				<div class="row">
-				<span class="hero-home__intro">Introdução</span>
-				<h1 class="hero-home__title">Chamada de impacto</h1>
-				<p class="hero-home__subtitle"> Alguma chamada de impacto, inclusive pode <br> ser usado duas linhas</p>
-				<a  class="button secondary" href="courses.html">Conheça nossos cursos</a>
+				<span class="hero-home__intro">invista em você</span>
+				<h1 class="hero-home__title">Construa uma carreira de sucesso</h1>
+				<h3 class="hero-home__subtitle"> Aprimore suas habilidades e amplie seu conhecimento <br> sobre engenharia </h3>
+ 				 <a href="courses.html" class="button-line--light"> Conheça nossos cursos <i class="material-icons">keyboard_arrow_right</i></a>
+
 				</div> <!-- ///row -->
 			</div><!-- //hero-home -->
 
@@ -87,106 +72,165 @@
 			<div class="shortcut-courses">
 
 			  <div class="row">
-			    <h1 class="shortcut-courses__title">Chamada de Impacto</h1>
-			    <p class="shortcut-courses__subtitle"> Alguma chamada de impacto, inclusive pode  ser usado duas linhas</p>
+			    <h1 class="shortcut-courses__title">Escolha a melhor opção para elevar a sua carreira</h1>
+			    <p class="shortcut-courses__subtitle"> Mais de 50 opções de cursos online e presenciais com certificado</p>
 			  </div> <!-- ///row -->
 
 
-			    <div class="row collapse">
-
-			                                <div class="large-6 medium-3 small-12 columns">
-			                                                    <div class="shortcut-courses__cards">
-			                                                      <div class="shortcut-courses__cards--item">
-			                                                        <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link"> <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-			                                                        <img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-horizontal.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],    [assets/images/block/large-horizontal.jpg, (large)]">
-			                                                      </div> <!-- // shortcut-courses__cards--item -->
-			                                                    </div> <!-- // shortcut-courses__cards -->
-			                                </div> <!--// medium-8 columns -->
-
-
-			                                <div class="large-3  medium-6 small-12 columns">
-			                                  <div class="row collapse">
-			                                             <div class="large-12 medium-6 small-6 columns">
-			                                                    <div class="shortcut-courses__cards">
-			                                                      <div class="shortcut-courses__cards--item">
-			                                                        <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link"> <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-			                                                        <img class="shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],  [assets/images/block/large-horizontal.jpg, (large)]">
-			                                                      </div> <!-- // shortcut-courses__cards--item -->
-			                                                    </div> <!-- // shortcut-courses__cards -->
-			                                             </div> <!--// medium-8 columns -->
-
-
-			                                           <div class="large-12  medium-6  small-6  columns">
-			                                                    <div class="shortcut-courses__cards">
-			                                                      <div class="shortcut-courses__cards--item">
-			                                                        <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-			                                                        <img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],  [assets/images/block/large-horizontal.jpg, (large)]">
-			                                                      </div> <!-- // shortcut-courses__cards--item -->
-			                                                    </div> <!-- // shortcut-courses__cards -->
-			                                           </div> <!--// medium-8 columns -->
-			                                    </div><!-- //row collapse-->
-			                                </div><!--// large-3 columns -->
 
 
 
-			                                <div class="large-3   medium-3 small-12 columns">
-			                                                    <div class="shortcut-courses__cards">
-			                                                      <div class="shortcut-courses__cards--item">
-			                                                        <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-			                                                        <img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-horizontal.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],  [assets/images/block/large-vertical.jpg, (large)]">
-			                                                      </div> <!-- // shortcut-courses__cards--item -->
-			                                                    </div> <!-- // shortcut-courses__cards -->
-			                                </div> <!--// medium-3 columns -->
+
+
+			    <div class="row">
+			    <div class="small-12 columns">
+
+
+<ul data-equalizer class="shortcut-courses__list-first small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+ <li>
+  	 <a href="#">
+  		<div data-equalizer-watch class="shortcut-courses__cursos-teorico">
+ 			<h4> <span>Cursos de</span> Extensão</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+ 	</a>
+  </li>
+
+  <li>
+  	 <a href="#">
+ 		<div data-equalizer-watch class="shortcut-courses__pos-graduacao">
+	 			<i class="material-icons">&#xE80C;</i>
+				<h4>Certificações</h4>
+	 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+ 	</a>
+  </li>
+  <li>
+
+  	 <a href="#">
+  		<div  data-equalizer-watch  class="shortcut-courses__cursos-software">
+ 			<h4> <span>Cursos de</span> Software</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+ 	</a>
+  </li>
+
+  <li>
+  	 <a href="#">
+  		<div  data-equalizer-watch  class="shortcut-courses__solutions-business">
+ 			<h4> <span>Você é formado? </span> Temos um presente para você!</h4>
+ 			<span class="action">Saiba mais. <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+ 	</a>
+  </li>
+</ul>
+
+
+
+
+
+
+
+<ul class="shortcut-courses__list-second small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-estrutural">
+ 			<em>Área</em>
+ 			<h4>Estrutural</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+ 	</a>
+  </li>
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-eletrica">
+ 			<em>Área</em>
+ 			<h4> Elétrica</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+	</a>
+</li>
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-hidrossanitaria">
+ 			<em>Área</em>
+ 			<h4> Hidrossanitária</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+	</a>
+</li>
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-agronomica">
+ 			<em>Área</em>
+ 			<h4> Agronômica</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // shortcut-courses__cards -->
+  </li>
+</ul>
+
+
+
+<ul class="shortcut-courses__list-third small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-eberick">
+ 			<em>Curso software</em>
+ 			<h4> Eberick</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // -->
+	</a>
+</li>
+
+
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-qibuilder">
+ 			<em>Curso software</em>
+ 			<h4> QiBuilder</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // -->
+	</a>
+</li>
+
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-qieletrico">
+ 			<em>Curso software</em>
+ 			<h4> QiElétrico</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // -->
+	</a>
+</li>
+
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-qihidrossanitario">
+ 			<em>Curso software</em>
+ 			<h4> QiHidrossanitário</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // -->
+	</a>
+</li>
+
+
+<li>
+  	 <a href="#">
+  	  		<div class="shortcut-courses__categoria-qiincendio">
+ 			<em>Curso software</em>
+ 			<h4> QiIncêndio</h4>
+ 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+        </div> <!-- // -->
+	</a>
+</li>
+</ul>
+
+
+
+
+  			          </div><!-- //large-12 columns -->
+
 			          </div><!-- //row collapse-->
-
-			         <div class="row collapse">
-
-
-			                    <div class="large-3  medium-6 small-12 columns">
-			                         <div class="row collapse">
-			                              <div class="large-12  medium-6 small-6 columns">
-			                                        <div class="shortcut-courses__cards">
-			                                          <div class="shortcut-courses__cards--item">
-			                                            <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-																									<img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-vertical.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],    [assets/images/block/large-horizontal.jpg, (large)]">
-			                                          </div> <!-- // shortcut-courses__cards--item -->
-			                                        </div> <!-- // shortcut-courses__cards -->
-			                               </div> <!--// medium-3 columns -->
-
-			                               <div class="large-12  medium-6 small-6 columns">
-			                                        <div class="shortcut-courses__cards">
-			                                          <div class="shortcut-courses__cards--item">
-			                                            <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-																									<img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-vertical.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],    [assets/images/block/large-horizontal.jpg, (large)]">
-			                                          </div> <!-- // shortcut-courses__cards--item -->
-			                                        </div> <!-- // shortcut-courses__cards -->
-			                               </div> <!--// medium-3 columns -->
-			                               </div><!-- //row collapse-->
-			                    </div><!--// large-3 columns -->
-
-
-
-
-			                              <div class="large-3  medium-3 small-6 columns">
-			                                        <div class="shortcut-courses__cards">
-			                                          <div class="shortcut-courses__cards--item">
-			                                            <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong>  </a></h3>
-																									<img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-vertical.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],    [assets/images/block/large-vertical.jpg, (large)]">
-			                                          </div> <!-- // shortcut-courses__cards--item -->
-			                                        </div> <!-- // shortcut-courses__cards -->
-			                               </div> <!--// medium-3 columns -->
-
-			                              <div class="large-6  medium-3 small-6 columns">
-			                                        <div class="shortcut-courses__cards">
-			                                          <div class="shortcut-courses__cards--item">
-			                                              <h3 class="shortcut-courses__cards--item-title"><a href="#" class="shortcut-courses__cards--item-title-link">  <span>Titulo do</span> <strong>Bloco</strong> </a></h3>
-			                                                    <img class=" shortcut-courses__cards--item-image"  alt="" data-interchange="[assets/images/block/large-vertical.jpg, (default)],[assets/images/block/large-vertical.jpg, (small)], [assets/images/block/large-vertical.jpg, (medium)],    [assets/images/block/large-horizontal.jpg, (large)]">
-			                                          </div> <!-- // shortcut-courses__cards--item -->
-			                                        </div> <!-- // shortcut-courses__cards -->
-			                               </div> <!--// medium-3 columns -->
-
-			          </div><!-- //row -->
-
 
 
 			</div><!-- //shortcut-courses__cards -->
@@ -205,69 +249,79 @@
 
 			<section class="home__section-topcourses">
 				<div class="row">
+						<div class="large-3 columns">
+								<div class="home_panel_titles--topcourses">
+									<h2 class="section__title--dark">Top Cursos</h2>
+		  							<a href="#" class="button-line--dark"> Todos os cursos <i class="material-icons">keyboard_arrow_right</i></a>
+								</div> <!-- //home_panel_titles -->
+						</div>  <!-- // large-12 columns -->
 
-						<div class="small-12 medium-6 large-3 columns">
-							<h2 class="section__title">Top Cursos</h2>
-							<h3 class="section__subtitle">tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </h3>
+						<div class="large-9 columns">
+								<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+									<li>
+										<div class="card-course card-format-block">
+									   		<div class="card-course-inner">
+									   				<a href="course-ead.html">
+									   					<span class="card-course--litle-play"></span>
+									   					<div class="card-course-header">
+									   						<img src="assets/images/courses/card-thumb-1.jpg">
+									   					</div>
+									   				</a>
+									   				<div class="card-course--content">
+									   					<a href="course-ead.html">
+									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play" data-selector="tooltip-iombcdrm0" aria-describedby="tooltip-iombcdrm0" title=""></span>
+									   						<span class="card-course__modality">{{curso-modalidade}}</span>
+									   						<span class="card-course__name">{{curso-nome-do-curso}}</span>
+									   					</a>
+									   					<a href="#" class="card-course__button">R$ {{curso-preco}}</a>
+									   				</div>  <!-- //card-course-content -->
+									   		</div> <!-- //card-course-inner -->
+										</div>
+									</li>  <!-- // -->
 
-								<a href="#" class="button "> Veja todos os cursos</a>
-						</div>  <!-- //small-12 medium-6 large-3 columns -->
+									<li>
+										<div class="card-course card-format-block">
+									   		<div class="card-course-inner">
+									   				<a href="course-ead.html">
+									   					<span class="card-course--litle-play"></span>
+									   					<div class="card-course-header">
+									   						<img src="assets/images/courses/card-thumb-4.jpg">
+									   					</div>
+									   				</a>
+									   				<div class="card-course--content">
+									   					<a href="course-ead.html">
+									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play" data-selector="tooltip-iombcdrm0" aria-describedby="tooltip-iombcdrm0" title=""></span>
+									   						<span class="card-course__modality">{{curso-modalidade}}</span>
+									   						<span class="card-course__name">{{curso-nome-do-curso}}</span>
+									   					</a>
+									   					<a href="#" class="card-course__button">R$ {{curso-preco}}</a>
+									   				</div>  <!-- //card-course-content -->
+									   		</div> <!-- //card-course-inner -->
+										</div>
+									</li>  <!-- // -->
 
-
-					  <div class="small-12 medium-6 large-3 columns">
-												<div class="card__course">
-													<div class="card__course--thumb-container">
-														<img class="card__course--thumb" src="assets/images/courses/card-thumb.jpg" alt="">
- 													</div>	 <!-- //card__course-thumb-container -->
-													<div class="card__course-content">
-														<span class="card__course--modality">{{modalidade}}</span>
-														<span class="card__course--name">{{nome-do-curso}}</span>
-														<select class="card__course--instructors-select" name="">
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-														</select>
-													</div>	 <!-- //card__course-container -->
-												</div> <!-- //card__course -->
-						</div>  <!-- //small-12 medium-6 large-3 columns -->
-
-
-						<div class="small-12 medium-6 large-3 columns">
-												<div class="card__course">
-													<div class="card__course--thumb-container">
-														<img class="card__course--thumb" src="assets/images/courses/card-thumb.jpg" alt="">
- 													</div>	 <!-- //card__course-thumb-container -->
-													<div class="card__course-content">
-														<span class="card__course--modality">{{modalidade}}</span>
-														<span class="card__course--name">{{nome-do-curso}}</span>
-														<select class="card__course--instructors-select" name="">
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-														</select>
-													</div>	 <!-- //card__course-container -->
-												</div> <!-- //card__course -->
-						</div>  <!-- //small-12 medium-6 large-3 columns -->
-
-						<div class="small-12 medium-6 large-3 columns">
-												<div class="card__course">
-													<div class="card__course--thumb-container">
-														<img class="card__course--thumb" src="assets/images/courses/card-thumb.jpg" alt="">
- 													</div>	 <!-- //card__course-thumb-container -->
-													<div class="card__course-content">
-														<span class="card__course--modality">{{modalidade}}</span>
-														<span class="card__course--name">{{nome-do-curso}}</span>
-														<select class="card__course--instructors-select" name="">
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-															<option class="card__course--instructors-select-options" value="">instructors</option>
-														</select>
-													</div>	 <!-- //card__course-container -->
-												</div> <!-- //card__course -->
-						</div>  <!-- //small-12 medium-6 large-3 columns -->
-
-
-
+									<li>
+										<div class="card-course card-format-block">
+									   		<div class="card-course-inner">
+									   				<a href="course-ead.html">
+									   					<span class="card-course--litle-play"></span>
+									   					<div class="card-course-header">
+									   						<img src="assets/images/courses/card-thumb-3.jpg">
+									   					</div>
+									   				</a>
+									   				<div class="card-course--content">
+									   					<a href="course-ead.html">
+									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play" data-selector="tooltip-iombcdrm0" aria-describedby="tooltip-iombcdrm0" title=""></span>
+									   						<span class="card-course__modality">{{curso-modalidade}}</span>
+									   						<span class="card-course__name">{{curso-nome-do-curso}}</span>
+									   					</a>
+									   					<a href="#" class="card-course__button">R$ {{curso-preco}}</a>
+									   				</div>  <!-- //card-course-content -->
+									   		</div> <!-- //card-course-inner -->
+										</div>
+									</li>  <!-- // -->
+								</ul>
+							</div> <!-- //small-12 medium-6 large-6 columns -->
 				</div> <!-- ///row -->
 			</section>
 <!-- |||||||||||||||||||| END TOP-COURSES  |||||||||||||||||||||||| -->
@@ -280,106 +334,166 @@
 				<div class="row">
 
 
+					<div class="small-12 medium-4 large-3 large-push-9 columns ">
+						<div class="home_panel_titles--instructors">
+							<h2 class="section__title--light">Instrutores</h2>
+							<a href="#" class="button-line--light"> Todos os Instrutores <i class="material-icons">keyboard_arrow_right</i></a>
+						</div> <!-- //home_panel_titles -->
+					</div>  <!-- //small-12 medium-6 large-3 columns -->
 
-					<div class="small-6 medium-8 large-9 columns">
 
+					<div class="small-12 medium-8 large-9 large-pull-3  columns">
 
-									<ul class="owl-carousel-instructors-home">
+							<ul class="home__instructors small-block-grid-2 medium-block-grid-3 large-block-grid-5">
 
-										<!-- //
-												assets/images/instructors/instructors-thumb_enio.jpg
-												assets/images/instructors/instructors-thumb_Francisco.jpg
-												assets/images/instructors/instructors-thumb_julian.jpg
-												assets/images/instructors/instructors-thumb_koerich.jpg
-										-->
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_enio.jpg" alt=""> </a>
- 												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="Visite o linkedin de {{ nome-do-instrutor }}">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_Francisco.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">Francisco Gonçalves Jr.</strong>
-												<span class="home__section-instructors--card-profession">Engenheiro Eletricista</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_3.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_julian.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_koerich.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_4.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_enio.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_Francisco.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">Francisco Gonçalves Jr.</strong>
-												<span class="home__section-instructors--card-profession">Engenheiro Eletricista</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_3.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_julian.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
 
-										<li class="item home__section-instructors--list-item">
-											<div class="home__section-instructors--card">
-												<a href="#">  <img class="home__section-instructors--card-thumb" src="assets/images/instructors/instructors-thumb_koerich.jpg" alt=""> </a>
-												<strong class="home__section-instructors--card-name">{{Nome do Instrutor}}</strong>
-												<span class="home__section-instructors--card-profession">{{Profissão}}</span>
-												<!-- <a href="#" class="home__section-instructors--card-linkedin" title="linkedin">Linkedin</a> -->
-											</div> <!-- //home__section-instructors-card -->
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_4.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
 										</li>
+
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
+										</li>
+
+										<li class="home__instructors__item">
+											<div class="home__instructors__card">
+												<div class="home__instructors__card-header">
+													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
+													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
+												</div> <!-- //home__instructors__image -->
+
+												<div class="home__instructors__card-footer">
+													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
+													<span class="home__instructors__profession">{{Profissão}}</span>
+												</div> <!-- //home__instructors__card-footer -->
+ 											</div> <!-- //home__instructors__card -->
+										</li>
+
 
 
 
 
 								</ul>
-					</div>  <!-- //small-6 medium-6 large-3 columns -->
+					</div>  <!-- //small-12 medium-6 large-3 columns -->
 
 
-						<div class="small-6 medium-4 large-3 columns">
-								<h2 class="section__title">Instrutores</h2>
-								<h3 class="section__subtitle">tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </h3>
-								<a href="#" class="button secondary"> Todos os Instrutores</a>
-						</div>  <!-- //small-6 medium-6 large-3 columns -->
 
 
 				</div> <!-- ///row -->
@@ -395,13 +509,11 @@
 <!-- ||||||||||||||||||||  SECTION-NUMBERS  |||||||||||||||||||||||| -->
 			<section class="home__section-numbers">
 					<div class="row">
-							<ul class="home__section-numbers--list small-block-grid-2 medium-block-grid-4 large-block-grid-6">
+							<ul class="home__section-numbers--list small-block-grid-2 medium-block-grid-4 large-block-grid-4">
 										<li class="home__section-numbers--list-item"> <strong>16 anos</strong> <span>de mercado</span> </li>
-										<li class="home__section-numbers--list-item"> <strong>27 mil</strong> <span>Curtidas</span> </li>
-										<li class="home__section-numbers--list-item"> <strong>12 mil</strong> <span>Clientes</span> </li>
-										<li class="home__section-numbers--list-item"> <strong><em>+</em> 50</strong> <span>Cursos</span> </li>
-										<li class="home__section-numbers--list-item"> <strong><em>+</em> 40</strong> <span>Instrutores</span> </li>
-										<li class="home__section-numbers--list-item"> <strong><em>+</em> 10 mil</strong> <span>Dúvidas respondidadas</span> </li>
+										<li class="home__section-numbers--list-item"> <strong><em>+ de </em> 50</strong> <span>Cursos</span> </li>
+ 										<li class="home__section-numbers--list-item"> <strong>27 mil</strong> <span>Matrículas</span> </li>
+ 										<li class="home__section-numbers--list-item"> <strong><em>+</em> 12 mil</strong> <span>Clientes</span> </li>
 								</ul>
 			 		</div> <!-- ///row -->
 			</section>
@@ -420,12 +532,11 @@
 								</div> <!--//home__section-testimonials-item -->
 					 </div>  <!-- //small-6 medium-8 large-9 columns -->
 
-							 <div class="home__section-testimonials--grid-info small-12 medium-4 large-3 columns">
-											<div class="home__section-testimonials-info">
-												<h3>Depoimentos</h3>
-												<p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
-												<a href="#" class="button">Todos os depoimentos</a>
-								 			</div> <!--//home__section-testimonials-info -->
+							<div class="home__section-testimonials--grid-info small-12 medium-4 large-3 columns">
+							 	<div class="home_panel_titles--testimonials">
+										<h3 class="section__title--dark">Confira o que os nossos alunos estão falando</h3>
+  										<a href="#" class="button-line--dark"> Todos os depoimentos <i class="material-icons">keyboard_arrow_right</i></a>
+								</div> <!--//home_panel_titles -->
 							</div>  <!-- //small-6 medium-6 large-3 columns -->
 
 					</div> <!-- ///row -->
@@ -445,54 +556,54 @@
 
 		<li class="footer-primary__columns--item">
 		 		<ul class="footer-primary__list">
-					<li class="footer-primary__title">Cursos</li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Titulo do Software"> Titulo do Software</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos Teóricos">		  Cursos Teóricos</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos Presenciais"> Cursos Presenciais</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos EAD">				  Cursos EAD</a></li>
+					<li class="footer-primary__title">Sobre o QiSAT</li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional"> Institucional</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos"> Eventos</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
+					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">	Parcerias</a></li>
 				</ul>
 		</li>
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title">Soluções</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções para empresas">Soluções para empresas</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções Governamentais">Soluções Governamentais</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Soluções Acadêmicas">Soluções Acadêmicas</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">Parcerias</a></li>
+				 <li class="footer-primary__title">Cursos</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Software">Software</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Teórico">Teórico</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
+				 <li class="footer-primary__title">Modalidades</li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Presencial">Presencial</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="EAD">EAD</a></li>
 		 	</ul>
 		</li> <!-- // -->
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				<li class="footer-primary__title"> Suporte</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Suporte">Suporte</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="FAQ">FAQ</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Contato">Contato</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Requisitos do sistema">Requisitos do sistema</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Feedback do site">Feedback do site</a></li>
-		 	</ul>
-		</li> <!-- // -->
-
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Páginas</li>
+				<li class="footer-primary__title"> Página</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
 		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos">Cursos</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-Graduação">Pós-Graduação</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos">Eventos</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
 		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Área do aluno">Área do aluno</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional">Institucional</a></li>
-		 	</ul>
+ 		 	</ul>
 		</li> <!-- // -->
 
 		<li class="footer-primary__columns--item">
 		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Social</li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Youtube">Youtube</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Facebook">Facebook</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="twitter">Twitter</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Linkedin">Linkedin</a></li>
+				 <li class="footer-primary__title"> Soluções</li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Empresas">Para Empresas</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Órgãos Governamentais">Para Órgãos Governamentais</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Turma de Formandos">Para Turma de Formandos</a></li>
+  		 	</ul>
+		</li> <!-- // -->
+
+		<li class="footer-primary__columns--item">
+		 	<ul class="footer-primary__list">
+				 <li class="footer-primary__title"> Contato</li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Ligamos para você">Ligamos para você</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Mensagem">Mensagem</a></li>
+		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Lista de espera">Lista de espera</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma Funcionalidade">Sugira uma Funcionalidade</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira um Curso">Sugira um Curso</a></li>
+				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma nova turma">Sugira uma nova turma</a></li>
 			</ul>
 		</li> <!-- // -->
 
@@ -516,8 +627,7 @@
 											<ul class="footer-secondary__list">
 												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
 												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
-												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">sugira um curso</a></li>
-											</ul>
+ 											</ul>
 						</li>
 
 						<li>
@@ -569,28 +679,31 @@
 
 
 
-
 	<!-- GLOBAL -->
-			<script src="assets/bower_components/jquery.min/index.js"></script> <!-- Resource jQuery -->
-			<script src="assets/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+			<script src="bower_components/jquery/dist/jquery.min.js"></script> <!-- Resource jQuery -->
+			<script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 			<!-- // GLOBAL -->
 
 	<!-- PÁGINA HOME -->
-			<link rel="stylesheet" href="assets/bower_components/owl.carousel/src/css/owl.carousel.css">
-			<link rel="stylesheet" href="assets/bower_components/owl.carousel/src/css/owl.theme.default.css">
-		  <script src='assets/bower_components/owl.carousel/src/js/owl.carousel.js'></script>
+			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css">
+			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.min.css">
+		  <script src='bower_components/owl.carousel/src/js/owl.carousel.js'></script>
 			<!-- // PÁGINA HOME -->
 
 
 	<!-- SOMENTE PÁGINA DE CURSOS -->
-			<script src='assets/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+			<script src='bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+			<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+
 			<script src='assets/js/filter-isotope.js'></script>
 			<!-- // SOMENTE PÁGINA DE CURSOS -->
 
-
 	<!-- EXECUTA MEUS SCRIPTS -->
 			<script src="assets/js/app.js"></script>
-			<!-- // EXECUTA MEUS SCRIPTS -->
+			<!-- // somente para cursos --><script src="assets/js/courses.json"></script>
+	<!-- // EXECUTA MEUS SCRIPTS -->
+
+
 
 
 

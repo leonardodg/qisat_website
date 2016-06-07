@@ -3,8 +3,7 @@
 .page-course__header-group--suptitle{ color: #ADADAD; text-transform: uppercase; font-size: 11px; display: block; font-weight: 600; margin: 0;  }
 .page-course__header-group--title{ color: #4e4e4e; font-weight: 100; font-size: 24px; display: block; margin: 0; line-height: 1}
 
-
-/* ================== END COURSE PAGES ================== */
+ /* ================== END COURSE PAGES ================== */
 
 
 
@@ -40,7 +39,62 @@
  
 
 
-.courses-input-search{@extend .z-1;  border-radius: 4px !important}
+.courses-input-search{
+    @extend .z-1;    
+    border-radius: 2px !important;
+    padding: 0 !important;
+    text-indent: 30px;
+    margin-bottom: 10px;
+     background-image: url("../images/courses/ic_search_black_24px.svg") !important;
+    background-repeat: no-repeat !important;
+    background-position: 4px center !important;
+
+    &:focus{
+  
+    }
+}
+
+//placeholder
+
+::-webkit-input-placeholder {
+   color: #ccc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ccc;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ccc;  
+}
+
+:-ms-input-placeholder {  
+   color: #ccc;  
+}
+
+
+
+.button-toggle-form-type{
+ background-color: white;
+    transition: all 0.5s;
+    float: left;
+    display: inline-block;
+    width: 39px;
+    background-position: center center;
+    height: 39px;
+    margin-left: 5px;
+    margin-top: 0;
+    background-size: 32px;
+    border-radius: 2px;
+    background-image: url("../images/courses/ic_view_module_black_24px.svg");
+    background-repeat: no-repeat;
+    &.toggle-form-type--active{background-image: url("../images/courses/ic_view_list_black_24px.svg");}
+ }
+
+ 
+
+
+
 .button-transform-list-card{padding: 0.5rem}
 
 
@@ -62,7 +116,7 @@
 
 
 .course-page__sections{@extend .z-1; background-color: #fff;    padding: 20px;  border-radius: 3px;   margin-bottom: 20px;   }
-.course-page__sections--title{ font-size: 26px; color: #000; letter-spacing: -1.5px; padding-bottom: 10px; opacity: .56;}
+.course-page__sections--title{ font-size: 26px; color: #000;   padding-bottom: 10px; opacity: .56;}
 
 .course-page__sections--slim{
 	padding: 0px;

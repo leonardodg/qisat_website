@@ -29,6 +29,7 @@
   /* set a min-height and a z-index to be sure that the main element completely covers the lateral menu */
   min-height: 100%;
   z-index: 2;
+  display: inline-block;
   transition-property: transform;
   transition-duration: 0.4s;
   @extend .z-3;
@@ -55,16 +56,15 @@
 
 
 .site-app.offcanvas-menu-is-open::before {
-  content: "";
-  background: #fff;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 11;
-  cursor: pointer;
-  opacity: 0.2;
+    content: "";
+    background: #000000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    cursor: pointer;
+    opacity: 0.5;
 }
-
 
 
 .offcanvas.offcanvas-menu-is-open {
