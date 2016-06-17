@@ -3,12 +3,9 @@
   "version": "0.0.1",
   "private": "true",
   "dependencies": {
-    "datatables.net": "^1.10.10",
-    "datatables.net-zf": "^1.10.10",
-    "jquery.min": "http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js",
+    "owl.carousel": "owl-carousel2#^2.1.5",
     "masonry": "^4.1.0",
-     "isotope": "^3.0.0",
-    "foundation": "^5.5.3",
-    "owl.carousel": "^1.3.2"
+    "isotope": "^3.0.0",
+    "foundation": "^5.5.3"
   }
 }

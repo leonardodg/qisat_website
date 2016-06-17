@@ -28,18 +28,18 @@
   box-shadow: none !important;
 
 .header-main__ul{
-    .header-main__item{ 
+    .header-main__item{
         color: #fff;
         opacity: 0.9;
         &:hover{opacity:1}
     }
-    .header-main__list-item-current::before{  border-top-color: transparent; } 
+    .header-main__list-item-current::before{  border-top-color: transparent; }
 }
- 
+
   .header-main__logo{
-        background-image: url("../images/brand/brand_small-light.svg");   
+        background-image: url("../images/brand/brand_small-light.svg");
            @media only screen and (min-width: 64.063em) {
-           background-image: url("../images/brand/brand_large-light.svg");  
+           background-image: url("../images/brand/brand_large-light.svg");
            } /* min-width 1025px, large screens */
 
       }
@@ -70,12 +70,12 @@
 
 //botão carrinho
 .header-main__list-cart {
-    background-color: $primary-color !important; 
+    background-color: $primary-color !important;
     width: 70px;
     text-align: center;
 }
-.header-main__item-cart, 
-.header-main__item-cart:active, 
+.header-main__item-cart,
+.header-main__item-cart:active,
 .header-main__item-cart:hover{ color: #fff !important; padding: 17px 15px;}
 //end botão carrinho
 
@@ -83,9 +83,9 @@
 .header-main__list-current{
      background-color: rgba(0, 0, 0, 0.06);
  }
-.header-main__list-item-current{  
+.header-main__list-item-current{
    position: relative; 	opacity: 1;
-      &::before{   
+      &::before{
             content: "";
             position: absolute;
             top: -4px;
@@ -101,11 +101,11 @@
 
 
 .header-main__ul{margin-bottom: -3px; float:left;  }
-.header-main__list{  
-   display: inline-block;    
+.header-main__list{
+   display: inline-block;
    position: relative;
    transition: all 0.5s;
-   float:left; 
+   float:left;
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
     }
@@ -135,9 +135,9 @@
             margin-left: -10px;
           }
 }
- 
 
-   
+
+
 .header-main__list__submenu--item{border-bottom: 1px solid darken($primary-color, 6%);}
 .header-main__list__submenu--item-link{  background:  desaturate( $primary-color, 20% ) ;   color: #efefef;  display: block; opacity: 0.8;  padding: 10px 20px;}
 .header-main__list__submenu--item-link:hover {    color: #fff;    opacity: 1;}
@@ -225,5 +225,3 @@
   &:hover{opacity: 0.9; color: #fff}
 }
 .mobile-main__list--item-current{opacity: 1;}
-
-

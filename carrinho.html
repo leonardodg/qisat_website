@@ -4,24 +4,35 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> QiSat | O Canal do e-Learning da Engenharia </title>
- 	<link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+ 	<link rel="stylesheet" href="assets/libs/foundation/css/foundation.min.css"> <!-- Resource style -->
+
  	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
 	<script src="bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 </head>
 <body>
- 
-
-<div class="site-app">
-	<div class="site-app--inner">
 
 
+	<div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+
+<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+	 <aside class="right-off-canvas-menu">
+	   <ul class="off-canvas-list">
+	     <li><label>Menu</label></li>
+	     <li><a href="#">Home</a></li>
+	     <li><a href="#">Cursos</a></li>
+			 <li><a href="#">FAQ</a></li>
+			 <li><a href="#">Área do Aluno</a></li>
+	   </ul>
+	 </aside>
+<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
 
+	 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 	<header class="header-main">
 		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
-	 
 			<nav class="header-main__nav">
 			<ul class="header-main__ul">
 				<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="index.html">Home</a></li>
@@ -33,26 +44,22 @@
 					</ul>
 				</li>
 	 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
-				<li class="hide-for-large-up header-main__list"> <a class="menu-trigger header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
+				<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
 	    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="carrinho.html"><i class="material-icons">shopping_cart</i></a></li>
 			</ul>
 		</nav>
 	</header>
+	<!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
- 
-<header class="hero-page-simple">
-	<div class="row">
-			<div class="large-12 columns">
- 				 <h2 class="hero-page-simple__title">Checkout</h2>
-			</div> <!-- // large-12 columns -->
-	</div>  <!-- // row -->
-</header>
 
 
 
 <main class="content-main">
 
- 
+
+
+
+
 
 <div class="row">
 			<div class="large-4 columns">
@@ -65,171 +72,156 @@
 	</div>  <!-- // row -->
 
 
-
 </main> <!--// main-content -->
+<!-- ########################## END MAIN ########################## -->
 
 
 
 
-<footer class="footer-main ">
+<!-- ########################## FOOTER ########################## -->
+     <footer class="footer-main ">
 
-		<div class="footer-primary">
-				<div class="row">
-		<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+					<div class="footer-primary">
+							<div class="row">
+											<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+															<li class="footer-primary__columns--item">
+															 		<ul class="footer-primary__list">
+																		<li class="footer-primary__title">Sobre o QiSAT</li>
+																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional"> Institucional</a></li>
+																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos"> Eventos</a></li>
+																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
+																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">	Parcerias</a></li>
+																	</ul>
+															</li>
 
+															<li class="footer-primary__columns--item">
+															 	<ul class="footer-primary__list">
+																	 <li class="footer-primary__title">Cursos</li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Software">Software</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Teórico">Teórico</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
+																	 <li class="footer-primary__title">Modalidades</li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Presencial">Presencial</a></li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="EAD">EAD</a></li>
+															 	</ul>
+															</li> <!-- // -->
 
-		<li class="footer-primary__columns--item">
-		 		<ul class="footer-primary__list">
-					<li class="footer-primary__title">Sobre o QiSAT</li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Institucional"> Institucional</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos"> Eventos</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
-					<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">	Parcerias</a></li>
-				</ul>
-		</li>
+															<li class="footer-primary__columns--item">
+															 	<ul class="footer-primary__list">
+																	<li class="footer-primary__title"> Página</li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos">Cursos</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Área do aluno">Área do aluno</a></li>
+													 		 	</ul>
+															</li> <!-- // -->
 
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title">Cursos</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Software">Software</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Teórico">Teórico</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
-				 <li class="footer-primary__title">Modalidades</li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Presencial">Presencial</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="EAD">EAD</a></li>
-		 	</ul>
-		</li> <!-- // -->
+															<li class="footer-primary__columns--item">
+															 	<ul class="footer-primary__list">
+																	 <li class="footer-primary__title"> Soluções</li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Empresas">Para Empresas</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Órgãos Governamentais">Para Órgãos Governamentais</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Turma de Formandos">Para Turma de Formandos</a></li>
+													  		 	</ul>
+															</li> <!-- // -->
 
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				<li class="footer-primary__title"> Página</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos">Cursos</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Área do aluno">Área do aluno</a></li>
- 		 	</ul>
-		</li> <!-- // -->
+															<li class="footer-primary__columns--item">
+															 	<ul class="footer-primary__list">
+																	 <li class="footer-primary__title"> Contato</li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Ligamos para você">Ligamos para você</a></li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Mensagem">Mensagem</a></li>
+															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Lista de espera">Lista de espera</a></li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma Funcionalidade">Sugira uma Funcionalidade</a></li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira um Curso">Sugira um Curso</a></li>
+																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma nova turma">Sugira uma nova turma</a></li>
+																</ul>
+															</li> <!-- // -->
 
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Soluções</li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Empresas">Para Empresas</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Órgãos Governamentais">Para Órgãos Governamentais</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Turma de Formandos">Para Turma de Formandos</a></li>
-  		 	</ul>
-		</li> <!-- // -->
-
-		<li class="footer-primary__columns--item">
-		 	<ul class="footer-primary__list">
-				 <li class="footer-primary__title"> Contato</li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Ligamos para você">Ligamos para você</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Mensagem">Mensagem</a></li>
-		 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Lista de espera">Lista de espera</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma Funcionalidade">Sugira uma Funcionalidade</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira um Curso">Sugira um Curso</a></li>
-				<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma nova turma">Sugira uma nova turma</a></li>
-			</ul>
-		</li> <!-- // -->
-
-		<li class="footer-primary__columns--item">
-			<img class="footer-primary__list__item--brand-qisat" src="assets/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
-		</li> <!-- //  -->
-
-		</ul> <!-- // footer-primary_lists -->
-
-			</div> <!-- ///row -->
-		</div> <!-- // footer-primary -->
-
-
-
-
-
-		<div class="footer-secondary">
-				<div class="row">
-					<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
-							<li>
-											<ul class="footer-secondary__list">
-												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
-												<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
- 											</ul>
-						</li>
-
-						<li>
-											<ul class="footer-secondary__list footer-secondary__list--email ">
-												<!-- <li class="footer-secondary__list__item"></li> -->
-												<!-- <li class="separator"></li> -->
-												<li class="footer-secondary__list__item"><a href="mailto:contato@qisat.com.br"  class="footer-secondary__list__item--link">QiSat e-Learing para Engenharia: <strong>contato@qisat.com.br</strong></a></li>
-											</ul>
-						</li>
-						<li>
-										<ul class="footer-secondary__list">
-												<li class="footer-secondary__list__item">
-													<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-													<a href="#" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="assets/images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
-												</li>
-										 </ul>
-						</li>
-
-					</ul> <!-- //block-grid -->
-
-		 		</div> <!-- ///row -->
-		</div> <!-- footer-secondary -->
-</footer> <!-- footer-container -->
-
-
-		</div> <!-- //site-app-inner -->
-</div> <!-- //site-app -->
-
-
-
-
-	<nav class="offcanvas"><!-- your secondary navigation here -->
-		<ul class="mobile-main__ul">
-			<li class="mobile-main__list mobile-main__list-current">						<a class="mobile-main__list--item mobile-main__list--item-current" href="home.html">Home</a></li>
-			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="courses.html">Cursos</a></li>
-			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="pos-graduacao.html">Pós-Graduação</a></li>
-			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="faq.html">FAQ</a></li>
-			<li class="mobile-main__list">																			<a class="mobile-main__list--item" href="area-do-aluno.html">Área do Aluno</a></li>
-		</ul>
- 	</nav>
+															<li class="footer-primary__columns--item">
+																<img class="footer-primary__list__item--brand-qisat" src="assets/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+															</li> <!-- //  -->
+										</ul> <!-- // footer-primary_lists -->
+						</div> <!-- ///row -->
+					</div> <!-- // footer-primary -->
 
 
 
 
 
+					<div class="footer-secondary">
+							<div class="row">
+								<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+										<li>
+												<ul class="footer-secondary__list">
+													<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
+													<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
+	 											</ul>
+									  </li>
+
+									  <li>
+												<ul class="footer-secondary__list footer-secondary__list--email ">
+													<!-- <li class="footer-secondary__list__item"></li> -->
+													<!-- <li class="separator"></li> -->
+													<li class="footer-secondary__list__item"><a href="mailto:contato@qisat.com.br"  class="footer-secondary__list__item--link">QiSat e-Learing para Engenharia: <strong>contato@qisat.com.br</strong></a></li>
+												</ul>
+								   	</li>
+								  	<li>
+													<ul class="footer-secondary__list">
+															<li class="footer-secondary__list__item">
+																<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+																<a href="#" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="assets/images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+															</li>
+													 </ul>
+									  </li>
+								</ul> <!-- //block-grid -->
+					 		</div> <!-- ///row -->
+					</div> <!-- footer-secondary -->
+			</footer> <!-- footer-container -->
 
 
 
 
 
+				<!-- GLOBAL -->
+			   	 <script src="bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+					 <script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+				<!-- // GLOBAL -->
 
-	<!-- GLOBAL -->
-			<script src="bower_components/jquery/dist/jquery.min.js"></script> <!-- Resource jQuery -->
-			<script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-			<!-- // GLOBAL -->
-
-	<!-- PÁGINA HOME -->
-			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css">
-			<link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.min.css">
-		  <script src='bower_components/owl.carousel/src/js/owl.carousel.js'></script>
-			<!-- // PÁGINA HOME -->
+				<!-- PÁGINA HOME -->
+						 <link href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+						 <link href="bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+						 <script src="bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 
-	<!-- SOMENTE PÁGINA DE CURSOS -->
-			<script src='bower_components/isotope/dist/isotope.pkgd.min.js'></script>
-			<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+						<!-- // PÁGINA HOME -->
 
-			<script src='assets/js/filter-isotope.js'></script>
-			<!-- // SOMENTE PÁGINA DE CURSOS -->
- 
-	<!-- EXECUTA MEUS SCRIPTS -->
-			<script src="assets/js/app.js"></script>
-			<!-- // somente para cursos --><!-- <script src="assets/js/courses.json"></script> -->
-	<!-- // EXECUTA MEUS SCRIPTS -->
+
+				<!-- SOMENTE PÁGINA DE CURSOS -->
+						<script src='bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+						<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+						<script src='assets/js/filter-isotope.js'></script>
+				<!-- // END SOMENTE PÁGINA DE CURSOS -->
+
+				<!-- EXECUTA SCRIPTS QISAT -->
+						<script src="assets/js/app.js"></script>
 
 
 
- 
+
+			 	<!-- // EXECUTA MEUS SCRIPTS -->
+
+<!-- ########################## END FOOTER ########################## -->
+
+
+
+						<!-- exit-off-canvas -->
+						<a class="exit-off-canvas"></a>
+
+
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
+
+
 
 </body>
 </html>
