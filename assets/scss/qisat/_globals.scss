@@ -14,11 +14,11 @@
 	// $secondary-color: #62c169; // anchor tags
 	// $secondary-color-hover: darken($secondary-color, 8); // Links botões secundários hover
 	// $accent-color: blue; // Cor de destaque
- 
-// fonts 
+
+// fonts
    $font-family-sans-serif: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
 
- 
+
 //colors
 	$white       : #FFFFFF;
 	$ghost       : #FAFAFA;
@@ -40,9 +40,9 @@
 	$jet         : #222222;
 	$black       : #000000;
 
-    
+
     $body-bg: #dfdfdf;
-	
+
     $primary-color: #005B94;
     $primary-color-dark: darken($primary-color, 3);
 	$secondary-color: #28B67C;
@@ -51,7 +51,7 @@
 	$success-color: #43AC6A;
 	$warning-color: #f08a24;
 	$info-color: #a0d3e8;
-	 
+
 
 	//category colors
     $category-estrutural-color: orange !important;
@@ -70,9 +70,9 @@
     $software-qieletrico-color: yellow !important;
     $software-qihidrossanitario-color: blueviolet !important;
     $software-qiincendio-color: darkorange !important;
- 
 
-  
+
+
 
  body{
  	background-color: $body-bg;
@@ -99,6 +99,7 @@ h1, h2, h3, h4, h5, h6 {
  .content-main,
  .footer-main {  width: 100%; display: block; float: left;}
 
+main{    min-height: 100vh;    margin-top: 60px;}
 article{ padding: 30px 0; display: inline-block; width: 100%;}
 
 
@@ -111,7 +112,7 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 .z-4 { box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3), 0 14px 12px 0 rgba(0, 0, 0, 0.17) !important; }
 .z-5 { box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15) !important; }
 
-.material-icons{vertical-align: middle;}    
+.material-icons{vertical-align: middle;}
 
 
 .section__title {  font-weight: 300;  text-transform: uppercase; font-size:2rem}
@@ -119,29 +120,29 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 .section__title--light { @extend .section__title; color: #fff}
 
 
- 
+
 
 //buttons line
 .button-line{  height: 37px; overflow: hidden; transition: all 0.5s; border: 1px solid; padding: 4px 20px; display: inline-block; border-radius: 4px;
 	 &:hover, &:focus{ @extend .z-1; border-color: transparent; }
 }
-.button-line--dark  { 
+.button-line--dark  {
 	@extend .button-line; color: #1D2668;
 	&:hover, &:focus{ background-color: #1D2668; color:#fff;}
 }
-.button-line--light { 
+.button-line--light {
 	@extend .button-line; color: #fff;
 	&:hover, &:focus{background-color: #fff; color:#1D2668;}
 }
 
 //.button-line--light_big{@extend .button-line--light; font-size: 18px; height: 44px; padding: 7px 20px; }
 
-    
+
 
 
 //end buttons line
 
- 
+
 
 
 
@@ -163,12 +164,12 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 
 .card-format-list{}
 .card-format-block{
-	.price_popover{ 
+	.price_popover{
 		right: -40px;
 		&::after {right: 60px;}
 	}
 }
-.price_popover{ 
+.price_popover{
 	    text-align: center;
 	    position: absolute;
 	    bottom: 38px;
@@ -183,12 +184,12 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 		    bottom: -10px;
 		    right: 22px;
 		}
-				.price_popover__header{     
+				.price_popover__header{
 					background-color: #565555;
 				    padding: 10px;
 				    display: inline-block;
 				    border-radius: 4px 4px 0 0;
-					.price_popover__header__info{   
+					.price_popover__header__info{
 						    margin: 0;
 						    padding: 0;
 						    font-size: 10px;
@@ -196,7 +197,7 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 					    strong{ color: #fff}
 					}
 				}
-				.price_popover__footer{ 
+				.price_popover__footer{
 				    background-color: #4E4E4E;
 				    color: #fff;
 				    border-radius: 0 0 4px 4px;
@@ -206,7 +207,3 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 
 
 }
-
-
-
-
