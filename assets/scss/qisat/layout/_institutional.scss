@@ -1,12 +1,19 @@
 .menu-horizontal{
-    &__list{ list-style: none; margin: 0; background-color: #fff; border-radius:	$global-radius; list-style: none;   margin-bottom: 5px; margin-top: 10px; display: inline-block; width: 100%; @extend .z-1;}
-    &__item{  display: inline-block; float: left; text-align: center;
-    .menu-horizontal__item--current{ }
+    &__list{ list-style: none; margin: 0; background-color: #fff; border-radius: $global-radius; list-style: none;   margin-bottom: 5px; margin-top: 10px; display: inline-block; width: 100%; @extend .z-1;}
+    &__link { padding: 10px 15px; width: 100%; float: left; font-size: 18px }
+
+     &__item{
+       border-top:5px solid transparent; display: inline-block; float: left; text-align: center; transition: all 0.5s;
+       &:hover{background-color: rgba(0, 0, 0, 0.06)}
+       &--current{ border-top-color: $primary-color-dark !important; background-color: rgba(0, 0, 0, 0.08);
+         a{ color: $primary-color-dark !important; }
+         &:hover{background-color: rgba(0, 0, 0, 0.08)}
+       }
+
 
           // Small screens
           @media only screen {
             &--4, &--3, &--2,&--1{ width: 100%; padding-left: 10px; text-align: left;}
-            &__link { padding: 10px 15px; width: 100%; float: left; }
           } /* Define mobile styles */
 
           // Medium screens
@@ -32,3 +39,101 @@
 
 .page_content{ margin-bottom:40px;}
 .widget_content{  margin-bottom:10px;}
+
+
+
+
+
+/* 'gallery-sync
+========================================= */
+
+.gallery-sync{ }
+.gallery-sync_caption{
+  background: rgba(0, 91, 148, 0.56);
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      font-weight: 300;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+}
+
+#gallery-sync_bigger {
+  @extend .z-1; background-color: $primary-color-dark;
+  .item {
+    background-color: $primary-color-dark;
+    padding: 0;
+    margin: 0px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    img{   border-radius: $global-radius $global-radius 0 0;}
+  }
+}
+
+#gallery-sync_thumb {
+  background-color: $primary-color-dark;
+
+  .item {
+    background-color: $primary-color-dark;
+    padding: 0px;
+    margin: 0px;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.5;
+    h1 {
+      font-size: 18px;
+    }
+  }
+  .current .item{
+    background-color: #0c83e7;
+    opacity: 1;
+  }
+}
+
+
+
+.owl-theme {
+  .owl-nav {
+    /*default owl-theme theme reset .disabled:hover links */
+    margin: 0 !important;
+    [class*='owl-'] {
+      transition: all .3s ease;
+      &.disabled:hover {
+       background-color: #D6D6D6;
+      }
+    }
+
+  }
+}
+
+//arrows on first carousel
+#gallery-sync_bigger.owl-theme {
+  position: relative;
+  .owl-next, .owl-prev {
+    width: 22px;
+    height: 40px;
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+  }
+  .owl-prev {
+    left: 10px;
+  }
+  .owl-next {
+    right: 10px;
+  }
+}
+
+
+/* 'end gallery-sync
+========================================= */

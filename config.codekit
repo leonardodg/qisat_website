@@ -297,6 +297,105 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/institucional\/temp1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 185992,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp1.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp1.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp2.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 180732,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp2.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp2.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp3.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 160871,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp3.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp3.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp4.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 136441,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp4.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp4.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp5.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 152215,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp5.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp5.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp6.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 74587,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp6.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp6.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp7.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 189613,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp7.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp7.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp8.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 243229,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp8.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp8.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/assets\/images\/institucional\/temp9.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 91282,
+		"inputAbbreviatedPath": "\/assets\/images\/institucional\/temp9.jpg",
+		"outputAbbreviatedPath": "\/assets\/images\/institucional\/temp9.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/instructors\/icon-linkedin.png": {
 		"fileType": 32768,
 		"ignore": 0,
