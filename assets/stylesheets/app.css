@@ -393,7 +393,7 @@ article {
   width: 100%; }
 
 /* 1. z-depth official shadows:  (https://www.polymer-project.org/components/paper-elements/demo.html#paper-shadow) */
-.z-1, .button-line:hover, .button-line--dark:hover, .button-line--light:hover, .button-line:focus, .button-line--dark:focus, .button-line--light:focus, .home__instructors__card, .card-course, .card-course.card-format-line:hover, .menu-filter-sidebar, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image, .menu-horizontal__list, .page_content, .widget_content, #gallery-sync_bigger {
+.z-1, .button-line:hover, .button-line--dark:hover, .button-line--light:hover, .button-line:focus, .button-line--dark:focus, .button-line--light:focus, .menu-horizontal__list, .home__instructors__card, .card-course, .card-course.card-format-line:hover, .menu-filter-sidebar, .courses-input-search, .course-page__sections, .section__course-gallery-list--link-image, .page_content, .widget_content, #gallery-sync_bigger, .list-group-timeline .list-group-item {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37) !important; }
 
 .z-2, .header-main, .header-main__list__submenu, .header-main__buttons_item-cart {
@@ -503,6 +503,61 @@ article {
     border-radius: 0 0 4px 4px;
     font-size: 12px;
     padding: 5px; }
+
+.menu-horizontal__list {
+  list-style: none;
+  margin: 0;
+  background-color: #fff;
+  border-radius: 3px;
+  list-style: none;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%; }
+.menu-horizontal__link {
+  padding: 10px 15px;
+  width: 100%;
+  float: left;
+  font-size: 18px;
+  line-height: 1; }
+.menu-horizontal__item {
+  border-left: 5px solid transparent;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  transition: all 0.5s;
+  /* Define mobile styles */
+  /* min-width 641px, medium screens */ }
+  .menu-horizontal__item:hover {
+    background-color: rgba(0, 0, 0, 0.06); }
+  .menu-horizontal__item--current {
+    border-color: #005285 !important;
+    background-color: rgba(0, 0, 0, 0.08); }
+    .menu-horizontal__item--current a {
+      color: #005285 !important; }
+    .menu-horizontal__item--current:hover {
+      background-color: rgba(0, 0, 0, 0.08); }
+  @media only screen {
+    .menu-horizontal__item--5, .menu-horizontal__item--4, .menu-horizontal__item--3, .menu-horizontal__item--2, .menu-horizontal__item--1 {
+      width: 100%;
+      padding-left: 10px;
+      text-align: left; } }
+  @media only screen and (min-width: 40.063em) {
+    .menu-horizontal__item {
+      border-left: 0px solid transparent;
+      border-top: 5px solid transparent; }
+      .menu-horizontal__item--5, .menu-horizontal__item--4, .menu-horizontal__item--3, .menu-horizontal__item--2, .menu-horizontal__item--1 {
+        text-align: center; }
+      .menu-horizontal__item--5 {
+        width: 20%; }
+      .menu-horizontal__item--4 {
+        width: 25%; }
+      .menu-horizontal__item--3 {
+        width: 33.3%; }
+      .menu-horizontal__item--2 {
+        width: 50%; }
+      .menu-horizontal__item--1 {
+        width: 100%; } }
 
 /* 'HERO COURSES
 ========================================= */
@@ -2001,61 +2056,16 @@ ul.off-canvas-list li a:hover {
     color: rgba(0, 0, 0, 0.47);
     margin: 0 0 -7px 0; }
 
-.menu-horizontal__list {
-  list-style: none;
-  margin: 0;
-  background-color: #fff;
-  border-radius: 3px;
-  list-style: none;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  display: inline-block;
-  width: 100%; }
-.menu-horizontal__link {
-  padding: 10px 15px;
-  width: 100%;
-  float: left;
-  font-size: 18px; }
-.menu-horizontal__item {
-  border-top: 5px solid transparent;
-  display: inline-block;
-  float: left;
-  text-align: center;
-  transition: all 0.5s;
-  /* Define mobile styles */
-  /* min-width 641px, medium screens */ }
-  .menu-horizontal__item:hover {
-    background-color: rgba(0, 0, 0, 0.06); }
-  .menu-horizontal__item--current {
-    border-top-color: #005285 !important;
-    background-color: rgba(0, 0, 0, 0.08); }
-    .menu-horizontal__item--current a {
-      color: #005285 !important; }
-    .menu-horizontal__item--current:hover {
-      background-color: rgba(0, 0, 0, 0.08); }
-  @media only screen {
-    .menu-horizontal__item--5, .menu-horizontal__item--4, .menu-horizontal__item--3, .menu-horizontal__item--2, .menu-horizontal__item--1 {
-      width: 100%;
-      padding-left: 10px;
-      text-align: left; } }
-  @media only screen and (min-width: 40.063em) {
-    .menu-horizontal__item--5, .menu-horizontal__item--4, .menu-horizontal__item--3, .menu-horizontal__item--2, .menu-horizontal__item--1 {
-      text-align: center; }
-    .menu-horizontal__item--5 {
-      width: 20%; }
-    .menu-horizontal__item--4 {
-      width: 25%; }
-    .menu-horizontal__item--3 {
-      width: 33.3%; }
-    .menu-horizontal__item--2 {
-      width: 50%; }
-    .menu-horizontal__item--1 {
-      width: 100%; } }
-
-.grid-sidebar {
+.grid-sidebar-left {
   /* min-width 1025px, large screens */ }
   @media only screen and (min-width: 64.063em) {
-    .grid-sidebar {
+    .grid-sidebar-left {
+      padding-right: 0; } }
+
+.grid-sidebar-right {
+  /* min-width 1025px, large screens */ }
+  @media only screen and (min-width: 64.063em) {
+    .grid-sidebar-right {
       padding-left: 0; } }
 
 .page_content, .widget_content {
@@ -2181,3 +2191,52 @@ ul.off-canvas-list li a:hover {
 
 /* 'end gallery-sync
 ========================================= */
+.list-group-timeline {
+  list-style: none;
+  margin: 0; }
+  .list-group-timeline .list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 100%;
+    float: left;
+    transition: all 0.5s; }
+    .list-group-timeline .list-group-item:hover {
+      background-color: #eee; }
+    .list-group-timeline .list-group-item.active {
+      background-color: #25373A; }
+      .list-group-timeline .list-group-item.active .list-group-item-date {
+        background: #fff;
+        color: #25373A; }
+      .list-group-timeline .list-group-item.active .title {
+        color: #fff; }
+      .list-group-timeline .list-group-item.active .subtitle {
+        color: #fff; }
+    .list-group-timeline .list-group-item .title {
+      display: block; }
+    .list-group-timeline .list-group-item .subtitle {
+      opacity: 0.5;
+      font-weight: 300; }
+    .list-group-timeline .list-group-item .list-group-item-date {
+      background: #25373A;
+      width: 50px;
+      float: left;
+      height: 50px;
+      border-radius: 50%;
+      display: inline-block;
+      font-size: 12px;
+      line-height: 4;
+      text-align: center;
+      color: #fff;
+      font-weight: 800;
+      margin-right: 20px; }
+    .list-group-timeline .list-group-item:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px; }
+    .list-group-timeline .list-group-item:last-child {
+      margin-bottom: 0;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px; }
