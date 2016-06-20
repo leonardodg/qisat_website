@@ -25,21 +25,23 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
-   .hero-pages__label{color: #fff; font-weight: 300;}
-   .hero-pages__title {
-       padding: 0;
-       margin: 0;
-       color: #fff;
-       line-height: 1.2;
-       font-weight: 700;
-       font-size: 2.3em;
-   }
-  .hero-pages__tagline {
-      color: rgba(255, 255, 255, 0.5);
-      font-style: italic;
-      margin-bottom: 10px;
-      display: inline-block;
-  }
+       .hero-pages__label{color: #fff; font-weight: 300;}
+       .hero-pages__title {
+           padding: 0;
+           margin: 0;
+           color: #fff;
+           line-height: 1.2;
+           font-weight: 700;
+           font-size: 2.7em;
+       }
+      .hero-pages__tagline {
+        color: rgba(255, 255, 255, 0.5);
+        font-style: italic;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        display: inline-block;
+        font-weight: 300;
+      }
  }
 
 
@@ -236,11 +238,12 @@
 
 .buttom-call {
     background-color: #fff;
-    padding: 5px 30px 5px 42px;
+    padding: 6px 30px 10px 42px;
     border-radius: 4px;
     background-image: url("../images/courses/ic_call_black_24px.svg");
     background-repeat: no-repeat;
     background-position: 10px center;
+    color:#000 !important;
 }
 
 .call-label-icon-email {

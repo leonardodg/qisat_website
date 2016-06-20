@@ -13,12 +13,13 @@
 
           // Small screens
           @media only screen {
-            &--4, &--3, &--2,&--1{ width: 100%; padding-left: 10px; text-align: left;}
+            &--5, &--4, &--3, &--2,&--1{ width: 100%; padding-left: 10px; text-align: left;}
           } /* Define mobile styles */
 
           // Medium screens
           @media only screen and (min-width: 40.063em) {
-            &--4, &--3, &--2,&--1{ text-align: center;}
+            &--5, &--4, &--3, &--2,&--1{ text-align: center;}
+            &--5{ width: 20%;}
             &--4{ width: 25%;}
             &--3{ width: 33.3%;}
             &--2{ width: 50%;}
