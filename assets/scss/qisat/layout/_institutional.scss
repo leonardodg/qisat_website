@@ -148,7 +148,25 @@
 
 
 
-.list-group-timeline{ list-style: none; margin: 0;
+
+
+
+
+.container-timeline{ padding: 0 20px; background-color: #fff;     @extend .z-1;}
+
+
+
+
+
+
+
+.timeline__list-group{
+  list-style: none;
+    margin: 0;
+    padding: 20px;
+    background-color: #EFEFEF;
+    display: inline-block;
+
   .list-group-item{
     @extend .z-1;
     position: relative;
@@ -160,6 +178,7 @@
     width: 100%;
     float: left;
     transition: all 0.5s;
+    cursor: pointer;
     &:hover { background-color: #eee;}
     &.active{
       background-color: #25373A;
@@ -197,3 +216,7 @@
 
   }
 }
+
+
+
+.timeline__post{ padding: 0 20px; background-color: #25373A; }
