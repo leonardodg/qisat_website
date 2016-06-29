@@ -165,7 +165,7 @@
 
 
 
-.container-timeline{ padding: 0; background-color: #fff;     @extend .z-1;}
+.container-timeline{ padding: 0; background-color: #fff;   margin-bottom:40px;   @extend .z-1;}
 
 
 
@@ -181,40 +181,21 @@
     display: inline-block;
 
   .list-group-item{
-    @extend .z-1;
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    width: 100%;
-    float: left;
-    transition: all 0.5s;
-    cursor: pointer;
-    &:hover { background-color: #eee;}
-    &.active{
-      background-color: #25373A;
-      .list-group-item-date{   background: #fff; color: #25373A; }
-      .title{color:#fff}
-      .subtitle{color:#fff}
-    }
-    .title{    display: block; }
+    @extend .z-1; position: relative; display: block; padding: 10px 55px 10px 15px; margin-bottom: -1px; background-color: #fff; border: 1px solid #ddd; width: 100%; float: left; transition: all 0.5s; cursor: pointer;
+    &:hover { background-color: #eee; 
+                .arrow{opacity: 0.5;}
+            }
+     &.active{
+            background-color: #25373A;
+            .list-group-item-date{   background: #fff; color: #25373A; }
+            .title{color:#fff}
+            .subtitle{color:#fff}
+            .arrow{color: #fff; opacity: 1;}
+          }
+    .arrow{ position: absolute; right: 20px; top: 50%; margin-top: -10px; opacity: 0; transition: all 0.5s}
+    .title{ display: block; height: 26px; overflow: hidden; }
     .subtitle { opacity: 0.5; font-weight: 300;}
-    .list-group-item-date{
-      background: #25373A;
-      width: 50px;
-      float: left;
-      height: 50px;
-      border-radius: 50%;
-      display: inline-block;
-      font-size: 12px;
-      line-height: 4;
-      text-align: center;
-      color: #fff;
-      font-weight: 800;
-      margin-right: 20px;
-    }
+    .list-group-item-date{ background: #25373A; width: 50px; float: left; height: 50px; border-radius: 50%; display: inline-block; font-size: 12px; line-height: 4; text-align: center; color: #fff; font-weight: 800; margin-right: 20px; }
 
     &:first-child {
         border-top-left-radius: 4px;
