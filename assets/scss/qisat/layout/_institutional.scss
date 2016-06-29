@@ -154,6 +154,13 @@
 
 .timeline__vertical_slider{
   padding: 20px 40px; 
+  &__component{ line-height: auto;
+      &__handle{ line-height: auto;
+        &-number{ position: absolute; left: 40px; top: -3px;}
+      }
+      &__active-segment{ line-height: auto;}
+  }
+
 }
 
 
