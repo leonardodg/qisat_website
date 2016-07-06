@@ -3226,7 +3226,27 @@ ul.off-canvas-list li a:hover {
   margin-top: .4em;
 }
 
-/* line 60, ../scss/qisat/layout/_carrinho.scss */
+/* line 55, ../scss/qisat/layout/_carrinho.scss */
+#cd-shadow-layer {
+  position: fixed;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(67, 87, 121, 0.6);
+  cursor: pointer;
+  z-index: 2;
+  display: none;
+}
+/* line 66, ../scss/qisat/layout/_carrinho.scss */
+#cd-shadow-layer.actived {
+  display: block;
+  -webkit-animation: cd-fade-in 0.3s;
+  -moz-animation: cd-fade-in 0.3s;
+  animation: cd-fade-in 0.3s;
+}
+
+/* line 73, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-item-remove {
   position: absolute;
   right: 1em;
@@ -3243,23 +3263,23 @@ ul.off-canvas-list li a:hover {
   text-align: center;
 }
 
-/* line 75, ../scss/qisat/layout/_carrinho.scss */
+/* line 88, ../scss/qisat/layout/_carrinho.scss */
 .no-touch #cd-cart .cd-item-remove:hover {
   background-color: #e0e6ef;
 }
 
-/* line 78, ../scss/qisat/layout/_carrinho.scss */
+/* line 91, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-cart-total {
   padding-top: 1em;
   padding-bottom: 1em;
 }
 
-/* line 82, ../scss/qisat/layout/_carrinho.scss */
+/* line 95, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-cart-total span {
   float: right;
 }
 
-/* line 85, ../scss/qisat/layout/_carrinho.scss */
+/* line 98, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-cart-total::after {
   /* clearfix */
   content: '';
@@ -3267,7 +3287,7 @@ ul.off-canvas-list li a:hover {
   clear: both;
 }
 
-/* line 91, ../scss/qisat/layout/_carrinho.scss */
+/* line 104, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .checkout-btn {
   display: block;
   width: 100%;
@@ -3278,34 +3298,34 @@ ul.off-canvas-list li a:hover {
   text-align: center;
 }
 
-/* line 100, ../scss/qisat/layout/_carrinho.scss */
+/* line 113, ../scss/qisat/layout/_carrinho.scss */
 .no-touch #cd-cart .checkout-btn:hover {
   background: #a2dda8;
 }
 
-/* line 103, ../scss/qisat/layout/_carrinho.scss */
+/* line 116, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-go-to-cart {
   text-align: center;
   margin: 1em 0;
 }
 
-/* line 107, ../scss/qisat/layout/_carrinho.scss */
+/* line 120, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-go-to-cart a {
   text-decoration: underline;
 }
 
 @media only screen and (min-width: 1200px) {
-  /* line 111, ../scss/qisat/layout/_carrinho.scss */
+  /* line 124, ../scss/qisat/layout/_carrinho.scss */
   #cd-cart > * {
     padding: 0 2em;
   }
 
-  /* line 114, ../scss/qisat/layout/_carrinho.scss */
+  /* line 127, ../scss/qisat/layout/_carrinho.scss */
   #cd-cart .cd-cart-items li {
     padding: 1em 2em;
   }
 
-  /* line 117, ../scss/qisat/layout/_carrinho.scss */
+  /* line 130, ../scss/qisat/layout/_carrinho.scss */
   #cd-cart .cd-item-remove {
     right: 2em;
   }

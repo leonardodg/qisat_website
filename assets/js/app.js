@@ -10,11 +10,10 @@
 
 
 
- $('.header-main__item-cart').on('click', function(event){
-         event.preventDefault();
-        $("#cd-cart, .cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
-
-                 console.log("clicado");
+ $('.header-main__item-cart,  #cd-shadow-layer').on('click', function(event){
+         //event.preventDefault();
+        $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
+          console.log("clicado");
 
 
 });
