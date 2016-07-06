@@ -7,6 +7,22 @@
    //   collapseInClass: 'in';
    // });
 
+
+
+
+ $('.header-main__item-cart').on('click', function(event){
+         event.preventDefault();
+        $("#cd-cart, .cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
+
+                 console.log("clicado");
+
+
+});
+
+
+
+
+
    $(document).ready(function() {
 
      $(".owl-carousel-testimonials-home").owlCarousel({

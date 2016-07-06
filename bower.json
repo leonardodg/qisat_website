@@ -6,6 +6,7 @@
     "owl.carousel": "owl-carousel2#^2.1.5",
     "masonry": "^4.1.0",
     "isotope": "^3.0.0",
-    "foundation": "^5.5.3"
+    "foundation": "^5.5.3",
+    "sticky-kit": "^1.1.2"
   }
 }
