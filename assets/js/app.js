@@ -14,9 +14,20 @@
          //event.preventDefault();
         $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
           console.log("clicado");
-
-
 });
+
+
+
+
+  
+$(document).ready(function() {
+  if ( $('#sidebar-styker').length ) {
+       $("#sidebar-styker").stick_in_parent({
+        offset_top: 200,
+        recalc_every: 1,
+       });
+  }
+}());
 
 
 
@@ -45,7 +56,6 @@
 /* Temporário
    temporário, usado somente para testar, a ideia é que seja feito em php,
    se favorirar adicionar a class .buttom-favorite-active  */
-
      $(function() {
        if ( $('.buttom-favorite').length ) {
              $('.buttom-favorite').on('click', function(){
@@ -63,6 +73,30 @@
         }
       }());
 /* end página cursos > botão favoritar*/
+
+
+
+
+/* Temporário
+   temporário, usado somente para testar,
+   se clicar  .cd-item-remove  */
+
+$(function() {
+  if ( $('.cd-item-remove').length ) {
+           $('.cd-item-remove').on('click', function(event){
+                   //event.preventDefault();
+                  $(this).parent().addClass("remove");
+                    console.log("clicado");
+          });
+  }
+});
+
+
+
+
+
+
+
 
 
 
@@ -193,8 +227,7 @@ if ( $('.footer-primary__list__item').length ) {
 
 
 
-
-
+// carrousel página institucional
 $(document).ready(function() {
   if ( $('.owl-sync').length ) {
 
@@ -275,3 +308,11 @@ $(document).ready(function() {
 
   }
 });
+
+// end carrousel página institucional
+
+
+
+
+
+

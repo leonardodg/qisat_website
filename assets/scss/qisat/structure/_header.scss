@@ -73,8 +73,8 @@
     background-color: $primary-color !important;
     width: 70px;
     text-align: center;
-    &.actived { background-color: #fff !important;
-       .header-main__item-cart{ color: $primary-color !important;   border-left: 1px solid; }
+    &.actived { background-color: rgba(0, 91, 148, 0.86) !important;
+       .header-main__item-cart{ }
     }
 }
 .header-main__item-cart,
