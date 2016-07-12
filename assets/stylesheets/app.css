@@ -1671,23 +1671,31 @@ article {
   background-image: url("../images/brand/brand_small.svg");
 }
 
-/* line 1, ../scss/qisat/_cards.scss */
-.isotope_content-item--list {
-  margin: 0 !important;
-  padding: 0 !important;
+/* line 13, ../scss/qisat/_cards.scss */
+.list-filter.medium-block-grid-1 > li {
+  padding: 0;
 }
 
-/* line 6, ../scss/qisat/_cards.scss */
-.isotope_content-item {
-  padding: 0 0.3rem 0.6rem !important;
+/* line 15, ../scss/qisat/_cards.scss */
+.masonry-layout {
+  column-count: 3;
+  column-gap: 0;
 }
-/* line 8, ../scss/qisat/_cards.scss */
-.isotope_content-item.isotope_content-item--list {
-  padding: 0 !important;
+
+/* line 19, ../scss/qisat/_cards.scss */
+.masonry-layout__panel {
+  break-inside: avoid;
+  padding: 5px;
+}
+
+/* line 23, ../scss/qisat/_cards.scss */
+.masonry-layout__panel-content {
+  padding: 10px;
+  border-radius: 10px;
 }
 
 /*CARDS*/
-/* line 12, ../scss/qisat/_cards.scss */
+/* line 33, ../scss/qisat/_cards.scss */
 .card-course {
   transition: all 0.5s;
   width: 100%;
@@ -1695,14 +1703,14 @@ article {
   z-index: 1;
   position: relative;
 }
-/* line 15, ../scss/qisat/_cards.scss */
+/* line 36, ../scss/qisat/_cards.scss */
 .card-course:hover {
   -moz-transform: translate(0, -5px);
   -ms-transform: translate(0, -5px);
   -webkit-transform: translate(0, -5px);
   transform: translate(0, -5px);
 }
-/* line 16, ../scss/qisat/_cards.scss */
+/* line 37, ../scss/qisat/_cards.scss */
 .card-course.card-format-line:hover {
   -moz-transform: translate(0, 0px);
   -ms-transform: translate(0, 0px);
@@ -1710,27 +1718,27 @@ article {
   transform: translate(0, 0px);
   z-index: 10 !important;
 }
-/* line 17, ../scss/qisat/_cards.scss */
+/* line 38, ../scss/qisat/_cards.scss */
 .card-course:hover * {
   transition: all 0.5s;
 }
 
-/* line 20, ../scss/qisat/_cards.scss */
+/* line 41, ../scss/qisat/_cards.scss */
 .card-course.card-format-line {
   margin-bottom: 0px;
   padding: 0;
 }
-/* line 22, ../scss/qisat/_cards.scss */
+/* line 43, ../scss/qisat/_cards.scss */
 .card-course.card-format-line:hover {
   background-color: #d5d5d5;
   z-index: 0;
   position: relative;
 }
-/* line 23, ../scss/qisat/_cards.scss */
+/* line 44, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course-header {
   display: none;
 }
-/* line 24, ../scss/qisat/_cards.scss */
+/* line 45, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course__play {
   background-image: url("../images/courses/card-thumb-play-dark.svg");
   background-size: cover;
@@ -1743,29 +1751,29 @@ article {
   opacity: 0.3;
   cursor: pointer;
 }
-/* line 36, ../scss/qisat/_cards.scss */
+/* line 57, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course__modality {
   padding-left: 10px;
   color: #979797;
 }
-/* line 37, ../scss/qisat/_cards.scss */
+/* line 58, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course__name {
   font-size: 18px;
   font-weight: 400;
   color: #000;
 }
-/* line 39, ../scss/qisat/_cards.scss */
+/* line 60, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course--content {
   padding: 10px 10px;
 }
-/* line 40, ../scss/qisat/_cards.scss */
+/* line 61, ../scss/qisat/_cards.scss */
 .card-course.card-format-line:hover .card-course__button {
   color: #fff;
   background-color: #005B94;
   border: 2px solid transparent;
   opacity: 1;
 }
-/* line 41, ../scss/qisat/_cards.scss */
+/* line 62, ../scss/qisat/_cards.scss */
 .card-course.card-format-line .card-course__button {
   opacity: 0.4;
   color: #000;
@@ -1776,20 +1784,20 @@ article {
   border-radius: 2px;
   float: right;
 }
-/* line 45, ../scss/qisat/_cards.scss */
+/* line 66, ../scss/qisat/_cards.scss */
 .card-course.card-format-line.card-format-line-static {
   box-shadow: none !important;
 }
-/* line 47, ../scss/qisat/_cards.scss */
+/* line 68, ../scss/qisat/_cards.scss */
 .card-course.card-format-line.card-format-line-static table {
   border: none !important;
 }
 
-/* line 51, ../scss/qisat/_cards.scss */
+/* line 72, ../scss/qisat/_cards.scss */
 .card-course.card-format-block {
   max-width: 380px;
 }
-/* line 53, ../scss/qisat/_cards.scss */
+/* line 74, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course-header {
   height: 150px;
   background: #444;
@@ -1799,7 +1807,7 @@ article {
   float: left;
   overflow: hidden;
 }
-/* line 64, ../scss/qisat/_cards.scss */
+/* line 85, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course__modality {
   font-size: 11px;
   font-weight: 800;
@@ -1809,7 +1817,7 @@ article {
   display: inline-block;
   text-transform: uppercase;
 }
-/* line 65, ../scss/qisat/_cards.scss */
+/* line 86, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course__name {
   font-size: 21px;
   font-weight: 300;
@@ -1818,19 +1826,19 @@ article {
   line-height: 1.2;
   margin: 5px 0 15px 0;
 }
-/* line 75, ../scss/qisat/_cards.scss */
+/* line 96, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course--content {
   padding: 10px 10px 20px 10px;
   display: inline-block;
 }
-/* line 84, ../scss/qisat/_cards.scss */
+/* line 105, ../scss/qisat/_cards.scss */
 .card-course.card-format-block:hover .card-course__button {
   color: #fff;
   background-color: #005B94;
   border: 2px solid transparent;
   opacity: 1;
 }
-/* line 86, ../scss/qisat/_cards.scss */
+/* line 107, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course__button {
   background-color: #fff;
   color: #000;
@@ -2439,14 +2447,23 @@ ul.off-canvas-list li a:hover {
   background-color: #064165;
 }
 
+/* Define mobile styles */
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+/* min-width 641px, medium screens */
+/* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+/* min-width 1025px, large screens */
+/* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+/* min-width 1441px, xlarge screens */
+/* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+/* min-width 1921px, xxlarge screens */
 /* ==================== COURSE PAGES ==================== */
-/* line 2, ../scss/qisat/structure/_pages.scss */
+/* line 31, ../scss/qisat/structure/_pages.scss */
 .page-course__header-group {
   padding: 20px 0;
   display: block;
 }
 
-/* line 3, ../scss/qisat/structure/_pages.scss */
+/* line 32, ../scss/qisat/structure/_pages.scss */
 .page-course__header-group--suptitle {
   color: #ADADAD;
   text-transform: uppercase;
@@ -2456,7 +2473,7 @@ ul.off-canvas-list li a:hover {
   margin: 0;
 }
 
-/* line 4, ../scss/qisat/structure/_pages.scss */
+/* line 33, ../scss/qisat/structure/_pages.scss */
 .page-course__header-group--title {
   color: #4e4e4e;
   font-weight: 300;
@@ -2466,12 +2483,62 @@ ul.off-canvas-list li a:hover {
   line-height: 1;
 }
 
+/* line 36, ../scss/qisat/structure/_pages.scss */
+.page-course__breadcrumbs {
+  display: block;
+  list-style: none;
+  margin-left: 0;
+  padding: .2rem 0;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 3px;
+  margin-bottom: 0;
+}
+/* line 45, ../scss/qisat/structure/_pages.scss */
+.page-course__breadcrumbs > :before {
+  color: #AAA;
+  content: "/";
+  margin: 0 .50rem;
+  position: relative;
+  top: 1px;
+}
+/* line 52, ../scss/qisat/structure/_pages.scss */
+.page-course__breadcrumbs > * {
+  color: #008CBA;
+  float: left;
+  /* Define mobile styles */
+  /* min-width 641px, medium screens */
+  /* min-width 1025px, large screens */
+  line-height: initial;
+  font-weight: 300;
+  margin: 0;
+  text-transform: inherit;
+}
+@media only screen {
+  /* line 52, ../scss/qisat/structure/_pages.scss */
+  .page-course__breadcrumbs > * {
+    font-size: 13px;
+  }
+}
+@media only screen and (min-width: 40.063em) {
+  /* line 52, ../scss/qisat/structure/_pages.scss */
+  .page-course__breadcrumbs > * {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 64.063em) {
+  /* line 52, ../scss/qisat/structure/_pages.scss */
+  .page-course__breadcrumbs > * {
+    font-size: 24px;
+  }
+}
+
 /* ================== END COURSE PAGES ================== */
 /* ==================== COURSE PAGES EAD ==================== */
 /* ==================== END COURSE PAGES EAD ==================== */
 /* ==================== COURSE PAGES PRESENCIAL ==================== */
 /* ==================== END COURSE PAGES PRESENCIAL ==================== */
-/* line 42, ../scss/qisat/structure/_pages.scss */
+/* line 103, ../scss/qisat/structure/_pages.scss */
 .courses-input-search {
   border-radius: 2px !important;
   font-size: 1rem !important;
@@ -2483,29 +2550,29 @@ ul.off-canvas-list li a:hover {
   background-position: 4px center !important;
 }
 
-/* line 60, ../scss/qisat/structure/_pages.scss */
+/* line 121, ../scss/qisat/structure/_pages.scss */
 ::-webkit-input-placeholder {
   color: #ccc;
 }
 
-/* line 64, ../scss/qisat/structure/_pages.scss */
+/* line 125, ../scss/qisat/structure/_pages.scss */
 :-moz-placeholder {
   /* Firefox 18- */
   color: #ccc;
 }
 
-/* line 68, ../scss/qisat/structure/_pages.scss */
+/* line 129, ../scss/qisat/structure/_pages.scss */
 ::-moz-placeholder {
   /* Firefox 19+ */
   color: #ccc;
 }
 
-/* line 72, ../scss/qisat/structure/_pages.scss */
+/* line 133, ../scss/qisat/structure/_pages.scss */
 :-ms-input-placeholder {
   color: #ccc;
 }
 
-/* line 78, ../scss/qisat/structure/_pages.scss */
+/* line 139, ../scss/qisat/structure/_pages.scss */
 .button-toggle-form-type {
   background-color: white;
   transition: all 0.5s;
@@ -2521,17 +2588,17 @@ ul.off-canvas-list li a:hover {
   background-image: url("../images/courses/ic_view_module_black_24px.svg");
   background-repeat: no-repeat;
 }
-/* line 92, ../scss/qisat/structure/_pages.scss */
+/* line 153, ../scss/qisat/structure/_pages.scss */
 .button-toggle-form-type.toggle-form-type--active {
   background-image: url("../images/courses/ic_view_list_black_24px.svg");
 }
 
-/* line 99, ../scss/qisat/structure/_pages.scss */
+/* line 160, ../scss/qisat/structure/_pages.scss */
 .button-transform-list-card {
   padding: 0.5rem;
 }
 
-/* line 102, ../scss/qisat/structure/_pages.scss */
+/* line 163, ../scss/qisat/structure/_pages.scss */
 .navigation_courses {
   margin-bottom: 20px;
   /* padding: 20px; */
@@ -2540,35 +2607,35 @@ ul.off-canvas-list li a:hover {
   background: #fff;
 }
 
-/* line 103, ../scss/qisat/structure/_pages.scss */
+/* line 164, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__title {
   color: #D0CBCB;
   font-size: 16px;
   padding: 30px 15px 0px 20px;
 }
 
-/* line 105, ../scss/qisat/structure/_pages.scss */
+/* line 166, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list {
   list-style: none;
   margin: 0;
 }
 
-/* line 106, ../scss/qisat/structure/_pages.scss */
+/* line 167, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item {
   transition: all 0.5s;
 }
-/* line 107, ../scss/qisat/structure/_pages.scss */
+/* line 168, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item:hover .navigation_courses__list-item--link {
   border-right: 5px solid #ccc;
   transition: all 0.5s;
 }
-/* line 108, ../scss/qisat/structure/_pages.scss */
+/* line 169, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item.navigation_courses__list-item-active .navigation_courses__list-item--link {
   border-right: 5px solid #005B94;
   transition: all 0.5s;
 }
 
-/* line 112, ../scss/qisat/structure/_pages.scss */
+/* line 173, ../scss/qisat/structure/_pages.scss */
 .navigation_courses__list-item--link {
   color: #4e4e4e;
   font-size: 14px;
@@ -2579,7 +2646,7 @@ ul.off-canvas-list li a:hover {
   border-right: 5px solid transparent;
 }
 
-/* line 118, ../scss/qisat/structure/_pages.scss */
+/* line 179, ../scss/qisat/structure/_pages.scss */
 .course-page__sections {
   background-color: #fff;
   padding: 20px;
@@ -2587,7 +2654,7 @@ ul.off-canvas-list li a:hover {
   margin-bottom: 20px;
 }
 
-/* line 119, ../scss/qisat/structure/_pages.scss */
+/* line 180, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--title {
   font-size: 26px;
   color: #000;
@@ -2595,30 +2662,30 @@ ul.off-canvas-list li a:hover {
   opacity: .56;
 }
 
-/* line 121, ../scss/qisat/structure/_pages.scss */
+/* line 182, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim {
   padding: 0px;
 }
-/* line 123, ../scss/qisat/structure/_pages.scss */
+/* line 184, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim .course-page__sections--title {
   padding: 20px 20px 10px 20px;
 }
 
-/* line 134, ../scss/qisat/structure/_pages.scss */
+/* line 195, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery {
   border-top: 1px solid #eee;
   padding-top: 10px;
   margin-top: 30px;
 }
 
-/* line 135, ../scss/qisat/structure/_pages.scss */
+/* line 196, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery--subtitle {
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* line 139, ../scss/qisat/structure/_pages.scss */
+/* line 200, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list {
   padding: 1px !important;
   display: inline-block;
@@ -2627,12 +2694,12 @@ ul.off-canvas-list li a:hover {
   position: relative;
 }
 
-/* line 140, ../scss/qisat/structure/_pages.scss */
+/* line 201, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link {
   position: relative;
 }
 
-/* line 141, ../scss/qisat/structure/_pages.scss */
+/* line 202, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image {
   position: relative;
   opacity: 0.9;
@@ -2640,14 +2707,14 @@ ul.off-canvas-list li a:hover {
   transition: transform .2s;
 }
 
-/* line 142, ../scss/qisat/structure/_pages.scss */
+/* line 203, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image:hover {
   opacity: 1;
   transform: scale(1.2);
   z-index: 1;
 }
 
-/* line 144, ../scss/qisat/structure/_pages.scss */
+/* line 205, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active .section__course-gallery-list--link-image {
   position: fixed;
   top: 10%;
@@ -2661,14 +2728,14 @@ ul.off-canvas-list li a:hover {
   transform: scale(1);
 }
 
-/* line 157, ../scss/qisat/structure/_pages.scss */
+/* line 218, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active {
   position: absolute;
   top: 10%;
   z-index: 10;
 }
 
-/* line 158, ../scss/qisat/structure/_pages.scss */
+/* line 219, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active::before {
   content: "";
   background: rgba(0, 0, 0, 0.5);
@@ -2679,49 +2746,49 @@ ul.off-canvas-list li a:hover {
   left: 0;
 }
 
-/* line 166, ../scss/qisat/structure/_pages.scss */
+/* line 227, ../scss/qisat/structure/_pages.scss */
 .course-page__sections-about-instructor--avatar {
   border-radius: 50%;
 }
 
 /* FORMATO DO CURSO*/
-/* line 178, ../scss/qisat/structure/_pages.scss */
+/* line 239, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso {
   margin: 0;
 }
-/* line 179, ../scss/qisat/structure/_pages.scss */
+/* line 240, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item {
   text-align: center;
   line-height: 1;
   border: 1px solid rgba(238, 238, 238, 0.5);
   padding: 20px !important;
 }
-/* line 180, ../scss/qisat/structure/_pages.scss */
+/* line 241, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--top {
   font-size: 13px;
   display: block;
 }
-/* line 181, ../scss/qisat/structure/_pages.scss */
+/* line 242, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--middle {
   font-size: 50px;
   font-weight: 800;
   display: block;
   letter-spacing: -2px;
 }
-/* line 182, ../scss/qisat/structure/_pages.scss */
+/* line 243, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--bottom {
   font-size: 16px;
   opacity: 0.7;
   display: block;
 }
-/* line 183, ../scss/qisat/structure/_pages.scss */
+/* line 244, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--icon img {
   width: 50px;
   margin-top: 5px;
 }
 
 /*CONTEUDO PROGRAMATICO*/
-/* line 192, ../scss/qisat/structure/_pages.scss */
+/* line 253, ../scss/qisat/structure/_pages.scss */
 .label-free {
   background-color: #005B94;
   border: 1px solid #004875;
@@ -2735,31 +2802,31 @@ ul.off-canvas-list li a:hover {
 }
 
 /* PERGUNTAS FREQUENTES*/
-/* line 198, ../scss/qisat/structure/_pages.scss */
+/* line 259, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a:hover {
   background: none;
 }
 
-/* line 199, ../scss/qisat/structure/_pages.scss */
+/* line 260, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a {
   background: none;
   border-top: 1px solid #eee;
 }
 
-/* line 200, ../scss/qisat/structure/_pages.scss */
+/* line 261, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation.active > a {
   background: none;
   color: #005B94;
   font-weight: 600;
 }
 
-/* line 201, ../scss/qisat/structure/_pages.scss */
+/* line 262, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation.active > a:after {
   content: "-";
   color: #005B94;
 }
 
-/* line 202, ../scss/qisat/structure/_pages.scss */
+/* line 263, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > a:after {
   content: "+";
   color: #005B94;
@@ -2769,7 +2836,7 @@ ul.off-canvas-list li a:hover {
   float: right;
 }
 
-/* line 203, ../scss/qisat/structure/_pages.scss */
+/* line 264, ../scss/qisat/structure/_pages.scss */
 .accordion-component .accordion-navigation > .content {
   display: none;
   padding: 0 40px 40px 40px;

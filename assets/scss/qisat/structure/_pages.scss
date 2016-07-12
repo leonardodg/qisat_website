@@ -1,9 +1,70 @@
+// Small screens
+@media only screen { } /* Define mobile styles */
+
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+// Medium screens
+@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+// Large screens
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+// XLarge screens
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+// XXLarge screens
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xxlarge screens */
+
+
+
+
+
+
+
 /* ==================== COURSE PAGES ==================== */
 .page-course__header-group { padding: 20px 0;display: block;	}
 .page-course__header-group--suptitle{ color: #ADADAD; text-transform: uppercase; font-size: 11px; display: block; font-weight: 600; margin: 0;  }
 .page-course__header-group--title{ color: #4e4e4e; font-weight: 300; font-size: 24px; display: block; margin: 0; line-height: 1}
 
+.page-course{
+    &__breadcrumbs{
+           display: block;
+    list-style: none;
+    margin-left: 0;
+    padding: .2rem 0;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 3px;
+    margin-bottom: 0;
+    &>:before {
+        color: #AAA;
+        content: "/";
+        margin: 0 .50rem;
+        position: relative;
+        top: 1px;
+    }
+    &>* {
+        color: #008CBA;
+        float: left;
+        @media only screen { font-size: 13px; } /* Define mobile styles */
+        @media only screen and (min-width: 40.063em) { font-size: 18px; } /* min-width 641px, medium screens */
+        @media only screen and (min-width: 64.063em) { font-size: 24px; } /* min-width 1025px, large screens */
+        line-height: initial;
+        font-weight: 300;
+        margin: 0;
+        text-transform: inherit;
+    }
+}
+}
+
  /* ================== END COURSE PAGES ================== */
+
 
 
 

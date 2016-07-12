@@ -1,12 +1,33 @@
-.isotope_content-item--list{
-  margin: 0 !important;
-  padding: 0 !important;
-}
+// .isotope_content-item--list{
+//   margin: 0 !important;
+//   padding: 0 !important;
+// }
 
-.isotope_content-item{    
-  padding: 0 0.3rem 0.6rem !important;
-  &.isotope_content-item--list{padding: 0 !important;}
-}
+// .isotope_content-item{    
+//   padding: 0 0.3rem 0.6rem !important;
+//   &.isotope_content-item--list{padding: 0 !important;}
+// }
+
+
+
+.list-filter.medium-block-grid-1 > li{     padding: 0;}
+  
+  .masonry-layout {
+    column-count: 3;
+    column-gap: 0;
+  }
+  .masonry-layout__panel {
+    break-inside: avoid;
+    padding: 5px;
+  }
+  .masonry-layout__panel-content {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+
+
+
 
 /*CARDS*/
 .card-course{
