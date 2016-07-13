@@ -1,19 +1,7 @@
 
 /*'HEADER*/
-.header-main{
-      float: left;
-	border-top: 3px solid $primary-color-dark;
-  display: inline-block;
-  width: 100%;
- background: #fff;
-  display: inline-block;
-   position: relative;
-   border-bottom: 1px solid #ccc;
-  @extend .z-2;
-   position: fixed;
-  z-index: 10;
-   right: 0;    left: 0;    top: 0;
- 	transition: transform 200ms linear;
+.header-main{ float: left; border-top: 3px solid $primary-color-dark; display: inline-block; width: 100%; background: #fff; display: inline-block; position: relative; border-bottom: 1px solid #ccc; position: fixed; z-index: 200; right: 0; left: 0; top: 0; transition: transform 200ms linear;
+   @extend .z-2;
 	&.slide--up{display: block; transform: translateY(-100%);}
 	&.slide--top{display: none; transform: translateY(0%);}
 }
@@ -26,7 +14,6 @@
 .header-main__transparent{
   background: rgba(255, 255, 255, 0.12);
   box-shadow: none !important;
-
 .header-main__ul{
     .header-main__item{
         color: #fff;

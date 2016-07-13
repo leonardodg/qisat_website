@@ -23,10 +23,18 @@
 $(document).ready(function() {
   if ( $('#sidebar-styker').length ) {
        $("#sidebar-styker").stick_in_parent({
+        offset_top: 80,
+        recalc_every: 1,
+       });
+  }
+
+   if ( $('#sidebar-styker--course').length ) {
+       $("#sidebar-styker--course").stick_in_parent({
         offset_top: 200,
         recalc_every: 1,
        });
   }
+
 }());
 
 
@@ -201,19 +209,16 @@ if ( $('.footer-primary__list__item').length ) {
                   if($('.card-course').hasClass('card-format-block')) {
                     $(".card-course").removeClass("card-format-block").addClass("card-format-line");
                     $(".card-course").addClass("card-format-line");
-                    $(".filtered-list").removeClass("small-block-grid-1 medium-block-grid-2 large-block-grid-3").addClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1");
-                    $(".isotope_content-item").addClass("isotope_content-item--list");
-
+                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3").addClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1");
+ 
                    }
                   else if($('.card-course').hasClass('card-format-line')) {
                     $(".card-course").removeClass("card-format-line").addClass("card-format-block");
                     $(".card-course").addClass("card-format-block");
-                    $(".filtered-list").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-2 large-block-grid-3");
-                    $(".isotope_content-item").removeClass("isotope_content-item--list");
-                  }
+                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3");
+                   }
 
-                  $('#container-isotope').isotope();
-
+ 
              });
         }
       }());

@@ -9,21 +9,16 @@
 // }
 
 
+ 
 
-.list-filter.medium-block-grid-1 > li{     padding: 0;}
+
+
+.list-filter{
+   &.medium-block-grid-1 > li{ padding: 0; }
+   .card-format-line, .card-format-ever-line { max-width: 820px; margin-left: 10px; }
+}
   
-  .masonry-layout {
-    column-count: 3;
-    column-gap: 0;
-  }
-  .masonry-layout__panel {
-    break-inside: avoid;
-    padding: 5px;
-  }
-  .masonry-layout__panel-content {
-    padding: 10px;
-    border-radius: 10px;
-  }
+ 
 
 
 
@@ -39,7 +34,7 @@
  }
 
 .card-course.card-format-line{
-  margin-bottom: 0px; padding: 0;   
+  margin-bottom: 0px; padding: 0; 
   &:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
   .card-course-header { display: none}
   .card-course__play{
@@ -69,41 +64,30 @@
   }
 }
 
-.card-course.card-format-block{
-  max-width:380px;
-  .card-course-header {
-    height: 150px;
-    background: #444;
-    display: inline-block;
-    width: 100%;
-    padding:0px;
-        float: left;
-        overflow: hidden;
-}
-
-  .card-course__play{}
-  .card-course__modality{ font-size: 11px; font-weight: 800; color: #838384;     float: left;    width: 100%;    display: inline-block; text-transform: uppercase}
-  .card-course__name{
-    font-size: 21px;
-    font-weight: 300;
-    color: #000;
-    display: block;
-    line-height: 1.2;
-    margin: 5px 0 15px 0;
-  }
-  .card-course__instructors{}
-  .card-course__modality{}
-  .card-course--content {
-    padding: 10px 10px 20px 10px;
-  display: inline-block;
- 
-}
-
-
-
+.card-course.card-format-block{ /*max-width:380px; */ border-radius: 4px;
+    .card-course-header { height: 180px; background: #444; display: inline-block; width: 100%; padding:0px; float: left; overflow: hidden;  background-size: cover; background-repeat: no-repeat; }
+    .card-course__play{}
+    .card-course__modality{ font-size: 11px; font-weight: 300; color: #838384;     float: left;    width: 100%;    display: inline-block; text-transform: uppercase}
+    .card-course__name{ font-size: 17px; font-weight: 300; color: #000; display: inline-block; height: 50px; line-height: 1.5; width: 100%; margin: 5px 0 15px 0; }
+    .card-course__instructors{}
+    .card-course__modality{}
+    .card-course--content { padding: 10px 10px 20px 10px; display: inline-block; }
   //&:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
-  &:hover .card-course__button{ color:#fff;   background-color: $primary-color;  border: 2px solid transparent; opacity: 1}
-
+    &:hover .card-course__button{ color:#fff;   background-color: $primary-color;  border: 2px solid transparent; opacity: 1}
     .card-course__button{  background-color: #fff; color:#000;  border:2px solid #ccc; font-size: 14px; padding: 5px 10px; border-radius: 4px; opacity: 0.3  }
 }
+
+
+
+.card-format-ever-line{ 
+  @extend .card-course;
+  @extend .card-course.card-format-line; 
+}
+
+.card-format-ever-block{ 
+  @extend .card-course;
+  @extend .card-course.card-format-block; 
+}
+
+
 
