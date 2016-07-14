@@ -143,60 +143,60 @@
 			 </div>  <!-- // large-3 columns -->
 			 
 			 <div class="medium-12 large-9 columns" data-equalizer-watch>
-				 <div class="row">
-				 		<div class="large-12 columns">
-							<header class="page-course__header-group">
-									<span class="page-course__header-group--suptitle">Você está visualizando</span>
-											<ul class="page-course__breadcrumbs breadcrumbs">
-											  <li><a href="#">Todos os cursos</a></li>
-											  <li><a href="#">Modalidade</a></li>
-											  <li class="unavailable"><a href="#">Tipo</a></li>
-											  <li class="current"><a href="#">Software</a></li>
-											</ul>
-									<!--  //caso não for usado o breadcrumbs
-									<span class="page-course__header-group--title">Todos os cursos / Modalidade / Tipo / Área de atuação / Software</span> -->
-							</header><!-- //page-course__header-group -->
-						</div>   <!-- //large-12 columns -->
-				</div> <!-- // row -->
-			     <ul class="list-filter small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
+				<header class="page-course__header-group">
+					<span class="page-course__header-group--suptitle">Você está visualizando</span>
+							<ul class="page-course__breadcrumbs breadcrumbs">
+							  <li><a href="#">Todos os cursos</a></li>
+							  <li><a href="#">Modalidade</a></li>
+							  <li class="unavailable"><a href="#">Tipo</a></li>
+							  <li class="current"><a href="#">Software</a></li>
+							</ul>
+					<!--  //caso não for usado o breadcrumbs
+					<span class="page-course__header-group--title">Todos os cursos / Modalidade / Tipo / Área de atuação / Software</span> -->
+				</header><!-- //page-course__header-group -->
+ 
+			     <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
 							<!-- MODELO PARA LOOPING -->
-							<li>
-								<div class="card-course card-format-block">
-						   		<div class="card-course-inner">
-						   				<a href="course-ead.html">
-						   					<span class="card-course--litle-play"></span>
-						   					<div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-1.jpg)"></div> 
-						   				</a>
-						   				<div class="card-course--content">
-						   					<a href="course-ead.html">
-						   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
-						   						<span class="card-course__modality">{{curso-modalidade}}</span>
-						   						<span class="card-course__name">{{curso-nome-do-curso}}</span>
-						   					</a>
-						   					<a href="course-ead.html" class="card-course__button  has-price_popover">R$ 56,00
-						   						<span class="card-course__icon-cart">
-						   							<!-- <i class="material-icons">add_shopping_cart</i> -->
-						   							<div class="price_popover">
-						   								<div class="price_popover__header">
-						   									<p class="price_popover__header__info"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p>
-						   								</div> <!-- //price_popover__header -->
-						   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
-						   							</div> <!-- //price_popover -->
-						   						</span>
-						   					</a>
-						   				</div>  <!-- //card-course-content -->
-						   		</div> <!-- //card-course-inner -->
-							</div> <!-- //card-course -->
+							<li class="block-grid__courses__item">
+								<div class="list-filter__inner">
+									<div class="card-course card-format-block">
+								   		<div class="card-course-inner">
+								   				<a href="course-ead.html">
+								   					<span class="card-course--litle-play"></span>
+								   					<div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-1.jpg)"></div> 
+								   				</a>
+								   				<div class="card-course--content">
+								   					<a href="course-ead.html">
+								   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
+								   						<span class="card-course__modality">{{curso-modalidade}}</span>
+								   						<span class="card-course__name">{{curso-nome-do-curso}}</span>
+								   					</a>
+								   					<a href="course-ead.html" class="card-course__button  has-price_popover">R$ 56,00
+								   						<span class="card-course__icon-cart">
+								   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+								   							<div class="price_popover">
+								   								<div class="price_popover__header">
+								   									<p class="price_popover__header__info"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p>
+								   								</div> <!-- //price_popover__header -->
+								   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
+								   							</div> <!-- //price_popover -->
+								   						</span>
+								   					</a>
+								   				</div>  <!-- //card-course-content -->
+								   		</div> <!-- //card-course-inner -->
+									</div> <!-- //card-course -->
+								</div> <!-- //list-filter__inner -->
+								
 							</li>
 							<!-- FIM MODELO PARA LOOPING -->
 
 
 				 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
-						<li><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-2.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-3.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-4.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-5.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Software Eberick V8</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-6.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">Durabilidade das Estruturas de Concreto</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div></li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-2.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-3.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-4.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-5.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Software Eberick V8</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-6.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Palestra</span>  <span class="card-course__name">Durabilidade das Estruturas de Concreto</span> </a><a href="#" class="card-course__button">R$ 300,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
  						 <!-- end Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
 					</ul>
 
@@ -204,11 +204,11 @@
 					<header class="page-course__header-group">
  						 <span class="page-course__header-group--cattitle">Nome da Categoria</span>
  					</header><!-- //page-course__header-group -->
- 					<ul class="list-filter small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
+ 					<ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3 ">
 				 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
-						<li><a href="course-ead.html"></a> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-7.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-8.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a> <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-9.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner">  <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-7.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner">  <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-8.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner">  <div class="card-course card-format-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-9.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
  				 		<!-- end Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
 					</ul>
 
@@ -218,11 +218,11 @@
 					<header class="page-course__header-group">
  						 <span class="page-course__header-group--cattitle">Sempre Lista</span>
  					</header><!-- //page-course__header-group -->
- 					<ul class="list-filter medium-block-grid-1">
+ 					<ul class="block-grid__courses medium-block-grid-1">
 				 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
-						<li><a href="course-ead.html"></a><div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-1.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-2.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-3.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+						<li class="block-grid__courses__item"> <div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-1.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div>   </li>
+						<li class="block-grid__courses__item"> <div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-2.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div>   </li>
+						<li class="block-grid__courses__item"> <div class="card-format-ever-line"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-3.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div>   </li>
  				 		<!-- end Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
 					</ul>
 
@@ -232,13 +232,61 @@
 					<header class="page-course__header-group">
  						 <span class="page-course__header-group--cattitle">Sempre bloco</span>
  					</header><!-- //page-course__header-group -->
- 					<ul class="medium-block-grid-3">
+ 					<ul class="block-grid__courses medium-block-grid-3">
 				 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
-						<li><a href="course-ead.html"></a><div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-4.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-5.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div></li>
-						<li><a href="course-ead.html"></a><div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-6.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div></li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-4.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-5.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Prediais de Águas Pluviais</span> </a><a href="#" class="card-course__button">R$ 180,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+						<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-6.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Instalações Elétricas Residenciais</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
  				 		<!-- end Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
 					</ul>
+
+
+					<header class="page-course__header-group">
+ 						 <span class="page-course__header-group--cattitle">Série </span>
+ 					</header><!-- //page-course__header-group -->
+ 				 		<!-- Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
+  							<div class="card-format-ever-block">
+  								<div class="row collapse">
+	 								<div class="small-12 medium-4 columns">
+	 									<div class="card-course-inner">
+											<a href="course-ead.html">
+												<span class="card-course--litle-play"></span>
+												<div class="card-course-header" style="background-image: url(assets/images/courses/card-thumb-4.jpg)"></div> 
+											</a>
+											<div class="card-course--content">
+												<a href="course-ead.html">  
+													<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+													<span class="card-course__modality">Ensino à Distância</span>  
+													<span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> 
+												</a>
+												<a href="#" class="card-course__button">R$ 360,00</a> 
+											</div> 
+										</div>
+	 								</div> <!-- // columns -->
+
+	 								<div class="small-12 medium-8 columns">
+		 								<div class="card-course-serie"> 
+		 									<ul class="card-course-serie__list">
+		 										<li> <strong>Capítulo 1</strong> <span>Introdução a geotécnica</span> </li>
+		 										<li> <strong>Capítulo 2</strong> <span>Investigações Geológicas e Geotécnicas </span> </li>
+		 										<li> <strong>Capítulo 3</strong> <span>Tipos de fundações e Métodos Executivos</span> </li>
+		 										<li> <strong>Capítulo 4</strong> <span>Métodos Executivos - Profundas</span> </li>
+		 										<li> <strong>Capítulo 5</strong> <span>Métodos Executivos e Escola do Tipo de Fundações</span> </li>
+		 										<li> <strong>Capítulo 6</strong> <span>Tipos de fundações e Métodos Executivos</span> </li>
+		 										<li> <strong>Capítulo 1</strong> <span>Introdução a geotécnica</span> </li>
+		 										<li> <strong>Capítulo 2</strong> <span>Investigações Geológicas e Geotécnicas </span> </li>
+		 										<li> <strong>Capítulo 3</strong> <span>Tipos de fundações e Métodos Executivos</span> </li>
+		 										<li> <strong>Capítulo 4</strong> <span>Métodos Executivos - Profundas</span> </li>
+		 										<li> <strong>Capítulo 5</strong> <span>Métodos Executivos e Escola do Tipo de Fundações</span> </li>
+		 										<li> <strong>Capítulo 6</strong> <span>Tipos de fundações e Métodos Executivos</span> </li>
+		 									</ul>	
+		 								</div> <!-- /card-course-serie-list__container -->
+ 	 								</div> <!-- // columns -->
+ 								</div> <!-- // row -->
+							</div> <!-- // card-format-ever-block -->
+								
+    				 		<!-- end Aqui looping cards via angular, todo esse conteúdo de <li's> tem que ser deletado -->
+ 
 
 					<div class="custom-loading" >
 						<i class="material-icons">hdr_weak</i>
@@ -371,6 +419,7 @@
 			   	    <script src="bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 					<script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 					<script src="assets/js/sticky-kit.js"></script>
+					<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script> 
 				<!-- // GLOBAL -->
 
 				<!-- PÁGINA HOME -->

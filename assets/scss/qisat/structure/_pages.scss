@@ -117,7 +117,9 @@
 /* ==================== END COURSE PAGES PRESENCIAL ==================== */
 
 
-
+[class*=block-grid-]>li{
+    padding:0;
+}
 
 
 
@@ -126,11 +128,11 @@
     border-radius: 2px !important;
     font-size: 1rem !important;
     padding: 0 !important;
-    text-indent: 30px;
+    text-indent: 40px;
     margin-bottom: 10px;
      background-image: url("../images/courses/ic_search_black_24px.svg") !important;
     background-repeat: no-repeat !important;
-    background-position: 4px center !important;
+    background-position: 10px center !important;
 
     &:focus{
 
