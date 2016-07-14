@@ -142,7 +142,7 @@
         line-height: 1.3;
 
         span {
-            font-weight: 100;
+            font-weight: 300;
             display: block;
         }
     }
@@ -180,6 +180,7 @@
 
             h4 {
                 text-transform: uppercase;
+                span{ font-size: 16px;}
             }
         }
     }
@@ -193,7 +194,7 @@
 
 .shortcut-courses__list-third {
     li {
-        div {}
+        div {padding: 5px 20px; }
 
         h4 {
             font-size: 17px;

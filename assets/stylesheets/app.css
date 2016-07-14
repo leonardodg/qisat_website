@@ -459,7 +459,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 97, ../scss/qisat/_globals.scss */
 .row {
-  max-width: 90rem;
+  max-width: 75rem;
 }
 
 /* line 98, ../scss/qisat/_globals.scss */
@@ -1000,7 +1000,7 @@ article {
 .shortcut-courses__list-first h4 span,
 .shortcut-courses__list-second h4 span,
 .shortcut-courses__list-third h4 span {
-  font-weight: 100;
+  font-weight: 300;
   display: block;
 }
 /* line 150, ../scss/qisat/_home.scss */
@@ -1041,15 +1041,23 @@ article {
 .shortcut-courses__list-first li div h4 {
   text-transform: uppercase;
 }
+/* line 183, ../scss/qisat/_home.scss */
+.shortcut-courses__list-first li div h4 span {
+  font-size: 16px;
+}
 
-/* line 198, ../scss/qisat/_home.scss */
+/* line 197, ../scss/qisat/_home.scss */
+.shortcut-courses__list-third li div {
+  padding: 5px 20px;
+}
+/* line 199, ../scss/qisat/_home.scss */
 .shortcut-courses__list-third li h4 {
   font-size: 17px;
 }
 
 /* 'HOME INSTRUCTORS
 ========================================= */
-/* line 215, ../scss/qisat/_home.scss */
+/* line 216, ../scss/qisat/_home.scss */
 .home__section-instructors {
   padding: 70px 0;
   background: #00c6ff;
@@ -1060,12 +1068,12 @@ article {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-/* line 226, ../scss/qisat/_home.scss */
+/* line 227, ../scss/qisat/_home.scss */
 .home__instructors__item {
   padding: 0px !important;
 }
 
-/* line 230, ../scss/qisat/_home.scss */
+/* line 231, ../scss/qisat/_home.scss */
 .home__instructors__card {
   margin: 2px;
   position: relative;
@@ -1077,19 +1085,19 @@ article {
   -moz-transition: all 250ms;
   transition: all 250ms;
 }
-/* line 243, ../scss/qisat/_home.scss */
+/* line 244, ../scss/qisat/_home.scss */
 .home__instructors__card:hover {
   -webkit-transform: translateY(-5px);
   -moz-transform: translateY(-5px);
   transform: translateY(-5px);
 }
 
-/* line 251, ../scss/qisat/_home.scss */
+/* line 252, ../scss/qisat/_home.scss */
 .home__instructors__card-header {
   position: relative;
 }
 
-/* line 253, ../scss/qisat/_home.scss */
+/* line 254, ../scss/qisat/_home.scss */
 .home__instructors__linkedin {
   position: absolute;
   bottom: 5px;
@@ -1104,18 +1112,18 @@ article {
   cursor: pointer;
 }
 
-/* line 267, ../scss/qisat/_home.scss */
+/* line 268, ../scss/qisat/_home.scss */
 .home__instructors__card-footer {
   padding: 10px;
   line-height: 1;
 }
 
-/* line 268, ../scss/qisat/_home.scss */
+/* line 269, ../scss/qisat/_home.scss */
 .home__instructors__name {
   font-size: 0.8rem;
 }
 
-/* line 269, ../scss/qisat/_home.scss */
+/* line 270, ../scss/qisat/_home.scss */
 .home__instructors__profession {
   font-size: 0.8rem;
   opacity: 0.4;
@@ -1124,20 +1132,20 @@ article {
 /* 'HOME NUMBERS
 ========================================= */
 @media only screen {
-  /* line 279, ../scss/qisat/_home.scss */
+  /* line 280, ../scss/qisat/_home.scss */
   .home__section-numbers {
     background-color: #4e4e4e;
     padding: 0;
   }
 
-  /* line 280, ../scss/qisat/_home.scss */
+  /* line 281, ../scss/qisat/_home.scss */
   .home__section-numbers--list {
     display: inline-block;
     width: 100%;
     line-height: 1;
   }
 
-  /* line 281, ../scss/qisat/_home.scss */
+  /* line 282, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item {
     text-align: center;
     display: inline-block;
@@ -1146,17 +1154,17 @@ article {
     margin-bottom: -6px;
   }
 
-  /* line 282, ../scss/qisat/_home.scss */
+  /* line 283, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item {
     border-right: 1px solid #444;
   }
 
-  /* line 283, ../scss/qisat/_home.scss */
+  /* line 284, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item:last-child {
     border-right: none;
   }
 
-  /* line 284, ../scss/qisat/_home.scss */
+  /* line 285, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item strong {
     letter-spacing: -3px;
     font-weight: 800;
@@ -1165,14 +1173,14 @@ article {
     display: block;
   }
 
-  /* line 285, ../scss/qisat/_home.scss */
+  /* line 286, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item strong em {
     font-size: 18px;
     letter-spacing: 0.2px;
     text-transform: lowercase;
   }
 
-  /* line 286, ../scss/qisat/_home.scss */
+  /* line 287, ../scss/qisat/_home.scss */
   .home__section-numbers--list-item span {
     font-size: 17px;
     font-weight: 100;
@@ -1181,7 +1189,7 @@ article {
     display: inline-block;
   }
 
-  /* line 287, ../scss/qisat/_home.scss */
+  /* line 288, ../scss/qisat/_home.scss */
   .home__section-topcourses {
     padding: 70px 0;
   }
@@ -1189,24 +1197,24 @@ article {
 /* 'TESTIMONIALS
 ========================================= */
 @media only screen {
-  /* line 301, ../scss/qisat/_home.scss */
+  /* line 302, ../scss/qisat/_home.scss */
   .home__section-testimonials {
     display: inline-block;
     width: 100%;
     float: left;
   }
 
-  /* line 302, ../scss/qisat/_home.scss */
+  /* line 303, ../scss/qisat/_home.scss */
   .home__section-testimonials--grid-item {
     padding: 0 !important;
   }
 
-  /* line 305, ../scss/qisat/_home.scss */
+  /* line 306, ../scss/qisat/_home.scss */
   .testimonial__background {
     background-position: left top;
     background-size: cover;
   }
-  /* line 307, ../scss/qisat/_home.scss */
+  /* line 308, ../scss/qisat/_home.scss */
   .testimonial__quote {
     padding: 0 40px;
     font-style: italic;
@@ -1216,7 +1224,7 @@ article {
     color: #fff;
     font-weight: 300;
   }
-  /* line 308, ../scss/qisat/_home.scss */
+  /* line 309, ../scss/qisat/_home.scss */
   .testimonial__name {
     font-size: 0.75em;
     font-weight: 500;
@@ -1226,21 +1234,21 @@ article {
     margin-top: 2rem;
     padding: 0 40px;
   }
-  /* line 309, ../scss/qisat/_home.scss */
+  /* line 310, ../scss/qisat/_home.scss */
   .testimonial__item {
     display: inline-block;
     width: 100%;
     min-height: 500px;
   }
 
-  /* line 315, ../scss/qisat/_home.scss */
+  /* line 316, ../scss/qisat/_home.scss */
   .home__section-testimonials-items {
     background-color: #222;
     width: 100%;
     display: inline-block;
   }
 
-  /* line 316, ../scss/qisat/_home.scss */
+  /* line 317, ../scss/qisat/_home.scss */
   .testimonial__container {
     margin: 0 auto;
     width: 100%;
@@ -1248,7 +1256,7 @@ article {
     display: inline-block;
   }
 
-  /* line 317, ../scss/qisat/_home.scss */
+  /* line 318, ../scss/qisat/_home.scss */
   .owl-carousel-testimonials-home .owl-dots {
     margin-top: 0;
     text-align: center;
@@ -1258,7 +1266,7 @@ article {
     left: 0;
   }
 
-  /* line 318, ../scss/qisat/_home.scss */
+  /* line 319, ../scss/qisat/_home.scss */
   .owl-carousel-testimonials-home, .testimonial__item {
     display: inline-block;
     width: 100%;
@@ -1266,24 +1274,24 @@ article {
 }
 /* Define mobile styles */
 @media only screen and (min-width: 40.063em) {
-  /* line 325, ../scss/qisat/_home.scss */
+  /* line 326, ../scss/qisat/_home.scss */
   .testimonial__container {
     padding: 90px 0 90px 210px;
   }
 
-  /* line 326, ../scss/qisat/_home.scss */
+  /* line 327, ../scss/qisat/_home.scss */
   .testimonial__item {
     min-height: 400px;
   }
 }
 /* min-width 641px, medium screens */
 @media only screen and (min-width: 64.063em) {
-  /* line 332, ../scss/qisat/_home.scss */
+  /* line 333, ../scss/qisat/_home.scss */
   .testimonial__container {
     padding: 120px 0 120px 500px;
   }
 
-  /* line 333, ../scss/qisat/_home.scss */
+  /* line 334, ../scss/qisat/_home.scss */
   .testimonial__item {
     min-height: 440px;
   }
@@ -2200,7 +2208,7 @@ input[type=checkbox].with-font:checked ~ label:before {
   /* line 42, ../scss/qisat/structure/_header.scss */
   .header-main__logo {
     background-image: url("../images/brand/brand_large.svg");
-    width: 319px;
+    width: 415px;
   }
 }
 
@@ -2511,6 +2519,7 @@ input[type=checkbox].with-font:checked ~ label:before {
 
 /* line 28, ../scss/qisat/structure/_footer.scss */
 .footer-secondary {
+  padding: 10px 0;
   background-color: #424141;
 }
 
