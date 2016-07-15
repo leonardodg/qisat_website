@@ -1914,6 +1914,7 @@ article {
   /*max-width:380px; */
   border-radius: 4px;
   display: inline-block;
+  max-height: 320px;
 }
 /* line 74, ../scss/qisat/_cards.scss */
 .card-course.card-format-block .card-course-header, .card-format-block.card-format-ever-line .card-course-header, .card-format-ever-block .card-course-header {
@@ -1975,29 +1976,40 @@ article {
 .card-course-serie {
   padding: 20px;
   margin: 0;
+  /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 }
-/* line 88, ../scss/qisat/_cards.scss */
-.card-course-serie__list {
-  line-height: auto;
+@media only screen and (max-width: 40em) {
+  /* line 87, ../scss/qisat/_cards.scss */
+  .card-course-serie {
+    display: none;
+  }
 }
 /* line 89, ../scss/qisat/_cards.scss */
+.card-course-serie__list {
+  overflow-y: scroll;
+  max-height: 260px;
+  padding: 10px;
+}
+/* line 90, ../scss/qisat/_cards.scss */
 .card-course-serie__item {
   list-style: none;
   margin: 0;
 }
-/* line 90, ../scss/qisat/_cards.scss */
+/* line 91, ../scss/qisat/_cards.scss */
 .card-course-serie__item .chapter {
   display: block;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding-top: 20px;
 }
-/* line 91, ../scss/qisat/_cards.scss */
+/* line 92, ../scss/qisat/_cards.scss */
 .card-course-serie__item .name {
   opacity: 0.7;
   font-weight: 300;
   font-size: 1.2rem;
 }
-/* line 92, ../scss/qisat/_cards.scss */
+/* line 93, ../scss/qisat/_cards.scss */
 .card-course-serie__item .link {
   line-height: auto;
 }
