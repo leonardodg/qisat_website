@@ -1,6 +1,6 @@
 /*Footer main*/
 .footer-primary{ background-color: #4e4e4e; padding: 50px 0;}
-.footer-primary__columns{     margin: 0; }
+.footer-primary__columns{     margin: 0; padding: 0 20px;}
 .footer-primary__columns--item{
  display: inline-block;
  vertical-align: top;
@@ -25,7 +25,7 @@ transition: all 0.5s ease;
 
 /*Footer bottom*/
 .footer-secundary__columns {    margin: 0;     text-align: center;}
-.footer-secondary{ 
+.footer-secondary{  padding: 10px 0;
 	background-color: #424141; 
 
 	//background: #232526; /* fallback for old browsers */
