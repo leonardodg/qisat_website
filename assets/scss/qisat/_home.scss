@@ -1,0 +1,342 @@
+/* 'HERO COURSES
+========================================= */
+// Small screens
+@media only screen { } /* Define mobile styles */
+
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+// Medium screens
+@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+// Large screens
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+// XLarge screens
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+// XXLarge screens
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xxlarge screens */
+
+
+
+
+
+
+
+
+/*======================================== */
+
+/* 'HOME SHORTCUT
+========================================= */
+.shortcut-courses {
+    background-color: #2f3239;
+    display: inline-block;
+    width: 100%;
+    padding: 70px 0;
+}
+
+.shortcut-courses__title {
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+}
+
+.shortcut-courses__subtitle {
+    color: #fff;
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    opacity: 0.3;
+}
+
+
+.shortcut-courses__pos-graduacao{
+    &:hover{border-color: $category-pos-graduation-color;}
+}
+.shortcut-courses__cursos-software{
+    &:hover{border-color: $category-software-courses-color;}
+}
+.shortcut-courses__cursos-teorico{
+    &:hover{border-color: $category-theoretical-courses-color;}
+}
+.shortcut-courses__solutions-business{
+    &:hover{border-color: $category-solutions-business-color;}
+}
+
+
+
+
+.shortcut-courses__categoria-estrutural{
+    &:hover{border-color: $category-estrutural-color;}
+}
+
+.shortcut-courses__categoria-eletrica{
+    &:hover{border-color: $category-eletrica-color;}
+}
+
+.shortcut-courses__categoria-hidrossanitaria{
+    &:hover{border-color: $category-hidrossanitaria-color;}
+}
+.shortcut-courses__categoria-agronomica{
+    &:hover{border-color: $category-agronomica-color;}
+}
+
+
+
+
+.shortcut-courses__categoria-eberick{
+     &:hover{border-color:  $software-eberick-color;}
+}
+.shortcut-courses__categoria-qibuilder{
+     &:hover{border-color: $software-qibuilder-color;}
+}
+.shortcut-courses__categoria-qieletrico{
+     &:hover{border-color: $software-qieletrico-color;}
+}
+.shortcut-courses__categoria-qihidrossanitario{
+     &:hover{border-color: $software-qihidrossanitario-color;}
+}
+.shortcut-courses__categoria-qiincendio{
+     &:hover{border-color: $software-qiincendio-color;}
+}
+
+
+
+
+
+
+
+
+.shortcut-courses__list-first,
+.shortcut-courses__list-second,
+.shortcut-courses__list-third {
+    li {
+        div {
+            padding: 20px;
+            margin: 5px;
+            border: 1px solid;
+            border-color: #aaa;
+            transition: all 0.5s;
+
+            &:hover {
+                border-color: red;
+            }
+        }
+    }
+
+    h4 {
+        color: #fff;
+        font-weight: 700;
+        line-height: 1.3;
+
+        span {
+            font-weight: 100;
+            display: block;
+        }
+    }
+
+    .action {
+        color: #fff;
+        border: 1px solid;
+        padding: 2px 0px 4px 15px;
+        display: inline-block;
+        border-radius: 4px;
+        opacity: 0.7;
+        font-size: 16px;
+        font-weight: 100;
+        transition: all 0.5s;
+        display: none;
+    }
+
+    em {
+        color: #fff;
+        opacity: 0.4;
+    }
+}
+
+.shortcut-courses__list-first {
+    li {
+        div {
+            text-align: center;
+            background-color: #4e4e4e;
+            padding: 70px 20px 40px 20px;
+
+            > .material-icons {
+                font-size: 50px;
+                color: rgba(255, 255, 255, 0.44);
+            }
+
+            h4 {
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.shortcut-courses__list-second {
+    li {
+        div {}
+    }
+}
+
+.shortcut-courses__list-third {
+    li {
+        div {}
+
+        h4 {
+            font-size: 17px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+/* 'HOME INSTRUCTORS
+========================================= */
+
+.home__section-instructors {
+    //background-color: #2196f3;
+    padding: 70px 0;
+    background: #00c6ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.home__instructors {}
+
+.home__instructors__item {
+    padding: 0px !important;
+}
+
+.home__instructors__card {
+    margin: 2px;
+    position: relative;
+    @extend .z-1;
+    background-color: #fff;
+    transition: all 0.5s;
+    border-radius: 4px;
+    overflow: hidden;
+
+      -webkit-transition: all 250ms;
+      -moz-transition: all 250ms;
+      transition: all 250ms;
+
+    &:hover{
+        @extend .z-3;
+      -webkit-transform: translateY(-5px);
+          -moz-transform: translateY(-5px);
+         transform: translateY(-5px);
+  }
+}
+
+.home__instructors__card-header {position: relative}
+.home__instructors__thumb {}
+.home__instructors__linkedin {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 26px;
+    overflow: hidden;
+    height: 25px;
+
+    /* border: 1px solid red; */
+    font-size: 0;
+    background-image: url("../images/instructors/icon-linkedin.svg");
+    background-size: cover;
+        cursor: pointer;
+}
+.home__instructors__card-footer { padding:10px;    line-height: 1;}
+.home__instructors__name {font-size: 0.8rem;}
+.home__instructors__profession {font-size: 0.8rem; opacity:0.4}
+
+
+
+
+
+
+/* 'HOME NUMBERS
+========================================= */
+@media only screen {
+      .home__section-numbers { background-color: #4e4e4e; padding: 0; }
+      .home__section-numbers--list { display: inline-block; width: 100%; line-height: 1; }
+      .home__section-numbers--list-item { text-align: center; display: inline-block; color: #fff; padding: 20px 0 !important;  margin-bottom: -6px; }
+      .home__section-numbers--list-item { border-right: 1px solid #444;  }
+      .home__section-numbers--list-item:last-child { border-right: none;  }
+      .home__section-numbers--list-item strong { letter-spacing: -3px; font-weight: 800; font-size: 36px; text-transform: uppercase; display: block; }
+      .home__section-numbers--list-item strong em { font-size: 18px; letter-spacing: 0.2px; text-transform: lowercase; }
+      .home__section-numbers--list-item span { font-size: 17px; font-weight: 100; opacity: 0.56; margin-top: 5px; display: inline-block; }
+      .home__section-topcourses{  padding: 70px 0;}
+}
+// Medium screens
+@media only screen and (min-width: 40.063em) {
+}
+
+
+
+
+/* 'TESTIMONIALS
+========================================= */
+// Small screens
+@media only screen {
+      .home__section-testimonials{}
+      .home__section-testimonials{display: inline-block; width: 100%; float: left;}
+      .home__section-testimonials--grid-item{ padding: 0 !important; }
+      
+      .testimonial{
+        &__background { background-position: left top; background-size: cover;}
+        &__background{}
+        &__quote { padding: 0 40px; font-style: italic; font-size: 1.7em; line-height: 1.2; letter-spacing: 0.02em; color: #fff; font-weight: 300; }
+        &__name{ font-size: 0.75em; font-weight: 500; text-transform: uppercase; color: #939da5; letter-spacing: 0.15em; margin-top: 2rem; padding: 0 40px; }
+        &__item { display: inline-block; width: 100%; min-height: 500px; }
+      }
+
+  
+      
+
+      .home__section-testimonials-items{ background-color: #222;  width:100%;  display: inline-block;}
+      .testimonial__container{  margin: 0 auto;  width:100%;  padding: 90px 0;  display: inline-block;  }
+      .owl-carousel-testimonials-home .owl-dots { margin-top: 0; text-align: center; position: absolute; bottom: 20px; right: 0; left: 0; }
+      .owl-carousel-testimonials-home, .testimonial__item{ display: inline-block;  width: 100%; }
+      
+} /* Define mobile styles */
+
+
+// Medium screens
+@media only screen and (min-width: 40.063em) {
+  .testimonial__container { padding: 90px 0 90px 210px; }
+  .testimonial__item { min-height: 400px; }
+} /* min-width 641px, medium screens */
+
+
+// Large screens
+@media only screen and (min-width: 64.063em) {
+  .testimonial__container { padding: 120px 0 120px 500px; }
+  .testimonial__item { min-height: 440px; }
+} /* min-width 1025px, large screens */
+
+
+// XLarge screens
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+
+
+// XXLarge screens
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xxlarge screens */

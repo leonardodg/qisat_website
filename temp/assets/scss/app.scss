@@ -1,0 +1,42 @@
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900italic,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,900,900italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,700,700italic,900italic,400italic,900);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+
+
+
+@import 'settings';
+@import 'foundation/import-foundation'; // colors, fonts etc...
+@import 'qisat/normalize';
+
+
+
+
+ 
+
+@import 'qisat/globals';
+@import 'qisat/home';
+
+@import 'qisat/filter-courses';
+@import 'qisat/home__top-courses';
+@import 'qisat/home__section-instructors';
+@import 'qisat/home__section-numbers';
+@import 'qisat/home__section-testimonials';
+@import 'qisat/modals';
+
+
+@import 'qisat/brands';
+@import 'qisat/cards';
+
+//Structure
+@import 'qisat/structure/header';
+@import 'qisat/structure/footer';
+@import 'qisat/structure/offcanvas';
+@import 'qisat/structure/pages';
+
+
+
