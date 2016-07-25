@@ -11,7 +11,7 @@
 	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body ng-controller="appCtrlHome" >
 
 
 	<div class="off-canvas-wrap" data-offcanvas>
@@ -348,8 +348,8 @@
 
 
 
-<!-- |||||||||||||||||||| SECTION-INSTRUCTORS  |||||||||||||||||||||||| -->
-			<section class="home__section-instructors" ng-non-bindable>
+<!-- |||||||||||||||||||| SECTION-INSTRUCTORS  ||||||||||||||||||||||||   -->
+			<section class="home__section-instructors" > 
 				<div class="row">
 
 
@@ -365,150 +365,20 @@
 
 							<ul class="home__instructors small-block-grid-2 medium-block-grid-3 large-block-grid-5">
 
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
+										<li class="home__instructors__item" ng-repeat="instructor in instructors" >
+						
+											<div class="home__instructors__card" >
 												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="Visite o linkedin de {{ nome-do-instrutor }}">Linkedin</a>
+													 <img class="home__instructors__image" src="{{instructor.imagem}}" alt="{{instructor.imagem}}">
+													 <a href="{{instructor.nome}}" class="home__instructors__linkedin" title="Visite o linkedin de {{instructor.nome}}">Linkedin</a>
 												</div> <!-- //home__instructors__image -->
 
 												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
+													<strong class="home__instructors__name">{{instructor.nome}}</strong>
+													<span class="home__instructors__profession">{{instructor.formacao}}</span>
 												</div> <!-- //home__instructors__card-footer -->
  											</div> <!-- //home__instructors__card -->
 										</li>
-
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_3.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_4.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="hide-for-medium-down home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_3.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="hide-for-medium-down home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_4.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="hide-for-medium-down home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_1.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-										<li class="hide-for-medium-down home__instructors__item">
-											<div class="home__instructors__card">
-												<div class="home__instructors__card-header">
-													 <img class="home__instructors__image" src="assets/images/instructors/instructors-thumb_2.jpg" alt="">
-													 <a href="#linkedin.com" class="home__instructors__linkedin" title="linkedin">Linkedin</a>
-												</div> <!-- //home__instructors__image -->
-
-												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{Nome do Instrutor}}</strong>
-													<span class="home__instructors__profession">{{Profissão}}</span>
-												</div> <!-- //home__instructors__card-footer -->
- 											</div> <!-- //home__instructors__card -->
-										</li>
-
-
-
-
-
 								</ul>
 					</div>  <!-- //small-12 medium-6 large-3 columns -->
 
