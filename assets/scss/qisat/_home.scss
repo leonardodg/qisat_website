@@ -249,7 +249,12 @@
   }
 }
 
-.home__instructors__card-header {position: relative}
+.home__instructors__card-header {
+    position: relative;
+    background-size: cover;
+    height: 174px;
+    background-repeat: no-repeat;
+    }
 .home__instructors__thumb {}
 .home__instructors__linkedin {
     position: absolute;
@@ -266,7 +271,7 @@
         cursor: pointer;
 }
 .home__instructors__card-footer { padding:10px;    line-height: 1;}
-.home__instructors__name {font-size: 0.8rem;}
+.home__instructors__name {font-size: 0.8rem; display: block;}
 .home__instructors__profession {font-size: 0.8rem; opacity:0.4}
 
 
