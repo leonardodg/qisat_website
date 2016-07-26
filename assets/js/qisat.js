@@ -19,10 +19,23 @@ appQiSat.controller("appCtrlHome",
 												instructor.imagem = config.imagensUrlDefault;
 											else
 												instructor.imagem = config.imagensUrl+instructor.imagem;
+
+											if(instructor.redes_sociais){
+												instructor.linkedin = instructor.redes_sociais.find(function(el){
+														return el.descricao == 'Linkedin';
+												});
+											}
+
 									});
+
+
 									$scope.instructors = instructors;
 								 });
 			});
+
+appQiSat.controller("appCtrlMetatags", function($scope, QiSatAPI, config){ 
+
+});
 
 
 appQiSat.factory("QiSatAPI", function($http, config){
