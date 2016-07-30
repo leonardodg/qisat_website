@@ -223,10 +223,61 @@
 
 
 .home__instructors {}
+.home__instructors__item { padding: 0px !important;}
 
-.home__instructors__item {
-    padding: 0px !important;
-}
+
+
+/* 'TESTIMONIALS
+========================================= */
+// Small screens
+@media only screen { 
+  .home__instructors__item:nth-child(1) { display: none; }
+  .home__instructors__item:nth-child(2) { display: none; }
+  .home__instructors__item:nth-child(3) { display: none;}
+  .home__instructors__item:nth-child(4) { display: none;}
+  .home__instructors__item:nth-child(5) { display: none;}
+  .home__instructors__item:nth-child(6) { display: none;}
+  .home__instructors__item:nth-child(7) { display: none;}
+  .home__instructors__item:nth-child(8) { display: none;}
+  .home__instructors__item:nth-child(9) { display: none;}
+  .home__instructors__item:nth-child(10) { display: none;}
+} /* Define mobile styles */
+
+
+
+
+
+
+// Medium screens
+@media only screen and (min-width: 40.063em) { 
+    .home__instructors__item:nth-child(1) { display: inline-block }
+    .home__instructors__item:nth-child(2) { display: inline-block }
+    .home__instructors__item:nth-child(3) { display: inline-block }
+    .home__instructors__item:nth-child(4) { display: inline-block }
+    .home__instructors__item:nth-child(5) { display: inline-block }
+    .home__instructors__item:nth-child(6) { display: inline-block }
+    .home__instructors__item:nth-child(7) { display: none;}
+    .home__instructors__item:nth-child(8) { display: none;}
+    .home__instructors__item:nth-child(9) { display: none;}
+    .home__instructors__item:nth-child(10) { display: none;}
+} /* min-width 641px, medium screens */
+
+
+// Large screens
+@media only screen and (min-width: 64.063em) { 
+    .home__instructors__item:nth-child(1)  { display: inline-block }
+    .home__instructors__item:nth-child(2)  { display: inline-block }
+    .home__instructors__item:nth-child(3)  { display: inline-block }
+    .home__instructors__item:nth-child(4)  { display: inline-block }
+    .home__instructors__item:nth-child(5)  { display: inline-block }
+    .home__instructors__item:nth-child(6)  { display: inline-block }
+    .home__instructors__item:nth-child(7)  { display: inline-block}
+    .home__instructors__item:nth-child(8)  { display: inline-block}
+    .home__instructors__item:nth-child(9)  { display: inline-block}
+    .home__instructors__item:nth-child(10) { display: inline-block}
+} /* min-width 1025px, large screens */
+
+
 
 .home__instructors__card {
     margin: 2px;

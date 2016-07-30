@@ -9,9 +9,26 @@
 
 
 
+$(function() {
+  $('.anchor').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
+
 
  $('.header-main__item-cart,  #cd-shadow-layer').on('click', function(event){
-         //event.preventDefault();
+         event.preventDefault();
         $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
           console.log("clicado");
 });
