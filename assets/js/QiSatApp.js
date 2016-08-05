@@ -1,0 +1,1 @@
+var QiSatApp = angular.module('QiSatApp', []);

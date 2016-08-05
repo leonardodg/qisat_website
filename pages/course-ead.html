@@ -1,15 +1,40 @@
 <!doctype html>
-<html lang="pt_BR" class="no-js">
-<head>
+<html lang="pt_BR" class="no-js" ng-app="appQiSat" >
+<head ng-controller="appCtrlMetatags" >
+	<base href="http://qisatsite.localhost/assets/">
+	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title> QiSat | O Canal do e-Learning da Engenharia </title>
-	<link rel="stylesheet" href="bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
 
  	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
-	<script src="bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
+
+	<title>{{page.title}}</title>
+	
+	<meta name="description" content="{{seo.description}}">
+	<meta name="keywords" content="{{seo.keywords}}">
+
+	<meta property="og:locale" content="pt_PT" />
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{{seo.title}}" />
+	<meta property="og:description" content="{{seo.description}}" />
+	<meta property="og:url" content="{{seo.url}}" />
+	<meta property="og:site_name" content="QiSat" />
+
+	<meta property="og:image" content="{{sel.urlImgRedes}}">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="{{seo.url}}"/>
+	<meta name="twitter:domain" content="{{seo.description}}"/>
+	<meta name="twitter:image:src" content="{{sel.urlImgRedes}}"/>
+
+
 </head>
 <body>
 
@@ -31,24 +56,7 @@
 
 
 	 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-	<header class="header-main">
-		   <div class="header-main__brand"> <a href="index.html" class="header-main__logo"> QiSAT</a> </div>
-			<nav class="header-main__nav">
-			<ul class="header-main__ul">
-				<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="index.html">Home</a></li>
-				<li class="show-for-large-up header-main__list header-main__list-current  header-main__list__has--submenu">
-					<a class="header-main__item header-main__list-item-current" href="courses.html">Cursos</a>
-					<ul class="header-main__list__submenu">
-						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
-						<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
-					</ul>
-				</li>
-	 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="area-do-aluno.html">Área do Aluno</a></li>
-				<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
-	    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="carrinho.html"><i class="material-icons">shopping_cart</i></a></li>
-			</ul>
-		</nav>
-	</header>
+	<ng-include src="'assets/view/header.html'"></ng-include>
 	<!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 
@@ -58,64 +66,54 @@
 
 
 
+
  	<header class="hero-course">
 		<div class="row">
 				<div class="medium-8 columns">
-					<span class="hero-course__modality">Curso Presencial</span>
-					<h1 class="hero-course__title">Concepção e Lançamento <br> do Projeto Estrutural</h1>
-					<p class="hero-course__resume"> Aspectos de contratação, desenvolvimento e finalização</p>
-					<p class="hero-course__locale">Florianópolis - SC 03, 04 outubro 2015</p>
+					<span class="hero-course__modality">{{produto.categoria}}</span>
+					<h1 class="hero-course__title">{{produto.nome}}</h1>
+					<p class="hero-course__resume">{{produto.chamada}}</p>
 
 					<ul class="hero-course__buttons-group">
 						<li class="hero-course__buttons-group--item"> <a class="buttom-call" href="#" data-reveal-id="modalPageCourseCall">  Ligamos para você</a> </li>
 						<li class="hero-course__buttons-group--item"> <a class="buttom-favorite" href="#"> Favoritar</a></li>
-						<li class="hero-course__buttons-group--item"> <a class="buttom-price" href="#" class="button">R$ 400,00</a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="buttom-price" href="#" class="button">{{produto.chamada}}</a> </li>
 					</ul>
-
 
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
-						<div class="hero-course__play-container">
-							<a class="hero-course__play" href="#" data-reveal-id="modalPageCourseTrailer"><img class="hero-course__play--image"  src="assets/images/hero/hero-play.svg" alt=""></a>
-						</div> <!--//hero-course__play-container -->
- 				</div> <!-- //large-3-->
+					<div class="hero-course__play-container">
+						<a class="hero-course__play" href="#" data-reveal-id="modalPageCourseTrailer"><img class="hero-course__play--image"  src="{{produto.imagem}}" alt=""></a>
+					</div> <!--//hero-course__play-container -->
+				</div> <!-- //large-3-->
 		</div> <!-- ///row -->
 
 	</header><!-- //hero-home -->
 
 
 <article class="course-page">
- <div class="row">
-<div class="large-3 columns">
-		 <aside id="sidebar-styker" class="aside-pages-courses">
-					<div class="navigation_courses">
-					<h4 class="navigation_courses__title">Navegação</h4>
-							<nav class="navigation_courses__nav">
-								<ul class="navigation_courses__list">
-									<li class="navigation_courses__list-item navigation_courses__list-item-active"><a class="navigation_courses__list-item--link" href="#garanta-sua-vaga">Garanta sua vaga</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#sobre-o-curso">Sobre o curso</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#conteudo-programatico">Conteúdo programático</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#formato-do-curso">Formato do curso</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#ministrante">Ministrante</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#data-e-local">Data e Local</a></li>
-									<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#perguntas-frequentes">Perguntas frequentes</a></li>
-								</ul>
-							</nav>
-				</div>
-		    <a href="#" target="_blank" class="hide-for-medium-down"><img src="assets/images/courses/banner-sidebar__product__eberick-9.png" alt="Imagem: Conheça o Software Eberick V9"></a>
-	</aside>
-</div>  <!--//large-3 columns -->
+ <div class="row" data-equalizer>
+				<div class="large-3 columns" data-equalizer-watch>
+							<aside id="sidebar-styker" class="aside-pages-courses">
+										<div class="navigation_courses">
+												<h4 class="navigation_courses__title">Navegação</h4>
+												<nav class="navigation_courses__nav">
+													<ul class="navigation_courses__list">
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#garanta-sua-vaga">Garanta sua vaga</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#sobre-o-curso">Sobre o curso</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#conteudo-programatico">Conteúdo programático</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#formato-do-curso">Formato do curso</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#ministrante">Ministrante</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#perguntas-frequentes">Perguntas Frequentes</a></li>
+														<li class="navigation_courses__list-item"><a class="navigation_courses__list-item--link" href="#cursos-relacionados">Cursos Relacionados</a></li>
+													</ul>
+												</nav>
+									 	</div>
+										<a href="#" target="_blank" class="hide-for-medium-down"><img src="assets/images/courses/banner-sidebar__product__eberick-9.png" alt="Imagem: Conheça o Software Eberick V9"></a>
+							</aside>
+			</div>  <!--//large-3 columns -->
 
-<div class="large-9 columns">
-
-	<section class="course-page__sections" id="garanta-sua-vaga">
-		<h2 class="course-page__sections--title">Garanta sua vaga</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit hic eum natus. Officiis blanditiis tenetur assumenda, soluta distinctio odit eligendi dolorum earum asperiores. Nesciunt, ipsum accusantium fugit tempore nam? </p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit hic eum natus. Officiis blanditiis tenetur assumenda, soluta distinctio odit eligendi dolorum earum asperiores. Nesciunt, ipsum accusantium fugit tempore nam? </p>
-	</section>
-
-
-
+	<div class="large-9 columns" data-equalizer-watch>
 	<section class="course-page__sections" id="sobre-o-curso">
 		<h2 class="course-page__sections--title">Sobre o curso</h2>
  		<p> O curso tem como objetivo incentivar a análise de várias soluções estruturais, visando adotar a mais adequada e econômica. Propiciar o desenvolvimento e apresentação de projetos mais competitivos e adequar os projetos à nova realidade normativa e de mercado. </p>
@@ -133,89 +131,199 @@
 				<li><a href="assets/images/courses/courses-gallery-image-large-sample1.jpg"><img data-caption="caption 1 here..." src="assets/images/courses/courses-gallery-image-large-sample1.jpg"></a></li>
 			</ul>
 
+
  		</div> <!-- //section__course-gallery -->
  	</section>
 
-
-
-
-
-	<section class="course-page__sections" id="conteudo-programatico">
+	<section class="course-page__sections course-page__sections--slim" id="conteudo-programatico">
 		<h2 class="course-page__sections--title">Conteúdo programático</h2>
-   	<dl class="accordion-component accordion" data-accordion>
+
+
+		<dl class="accordion-component accordion" data-accordion>
 		  <dd class="accordion-navigation tab-title">
-					<a href="#conteudo-programatico-1">Idéias Iniciais</a>
-					<div id="conteudo-programatico-1" class=" content active">
+					<a href="#conteudo-programatico-aula-1">Aula 1 - Lançando o Projeto</a>
+					<div id="conteudo-programatico-aula-1" class=" content active">
  						<ul>
-								<li> Projeto estrutural: definições, objetivos, filosofia, histórico, contexto atual, perfil dos profissionais, etc...	</li>
-								<li> Tipos de estruturas e seus requisitos para elaboração do projeto;	</li>
-								<li> Material técnico e exigências para elaboração de cada tipo de estrutura;	</li>
-								<li> Conteúdo do projeto estrutural;	</li>
-								<li> Noções de marketing na contratação do projeto estrutural;	</li>
-								<li> Aspectos de contratação e etapas de desenvolvimento do projeto;	</li>
-								<li> Integração com os demais projetos complementares.	</li>
+							<li> Lançando um projeto novo </li>
+							<li> Estrutura de arquivos de projeto </li>
+							<li> O ambiente Croqui </li>
+							<li> Iniciando o trabalho </li>
+							<li> Sistema de coordenadas utilizado no Eberick </li>
 						</ul>
  					</div>
 			  </dd>
 
 				<dd class="accordion-navigation tab-title">
-					<a href="#conteudo-programatico-2">Estudos de concepção e lançamento de estruturas (estudos de caso) <span class="label-free">Aula gratuita</span> </a>
-					<div id="conteudo-programatico-2" class="content">
+					<a href="#conteudo-programatico-aula-2">Aula 2 - Ferramentas de captura <span class="label-free">Aula gratuita</span> </a>
+					<div id="conteudo-programatico-aula-2" class="content">
 							<ul>
-								<li> Como iniciar um estudo de lançamento de estrutura; </li>
-								<li> Alternativas de estruturas utilizando os sistemas construtivos adequados para o projeto em questão; </li>
-								<li> Propostas de alternativas estruturais que considerem a variação no número de pilares, na altura das vigas, espessura e tipos de lajes e tipos de fundações; </li>
-								<li> Análise comparativa de consumo de materiais; </li>
-								<li> Elementos componentes do projeto básico (anteprojeto). </li>
+								<li> Precisão de desenhos </li>
+								<li> Captura de pontos </li>
+								<li> Ferramentas de captura </li>
 							</ul>
  					</div>
 			</dd>
 
 			<dd class="accordion-navigation tab-title">
-					<a href="#conteudo-programatico-aula-3">Desenvolvimento do projeto executivo</a>
+					<a href="#conteudo-programatico-aula-3">Aula 3 - Preparação das arquiteturas</a>
 					<div id="conteudo-programatico-aula-3" class="content">
-						<li> Informações indispensáveis e detalhes complementares nas plantas de forma; </li>
-						<li> Detalhamentos das formas e armaduras – otimizações adicionais a serem incorporadas ao detalhamento automático; </li>
-						<li> Especificações técnicas dos materiais e processos executivos; </li>
-						<li> Critérios de projetos; </li>
-						<li> Manual de inspeção e manutenção preventiva. </li>
- 					</div>
+						Aula 3 - Preparação das arquiteturas
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
 			</dd>
 
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-4">Aula 4 - Lançamento da estrutura - parte 1</a>
+					<div id="conteudo-programatico-aula-4" class="content">
+						Aula 4 - Lançamento da estrutura - parte 1
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
 
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-5">Aula 5 - Lançamento da estrutura - parte 2</a>
+					<div id="conteudo-programatico-aula-5" class="content">
+						Aula 5 - Lançamento da estrutura - parte 2
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-6">Aula 6 - Lançamento da escada</a>
+					<div id="conteudo-programatico-aula-6" class="content">
+						Aula 6 - Lançamento da escada
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-7">Aula 7 - Finalização do lançamento da estrutura</a>
+					<div id="conteudo-programatico-aula-7" class="content">
+						Aula 7 - Finalização do lançamento da estrutura
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-8">Aula 8 - Análise da estrutura</a>
+					<div id="conteudo-programatico-aula-8" class="content">
+						Aula 8 - Análise da estrutura
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-9">Aula 9 - Dimensionamento das vigas</a>
+					<div id="conteudo-programatico-aula-9" class="content">
+						Aula 9 - Dimensionamento das vigas
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-10">Aula 10 - Dimensionamento das lajes e escadas</a>
+					<div id="conteudo-programatico-aula-10" class="content">
+						Aula 10 - Dimensionamento das lajes e escadas
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-11">Aula 11 - Dimensionamento dos pilares e fundações</a>
+					<div id="conteudo-programatico-aula-11" class="content">
+						Aula 11 - Dimensionamento dos pilares e fundações
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-12">Aula 12 - Detalhamento das armaduras</a>
+					<div id="conteudo-programatico-aula-12" class="content">
+						Aula 12 - Detalhamento das armaduras
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-13">Aula 13 - Desenho das formas</a>
+					<div id="conteudo-programatico-aula-13" class="content">
+						Aula 13 - Desenho das formas
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+					<a href="#conteudo-programatico-aula-14">Aula 14 - Módulo Reservatórios</a>
+					<div id="conteudo-programatico-aula-14" class="content">
+						Aula 14 - Módulo Reservatórios
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</div>
+			</dd>
+
+			<dd class="accordion-navigation tab-title">
+				<a href="#conteudo-programatico-aula-15">Aula 15 - Tópicos Especiais</a>
+				<div id="conteudo-programatico-aula-15" class="content">
+					Aula 15 - Tópicos Especiais
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</div>
+			</dd>
 		</dl> <!-- //accordion-component -->
 	</section>
 
 
-	<section class="course-page__sections" id="formato-do-curso">
+	<section class="course-page__sections course-page__sections--slim" id="formato-do-curso">
 		<h2 class="course-page__sections--title">Formato do curso</h2>
- 		<ul class="formato-do-curso small-block-grid-2  medium-block-grid-3 large-block-grid-4">
+ 		<ul class="formato-do-curso small-block-grid-2  medium-block-grid-3 large-block-grid-5">
+ 			<li class="formato-do-curso__item">
+				<span class="formato-do-curso__item--top"> Quantidade  </span>
+				<span class="formato-do-curso__item--middle">15</span>
+				<span class="formato-do-curso__item--bottom">aulas</span>
+			</li>
+
 
 			<li class="formato-do-curso__item">
-				<span class="formato-do-curso__item--top">Carga horária</span>
-				<span class="formato-do-curso__item--middle">18</span>
+				<span class="formato-do-curso__item--top">Prazo de conclusão </span>
+				<span class="formato-do-curso__item--middle">90</span>
+				<span class="formato-do-curso__item--bottom">dias</span>
+			</li>
+
+
+			<li class="formato-do-curso__item">
+				<span class="formato-do-curso__item--top">Tempo por aula </span>
+				<span class="formato-do-curso__item--middle">16</span>
 				<span class="formato-do-curso__item--bottom">horas</span>
 			</li>
 
+
 			<li class="formato-do-curso__item">
-				<span class="formato-do-curso__item--top"> Direcionamento  </span>
-				<span class="formato-do-curso__item--middle">15-30</span>
-				<span class="formato-do-curso__item--bottom">profissionais</span>
+				<span class="formato-do-curso__item--top">Carga horária</span>
+				<span class="formato-do-curso__item--middle">30</span>
+				<span class="formato-do-curso__item--bottom">horas</span>
 			</li>
 
 
  			<li class="formato-do-curso__item">
- 				<span class="formato-do-curso__item--top">Métodologia</span>
-				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/metodologia-expositiva.svg" alt=""></span>
-				<span class="formato-do-curso__item--bottom">expositiva</span>
-			</li>
+ 				<span class="formato-do-curso__item--top">Disponível</span>
+ 				<span class="formato-do-curso__item--middle">24h</span>
+ 				<span class="formato-do-curso__item--bottom">por dia</span>
+ 			</li>
+
+
+ 			<li class="formato-do-curso__item">
+ 				<span class="formato-do-curso__item--top">Material</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_insert_drive_file_black_24px.svg" alt=""></span>
+  			</li>
+
+
+	 		<li class="formato-do-curso__item">
+	 				<span class="formato-do-curso__item--top">Fórum</span>
+	 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_forum_black_24px.svg" alt=""></span>
+	  	</li>
 
 			<li class="formato-do-curso__item">
- 				<span class="formato-do-curso__item--top">Cerficado</span>
-				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/certificado.svg" alt=""></span>
-				<span class="formato-do-curso__item--bottom">após conclusão</span>
-			</li>
-
+	 				<span class="formato-do-curso__item--top">Tire dúvidas</span>
+	 				<span class="formato-do-curso__item--icon"><img src="assets/images/courses/ic_live_help_black_24px.svg" alt=""></span>
+	  	</li>
 
 
  		</ul>
@@ -242,21 +350,6 @@
 
 
 
-	<section class="course-page__sections" id="data-e-local">
-		<h2 class="course-page__sections--title">Data e local</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit hic eum natus. Officiis blanditiis tenetur assumenda, soluta distinctio odit eligendi dolorum earum asperiores. Nesciunt, ipsum accusantium fugit tempore nam? </p>
-	</section>
-
-	<section class="course-page__sections" id="cursos-relacionados">
-			<h2 class="course-page__sections--title">Cursos relacionados</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit hic eum natus. Officiis blanditiis tenetur assumenda, soluta distinctio odit eligendi dolorum earum asperiores. Nesciunt, ipsum accusantium fugit tempore nam? </p>
-	</section>
-
-
-	<section class="course-page__sections" id="proximas-turmas">
-			<h2 class="course-page__sections--title">Próximas turmas</h2>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae odit hic eum natus. Officiis blanditiis tenetur assumenda, soluta distinctio odit eligendi dolorum earum asperiores. Nesciunt, ipsum accusantium fugit tempore nam? </p>
-	</section>
 
 	<section class="course-page__sections  course-page__sections--slim" id="perguntas-frequentes">
 		<h2 class="course-page__sections--title">Perguntas frequentes</h2>
@@ -286,6 +379,66 @@
 				</dd>
 		 </dl>
  	</section>
+
+
+
+
+
+ 	<section class="course-page__sections course-page__sections--slim" id="cursos-relacionados">
+ 			<h2 class="course-page__sections--title">Cursos relacionados</h2>
+			<div class="row">
+
+						<div class="large-12 columns">
+										<div class="card-course card-format-line card-format-line-static">
+													<div class="card-course-inner">
+															<div class="card-course--content" style="padding:0">
+																	<table class="card-course--content__table" style="width:100%; margin:0; background-color: transparent">
+																				<tr>
+																						<td style="width:30px;" >
+ 																							 <span data-reveal-id="modal__trailer" data-tooltip aria-haspopup="true" title="Assista o trailer"  data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
+																						</td>
+																						<td>
+																								<span class="card-course__modality">{{course-modality}}</span>
+											 													<span class="card-course__name">{{course-name}}</span>
+																						</td>
+																						<td>
+																							  <a href="#" class="card-course__button">R$ 1.350,00</a>
+																						</td>
+																				</tr>
+																  </table>
+															</div> <!-- //card-course--content -->
+ 													</div> <!-- //card-course-inner -->
+							 			 </div> <!-- //card-dourse -->
+						</div>   <!-- //large-12 columns -->
+
+						<div class="large-12 columns">
+										<div class="card-course card-format-line card-format-line-static">
+													<div class="card-course-inner">
+															<div class="card-course--content" style="padding:0">
+																	<table  class="card-course--content__table" style="width:100%; margin:0; background-color: transparent">
+																				<tr>
+																						<td style="width:30px;" >
+ 																							 <span data-reveal-id="modal__trailer" data-tooltip aria-haspopup="true" title="Assista o trailer"  data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
+																						</td>
+																						<td>
+																								<span class="card-course__modality">{{course-modality}}</span>
+											 													<span class="card-course__name">{{course-name}}</span>
+																						</td>
+																						<td>
+																							  <a href="#" class="card-course__button">R$ 1.350,00</a>
+																						</td>
+																				</tr>
+																  </table>
+															</div> <!-- //card-course--content -->
+ 													</div> <!-- //card-course-inner -->
+							 			 </div> <!-- //card-dourse -->
+						</div>   <!-- //large-12 columns -->
+
+
+			</row> <!-- //row -->
+  	</section> <!-- //cursos-relacionados -->
+
+
 </div>  <!--//large-9 columns -->
 
 
@@ -295,11 +448,6 @@
 </div> <!-- // row -->
 
 </article>
-
-
-
-
-
 
 
 
@@ -572,127 +720,24 @@
 
 
 <!-- ########################## FOOTER ########################## -->
-     <footer class="footer-main ">
-
-					<div class="footer-primary">
-							<div class="row">
-											<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
-															<li class="footer-primary__columns--item">
-															 		<ul class="footer-primary__list">
-																		<li class="footer-primary__title">Sobre o QiSAT</li>
-																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="institucional-sobre-a-empresa.html" title="Institucional"> Institucional</a></li>
-																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Eventos"> Eventos</a></li>
-																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Convênios">Convênios</a></li>
-																		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Parcerias">	Parcerias</a></li>
-																	</ul>
-															</li>
-
-															<li class="footer-primary__columns--item">
-															 	<ul class="footer-primary__list">
-																	 <li class="footer-primary__title">Cursos</li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Software">Software</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Teórico">Teórico</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
-																	 <li class="footer-primary__title">Modalidades</li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Presencial">Presencial</a></li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="EAD">EAD</a></li>
-															 	</ul>
-															</li> <!-- // -->
-
-															<li class="footer-primary__columns--item">
-															 	<ul class="footer-primary__list">
-																	<li class="footer-primary__title"> Página</li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Cursos">Cursos</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Pós-graduação">Pós-graduação</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Área do aluno">Área do aluno</a></li>
-													 		 	</ul>
-															</li> <!-- // -->
-
-															<li class="footer-primary__columns--item">
-															 	<ul class="footer-primary__list">
-																	 <li class="footer-primary__title"> Soluções</li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Empresas">Para Empresas</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Órgãos Governamentais">Para Órgãos Governamentais</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Para Turma de Formandos">Para Turma de Formandos</a></li>
-													  		 	</ul>
-															</li> <!-- // -->
-
-															<li class="footer-primary__columns--item">
-															 	<ul class="footer-primary__list">
-																	 <li class="footer-primary__title"> Contato</li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Ligamos para você">Ligamos para você</a></li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Mensagem">Mensagem</a></li>
-															 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Lista de espera">Lista de espera</a></li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma Funcionalidade">Sugira uma Funcionalidade</a></li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira um Curso">Sugira um Curso</a></li>
-																	<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="#" title="Sugira uma nova turma">Sugira uma nova turma</a></li>
-																</ul>
-															</li> <!-- // -->
-
-															<li class="footer-primary__columns--item">
-																<img class="footer-primary__list__item--brand-qisat" src="assets/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
-															</li> <!-- //  -->
-										</ul> <!-- // footer-primary_lists -->
-						</div> <!-- ///row -->
-					</div> <!-- // footer-primary -->
-
-
-
-
-
-					<div class="footer-secondary">
-							<div class="row">
-								<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
-										<li>
-												<ul class="footer-secondary__list">
-													<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
-													<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
-	 											</ul>
-									  </li>
-
-									  <li>
-												<ul class="footer-secondary__list footer-secondary__list--email ">
-													<!-- <li class="footer-secondary__list__item"></li> -->
-													<!-- <li class="separator"></li> -->
-													<li class="footer-secondary__list__item"><a href="mailto:contato@qisat.com.br"  class="footer-secondary__list__item--link">QiSat e-Learing para Engenharia: <strong>contato@qisat.com.br</strong></a></li>
-												</ul>
-								   	</li>
-								  	<li>
-													<ul class="footer-secondary__list">
-															<li class="footer-secondary__list__item">
-																<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-																<a href="#" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="assets/images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
-															</li>
-													 </ul>
-									  </li>
-								</ul> <!-- //block-grid -->
-					 		</div> <!-- ///row -->
-					</div> <!-- footer-secondary -->
-			</footer> <!-- footer-container -->
-
-
-
-
+       <ng-include src="'assets/view/footer.html'"></ng-include>
 
 				<!-- GLOBAL -->
-			   	 <script src="bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-					 <script src="bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-					 <script src="assets/js/sticky-kit.js"></script>
+			   	 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+					<script src="assets/js/sticky-kit.js"></script>
 				<!-- // GLOBAL -->
 
 				<!-- PÁGINA HOME -->
-						 <link href="bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-						 <link href="bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
-						 <script src="bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-
-						<!-- // PÁGINA HOME -->
+					<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+					<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+					<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+				<!-- // PÁGINA HOME -->
 
 
 				<!-- SOMENTE PÁGINA DE CURSOS -->
-						<script src='bower_components/isotope/dist/isotope.pkgd.min.js'></script>
-						<script src="bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+						<script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+						<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
 						<script src='assets/js/filter-isotope.js'></script>
 				<!-- // END SOMENTE PÁGINA DE CURSOS -->
 
@@ -715,7 +760,8 @@
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
-
+	<script src="assets/js/angular.js"></script>
+	<script src="assets/js/qisat.js"></script>
 
 </body>
 </html>

@@ -16,9 +16,6 @@
           console.log("clicado");
 });
 
-
-
-
   
 $(document).ready(function() {
   if ( $('#sidebar-styker').length ) {
@@ -164,7 +161,7 @@ if ( $('.footer-primary__list__item').length ) {
           }
         });
     }
-});
+}); 
   //end Smooth Scrolling
 
 

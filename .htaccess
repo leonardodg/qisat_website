@@ -1,0 +1,51 @@
+  RewriteEngine On
+
+
+# ----- Bloqueando hotlinks em imagens ---------
+  #RewriteCond %{HTTP_REFERER} !^$
+  #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?newsite.com [NC]
+  #RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+
+# ------ Protegendo seu arquivo .htaccess -------
+<files ~ "^.*\.([Hh][Tt][Aa])">
+  order allow,deny
+  deny from all
+  satisfy all
+</files>
+
+# ------ Páginas de erro personalizadas ---------
+#  ErrorDocument 400 /erros/badrequest.html
+#  ErrorDocument 401 /erros/authreqd.html
+#  ErrorDocument 403 /erros/forbid.html
+#  ErrorDocument 500 /erros/serverr.html
+
+# ------- Bloquear listagem de diretórios -------
+  Options -Indexes
+
+# ------- http para https ------------  
+#  RewriteCond %{HTTPS} !on
+#  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
+  RewriteRule ^(css|images|js|stylesheets)/(.*)$ /assets/$1/$2 [NC,L]
+
+  RewriteRule ^(cursos|curso)/?$ pages/courses.html [NC]
+  RewriteRule ^cursos/(lancamentos|gratuitos|destaques)?/?$ pages/courses.html?filter1=$1 [NC]
+  RewriteRule ^cursos/(online|presencial)/?$ pages/courses.htmlhtml?mod=$1 [NC]
+  RewriteRule ^cursos/(online|presencial)/(lancamentos|gratuitos|destaques)/?$ pages/courses.htmlhtml?mod=$1&filter1=$2 [NC]
+  RewriteRule ^cursos/(online)/(estrutural|eletrica|hidraulica|arquitetonica|agronomica|cad)/?$ pages/courses.htmlhtml?mod=$1&filter2=$2 [NC]
+  RewriteRule ^cursos/(online)/(teorico|software)/?$ pages/courses.htmlhtml?mod=$1&filter3=$2 [NC]
+  RewriteRule ^cursos/(online)/(pacotes|series)/?$ pages/courses.htmlhtml?mod=$1&filter4=$2 [NC]
+  RewriteRule ^cursos/(presencial)/(estrutural|eletrica|hidraulica|cad)/?$ pages/courses.htmlhtml?mod=$1&filter2=$2 [NC]
+  RewriteRule ^cursos/(presencial)/(teorico|software)/?$ pages/courses.htmlhtml?mod=$1&filter3=$2 [NC]
+  RewriteRule ^cursos/(online|presencial)/([^/]+)/?$ pages/info.html?mod=$1&curso=$2 [NC]
+  RewriteRule ^(cursos|curso)/([^/]+)?/?$ pages/courses.htmlhtml [NC]
+  RewriteRule ^institucional/?$ pages/institucional-sobre-a-empresa.html [NC]
+  RewriteRule ^institucional/([^/]+)/?$ pages/institucional-$1.html [NC]
+  RewriteRule ^aluno/?$ pages/area-do-aluno.html [NC]
+  RewriteRule ^aluno/([^/]+)?/?$ pages/area-do-aluno.html?filter=$1 [NC]
+  RewriteRule ^(contato|contatos)/?$ pages/contato.html [NC]
+  RewriteRule ^contatos/([^/]+)?/?$ pages/contato.html?filter=$1 [NC]
+  RewriteRule ^sugira/?$ pages/sugira.html [NC]
+  RewriteRule ^sugira/([^/]+)?/?$ pages/sugira.html?filter=$1 [NC]
+  RewriteRule ^(duvida|duvidas)/?$ pages/duvidas.html [NC]
