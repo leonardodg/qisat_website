@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt_BR" class="no-js" >
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
-
 	<!-- <base href="http://newsite.qisat.com/assets/"> -->
 
 	<meta charset="UTF-8">
@@ -26,40 +25,15 @@
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
 			     <li><a href="/">Home</a></li>
-				 <li><a href="/institucional">Institucional</a></li>
 			     <li><a href="/cursos">Cursos</a></li>
+				 <li><a href="/institucional">Institucional</a></li>
 				 <li><a href="/aluno">Área do Aluno</a></li>
 			   </ul>
 			 </aside>
 		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
-<header class="header-main">
-	   <div class="header-main__brand"> <a href="/" class="header-main__logo"> QiSAT</a></div>
-
-		<nav class="header-main__nav">
-		<ul class="header-main__ul">
-			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/">Home</a></li>
-			<li class="show-for-large-up header-main__list header-main__list-current  header-main__list__has--submenu">
-				<a class="header-main__item header-main__list-item-current" href="/cursos" >Cursos</a>
-				<ul class="header-main__list__submenu">
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-ead.html">Curso EAD</a></li>
-					<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="course-presential.html">Curso Presencial</a></li>
-				</ul>
-			</li>
- 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/aluno">Área do Aluno</a></li>
-			<li class="hide-for-large-up header-main__list"> <a class="menu-trigger header-main__item" href="#"  > <i class="material-icons">menu</i> Menu</a></li>
-			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/institucional">Institucional</a></li>
-    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="/carrinho.html"><i class="material-icons">shopping_cart</i></a></li>
-		</ul>
-	</nav>
-</header>
-
-
 		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-	<!-- 	    <div class="include-header">
 		    	<ng-include src="'/views/header.html'"></ng-include>
-		    </div> -->
-			<!-- <include ui-view='header' ></include> ui-router -->
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 
@@ -343,9 +317,26 @@
 						</div> <!-- //home_panel_titles -->
 					</div>  <!-- //small-12 medium-6 large-3 columns -->
 
-					<div class="small-12 medium-8 large-9 large-pull-3  columns" >
+					<div class="small-12 medium-8 large-9 large-pull-3  columns"  ng-controller="instructorsController" >
  
-							
+							<ul class="home__instructors small-block-grid-2 medium-block-grid-3 large-block-grid-5">
+
+								   	<li class="home__instructors__item" ng-repeat="instructor in instructors" >
+										<div class="home__instructors__card" >
+											<div class="home__instructors__card-header">
+												 <img class="home__instructors__image" ng-src="{{instructor.imagem}}" alt="{{instructor.imagem}}">
+												 <a href="{{instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{instructor.nome}}" ng-show="{{instructor.linkedin}}">Linkedin</a>
+											</div> <!-- //home__instructors__image -->
+
+											<div class="home__instructors__card-footer">
+												<strong class="home__instructors__name" ng-bind="instructor.nome" >{{instructor.nome}}</strong>
+												<span class="home__instructors__profession" ng-bind="instructor.formacao" >{{instructor.formacao}}</span>
+											</div> <!-- //home__instructors__card-footer -->
+											</div> <!-- //home__instructors__card -->
+									</li>
+
+
+							</ul>
 					</div>  <!-- //small-12 medium-6 large-3 columns -->
 				</div> <!-- ///row -->
 			</section>
@@ -398,7 +389,7 @@
 
 
 			<!-- ########################## FOOTER ########################## -->
-			   <!-- <ng-include src="'/views/footer.html'"></ng-include>  -->
+			   <ng-include src="'/views/footer.html'"></ng-include> 
 			<!-- ########################## END FOOTER ########################## -->
 
 
@@ -418,13 +409,13 @@
 			<script src="js/app.js"></script>
 
 			<!-- END SCRIPTS HOME -->
-<!-- 
 					<script src="js/min/angular.min.js"></script>
 					<script src="js/QiSatApp.js"></script>
+
 					<script src="js/config/value.js"></script>
 					<script src="js/services/QiSatAPI.js"></script>
 					<script src="js/controllers/instructorsController.js"></script>
-			 -->
+			
 
 			 <!-- EXECUTA SCRIPTS QISAT -->
 			 <!--  <script src="js/app.js"></script> -->
