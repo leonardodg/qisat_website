@@ -2,6 +2,7 @@
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
 	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	<base href="/assets/">
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +14,12 @@
 	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 </head>
-
-
 <body>
+
 
 	<div class="off-canvas-wrap" data-offcanvas>
 	  <div class="inner-wrap">
+
 
 		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
@@ -36,28 +37,44 @@
 		    	<ng-include src="'/views/header.html'"></ng-include>
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
+
+
+
 <main class="content-main">
 
-<div class="row">
 
-		<div class="admin__heading">
-			<br>
-			<h2 class="subtitle"> Carrinho de Compras </h2>
-			<h1 class="title">Monstar Carrinho</h1>
-		</div>
 
-			<div class="large-4 columns">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
- 			</div> <!-- // large-4 columns -->
 
- 			<div class="large-8 columns">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
- 			</div> <!-- // large-8 columns -->
-</div>  <!-- // row -->
+
+<section id="passport" class="social-login-disabled">
+<form accept-charset="UTF-8" action="/session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="LMeqXz6ZVEA+Xh39qDPPoaSCXAhO/wQVywWMVrmdODU="></div>
+<div class="passport-left">
+<h1>Foundation Forum</h1>
+</div>
+<div class="passport-right">
+<div id="emailLogin">
+<h5 class="hide-for-small">Log in via email</h5>
+<input id="source_url" name="source_url" type="hidden" value="http://foundation.zurb.com/forum/auth/zurb/callback?origin=http%3A%2F%2Ffoundation.zurb.com%2Fforum%2Fposts%2F3328-login-form-on-top-nav-bar-scaling-issue">
+<input id="application_id" name="application_id" type="hidden" value="17">
+<input autocapitalize="off" autocorrect="off" id="login" name="login" placeholder="Email" type="text">
+<input id="password" name="password" placeholder="Password" type="password">
+<label>
+<input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me">
+Remember Me
+</label>
+<button id="signIn" type="submit">Sign In »</button>
+<p><a href="/reset_password/new?application_id=17">Forgot your password?</a></p>
+<p>Trouble logging in? <a href="mailto:support@notableapp.com">Contact Support →</a></p>
+</div>
+</div>
+
+</form>
+</section>
 
 
 </main> <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
+
 
 
 			<!-- ########################## FOOTER ########################## -->
@@ -75,11 +92,16 @@
 			<!-- END SCRIPTS HOME -->
 					<script src="js/min/angular.min.js"></script>
 					<script src="js/QiSatApp.js"></script>
-			 <!-- EXECUTA SCRIPTS QISAT -->
+			<!-- EXECUTA SCRIPTS QISAT -->
+
+			<!-- SOMENTE PÁGINA DE CURSOS -->
+					<script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+					<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+			<!-- // <script src='js/filter-isotope.js'></script> -->
+			<!-- // END SOMENTE PÁGINA DE CURSOS -->
 
 			<!-- exit-off-canvas -->
 			<a class="exit-off-canvas"></a>
-
 
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->

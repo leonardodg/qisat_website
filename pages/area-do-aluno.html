@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
-	<base href="http://qisatsite.localhost/assets/">
 	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	<base href="/assets/">
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,10 +42,14 @@
 	<div class="admin_sidebar">
 
  		<ul class="metismenu admin__menu">
-            <li class="item current ">  <a href="#" class="link"> <i class="material-icons">dashboard</i> Dashboard</a> </li>
-            <li class="item">  		    	<a href="#" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
-            <li class="item">  		    	<a href="#" class="link"> <i class="material-icons">today</i> Eventos </a>  </li>
-            <li class="item">  		    	<a href="#" class="link"> <i class="material-icons">folder_special</i> Certificados </a>  </li>
+            <li class="item">  	<a href="/aluno/perfil" class="link"> <i class="material-icons">folder_special</i> Perfil </a>  </li>
+            <li class="item current ">  <a href="/aluno/desempenho" class="link"> <i class="material-icons">dashboard</i> Dashboard</a> </li>
+            <li class="item">  	<a href="/aluno/cursos" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
+            <li class="item">  	<a href="/aluno/certificados" class="link"> <i class="material-icons">folder_special</i> Certificados </a>  </li>
+            <li class="item">  	<a href="/aluno/financeiro" class="link"> <i class="material-icons">folder_special</i> Financeiro </a>  </li>
+            <li class="item">  	<a href="/login" class="link"> <i class="material-icons">folder_special</i> Login </a>  </li>
+            <li class="item">  	<a href="/cadastro" class="link"> <i class="material-icons">folder_special</i> Cadastro </a>  </li>
+            <li class="item">  	<a href="/lembrete-de-senha" class="link"> <i class="material-icons">folder_special</i> Recuperar Senha </a>  </li>
         </ul>
 
  	</div> <!-- //admin_sidebar -->
@@ -86,7 +90,6 @@
 
 			<!-- ########################## FOOTER ########################## -->
 			   <ng-include src="'/views/footer.html'"></ng-include> 
-			   <!-- <include ui-view='footer' ></include> -->
 			<!-- ########################## END FOOTER ########################## -->
 
 			 <!-- GLOBAL -->
@@ -104,7 +107,7 @@
 			 <!-- SOMENTE PÁGINA DE CURSOS -->
 				 <script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
 				 <script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
-				 <script src='js/filter-isotope.js'></script>
+			 <!-- // <script src='js/filter-isotope.js'></script> -->
 			 <!-- // END SOMENTE PÁGINA DE CURSOS -->
 
 			 <!-- EXECUTA SCRIPTS QISAT -->

@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="pt_BR" class="no-js" ng-app="appQiSat" >
-<head ng-controller="appCtrlMetatags" >
-	<base href="http://qisatsite.localhost/assets/">
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp" >
+<head ng-controller="appCtrlMetatags" ng-non-bindable>
 	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	<base href="/assets/">
 	
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
 
- 	<link rel="stylesheet" href="assets/stylesheets/app.css"> <!-- Resource style -->
+ 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
 	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
-	<link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 
 	<title>{{page.title}}</title>
 	
@@ -36,36 +36,29 @@
 
 
 </head>
-<body>
-
+<body >
 
 	<div class="off-canvas-wrap" data-offcanvas>
 	  <div class="inner-wrap">
+		
+		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+			 <aside class="right-off-canvas-menu">
+			   <ul class="off-canvas-list">
+			     <li><label>Menu</label></li>
+			     <li><a href="/">Home</a></li>
+			     <li><a href="/cursos">Cursos</a></li>
+				 <li><a href="/institucional">Institucional</a></li>
+				 <li><a href="/aluno">Área do Aluno</a></li>
+			   </ul>
+			 </aside>
+		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
-<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
-	 <aside class="right-off-canvas-menu">
-	   <ul class="off-canvas-list">
-	     <li><label>Menu</label></li>
-	     <li><a href="#">Home</a></li>
-	     <li><a href="#">Cursos</a></li>
-			 <li><a href="#">FAQ</a></li>
-			 <li><a href="#">Área do Aluno</a></li>
-	   </ul>
-	 </aside>
-<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
-
-
-	 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-	<ng-include src="'assets/view/header.html'"></ng-include>
-	<!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-
+		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+		    	<ng-include src="'/views/header.html'"></ng-include>
+		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 
-
-<main class="content-main">
-
-
-
+<main class="content-main" ng-non-bindable>
 
  	<header class="hero-course">
 		<div class="row">
@@ -109,7 +102,7 @@
 													</ul>
 												</nav>
 									 	</div>
-										<a href="#" target="_blank" class="hide-for-medium-down"><img src="assets/images/courses/banner-sidebar__product__eberick-9.png" alt="Imagem: Conheça o Software Eberick V9"></a>
+										<a href="#" target="_blank" class="hide-for-medium-down"><img src="images/courses/banner-sidebar__product__eberick-9.png" alt="Imagem: Conheça o Software Eberick V9"></a>
 							</aside>
 			</div>  <!--//large-3 columns -->
 
@@ -123,12 +116,12 @@
  			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
 
 			<ul class="clearing-thumbs small-block-grid-6" data-clearing>
-			  <li><a href="assets/images/courses/courses-gallery-image-large-sample1.jpg"><img data-caption="caption 1 here..." src="assets/images/courses/courses-gallery-image-large-sample1.jpg"></a></li>
-			  <li><a href="assets/images/courses/courses-gallery-image-large-sample2.jpg"><img data-caption="caption 2 here..." src="assets/images/courses/courses-gallery-image-large-sample2.jpg"></a></li>
-			  <li><a href="assets/images/courses/courses-gallery-image-large-sample3.jpg"><img data-caption="caption 3 here..." src="assets/images/courses/courses-gallery-image-large-sample3.jpg"></a></li>
-				<li><a href="assets/images/courses/courses-gallery-image-large-sample4.jpg"><img data-caption="caption 4 here..." src="assets/images/courses/courses-gallery-image-large-sample4.jpg"></a></li>
-				<li><a href="assets/images/courses/courses-gallery-image-large-sample5.jpg"><img data-caption="caption 5 here..." src="assets/images/courses/courses-gallery-image-large-sample5.jpg"></a></li>
-				<li><a href="assets/images/courses/courses-gallery-image-large-sample1.jpg"><img data-caption="caption 1 here..." src="assets/images/courses/courses-gallery-image-large-sample1.jpg"></a></li>
+			  <li><a href="images/courses/courses-gallery-image-large-sample1.jpg"><img data-caption="caption 1 here..." src="images/courses/courses-gallery-image-large-sample1.jpg"></a></li>
+			  <li><a href="images/courses/courses-gallery-image-large-sample2.jpg"><img data-caption="caption 2 here..." src="images/courses/courses-gallery-image-large-sample2.jpg"></a></li>
+			  <li><a href="images/courses/courses-gallery-image-large-sample3.jpg"><img data-caption="caption 3 here..." src="images/courses/courses-gallery-image-large-sample3.jpg"></a></li>
+				<li><a href="images/courses/courses-gallery-image-large-sample4.jpg"><img data-caption="caption 4 here..." src="images/courses/courses-gallery-image-large-sample4.jpg"></a></li>
+				<li><a href="images/courses/courses-gallery-image-large-sample5.jpg"><img data-caption="caption 5 here..." src="images/courses/courses-gallery-image-large-sample5.jpg"></a></li>
+				<li><a href="images/courses/courses-gallery-image-large-sample1.jpg"><img data-caption="caption 1 here..." src="images/courses/courses-gallery-image-large-sample1.jpg"></a></li>
 			</ul>
 
 
@@ -311,18 +304,18 @@
 
  			<li class="formato-do-curso__item">
  				<span class="formato-do-curso__item--top">Material</span>
-				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_insert_drive_file_black_24px.svg" alt=""></span>
+				<span class="formato-do-curso__item--icon"> <img src="images/courses/ic_insert_drive_file_black_24px.svg" alt=""></span>
   			</li>
 
 
 	 		<li class="formato-do-curso__item">
 	 				<span class="formato-do-curso__item--top">Fórum</span>
-	 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_forum_black_24px.svg" alt=""></span>
+	 				<span class="formato-do-curso__item--icon"> <img src="images/courses/ic_forum_black_24px.svg" alt=""></span>
 	  	</li>
 
 			<li class="formato-do-curso__item">
 	 				<span class="formato-do-curso__item--top">Tire dúvidas</span>
-	 				<span class="formato-do-curso__item--icon"><img src="assets/images/courses/ic_live_help_black_24px.svg" alt=""></span>
+	 				<span class="formato-do-curso__item--icon"><img src="images/courses/ic_live_help_black_24px.svg" alt=""></span>
 	  	</li>
 
 
@@ -334,7 +327,7 @@
 		<h2 class="course-page__sections--title">Autor do curso</h2>
 		<div class="row">
 				<div class="medium-3 columns">
-				<img class="course-page__sections-about-instructor--avatar" src="assets/images/instructors/instructors-thumb_4.jpg" alt="">
+				<img class="course-page__sections-about-instructor--avatar" src="images/instructors/instructors-thumb_4.jpg" alt="">
  				</div> <!-- //medium-3 columns -->
 
 				<div class="medium-9 columns">
@@ -716,52 +709,35 @@
 </main> <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
 
+			<!-- ########################## FOOTER ########################## -->
+			   <ng-include src="'/views/footer.html'"></ng-include> 
+			<!-- ########################## END FOOTER ########################## -->
 
 
-
-<!-- ########################## FOOTER ########################## -->
-       <ng-include src="'assets/view/footer.html'"></ng-include>
-
-				<!-- GLOBAL -->
-			   	 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-					<script src="assets/js/sticky-kit.js"></script>
-				<!-- // GLOBAL -->
-
-				<!-- PÁGINA HOME -->
-					<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-					<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
-					<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-				<!-- // PÁGINA HOME -->
+			<!-- GLOBAL -->
+				<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+				<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+			<!-- // <script src="js/scripts.js"></script> -->
+			<!-- // GLOBAL -->
 
 
-				<!-- SOMENTE PÁGINA DE CURSOS -->
-						<script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
-						<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
-						<script src='assets/js/filter-isotope.js'></script>
-				<!-- // END SOMENTE PÁGINA DE CURSOS -->
+			<!-- END SCRIPTS HOME -->
+					<script src="js/min/angular.min.js"></script>
+					<script src="js/QiSatApp.js"></script>
+			<!-- EXECUTA SCRIPTS QISAT -->
 
-				<!-- EXECUTA SCRIPTS QISAT -->
-						<script src="assets/js/app.js"></script>
+			<!-- SOMENTE PÁGINA DE CURSOS -->
+					<script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+					<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+			<!-- // <script src='js/filter-isotope.js'></script> -->
+			<!-- // END SOMENTE PÁGINA DE CURSOS -->
 
-
-
-
-			 	<!-- // EXECUTA MEUS SCRIPTS -->
-
-<!-- ########################## END FOOTER ########################## -->
-
-
-
-						<!-- exit-off-canvas -->
-						<a class="exit-off-canvas"></a>
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
 
 
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
-
-	<script src="assets/js/angular.js"></script>
-	<script src="assets/js/qisat.js"></script>
 
 </body>
 </html>
