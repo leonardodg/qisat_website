@@ -279,10 +279,10 @@
 
 
 
-<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| -->
+<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| ng-non-bindable -->
 
-			<section class="home__section-topcourses" ng-non-bindable>
-				<div class="row">
+			<section class="home__section-topcourses" ng-controller="coursesController" >
+				<div class="row" > 
 						<div class="small-12 medium-3 columns">
 								<div class="home_panel_titles--topcourses">
 									<h2 class="section__title--dark">Top Cursos</h2>
@@ -291,12 +291,10 @@
 						</div>  <!-- // large-12 columns -->
 
 						<div class="small-12 medium-9 columns">
-								<ul class="block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-										<li class="block-grid__courses__item"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(images/courses/card-thumb-4.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+								<ul class="block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
+										<li class="block-grid__courses__item" ng-repeat="course in courses"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="{{course.url}}"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url({{course.imgSrc}})"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">{{course.modalidade}}</span>  <span class="card-course__name">{{course.nome}}</span> </a><a href="#" class="card-course__button">R$ {{course.preco}}</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
 
-										<li class="block-grid__courses__item hide-for-small"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(images/courses/card-thumb-2.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
-
-										<li class="block-grid__courses__item hide-for-small hide-for-medium"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="course-ead.html"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url(images/courses/card-thumb-3.jpg)"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">Ensino à Distância</span>  <span class="card-course__name">Curso Alvenaria Estrutural para Construtoras</span> </a><a href="#" class="card-course__button">R$ 360,00</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+		
 								</ul>
 							</div> <!-- //small-12 medium-6 large-6 columns -->
 				</div> <!-- ///row -->
@@ -425,6 +423,7 @@
 					<script src="js/config/value.js"></script>
 					<script src="js/services/QiSatAPI.js"></script>
 					<script src="js/controllers/instructorsController.js"></script>
+					<script src="js/controllers/coursesController.js"></script>
 			
 
 			 <!-- EXECUTA SCRIPTS QISAT -->
