@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
+<head>
+	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	<base href="/assets/">
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> QiSat | O Canal do e-Learning da Engenharia </title>
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+
+ 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
+	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+
+	<div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+
+		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+			 <aside class="right-off-canvas-menu">
+			   <ul class="off-canvas-list">
+			     <li><label>Menu</label></li>
+			     <li><a href="/">Home</a></li>
+				 <li><a href="/institucional">Institucional</a></li>
+			     <li><a href="/cursos">Cursos</a></li>
+				 <li><a href="/aluno">Área do Aluno</a></li>
+			   </ul>
+			 </aside>
+		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
+
+
+		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+		    <ng-include src="'/views/header.html'"></ng-include>
+		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+
+
+<main class="admin_main">
+	<div class="admin_sidebar">
+
+ 		<ul class="metismenu admin__menu">
+            <li class="item">  	<a href="/aluno/perfil" class="link"> <i class="material-icons">folder_special</i> Perfil </a>  </li>
+            <li class="item current ">  <a href="/aluno/desempenho" class="link"> <i class="material-icons">dashboard</i> Dashboard</a> </li>
+            <li class="item">  	<a href="/aluno/cursos" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
+            <li class="item">  	<a href="/aluno/certificados" class="link"> <i class="material-icons">folder_special</i> Certificados </a>  </li>
+            <li class="item">  	<a href="/aluno/financeiro" class="link"> <i class="material-icons">folder_special</i> Financeiro </a>  </li>
+            <li class="item">  	<a href="/login" class="link"> <i class="material-icons">folder_special</i> Login </a>  </li>
+            <li class="item">  	<a href="/cadastro" class="link"> <i class="material-icons">folder_special</i> Cadastro </a>  </li>
+            <li class="item">  	<a href="/lembrete-de-senha" class="link"> <i class="material-icons">folder_special</i> Recuperar Senha </a>  </li>
+        </ul>
+
+ 	</div> <!-- //admin_sidebar -->
+	<div class="admin_content">
+
+		<div class="admin__heading">
+			<h2 class="subtitle"> Portal do Aluno</h2>
+			<h1 class="title">Certificados</h1>
+		</div>
+
+
+		<section id="dashboard">
+			<div class="row">
+				<div class="large-6 small-12 columns">
+					<h3>Lorem ipsum dolor sit amet</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
+		   		</div>
+				<div class="large-6 small-12 columns">
+					<h3>Lorem ipsum dolor sit amet</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
+				</div>
+
+				<div class="small-12 columns">
+	
+
+		 		</div>
+			</div> <!-- //row -->
+		</section>
+
+
+
+ 	</div> <!-- //admin_content -->
+
+
+
+</main> <!--// main-content -->
+<!-- ########################## END MAIN ########################## -->
+
+
+			<!-- ########################## FOOTER ########################## -->
+			   <ng-include src="'/views/footer.html'"></ng-include> 
+			<!-- ########################## END FOOTER ########################## -->
+
+			 <!-- GLOBAL -->
+					<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+			 <!-- // GLOBAL -->
+
+			 <!-- PÁGINA HOME -->
+				<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+				<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+				<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+			<!-- // PÁGINA HOME -->
+
+
+			 <!-- SOMENTE PÁGINA DE CURSOS -->
+				 <script src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+				 <script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+			 <!-- // <script src='js/filter-isotope.js'></script> -->
+			 <!-- // END SOMENTE PÁGINA DE CURSOS -->
+
+			 <!-- EXECUTA SCRIPTS QISAT -->
+				 <script src="js/app.js"></script>
+			 <!-- // EXECUTA MEUS SCRIPTS -->
+
+			<!-- ANGULARJS SCRIPTS -->
+				<script src="js/min/angular.min.js"></script>
+				<script src="js/QiSatApp.js"></script>
+			<!-- END ANGULARJS SCRIPTS -->			 
+				<script src="js/scripts.js"></script>
+
+			 <!-- exit-off-canvas -->
+			 <a class="exit-off-canvas"></a>
+
+	 </div> <!-- //inner-wrap -->
+	</div><!-- //off-canvas-wrap -->
+
+</body>
+</html>

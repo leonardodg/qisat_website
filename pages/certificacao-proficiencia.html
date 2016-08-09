@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
+<head>
+	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> QiSat | O Canal do e-Learning da Engenharia </title>
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+
+ 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
+	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+
+	<div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+
+		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+			 <aside class="right-off-canvas-menu">
+			   <ul class="off-canvas-list">
+			     <li><label>Menu</label></li>
+			     <li><a href="/">Home</a></li>
+			     <li><a href="/cursos">Cursos</a></li>
+				 <li><a href="/institucional">Institucional</a></li>
+				 <li><a href="/aluno">Área do Aluno</a></li>
+			   </ul>
+			 </aside>
+		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
+
+		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+		    	<ng-include src="'/views/header.html'"></ng-include>
+		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+
+<main class="content-main">
+
+<div class="row">
+
+		<div class="admin__heading">
+			<br>
+			<h2 class="subtitle"> Certificação e Proficiência </h2>
+			<h1 class="title"> Construa sua Carreira </h1>
+		</div>
+
+			<div class="large-4 columns">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
+ 			</div> <!-- // large-4 columns -->
+
+ 			<div class="large-8 columns">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
+ 			</div> <!-- // large-8 columns -->
+</div>  <!-- // row -->
+
+
+</main> <!--// main-content -->
+<!-- ########################## END MAIN ########################## -->
+
+
+			<!-- ########################## FOOTER ########################## -->
+			   <ng-include src="'/views/footer.html'"></ng-include> 
+			<!-- ########################## END FOOTER ########################## -->
+
+
+			<!-- GLOBAL -->
+				<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+				<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+			<!-- // <script src="js/scripts.js"></script> -->
+			<!-- // GLOBAL -->
+
+
+			<!-- END SCRIPTS HOME -->
+					<script src="js/min/angular.min.js"></script>
+					<script src="js/QiSatApp.js"></script>
+			 <!-- EXECUTA SCRIPTS QISAT -->
+
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
+
+
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
+
+</body>
+</html>

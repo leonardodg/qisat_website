@@ -1,4 +1,4 @@
-var appQiSat = angular.module("appQiSat", []);	
+var appQiSat = angular.module("appQiSat", ['ngRoute']);	
 
 appQiSat.value("config", {
 	baseUrl : "http://webservice.qisat.com:3000",
@@ -6,9 +6,24 @@ appQiSat.value("config", {
 	imagensUrlDefault : "http://webservice.qisat.com:3000/imagens/instrutores/instrutor.png"
 });
 
-appQiSat.controller("appCtrlHome", 
+ appQiSat.config( ['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+      $routeProvider
+        .when('/', {
+          templateUrl: 'view/instructors.html',
+          controller: 'HomeController',
+          controllerAs : 'dados'
+        })
+        .otherwise({
+          redirectTo: '/index.html'
+        });
+
+        $locationProvider.html5Mode( true );
+    	// $locationProvider.html5Mode({ enabled: true, requireBase: false});
+
+    }]);
+
+appQiSat.controller("HomeController", 
 			function($scope, QiSatAPI, config){
-						$scope.instructors = [];
 						QiSatAPI.getInstructorsTop()
 								.then( function ( response ){
 									var instructors = [];
@@ -27,9 +42,7 @@ appQiSat.controller("appCtrlHome",
 											}
 
 									});
-
-
-									$scope.instructors = instructors;
+									$scope.dados.instructors = instructors;
 								 });
 			});
 

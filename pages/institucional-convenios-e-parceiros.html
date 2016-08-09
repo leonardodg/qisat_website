@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
+<head>
+	<!-- <base href="http://newsite.qisat.com/assets/"> -->
+	<base href="/assets/"> 
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> QiSat | O Canal do e-Learning da Engenharia </title>
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+
+ 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
+	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+	<div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+
+	    <!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+	       <aside class="right-off-canvas-menu">
+	         <ul class="off-canvas-list">
+	           <li><label>Menu</label></li>
+	           <li><a href="/">Home</a></li>
+	         <li><a href="/institucional">Institucional</a></li>
+	           <li><a href="/cursos">Cursos</a></li>
+	         <li><a href="/aluno">Área do Aluno</a></li>
+	         </ul>
+	       </aside>
+	    <!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
+
+	    <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+	        <ng-include src="'/views/header.html'"></ng-include>
+	    <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+
+<main class="content-main">
+
+  <header class="hero-pages hero-pages__insitucional">
+   <div class="row">
+       <div class="medium-12 columns">
+         <span class="hero-pages__label">Institucional</span>
+         <h1 class="hero-pages__title">Conheça o QiSat</h1>
+         <p class="hero-pages__tagline"> O maior portal de E-Learn para engenheiros</p>
+
+         <ul class="hero-course__buttons-group">
+           <li class="hero-course__buttons-group--item"> <a class="buttom-call" href="#" data-reveal-id="modalPageCourseCall">  Ligamos para você</a> </li>
+         </ul>
+
+       </div> <!-- //large-12-->
+   </div> <!-- ///row -->
+ </header><!-- //hero-home -->
+
+ <div class="row">
+     <div class="medium-12 columns">
+       <nav class="menu-horizontal">
+          <ul class="menu-horizontal__list"  data-equalizer>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a  class="menu-horizontal__link" href="/institucional/sobre-a-empresa">Sobre a empresa</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a  class="menu-horizontal__link" href="/institucional/linha-do-tempo">Linha do tempo</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current"><a  class="menu-horizontal__link" href="/institucional/convenios-e-parceiros">Convênios e Parceiros</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a  class="menu-horizontal__link" href="/institucional/instrutores-e-professores">Instrutores e Professores</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a  class="menu-horizontal__link" href="/institucional/contatos">Entre em Contato</a></li>
+        </ul>
+       </nav>
+     </div> <!-- //large-12-->
+
+     <div class="large-3 medium-4 columns grid-sidebar-left">
+       menu aqui<br>
+       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+     </div> <!-- //large-4-->
+     <div class="large-9 medium-8 columns">
+          <div class="page_content">
+            <h1>Parcerias e convenios</h1>
+             <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div> <!-- //page_content -->
+    </div> <!-- //large-8-->
+
+
+ </div> <!-- ///row -->
+
+</main> <!--// main-content -->
+<!-- ########################## END MAIN ########################## -->
+
+	          <!-- ########################## FOOTER ########################## -->
+	             <ng-include src="'/views/footer.html'"></ng-include> 
+	          <!-- ########################## END FOOTER ########################## -->
+
+				<!-- GLOBAL -->
+			   	 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+					 <script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+				<!-- // GLOBAL -->
+
+				<!-- PÁGINA HOME -->
+						 <link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+						 <link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+						 <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+				<!-- // PÁGINA HOME -->
+				
+				<!-- EXECUTA SCRIPTS QISAT -->
+				 <script src="js/app.js"></script>
+
+	            <!-- ANGULARJS SCRIPTS -->
+		            <script src="js/min/angular.min.js"></script>
+		            <script src="js/QiSatApp.js"></script>
+		        <!-- END ANGULARJS SCRIPTS -->       
+		            <script src="js/scripts.js"></script>
+			 	<!-- // EXECUTA MEUS SCRIPTS -->
+
+				<!-- exit-off-canvas -->
+				<a class="exit-off-canvas"></a>
+
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
+
+</body>
+</html>
