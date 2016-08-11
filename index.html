@@ -279,9 +279,9 @@
 
 
 
-<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| ng-non-bindable -->
+<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| ng-non-bindable coursesController -->
 
-			<section class="home__section-topcourses" ng-controller="coursesController" >
+			<section class="home__section-topcourses" ng-controller="topCoursesCtrl">
 				<div class="row" > 
 						<div class="small-12 medium-3 columns">
 								<div class="home_panel_titles--topcourses">
@@ -292,9 +292,7 @@
 
 						<div class="small-12 medium-9 columns">
 								<ul class="block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
-										<li class="block-grid__courses__item" ng-repeat="course in courses"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="{{course.url}}"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url({{course.imgSrc}})"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">{{course.modalidade}}</span>  <span class="card-course__name">{{course.nome}}</span> </a><a href="#" class="card-course__button">R$ {{course.preco}}</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
-
-		
+										<li class="block-grid__courses__item" ng-repeat="course in topCourses"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="{{course.url}}"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url({{course.imgSrc}})"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">{{course.modalidade}}</span>  <span class="card-course__name">{{course.nome}}</span> </a><a href="#" class="card-course__button">R$ {{course.preco}}</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
 								</ul>
 							</div> <!-- //small-12 medium-6 large-6 columns -->
 				</div> <!-- ///row -->
@@ -424,6 +422,7 @@
 					<script src="js/services/QiSatAPI.js"></script>
 					<script src="js/controllers/instructorsController.js"></script>
 					<script src="js/controllers/coursesController.js"></script>
+					<script src="js/controllers/headerCtrl.js"></script>
 			
 
 			 <!-- EXECUTA SCRIPTS QISAT -->

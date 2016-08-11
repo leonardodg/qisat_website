@@ -10,8 +10,13 @@ QiSatApp.factory("QiSatAPI", function($http, Config){
 		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/produtos/top'});
 	};
 
+	var _getCourses = function () {
+		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/produtos'});
+	};
+
 	return {
 		getInstructorsTop : _getInstructorsTop,
-		getCoursesTop : _getCoursesTop
+		getCoursesTop : _getCoursesTop,
+		getCourses : _getCourses
 	};
 });
