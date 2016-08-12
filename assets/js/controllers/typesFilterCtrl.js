@@ -6,6 +6,12 @@ QiSatApp.controller("typesFilterCtrl",
 				var path = window.location.pathname;
 				var filter, els;
 
+				// $scope.typesFilter = [];
+
+				// $scope.addFilter = function(type){
+				// 	$scope.typesFilter.push(type);
+				// };
+
 				if( path.indexOf('/online') >= 0){
 					filter = Config.filter.online;
 				}else if( path.indexOf('/presenciais') >= 0){
