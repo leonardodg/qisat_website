@@ -30,7 +30,9 @@ QiSatApp.controller("topCoursesCtrl",
 									$scope.topCourses = courses;
 								 });
 			}).controller("coursesCtrl",
-			function($scope, QiSatAPI, Config){
+			function($scope, QiSatAPI, Config ){
+
+						// $scope.typesFilter = dataFilter.types;
 
 						QiSatAPI.getCourses()
 								.then( function ( response ){
@@ -57,29 +59,27 @@ QiSatApp.controller("topCoursesCtrl",
 												course.nome = course.nome.replace(/curso/ig, '');
 											}
 
-											if( course.categorias.find(function(tipo){ return tipo.id == 32 })){
+											if( course.categorias.find(function(tipo){ return tipo.id == 32 })){ // Séries
 												course.modalidade = "Série Online";
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 												course.modalidade = "Pacote de Cursos Online";
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){
-												remove.push(i); // Cursos Software Presenciais Individuais
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+												course.modalidade = "Palestra Online";
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+												remove.push(i); 
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
 												course.modalidade = "Curso Presencial";
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 16 })){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 16 })){ // Prazo Extra
 												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 22 }) ){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 22 }) ){ // WebConferência
 												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 9  })){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 9  })){ // Interno
 												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){
+											}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
 												course.modalidade = "Curso Online";
 											}else{
-												course.modalidade = "";
+												course.modalidade = ">> SEM CATEGORIA <<";
 											}
-
-											// else if( course.categorias.find(function(tipo){ return tipo.id == 0 })){ // PALESTRAS
-											// 	course.modalidade = "Palestra Online";
-											// }
 
 										}
 									});
@@ -89,9 +89,19 @@ QiSatApp.controller("topCoursesCtrl",
 									});
 									courses = courses.filter(function(el){return el});
 
-									// Curso Online: Categoria = 14 e 15
-									palestras = courses.filter(function(course){
-										return course.categorias.find(function(tipo){ return tipo.id == 14 || tipo.id == 15 });
+									// Series: Categoria = 32
+									series = courses.filter(function(course){
+										return course.categorias.find(function(tipo){return tipo.id == 32 });
+									});
+
+									// Pacotes: Categoria = 17
+									pacotes = courses.filter(function(course){
+										return course.categorias.find(function(tipo){return tipo.id == 17 });
+									});									
+
+									// Curso Presencial: Categoria = 10
+									classCourses = courses.filter(function(course){
+										return course.categorias.find(function(tipo){return tipo.id == 10 });
 									});
 
 									// Curso Online: Categoria = 2
@@ -99,17 +109,13 @@ QiSatApp.controller("topCoursesCtrl",
 										return course.categorias.find(function(tipo){return tipo.id == 2 });
 									});
 
-									// Curso Presencial: Categoria = 10
-									classCourses = courses.filter(function(course){
-										return course.categorias.find(function(tipo){return tipo.id == 10 });
-									});
 
 									$scope.courses = courses;
 									$scope.onlineCourses = onlineCourses;
 									$scope.classCourses = classCourses;
+									$scope.series = series;
+									$scope.pacotes = pacotes;
 
 									// console.log(courses);
-
-
 								 });
 			});
