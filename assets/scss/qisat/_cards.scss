@@ -24,9 +24,11 @@
  }
   
 
+.list__courses { margin: 0; padding: 0; list-style: none;
+    > li { margin: 0; padding: 0 !important;}
+}
 
-
-
+ 
 
 
 /*CARDS*/
@@ -54,8 +56,9 @@
     margin-top: 3px;
     opacity: 0.3;
     cursor: pointer;
+    margin-right: 10px;
     }
-  .card-course__modality{ padding-left: 10px; color: #979797; }
+  .card-course__modality{   color: #979797; }
   .card-course__name{ font-size: 18px; font-weight: 400; color: #000; }
   .card-course__instructors{}
    .card-course--content {    padding: 10px 10px;}
@@ -87,7 +90,7 @@
 .card-course-serie{ padding: 20px; margin: 0; 
   @media only screen and (max-width: 40em) { display:none; } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
   &__list{overflow-y: scroll; max-height: 260px; padding: 10px; }
-  &__item{ list-style: none; margin: 0;
+  &__item{ list-style: none; margin: 0; border-bottom: 1px dashed #ddd;
       .chapter{ display: block; font-weight: 300; font-size: 0.8rem; line-height: 1; padding-top: 20px;}
       .name{ opacity: 0.7; font-weight: 300; font-size: 1.2rem;}
       .link{line-height:auto;}
