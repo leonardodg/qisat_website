@@ -44,7 +44,7 @@
   font-size: 0; height: 40px; display: inline-block; background-repeat: no-repeat; float: left;
 
 		 @media only screen and (min-width: 64.063em) {
-		 background-image: url("../images/brand/brand_large.svg"); width: 319px;
+		 background-image: url("../images/brand/brand_large.svg"); width: 415px;
 		 } /* min-width 1025px, large screens */
 
 }
@@ -63,6 +63,47 @@
     &.actived { background-color: rgba(0, 91, 148, 0.86) !important;
        .header-main__item-cart{ }
     }
+<<<<<<< HEAD
+}
+.header-main__item-cart,
+.header-main__item-cart:active,
+.header-main__item-cart:hover{ color: #fff !important; padding: 17px 24px;}
+
+ 
+//end botão carrinho
+
+
+.header-main__list-current{
+     background-color: rgba(0, 0, 0, 0.06);
+ }
+.header-main__list-item-current{
+   position: relative; 	opacity: 1;
+      &::before{
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            /* border-left: 15px solid transparent; */
+            /* border-right: 15px solid transparent; */
+            border-top: 4px solid $secondary-color;
+            width: 100%;
+            margin-left: 0;
+      }
+=======
+
+    .cart_number {
+        position: absolute;
+        top: 10px;
+        background-color: red;
+        font-size: 11px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 }
 .header-main__item-cart,
 .header-main__item-cart:active,
@@ -92,6 +133,10 @@
 }
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 .header-main__ul{margin-bottom: -3px; float:left;  }
 .header-main__list{
    display: inline-block;
@@ -177,6 +222,10 @@
     cursor: pointer;
     z-index: 1;
 }
+
+
+
+
 
 .header-main__buttons_item-cart--container{
   font-size: 16px;

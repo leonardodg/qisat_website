@@ -1,7 +1,11 @@
 
   // Foundation JavaScript
   // Documentation can be found at: http://foundation.zurb.com/docs
+<<<<<<< HEAD
   $(document).foundation();
+=======
+  //$(document).foundation();
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
    // $("#menu").metisMenu({
    //   collapseInClass: 'in';
@@ -16,6 +20,106 @@
           console.log("clicado");
 });
 
+<<<<<<< HEAD
+
+=======
+ $(document).foundation(
+
+ {
+"magellan-expedition": {
+  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+  destination_threshold: 20, // pixels from the top of destination for it to be considered active
+  throttle_delay: 50, // calculation throttling to increase framerate
+  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+}
+}
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
+
+);
+
+  
+$(document).ready(function() {
+  if ( $('#sidebar-styker').length ) {
+       $("#sidebar-styker").stick_in_parent({
+        offset_top: 80,
+        recalc_every: 1,
+       });
+  }
+
+<<<<<<< HEAD
+   if ( $('#sidebar-styker--course').length ) {
+       $("#sidebar-styker--course").stick_in_parent({
+        offset_top: 200,
+        recalc_every: 1,
+       });
+  }
+=======
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
+
+}());
+
+
+<<<<<<< HEAD
+=======
+
+
+$(function() {
+  $('.anchor').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
+
+
+
+   $(document).ready(function() {
+
+<<<<<<< HEAD
+     $(".owl-carousel-testimonials-home").owlCarousel({
+         navigation : false, // Show next and prev buttons
+         slideSpeed : 300,
+         paginationSpeed : 400,
+         singleItem:true,
+         autoHeight:true,
+
+         //"singleItem:true" is a shortcut for:
+          items : 1,
+         itemsDesktop : false,
+         itemsDesktopSmall : false,
+         itemsTablet: false,
+         itemsMobile : false
+     });
+
+   });
+
+
+/* Temporário
+   temporário, usado somente para testar, a ideia é que seja feito em php,
+   se favorirar adicionar a class .buttom-favorite-active  */
+     $(function() {
+       if ( $('.buttom-favorite').length ) {
+             $('.buttom-favorite').on('click', function(){
+                   event.preventDefault();
+                  // alert("foi")
+                  $(this).toggleClass("buttom-favorite-active");
+             });
+=======
+ $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
+         event.preventDefault();
+        $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
+ });
+
 
 
 
@@ -27,21 +131,48 @@ $(document).ready(function() {
         recalc_every: 1,
        });
   }
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
-   if ( $('#sidebar-styker--course').length ) {
-       $("#sidebar-styker--course").stick_in_parent({
+   if ( $('#sidebar-styker--courses').length ) {
+       $("#sidebar-styker--courses").stick_in_parent({
         offset_top: 200,
         recalc_every: 1,
        });
   }
 
+<<<<<<< HEAD
+             $('.form-button-call-me').on('click', function(){
+                        event.preventDefault();
+                       $(".section-call__form").css({"height": "0", "overflow": "hidden"});
+                       $(".section-call__done").css({"height": "initial", "overflow": "initial"});
+              });
+        }
+      }());
+/* end página cursos > botão favoritar*/
+=======
 }());
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
 
 
 
+/* Temporário
+   temporário, usado somente para testar,
+   se clicar  .cd-item-remove  */
 
+<<<<<<< HEAD
+$(function() {
+  if ( $('.cd-item-remove').length ) {
+           $('.cd-item-remove').on('click', function(event){
+                   //event.preventDefault();
+                  $(this).parent().addClass("remove");
+                    console.log("clicado");
+          });
+  }
+});
+=======
    $(document).ready(function() {
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
      $(".owl-carousel-testimonials-home").owlCarousel({
          navigation : false, // Show next and prev buttons
@@ -73,6 +204,8 @@ $(document).ready(function() {
              });
 
 
+<<<<<<< HEAD
+=======
              $('.form-button-call-me').on('click', function(){
                         event.preventDefault();
                        $(".section-call__form").css({"height": "0", "overflow": "hidden"});
@@ -81,30 +214,7 @@ $(document).ready(function() {
         }
       }());
 /* end página cursos > botão favoritar*/
-
-
-
-
-/* Temporário
-   temporário, usado somente para testar,
-   se clicar  .cd-item-remove  */
-
-$(function() {
-  if ( $('.cd-item-remove').length ) {
-           $('.cd-item-remove').on('click', function(event){
-                   //event.preventDefault();
-                  $(this).parent().addClass("remove");
-                    console.log("clicado");
-          });
-  }
-});
-
-
-
-
-
-
-
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
 
 
@@ -124,6 +234,104 @@ $(function() {
   }
 });
 //end zurb foundation animate accordion
+
+/* Temporário
+   temporário, usado somente para testar,
+   se clicar  .cd-item-remove  */
+
+<<<<<<< HEAD
+
+
+//toggle foter
+if ( $('.footer-primary__list__item').length ) {
+      if ($(window).width() < 640) {
+
+          $(function() {
+            $(".footer-primary__list__item").hide(200);
+
+                 $('.footer-primary__list').children('.footer-primary__title').on('click', function(event){
+                    event.preventDefault();
+                    $(this).siblings(".footer-primary__list__item").slideToggle(200);
+                 });
+            }());
+      } else{
+         $(".footer-primary__list__item").show(200);
+      }
+}
+
+
+
+//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
+ $(function() {
+   if ( $('.navigation_courses__list-item--link').length ) {
+
+        $('.navigation_courses__list-item--link').click(function() {
+          if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: (target.offset().top)-80
+              }, 1000);
+              return false;
+            }
+          }
+        });
+    }
+});
+  //end Smooth Scrolling
+=======
+$(function() {
+  if ( $('.cd-item-remove').length ) {
+           $('.cd-item-remove').on('click', function(event){
+                   //event.preventDefault();
+                  $(this).parent().addClass("remove");
+                    console.log("clicado");
+          });
+  }
+});
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
+///simple modal image
+   $(function() {
+     if ( $('.section__course-gallery-list--link').length ) {
+         $('.section__course-gallery-list--link').on('click', function(event){
+               event.preventDefault();
+              // alert("foi")
+              $(this).toggleClass("active");
+
+         });
+       }
+     }());
+
+=======
+
+
+//zurb foundation animate accordion
+$(function() {
+  if ( $('.accordion').length ) {
+        // se accordion estiver presente, executa esse codigo
+        $(".accordion").on("click", "dd", function () {
+                if($(this).hasClass('active')){
+                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
+                }
+                else {
+                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
+                    $(this).addClass('active').find(".content").slideToggle("fast");
+                }
+        });
+  }
+});
+//end zurb foundation animate accordion
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
 
 
@@ -147,6 +355,8 @@ if ( $('.footer-primary__list__item').length ) {
 
 
 
+<<<<<<< HEAD
+=======
 //Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
  $(function() {
    if ( $('.navigation_courses__list-item--link').length ) {
@@ -193,6 +403,7 @@ if ( $('.footer-primary__list__item').length ) {
 
 
 
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
 
 
@@ -222,8 +433,11 @@ if ( $('.footer-primary__list__item').length ) {
              });
         }
       }());
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
 
 
 
@@ -236,6 +450,14 @@ if ( $('.footer-primary__list__item').length ) {
 $(document).ready(function() {
   if ( $('.owl-sync').length ) {
 
+<<<<<<< HEAD
+=======
+
+// carrousel página institucional
+$(document).ready(function() {
+  if ( $('.owl-sync').length ) {
+
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
         var sync1 = $("#gallery-sync_bigger");
         var sync2 = $("#gallery-sync_thumb");
         var slidesPerPage = 6; //globaly define number of elements per page
@@ -321,3 +543,11 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 95c32db17586dcb7f328b4bd4fb771f8d19730ec
