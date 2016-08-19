@@ -7,6 +7,7 @@
    //   collapseInClass: 'in';
    // });
 
+$(document).foundation('equalizer', 'reflow');
 
 
 $(function() {
