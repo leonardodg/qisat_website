@@ -28,6 +28,15 @@
 
 
 
+///MAP svg
+$(function() {
+  $(".map__state").click(function() {
+      $(".mapa .map__state").removeClass("active");
+      $(this).addClass("active");
+  });
+}());
+
+
 
 
 
