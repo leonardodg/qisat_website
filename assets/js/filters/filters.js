@@ -7,19 +7,59 @@ QiSatApp.filter("limitName", function (){
 		var output = input.substring (0, size) + "...";
 		return output;
 	};
-}).filter("filterTypeOnline", function (){
-	return function (courses, types) {
+});
+
+QiSatApp.filter('zpad', function() {
+	return function(input, n) {
+		var zeros;
+		n = (n || 2);
+		if(input === undefined) input = ""
+		if(input.length >= n) return input
+		zeros = "0".repeat(n);
+		return (zeros + input).slice(-1 * n);
+	};
+});
+
+QiSatApp.filter("byTypes", function (){
+	return function (courses, types, operation) {
+		// console.log('byTypes:'+count++);
 		var filtered = [];
+		if(!types || ( Array.isArray(types) && types.length == 0)) return courses;
 
-		// console.log(courses.length);
-		// console.log(types);
+		if(Array.isArray(types)) {
+			switch(operation){
+				case 'separated' :
+						types.map(function(type){
+									filtered.push(courses.filter(function(course){
+											return course.categorias.find(function(tipo){ return tipo.id == type })
+									    })
+									)});
+					break;
+				case 'unity' :
+						var result = [];
+						types.map(function(type){
+								filtered = courses.filter(function(course){
+									return course.categorias.find(function(tipo){ return tipo.id == type })
+							    });
 
-		if(!types || types.length == 0) return courses;
-		types.map(function(type){
-			filtered = filtered.concat( courses.filter(function(course){
-							return course.categorias.find(function(tipo){ return tipo.id == type }) && !filtered.find(function(item){ item.id == course.id })
-					    }));
-		});
+							    result = result.concat( filtered.filter(function(course){ return result.indexOf(course) < 0 }));
+							});
+
+						filtered = result;
+					break;
+				case 'intersection' :
+				default: 
+					types.map(function(type){
+								filtered = courses.filter(function(course){
+									return course.categorias.find(function(tipo){ return tipo.id == type })
+							    });
+							});
+			}
+		}else if(typeof types == 'string' || typeof types == 'number' ){
+			filtered = courses.filter(function(course){
+									return course.categorias.find(function(tipo){ return tipo.id == types })
+							    });
+		}
 
 		return filtered;
 	};

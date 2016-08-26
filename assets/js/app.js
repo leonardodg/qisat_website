@@ -7,6 +7,7 @@
    //   collapseInClass: 'in';
    // });
 
+$(document).foundation('equalizer', 'reflow');
 
 
 $(function() {
@@ -88,19 +89,29 @@ $(function() {
 
   
 $(document).ready(function() {
-  if ( $('#sidebar-styker').length ) {
-       $("#sidebar-styker").stick_in_parent({
-        offset_top: 80,
-        recalc_every: 1,
-       });
-  }
+  // if ( $('#sidebar-styker').length ) {
+  //      $("#sidebar-styker").stick_in_parent({
+  //       offset_top: 80,
+  //       recalc_every: 1,
+  //      });
+  // }
 
-   if ( $('#sidebar-styker--courses').length ) {
-       $("#sidebar-styker--courses").stick_in_parent({
-        offset_top: 200,
-        recalc_every: 1,
-       });
-  }
+  //  if ( $('#sidebar-styker--course').length ) {
+  //      $("#sidebar-styker--course").stick_in_parent({
+  //       offset_top: 200,
+  //       recalc_every: 1,
+  //      });
+  // }
+
+    $('a').on("click", function() {
+      var link = $(this).attr('href');
+      if (link.substr(0,1) == "#"){
+          document.location.hash = link;
+          return false;
+      }
+    });
+
+
 
 }());
 
@@ -124,6 +135,15 @@ $(document).ready(function() {
          itemsTablet: false,
          itemsMobile : false
      });
+
+      // $('.selectStates').on('change', function() {
+      //      var selected = $(this).find(":selected");
+      //      if(selected.val()){
+      //        $('.filter-types-produts:checked').prop('checked' , false).removeAttr('checked');
+      //        $('#tipo2').prop('checked' , false).removeAttr('checked');
+      //      }
+      // });
+
 
    });
 

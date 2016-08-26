@@ -14,9 +14,20 @@ QiSatApp.factory("QiSatAPI", function($http, Config){
 		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/produtos'});
 	};
 
+	var _getStates = function () {
+		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/eventos/estados'});
+	};
+
+	var _getFilterData = function () {
+		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/tipo/dados'});
+	};
+
+
 	return {
 		getInstructorsTop : _getInstructorsTop,
 		getCoursesTop : _getCoursesTop,
-		getCourses : _getCourses
+		getCourses : _getCourses,
+		getStates : _getStates,
+		getFilterData : _getFilterData
 	};
 });
