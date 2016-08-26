@@ -1,7 +1,7 @@
 
   // Foundation JavaScript
   // Documentation can be found at: http://foundation.zurb.com/docs
-  $(document).foundation();
+  //$(document).foundation();
 
    // $("#menu").metisMenu({
    //   collapseInClass: 'in';
@@ -27,11 +27,64 @@ $(function() {
 
 
 
- $('.header-main__item-cart,  #cd-shadow-layer').on('click', function(event){
+
+
+ $(document).foundation(
+
+ {
+"magellan-expedition": {
+  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+  destination_threshold: 20, // pixels from the top of destination for it to be considered active
+  throttle_delay: 50, // calculation throttling to increase framerate
+  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+}
+}
+
+);
+
+
+
+///MAP svg
+$(function() {
+  $(".map__state").click(function() {
+      $(".mapa .map__state").removeClass("active");
+      $(this).addClass("active");
+  });
+}());
+
+
+
+
+
+
+$(function() {
+  $('.anchor').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+
+
+
+
+ $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
          event.preventDefault();
         $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
-          console.log("clicado");
-});
+ });
+
+
+
+
 
   
 $(document).ready(function() {
@@ -42,8 +95,8 @@ $(document).ready(function() {
        });
   }
 
-   if ( $('#sidebar-styker--course').length ) {
-       $("#sidebar-styker--course").stick_in_parent({
+   if ( $('#sidebar-styker--courses').length ) {
+       $("#sidebar-styker--courses").stick_in_parent({
         offset_top: 200,
         recalc_every: 1,
        });
@@ -329,6 +382,11 @@ $(document).ready(function() {
 });
 
 // end carrousel página institucional
+
+
+
+
+
 
 
 
