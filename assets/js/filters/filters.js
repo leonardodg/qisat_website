@@ -9,10 +9,21 @@ QiSatApp.filter("limitName", function (){
 	};
 });
 
+QiSatApp.filter('zpad', function() {
+	return function(input, n) {
+		var zeros;
+		n = (n || 2);
+		if(input === undefined) input = ""
+		if(input.length >= n) return input
+		zeros = "0".repeat(n);
+		return (zeros + input).slice(-1 * n);
+	};
+});
+
 QiSatApp.filter("byTypes", function (){
 	return function (courses, types, operation) {
+		// console.log('byTypes:'+count++);
 		var filtered = [];
-
 		if(!types || ( Array.isArray(types) && types.length == 0)) return courses;
 
 		if(Array.isArray(types)) {
@@ -23,8 +34,6 @@ QiSatApp.filter("byTypes", function (){
 											return course.categorias.find(function(tipo){ return tipo.id == type })
 									    })
 									)});
-
-						courses = filtered;
 					break;
 				case 'unity' :
 						var result = [];
@@ -36,22 +45,22 @@ QiSatApp.filter("byTypes", function (){
 							    result = result.concat( filtered.filter(function(course){ return result.indexOf(course) < 0 }));
 							});
 
-						courses = result;
+						filtered = result;
 					break;
 				case 'intersection' :
 				default: 
 					types.map(function(type){
-								courses = courses.filter(function(course){
+								filtered = courses.filter(function(course){
 									return course.categorias.find(function(tipo){ return tipo.id == type })
 							    });
 							});
 			}
 		}else if(typeof types == 'string' || typeof types == 'number' ){
-			courses = courses.filter(function(course){
+			filtered = courses.filter(function(course){
 									return course.categorias.find(function(tipo){ return tipo.id == types })
 							    });
 		}
 
-		return courses;
+		return filtered;
 	};
 });

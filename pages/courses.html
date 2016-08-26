@@ -33,8 +33,27 @@
 		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-		    <ng-include src="'/views/header.html'"></ng-include>
+		    <!-- <ng-include src="'/views/header.html'"></ng-include> -->
 			<!-- <include ui-view='header' ></include> ui-router -->
+			<header class="header-main">
+				   <div class="header-main__brand"> <a href="/" class="header-main__logo"> QiSat </a> </div>
+					<nav class="header-main__nav">
+					<ul class="header-main__ul">
+						<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/">Home</a></li>
+						<li class="show-for-large-up header-main__list  header-main__list__has--submenu header-main__list-current">
+							<a class="header-main__item header-main__list-item-current" href="/cursos">Cursos</a>
+							<ul class="header-main__list__submenu">
+								<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="/course-ead.html">Curso EAD</a></li>
+								<li class="header-main__list__submenu--item"><a class="header-main__list__submenu--item-link" href="/course-presential.html">Curso Presencial</a></li>
+							</ul>
+						</li>
+			 			<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/aluno">Área do Aluno</a></li>
+						<li class="show-for-large-up header-main__list"> <a class="header-main__item" href="/institucional">Institucional</a></li>
+						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> <i class="material-icons">menu</i> Menu</a></li>
+			    		<li class="header-main__list header-main__list-cart"> <a class="header-main__item header-main__item-cart" href="/carrinho"><i class="material-icons">shopping_cart</i></a></li>
+					</ul>
+				</nav>
+			</header>
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 
@@ -53,7 +72,7 @@
 							<div class="page-course__box-search">
 								<h2 class="hero-page-course__title">Encontre o curso perfeito para você</h2>
 
-								<form>
+								<form name="formSearch" id="formSearch">
 									<div class="row collapse">
 											<div class="small-10 columns">
 												<input class="courses-input-search" type="search" placeholder="Procure um curso" ng-model="search" >
@@ -79,54 +98,51 @@
 			<div class="hide-for-medium-down medium-4 large-3 columns" >
 					<aside  id="sidebar-styker--course" class="menu-filter-sidebar menu-filter-sidebar-up">
 					 	<div class="menu-filter-sidebars" >
+							<form name="formFilters" id="formFilters">
+					 			<div ng-repeat="filter in ::filters track by filter.id">
 
-					 			<div ng-repeat="filter in filters">
-					 				<div ng-switch="filter.type">
-
-					 					<div ng-switch-when="links">
-					 						<h5 class="menu-filter-sidebars--title">{{filter.title}}</h5>
+					 					<div ng-if="::filter.type=='links'">
+					 						<h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5>
 										   	<ul class="menu-filter-sidebar-option-set">
-											 	<li class="menu-filter-sidebar-item" ng-repeat="item in filter.inputs"> <a class="menu-filter-sidebar-item--link active" ng-href="{{item.link}}"> {{item.title}} <i class="material-icons">chevron_right</i> </a></li>
+											 	<li class="menu-filter-sidebar-item" ng-repeat="item in ::filter.inputs"> <a class="menu-filter-sidebar-item--link active" ng-href="{{::item.link}}"> {{::item.title}} <i class="material-icons">chevron_right</i> </a></li>
 								 		  	 </ul>
 					 					</div>
 
-					 					<div ng-switch-when="dropdown">
-					 						<h5 class="menu-filter-sidebars--title">{{filter.title}}</h5>
-											<label>
-										        <select>
-										          <option value="Item1" ng-repeat="item in filter.inputs" >{{item.title}}</option>
+					 					<div ng-if="::filter.type=='dropdown'">
+					 						<h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5>
+											<label for="selectStates" >
+										        <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.name for option in filter.inputs track by option.uf" ng-model="filter.selectStates" ng-change="::filterStates(filter.selectStates)">
+ 													<option value=""> Selecione o Estado </option>
 										        </select>
 										     </label>
 					 					</div>
 
-					 					<div ng-switch-when="checkbox">
-
-					 					   <h5 class="menu-filter-sidebars--title">{{filter.title}}</h5> 
+					 					<div ng-if="::filter.type=='checkbox'">
+					 					   <h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5> 
 										   <ul class="menu-filter-sidebar-option-set">
 
-								 		     <li class="menu-filter-sidebar-item" ng-repeat="(key, item) in filter.inputs">
+								 		     <li class="menu-filter-sidebar-item" ng-repeat="item in ::filter.inputs">
 								 		     	
-								 		     		<input id="{{filter.name+key}}" type="checkbox" class="with-font" ng-checked="{{item.checked}}" ng-click="addFilter($event, item)" data-ng-if="filter.name=='tipo'" /> 
+								 		     		<input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-types" ng-click="::filterTypes($event, item)" ng-if="::filter.name=='tipo'" /> 
 
-								 		     		<input id="{{filter.name+key}}" type="checkbox" class="with-font" ng-checked="{{item.checked}}" ng-click="addList($event, item)" data-ng-if="filter.name!=tipo" /> 
+								 		     		<input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-types-produts" ng-click="::filterTypesProduts($event, item)" ng-if="::filter.name=='tipo-produto'" /> 
+
+								 		     		<input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-area" ng-click="::addListFilter($event, item)" ng-if="::(filter.name=='area' || filter.name=='area-complementar')" />
 
 
-								 		     	<label for="{{filter.name+key}}">{{item.title}} <span class="menu-filter-sidebar-item--quantity">00</span> </label>  </li>
+								 		     	<label for="{{::item.name}}">{{::item.title}} <span class="menu-filter-sidebar-item--quantity">{{::item.qtds}}</span> </label>  </li>
 			 					  		   </ul>
-
 					 					</div>
 
-					 					<div ng-switch-when="radio">
-											<h5 class="menu-filter-sidebars--title">{{filter.title}}</h5>
+					 					<div ng-if="::filter.type=='radio'">
+											<h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5>
 											<ul class="menu-filter-sidebar-option-set">
-												<li class="menu-filter-sidebar-item" ng-repeat="(key, item) in filter.inputs"><input id="{{filter.name+key}}" name="{{filter.name}}" type="radio"  value="sel" class="with-font" /> <label for="{{filter.name+key}}">{{item.title}}<span class="menu-filter-sidebar-item--quantity">00</span> </label> </label> </li>
+												<li class="menu-filter-sidebar-item" ng-repeat="item in ::filter.inputs"><input id="{{::filter.name}}" name="{{::filter.name}}" type="radio"  value="sel" class="with-font" /> <label for="{{::filter.name}}">{{::item.title}}<span class="menu-filter-sidebar-item--quantity">{{::item.qtds}}</span> </label> </label> </li>
 											</ul>
 					 					</div>
-					 					
-					 				</div>
 					 				<hr />
 					 			</div>
-							   
+							 </form> 
 						</div> <!-- //menu-filter-sidebars -->
 					</aside>
 			 </div>  <!-- // large-3 columns -->
@@ -156,25 +172,28 @@
 
 					<div ng-repeat="list in coursesList" ng-show="list.show">
 						<header class="page-course__header-group">
-							 <span class="page-course__header-group--cattitle">{{list.title}}</span>
+							 <span class="page-course__header-group--cattitle">{{::list.title}}</span>
+							 <p> Total: {{::list.courses.length}}</p>
 						</header><!-- //page-course__header-group | byTypes:types:op  -->
-					     <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
+					    
+					    <div  ng-if="::list.card=='online'" >
+				    	    <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
 								<!-- MODELO PARA LOOPING -->
-								<li class="block-grid__courses__item" ng-repeat="course in list.courses | byTypes:types:'unity' | filter:{nome : search} | orderBy:order " > <!-- | limitTo:3 -->
+								<li class="block-grid__courses__item" ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" > <!-- | limitTo:3 -->
 									<div class="list-filter__inner">
 										<div class="card-course card-format-block">
 									   		<div class="card-course-inner">
-									   				<a ng-href="{{course.link}}">
+									   				<a ng-href="{{::course.link}}">
 									   					<span class="card-course--litle-play"></span>
-									   					<div class="card-course-header" style="background-image: url({{course.imgSrc}})"></div> 
+									   					<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 									   				</a>
 									   				<div class="card-course--content">
-									   					<a ng-href="{{course.link}}">
+									   					<a ng-href="{{::course.link}}">
 									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
-									   						<span class="card-course__modality">{{course.modalidade}}</span>
-									   						<span class="card-course__name">{{course.nome | limitName }}</span>
+									   						<span class="card-course__modality">{{::course.modalidade}}</span>
+									   						<span class="card-course__name">{{::course.nome}}</span>
 									   					</a>
-									   					<a href="/carrinho" class="card-course__button  has-price_popover">R$ {{course.preco}}
+									   					<a href="/carrinho" class="card-course__button  has-price_popover">{{::course.preco}}
 									   						<span class="card-course__icon-cart">
 									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 									   							<div class="price_popover">
@@ -191,9 +210,46 @@
 									</div> <!-- //list-filter__inner -->
 									
 								</li>
-								<!-- FIM MODELO PARA LOOPING -->
-						</ul>
+							</ul>
+						</div>
+								<!-- FIM MODELO PARA LOOPING | limitTo:1 -->
+	
+						<div ng-if="::list.card=='eventos'">
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
+		  							<div class="card-format-ever-block"> 
+		  								<div class="row collapse">
+			 								<div class="small-12 medium-4 columns">
+			 									<div class="card-course-inner">
+													<a ng-href="{{::course.link}}">
+														<span class="card-course--litle-play"></span>
+														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
+													</a>
+													<div class="card-course--content">
+														<a ng-href="{{::course.link}}">  
+															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+															<span class="card-course__modality">{{::course.modalidade}}</span>  
+															<span class="card-course__name">{{::course.nome}}</span> 
+														</a>
+													
+													</div> 
+												</div>
+			 								</div> <!-- // columns -->
+
+			 								<div class="small-12 medium-8 columns">
+				 								<div class="card-course-serie"> 
+				 									<ul class="card-course-serie__list">
+				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos" ng-show="edicao.show" > 
+				 											<strong class="chapter"> <span class="name">{{::edicao.endereco}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong> 
+				 										</li>				 									
+				 									</ul>	
+				 								</div> <!-- /card-course-serie-list__container -->
+		 	 								</div> <!-- // columns -->
+		 								</div> <!-- // row -->
+									</div> <!-- // card-format-ever-block -->
+								</div>
+						</div>
 					</div>
+
 
 					<div class="custom-loading" >
 						<i class="material-icons">hdr_weak</i>
@@ -219,15 +275,107 @@
 
 
 				<!-- ########################## FOOTER ########################## -->
-				   <ng-include src="'/views/footer.html'"></ng-include> 
+				   <!-- <ng-include src="'/views/footer.html'"></ng-include>  -->
 				   <!-- <include ui-view='footer' ></include> -->
+					<footer class="footer-main ">
+
+						<div class="footer-primary">
+							<div class="row">
+
+										<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+
+											<li class="footer-primary__columns--item">
+											 		<ul class="footer-primary__list">
+														<li class="footer-primary__title">Sobre o QiSat</li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional" > Institucional </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo" > Linha do Tempo </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros">Convênios e Parceiros</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores">Instrutores e Professores</a></li>
+													</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+											 	<ul class="footer-primary__list">
+													<li class="footer-primary__title"> Páginas </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos">Cursos</a></li>				 		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos">Área do Aluno</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes">Dúvidas Frequentes</a></li>
+									 		 	</ul>
+											</li> <!-- // -->
+
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list"> 
+													<li class="footer-primary__title"> Soluções </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Pós-graduação">Sugira um Curso </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Pós-graduação">Sugira uma nova Turma </a></li>		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Pós-graduação">Sugira uma Funcionalidade </a></li>
+											 		</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+													 <li class="footer-primary__title"> Contato</li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você">Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem">Mensagem</a></li>
+												</ul>
+											</li>   
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+											 		<li class="footer-primary__title"> Social </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+
+											 	</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+											</li> <!-- //  -->
+
+							</div> <!-- ///row -->
+						</div> <!-- // footer-primary -->
+
+						<div class="footer-secondary">
+								<div class="row">
+										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+											<li>
+													<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
+														<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
+													</ul>
+										    </li>
+
+										    <li>
+													<ul class="footer-secondary__list footer-secondary__list--email ">
+														<li class="footer-secondary__list__item"><a href="mailto:qisat@qisat.com.br" class="footer-secondary__list__item--link">QiSat | Cursos aplicados à engenharia e Arquitetura : <strong>qisat@qisat.com.br</strong></a></li>
+													</ul>
+										   	</li>
+
+											<li>
+												<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+															<a href="#" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+														</li>
+												 </ul>
+											</li>
+						 		</div> <!-- ///row -->
+						</div> <!-- footer-secondary -->
+					</footer> <!-- footer-container -->
+
+
 				<!-- ########################## END FOOTER ########################## -->
 
 				<!-- GLOBAL -->
 			   	    <script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 					 <script src="/bower_components/foundation/js/foundation/foundation.equalizer.js"></script>
-					<!-- // <script src="js/sticky-kit.js"></script> -->
+					<script src="js/sticky-kit.js"></script>
 					<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script> 
 				<!-- // GLOBAL -->
 
@@ -243,19 +391,20 @@
  				<!-- // END SOMENTE PÁGINA DE CURSOS -->
 
 				<!-- EXECUTA SCRIPTS QISAT -->
-					<script src="js/app.js"></script>
- 
+					
 			<!-- ANGULARJS SCRIPTS -->
 				<script src="js/min/angular.min.js"></script>
 				<script src="js/QiSatApp.js"></script>
+
 				<script src="js/config/value.js"></script>
 				<script src="js/services/QiSatAPI.js"></script>
-				<script src="js/services/dataFilters.js"></script>
-				<script src="js/controllers/headerCtrl.js"></script>
 				<script src="js/controllers/coursesController.js"></script>
 				<script src="js/filters/filters.js"></script>
-			<!-- END ANGULARJS SCRIPTS -->			 
-				<script src="js/scripts.js"></script>
+				<script src="js/directive/directive.js"></script>
+				<script src="js/app.js"></script>
+ 
+			<!-- END ANGULARJS SCRIPTS -->
+
 
 
 			 	<!-- // EXECUTA MEUS SCRIPTS -->

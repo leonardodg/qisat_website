@@ -10,16 +10,19 @@ QiSatApp.value("Config", {
 	filters : { 
 
 			all : [
-							 { type : 'links',
+							 { id : 1,
+							   type : 'links',
 							   name : 'links-top', 
 							   title : '', // LINKS TOP
 									inputs : [
 												{ title: 'Todos os Cursos', link : '/cursos', type : 1 },
 												{ title: 'Laçamentos', link : '/cursos/lancamentos', type : 39  },
-												{ title: 'Cursos Gratuitos', link : '/cursos/gratuitos', type : 8  } // type : ''
+												{ title: 'Cursos Gratuitos', link : '/cursos/gratuitos', type : 8  }
 											]},
 
-							  { type : 'links',
+							  { 
+							  	id : 2,
+							  	type : 'links',
 							  	name : 'modalidade',
 							  	title : 'Modalidades', 
 									inputs : [
@@ -27,9 +30,11 @@ QiSatApp.value("Config", {
 												{ title: 'Cursos Presenciais', link : '/cursos/presenciais', type : 10 }
 											]},
 
-  							 { type : 'dropdown', name: 'estado', title: 'Presencial Por Estado', inputs : [] },	
+  							 { id : 3, type : 'dropdown', name: 'estado', title: 'Presencial Por Estado', inputs : [] },	
 
-							 { type : 'checkbox', 
+							 { 
+							   id : 4,
+							   type : 'checkbox', 
 							   name : 'tipo-produto',
 							   title : 'Combinação Cursos Online', 
 									inputs : [
@@ -37,20 +42,24 @@ QiSatApp.value("Config", {
 												{ title: 'Pacotes de Cursos', type : 17 }
 											]},
 
-							 { type : 'checkbox',
+							 { 
+							   id : 5,
+							   type : 'checkbox',
 							   name : 'area', 
 							   title : 'Área de Atuação', 
 									inputs : [
 												{ title: 'Estrutural', type : 3, presencial : 25, pacote : 18 },
 												{ title: 'Elétrica', type : 4, presencial : 26, pacote : 19 },
-												{ title: 'Hidráulica', type : 6, presencial : 27, pacote : 20 },
+												{ title: 'Hidráulica', type : 6, presencial : 27, pacote : 20},
 												{ title: 'Agronômica', type : 34 },
 												{ title: 'Arquitetônica', type : 35 },
 												{ title: 'CAD', type : 5,  presencial : 28 }
 											]},
 
 
-							 { type : 'checkbox', 
+							 { 
+							   id : 6,
+							   type : 'checkbox', 
 							   name : 'area-complementar',
 							   title : 'Área Complementar', 
 									inputs : [
@@ -59,28 +68,35 @@ QiSatApp.value("Config", {
 												{ title: 'Gestão de Projetos', type : 38 }
 											]},	
 
-							 { type : 'checkbox',
+							 { 
+							   id : 7,
+							   type : 'checkbox',
 							   name : 'tipo',
 							   title : 'Tipo', 
 									inputs : [
-												{ title: 'Cursos Teóricos', type : 24 },
-												{ title: 'Cursos Software AltoQi', type : 23 }
+												{ title: 'Cursos Teóricos', type : 24, presencial : 13 },
+												{ title: 'Cursos Software AltoQi', type : 23, presencial : 11 },
+												{ title: 'Cursos Individuais', type : 12 }
 											]}
 
 					 ],
 
 
 			online : [
-							 { type : 'links',
+							 { 
+							   id : 1,
+							   type : 'links',
 							   name : 'links-top', 
 							   title : '', // LINKS TOP
 									inputs : [
 												{ title: 'Todos os Cursos', link : '/cursos', type : 1 },
 												{ title: 'Laçamentos', link : '/cursos/lancamentos', type : 39  },
-												{ title: 'Cursos Gratuitos', link : '/cursos/gratuitos', type : 8  } // type : ''
+												{ title: 'Cursos Gratuitos', link : '/cursos/gratuitos', type : 8  }
 											]},
 
-							  { type : 'links',
+							  { 
+							  	id : 2,
+							  	type : 'links',
 							  	name : 'modalidade',
 							  	title : 'Modalidades', 
 									inputs : [
@@ -88,7 +104,9 @@ QiSatApp.value("Config", {
 												{ title: 'Cursos Presenciais', link : '/cursos/presenciais', type : 10 }
 											]},
 
-							 { type : 'checkbox', 
+							 { 
+							   id : 4,
+							   type : 'checkbox', 
 							   name : 'tipo-produto',
 							   title : 'Sugestão de Compra', 
 									inputs : [
@@ -96,7 +114,9 @@ QiSatApp.value("Config", {
 												{ title: 'Pacotes de Cursos', type : 17 }
 											]},
 
-							 { type : 'checkbox',
+							 { 
+							   id : 5,
+							   type : 'checkbox',
 							   name : 'area', 
 							   title : 'Área de Atuação', 
 									inputs : [
@@ -105,11 +125,13 @@ QiSatApp.value("Config", {
 												{ title: 'Hidráulica', type : 6 },
 												{ title: 'Agronômica', type : 34 },
 												{ title: 'Arquitetônica', type : 35 },
-												{ title: 'CAD', type : 5  }
+												{ title: 'CAD', type : 5 }
 											]},
 
 
-							 { type : 'checkbox', 
+							 { 
+							   id : 6,
+							   type : 'checkbox', 
 							   name : 'area-complementar',
 							   title : 'Área Complementar', 
 									inputs : [
@@ -118,7 +140,9 @@ QiSatApp.value("Config", {
 												{ title: 'Gestão de Projetos', type : 38 }
 											]},	
 
-							 { type : 'checkbox',
+							 { 
+							   id : 7,
+							   type : 'checkbox',
 							   name : 'tipo',
 							   title : 'Tipo', 
 									inputs : [
@@ -128,7 +152,9 @@ QiSatApp.value("Config", {
 
 					 ],
 			presencial : [
-							 { type : 'links', 
+							 { 
+							   id : 1,
+							   type : 'links', 
 							   name : 'links-top', 
 							   title : '', // LINKS TOP
 									inputs : [
@@ -137,7 +163,9 @@ QiSatApp.value("Config", {
 												{ title: 'Cursos Gratuitos', link : '/cursos/gratuitos', type : 8  }
 											]},
 
-							  { type : 'links',
+							  { 
+							  	id : 2,
+							  	type : 'links',
 							    name : 'modalidade',
 							  	title : 'Modalidades', 
 									inputs : [
@@ -145,17 +173,21 @@ QiSatApp.value("Config", {
 												{ title: 'Cursos Presenciais', link : '/cursos/presenciais', type : 10  }
 											]},
 
-							  { type : 'dropdown', name: 'estado', title: 'Estado', inputs : [] },	
+							  { id : 3, type : 'dropdown', name: 'estado', title: 'Estado', inputs : [] },	
 
 
-							  { type : 'checkbox',
-							  	name : 'edicao', 
-												inputs : [
-															{ title: 'Vagas Abertas', type : '' },
-															{ title: 'Próximos Cursos', type : '' }
-														]},										
+							  // { 
+							  // 	id : 8,
+							  // 	type : 'checkbox',
+							  // 	name : 'edicao', 
+									// 			inputs : [
+									// 						{ title: 'Vagas Abertas', type : '' },
+									// 						{ title: 'Próximos Cursos', type : '' }
+									// 					]},										
 
-							  { type : 'checkbox', 
+							  {
+							  	id : 5,
+							    type : 'checkbox', 
 							    name : 'area',
 							    title : 'Área de Atuação', 
 									inputs : [
@@ -164,13 +196,15 @@ QiSatApp.value("Config", {
 												{ title: 'Hidráulica', type : 27 }
 											]},
 
-							   { type : 'radio', 
+							   { 
+							   	 id : 7,
+							   	 type : 'checkbox', 
 							     name : 'tipo',
 							     title : 'Tipo', 
 									inputs : [
-												{ title: 'Cursos Teóricos', type : '' },
-												{ title: 'Cursos Software AltoQi', type : '' },
-												{ title: 'Cursos Individuais', type : '' }
+												{ title: 'Cursos Teóricos', type : 24, presencial : 13 },
+												{ title: 'Cursos Software AltoQi', type : 23, presencial : 11 },
+												{ title: 'Cursos Individuais', type : 12 }
 											]}
 			]
 	}
