@@ -424,49 +424,71 @@ QiSatApp.controller("topCoursesCtrl",
 													if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
 												}
 
-												if(course.info.seo && course.info.seo.url){
-													course.url = Config.cursoOnlineUrl+course.info.seo.url;
+												// if(course.info.seo && course.info.seo.url){
+												// 	course.url = Config.cursoOnlineUrl+course.info.seo.url;
+												// }
+												course.nome = filterLimitName(course.info.titulo);
+
+												if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+													course.modalidade = "Série Online";
+													course.link =  "/curso/online/"+course.info.seo.url ;
+													remove.push(i); 
+
+													course.info.conteudos.map( function (conteudo){
+														 var aux =  conteudo.titulo.split('-');
+														 conteudo.capitulo = aux[0];
+														 conteudo.nome = aux[1];
+													});
+
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+													course.modalidade = "Pacote de Cursos Online";
+													course.link =  "/curso/online/"+course.info.seo.url ;
+													remove.push(i); 
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+													course.modalidade = "Palestra Online";
+													course.link =  "/curso/online/"+course.info.seo.url ;
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+													course.modalidade = "Curso Presencial - individual";
+													course.link =  "/curso/presencial/"+course.info.seo.url ;
+													remove.push(i); 
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+													course.modalidade = "Curso Presencial";
+													course.link = "/curso/presencial/"+course.info.seo.url;
+													remove.push(i); 
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 16 })){ // Prazo Extra
+													remove.push(i);
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 22 }) ){ // WebConferência
+													remove.push(i);
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 9  })){ // Interno
+													remove.push(i);
+												}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+													course.modalidade = "Curso Online";
+													course.link = "/curso/online/"+course.info.seo.url ;
+												}else{
+													remove.push(i); // ">> SEM CATEGORIA <<";
 												}
 
-												course.nome = course.info.titulo.replace(/curso/ig, '');
-												course.nome = filterLimitName(course.nome);
+
+
 											}else{
 												remove.push(i);
 											}
 
-											if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-												course.modalidade = "Série Online";
-												course.link = (course.info) ? "/curso/online/"+course.info.seo.url : '';
-												remove.push(i); 
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-												course.modalidade = "Pacote de Cursos Online";
-												course.link = (course.info) ? "/curso/online/"+course.info.seo.url : '';
-												remove.push(i); 
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-												course.modalidade = "Palestra Online";
-												course.link = (course.info) ? "/curso/online/"+course.info.seo.url : '';
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-												course.modalidade = "Curso Presencial - individual";
-												course.link = (course.info) ? "/curso/presencial/"+course.info.seo.url : '';
-												remove.push(i); 
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-												course.modalidade = "Curso Presencial";
-												course.link = (course.info) ? "/curso/presencial/"+course.info.seo.url : '';
-												remove.push(i); 
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 16 })){ // Prazo Extra
-												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 22 }) ){ // WebConferência
-												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 9  })){ // Interno
-												remove.push(i);
-											}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-												course.modalidade = "Curso Online";
-												course.link = (course.info) ? "/curso/online/"+course.info.seo.url : '';
-											}else{
-												remove.push(i); // ">> SEM CATEGORIA <<";
-											}
+											// PARA PACOTES
+											// if(course.produtos){
+											// 	course.produtos.map(function(produto){
+											// 		if(produto.info && produto.info.seo && produto.info.seo.url){
+											// 			produto.url = Config.cursoOnlineUrl+produto.info.seo.url;
+											// 		}
+											// 	});
+											// }
+
+											
 										}
 									});
+
+
+									//courses = courses.filter(function(course){ return course.visivel == 'true' });
 					
 									$scope.coursesAll = angular.copy(courses);
 									series = filterTypes(courses, 32);
@@ -496,13 +518,23 @@ QiSatApp.controller("topCoursesCtrl",
 									remove.map( function (i){ delete(presencial[i]) });
 									presencial = presencial.filter( function (el){ return el });
 
+									remove = [];
+									series.map( function (course, i){ if(!course.info) remove.push(i); });
+									remove.map( function (i){ delete(series[i]) });
+									series = series.filter( function (el){ return el });
+
+									remove = [];
+									pacotes.map( function (course, i){ if(!course.info) remove.push(i); });
+									remove.map( function (i){ delete(pacotes[i]) });
+									pacotes = pacotes.filter( function (el){ return el });
+
 									if( $scope.path.indexOf('/online') >= 0){
 										courses.map( function (course){ course.show = true });
 										pacotes.map( function (course){ course.show = true });
 										series.map( function (course){ course.show = true });
 										$scope.coursesList.push({ title : 'Cursos Online', courses : courses, type: 2, show : true, card : 'online'  });
-										$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : pacotes, type: 17, show : true , card : 'online' }); // >>>> CORRETO SERIE
-										$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : true, card : 'online' }); // >>>> CORRETO SERIE
+										$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : pacotes, type: 17, show : true , card : 'pacotes' }); // >>>> CORRETO SERIE
+										$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : true, card : 'serie' }); // >>>> CORRETO SERIE
 									}else if( $scope.path.indexOf('/presenciais') >= 0){
 										eventos.map( function (course){ course.show = true });
 										presencial.map( function (course){ course.show = true });
@@ -522,8 +554,8 @@ QiSatApp.controller("topCoursesCtrl",
 										$scope.coursesList.push({ title : 'Cursos Presencial - Eventos', courses : eventos, type: 'eventos', show : true, card : 'eventos' });
 										$scope.coursesList.push({ title : 'Cursos Presencial', courses : presencial, type: 10, show : true, card : 'online' });
 										$scope.coursesList.push({ title : 'Cursos Presencial - Individual ', courses : individual, type: 12, show : true, card : 'online' });
-										$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : pacotes, type: 17, show : true , card : 'online' }); // >>>> CORRETO SERIE
-										$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : true, card : 'online' }); // >>>> CORRETO SERIE
+										$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : pacotes, type: 17, show : true , card : 'pacotes' }); // >>>> CORRETO SERIE
+										$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : true, card : 'serie' }); // >>>> CORRETO SERIE
 									}
 									// console.log($scope.coursesList);
 								});

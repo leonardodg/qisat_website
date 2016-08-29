@@ -238,7 +238,7 @@
 			 								<div class="small-12 medium-8 columns">
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
-				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos" ng-show="edicao.show" > 
+				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
 				 											<strong class="chapter"> <span class="name">{{::edicao.endereco}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong> 
 				 										</li>				 									
 				 									</ul>	
@@ -248,6 +248,78 @@
 									</div> <!-- // card-format-ever-block -->
 								</div>
 						</div>
+
+						<div ng-if="::list.card=='pacotes'">
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
+		  							<div class="card-format-ever-block"> 
+		  								<div class="row collapse">
+			 								<div class="small-12 medium-4 columns">
+			 									<div class="card-course-inner">
+													<a ng-href="{{::course.link}}">
+														<span class="card-course--litle-play"></span>
+														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
+													</a>
+													<div class="card-course--content">
+														<a ng-href="{{::course.link}}">  
+															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+															<span class="card-course__modality">{{::course.modalidade}}</span>  
+															<span class="card-course__name">{{::course.nome}}</span> 
+														</a>
+														<a href="#" class="card-course__button">{{::course.preco}}</a> 	
+													</div> 
+												</div>
+			 								</div> <!-- // columns -->
+
+			 								<div class="small-12 medium-8 columns">
+				 								<div class="card-course-serie"> 
+				 									<ul class="card-course-serie__list">
+				 										<li class="card-course-serie__item" ng-repeat="produto in ::course.produtos track by produto.id" > 
+				 											<strong class="chapter"> <span class="name"><a ng-href="{{::produto.url}}" >{{::produto.nome}}</a></span> </strong> 
+				 										</li>				 									
+				 									</ul>	
+				 								</div> <!-- /card-course-serie-list__container -->
+		 	 								</div> <!-- // columns -->
+		 								</div> <!-- // row -->
+									</div> <!-- // card-format-ever-block -->
+								</div>
+						</div>
+
+						<div ng-if="::list.card=='serie'">
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
+		  							<div class="card-format-ever-block"> 
+		  								<div class="row collapse">
+			 								<div class="small-12 medium-4 columns">
+			 									<div class="card-course-inner">
+													<a ng-href="{{::course.link}}">
+														<span class="card-course--litle-play"></span>
+														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
+													</a>
+													<div class="card-course--content">
+														<a ng-href="{{::course.link}}">  
+															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+															<span class="card-course__modality">{{::course.modalidade}}</span>  
+															<span class="card-course__name">{{::course.nome}}</span> 
+														</a>
+														<a href="#" class="card-course__button">{{::course.preco}}</a> 	
+													</div> 
+												</div>
+			 								</div> <!-- // columns -->
+
+			 								<div class="small-12 medium-8 columns">
+				 								<div class="card-course-serie"> 
+				 									<ul class="card-course-serie__list">
+				 					
+				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.info.conteudos track by conteudo.id" > 
+				 											 <strong class="chapter">{{::conteudo.capitulo}}</strong> <span class="name">{{::conteudo.nome}}</span>
+				 										</li>				 									
+				 									</ul>	
+				 								</div> <!-- /card-course-serie-list__container -->
+		 	 								</div> <!-- // columns -->
+		 								</div> <!-- // row -->
+									</div> <!-- // card-format-ever-block -->
+								</div>
+						</div>
+
 					</div>
 
 
