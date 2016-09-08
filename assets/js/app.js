@@ -10,25 +10,6 @@
 $(document).foundation('equalizer', 'reflow');
 
 
-$(function() {
-  $('.anchor').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-
-
-
-
-
 
  $(document).foundation(
 
@@ -47,13 +28,7 @@ $(function() {
 
 
 
-///MAP svg
-$(function() {
-  $(".map__state").click(function() {
-      $(".mapa .map__state").removeClass("active");
-      $(this).addClass("active");
-  });
-}());
+
 
 
 
@@ -73,6 +48,12 @@ $(function() {
       }
     }
   });
+
+   $(".map__state").click(function() {
+      $(".mapa .map__state").removeClass("active");
+      $(this).addClass("active");
+  });
+   
 });
 
 
@@ -86,32 +67,21 @@ $(function() {
 
 
 
-
   
 $(document).ready(function() {
-  // if ( $('#sidebar-styker').length ) {
-  //      $("#sidebar-styker").stick_in_parent({
-  //       offset_top: 80,
-  //       recalc_every: 1,
-  //      });
-  // }
+  if ( $('#sidebar-styker').length ) {
+       $("#sidebar-styker").stick_in_parent({
+        offset_top: 80,
+        recalc_every: 1,
+       });
+  }
 
-  //  if ( $('#sidebar-styker--course').length ) {
-  //      $("#sidebar-styker--course").stick_in_parent({
-  //       offset_top: 200,
-  //       recalc_every: 1,
-  //      });
-  // }
-
-    $('a').on("click", function() {
-      var link = $(this).attr('href');
-      if (link.substr(0,1) == "#"){
-          document.location.hash = link;
-          return false;
-      }
-    });
-
-
+   if ( $('#sidebar-styker--courses').length ) {
+       $("#sidebar-styker--courses").stick_in_parent({
+        offset_top: 200,
+        recalc_every: 1,
+       });
+  }
 
 }());
 
@@ -135,15 +105,6 @@ $(document).ready(function() {
          itemsTablet: false,
          itemsMobile : false
      });
-
-      // $('.selectStates').on('change', function() {
-      //      var selected = $(this).find(":selected");
-      //      if(selected.val()){
-      //        $('.filter-types-produts:checked').prop('checked' , false).removeAttr('checked');
-      //        $('#tipo2').prop('checked' , false).removeAttr('checked');
-      //      }
-      // });
-
 
    });
 
@@ -251,7 +212,7 @@ if ( $('.footer-primary__list__item').length ) {
           }
         });
     }
-}); 
+});
   //end Smooth Scrolling
 
 

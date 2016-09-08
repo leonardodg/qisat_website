@@ -14,7 +14,6 @@
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 </head>
 
-<!-- ng-controller="HomeController" -->
 <body> 
 
 	<div class="off-canvas-wrap" data-offcanvas>
@@ -24,54 +23,76 @@
 			 <aside class="right-off-canvas-menu">
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
-			     <li><a href="/">Home</a></li>
-			     <li><a href="/cursos">Cursos</a></li>
-				 <li><a href="/institucional">Institucional</a></li>
-				 <li><a href="/aluno">Área do Aluno</a></li>
+			     <li><a href="/" target="_self" >Home</a></li>
+				 <li><a href="/institucional" target="_self" >Institucional</a></li>
+			     <li><a href="/cursos" target="_self" >Cursos</a></li>
+				 <li><a href="/aluno" target="_self" >Área do Aluno</a></li>
 			   </ul>
 			 </aside>
 		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-		    	<ng-include src="'/views/header.html'"></ng-include>
+			<header class="header-main">
+				<div class="header-main__brand"> <a href="/" class="anchor header-main__logo" target="_self" > QiSat </a> </div>
+				<nav class="header-main__nav">
+					<ul class="header-main__ul">
+						<li class="show-for-large-up header-main__list"> 
+							<a class="anchor header-main__item" href="/" target="_self" >Home</a>
+						</li>
+						<li class="show-for-large-up header-main__list  header-main__list__has--submenu header-main__list-current">
+							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
+						</li>
+			 			<li class="show-for-large-up header-main__list"> 
+			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+			 			</li>
+						<li class="show-for-large-up header-main__list"> 
+							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
+						</li>
+						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
+							<i class="material-icons">menu</i> Menu</a>
+						</li>
+			    		<li class="header-main__list header-main__list-cart"> 
+			    			<a class="header-main__item header-main__item-cart" >
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number">3</span></a>
+			    			</a>
+			    		</li>
+					</ul>
+				</nav>
+			</header>
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
+		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
+				<div id="cd-shadow-layer"></div>
+				<div id="cd-cart">
+					<h2>Itens no carrinho</h2>
+				<ul class="cd-cart-items">
+					<li>
+						<span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
+						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
+						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					</li>
 
+					<li>
+						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
+						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
+						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					</li>
 
-	 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-		<div id="cd-shadow-layer"></div>
-		 
-		<div id="cd-cart">
-			<h2>Itens no carrinho</h2>
-		<ul class="cd-cart-items">
-			<li>
-				<span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
-				<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-				<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-			</li>
-
-			<li>
-				<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-				<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-				<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-			</li>
-
-			<li>
-				<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-				<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-				<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-			</li>
-		</ul>
-		 
-			<div class="cd-cart-total">
-				<p>Total <span>R$00.00</span></p>
-			</div> <!-- cd-cart-total -->
-		 
-			<a href="carrinho.html" class="checkout-btn">Finalizar compra</a>
-			
-			<p class="cd-go-to-cart"><a href="courses.html">Continuar comprando</a></p>
-		</div> <!-- cd-cart -->
-	 <!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+					<li>
+						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
+						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
+						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					</li>
+				</ul>
+				 
+					<div class="cd-cart-total">
+						<p>Total <span>R$00.00</span></p>
+					</div> <!-- cd-cart-total -->
+				 
+					<a href="/carrinho" target="_self" class="checkout-btn">Finalizar compra</a>
+					<p class="cd-go-to-cart"><a>Continuar comprando</a></p>
+				</div> <!-- cd-cart -->
+		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
 
 
@@ -279,9 +300,9 @@
 
 
 
-<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| ng-non-bindable coursesController -->
+<!-- |||||||||||||||||||| TOP-COURSES  |||||||||||||||||||||||| ng-non-bindable -->
 
-			<section class="home__section-topcourses" ng-controller="topCoursesCtrl">
+			<section class="home__section-topcourses" ng-controller="TopCoursesController">
 				<div class="row" > 
 						<div class="small-12 medium-3 columns">
 								<div class="home_panel_titles--topcourses">
@@ -292,7 +313,7 @@
 
 						<div class="small-12 medium-9 columns">
 								<ul class="block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
-										<li class="block-grid__courses__item" ng-repeat="course in topCourses"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="{{course.url}}"><span class="card-course--litle-play"></span> <div class="card-course-header" style="background-image: url({{course.imgSrc}})"></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">{{course.modalidade}}</span>  <span class="card-course__name">{{course.nome}}</span> </a><a href="#" class="card-course__button">R$ {{course.preco}}</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
+										<li class="block-grid__courses__item" ng-repeat="course in ::topCourses track by course.id"> <div class="list-filter__inner"> <div class="card-format-ever-block"><a href="course-ead.html"></a><div class="card-course-inner"><a href="{{::course.url}}"><span class="card-course--litle-play"></span> <div class="card-course-header" back-img="{{::course.imgSrc}}" ></div>  </a><div class="card-course--content"><a href="course-ead.html">  <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>  <span class="card-course__modality">{{::course.modalidade}}</span>  <span class="card-course__name">{{::course.nome}}</span> </a><a href="#" class="card-course__button">R$ {{::course.preco}}</a> </div> </div></div> </div> <!-- //list-filter__inner --> </li>
 								</ul>
 							</div> <!-- //small-12 medium-6 large-6 columns -->
 				</div> <!-- ///row -->
@@ -317,17 +338,16 @@
  
 							<ul class="home__instructors small-block-grid-2 medium-block-grid-3 large-block-grid-5">
 
-										<li class="home__instructors__item" ng-repeat="instructor in instructors" >
+										<li class="home__instructors__item" ng-repeat="instructor in ::instructors" >
 
 											<div class="home__instructors__card" >
-												<div class="home__instructors__card-header" style="background-image: url(' {{instructor.imagem}}' ); ">
-													 <!-- <img class="home__instructors__image" src="{{instructor.imagem}}" alt="{{instructor.imagem}}"> -->
-													 <a href="{{instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{instructor.nome}}" ng-show="{{instructor.linkedin}}">Linkedin</a>
+												<div class="home__instructors__card-header" style="background-image: url(' {{::instructor.imagem}}' ); ">
+													 <a href="{{::instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{::instructor.nome}}" ng-show="{{::instructor.linkedin}}">Linkedin</a>
 												</div> <!-- //home__instructors__image -->
 
 												<div class="home__instructors__card-footer">
-													<strong class="home__instructors__name">{{instructor.nome}}</strong>
-													<span class="home__instructors__profession">{{instructor.formacao}}</span>
+													<strong class="home__instructors__name">{{::instructor.nome}}</strong>
+													<span class="home__instructors__profession">{{::instructor.formacao}}</span>
 												</div> <!-- //home__instructors__card-footer -->
  											</div> <!-- //home__instructors__card -->
 										</li>
@@ -336,8 +356,8 @@
 
 
 											<div class="home__instructors__card-footer">
-												<strong class="home__instructors__name" ng-bind="instructor.nome" >{{instructor.nome}}</strong>
-												<span class="home__instructors__profession" ng-bind="instructor.formacao" >{{instructor.formacao}}</span>
+												<strong class="home__instructors__name" ng-bind="::instructor.nome" ></strong>
+												<span class="home__instructors__profession" ng-bind="::instructor.formacao" ></span>
 											</div> <!-- //home__instructors__card-footer -->
 											</div> <!-- //home__instructors__card -->
 									</li>
@@ -480,9 +500,100 @@ E até o proximo curso!" </p>
 <!-- ########################## END MAIN ########################## -->
 
 
-			<!-- ########################## FOOTER ########################## -->
-			   <ng-include src="'/views/footer.html'"></ng-include> 
-			<!-- ########################## END FOOTER ########################## -->
+				<!-- ########################## FOOTER ########################## -->
+					<footer class="footer-main" >
+
+						<div class="footer-primary">
+							<div class="row">
+
+										<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+
+											<li class="footer-primary__columns--item">
+											 		<ul class="footer-primary__list">
+														<li class="footer-primary__title">Sobre o QiSat</li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   target="_self"> Institucional </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   target="_self"> Linha do Tempo </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  target="_self">Convênios e Parceiros</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  target="_self">Instrutores e Professores</a></li>
+													</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+											 	<ul class="footer-primary__list">
+													<li class="footer-primary__title"> Páginas </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li>
+									 		 	</ul>
+											</li> <!-- // -->
+
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list"> 
+													<li class="footer-primary__title"> Soluções </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
+											 		</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+													 <li class="footer-primary__title"> Contato</li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+												</ul>
+											</li>   
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+											 		<li class="footer-primary__title"> Social </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+
+											 	</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+											</li> <!-- //  -->
+
+							</div> <!-- ///row -->
+						</div> <!-- // footer-primary -->
+
+						<div class="footer-secondary" >
+								<div class="row">
+										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+											<li>
+													<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Termos de uso</a></li>
+														<li class="footer-secondary__list__item"><a href="#" class="footer-secondary__list__item--link">Política de privacidade</a></li>
+													</ul>
+										    </li>
+
+										    <li>
+													<ul class="footer-secondary__list footer-secondary__list--email ">
+														<li class="footer-secondary__list__item"><a href="mailto:qisat@qisat.com.br" class="footer-secondary__list__item--link">QiSat | Cursos aplicados à engenharia e Arquitetura : <strong>qisat@qisat.com.br</strong></a></li>
+													</ul>
+										   	</li>
+
+											<li>
+												<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+															<a href="#" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+														</li>
+												 </ul>
+											</li>
+						 		</div> <!-- ///row -->
+						</div> <!-- footer-secondary -->
+					</footer> <!-- footer-container -->
+
+
+				<!-- ########################## END FOOTER ########################## -->
 
 
 
@@ -509,8 +620,8 @@ E até o proximo curso!" </p>
 					<script src="js/config/value.js"></script>
 					<script src="js/services/QiSatAPI.js"></script>
 					<script src="js/controllers/instructorsController.js"></script>
-					<script src="js/controllers/coursesController.js"></script>
-					<script src="js/controllers/headerCtrl.js"></script>
+					<script src="js/controllers/TopCoursesController.js"></script>
+					<script src="js/directive/directive.js"></script>
 			
 
 			 <!-- EXECUTA SCRIPTS QISAT -->
