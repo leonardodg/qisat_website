@@ -3,23 +3,23 @@ var QiSatApp = angular.module('QiSatApp');
 QiSatApp.factory("QiSatAPI", function($http, Config){
 
 	var _getInstructorsTop = function () {
-		return $http({ method: 'GET', url: Config.baseUrl+'/instrutores/top'});
+		return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/instrutores/top'});
 	};
 
 	var _getCoursesTop = function () {
-		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/produtos/top'});
+		return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos/top'});
 	};
 
 	var _getCourses = function () {
-		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/produtos'});
+		return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos'});
 	};
 
 	var _getStates = function () {
-		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/eventos/estados'});
+		return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/eventos/estados'});
 	};
 
 	var _getFilterData = function () {
-		return $http({ method: 'GET', url: Config.baseUrl+'/moodle/tipo/dados'});
+		return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/tipo/dados'});
 	};
 
 
