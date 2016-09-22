@@ -35,7 +35,7 @@
 /* 'HOME SHORTCUT
 ========================================= */
 .shortcut-courses {
-    background-color: #2f3239;
+    background-color: #10171b;
     display: inline-block;
     width: 100%;
     padding: 70px 0;
@@ -62,72 +62,159 @@
 }
 
 
-.shortcut-courses__pos-graduacao{
-    &:hover{border-color: $category-pos-graduation-color;}
-}
-.shortcut-courses__cursos-software{
-    &:hover{border-color: $category-software-courses-color;}
-}
-.shortcut-courses__cursos-teorico{
-    &:hover{border-color: $category-theoretical-courses-color;}
-}
-.shortcut-courses__solutions-business{
-    &:hover{border-color: $category-solutions-business-color;}
+.shortcut-courses__cursos-teorico {
+  background: url("../images/categorias/cursos_teoricos.png") no-repeat;
+  background-size: cover;
 }
 
-
-
-
-.shortcut-courses__categoria-estrutural{
-    &:hover{border-color: $category-estrutural-color;}
+.shortcut-courses__cursos-software {
+  background: url("../images/categorias/cursos_software.png") no-repeat;
+  background-size: cover;
 }
 
-.shortcut-courses__categoria-eletrica{
-    &:hover{border-color: $category-eletrica-color;}
+.shortcut-courses__pos-graduacao {
+  background: url("../images/categorias/proficiencia.png") no-repeat;
+  background-size: cover;
 }
 
-.shortcut-courses__categoria-hidrossanitaria{
-    &:hover{border-color: $category-hidrossanitaria-color;}
-}
-.shortcut-courses__categoria-agronomica{
-    &:hover{border-color: $category-agronomica-color;}
+.shortcut-courses__solutions-business {
+  background: url("../images/categorias/cursos_presenciais.png") no-repeat;
+  background-size: cover;
 }
 
-
-
-
-.shortcut-courses__categoria-eberick{
-     &:hover{border-color:  $software-eberick-color;}
-}
-.shortcut-courses__categoria-qibuilder{
-     &:hover{border-color: $software-qibuilder-color;}
-}
-.shortcut-courses__categoria-qieletrico{
-     &:hover{border-color: $software-qieletrico-color;}
-}
-.shortcut-courses__categoria-qihidrossanitario{
-     &:hover{border-color: $software-qihidrossanitario-color;}
-}
-.shortcut-courses__categoria-qiincendio{
-     &:hover{border-color: $software-qiincendio-color;}
+.shortcut-courses__solutions-free {
+  background: url("../images/categorias/cursos_gratuitos.png") no-repeat;
+  background-size: cover;
 }
 
+.shortcut-courses__categoria-estrutural {
+  background: url("../images/categorias/area_estrutural.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-eletrica {
+  background: url("../images/categorias/area_eletrica.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-hidrossanitaria {
+  background: url("../images/categorias/area_hidraulica.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-arquitetonica {
+  background: url("../images/categorias/area_arquitetonica.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-agronomica {
+  background: url("../images/categorias/area_agronomica.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-eberick {
+  background: url("../images/categorias/curso_eberick.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-qibuilder {
+  background: url("../images/categorias/curso_qibuilder_cad.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-qieletrico {
+  background: url("../images/categorias/curso_qieletrico.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-qihidrossanitario {
+  background: url("../images/categorias/curso_qihidrossanitario.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__categoria-qiincendio {
+  background: url("../images/categorias/curso_qiincendio.png") no-repeat;
+  background-size: cover;
+}
 
 
+.shortcut-courses__pos-graduacao:hover {
+  border-color: #3d5569 !important;
+}
 
+.shortcut-courses__cursos-software:hover {
+  border-color: #3d5569 !important;
+}
 
+.shortcut-courses__cursos-teorico:hover {
+  border-color: #3d5569 !important;
+}
 
+.shortcut-courses__solutions-business:hover {
+  border-color: #3d5569 !important;
+}
 
+.shortcut-courses__categoria-estrutural:hover {
+  border-color: #3d5569 !important;
+}
 
+.shortcut-courses__categoria-eletrica:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-hidrossanitaria:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-agronomica:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-eberick:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-qibuilder:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-qieletrico:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-qihidrossanitario:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__categoria-qiincendio:hover {
+  border-color: #3d5569 !important;
+}
+
+.shortcut-courses__list-first li div,
+.shortcut-courses__list-second li div,
+.shortcut-courses__list-third li div {
+  padding: 20px;
+  margin: 10px 7px;
+  border: 1px solid;
+  border-color: #aaa;
+  transition: all 0.5s;
+}
+
+.shortcut-courses__list-second li div,
+.shortcut-courses__list-third li div {
+   margin: 5px 7px;
+}
+
+/*.shortcut-courses__list-first h4,
 .shortcut-courses__list-first,
 .shortcut-courses__list-second,
 .shortcut-courses__list-third {
     li {
         div {
             padding: 20px;
-            margin: 5px;
+  			margin: 10px 7px;
             border: 1px solid;
-            border-color: #aaa;
+            border-color: #252323;
             transition: all 0.5s;
 
             &:hover {
@@ -135,6 +222,10 @@
             }
         }
     }
+.shortcut-courses__list-second li div,
+.shortcut-courses__list-third li div {
+   margin: 5px 7px;
+}
 
     h4 {
         color: #fff;
@@ -145,9 +236,31 @@
             font-weight: 300;
             display: block;
         }
-    }
+    }*/
+	
 
-    .action {
+.shortcut-courses__list-first h4,
+.shortcut-courses__list-second h4,
+.shortcut-courses__list-third h4 {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.3;
+}
+	
+.shortcut-courses__list-first h4 {
+    text-align: left;
+}
+
+.shortcut-courses__list-first h4 span,
+.shortcut-courses__list-second h4 span,
+.shortcut-courses__list-third h4 span {
+  font-weight: 300;
+  display: block;
+}
+
+.shortcut-courses__list-first .action,
+.shortcut-courses__list-second .action,
+.shortcut-courses__list-third .action {
         color: #fff;
         border: 1px solid;
         padding: 2px 0px 4px 15px;
@@ -160,16 +273,17 @@
         display: none;
     }
 
-    em {
+.shortcut-courses__list-first em,
+.shortcut-courses__list-second em,
+.shortcut-courses__list-third em {
         color: #fff;
         opacity: 0.4;
     }
-}
 
 .shortcut-courses__list-first {
     li {
         div {
-            text-align: center;
+            text-align: left;
             background-color: #4e4e4e;
             padding: 70px 20px 40px 20px;
 
@@ -218,7 +332,7 @@
     padding: 70px 0;
     background: #00c6ff; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #00c6ff , #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to left, #005b94, #002942); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 
@@ -333,7 +447,7 @@
 /* 'HOME NUMBERS
 ========================================= */
 @media only screen {
-      .home__section-numbers { background-color: #4e4e4e; padding: 0; }
+      .home__section-numbers { background: linear-gradient(to left, #28b67c, #002942); padding: 0; }
       .home__section-numbers--list { display: inline-block; width: 100%; line-height: 1; }
       .home__section-numbers--list-item { text-align: center; display: inline-block; color: #fff; padding: 20px 0 !important;  margin-bottom: -6px; }
       .home__section-numbers--list-item { border-right: 1px solid #444;  }
