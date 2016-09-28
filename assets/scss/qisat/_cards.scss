@@ -24,9 +24,11 @@
  }
   
 
+.list__courses { margin: 0; padding: 0; list-style: none;
+    > li { margin: 0; padding: 0 !important;}
+}
 
-
-
+ 
 
 
 /*CARDS*/
@@ -54,8 +56,9 @@
     margin-top: 3px;
     opacity: 0.3;
     cursor: pointer;
+    margin-right: 10px;
     }
-  .card-course__modality{ padding-left: 10px; color: #979797; }
+  .card-course__modality{   color: #979797; }
   .card-course__name{ font-size: 18px; font-weight: 400; color: #000; }
   .card-course__instructors{}
    .card-course--content {    padding: 10px 10px;}
