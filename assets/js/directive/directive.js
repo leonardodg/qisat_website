@@ -1,10 +1,17 @@
-var QiSatApp = angular.module('QiSatApp');
+(function () {
+  "use strict";
 
-QiSatApp.directive('backImg', function(){
-    return function(scope, element, attrs){
-        var url = attrs.backImg;
-        element.css({
-            'background-image' : 'url(' + url +')'
-        });
-    };
-});
+  var directive = function(){
+		    return function(scope, element, attrs){
+		        var url = attrs.backImg;
+		        element.css({
+		            'background-image' : 'url("' + url +'")'
+		        });
+		    };
+		};
+
+  angular
+  	.module('QiSatApp')
+  	.directive('backImg', directive);
+  
+}());

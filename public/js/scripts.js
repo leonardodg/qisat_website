@@ -1,3 +1,134 @@
+// var QiSatApp = angular.module('QiSatApp');
+
+// QiSatApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+// 				    function($stateProvider, $urlRouterProvider, $locationProvider) {
+// 						      // $urlRouterProvider.otherwise('/');
+
+// 						      $stateProvider
+// 								      .state('index', {
+// 								        url: '/',
+// 								        views: {
+// 										            'instructors@': { 
+// 										                templateUrl: './views/instructors.html',
+// 										               	controller : 'instructorsController as self'
+// 										            },
+
+// 										            'header@' : {
+// 										            		templateUrl: './views/header.html'
+// 										            },
+
+// 										            'footer@' : {
+// 										            		templateUrl: './views/footer.html'
+// 										            }
+// 										        }
+											        
+// 								    	})
+// 									      .state('cursos',{ absolute: true});
+			    			
+// 			    			  // $locationProvider.html5Mode({ enabled: true, requireBase: true }).hashPrefix('!');
+// 			    			  // $locationProvider.html5Mode({ enabled: true, requireBase: true });
+// 			    			  $locationProvider.html5Mode(true);
+// 			    			}]);
+(function() {
+    'use strict';
+
+	angular
+		.module('QiSatApp')
+		.value("Config", {
+				baseUrl : "http://webservice.qisat.com:3000",
+				imagensUrl : "http://webservice.qisat.com:3000/imagens/instrutores/",
+				imagensUrlDefault : "http://webservice.qisat.com:3000/imagens/instrutores/instrutor.png",
+				imgCursoUrlDefault : "http://webservice.qisat.com:3000/imagens/produtos/default.png",
+				cursoOnlineUrl : "/curso/online/",
+
+				filters : { 
+
+						online : [
+
+
+										 { 
+										   id : 4,
+										   type : 'checkbox', 
+										   name : 'Combinacoes',
+										   title : 'Combinações', 
+												inputs : [
+															{ title: 'Séries de Capítulos', type : 32, name : 'series' },
+															{ title: 'Pacotes de Cursos', type : 17, name : 'pacotes' }
+														]},
+
+										 { 
+										   id : 5,
+										   type : 'checkbox',
+										   name : 'Area', 
+										   title : 'Área de Atuação', 
+												inputs : [
+															{ title: 'Estrutural', type : 3, pacotes : 18, name : 'estrutural' },
+															{ title: 'Elétrica', type : 4,  pacotes : 19,  name : 'eletrica' },
+															{ title: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
+															{ title: 'Agronômica', type : 34, name : 'agronomica' },
+															{ title: 'Arquitetônica', type : 35, name : 'arquitetonica' },
+															{ title: 'CAD', type : 5, name : 'cad' }
+														]},
+
+
+										 { 
+										   id : 6,
+										   type : 'checkbox', 
+										   name : 'Area-Complementar',
+										   title : 'Área Complementar', 
+												inputs : [
+															{ title: 'Administração', type : 36, name : 'adm' },
+															{ title: 'Qualidade e Desempenho', type : 37, name : 'desempenho' },
+															{ title: 'Gestão de Projetos', type : 38, name : 'gestao' }
+														]},	
+
+										 { 
+										   id : 7,
+										   type : 'checkbox',
+										   name : 'Tipo',
+										   title : 'Tipo', 
+												inputs : [
+															{ title: 'Cursos Teóricos', type : 24, },
+															{ title: 'Cursos Software AltoQi', type : 23 }
+														]}
+
+								 ],
+						presencial : [
+
+										  { id : 3, type : 'dropdown', name: 'estado', title: 'Estado', inputs : [] },	
+
+										  {
+										  	id : 5,
+										    type : 'checkbox', 
+										    name : 'Area',
+										    title : 'Área de Atuação', 
+												inputs : [
+															{ title: 'Estrutural', type : 25, name : 'estrutural' },
+															{ title: 'Elétrica', type : 26, name : 'eletrica' },
+															{ title: 'Hidráulica', type : 27, name : 'hidraulica' }
+														]},
+
+										   { 
+										   	 id : 7,
+										   	 type : 'checkbox', 
+										     name : 'Tipo',
+										     title : 'Tipo', 
+												inputs : [
+															{ title: 'Cursos Teóricos', type : 24, presencial : 13 },
+															{ title: 'Cursos Software AltoQi', type : 23, presencial : 11 },
+														]},
+
+											{ 
+										   	 id : 10,
+										   	 type : 'checkbox', 
+										     name : 'Tipo',
+												inputs : [
+															{ title: 'Cursos Individuais', type : 12, name : '#Tipo2' }
+														]}
+						]
+				}
+			});
+})();
 (function() {
     'use strict';
 
@@ -6,7 +137,7 @@
 	angular
 		.module('QiSatApp')
 		.controller("CoursesController",
-			[ '$scope','$filter' , '$location', 'QiSatAPI', 'Config', 'getWatchCount', function($scope, $filter, $location, QiSatAPI, Config, getWatchCount ){
+			function($scope, $filter, $location, QiSatAPI, Config, getWatchCount ){
 
 						var filterTypes = $filter('byTypes'),
 							filterZpad = $filter('zpad'),
@@ -19,31 +150,6 @@
 							$scope.states = "Selecione o Estado";
 
 							//$scope.totalShow = 0;
-
-						// -------------------------------------------------- //
-						// ----------------  watchCount   ------------------- //
-						// -------------------------------------------------- //
-
-						// OBS.: $compileProvider.debugInfoEnabled(true);
-						var startWatchCount = function () { 
-							// I hold the current count of watchers in the current page. This extends
-			                // beyond the current scope, and will hold the count for all scopes on
-			                // the entire page.
-			                $scope.watchCount = 0;
-			                // I hold the bookmarkletized version of the function to provide a take-
-			                // away feature that can be used on any AngularJS page.
-			                $scope.bookmarklet = getWatchCount.bookmarklet;
-			                // Every time the digest runs, it's possible that we'll change the number
-			                // of $watch() bindings on the current page.
-			                $scope.$watch(
-			                    function watchCountExpression() {
-			                        return( getWatchCount() );
-			                    },
-			                    function handleWatchCountChange( newValue ) {
-			                        $scope.watchCount = newValue;
-			                    }
-			                );
-						};
 
 						var resetFilterEvents = function(){
 								var filter, coursesList = $scope.coursesList.filter(function (el) { return el.type == 'eventos' || el.parent == 'eventos' });
@@ -339,7 +445,91 @@
 								}
 						}
 
+						var getCoursesList = function(){ 
+							QiSatAPI.getCourses()
+									.then( function ( response ){
+										var courses = [];
+										if(response.status == 200) courses = response.data;
+										courses.map( function (course, i) {
+											var imagemFile;
+											if(course){
+												course.preco = $filter('currency')(course.preco, 'R$');
+												course.imgSrc = Config.imgCursoUrlDefault;
+												
+												if(course.info){
+													if(course.info.files){
+														imagemFile = course.info.files.find(function(img) { return img.tipo == '5' });
+														if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
+													}
 
+													course.nome = filterLimitName(course.info.titulo);
+
+													if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+														course.modalidade = "Série Online";
+														course.link =  "/curso/online/"+course.info.seo.url ;
+														course.info.conteudos.map( function (conteudo){
+																	 var aux =  conteudo.titulo.split('-');
+																	 conteudo.capitulo = aux[0];
+																	 conteudo.nome = aux[1];
+																	});
+													}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+														course.modalidade = "Pacote de Cursos Online";
+														course.link =  "/curso/online/"+course.info.seo.url ;
+													}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+														course.modalidade = "Palestra Online";
+														course.link =  "/curso/online/"+course.info.seo.url ;
+													}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+														course.modalidade = "Curso Presencial - individual";
+														course.link =  "/curso/presencial/"+course.info.seo.url ;
+													}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+														course.modalidade = "Curso Presencial";
+														course.link = "/curso/presencial/"+course.info.seo.url;
+													}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+														course.modalidade = "Curso Online";
+														course.link = "/curso/online/"+course.info.seo.url ;
+													}
+												}
+
+												// PARA PACOTES
+												// if(course.produtos){
+												// 	course.produtos.map(function(produto){
+												// 		if(produto.info && produto.info.seo && produto.info.seo.url){
+												// 			produto.url = Config.cursoOnlineUrl+produto.info.seo.url;
+												// 		}
+												// 	});
+												// }
+											}
+										});
+										$scope.courses = courses;
+										startCourseList();
+									});
+						}
+							
+							
+						// -------------------------------------------------- //
+						// ----------------  watchCount   ------------------- //
+						// -------------------------------------------------- //
+						var startWatchCount = function () { 
+							// I hold the current count of watchers in the current page. This extends
+							// beyond the current scope, and will hold the count for all scopes on 
+							// the entire page.
+							$scope.watchCount = 0;
+
+							// I hold the bookmarkletized version of the function to provide a take-
+							// away feature that can be used on any AngularJS page.
+							$scope.bookmarklet = getWatchCount.bookmarklet;
+
+							// Every time the digest runs, it's possible that we'll change the number
+							// of $watch() bindings on the current page. 
+							$scope.$watch(
+								function watchCountExpression() {
+									return( getWatchCount() );
+								},
+								function handleWatchCountChange( newValue ) {
+									$scope.watchCount = newValue;
+								}
+							);
+						}
 						
 
 						$scope.filterTypes = function ( $event, item ) {
@@ -733,16 +923,11 @@
 						};
 
 						// Start Controller
-						QiSatAPI.getCourses(
-									function (data){
-										$scope.courses = data;
-										startCourseList();
-									});
-						startWatchCount();
 						setDataFilters();
+						getCoursesList();
+						startWatchCount();
 
-					
-			}]).run(function($rootScope, $location, $anchorScroll) {
+			}).run(function($rootScope, $location, $anchorScroll) {
 			    $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
 			    	if($location.hash()) {
 			    		$anchorScroll();
@@ -752,4 +937,658 @@
 			    	}
 			    });
 			});
+}());
+(function() {
+    'use strict';
+
+	/* Link Ativo no HEADER 
+
+		OBS.: utilizado apenas para include do HEADER
+	*/
+
+	angular
+		.module('QiSatApp')
+		.controller("headerCtrl",
+					function(){
+						var path = window.location.pathname;
+						if(path == '/'){
+							angular.element('.header-main__list[data-linkA="home"]').addClass('header-main__list-current');
+						}else if( path.toLowerCase().indexOf('/cursos') >= 0 ){
+							angular.element('.header-main__list[data-linkA="cursos"]').addClass('header-main__list-current');
+						}else if( path.toLowerCase().indexOf('/aluno') >= 0 ){
+							angular.element('.header-main__list[data-linkA="aluno"]').addClass('header-main__list-current');
+						}else if( path.toLowerCase().indexOf('/institucional') >= 0 ){
+							angular.element('.header-main__list[data-linkA="institucional"]').addClass('header-main__list-current');
+						}
+				});
+})();
+(function() {
+    'use strict';
+
+	angular
+		.module('QiSatApp')
+		.controller("instructorsController",
+				function($scope, QiSatAPI, Config){
+							QiSatAPI.getInstructorsTop()
+									.then( function ( response ){
+										var instructors = [];
+										if(response.status == 200) instructors = response.data;
+										instructors.map( function (instructor) {
+											if(instructor)
+												if(!instructor.imagem)
+													instructor.imagem = Config.imagensUrlDefault;
+												else
+													instructor.imagem = Config.imagensUrl+instructor.imagem;
+
+												if(instructor.redes_sociais){
+													instructor.linkedin = instructor.redes_sociais.find(function(el){
+															return el.descricao == 'Linkedin';
+													});
+												}
+
+										});
+										$scope.instructors = instructors;
+									 });
+				});
+})();
+(function() {
+    'use strict';
+
+	angular
+		.module('QiSatApp')
+		.controller("TopCoursesController",
+			function($scope, QiSatAPI, Config){
+						QiSatAPI.getCoursesTop()
+								.then( function ( response ){
+									var courses = [];
+									if(response.status == 200) courses = response.data;
+									courses.map( function (course) {
+										var imagemFile;
+										if(course){
+											course.imgSrc = Config.imgCursoUrlDefault;
+											course.modalidade = "Cursos Online";
+
+											if(course.info){
+												if(course.info.files){
+													imagemFile = course.info.files.find(function(img) {return img.tipo == '5' });
+													if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
+												}
+
+												if(course.info.seo && course.info.seo.url){
+													course.url = Config.cursoOnlineUrl+course.info.seo.url;
+												}
+
+												course.nome = course.info.titulo;
+											}
+											
+										}
+									});
+									$scope.topCourses = courses;
+								 });
+			});
+})();
+(function() {
+    'use strict';
+
+	 angular
+	 	.module('QiSatApp')
+	 	.controller("WatchCount",
+				function( $scope, getWatchCount ) {
+					
+
+					// I hold the current count of watchers in the current page. This extends
+					// beyond the current scope, and will hold the count for all scopes on 
+					// the entire page.
+					$scope.watchCount = 0;
+
+					// I hold the bookmarkletized version of the function to provide a take-
+					// away feature that can be used on any AngularJS page.
+					$scope.bookmarklet = getWatchCount.bookmarklet;
+
+
+					// Every time the digest runs, it's possible that we'll change the number
+					// of $watch() bindings on the current page. 
+					$scope.$watch(
+						function watchCountExpression() {
+
+							return( getWatchCount() );
+
+						},
+						function handleWatchCountChange( newValue ) {
+
+							$scope.watchCount = newValue;
+
+						}
+					);
+				}
+			);
+}());
+(function () {
+  "use strict";
+
+  var directive = function(){
+		    return function(scope, element, attrs){
+		        var url = attrs.backImg;
+		        element.css({
+		            'background-image' : 'url(' + url +')'
+		        });
+		    };
+		};
+
+  angular
+  	.module('QiSatApp')
+  	.directive('backImg', directive);
+  
+}());
+(function () {
+  "use strict";
+
+  var directive = function () {
+    return {
+
+    };
+  };
+
+  angular
+  	.module('QiSatApp')
+  	.directive('directiveName', directive);
+  
+}());
+(function() {
+  'use strict';
+
+  angular
+    .module('QiSatApp')
+    .config( function ($locationProvider) {
+
+                // use the HTML5 History API
+                $locationProvider.html5Mode({
+                                              enabled: true, 
+                                              requireBase: false,
+                                              rewriteLinks: 'internal'
+                                            });      
+
+                // $locationProvider.html5Mode(true).hashPrefix('!');            
+            });
+})();
+(function() {
+    'use strict';
+
+	 angular
+	 	.module('QiSatApp')
+	 	.factory("QiSatAPI", function($http, Config){
+
+				var _getInstructorsTop = function () {
+					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/instrutores/top'});
+				};
+
+				var _getCoursesTop = function () {
+					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos/top'});
+				};
+
+				var _getCourses = function () {
+					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos'});
+				};
+
+				var _getStates = function () {
+					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/eventos/estados'});
+				};
+
+				var _getFilterData = function () {
+					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/tipo/dados'});
+				};
+
+				return {
+					getInstructorsTop : _getInstructorsTop,
+					getCoursesTop : _getCoursesTop,
+					getCourses : _getCourses,
+					getStates : _getStates,
+					getFilterData : _getFilterData
+				};
+			});
+}());
+(function() {
+    'use strict';
+
+	// -------------------------------------------------- //
+	// http://www.bennadel.com/blog/2698-counting-the-number-of-watchers-in-angularjs.htm
+	// -------------------------------------------------- //
+
+	// I get a rough estimate of the number of watchers on the page. This assumes 
+	// that the entire page is inside the same AngularJS application. 
+	angular
+		.module('QiSatApp')
+		.factory( "getWatchCount",
+				function() {
+
+					// I return the count of watchers on the current page.
+					function getWatchCount() {
+
+						var total = 0;
+
+						// AngularJS denotes new scopes in the HTML markup by appending the
+						// class "ng-scope" to appropriate elements. As such, rather than 
+						// attempting to navigate the hierarchical Scope tree, we can simply
+						// query the DOM for the individual scopes. Then, we can pluck the 
+						// watcher-count from each scope.
+						// --
+						// NOTE: Ordinarily, it would be a HUGE SIN for an AngularJS service
+						// to access the DOM (Document Object Model). But, in this case,
+						// we're not really building a true AngularJS service, so we can 
+						// break the rules a bit.
+						angular.element( ".ng-scope" ).each(
+							function ngScopeIterator() {
+
+								// Get the scope associated with this element node.
+								var scope = $( this ).scope();
+
+								// The $$watchers value starts out as NULL. 
+								total += scope.$$watchers ? scope.$$watchers.length : 0 ;
+							}
+						);
+						
+						return( total );
+
+					}
+
+					// For convenience, let's serialize the above method and convert it to 
+					// a bookmarklet that can easily be run on ANY AngularJS page. 
+					getWatchCount.bookmarklet = ( 
+						"javascript:alert('Watchers:'+(" + 
+						getWatchCount.toString()
+							.replace( /\/\/.*/g, " " )
+							.replace( /\s+/g, " " ) +
+						")());void(0);" 
+					);
+
+					return( getWatchCount );
+
+				}
+			);
+}());
+
+  // Foundation JavaScript
+  // Documentation can be found at: http://foundation.zurb.com/docs
+  //$(document).foundation();
+
+   // $("#menu").metisMenu({
+   //   collapseInClass: 'in';
+   // });
+
+$(document).foundation('equalizer', 'reflow');
+
+
+
+ $(document).foundation(
+
+ {
+"magellan-expedition": {
+  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+  destination_threshold: 20, // pixels from the top of destination for it to be considered active
+  throttle_delay: 50, // calculation throttling to increase framerate
+  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+}
+}
+
+);
+
+
+
+
+
+
+
+
+
+
+$(function() {
+  $('.anchor').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+
+   $(".map__state").click(function() {
+      $(".mapa .map__state").removeClass("active");
+      $(this).addClass("active");
+  });
+   
+});
+
+
+
+
+ $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
+         event.preventDefault();
+        $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
+ });
+
+
+
+
+  
+$(document).ready(function() {
+  if ( $('#sidebar-styker').length ) {
+       $("#sidebar-styker").stick_in_parent({
+        offset_top: 80,
+        recalc_every: 1,
+       });
+  }
+
+   if ( $('#sidebar-styker--courses').length ) {
+       $("#sidebar-styker--courses").stick_in_parent({
+        offset_top: 200,
+        recalc_every: 1,
+       });
+  }
+
+}());
+
+
+
+
+
+   $(document).ready(function() {
+
+     $(".owl-carousel-testimonials-home").owlCarousel({
+         navigation : false, // Show next and prev buttons
+         slideSpeed : 300,
+         paginationSpeed : 400,
+         singleItem:true,
+         autoHeight:true,
+
+         //"singleItem:true" is a shortcut for:
+          items : 1,
+         itemsDesktop : false,
+         itemsDesktopSmall : false,
+         itemsTablet: false,
+         itemsMobile : false
+     });
+
+   });
+
+
+/* Temporário
+   temporário, usado somente para testar, a ideia é que seja feito em php,
+   se favorirar adicionar a class .buttom-favorite-active  */
+     $(function() {
+       if ( $('.buttom-favorite').length ) {
+             $('.buttom-favorite').on('click', function(){
+                   event.preventDefault();
+                  // alert("foi")
+                  $(this).toggleClass("buttom-favorite-active");
+             });
+
+
+             $('.form-button-call-me').on('click', function(){
+                        event.preventDefault();
+                       $(".section-call__form").css({"height": "0", "overflow": "hidden"});
+                       $(".section-call__done").css({"height": "initial", "overflow": "initial"});
+              });
+        }
+      }());
+/* end página cursos > botão favoritar*/
+
+
+
+
+/* Temporário
+   temporário, usado somente para testar,
+   se clicar  .cd-item-remove  */
+
+$(function() {
+  if ( $('.cd-item-remove').length ) {
+           $('.cd-item-remove').on('click', function(event){
+                   //event.preventDefault();
+                  $(this).parent().addClass("remove");
+                    console.log("clicado");
+          });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+//zurb foundation animate accordion
+$(function() {
+  if ( $('.accordion').length ) {
+        // se accordion estiver presente, executa esse codigo
+        $(".accordion").on("click", "dd", function () {
+                if($(this).hasClass('active')){
+                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
+                }
+                else {
+                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
+                    $(this).addClass('active').find(".content").slideToggle("fast");
+                }
+        });
+  }
+});
+//end zurb foundation animate accordion
+
+
+
+
+//toggle foter
+if ( $('.footer-primary__list__item').length ) {
+      if ($(window).width() < 640) {
+
+          $(function() {
+            $(".footer-primary__list__item").hide(200);
+
+                 $('.footer-primary__list').children('.footer-primary__title').on('click', function(event){
+                    event.preventDefault();
+                    $(this).siblings(".footer-primary__list__item").slideToggle(200);
+                 });
+            }());
+      } else{
+         $(".footer-primary__list__item").show(200);
+      }
+}
+
+
+
+//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
+ $(function() {
+   if ( $('.navigation_courses__list-item--link').length ) {
+
+        $('.navigation_courses__list-item--link').click(function() {
+          if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: (target.offset().top)-80
+              }, 1000);
+              return false;
+            }
+          }
+        });
+    }
+});
+  //end Smooth Scrolling
+
+
+
+
+
+
+
+
+///simple modal image
+   $(function() {
+     if ( $('.section__course-gallery-list--link').length ) {
+         $('.section__course-gallery-list--link').on('click', function(event){
+               event.preventDefault();
+              // alert("foi")
+              $(this).toggleClass("active");
+
+         });
+       }
+     }());
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ///cards para transformar em card ou linha
+     $(function() {
+        if ( $('.toggle-form-type').length ) {
+
+             $('.toggle-form-type').on('click', function(event){
+                   event.preventDefault();
+                   $(this).toggleClass('toggle-form-type--active');
+
+                  if($('.card-course').hasClass('card-format-block')) {
+                    $(".card-course").removeClass("card-format-block").addClass("card-format-line");
+                    $(".card-course").addClass("card-format-line");
+                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3").addClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1");
+ 
+                   }
+                  else if($('.card-course').hasClass('card-format-line')) {
+                    $(".card-course").removeClass("card-format-line").addClass("card-format-block");
+                    $(".card-course").addClass("card-format-block");
+                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3");
+                   }
+
+ 
+             });
+        }
+      }());
+
+
+
+
+
+
+
+
+
+
+// carrousel página institucional
+$(document).ready(function() {
+  if ( $('.owl-sync').length ) {
+
+        var sync1 = $("#gallery-sync_bigger");
+        var sync2 = $("#gallery-sync_thumb");
+        var slidesPerPage = 6; //globaly define number of elements per page
+        var syncedSecondary = true;
+
+        sync1.owlCarousel({
+          items : 1,
+          slideSpeed : 2000,
+          nav: true,
+          autoplay: true,
+          dots: false,
+          loop: true,
+          responsiveRefreshRate : 200,
+          navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+        }).on('changed.owl.carousel', syncPosition);
+
+        sync2
+          .on('initialized.owl.carousel', function () {
+            sync2.find(".owl-item").eq(0).addClass("current");
+          })
+          .owlCarousel({
+          items : slidesPerPage,
+          dots: false,
+          nav: false,
+          smartSpeed: 200,
+          slideSpeed : 500,
+          slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+          responsiveRefreshRate : 100
+        }).on('changed.owl.carousel', syncPosition2);
+
+        function syncPosition(el) {
+          //if you set loop to false, you have to restore this next line
+          //var current = el.item.index;
+
+          //if you disable loop you have to comment this block
+          var count = el.item.count-1;
+          var current = Math.round(el.item.index - (el.item.count/2) - 0.5);
+          if(current < 0) {
+            current = count;
+          }
+          if(current > count) {
+            current = 0;
+          }
+          //end block
+
+          sync2
+            .find(".owl-item")
+            .removeClass("current")
+            .eq(current)
+            .addClass("current");
+          var onscreen = sync2.find('.owl-item.active').length - 1;
+          var start = sync2.find('.owl-item.active').first().index();
+          var end = sync2.find('.owl-item.active').last().index();
+
+          if (current > end) {
+            sync2.data('owl.carousel').to(current, 100, true);
+          }
+          if (current < start) {
+            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+          }
+        }
+
+        function syncPosition2(el) {
+          if(syncedSecondary) {
+            var number = el.item.index;
+            sync1.data('owl.carousel').to(number, 100, true);
+          }
+        }
+
+        sync2.on("click", ".owl-item", function(e){
+          e.preventDefault();
+          var number = $(this).index();
+          sync1.data('owl.carousel').to(number, 300, true);
+        });
+
+  }
+});
+
+// end carrousel página institucional
+
+
+
+
+
+
+
+
+
+
+
+
+(function() {
+   'use strict';
+
+	angular
+		.module('QiSatApp', [])
+		.config(['$compileProvider', function ($compileProvider) {
+				  $compileProvider.debugInfoEnabled(false);
+				}]);
 }());

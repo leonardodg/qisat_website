@@ -1,6 +1,9 @@
-var QiSatApp = angular.module('QiSatApp'), setNavFilters, startCourseList;
+(function() {
+    'use strict';
 
-QiSatApp.controller("TopCoursesController",
+	angular
+		.module('QiSatApp')
+		.controller("TopCoursesController",
 			function($scope, QiSatAPI, Config){
 						QiSatAPI.getCoursesTop()
 								.then( function ( response ){
@@ -30,3 +33,4 @@ QiSatApp.controller("TopCoursesController",
 									$scope.topCourses = courses;
 								 });
 			});
+})();
