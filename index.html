@@ -37,9 +37,9 @@
 				<nav class="header-main__nav">
 					<ul class="header-main__ul">
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item" href="/" target="_self" >Home</a>
+							<a class="anchor header-main__item header-main__list-current" href="/" target="_self" >Home</a>
 						</li>
-						<li class="show-for-large-up header-main__list  header-main__list__has--submenu header-main__list-current">
+						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
 							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
@@ -341,7 +341,7 @@
 										<li class="home__instructors__item" ng-repeat="instructor in ::instructors" >
 
 											<div class="home__instructors__card" >
-												<div class="home__instructors__card-header" style="background-image: url(' {{::instructor.imagem}}' ); ">
+												<div class="home__instructors__card-header" back-img="{{instructor.imagem}}">
 													 <a href="{{::instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{::instructor.nome}}" ng-show="{{::instructor.linkedin}}">Linkedin</a>
 												</div> <!-- //home__instructors__image -->
 
@@ -411,7 +411,7 @@
 
 														</div>
 
-												<div class="item testimonial__item testimonial__background" style="background-image:url(images/testimonials/tb01.png)">
+												<div class="item testimonial__item testimonial__background" style="background-image:url(images/testimonials/tb01.jpg)">
 															<div class="testimonial__container">
 																<p class="testimonial__quote"> "A AltoQi e o QiSat estão de parabéns pela competência e seriedade no desenvolvimento dos sistemas e cursos, proporcionando o engrandecimento da engenharia brasileira."</p>
 																<p class="testimonial__name"> <strong>Mario de A.</strong></p><a href="#" class="play" rel="nofollow"></a></div>
@@ -594,7 +594,10 @@ E até o proximo curso!" </p>
 
 
 				<!-- ########################## END FOOTER ########################## -->
-
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
 
 			<!-- GLOBAL -->
 			<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
@@ -611,36 +614,21 @@ E até o proximo curso!" </p>
 
 
 			<!-- END SCRIPTS HOME -->
-					<script src="js/min/angular.min.js"></script>
-					<script src="js/QiSatApp.js"></script>
+			<script src="js/min/angular.min.js"></script>
+			<script src="js/libs/ngMask.min.js"></script>
+			<script src="js/QiSatApp.js"></script>
 
-					<script src="js/config/value.js"></script>
-					<script src="js/services/QiSatAPI.js"></script>
-					<script src="js/controllers/instructorsController.js"></script>
-					<script src="js/controllers/TopCoursesController.js"></script>
-					<script src="js/directive/directive.js"></script>
+			<script src="js/config/value.js"></script>
+			<script src="js/services/QiSatAPI.js"></script>
+			<script src="js/controllers/instructorsController.js"></script>
+			<script src="js/controllers/TopCoursesController.js"></script>
+			<script src="js/directive/directive.js"></script>
 			
+			<script src="js/libs/sticky-kit.js"></script>
+			<script src="/bower_components/pace/pace.min.js"></script> 
+			<script src="js/app.js"></script>
 
-			 <!-- EXECUTA SCRIPTS QISAT -->
-			 <!--  <script src="js/app.js"></script> -->
-			 <!-- // EXECUTA MEUS SCRIPTS -->
-
-
-
-						<script src="assets/js/sticky-kit.js"></script>
-						<script src="bower_components/pace/pace.min.js"></script> 
-						<script src="assets/js/app.js"></script>
-
-						<!-- EXECUTA SCRIPTS QISAT -->
-						
-<!-- ########################## END FOOTER ########################## -->
-
-			<!-- exit-off-canvas -->
-			<a class="exit-off-canvas"></a>
-
-
-		</div> <!-- //inner-wrap -->
-	 </div><!-- //off-canvas-wrap -->
+			<!-- EXECUTA SCRIPTS QISAT -->
 
 </body>
 </html>

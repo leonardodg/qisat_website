@@ -10,9 +10,12 @@
 	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
 
  	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
-	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+	<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -189,7 +192,7 @@
 					 					   <h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5> 
 										   <ul class="menu-filter-sidebar-option-set">
 
-								 		     <li class="menu-filter-sidebar-item" ng-repeat="item in ::filter.inputs">
+								 		     <li class="menu-filter-sidebar-item" ng-repeat="item in filter.inputs">
 								 		     	
 								 		     		<input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-types" ng-click="::filterTypes($event, item, filter)" ng-if="::filter.name=='Tipo'" /> 
 
@@ -213,7 +216,7 @@
 							 </form> 
 						</div> <!-- //menu-filter-sidebars -->
 					</aside>
-			 </div>  <!-- // large-3 columns - Watchers: {{watchCount}} -->
+			 </div>  <!-- // large-3 columns  -->
 
 
 			 <div class="medium-12 large-9 columns" >
@@ -233,7 +236,7 @@
 				 </div>
 
 				<header class="page-course__header-group">
-					<span class="page-course__header-group--suptitle">Você está visualizando </span>
+					<span class="page-course__header-group--suptitle">Você está visualizando  - Watchers: {{ watchCount }}  </span>
 							<ul class="page-course__breadcrumbs breadcrumbs ng-cloak">
 							  <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
 							  	<a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
@@ -4706,63 +4709,47 @@
 						 		</div> <!-- ///row -->
 						</div> <!-- footer-secondary -->
 					</footer> <!-- footer-container -->
-
-
 				<!-- ########################## END FOOTER ########################## -->
-
-				<!-- GLOBAL -->
-			   	    <script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-					 <script src="/bower_components/foundation/js/foundation/foundation.equalizer.js"></script>
-					<script src="js/sticky-kit.js"></script>
-					<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script> 
-				<!-- // GLOBAL -->
-
-				<!-- PÁGINA HOME -->
-					<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-					<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
-					<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-				<!-- // PÁGINA HOME -->
-
-
-				<!-- SOMENTE PÁGINA DE CURSOS -->
- 					<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
- 				<!-- // END SOMENTE PÁGINA DE CURSOS -->
-
-				<!-- EXECUTA SCRIPTS QISAT -->
-					
-			<!-- ANGULARJS SCRIPTS -->
-				<script src="js/min/angular.min.js"></script>
-				<!-- // <script src="js/min/angular-route.min.js"></script> -->
-				<script src="js/QiSatApp.js"></script>
-				<script src="js/routes/ngRouter.js"></script>
-
-				<script src="js/config/value.js"></script>
-				<script src="js/services/QiSatAPI.js"></script>
-				<script src="js/services/watchCount.js"></script>
-				<script src="js/controllers/coursesController.js"></script>
-				<script src="js/filters/filters.js"></script>
-				<script src="js/directive/directive.js"></script>
-				<script src="js/app.js"></script>
- 
-			<!-- END ANGULARJS SCRIPTS -->
-
-
-
-			 	<!-- // EXECUTA MEUS SCRIPTS -->
-
-<!-- ########################## END FOOTER ########################## -->
-
-
-
-						<!-- exit-off-canvas -->
-						<a class="exit-off-canvas"></a>
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
 
 
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
+	<!-- GLOBAL -->
+   	    <script  src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script  src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script  src="/bower_components/foundation/js/foundation/foundation.equalizer.js"></script>
+		<script  src="js/libs/sticky-kit.js"></script>
+		<script  src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script> 
+	<!-- // GLOBAL -->
 
+	<!-- PÁGINA HOME -->
+		<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	<!-- // PÁGINA HOME -->
+	<!-- SOMENTE PÁGINA DE CURSOS -->
+		<script src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+		<!-- // END SOMENTE PÁGINA DE CURSOS -->
+
+	<!-- EXECUTA SCRIPTS QISAT -->
+		
+<!-- ANGULARJS SCRIPTS -->
+	<script defer src="js/min/angular.min.js"></script>
+	<script async defer src="js/libs/ngMask.min.js"></script>
+	<!-- // <script src="js/min/angular-route.min.js"></script> -->
+	<script async defer src="js/QiSatApp.js"></script>
+	<script async defer src="js/routes/ngRouter.js"></script>
+
+	<script async defer src="js/config/value.js"></script>
+	<script async defer src="js/services/QiSatAPI.js"></script>
+	<script async defer src="js/services/watchCount.js"></script>
+	<script async defer src="js/controllers/coursesController.js"></script>
+	<script async defer src="js/filters/filters.js"></script>
+	<script async defer src="js/directive/directive.js"></script>
+	<script async defer src="js/app.js"></script>
+
+<!-- END ANGULARJS SCRIPTS -->
 
 </body>
 </html>

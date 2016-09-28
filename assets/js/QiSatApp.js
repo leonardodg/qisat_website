@@ -1,5 +1,7 @@
-var QiSatApp = angular.module('QiSatApp', []);
+(function() {
+   'use strict';
 
-// QiSatApp.config(['$compileProvider', function ($compileProvider) {
-//   $compileProvider.debugInfoEnabled(false);
-// }]);
+	angular
+		.module('QiSatApp', ['ngMask']);
+
+}());
