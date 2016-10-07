@@ -810,7 +810,7 @@ article {
 ========================================= */
 /* line 37, ../scss/qisat/_home.scss */
 .shortcut-courses {
-  background-color: #10171b;
+  background-color: #3f454c;
   display: inline-block;
   width: 100%;
   padding: 70px 0;
@@ -1132,11 +1132,10 @@ article {
 /* line 338, ../scss/qisat/_home.scss */
 .home__section-instructors {
   padding: 70px 0;
-  background: #00c6ff;
+  background: #c1c1c1;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #00c6ff, #0072ff);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #005b94, #002942);
+  /*background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+  /*background: linear-gradient(to left, #005b94, #002942);*/
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
