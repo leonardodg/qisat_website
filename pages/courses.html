@@ -182,7 +182,7 @@
 					 					<div ng-if="::filter.type=='dropdown'">
 					 						<h5 class="menu-filter-sidebars--title">{{::filter.title}}</h5>
 											<label for="selectStates" >
-										        <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.name for option in filter.inputs track by option.uf" ng-model="filter.selectStates" ng-change="filterStates(filter.selectStates)">
+										        <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.local for option in filter.inputs track by option.uf" ng-model="filter.selectStates" ng-change="filterStates(filter.selectStates)">
  													<option value=""> Selecione o Estado </option>
 										        </select>
 										     </label>
@@ -235,8 +235,11 @@
 				    </div>
 				 </div>
 
+
+				 <!--  - Watchers: {{ watchCount }}  -->
+
 				<header class="page-course__header-group">
-					<span class="page-course__header-group--suptitle">Você está visualizando  - Watchers: {{ watchCount }}  </span>
+					<span class="page-course__header-group--suptitle">Você está visualizando  </span>
 							<ul class="page-course__breadcrumbs breadcrumbs ng-cloak">
 							  <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
 							  	<a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
@@ -4452,12 +4455,12 @@
 									<div class="list-filter__inner">
 										<div class="card-course card-format-block">
 									   		<div class="card-course-inner">
-									   				<a ng-href="{{::course.link}}">
+									   				<a ng-href="{{::course.link}}" target="_self">
 									   					<span class="card-course--litle-play"></span>
 									   					<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 									   				</a>
 									   				<div class="card-course--content">
-									   					<a ng-href="{{::course.link}}">
+									   					<a ng-href="{{::course.link}}" target="_self">
 									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name">{{::course.nome}}</span>
@@ -4492,12 +4495,12 @@
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}">
+													<a ng-href="{{::course.link}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}">  
+														<a ng-href="{{::course.link}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
@@ -4528,12 +4531,12 @@
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}">
+													<a ng-href="{{::course.link}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}">  
+														<a ng-href="{{::course.link}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
@@ -4564,12 +4567,12 @@
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}">
+													<a ng-href="{{::course.link}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}">  
+														<a ng-href="{{::course.link}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
@@ -4735,9 +4738,13 @@
 	<!-- EXECUTA SCRIPTS QISAT -->
 		
 <!-- ANGULARJS SCRIPTS -->
-	<script defer src="js/min/angular.min.js"></script>
-	<script defer src="js/libs/ngMask.min.js"></script>
-	<!-- // <script src="js/min/angular-route.min.js"></script> -->
+    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+    <script defer src="js/libs/angular-locale_pt-br.js"></script>
+	<script defer src="js/libs/angular-cookies.min.js"></script>
+    <script defer src="js/libs/angular-route.min.js"></script>
+    <script defer src="js/libs/angular-resource.min.js"></script>
+    <script defer src="js/libs/ngMask.min.js"></script>
+    <script defer src="js/libs/ui-masks.js"></script>
 	<script  defer src="js/QiSatApp.js"></script>
 	<script  defer src="js/routes/ngRouter.js"></script>
 
@@ -4746,7 +4753,7 @@
 	<script defer src="js/services/watchCount.js"></script>
 	<script defer src="js/controllers/coursesController.js"></script>
 	<script defer src="js/filters/filters.js"></script>
-	<script defer src="js/directive/directive.js"></script>
+	<script defer src="js/directive/backImg.js"></script>
 	<script defer src="js/app.js"></script>
 
 <!-- END ANGULARJS SCRIPTS -->

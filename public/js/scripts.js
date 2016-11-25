@@ -39,7 +39,6 @@
 				imagensUrl : "http://webservice.qisat.com:3000/imagens/instrutores/",
 				imagensUrlDefault : "http://webservice.qisat.com:3000/imagens/instrutores/instrutor.png",
 				imgCursoUrlDefault : "http://webservice.qisat.com:3000/imagens/produtos/default.png",
-				cursoOnlineUrl : "/curso/online/",
 
 				filters : { 
 
@@ -494,7 +493,7 @@
 												// if(course.produtos){
 												// 	course.produtos.map(function(produto){
 												// 		if(produto.info && produto.info.seo && produto.info.seo.url){
-												// 			produto.url = Config.cursoOnlineUrl+produto.info.seo.url;
+												// 			produto.url = "/curso/online/"+produto.info.seo.url;
 												// 		}
 												// 	});
 												// }
@@ -1015,7 +1014,7 @@
 												}
 
 												if(course.info.seo && course.info.seo.url){
-													course.url = Config.cursoOnlineUrl+course.info.seo.url;
+													course.url = "/curso/online/"+course.info.seo.url;
 												}
 
 												course.nome = course.info.titulo;

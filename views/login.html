@@ -1,0 +1,64 @@
+
+		<div class="admin__heading">
+			<h2 class="subtitle"> Acesso ao Portal do Aluno </h2>
+			<h1 class="title">Login</h1>
+		</div>
+
+
+		<section id="dashboard"  >
+
+			<div class="row">
+		 		<div class="large-12 columns">
+			      	<div ui-alert type="{{typeMsgLogin}}" close="true" >
+			      		{{msgLogin}}
+			    	</div>
+				 </div>
+			</div>
+
+			<div class="row">
+				<div class="large-6 small-12 columns">
+					<h3>Lorem ipsum dolor sit amet</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
+
+					<section id="login" class="social-login-disabled" >
+						<form name="loginForm" accept-charset="UTF-8" >
+							
+						<div class="passport-left">
+						<h1> Acesso ao Portal do Aluno </h1>
+						</div>
+						<div class="passport-right">
+						<div id="emailLogin">
+						<h5 class="hide-for-small">Login</h5>
+						
+					
+						<input autocapitalize="off" autocorrect="off" id="username" name="username" placeholder="Usuário" type="text" ng-model="credentials.username" >
+						<input id="password" name="password" placeholder="Senha" type="password" ng-model="credentials.password">
+						<label>
+						
+						<div class="large-6 columns">
+							<input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me" ng-model="remember_me">
+						Lembre-me
+						</label>
+						<br>
+								<a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
+					    		</div>
+
+						<button name="signIn" ng-click="login(credentials)" > Acessar »</button>
+						
+						</div>
+						</div>
+
+						</form>
+						</section>
+
+		   		</div>
+				<div class="large-6 small-12 columns">
+					<h3>Lorem ipsum dolor sit amet</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
+				</div>
+
+				<div class="small-12 columns">
+					
+		 		</div>
+			</div> <!-- //row -->
+		</section>

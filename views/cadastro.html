@@ -1,0 +1,188 @@
+		<div class="admin__heading">
+			<h2 class="subtitle"> Criar Usuário para Acesso  </h2>
+			<h1 class="title"> Cadastro </h1>
+		</div>
+
+		<section id="dashboard">
+
+				<div class="row">
+			 		<div class="large-12 columns">
+				      	<div ui-alert type="{{typeMsgCreate}}" close="true" >
+				      		{{msgCreate}}
+				    	</div>
+					 </div>
+				</div>
+
+
+				<div class="row">
+					<form name="createForm" id="createForm" novalidate>
+						<div class="large-6 columns">
+						  	<fieldset>
+							    <legend>Dados Pessoais </legend>
+
+				  				<div class="row">
+	   						 		<div class="large-6 columns">
+
+									   <input type="text" name="name" id="name" placeholder="Seu Nome" ng-model="cadastro.firstname" ng-required="true" >
+
+									    <div ng-show="(createForm.name.$dirty || submitted) && createForm.name.$invalid">
+									      <span class="error" ng-show="createForm.name.$error.required">Nome é Obrigatório!</span>
+									    </div>
+
+
+									</div>
+									<div class="large-6 columns">
+									   
+									    <input type="text" name="lastname" id="lastname" placeholder="Seu Sobrenome" ng-model="cadastro.lastname" ng-required="true"  >
+
+									    <div ng-show="(createForm.lastname.$dirty || submitted) && createForm.lastname.$invalid">
+									      <span class="error" ng-show="createForm.lastname.$error.required">Sobrenome é Obrigatório!</span>
+									    </div>
+									 
+						    		</div>
+								</div>
+		
+				  				<div class="row">
+							 		<div class="large-6 columns">
+									    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="cadastro.email" ng-required="true" ng-pattern="emailFormat" email-check >
+
+									    <div ng-show="(createForm.email.$dirty || submitted) && createForm.email.$invalid">
+									      <span class="error" ng-show="createForm.email.$error.required">Email é Obrigatório!</span>
+									    </div>
+
+									    <div ng-show="createForm.email.$dirty && createForm.email.$error.pattern">
+									      <span class="error" >Formato de Email incorreto!</span>
+									    </div>
+
+									    <div ng-show="!createForm.email.$error.pattern && createForm.email.$error.emailCheck">
+									    	<span class="error" > Email já cadastrado! </span>
+									      	<span class="label info" >Solicite <a href="/lembrete-de-senha">recuperar senha</a></span>
+									    </div>
+									</div>
+									<div class="large-6 columns">
+									    <input type="text" name="phone" id="phone" placeholder="Digite Telefone" ng-model="cadastro.phone1" ng-required="true"  ui-br-phone-number >
+
+									    <div ng-show="(createForm.phone.$dirty || submitted) && createForm.phone.$invalid">
+									      <span class="error" ng-show="createForm.phone.$error.required">Telefone é Obrigatório!</span>
+
+									    </div>
+						    		</div>
+								</div>
+
+								<div class="row">
+							 		<div class="large-6 columns">
+									     <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ" ng-model="cadastro.cpfcnpj" ui-br-cpfcnpj-mask cpf-check ng-required="true" >
+
+									    <div ng-show="(createForm.cpfcnpj.$dirty || submitted) && createForm.cpfcnpj.$invalid">
+									      <span class="error" ng-show="createForm.cpfcnpj.$error.required">CPF/CNPJ é Obrigatório!</span>
+									    </div>
+
+									    <div ng-show="createForm.cpfcnpj.$dirty && (createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
+									      <span class="error" >CPF/CNPJ inválido!</span>
+									    </div>
+
+									    
+						    			<div ng-show="createForm.cpfcnpj.$dirty && createForm.cpfcnpj.$error.cpfCheck">
+									      <span class="error" >CPF/CNPJ já cadastrado!</span>
+									      <span class="label info" ng-show="emailremember"> Solicite <a href="/lembrete-de-senha">recuperar senha</a> para o email: {{emailremember}}</span>
+									      <span class="label info" ng-show="!emailremember"> Entre com contato com nossa Equipe!</span>
+									    </div>
+
+									</div>
+									<div class="large-6 columns">
+									     <input type="text" name="crea" id="crea" placeholder="Digite CREA" ng-model="cadastro.numero_crea"  >
+						    		</div>
+								</div>
+
+							</fieldset>
+					
+							<fieldset>
+							    <legend> Verificação </legend>
+								    <div class="large-7 large-centered columns">
+								    	<re-capthcha ng-model='chaptcha' ></re-captcha>
+								    	 
+								    </div>
+
+								    <div class="large-8 large-centered columns">
+								    	<div ng-show="submitted && createForm.$error.captcha[0].$invalid">
+									      <span class="error" >Verificação Recaptcha Necessário! </span>
+									    </div>
+								    </div>
+							</fieldset>
+		  	  		</div>
+
+		  	  		<div class="large-6 columns">
+				  		<fieldset>
+						    <legend>Endereço</legend>
+   						 		<div class="large-12 columns">
+								   
+								      <input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep" ng-required="true"  ng-blur="buscaCEP(endereco.cep)"  ui-br-cep-mask >
+
+								    <div ng-show="(createForm.cep.$dirty || submitted) && createForm.cep.$invalid">
+								      <span class="error" ng-show="createForm.cep.$error.required">Informe o CEP</span>
+								    </div>
+
+								</div>
+								<div class="large-12 columns">
+								    <label>País
+							         <select name="selectCountry" id="selectCountry" class="selectCountry" ng-options="option.pais for option in country track by option.sigla" ng-model="endereco.selectCountry" >
+	 										<option value=""> Selecione o País </option>
+								        </select>
+
+							      </label>
+					    		</div>
+	
+								<div class="large-12 columns">
+								    <label>Selecione o Estado 
+								        <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.local for option in states track by option.uf" ng-model="endereco.selectStates" >
+	 										<option value=""> Selecione o Estado </option>
+								        </select>
+							      </label>
+					    		</div>
+		
+								<div class="large-12 columns">
+									<br>
+								    <input type="text" name="cidade" id="cidade" placeholder="Digite a Cidade" ng-model="endereco.cidade" ng-required="true"  >
+
+								    <div ng-show="(createForm.cidade.$dirty || submitted) && createForm.cidade.$invalid">
+								      <span class="error" ng-show="createForm.cidade.$error.required">Informe a Cidade!</span>
+								    </div>
+								</div>
+
+								<div class="large-12 columns">
+								     <input type="text" name="bairro" id="bairro" placeholder="Digite o Bairro" ng-model="endereco.bairro" ng-required="true"  >
+
+								    <div ng-show="(createForm.bairro.$dirty || submitted) && createForm.bairro.$invalid">
+								      <span class="error" ng-show="createForm.bairro.$error.required">Informe o Bairro!</span>
+								    </div>
+								</div>
+
+								<div class="large-10 columns">
+								    <input type="text" name="logradouro" id="logradouro" placeholder="Digite o Endereço" ng-model="endereco.logradouro" ng-required="true"  >
+
+								    <div ng-show="(createForm.logradouro.$dirty || submitted) && createForm.logradouro.$invalid">
+								      <span class="error" ng-show="createForm.logradouro.$error.required">Informe o Logradouro!</span>
+								    </div>
+								</div>
+								<div class="large-2 columns">
+								      <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero"  >
+								    </label>
+					    		</div>
+
+					    		<div class="large-12 columns">
+							      	<input type="text" name="complemento" id="complemento" placeholder="Complemento" ng-model="endereco.complemento"  >
+								</div>
+
+							</fieldset>
+			  	 		</div>
+		  		</form>
+			  	</div>
+
+			  	<div class="row">
+		 			<div class="large-10 large-centered columns">
+						<button id="salve" type="submit" ng-click="create()"> Cadastrar »</button>
+						<button id="cancel" type="reset" ng-click="cancel()"> Cancelar </button>
+					</div>
+				</div>
+
+		</section>

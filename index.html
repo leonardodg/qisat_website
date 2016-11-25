@@ -12,6 +12,8 @@
 	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
 
 <body> 
@@ -24,9 +26,9 @@
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
 			     <li><a href="/" target="_self" >Home</a></li>
-				 <li><a href="/institucional" target="_self" >Institucional</a></li>
 			     <li><a href="/cursos" target="_self" >Cursos</a></li>
 				 <li><a href="/aluno" target="_self" >Área do Aluno</a></li>
+				 <li><a href="/institucional" target="_self" >Institucional</a></li>
 			   </ul>
 			 </aside>
 		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
@@ -37,10 +39,11 @@
 				<nav class="header-main__nav">
 					<ul class="header-main__ul">
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item header-main__list-current" href="/" target="_self" >Home</a>
+							<a class="anchor header-main__item header-main__list-current
+							header-main__list-item-current" href="/" target="_self" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
-							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
+							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
 			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
@@ -307,7 +310,7 @@
 						<div class="small-12 medium-3 columns">
 								<div class="home_panel_titles--topcourses">
 									<h2 class="section__title--dark">Top Cursos</h2>
-		  							<a href="/cursos/lancamentos" class="button-line--dark"> Todos os cursos <i class="material-icons">keyboard_arrow_right</i></a>
+		  							<a href="/cursos" class="button-line--dark"> Todos os cursos <i class="material-icons">keyboard_arrow_right</i></a>
 								</div> <!-- //home_panel_titles -->
 						</div>  <!-- // large-12 columns -->
 
@@ -591,44 +594,35 @@ E até o proximo curso!" </p>
 						 		</div> <!-- ///row -->
 						</div> <!-- footer-secondary -->
 					</footer> <!-- footer-container -->
-
-
-				<!-- ########################## END FOOTER ########################## -->
+					<!-- ########################## END FOOTER ########################## -->
 			<!-- exit-off-canvas -->
 			<a class="exit-off-canvas"></a>
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
-			<!-- GLOBAL -->
-			<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-			<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-			<!-- // <script src="js/scripts.js"></script> -->
-			<!-- // GLOBAL -->
+	<!-- GLOBAL -->
+	<script defer src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+	<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+	<script defer src="/bower_components/pace/pace.min.js"></script> 
+	<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	<!-- // GLOBAL -->
 
-			<!-- SCRIPTS HOME -->
-			<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-			<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
-			<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-			<script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script> 
-
-
-			<!-- END SCRIPTS HOME -->
-			<script src="js/min/angular.min.js"></script>
-			<script src="js/libs/ngMask.min.js"></script>
-			<script src="js/QiSatApp.js"></script>
-
-			<script src="js/config/value.js"></script>
-			<script src="js/services/QiSatAPI.js"></script>
-			<script src="js/controllers/instructorsController.js"></script>
-			<script src="js/controllers/TopCoursesController.js"></script>
-			<script src="js/directive/directive.js"></script>
-			
-			<script src="js/libs/sticky-kit.js"></script>
-			<script src="/bower_components/pace/pace.min.js"></script> 
-			<script src="js/app.js"></script>
-
-			<!-- EXECUTA SCRIPTS QISAT -->
+	<!-- END SCRIPTS HOME -->
+	<script src="js/libs/angular.js"></script>
+	<script defer src="js/libs/angular-locale_pt-br.js"></script>
+	<script defer src="js/libs/angular-cookies.min.js"></script>
+    <script defer src="js/libs/angular-route.min.js"></script>
+    <script defer src="js/libs/angular-resource.min.js"></script>
+    <script defer src="js/libs/ngMask.min.js"></script>
+    <script defer src="js/libs/ui-masks.js"></script>
+	<script defer src="js/QiSatApp.js"></script>
+	<script defer src="js/config/value.js"></script>
+	<script defer src="js/services/QiSatAPI.js"></script>
+	<script defer src="js/controllers/instructorsController.js"></script>
+	<script defer src="js/controllers/TopCoursesController.js"></script>
+	<script defer src="js/directive/backImg.js"></script>
+	<script defer src="js/app.js"></script>
+	<!-- EXECUTA SCRIPTS QISAT -->
 
 </body>
 </html>

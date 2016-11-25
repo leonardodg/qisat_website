@@ -1,107 +1,243 @@
 (function() {
     'use strict';
 
+    /*
+		QiSatAPI - Service Data Objects
+    */
+
 	 angular
 	 	.module('QiSatApp')
-	 	.factory("QiSatAPI", function($http, $filter, Config){
+	 	.factory("QiSatAPI", [ '$http', '$filter', 'Config', 
+	 			function($http, $filter, Config){
 
-				var _getInstructorsTop = function () {
-					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/instrutores/top'});
-				};
+					var sdo = {
 
-				var _getCoursesTop = function () {
-					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos/top'});
-				};
+		                        createUser : function (data) {
 
-				var _getCourses = function (callback) {
-					 $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/produtos'})
-								.then( function ( response ){
-										var courses = [];
-										var filterTypes = $filter('byTypes'),
-											filterZpad = $filter('zpad'),
-											filterLimitName = $filter('limitName');
+		                            var promise = $http({ 
+		                                                    method: 'post', 
+		                                                    url: Config.baseUrl+'/user/',
+		                                                    data: data
+		                                                        });
 
-										if(response.status == 200) courses = response.data;
-										courses.map( function (course, i) {
-											var imagemFile;
-											if(course){
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+		                        },
 
-												course.valorTotal = course.preco;
-												course.preco = $filter('currency')(course.preco, 'R$');
-												course.imgSrc = Config.imgCursoUrlDefault;
-												
-												if(course.info){
-													if(course.info.files){
-														imagemFile = course.info.files.find(function(img) { return img.tipo == '5' });
-														if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
-													}
+		                        checkByEmail : function (email) {
 
-													course.nome = filterLimitName(course.info.titulo);
+		                            var promise = $http({ 
+		                                                    method: 'post', 
+		                                                    url: Config.baseUrl+'/user/checkEmail',
+		                                                    data: { email: email }
+		                                                        });
 
-													if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-														course.modalidade = "Série Online";
-														course.link =  "/curso/online/"+course.info.seo.url ;
-														course.info.conteudos.map( function (conteudo){
-																	 var aux =  conteudo.titulo.split('-');
-																	 conteudo.capitulo = aux[0];
-																	 conteudo.nome = aux[1];
-																	});
-													}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-														course.modalidade = "Pacote de Cursos Online";
-														course.link =  "/curso/online/"+course.info.seo.url ;
-													}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-														course.modalidade = "Palestra Online";
-														course.link =  "/curso/online/"+course.info.seo.url ;
-													}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-														course.modalidade = "Curso Presencial - individual";
-														course.link =  "/curso/presencial/"+course.info.seo.url ;
-													}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-														course.modalidade = "Curso Presencial";
-														course.link = "/curso/presencial/"+course.info.seo.url;
-													}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-														course.modalidade = "Curso Online";
-														course.link = "/curso/online/"+course.info.seo.url ;
-													}
-												}
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+		                        },
 
-												// PARA PACOTES
-												// if(course.produtos){
-												// 	course.produtos.map(function(produto){
-												// 		if(produto.info && produto.info.seo && produto.info.seo.url){
-												// 			produto.url = Config.cursoOnlineUrl+produto.info.seo.url;
-												// 		}
-												// 	});
-												// }
-											}
-										});
-										callback(courses);
-									});
-				};
+		                    	checkByCPF : function (cpf) {
 
-				var _getStates = function () {
-					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/eventos/estados'});
-				};
+		                            var promise = $http({ 
+		                                                    method : 'post', 
+		                                                    url : Config.baseUrl+'/user/checkCPF',
+		                                                    data : { cpf: cpf }
+		                                                        });
 
-				var _getFilterData = function () {
-					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/tipo/dados'});
-				};
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+		                        },
 
-				var _postSendMail = function (data) {
-					return $http({ method: 'POST', url: Config.baseUrl+'/sendmail', data: data });
-				};
+							getInstructorsTop : function () {
+									var promise = $http({ 
+														cache: true, 
+														method: 'GET', 
+														url: Config.baseUrl+'/instrutores/top'
+													});
 
-				var _getConvenios = function (data) {
-					return $http({ cache: true, method: 'GET', url: Config.baseUrl+'/moodle/convenios' });
-				};
+										promise.then( handleSuccess, handleError );
 
-				return {
-					getConvenios : _getConvenios,
-					getCourses : _getCourses,
-					getCoursesTop : _getCoursesTop,
-					getFilterData : _getFilterData, 
-					getInstructorsTop : _getInstructorsTop,
-					getStates : _getStates,
-					sendMail: _postSendMail
-				};
-			});
+									return promise;
+							},
+
+							getStates : function () {
+									var promise = $http({ 
+														cache: true, 
+														method: 'GET', 
+														url: Config.baseUrl+'/moodle/estados'
+													});
+
+										promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+							getCourseStates : function () {
+									var promise = $http({ 
+															cache: true, 
+															method: 'GET', 
+															url: Config.baseUrl+'/moodle/eventos/estados'
+														});
+
+										promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+							getCoursesTop : function () {
+									var promise = $http({ 
+															cache: true, 
+															method: 'GET', 
+															url: Config.baseUrl+'/moodle/produtos/top'
+														});
+
+										promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+							getCourses : function () {
+									var promise = $http({ 
+													cache: true, 
+													method: 'GET', 
+													url: Config.baseUrl+'/moodle/produtos'
+												});
+
+										promise.then( function successCallback( response ){
+													var courses = [];
+													var filterTypes = $filter('byTypes'),
+														filterZpad = $filter('zpad'),
+														filterLimitName = $filter('limitName');
+
+													if(response.status == 200) courses = response.data;
+													courses.map( function (course, i) {
+														var imagemFile;
+														if(course){
+
+															course.valorTotal = course.preco;
+															course.preco = $filter('currency')(course.preco, 'R$');
+															course.imgSrc = Config.imgCursoUrlDefault;
+															
+															if(course.info){
+																if(course.info.files){
+																	imagemFile = course.info.files.find(function(img) { return img.tipo == '5' });
+																	if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
+																}
+
+																course.nome = filterLimitName(course.info.titulo);
+
+																//serie, pack, classroom, events, single, releases, free, online
+																if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																	course.modalidade = "Série Online";
+																	course.isSerie = true;
+																	course.link =  "/curso/online/"+course.info.seo.url ;
+																	course.info.conteudos.map( function (conteudo){
+																				 var aux =  conteudo.titulo.split('-');
+																				 conteudo.capitulo = aux[0];
+																				 conteudo.nome = aux[1];
+																				});
+																}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																	course.modalidade = "Pacote de Cursos Online";
+																	course.isPack = true;
+																	course.link =  "/curso/online/"+course.info.seo.url ;
+																}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																	course.modalidade = "Palestra Online";
+																	course.isLecture = true;
+																	course.link =  "/curso/online/"+course.info.seo.url ;
+																}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																	course.modalidade = "Curso Presencial - individual";
+																	course.isIndividual = true;
+																	course.link =  "/curso/presencial/"+course.info.seo.url ;
+																}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																	course.modalidade = "Curso Presencial";
+																	course.isClassroom = true;
+																	course.link = "/curso/presencial/"+course.info.seo.url;
+																}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																	course.modalidade = "Curso Online";
+																	course.isOnline = true;
+																	course.link = "/curso/online/"+course.info.seo.url ;
+																}
+															}
+														}
+													});
+													return courses;
+												}, handleError );
+									return promise;
+							},
+
+							
+
+							getFilterData : function () {
+										var promise = $http({ 
+															cache: true, 
+															method: 'GET', 
+															url: Config.baseUrl+'/moodle/tipo/dados'
+														});
+
+										promise.then( handleSuccess, handleError );
+
+										return promise;
+							},
+
+							sendMail : function (data) {
+									var promise = $http({ 
+															method: 'POST', 
+															url: Config.baseUrl+'/sendmail',
+															data: data
+														});
+
+											promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+							getConvenios : function () {
+								var promise = $http({ 
+															cache: true, 
+															method: 'GET', 
+															url: Config.baseUrl+'/moodle/convenios'
+														});
+
+											promise.then( handleSuccess, handleError );
+
+										return promise;
+
+							},
+
+							login : function (data) {
+								var promise = $http({ 
+															method: 'POST', 
+															url: Config.baseUrl+'/moodle/login',
+															data: data
+														});
+
+										promise.then( handleSuccess, handleError );
+
+										return promise;
+
+							}
+						};
+
+				return sdo;
+				
+			  	// private functions
+				function handleSuccess(res) {
+				    return res.data;
+				}
+
+				function handleError(error) {
+				    return function () {
+				        return { success: false, error: error };
+				    };
+				}
+			}]);
 }());

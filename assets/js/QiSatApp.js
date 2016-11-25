@@ -2,6 +2,6 @@
    'use strict';
 
 	angular
-		.module('QiSatApp', ['ngMask']);
+		.module('QiSatApp', [ 'ngResource', 'ngRoute', 'ngCookies', 'ngMask', 'ui.utils.masks'] );
 
 }());

@@ -1,0 +1,61 @@
+		<div class="admin__heading">
+				<h2 class="subtitle"> Esqueci minha senha </h2>
+				<h1 class="title"> Recuperar senha </h1>
+		</div>
+
+
+		<section id="dashboard">
+			<div class="row">
+				<div class="large-6 small-12 columns">
+					<form name="rememberForm" id="rememberForm" novalidate>
+
+						<fieldset>
+							    <legend>Solicitar Senha </legend>
+			
+				  				<div class="row">
+				  					
+							 		<div class="large-6 large-offset-2 columns">
+							 			<label for="email"> Email: </label>
+									    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" >
+
+									    <div ng-show="rememberForm.email.$dirty && rememberForm.email.$invalid">
+									      <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
+									    </div>
+
+									    <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
+									      <span class="error" >Formato de Email incorreto!<!</span>
+									    </div>
+									</div>
+									
+								</div>
+
+						</fieldset>
+
+
+					</form>
+		   		</div>
+				<div class="large-6 small-12 columns">
+					<h3>Lorem ipsum dolor sit amet</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
+				</div>
+
+				<div class="small-12 columns">
+		
+							<div class="row">
+								<div class="large-10 large-centered columns">
+			  						<button id="remember" ng-click="sendMail()" > Solicitar Senha »</button>
+
+						   			<div data-alert class="alert-box info radius alert-send-ok" style="display: none;">
+									  Mensagem Enviada com SUCESSO!
+									</div>
+
+									<div data-alert class="alert-box warning  radius alert-send-error" style="display: none;">
+									  Falha no Envio da Mensagem!
+									</div>
+			  					</div>
+							</div>
+
+		 		</div>
+			</div> <!-- //row -->
+		</section>
+
