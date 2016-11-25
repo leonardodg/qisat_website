@@ -26,9 +26,9 @@
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
 			     <li><a href="/" target="_self" >Home</a></li>
-				 <li><a href="/institucional" target="_self" >Institucional</a></li>
 			     <li><a href="/cursos" target="_self" >Cursos</a></li>
 				 <li><a href="/aluno" target="_self" >Área do Aluno</a></li>
+				 <li><a href="/institucional" target="_self" >Institucional</a></li>
 			   </ul>
 			 </aside>
 		<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
@@ -39,10 +39,11 @@
 				<nav class="header-main__nav">
 					<ul class="header-main__ul">
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item header-main__list-current" href="/" target="_self" >Home</a>
+							<a class="anchor header-main__item header-main__list-current
+							header-main__list-item-current" href="/" target="_self" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
-							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
+							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
 			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
@@ -309,7 +310,7 @@
 						<div class="small-12 medium-3 columns">
 								<div class="home_panel_titles--topcourses">
 									<h2 class="section__title--dark">Top Cursos</h2>
-		  							<a href="/cursos/lancamentos" class="button-line--dark"> Todos os cursos <i class="material-icons">keyboard_arrow_right</i></a>
+		  							<a href="/cursos" class="button-line--dark"> Todos os cursos <i class="material-icons">keyboard_arrow_right</i></a>
 								</div> <!-- //home_panel_titles -->
 						</div>  <!-- // large-12 columns -->
 
@@ -607,14 +608,22 @@ E até o proximo curso!" </p>
 	<!-- // GLOBAL -->
 
 	<!-- END SCRIPTS HOME -->
-	<script src="js/min/angular.min.js"></script>
-	<script src="js/libs/ngMask.min.js"></script>
+
+	<script src="js/libs/angular.js"></script>
+	<script defer src="js/libs/angular-locale_pt-br.js"></script>
+	<script defer src="js/libs/angular-cookies.min.js"></script>
+    <script defer src="js/libs/angular-route.min.js"></script>
+    <script defer src="js/libs/angular-resource.min.js"></script>
+    <script defer src="js/libs/ngMask.min.js"></script>
+    <script defer src="js/libs/ui-masks.js"></script>
+
 	<script defer src="js/QiSatApp.js"></script>
 	<script defer src="js/config/value.js"></script>
 	<script defer src="js/services/QiSatAPI.js"></script>
 	<script defer src="js/controllers/instructorsController.js"></script>
 	<script defer src="js/controllers/TopCoursesController.js"></script>
-	<script defer src="js/directive/directive.js"></script>
+	<script defer src="js/directive/backImg.js"></script>
+
 	<script defer src="js/app.js"></script>
 	<!-- EXECUTA SCRIPTS QISAT -->
 

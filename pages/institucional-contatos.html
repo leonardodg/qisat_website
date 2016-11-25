@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
-	<!-- <base href="http://newsite.qisat.com/assets/"> -->
-	<base href="/assets/"> 
-	
+	<base href="/">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> QiSat | O Canal do e-Learning da Engenharia </title>
@@ -41,13 +39,13 @@
 							<a class="anchor header-main__item" href="/" target="_self" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
-							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
+							<a class="anchor header-main__item " href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
 			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item header-main__list-current" href="/institucional" target="_self">Institucional</a>
+							<a class="anchor header-main__item header-main__list-current header-main__list-item-current" href="/institucional" target="_self">Institucional</a>
 						</li>
 						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
 							<i class="material-icons">menu</i> Menu</a>
@@ -147,7 +145,7 @@
 
 			  <div class="row">
 			    <div class="small-3 columns">
-			      <label for="email" class="text-right middle ">Email <small>*</small>
+			      <label for="email" class="text-right middle ">Email <small>*</small> </label>
 		
 			    </div>
 			    <div class="small-9 columns">
@@ -316,24 +314,29 @@
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
-				<!-- GLOBAL -->
-			   	 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-					<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-					<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-				<!-- // GLOBAL -->
+	<!-- GLOBAL -->
+   	 	<script defer src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	<!-- // GLOBAL -->
 
-				<!-- EXECUTA SCRIPTS QISAT -->
-				 <script src="js/app.js"></script>
+	<!-- EXECUTA SCRIPTS QISAT -->
+	 	<script defer src="js/app.js"></script>
 
-	            <!-- ANGULARJS SCRIPTS -->
-		            <script src="js/min/angular.min.js"></script>
-		            <script src="js/libs/ngMask.min.js"></script>
-		            <script src="js/QiSatApp.js"></script>
-		            <script src="js/config/value.js"></script>
-					<script src="js/services/QiSatAPI.js"></script>
-		            <script src="js/controllers/contactController.js"></script>
-		        <!-- END ANGULARJS SCRIPTS --> 
-			 	<!-- // EXECUTA MEUS SCRIPTS -->
+    <!-- ANGULARJS SCRIPTS -->
+	    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+	    <script defer src="js/libs/angular-locale_pt-br.js"></script>
+		<script defer src="js/libs/angular-cookies.min.js"></script>
+	    <script defer src="js/libs/angular-route.min.js"></script>
+	    <script defer src="js/libs/angular-resource.min.js"></script>
+	    <script defer src="js/libs/ngMask.min.js"></script>
+	    <script defer src="js/libs/ui-masks.js"></script>
+	    <script defer src="js/QiSatApp.js"></script>
+        <script defer src="js/config/value.js"></script>
+		<script defer src="js/services/QiSatAPI.js"></script>
+        <script defer src="js/controllers/contactController.js"></script>
+    <!-- END ANGULARJS SCRIPTS --> 
+ 	<!-- // EXECUTA MEUS SCRIPTS -->
 
 </body>
 </html>

@@ -22,7 +22,7 @@
 												}
 
 												if(course.info.seo && course.info.seo.url){
-													course.url = Config.cursoOnlineUrl+course.info.seo.url;
+													course.url = "/curso/online/"+course.info.seo.url;
 												}
 
 												course.nome = course.info.titulo;

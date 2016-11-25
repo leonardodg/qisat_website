@@ -13,6 +13,13 @@
   satisfy all
 </files>
 
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "POST, GET, PUT, DELETE, OPTIONS"
+  Header set Access-Control-Allow-Headers "X-Requested-With, content-type"
+</IfModule>
+
+
 # ------ Páginas de erro personalizadas ---------
 #  ErrorDocument 400 /erros/badrequest.html
 #  ErrorDocument 401 /erros/authreqd.html
@@ -47,16 +54,8 @@
   RewriteRule ^institucional/?$ pages/institucional-sobre-a-empresa.html [NC]
   RewriteRule ^institucional/([^/]+)/?$ pages/institucional-$1.html [NC]
   
-  RewriteRule ^aluno/?$ pages/area-do-aluno.html [NC]
-  RewriteRule ^aluno/perfil/?$ pages/aluno-perfil.html?filter=$1 [NC]
-  RewriteRule ^aluno/cursos/?$ pages/aluno-cursos.html?filter=$1 [NC]
-  RewriteRule ^aluno/certificados/?$ pages/aluno-certificados.html?filter=$1 [NC]
-  RewriteRule ^aluno/financeiro/?$ pages/aluno-financeiro.html?filter=$1 [NC]
-  RewriteRule ^aluno/desempenho/?$ pages/aluno-desempenho.html?filter=$1 [NC]
-  RewriteRule ^aluno/([^/]+)?/?$ pages/area-do-aluno.html?filter=$1 [NC]
-  RewriteRule ^login/?$ pages/login.html [NC]
-  RewriteRule ^cadastro/?$ pages/cadastro.html [NC]
-  RewriteRule ^lembrete-de-senha/?$ pages/lembrete-de-senha.html [NC]
+  RewriteRule ^aluno/?([^/]+)?/?$ pages/aluno.html [NC]
+  RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno.html [NC]
   
   RewriteRule ^sugira/([^/]+)?/?$ pages/sugira.html?filter=$1 [NC]
   RewriteRule ^sugira/?$ pages/sugira.html [NC]

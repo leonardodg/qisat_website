@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="loginTeste">
+<head>
+	<meta charset="UTF-8">
+	<title>LOGIN AngularJS</title>
+</head>
+<body  ng-controller="loginController" >
+	
+
+
+		<div class="admin__heading">
+			<h2 class="subtitle"> Acesso ao Portal do Aluno </h2>
+			<h1 class="title">Login</h1>
+		</div>
+
+
+		<section id="dashboard"  >
+			<div class="row">
+				<div class="large-6 small-12 columns">
+
+
+					<section id="login" class="social-login-disabled" >
+						<form name="loginForm" accept-charset="UTF-8" >
+							<div style="margin:0;padding:0;display:inline">
+								<input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="LMeqXz6ZVEA+Xh39qDPPoaSCXAhO/wQVywWMVrmdODU="></div>
+						<div class="passport-left">
+						<h1> Acesso ao Portal do Aluno </h1>
+						</div>
+						<div class="passport-right">
+						<div id="emailLogin">
+						<h5 class="hide-for-small">Login</h5>
+						
+					
+						<input autocapitalize="off" autocorrect="off" id="username" name="username" placeholder="Usuário" type="text" ng-model="credentials.username" >
+						<input id="password" name="password" placeholder="Senha" type="password" ng-model="credentials.password">
+						<label>
+						<input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me" ng-model="remember_me">
+						Lembre-me
+						</label>
+						<button name="signIn" ng-click="login(credentials)" > Acessar »</button>
+						
+						</div>
+						</div>
+
+						</form>
+						</section>
+
+		   		</div>
+
+			</div> <!-- //row -->
+		</section>
+
+	
+	<script src="js/libs/angular.min.js"></script>
+	<script src="login.js"></script>
+</body>
+</html>

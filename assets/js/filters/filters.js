@@ -10,10 +10,8 @@
 				var output = input.substring (0, size) + "...";
 				return output;
 			};
-		});
+		})
 
-	 angular
-	 	.module('QiSatApp')
 	 	.filter('zpad', function() {
 			return function(input, n) {
 				var zeros;
@@ -23,10 +21,8 @@
 				zeros = "0".repeat(n);
 				return (zeros + input).slice(-1 * n);
 			};
-		});
-
-	 angular
-	 	.module('QiSatApp')
+		})
+		
 	 	.filter("byTypes", function (){
 			return function (courses, types, operation) {
 				// console.log('byTypes:'+count++);

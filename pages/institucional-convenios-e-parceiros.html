@@ -44,13 +44,13 @@
 							<a class="anchor header-main__item" href="/" target="_self" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list  header-main__list__has--submenu">
-							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
+							<a class="anchor header-main__item " href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
 			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item header-main__list-current" href="/institucional" target="_self">Institucional</a>
+							<a class="anchor header-main__item header-main__list-current header-main__list-item-current" href="/institucional" target="_self">Institucional</a>
 						</li>
 						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
 							<i class="material-icons">menu</i> Menu</a>
@@ -709,8 +709,13 @@
 	    <script defer src="js/app.js"></script>
 
 	<!-- ANGULARJS SCRIPTS -->
-	    <script defer src="js/min/angular.min.js"></script>
+	    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+	    <script defer src="js/libs/angular-locale_pt-br.js"></script>
+		<script defer src="js/libs/angular-cookies.min.js"></script>
+	    <script defer src="js/libs/angular-route.min.js"></script>
+	    <script defer src="js/libs/angular-resource.min.js"></script>
 	    <script defer src="js/libs/ngMask.min.js"></script>
+	    <script defer src="js/libs/ui-masks.js"></script>
 	    <script defer src="js/QiSatApp.js"></script>
 	    <script defer src="js/config/value.js"></script>
 	    <script defer src="js/filters/filters.js"></script>

@@ -95,22 +95,22 @@
 						var setDataFilters = function(){ 
 							var inputStates;
 
-							function subChars(text){
-							      text = text.toLowerCase();
-							      return '#'+text.split(' ').map(function(e){ return e.charAt(0).toUpperCase() + e.slice(1); }).join('_');
-						    }
-
 							// Buscar Estados no WebService 
 							inputStates = Config.filters.presencial.find(function (el){ return el.name == 'estado' })
 							if(inputStates){
-								QiSatAPI.getStates()
+								QiSatAPI.getCourseStates()
 										.then( function ( response ){
 											var data = [];
-											if(response.status == 200) data = response.data;
+											if(response.status == 200 && response.data) data = response.data;
 											data.map(function (el){
-												el.name = el.Estado+' - '+el.uf;
-												el.id = subChars(el.Estado);
-												inputStates.inputs.push(el);
+
+												if(el.estado){
+													var id = el.estado.toLowerCase();
+							     						id = '#'+id.split(' ').map(function(e){ return e.charAt(0).toUpperCase() + e.slice(1); }).join('_');	
+													el.id = id;
+													inputStates.inputs.push(el);
+												}
+
 											});
 										});
 							}
@@ -338,9 +338,6 @@
 									}
 								}
 						}
-
-
-						
 
 						$scope.filterTypes = function ( $event, item ) {
 							var checkbox = $event.target;
@@ -733,12 +730,12 @@
 						};
 
 						// Start Controller
-						QiSatAPI.getCourses(
-									function (data){
-										$scope.courses = data;
-										startCourseList();
-									});
 						startWatchCount();
+						QiSatAPI.getCourses().then( function(response){
+								$scope.courses = response.data;
+								startCourseList();
+						});
+						
 						setDataFilters();
 
 					
