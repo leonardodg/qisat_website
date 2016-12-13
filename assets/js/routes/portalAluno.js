@@ -23,11 +23,14 @@
             $routeProvider.when('/aluno/certificados', {
               templateUrl : '/views/aluno-certificados.html', 
               isAuth : true,
-              controller: 'userController',
+              controller: 'certificadoController',
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
                               authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                  },
+                certificados : function(authService){
+                      return authService.certificados().then(function (res){ if(res.data && res.data.success) return res.data; }, function (res){ return false });
                   }
               }
             });
@@ -35,7 +38,7 @@
             $routeProvider.when('/aluno/cursos', {
               templateUrl : '/views/aluno-cursos.html', 
               isAuth : true,
-              controller: 'userController',
+              controller: 'matriculaController',
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
@@ -47,7 +50,22 @@
             $routeProvider.when('/aluno/financeiro', {
               templateUrl : '/views/aluno-financeiro.html',
               isAuth : true,
-              controller: 'userController',
+              controller: 'financeiroController',
+              resolve : {
+                Authenticated : function(authService){
+                      return authService.isAuth() || 
+                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                  },
+                compras : function(authService){
+                      return authService.compras().then(function (res){ if(res.data && res.data.success) return res.data["return"]; }, function (res){ return false });
+                  }
+              }
+            });
+
+           $routeProvider.when('/aluno/carrinho/:id', {
+              templateUrl : '/views/aluno-carrinho.html',
+              isAuth : true,
+              controller: 'carrinhoController',
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 

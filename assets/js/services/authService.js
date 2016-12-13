@@ -186,6 +186,86 @@
 	                            		});
 			                };
 
+			                function courses() {
+
+	                           var promise = $http({ 
+	                                                  method: 'POST', 
+	                                                  url: Config.baseUrl+'/user/matriculas',
+	                                                  data: { id : authUser.id },
+	                                                  dataType: 'jsonp',
+								                      headers : {
+															      'Content-Type' : 'application/json',    
+															      'Authorization': Config.Authorization+" "+authToken
+															      },
+													   withCredentials : true
+
+	                                                        });
+
+	                            return  promise.then( function (res){
+	                            			return res;
+	                            		});
+			                };
+
+			                function compras() {
+
+	                           var promise = $http({ 
+	                                                  method: 'POST', 
+	                                                  url: Config.baseUrl+'/user/financeiro',
+	                                                  data: { id : authUser.id },
+	                                                  dataType: 'jsonp',
+								                      headers : {
+															      'Content-Type' : 'application/json',    
+															      'Authorization': Config.Authorization+" "+authToken
+															      },
+													   withCredentials : true
+
+	                                                        });
+
+	                            return  promise.then( function (res){
+	                            			return res;
+	                            		});
+			                };
+
+			                function certificados() {
+
+	                           var promise = $http({ 
+	                                                  method: 'POST', 
+	                                                  url: Config.baseUrl+'/user/certificados',
+	                                                  data: { id : authUser.id },
+	                                                  dataType: 'jsonp',
+								                      headers : {
+															      'Content-Type' : 'application/json',    
+															      'Authorization': Config.Authorization+" "+authToken
+															      },
+													   withCredentials : true
+
+	                                                        });
+
+	                            return  promise.then( function (res){
+	                            			return res;
+	                            		});
+			                };
+
+			                function carrinho(id) {
+
+	                           var promise = $http({ 
+	                                                  method: 'POST', 
+	                                                  url: Config.baseUrl+'/user/carrinho',
+	                                                  data: { id : id },
+	                                                  dataType: 'jsonp',
+								                      headers : {
+															      'Content-Type' : 'application/json',    
+															      'Authorization': Config.Authorization+" "+authToken
+															      },
+													   withCredentials : true
+
+	                                                        });
+
+	                            return  promise.then( function (res){
+	                            			return res;
+	                            		});
+			                };
+
 
 			                function updatePassword(data) {
 
@@ -219,7 +299,11 @@
 			    					updatePassword : updatePassword,
 			    					getUser : getUser,
 			    					getToken : getToken, 
-			    					update : update
+			    					update : update,
+			    					courses : courses,
+			    					compras :  compras,
+			    					carrinho : carrinho,
+			    					certificados : certificados
 								};
 					};
 				})

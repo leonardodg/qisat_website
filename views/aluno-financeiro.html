@@ -1,21 +1,35 @@
 <div class="admin__heading">
 			<h2 class="subtitle"> Financeiro </h2>
-			<h1 class="title"> Portal do Aluno  </h1>
+			<p> Bem vindo, <b>{{user.firstname}}</b></p>
 		</div>
 
 
 		<section id="dashboard">
 			<div class="row">
-				<div class="large-6 small-12 columns">
-					<h3>Lorem ipsum dolor sit amet</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
-		   		</div>
-				<div class="large-6 small-12 columns">
-					<h3>Lorem ipsum dolor sit amet</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
-				</div>
-
 				<div class="small-12 columns">
+
+				<table>
+				  <thead>
+				    <tr>
+				      <th width="100">Pedido</th>
+				      <th width="175">Data</th>
+				      <th width="100">Valor</th>
+				      <th width="75">Status</th>
+				      <th width="150">Forma Pagamento</th>
+				      <th width="50">Ação</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="carrinho in compras track by carrinho.id" >
+				      <td>{{::carrinho.pedido}}</td>
+				      <td>{{::carrinho.dataFormat}}</td>
+				      <td>{{::carrinho.valor}}</td>
+				      <td>{{::carrinho.status}}</td>
+				      <td>{{::carrinho.forma_pagamento}}</td>
+				      <td><button type="button" ng-click="viewCarrinho(carrinho.carrinho)">Vizualizar</button> </td>
+				    </tr>
+				  </tbody>
+				</table>
 						
 		 		</div>
 			</div> <!-- //row -->
