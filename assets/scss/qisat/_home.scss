@@ -337,10 +337,14 @@
 
 .home__section-instructors {
     //background-color: #2196f3;
-    padding: 70px 0;
+    padding: 10px 0 70px 0;
     background: #00c6ff; /* fallback for old browsers */
     background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to left, #005b94, #002942); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    @media only screen and (min-width: 40.063em) {
+      padding: 70px 0;
+    }
 }
 
 
@@ -353,16 +357,6 @@
 ========================================= */
 // Small screens
 @media only screen { 
-  .home__instructors__item:nth-child(1) { display: none; }
-  .home__instructors__item:nth-child(2) { display: none; }
-  .home__instructors__item:nth-child(3) { display: none;}
-  .home__instructors__item:nth-child(4) { display: none;}
-  .home__instructors__item:nth-child(5) { display: none;}
-  .home__instructors__item:nth-child(6) { display: none;}
-  .home__instructors__item:nth-child(7) { display: none;}
-  .home__instructors__item:nth-child(8) { display: none;}
-  .home__instructors__item:nth-child(9) { display: none;}
-  .home__instructors__item:nth-child(10) { display: none;}
 } /* Define mobile styles */
 
 

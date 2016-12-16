@@ -148,7 +148,14 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 
 .home_panel_titles{ display: inline-block; width: 100%; }
 .home_panel_titles--topcourses{  @extend .home_panel_titles; padding: 70px 0;}
-.home_panel_titles--instructors{ @extend .home_panel_titles; padding: 150px 0;}
+.home_panel_titles--instructors {
+  @extend .home_panel_titles;
+  padding: 30px 0;
+
+  @media only screen and (min-width: 40.063em) {
+    padding: 150px 0;
+  }
+}
 .home_panel_titles--testimonials{@extend .home_panel_titles; padding: 120px 0;}
 
 
