@@ -167,7 +167,7 @@
           <a href="#" class="button">Acrescentar outro curso</a>
         </div>
         <div class="column small-6">
-          <a href="#" class="button right">Avançar</a>
+          <a href="#" class="button right" data-reveal-id="loginModal">Avançar</a>
         </div>
       </div>
   </div>
@@ -277,6 +277,21 @@
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
+   <div id="loginModal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <h2 id="modalTitle">Acesso ao Portal do Aluno</h2>
+      <form>
+        <input type="text" name="username" placeholder="Nome do usuário">
+        <input type="password" name="password" placeholder="Senha de acesso">
+        <button type="submit">Entrar</button>
+      </form>
+      <p class="text-center"><a href="#">Esqueci minha senha</a></p>
+      <div class="not-member text-center">
+        <p>Ainda não tem Cadastro?</p>
+        <a href="#" class="button tiny">Crie uma conta grátis</a>
+      </div>
+      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+    </div>
+
 	<!-- GLOBAL -->
 		<script defer src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
@@ -294,7 +309,8 @@
 	    <script defer src="js/libs/angular-resource.min.js"></script>
 	    <script defer src="js/libs/ngMask.min.js"></script>
 	    <script defer src="js/libs/ui-masks.js"></script>
-	    <script defer src="js/QiSatApp.js"></script>	 
+	    <script defer src="js/QiSatApp.js"></script>
+      <script defer src="js/app.js"></script>
 
 </body>
 </html>

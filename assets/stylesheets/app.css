@@ -4218,21 +4218,57 @@ body.cart-page {
 .cart-page .wizard .step.active:before {
   background-color: #ff696e;
 }
-
 /* line 201, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal h2 {
+  margin-top: 30px;
+  color: #494949;
+  font-size: 20pt;
+  text-align: center;
+}
+/* line 208, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal button[type='submit'] {
+  width: 100%;
+}
+/* line 212, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal form {
+  margin: 30px 0 20px 0;
+}
+/* line 213, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal form input {
+  text-align: center;
+}
+/* line 219, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member {
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+/* line 222, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member p {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+/* line 228, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member .button {
+  margin-bottom: 0;
+}
+
+/* line 239, ../scss/qisat/layout/_carrinho.scss */
 .table-cart {
   border: 0;
   color: #666;
 }
-/* line 205, ../scss/qisat/layout/_carrinho.scss */
+/* line 243, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .total {
   text-transform: uppercase;
 }
-/* line 209, ../scss/qisat/layout/_carrinho.scss */
+/* line 247, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .muted {
   color: #999;
 }
-/* line 213, ../scss/qisat/layout/_carrinho.scss */
+/* line 251, ../scss/qisat/layout/_carrinho.scss */
 .table-cart thead th {
   padding: 15px;
   padding-top: 20px;
@@ -4240,7 +4276,7 @@ body.cart-page {
   background-color: #003350;
   text-transform: uppercase;
 }
-/* line 220, ../scss/qisat/layout/_carrinho.scss */
+/* line 258, ../scss/qisat/layout/_carrinho.scss */
 .table-cart td, .table-cart td {
   padding: 1rem;
 }
