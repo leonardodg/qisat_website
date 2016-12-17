@@ -4,7 +4,7 @@
   font-family: $font-family-sans-serif;
 }
 .button, button {
-  padding: 0.75rem 1.5rem 0.85rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background-color: $primary-color;
   color: $white;
   min-width: 100px;
@@ -13,4 +13,13 @@
     background-color: #494949;
     color: $white;
   }
+
+  &.success {
+    background-color: $secondary-color;
+  }
+}
+
+.inline-list>li>* {
+  margin: 0;
+  display: inline;
 }
