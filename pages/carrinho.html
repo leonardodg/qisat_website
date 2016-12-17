@@ -15,7 +15,7 @@
 </head>
 
 
-<body>
+<body class="cart-page">
 
 	<div class="off-canvas-wrap" data-offcanvas>
 	  <div class="inner-wrap">
@@ -97,22 +97,81 @@
 
 <main class="content-main">
 
+<header class="hero-pages hero-pages__cart">
+   <div class="row">
+       <div class="medium-12 columns">
+         <h1 class="hero-pages__title">Checkout</h1>
+       </div> <!-- //large-12-->
+   </div> <!-- ///row -->
+ </header>
+
 <div class="row">
 
-		<div class="admin__heading">
-			<br>
-			<h2 class="subtitle"> Carrinho de Compras </h2>
-			<h1 class="title">Monstar Carrinho</h1>
-		</div>
-
-			<div class="large-4 columns">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
- 			</div> <!-- // large-4 columns -->
-
- 			<div class="large-8 columns">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam sequi vel aliquam rerum reprehenderit porro ad pariatur quia laboriosam unde laborum, reiciendis provident necessitatibus, tempore quae placeat cupiditate cumque repellat.
- 			</div> <!-- // large-8 columns -->
-</div>  <!-- // row -->
+  <div class="large-3 columns">
+    <div class="widget_content">
+      <div class="wizard">
+        <div class="v-line"></div>
+        <div class="step step1 active">
+          <span>Carrinho</span>
+        </div>
+        <div class="step step2">
+          <span>Identificação</span>
+        </div>
+        <div class="step step3">
+          <span>Confirmação de dados</span>
+        </div>
+        <div class="step step4">
+          <span>Confirmação de compra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-9 columns">
+    <div class="widget_content no-padding">
+      <table width="100%" class="table-cart">
+        <thead>
+          <tr>
+            <th colspan="4">Itens no carrinho</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width="5%" class="muted">1x</td>
+            <td width="70%">Curso Alvenaria Estrutural para Construtoras</td>
+            <td width="15%" class="muted">R$ 91,00</td>
+            <td width="10%" class="muted">x</td>
+          </tr>
+          <tr>
+            <td class="muted">1x</td>
+            <td>Curso Alvenaria Estrutural para Construtoras</td>
+            <td class="muted">R$ 91,00</td>
+            <td class="muted">x</td>
+          </tr>
+          <tr>
+            <td class="muted">1x</td>
+            <td>Curso Alvenaria Estrutural para Construtoras</td>
+            <td class="muted">R$ 91,00</td>
+            <td class="muted">x</td>
+          </tr>
+          <tr class="total">
+            <td></td>
+            <td class="right">Total</td>
+            <td>R$ 500,00</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+        <div class="column small-6">
+          <a href="#" class="button">Acrescentar outro curso</a>
+        </div>
+        <div class="column small-6">
+          <a href="#" class="button right">Avançar</a>
+        </div>
+      </div>
+  </div>
+</div>
 
 
 </main> <!--// main-content -->
