@@ -2243,23 +2243,32 @@ select#call-input-interests {
   background-color: #fff;
   width: 100%;
   padding: 20px;
+  margin-bottom: 15px;
 }
-/* line 5, ../scss/qisat/_filter-sidebar.scss */
-.menu-filter-sidebar.menu-filter-sidebar-up {
-  margin-top: -120px;
+@media only screen and (min-width: 40.063em) {
+  /* line 3, ../scss/qisat/_filter-sidebar.scss */
+  .menu-filter-sidebar {
+    margin-bottom: 0;
+  }
 }
-/* line 7, ../scss/qisat/_filter-sidebar.scss */
+@media only screen and (min-width: 40.063em) {
+  /* line 11, ../scss/qisat/_filter-sidebar.scss */
+  .menu-filter-sidebar.menu-filter-sidebar-up {
+    margin-top: -120px;
+  }
+}
+/* line 17, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-option-set {
   margin: 0;
   list-style: none;
 }
-/* line 8, ../scss/qisat/_filter-sidebar.scss */
+/* line 18, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item {
   cursor: pointer;
   margin-left: 0px;
   position: relative;
 }
-/* line 9, ../scss/qisat/_filter-sidebar.scss */
+/* line 19, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item--quantity {
   font-size: 12px;
   position: absolute;
@@ -2269,31 +2278,31 @@ select#call-input-interests {
   top: 3px;
   color: rgba(0, 0, 0, 0.5);
 }
-/* line 11, ../scss/qisat/_filter-sidebar.scss */
+/* line 21, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item.is-checked::before {
   background-image: url("../images/courses/ic_radio_button_checked_black_24px.svg");
 }
-/* line 12, ../scss/qisat/_filter-sidebar.scss */
+/* line 22, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item--link {
   color: #000;
   opacity: 0.7;
   transition: all 0.5s;
 }
-/* line 13, ../scss/qisat/_filter-sidebar.scss */
+/* line 23, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item--link .material-icons {
   float: right;
   opacity: 0.7;
 }
-/* line 15, ../scss/qisat/_filter-sidebar.scss */
+/* line 25, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item--link:hover, .menu-filter-sidebar-item--link.active {
   opacity: 1;
 }
-/* line 15, ../scss/qisat/_filter-sidebar.scss */
+/* line 25, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebar-item--link:hover .material-icons, .menu-filter-sidebar-item--link.active .material-icons {
   opacity: 1;
 }
 
-/* line 24, ../scss/qisat/_filter-sidebar.scss */
+/* line 34, ../scss/qisat/_filter-sidebar.scss */
 .menu-filter-sidebars--title {
   font-size: 11px;
   text-transform: uppercase;
@@ -2301,7 +2310,20 @@ select#call-input-interests {
   color: #c9c9c9;
 }
 
-/* line 33, ../scss/qisat/_filter-sidebar.scss */
+/* line 35, ../scss/qisat/_filter-sidebar.scss */
+.menu-filter-sidebars {
+  display: none;
+  margin-top: 15px;
+}
+@media only screen and (min-width: 40.063em) {
+  /* line 35, ../scss/qisat/_filter-sidebar.scss */
+  .menu-filter-sidebars {
+    display: block;
+    margin-top: 0;
+  }
+}
+
+/* line 50, ../scss/qisat/_filter-sidebar.scss */
 input[type=checkbox].with-font + label,
 input[type=radio].with-font + label {
   width: 100%;
@@ -2311,7 +2333,7 @@ input[type=radio].with-font + label {
   margin-right: 0;
 }
 
-/* line 37, ../scss/qisat/_filter-sidebar.scss */
+/* line 54, ../scss/qisat/_filter-sidebar.scss */
 input[type=radio].with-font,
 input[type=checkbox].with-font {
   border: 0;
@@ -2324,7 +2346,7 @@ input[type=checkbox].with-font {
   width: 1px;
 }
 
-/* line 50, ../scss/qisat/_filter-sidebar.scss */
+/* line 67, ../scss/qisat/_filter-sidebar.scss */
 input[type=radio].with-font ~ label:before,
 input[type=checkbox].with-font ~ label:before {
   font-family: 'Material Icons';
@@ -2337,7 +2359,7 @@ input[type=checkbox].with-font ~ label:before {
   width: 1.4em;
 }
 
-/* line 62, ../scss/qisat/_filter-sidebar.scss */
+/* line 79, ../scss/qisat/_filter-sidebar.scss */
 input[type=radio].with-font:checked ~ label:before,
 input[type=checkbox].with-font:checked ~ label:before {
   content: "\E837";
@@ -2346,18 +2368,18 @@ input[type=checkbox].with-font:checked ~ label:before {
   letter-spacing: 5px;
 }
 
-/* line 70, ../scss/qisat/_filter-sidebar.scss */
+/* line 87, ../scss/qisat/_filter-sidebar.scss */
 input[type=radio].with-font:checked + label,
 input[type=checkbox].with-font:checked + label {
   opacity: 1;
 }
 
-/* line 77, ../scss/qisat/_filter-sidebar.scss */
+/* line 94, ../scss/qisat/_filter-sidebar.scss */
 input[type=checkbox].with-font ~ label:before {
   content: "\E835";
 }
 
-/* line 78, ../scss/qisat/_filter-sidebar.scss */
+/* line 95, ../scss/qisat/_filter-sidebar.scss */
 input[type=checkbox].with-font:checked ~ label:before {
   content: "\E834";
   color: #005B94;
@@ -2389,6 +2411,14 @@ input[type=checkbox].with-font:checked ~ label:before {
 .inline-list > li > * {
   margin: 0;
   display: inline;
+}
+
+/* line 27, ../scss/qisat/_foundation_override.scss */
+.error small.error, small.error, span.error {
+  background-color: transparent;
+  color: #f04124;
+  padding: 0;
+  font-size: 14px;
 }
 
 /*'HEADER*/
@@ -3643,6 +3673,58 @@ ul.off-canvas-list li a:hover {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.47);
   margin: 0 0 -7px 0;
+}
+
+/* line 96, ../scss/qisat/layout/_admin.scss */
+.signup {
+  margin-top: 100px;
+}
+/* line 99, ../scss/qisat/layout/_admin.scss */
+.signup .admin__heading {
+  margin: 0 auto;
+}
+@media only screen and (min-width: 40em) {
+  /* line 99, ../scss/qisat/layout/_admin.scss */
+  .signup .admin__heading {
+    max-width: 50%;
+  }
+}
+/* line 105, ../scss/qisat/layout/_admin.scss */
+.signup .admin__heading h1 {
+  font-size: 30px;
+}
+/* line 110, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard {
+  background-color: #FFF;
+  padding: 30px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+@media only screen and (min-width: 40em) {
+  /* line 110, ../scss/qisat/layout/_admin.scss */
+  .signup #dashboard {
+    max-width: 50%;
+  }
+}
+/* line 120, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard p.title {
+  font-size: 25px;
+}
+/* line 124, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard .form-group {
+  margin: 15px 0;
+}
+/* line 127, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard .form-group input {
+  margin-bottom: 5px;
+}
+/* line 131, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard .form-group label {
+  padding-bottom: 5px;
+}
+/* line 134, ../scss/qisat/layout/_admin.scss */
+.signup #dashboard .form-group label strong {
+  color: #c00;
 }
 
 /* line 1, ../scss/qisat/layout/_institutional.scss */

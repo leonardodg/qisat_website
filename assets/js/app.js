@@ -36,6 +36,20 @@ $(document).foundation('equalizer', 'reflow');
 
 
 $(function() {
+  $('.show-filters a').click(function(e) {
+    e.preventDefault();
+    var $elText = $(this).find("span");
+
+    if($elText.text() == "Mostrar filtros"){
+      $elText.text('Esconder filtros');
+    } else {
+      $elText.text('Mostrar filtros');
+    }
+
+    $(".menu-filter-sidebars").toggleClass("show-for-small-up");
+      
+  });
+
   $('.anchor').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);

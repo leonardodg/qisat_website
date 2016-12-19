@@ -135,9 +135,12 @@
 <article class="course-page" ng-controller="CoursesController">
 
  <div class="row" data-equalizer>
-			<div class="hide-for-medium-down medium-4 large-3 columns" >
+			<div class="medium-4 large-3 columns" >
 					<aside  id="sidebar-styker--course" class="menu-filter-sidebar menu-filter-sidebar-up">
-					 	<div class="menu-filter-sidebars" >
+					 	<div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" >
 							<form name="formFilters" id="formFilters">
 
 								<div>
@@ -221,8 +224,27 @@
 
 			 <div class="medium-12 large-9 columns" >
 			 	 <div class="row">
-				 	<div class="large-9 columns"></div>
-				    <div class="large-4 columns">
+				 	<div class="large-9 columns">
+            <header class="page-course__header-group">
+              <span class="page-course__header-group--suptitle">Você está visualizando  </span>
+                  <ul class="page-course__breadcrumbs breadcrumbs ng-cloak">
+                    <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
+                      <a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
+                      <span ng-if="!link.href" > {{::link.title}} </span>
+                    </li>
+                  </ul>
+
+                    <span class="has-price_popover2 ng-cloak" ng-repeat="item in navFilters" >{{::item.title}} <strong class="navLink_number">{{item.selected}}</strong> 
+                        <div class="price_popover2">
+                          <div class="price_popover__header">
+                            <p class="price_popover__header__info" ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
+                             <a ng-href="{{::filtro.hash}}" > {{::filtro.name}} </a></p>
+                          </div> 
+                        </div>
+                    </span>
+            </header>
+          </div>
+				    <div class="large-3 columns">
 				      <label>Ordernar Por: 
 				        <select name="orderby" ng-model="order" >
 										<option value="" selected="selected" > Selecione Ordenação </option>
@@ -237,25 +259,6 @@
 
 
 				 <!--  - Watchers: {{ watchCount }}  -->
-
-				<header class="page-course__header-group">
-					<span class="page-course__header-group--suptitle">Você está visualizando  </span>
-							<ul class="page-course__breadcrumbs breadcrumbs ng-cloak">
-							  <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
-							  	<a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
-							  	<span ng-if="!link.href" > {{::link.title}} </span>
-							  </li>
-							</ul>
-
-						    <span class="has-price_popover2 ng-cloak" ng-repeat="item in navFilters" >{{::item.title}} <strong class="navLink_number">{{item.selected}}</strong> 
-		   							<div class="price_popover2">
-		   								<div class="price_popover__header">
-		   									<p class="price_popover__header__info" ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
-		   									 <a ng-href="{{::filtro.hash}}" > {{::filtro.name}} </a></p>
-		   								</div> 
-		   							</div>
-		   					</span>
-				</header>
 
 				<section class="section__state ng-cloak" ng-if="presencial">
 						<div class="row">
