@@ -233,15 +233,6 @@
                       <span ng-if="!link.href" > {{::link.title}} </span>
                     </li>
                   </ul>
-
-                    <span class="has-price_popover2 ng-cloak" ng-repeat="item in navFilters" >{{::item.title}} <strong class="navLink_number">{{item.selected}}</strong> 
-                        <div class="price_popover2">
-                          <div class="price_popover__header">
-                            <p class="price_popover__header__info" ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
-                             <a ng-href="{{::filtro.hash}}" > {{::filtro.name}} </a></p>
-                          </div> 
-                        </div>
-                    </span>
             </header>
           </div>
 				    <div class="large-3 columns">
@@ -256,6 +247,15 @@
 				      </label>
 				    </div>
 				 </div>
+
+        <div class="panel callout radius" ng-repeat="item in navFilters" >
+          <ul class="inline-list">
+            <li>{{::item.title}} (<strong class="navLink_number">{{item.selected}}</strong>)</li>
+            <li ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
+              <a ng-href="{{::filtro.hash}}" > {{::filtro.name}} </a></p>
+            </li>
+          </ul>
+        </div>
 
 
 				 <!--  - Watchers: {{ watchCount }}  -->

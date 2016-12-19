@@ -61,7 +61,7 @@
  
 .page-course{
 
-   &__header-group { padding: 40px 0 10px 0; display: block;   line-height: 1;
+   &__header-group { padding: 15px 0 10px 0; display: block;   line-height: 1;
         &--first{ padding: 10px 0 10px 0; margin-bottom: 20px;}
         &--suptitle{ line-height: 1; color: #ADADAD; text-transform: uppercase; font-size: 11px; display: block; font-weight: 600; margin: 0;  }
         &--title{ color: #4e4e4e; font-weight: 300; font-size: 24px; display: block; margin: 0; line-height: 1}
@@ -102,7 +102,34 @@
 
 }
 
+#conteudo-programatico {
+  .accordion-component {
+    max-width: 50%;
+    position: relative;
+  }
 
+  .accordion-navigation {
+    > a {
+      border-right: 1px solid #eee;
+
+      &:after {
+        display: none;
+      }
+    }
+
+    &.active > a {
+      border-right: 1px solid #fff;
+    }
+  }
+
+  .content {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 100%;
+  }
+
+}
 
 .custom-loading{ width: 100%; text-align: center; display: inline-block; padding: 40px 20px;
     .material-icons{ display: block; transition: all 0.5s; opacity: 0.7; -webkit-animation:spin 1s linear infinite; -moz-animation:spin 1s linear infinite; animation:spin 1s linear infinite;}
@@ -225,6 +252,9 @@
 .navigation_courses__list-item{ transition: all 0.5s;
     &:hover .navigation_courses__list-item--link{border-right: 5px solid #ccc; transition: all 0.5s;  opacity: 1;}
     &.navigation_courses__list-item-active .navigation_courses__list-item--link{border-right: 5px solid $primary-color;transition: all 0.5s; opacity: 1;}
+}
+.panel.callout {
+  background-color: #FFF;
 }
 
 

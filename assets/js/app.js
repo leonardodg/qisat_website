@@ -239,6 +239,9 @@ if ( $('.footer-primary__list__item').length ) {
 
 ///simple modal image
    $(function() {
+
+    $('.lightbox a').simpleLightbox();
+
      if ( $('.section__course-gallery-list--link').length ) {
          $('.section__course-gallery-list--link').on('click', function(event){
                event.preventDefault();
