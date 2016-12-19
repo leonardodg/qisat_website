@@ -1392,24 +1392,30 @@ article {
 /* 'TESTIMONIALS
 ========================================= */
 @media only screen {
-  /* line 474, ../scss/qisat/_home.scss */
+  /* line 473, ../scss/qisat/_home.scss */
+  .home__section-testimonials {
+    background: #0c364e url("../images/testimonials/bg-testimonials.jpg") center center no-repeat;
+    background-size: cover;
+  }
+
+  /* line 477, ../scss/qisat/_home.scss */
   .home__section-testimonials {
     display: inline-block;
     width: 100%;
     float: left;
   }
 
-  /* line 475, ../scss/qisat/_home.scss */
+  /* line 478, ../scss/qisat/_home.scss */
   .home__section-testimonials--grid-item {
     padding: 0 !important;
   }
 
-  /* line 478, ../scss/qisat/_home.scss */
+  /* line 481, ../scss/qisat/_home.scss */
   .testimonial__background {
     background-position: left top;
     background-size: cover;
   }
-  /* line 480, ../scss/qisat/_home.scss */
+  /* line 483, ../scss/qisat/_home.scss */
   .testimonial__quote {
     padding: 0 40px;
     font-style: italic;
@@ -1419,7 +1425,7 @@ article {
     color: #fff;
     font-weight: 300;
   }
-  /* line 481, ../scss/qisat/_home.scss */
+  /* line 484, ../scss/qisat/_home.scss */
   .testimonial__name {
     font-size: 0.75em;
     font-weight: 500;
@@ -1429,29 +1435,29 @@ article {
     margin-top: 2rem;
     padding: 0 40px;
   }
-  /* line 482, ../scss/qisat/_home.scss */
+  /* line 485, ../scss/qisat/_home.scss */
   .testimonial__item {
     display: inline-block;
     width: 100%;
     min-height: 500px;
   }
 
-  /* line 488, ../scss/qisat/_home.scss */
+  /* line 491, ../scss/qisat/_home.scss */
   .home__section-testimonials-items {
     background-color: #222;
     width: 100%;
     display: inline-block;
   }
 
-  /* line 489, ../scss/qisat/_home.scss */
+  /* line 492, ../scss/qisat/_home.scss */
   .testimonial__container {
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
-    padding: 90px 0;
-    display: inline-block;
+    padding: 90px 20px;
   }
 
-  /* line 490, ../scss/qisat/_home.scss */
+  /* line 493, ../scss/qisat/_home.scss */
   .owl-carousel-testimonials-home .owl-dots {
     margin-top: 0;
     text-align: center;
@@ -1461,7 +1467,7 @@ article {
     left: 0;
   }
 
-  /* line 491, ../scss/qisat/_home.scss */
+  /* line 494, ../scss/qisat/_home.scss */
   .owl-carousel-testimonials-home, .testimonial__item {
     display: inline-block;
     width: 100%;
@@ -1469,24 +1475,24 @@ article {
 }
 /* Define mobile styles */
 @media only screen and (min-width: 40.063em) {
-  /* line 498, ../scss/qisat/_home.scss */
+  /* line 501, ../scss/qisat/_home.scss */
   .testimonial__container {
-    padding: 90px 0 90px 210px;
+    padding: 90px 40px;
   }
 
-  /* line 499, ../scss/qisat/_home.scss */
+  /* line 502, ../scss/qisat/_home.scss */
   .testimonial__item {
     min-height: 400px;
   }
 }
 /* min-width 641px, medium screens */
 @media only screen and (min-width: 64.063em) {
-  /* line 505, ../scss/qisat/_home.scss */
+  /* line 508, ../scss/qisat/_home.scss */
   .testimonial__container {
-    padding: 120px 0 120px 500px;
+    padding: 120px 0;
   }
 
-  /* line 506, ../scss/qisat/_home.scss */
+  /* line 509, ../scss/qisat/_home.scss */
   .testimonial__item {
     min-height: 440px;
   }
