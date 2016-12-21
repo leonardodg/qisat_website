@@ -400,3 +400,87 @@
 .accordion-component .accordion-navigation.active > a:after {content: "-"; color: $primary-color;}
 .accordion-component .accordion-navigation > a:after{    content: "+";  color: $primary-color;  margin-right: 10px;    font-size: 23px;    line-height:1; float: right}
 .accordion-component .accordion-navigation > .content {    display: none;  padding: 0 40px 40px 40px;}
+
+
+
+.page-insitucional {
+  .sub-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+
+    i {
+      font-size: 32px;
+    }
+  }
+
+  .grid-sidebar-left {
+    p.block {
+      margin-left: 37px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      i {
+        margin-right: 10px;
+      }
+
+      li {
+        padding: 2px 0;
+        margin: 0 8px;
+      }
+    }
+  }
+}
+
+
+// Professores
+
+.page-professores {
+  .cards {
+    .card {
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      background-color: #FFF;
+      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+      border-radius: 1px;
+      
+      @media only screen and (min-width: 500px) {
+        width: 49%;
+        float: left;
+        margin-right: 2%;
+        
+        &:nth-of-type(2n+0) {
+          margin-right: 0;
+        }
+      }
+      
+      a {
+        display: block;
+        position: relative;
+        color: #666;
+        
+        &:hover {
+          color: #333;
+        }
+        
+        > div {
+          margin-top: 30px;
+          margin-left: 150px;
+          position: absolute;
+          top: 0;
+        }
+      }
+      
+      strong {
+        font-size: 22px;
+      }
+      
+      img {
+      }
+    }
+  }
+}

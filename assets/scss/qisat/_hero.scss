@@ -176,7 +176,7 @@
     width: 100%;
     display: inline-block;
     width: 100%;
-    padding: 140px 0 40px 0;
+    // padding: 140px 0 40px 0;
     background-color: $charcoal;
 
     //background-image: url("../images/courses/courses-banner-presencial.png");
@@ -188,13 +188,30 @@
         content: "";
     }
 
+    padding: 40px 0 30px 0;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 40.063em) {
+      padding: 140px 0 40px 0;
+    }
+
 
 }
 
     .hero-course:hover .hero-course__play--image {  opacity: 1;}
     .hero-course__modality { color: #fff; font-size: 17px; font-weight: 300; opacity: .4; text-transform: uppercase; }
-    .hero-course__title { color: #fff; font-size: 41px; font-weight: 900; line-height: 1; margin: 5px 0; letter-spacing: -1px; text-transform: uppercase; } 
-    .hero-course__resume { color: #fff; opacity: .6; margin-bottom: 10px; font-size: 18px; font-weight: 300; letter-spacing: 1px;}
+    .hero-course__title {
+      color: #fff; font-size: 30px; font-weight: 900; line-height: 1; margin: 5px 0; letter-spacing: -1px; text-transform: uppercase;
+      @media only screen and (min-width: 40.063em) {
+        font-size: 41px;
+      }
+    } 
+    .hero-course__resume {
+      color: #fff; opacity: .6; margin-bottom: 30px; font-size: 18px; font-weight: 300; letter-spacing: 1px;
+      @media only screen and (min-width: 40.063em) {
+        margin-bottom: 10px;
+      }
+    }
     .hero-course__locale{color: #fff; font-weight: 300; letter-spacing: 1px; font-size: 16px;}
 
 
@@ -235,8 +252,23 @@
     vertical-align: middle;
 }
 
+.hero-course__buttons-group {
+  a {
+    background-color: #FFF !important;
+    color: #222;
+    border-radius: 4px;
+    padding: 5px;
 
-.buttom-call {}
+    &:hover {
+      color: #000;
+    }
+  }
+  i {
+    font-size: 16px !important;
+  }
+}
+.buttom-call {
+}
 
 
 .buttom-favorite {}
@@ -292,6 +324,15 @@
     // color: #fff;
     // padding: 5px 30px;
     // border-radius: 4px;
+  margin: 10px 0 !important;
+
+  @media only screen and (min-width: 40.063em) {
+    margin: 0 !important;
+  }
+
+  .price_popover {
+    // right: 30px;
+  }
 }
 
 .buttom-price:hover,

@@ -128,15 +128,24 @@
 					<p class="hero-course__resume">{{produto.chamada}}</p>
 
 					<ul class="hero-course__buttons-group">
-						<li class="hero-course__buttons-group--item"> <a class="buttom-call" href="#" data-reveal-id="modalPageCourseCall">  Ligamos para você</a> </li>
-						<li class="hero-course__buttons-group--item"> <a class="buttom-favorite" href="#"> Favoritar</a></li>
-						<li class="hero-course__buttons-group--item"> <a class="buttom-price" href="#" class="button">{{produto.chamada}}</a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" href="#" data-reveal-id="modalPageCourseCall"><i class="material-icons">phone</i> Ligamos para você</a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-favorite" href="#"><i class="material-icons">favorite</i></a></li>
+            <li class="hero-course__buttons-group--item"><a class="button buttom-price has-price_popover card-course__button" href="#" class="button">{{produto.chamada}}
+              <span class="card-course__icon-cart">
+                <div class="price_popover">
+                  <div class="price_popover__header">
+                    <p class="price_popover__header__info"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p>
+                  </div> <!-- //price_popover__header -->
+                  <div class="price_popover__footer"> Adicionar ao carrinho </div>
+                </div> <!-- //price_popover -->
+              </span>
+            </a></li>
 					</ul>
 
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
 					<div class="hero-course__play-container">
-						<a class="hero-course__play" href="#" data-reveal-id="modalPageCourseTrailer"><img class="hero-course__play--image"  src="{{produto.imagem}}" alt=""></a>
+						<a class="hero-course__play" href="#" data-reveal-id="modalPageCourseTrailer"><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
 					</div> <!--//hero-course__play-container -->
 				</div> <!-- //large-3-->
 		</div> <!-- ///row -->
