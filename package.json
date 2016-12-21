@@ -1,0 +1,31 @@
+{
+  "name": "www.qisat.com.br",
+  "version": "1.0.0",
+  "description": "* Ruby 1.9+   * [Node.js](http://nodejs.org)   * [compass](http://compass-style.org/): `gem install compass`   * [bower](http://bower.io): `npm install bower -g`",
+  "main": "cors.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.0.0",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qisat/www.qisat.com.br.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qisat/www.qisat.com.br/issues"
+  },
+  "homepage": "https://github.com/qisat/www.qisat.com.br#readme"
+}

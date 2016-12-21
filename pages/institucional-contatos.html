@@ -110,7 +110,7 @@
    </div> <!-- ///row -->
  </header><!-- //hero-home -->
 
- <div class="row">
+ <div class="row page-insitucional">
      <div class="medium-12 columns">
        <nav class="menu-horizontal">
           <ul class="menu-horizontal__list"  data-equalizer>
@@ -124,64 +124,122 @@
      </div> <!-- //large-12-->
 
      <div class="large-3 medium-4 columns grid-sidebar-left">
-       menu aqui<br>
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div class="page_content">
+
+          <p class="sub-title"><i class="material-icons">call</i> <strong>Contato</strong></p>
+          <p class="block">Fone: (48) 3332.5000<br>
+          Fone: (48) 3332.5010<br>
+          qisat@qisat.com.br</p>
+
+          <p class="sub-title"><i class="material-icons">access_time</i> <strong>Atendimento</strong></p>
+          <p class="block">das 08:00 às 18:00</p>
+
+          <p class="sub-title"><i class="material-icons">place</i> <strong>Endereço</strong></p>
+          <p class="block">Av. Osmar Cunha, 183<br>
+          Edifício Ceisa Center<br>
+          Sala 301, bloco C, Centro<br>
+          CEP: 88015-100<br>
+          Florianópolis - SC</p>
+
+          <hr>
+
+          <ul>
+          <li><a href="#"><i class="material-icons">question_answer</i> Fale conosco pelo chat</a></li>
+          <li><a href="#"><i class="material-icons">smartphone</i> Ligamos para você</a></li>
+          <li><a href="#"><i class="material-icons">comment</i> Sugira um curso</a></li>
+          <li><a href="#"><i class="material-icons">person_add</i> Indique a um amigo</a></li>
+          </ul>
+          
+          <hr>
+          <p class="sub-title"><strong>Redes sociais</strong></p>
+          <p>Siga-nos nas redes sociais e acompanhe nossas novidades e lançamentos</p>
+          <ul class="inline-list">
+            <li><a href="#"><img src="images/icons/facebook.png" alt="" width="24"></a></li>
+            <li><a href="#"><img src="images/icons/twitter.png" alt="" width="24"></a></li>
+            <li><a href="#"><img src="images/icons/linkedin.png" alt="" width="24"></a></li>
+            <li><a href="#"><img src="images/icons/instagram.png" alt="" width="24"></a></li>
+            <li><a href="#"><img src="images/icons/youtube.png" alt="" width="24"></a></li>
+          </ul>
+          
+          <hr>
+          <p class="sub-title"><strong>Newsletter</strong></p>
+          <p>Quer receber nossas atualizações?<br>Inscreva-se em nossa newsletter!</p>
+          <input type="text" name="">
+          <button>Enviar</button>
+          <hr>
+
+       </div>
      </div> <!-- //large-4-->
      <div class="large-9 medium-8 columns" ng-controller="contactController" >
           <div class="page_content">
-            <h1>Página de Contatos</h1>
+            <h1>Contato</h1>
+
+            <p>Fique a vontade para enviar um contato por um de nossos canais de atendimento.</p>
+
+            <p>Nosso horário de atendimento é de Segunda a Sexta, das 8h00 às 18h00, e que o suporte aos cursos é realizado apenas dentro da plataforma, onde você conta com um sistema de tickets avançado em cada aula para falar diretamente com o tutor!</p>
+
+            <p>Esses canais são para dúvidas sobre nossos serviços, dúvidas ou auxílio na contratação, críticas ou sugestões, feedbacks ou outros.</p>
+
+            <p>Aguardo seu contato!</p>
+            <br>
+            <br>
 
             <form name="contatoForm" id="contatoForm"  data-abide>
 
 			  <div class="row">
-			    <div class="small-3 columns">
+			    <div class="small-3 medium-2 columns">
 			      <label for="name" class="text-right middle"> Nome <small>*</small> </label>
 			    </div>
-			    <div class="small-9 columns">
+			    <div class="small-9 medium-8 columns">
 			      <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="contato.name" required>
 			      <small class="error">Nome é Obrigatório!</small>
 			    </div>
+          <div class="medium-2 columns"></div>
 			  </div>
 
 			  <div class="row">
-			    <div class="small-3 columns">
+			    <div class="small-3 medium-2 columns">
 			      <label for="email" class="text-right middle ">Email <small>*</small> </label>
 		
 			    </div>
-			    <div class="small-9 columns">
+			    <div class="small-9 medium-8 columns">
 			      <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="contato.email" ng-pattern="emailFormat" required >
 				  <small class="error">Formato de Email incorreto!</small>
 			    </div>
+          <div class="medium-2 columns"></div>
 			  </div>
 
 			  <div class="row">
-			    <div class="small-3 columns">
+			    <div class="small-3 medium-2 columns">
 			      <label for="phone" class="text-right middle">Telefone</label>
 			    </div>
-			    <div class="small-9 columns">
+			    <div class="small-9 medium-8 columns">
 			      <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="contato.phone" mask="(99) 9?9999-9999">
 			    </div>
+          <div class="medium-2 columns"></div>
 			  </div>
 
 		    <div class="row">
-			    <div class="small-3 columns">
+			    <div class="small-3 medium-2 columns">
 			      <label for="subject" class="text-right middle">Assunto</label>
 			    </div>
-			    <div class="small-9 columns">
+			    <div class="small-9 medium-8 columns">
 			      <input type="text" name="subject" id="subject" placeholder="Assunto do Contato" ng-model="contato.subject" >
 			    </div>
+          <div class="medium-2 columns"></div>
 			  </div>
 
 			   <div class="row">
 
-			   	<div class="small-3 columns">
+			   	<div class="small-3 medium-2 columns">
 			      <label for="msg" class="text-right middle"> Mensagem <small>*</small> </label>
 
 			    </div>
-			    <div class="small-9 columns">
+			    <div class="small-9 medium-8 columns">
 			    	<textarea name="msg" id="msg"  placeholder="Escreva sua mensagem" rows="6" ng-model="contato.msg" required ></textarea>
 			    	<small class="error">Escreva Sua Mensagem!</small>
 			    </div>
+          <div class="medium-2 columns"></div>
 
 
 			   </div>

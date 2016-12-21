@@ -7,7 +7,27 @@
 
 
 
-.page_content, .widget_content{   @extend .z-1; width: 100%; display: inline-block; background-color: #fff; padding: 20px;   border-radius:	$global-radius; }
+.page_content, .widget_content{
+  @extend .z-1;
+  width: 100%;
+  display: inline-block;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: $global-radius;
+
+  &.no-padding {
+    padding: 3px;
+  }
+
+  .title {
+    text-transform: uppercase;
+    color: #666;
+    padding: 0 30px 15px 30px;
+    border-bottom: 1px solid #eee;
+    margin-left: -20px;
+    width: 105%;
+  }
+}
 
 .page_content{ margin-bottom:40px;}
 .widget_content{

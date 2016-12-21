@@ -36,6 +36,20 @@ $(document).foundation('equalizer', 'reflow');
 
 
 $(function() {
+  $('.show-filters a').click(function(e) {
+    e.preventDefault();
+    var $elText = $(this).find("span");
+
+    if($elText.text() == "Mostrar filtros"){
+      $elText.text('Esconder filtros');
+    } else {
+      $elText.text('Mostrar filtros');
+    }
+
+    $(".menu-filter-sidebars").toggleClass("show-for-small-up");
+      
+  });
+
   $('.anchor').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -67,7 +81,6 @@ $(function() {
 
 
 
-  
 $(document).ready(function() {
   if ( $('#sidebar-styker').length ) {
        $("#sidebar-styker").stick_in_parent({
@@ -197,19 +210,21 @@ if ( $('.footer-primary__list__item').length ) {
 
 //Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
  $(function() {
+    
    if ( $('.navigation_courses__list-item--link').length ) {
 
-        $('.navigation_courses__list-item--link').click(function() {
-          if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
+        $('.navigation_courses__list-item--link').click(function(e) {
+          e.preventDefault();
+
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+
             if (target.length) {
               $('html, body').animate({
                 scrollTop: (target.offset().top)-80
               }, 1000);
               return false;
             }
-          }
         });
     }
 });
@@ -224,6 +239,9 @@ if ( $('.footer-primary__list__item').length ) {
 
 ///simple modal image
    $(function() {
+
+    $('.lightbox a').simpleLightbox();
+
      if ( $('.section__course-gallery-list--link').length ) {
          $('.section__course-gallery-list--link').on('click', function(event){
                event.preventDefault();
