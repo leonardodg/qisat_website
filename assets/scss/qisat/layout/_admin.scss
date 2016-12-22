@@ -92,3 +92,64 @@ margin-top: 10px;
 	    margin: 0 0 -7px 0;
 	}
 }
+
+.signup {
+  margin-top: 100px;
+
+  .signup__content {
+    margin: 0 auto 40px auto;
+
+    @media only screen and (min-width: 40em) {
+      max-width: 50%;
+
+      &.login {
+        max-width: 30%;
+      }
+    }
+
+  }
+
+  .admin__heading {
+    margin: 0 auto;
+    // @media only screen and (min-width: 40em) {
+      // max-width: 50%;
+    // }
+
+    h1 {
+      font-size: 30px;
+    }
+  }
+
+  #dashboard {
+    background-color: #FFF;
+    padding: 30px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+
+    p.title {
+      font-size: 25px;
+    }
+
+    .form-group {
+      margin: 15px 0;
+
+      input {
+        margin-bottom: 5px;
+      }
+
+      label {
+        padding-bottom: 5px;
+
+        strong {
+          color: #c00;
+        }
+      }
+
+    }
+
+    // Login
+    // &.login {
+    //   max-width: 30%;
+    // }
+  }
+}

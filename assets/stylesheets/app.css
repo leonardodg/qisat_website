@@ -3829,49 +3829,51 @@ ul.off-canvas-list li a:hover {
   margin-top: 100px;
 }
 /* line 99, ../scss/qisat/layout/_admin.scss */
-.signup .admin__heading {
-  margin: 0 auto;
+.signup .signup__content {
+  margin: 0 auto 40px auto;
 }
 @media only screen and (min-width: 40em) {
   /* line 99, ../scss/qisat/layout/_admin.scss */
-  .signup .admin__heading {
+  .signup .signup__content {
     max-width: 50%;
   }
+  /* line 105, ../scss/qisat/layout/_admin.scss */
+  .signup .signup__content.login {
+    max-width: 30%;
+  }
 }
-/* line 105, ../scss/qisat/layout/_admin.scss */
+/* line 112, ../scss/qisat/layout/_admin.scss */
+.signup .admin__heading {
+  margin: 0 auto;
+}
+/* line 118, ../scss/qisat/layout/_admin.scss */
 .signup .admin__heading h1 {
   font-size: 30px;
 }
-/* line 110, ../scss/qisat/layout/_admin.scss */
+/* line 123, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard {
   background-color: #FFF;
   padding: 30px;
   margin: 0 auto;
   border: 1px solid #ccc;
 }
-@media only screen and (min-width: 40em) {
-  /* line 110, ../scss/qisat/layout/_admin.scss */
-  .signup #dashboard {
-    max-width: 50%;
-  }
-}
-/* line 120, ../scss/qisat/layout/_admin.scss */
+/* line 129, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard p.title {
   font-size: 25px;
 }
-/* line 124, ../scss/qisat/layout/_admin.scss */
+/* line 133, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard .form-group {
   margin: 15px 0;
 }
-/* line 127, ../scss/qisat/layout/_admin.scss */
+/* line 136, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard .form-group input {
   margin-bottom: 5px;
 }
-/* line 131, ../scss/qisat/layout/_admin.scss */
+/* line 140, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard .form-group label {
   padding-bottom: 5px;
 }
-/* line 134, ../scss/qisat/layout/_admin.scss */
+/* line 143, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard .form-group label strong {
   color: #c00;
 }

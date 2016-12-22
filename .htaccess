@@ -56,7 +56,7 @@
   
   RewriteRule ^aluno/?([^/]+)?/?$ pages/aluno.html [NC]
   RewriteRule ^aluno/(carrinho)/([^/]+)$ pages/aluno.html [NC]
-  RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno.html [NC]
+  RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno-sem-menu.html [NC]
   
   RewriteRule ^sugira/([^/]+)?/?$ pages/sugira.html?filter=$1 [NC]
   RewriteRule ^sugira/?$ pages/sugira.html [NC]

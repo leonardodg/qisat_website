@@ -1,14 +1,23 @@
 <div class="signup">
-    <div class="admin__heading">
+
+    <div class="signup__content login">
+
+    <div class="row">
+        <div class="large-12 columns">
+              <div ui-alert type="{{typeMsgLogin}}" close="true" >
+                {{msgLogin}}
+            </div>
+         </div>
+      </div>
+
+                
+    <div class="admin__heading admin__heading_login">
       <h1 class="title">Login</h1>
     </div>
 
     <section id="dashboard">
 
-        
           <form name="loginForm" accept-charset="UTF-8" >
-
-
 
             <div id="emailLogin">
           
@@ -38,19 +47,5 @@
           </div>
           </form>
         </section>
-
-
-
-
-		<section id="dashboard"  >
-
-			<div class="row">
-		 		<div class="large-12 columns">
-			      	<div ui-alert type="{{typeMsgLogin}}" close="true" >
-			      		{{msgLogin}}
-			    	</div>
-				 </div>
-			</div>
-
-			
-		</section>
+    </div>
+</div>
