@@ -11,9 +11,7 @@
 
 					 	authService.courses().then(function (res){
 
-					 		console.log(res);
 					 		scope.courses = res.data;
-
 					 		scope.courses.map(function (matricula){
 					 			var timestart,timeend, day, month, year;
 

@@ -7,32 +7,24 @@
    //   collapseInClass: 'in';
    // });
 
-$(document).foundation('equalizer', 'reflow');
 
 
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HABILITAR OCORER DA PROBLEMA NO DEPOIMENTOS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+// $(document).foundation('equalizer', 'reflow');
 
- $(document).foundation(
+//  $(document).foundation(
+//  {
+// "magellan-expedition": {
+//   active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+//   threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+//   destination_threshold: 20, // pixels from the top of destination for it to be considered active
+//   throttle_delay: 50, // calculation throttling to increase framerate
+//   fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+//   offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+// }
+// }
 
- {
-"magellan-expedition": {
-  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
-  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
-  destination_threshold: 20, // pixels from the top of destination for it to be considered active
-  throttle_delay: 50, // calculation throttling to increase framerate
-  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
-}
-}
-
-);
-
-
-
-
-
-
-
-
+// );
 
 
 $(function() {
@@ -168,27 +160,6 @@ $(function() {
 
 
 
-
-//zurb foundation animate accordion
-$(function() {
-  if ( $('.accordion').length ) {
-        // se accordion estiver presente, executa esse codigo
-        $(".accordion").on("click", "dd", function () {
-                if($(this).hasClass('active')){
-                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
-                }
-                else {
-                    $("dd.active").removeClass('active').find(".content").slideUp("fast");
-                    $(this).addClass('active').find(".content").slideToggle("fast");
-                }
-        });
-  }
-});
-//end zurb foundation animate accordion
-
-
-
-
 //toggle foter
 if ( $('.footer-primary__list__item').length ) {
       if ($(window).width() < 640) {
@@ -208,27 +179,7 @@ if ( $('.footer-primary__list__item').length ) {
 
 
 
-//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
- $(function() {
-    
-   if ( $('.navigation_courses__list-item--link').length ) {
 
-        $('.navigation_courses__list-item--link').click(function(e) {
-          e.preventDefault();
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-
-            if (target.length) {
-              $('html, body').animate({
-                scrollTop: (target.offset().top)-80
-              }, 1000);
-              return false;
-            }
-        });
-    }
-});
-  //end Smooth Scrolling
 
 
 
@@ -241,13 +192,12 @@ if ( $('.footer-primary__list__item').length ) {
    $(function() {
 
     $('.lightbox a').simpleLightbox();
+    
 
      if ( $('.section__course-gallery-list--link').length ) {
          $('.section__course-gallery-list--link').on('click', function(event){
                event.preventDefault();
-              // alert("foi")
               $(this).toggleClass("active");
-
          });
        }
      }());
@@ -378,17 +328,31 @@ $(document).ready(function() {
         });
 
   }
-});
 
+});
 // end carrousel página institucional
 
 
+//Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
+$(document).ready(function() {
+    
+        $('body').on('click', '.navigation_courses__list-item--link', function(e){
+          e.preventDefault();
 
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 
+            if (target.length) {
+              $('html, body').animate({
+                scrollTop: (target.offset().top)-80
+              }, 1000);
+              return false;
+            }
+        });
 
-
-
-
-
-
-
+    // $('body').on('click', '.anchor-link', function(event){
+    //   event.preventDefault();
+    //   return false;
+    // });
+});
+  //end Smooth Scrolling
