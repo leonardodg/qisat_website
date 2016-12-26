@@ -249,7 +249,9 @@
 				 </div>
 
         <div class="panel callout radius" ng-repeat="item in navFilters" >
-          <span class="close-btn"></span>
+          <button class="close-button" aria-label="Close alert" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
           <strong>{{::item.title}} (<strong class="navLink_number">{{item.selected}}</strong>):</strong>
           <ul class="inline-list">
             <li ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
