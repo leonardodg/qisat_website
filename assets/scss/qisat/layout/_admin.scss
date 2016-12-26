@@ -103,11 +103,15 @@ margin-top: 10px;
       max-width: 80%;
 
       &.login {
-        max-width: 30%;
+        max-width: 370px;
       }
 
       &.financeiro {
         max-width: 90%;
+      }
+
+      &.cadastro {
+        max-width: 750px;
       }
     }
 
@@ -135,9 +139,13 @@ margin-top: 10px;
 
   #dashboard {
     background-color: #FFF;
-    padding: 30px;
     margin: 0 auto;
     border: 1px solid #ccc;
+    padding: 15px;
+
+    @media only screen and (min-width: 40em) {
+      padding: 30px;
+    }
 
     p.title {
       font-size: 25px;
