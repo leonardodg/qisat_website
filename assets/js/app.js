@@ -9,8 +9,7 @@
 
 
 
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HABILITAR OCORER DA PROBLEMA NO DEPOIMENTOS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-// $(document).foundation('equalizer', 'reflow');
+$(document).foundation('equalizer', 'reflow');
 
 //  $(document).foundation(
 //  {

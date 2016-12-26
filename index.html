@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
-	<!-- <base href="http://newsite.qisat.com/assets/"> -->
-
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> QiSat | O Canal do e-Learning da Engenharia </title>
@@ -576,7 +574,7 @@
 
 
 
-						<div class="footer-secondary" ng-controller="homeController as vm">
+						<div class="footer-secondary" ng-controller="footerController as vm">
 								<div class="row">
 										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
 											<li>
@@ -616,6 +614,7 @@
 
 	<!-- GLOBAL -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
 		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
 		<script src="/libs/sticky/sticky-kit.js"></script>
@@ -637,7 +636,7 @@
 	<script defer src="js/services/QiSatAPI.js"></script>
 	<script defer src="js/controllers/instructorsController.js"></script>
 	<script defer src="js/controllers/TopCoursesController.js"></script>
-	<script defer src="js/controllers/homeController.js"></script>
+	<script defer src="js/controllers/footerController.js"></script>
 	<script defer src="js/directive/backImg.js"></script>
 	<script defer src="js/app.js"></script>
 	<!-- EXECUTA SCRIPTS QISAT -->

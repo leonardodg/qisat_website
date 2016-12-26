@@ -8,7 +8,8 @@
 
 					 	$scope.logout = function() {
 							authService.logout();
-							$location.path('/login');
+							// $location.path('/login');
+							window.location = '/login';
 						};
 
 					 });

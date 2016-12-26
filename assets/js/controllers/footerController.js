@@ -3,7 +3,7 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('homeController', [ '$modal',
+		.controller('footerController', [ '$modal',
 					 function( $modal ) {
 					 	var vm = this;
 

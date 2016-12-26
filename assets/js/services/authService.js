@@ -312,16 +312,18 @@
 
 						$rootScope.$on('$routeChangeStart', function(e, curr, prev) {
 							$rootScope.error = '';
-							if (curr.$$route && !curr.$$route.isAuth && authService.isLogged() && ($location.path().indexOf('lembrete-de-senha') < 0)) {
-								$location.path('/aluno/perfil');
+							if (curr && curr.$$route && !curr.$$route.isAuth && authService.isLogged() && ($location.path().indexOf('lembrete-de-senha') < 0)) {
+								// $location.path('/aluno/perfil');
+								window.location = '/aluno/perfil';
 							}
 						});
 
 						$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
 							$rootScope.isAuth = authService.isAuth();
-							if (curr.$$route && curr.$$route.isAuth && !authService.isAuth() ){
+							if (curr && curr.$$route && curr.$$route.isAuth && !authService.isAuth() ){
 								$rootScope.error = "Acesso Restrito!";
-								$location.path('/login');
+								// $location.path('/login');
+								window.location = '/login';
 							}
 						});
 
