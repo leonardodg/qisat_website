@@ -1,14 +1,16 @@
-<div class="admin__heading">
-			<h2 class="subtitle"> Financeiro </h2>
-			<p> Bem vindo, <b>{{user.firstname}}</b></p>
-		</div>
+<div class="signup">
 
+    <div class="signup__content financeiro">
+
+    <div class="admin__heading">
+      <h1 class="title">Financeiro</h1>
+    </div>
 
 		<section id="dashboard">
 			<div class="row">
 				<div class="small-12 columns">
 
-				<table>
+				<table width="100%">
 				  <thead>
 				    <tr>
 				      <th width="100">Pedido</th>
@@ -21,7 +23,7 @@
 				  </thead>
 				  <tbody>
 				    <tr ng-repeat="carrinho in compras track by carrinho.id" >
-				      <td>{{::carrinho.pedido}}</td>
+				      <td class="text-center"><strong>{{::carrinho.pedido}}</strong></td>
 				      <td>{{::carrinho.dataFormat}}</td>
 				      <td>{{::carrinho.valor}}</td>
 				      <td>{{::carrinho.status}}</td>
@@ -34,4 +36,6 @@
 		 		</div>
 			</div> <!-- //row -->
 		</section>
+  </div>
+</div>
 

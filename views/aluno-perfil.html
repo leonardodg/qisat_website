@@ -1,6 +1,10 @@
-		<div class="admin__heading">
-			<h2 class="subtitle"> Editar Perfil </h2>
-			<p> Bem vindo, <b>{{user.firstname}}</b></p>
+<div class="signup">
+
+    <div class="signup__content">
+
+    <div class="admin__heading">
+			<h1 class="title">Editar meus dados</h1>
+			<!-- <p> Bem vindo, <b>{{user.firstname}}</b></p> -->
 		</div>
 
 		<section id="dashboard">
@@ -45,22 +49,14 @@
 							 </div>
 						</div>
 
-		  				<div class="row">
-						 		<div class="large-6 columns">
+						    <label for="currentPassword"> Senha Atual </label>
+						    <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
 
-							    <label for="currentPassword"> Senha Atual </label>
-							    <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
+						    <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
+						      <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
+						    </div>
 
-							    <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
-							      <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
-							    </div>
-							</div>
-
-							<div class="large-6 columns">
-								<br><a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
-				    		</div>
-							
-						</div>
+							<a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
 
 		  				<div class="row">
 		  					<br>
@@ -89,246 +85,163 @@
 				    		</div>
 						</div>
 
-						<div class="row">
-							<div class="large-6 large-centered columns">
-		  						<button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
-		  					</div>
-						</div>
+						<button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
 
 						</fieldset>
 				 	</form>
 		  	  </div>
 			</div>
-			<div class="row">
+
+      <hr>
 				<form name="editForm" id="editForm" novalidate>
-					<div class="large-6 small-12 columns">
-						<div class="row">
-   						 <div class="large-12 columns">
-						  <fieldset>
-						    <legend>Dados Pessoais </legend>
-			  				<div class="row">
-   						 		<div class="large-6 columns">
+  			    <p class="title">Dados Pessoais </p>
 
-								    <input type="text" name="name" id="name" placeholder="Seu Nome" ng-model="user.firstname" ng-required="true" ng-disabled="!confirm" >
+              <label for="name">Seu Nome:</label>
+					    <input type="text" name="name" id="name" placeholder="Seu Nome" ng-model="user.firstname" ng-required="true" ng-disabled="!confirm" >
 
-								    <div ng-show="editForm.name.$dirty && editForm.name.$invalid">
-								      <span class="error" ng-show="editForm.name.$error.required">Nome é Obrigatório!</span>
-								    </div>
+					    <div ng-show="editForm.name.$dirty && editForm.name.$invalid">
+					      <span class="error" ng-show="editForm.name.$error.required">Nome é Obrigatório!</span>
+					    </div>
 
-								</div>
-								<div class="large-6 columns">
-								   
-								    <input type="text" name="lastname" id="lastname" placeholder="Seu Sobrenome" ng-model="user.lastname" ng-required="true" ng-disabled="!confirm" >
+					   
+              <label for="lastname">Sobrenome:</label>
+					    <input type="text" name="lastname" id="lastname" placeholder="Seu Sobrenome" ng-model="user.lastname" ng-required="true" ng-disabled="!confirm" >
 
-								    <div ng-show="editForm.lastname.$dirty && editForm.lastname.$invalid">
-								      <span class="error" ng-show="editForm.lastname.$error.required">Sobrenome é Obrigatório!</span>
-								    </div>
-								 
-					    		</div>
-							</div>
-	
-			  				<div class="row">
-			  					<br> 
-						 		<div class="large-6 columns">
-								    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="user.email" ng-required="true" ng-disabled="(!confirm) || (confirm && notEmail )" ng-pattern="emailFormat" >
+					    <div ng-show="editForm.lastname.$dirty && editForm.lastname.$invalid">
+					      <span class="error" ng-show="editForm.lastname.$error.required">Sobrenome é Obrigatório!</span>
+					    </div>
+					 
+              <label for="email">Email:</label>
+					    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="user.email" ng-required="true" ng-disabled="(!confirm) || (confirm && notEmail )" ng-pattern="emailFormat" >
 
-								    <div ng-show="editForm.email.$dirty && editForm.email.$invalid">
-								      <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
-								    </div>
+					    <div ng-show="editForm.email.$dirty && editForm.email.$invalid">
+					      <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
+					    </div>
 
-								    <div ng-show="editForm.email.$dirty && editForm.email.$error.pattern">
-								      <span class="error" >Formato de Email incorreto!</span>
-								    </div>
-								</div>
-								<div class="large-6 columns">
-								    <input type="text" name="phone" id="phone" placeholder="Digite Telefone" ng-model="user.phone1" ng-required="true" ng-disabled="!confirm" ui-br-phone-number >
+					    <div ng-show="editForm.email.$dirty && editForm.email.$error.pattern">
+					      <span class="error" >Formato de Email incorreto!</span>
+					    </div>
 
-								    <div ng-show="editForm.phone.$dirty && editForm.phone.$invalid">
-								      <span class="error" ng-show="editForm.phone.$error.required">Telefone é Obrigatório!</span>
+              <label for="phone">Telefone:</label>
+					    <input type="text" name="phone" id="phone" placeholder="Digite Telefone" ng-model="user.phone1" ng-required="true" ng-disabled="!confirm" ui-br-phone-number >
 
-								       <div ng-show="editForm.phone.$invalid">
-								      		<span class="error" >Formato inválido!</span>
-								    	</div>
+					    <div ng-show="editForm.phone.$dirty && editForm.phone.$invalid">
+					      <span class="error" ng-show="editForm.phone.$error.required">Telefone é Obrigatório!</span>
 
-								    </div>
-					    		</div>
-							</div>
+					       <div ng-show="editForm.phone.$invalid">
+					      		<span class="error" >Formato inválido!</span>
+					    	</div>
 
-							<div class="row">
-						 		<div class="large-6 columns">
-								     <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ" ng-model="user.cpfcnpj"  ui-br-cpfcnpj-mask ng-required="true"  ng-disabled="(!confirm) || (confirm && notCPF )" model-view-value="true">
+					    </div>
 
-								    <div ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$invalid">
-								      <span class="error" ng-show="editForm.cpfcnpj.$error.required">CPF/CNPJ é Obrigatório!</span>
-								    </div>
+              <label for="cpfcnpj">CPF ou CNPJ:</label>
+					     <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ" ng-model="user.cpfcnpj"  ui-br-cpfcnpj-mask ng-required="true"  ng-disabled="(!confirm) || (confirm && notCPF )" model-view-value="true">
 
-								    <div ng-show="editForm.cpfcnpj.$dirty && (editForm.cpfcnpj.$error.cpf || editForm.cpfcnpj.$error.cnpj)">
-								      <span class="error" >CPF/CNPJ inválido!</span>
-								    </div>
-								</div>
-								<div class="large-6 columns">
-								     <input type="text" name="crea" id="crea" placeholder="Digite CREA" ng-model="user.numero_crea" ng-disabled="!confirm" >
-					    		</div>
-							</div>
+					    <div ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$invalid">
+					      <span class="error" ng-show="editForm.cpfcnpj.$error.required">CPF/CNPJ é Obrigatório!</span>
+					    </div>
 
-							</fieldset>
-					  	  </div>
-					  	</div>
+					    <div ng-show="editForm.cpfcnpj.$dirty && (editForm.cpfcnpj.$error.cpf || editForm.cpfcnpj.$error.cnpj)">
+					      <span class="error" >CPF/CNPJ inválido!</span>
+					    </div>
 
-					  	<div class="row">
-   						 <div class="large-12 columns">
-						  <fieldset>
-						    <legend> Privacidade </legend>
-			  				<div class="row">
-   						 		 <label>Autorizo receber e-mails, quando:</label>
-   						 		 	<div class="large-12 columns">
+              <label for="crea">CREA:</label>
+					     <input type="text" name="crea" id="crea" placeholder="Digite CREA" ng-model="user.numero_crea" ng-disabled="!confirm" >
 
-								      <input id="checkbox1" type="checkbox" checked>
-								      		<label for="checkbox1">Houver ofertas e lançamentos do QiSat.</label>
-							        </div>
 
-									<div class="large-12 columns">
+						    <p class="title"> Privacidade </p>
 
-								      <input id="checkbox2" type="checkbox" checked>
-								      		<label for="checkbox2">Forem relacionados ao andamento de meus cursos</label>
-								     </div>
-							      
-							      <div class="large-12 columns">
-								      <input id="checkbox3" type="checkbox" checked>
-								      		<label for="checkbox3">Receber uma mensagem privada em minha conta</label>
-								  </div>
+                <div class="row privacy">
+                  <div class="columns small-6">
+                    
+                    <p><strong>Autorizo receber e-mails, quando:</strong></p>
 
-								  <div class="large-12 columns">
-								   <input id="checkbox4" type="checkbox" checked>
-						      			<label for="checkbox4">Eu ficar muito tempo sem acessar meu curso</label>
-						      	   </div>
+                      <label for="checkbox1"><input id="checkbox1" type="checkbox" checked> Houver ofertas e lançamentos do QiSat.</label>
 
-						      	   <div class="large-12 columns">
-						      		<input id="checkbox5" type="checkbox" checked>
-						      			<label for="checkbox5">Quando o instrutor me responder no suporte</label>
-									</div>
+                      <label for="checkbox2"><input id="checkbox2" type="checkbox" checked> Forem relacionados ao andamento de meus cursos</label>
+                    
+                      <label for="checkbox3"><input id="checkbox3" type="checkbox" checked> Receber uma mensagem privada em minha conta</label>
 
-							</div>
-	
-			  				<div class="row">
-			  					 <label>Autorizo receber ligações, quando:</label>
-   						 		 	<div class="large-12 columns">
+                      <label for="checkbox4"><input id="checkbox4" type="checkbox" checked> Eu ficar muito tempo sem acessar meu curso</label>
 
-								      <input id="checkbox1" type="checkbox" checked>
-								      		<label for="checkbox1">Houver lançamentos relacionados a cursos que já fiz</label>
-							        </div>
+                      <label for="checkbox5"><input id="checkbox5" type="checkbox" checked> Quando o instrutor me responder no suporte</label>
 
-									<div class="large-12 columns">
+                  </div>
+                  <div class="columns small-6">
+                    
+                    <p><strong>Autorizo receber ligações, quando:</strong></p>
 
-								      <input id="checkbox2" type="checkbox" checked>
-								      		<label for="checkbox2">Tiver algum pagamento em aberto</label>
-								     </div>
-							      
-							</div>
+                      <label for="checkbox1"><input id="checkbox1" type="checkbox" checked> Houver lançamentos relacionados a cursos que já fiz</label>
 
-							<div class="row">
 
-								 <label>Autorizo receber SMS, quando:</label>
-   						 		 	<div class="large-12 columns">
+                      <label for="checkbox2"><input id="checkbox2" type="checkbox" checked> Tiver algum pagamento em aberto</label>
 
-								      <input id="checkbox1" type="checkbox" checked>
-								      		<label for="checkbox1">Houver informações importantes relacionadas ao meu curso</label>
-							        </div>
+                 <p><strong>Autorizo receber SMS, quando:</strong></p>
 
-									<div class="large-12 columns">
+                    <label for="checkbox1"><input id="checkbox1" type="checkbox" checked> Houver informações importantes relacionadas ao meu curso</label>
 
-								      <input id="checkbox2" type="checkbox" checked>
-								      		<label for="checkbox2">Houver lançamentos relacionados a cursos que já fiz</label>
-								     </div>
-						 		
-							</div>
+                    <label for="checkbox2"><input id="checkbox2" type="checkbox" checked> Houver lançamentos relacionados a cursos que já fiz</label>
+
+                  </div>
+                </div>
 
 							</fieldset>
-					  	  </div>
-					  	</div>
+              <br>
 
-					  	
-
-		   			</div>
-
-					<div class="large-6 small-12 columns">
-						<div class="row">
-   						 <div class="large-12 columns">
-						  <fieldset>
-						    <legend>Endereço</legend>
-   						 		<div class="large-12 columns">
+						    <p class="title">Endereço</p>
 								   
-								      <input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep" ng-required="true" ng-disabled="!confirm" ng-blur="buscaCEP(endereco.cep)"  ui-br-cep-mask >
+                    <label for="cep">CEP:</label>
+							      <input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep" ng-required="true" ng-disabled="!confirm" ng-blur="buscaCEP(endereco.cep)"  ui-br-cep-mask >
 
 								    <div ng-show="editForm.cep.$dirty && editForm.cep.$invalid">
 								      <span class="error" ng-show="editForm.cep.$error.required">Informe o CEP</span>
 								    </div>
 
-								</div>
-								<div class="large-12 columns">
-								    <label>País
+								    <label for="selectCountry">País
 							         <select name="selectCountry" id="selectCountry" class="selectCountry" ng-options="option.pais for option in country track by option.sigla" ng-model="endereco.selectCountry" ng-disabled="!confirm">
 	 										<option value=""> Selecione o País </option>
 								        </select>
 
 							      </label>
-					    		</div>
 	
-								<div class="large-12 columns">
-								    <label>Selecione o Estado 
+								    <label for="selectStates">Selecione o Estado 
 								        <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.local for option in states track by option.uf" ng-model="endereco.selectStates" ng-disabled="!confirm">
 	 										<option value=""> Selecione o Estado </option>
 								        </select>
 							      </label>
-					    		</div>
 		
-								<div class="large-12 columns">
-									<br>
+                    <label for="cidade">Cidade:</label>
 								    <input type="text" name="cidade" id="cidade" placeholder="Digite a Cidade" ng-model="endereco.cidade" ng-required="true" ng-disabled="!confirm" >
 
 								    <div ng-show="editForm.cidade.$dirty && editForm.cidade.$invalid">
 								      <span class="error" ng-show="editForm.cidade.$error.required">Informe a Cidade!</span>
 								    </div>
-								</div>
 
-								<div class="large-12 columns">
+                    <label for="bairro">Bairro:</label>
 								     <input type="text" name="bairro" id="bairro" placeholder="Digite o Bairro" ng-model="endereco.bairro" ng-required="true" ng-disabled="!confirm" >
 
 								    <div ng-show="editForm.bairro.$dirty && editForm.bairro.$invalid">
 								      <span class="error" ng-show="editForm.bairro.$error.required">Informe o Bairro!</span>
 								    </div>
-								</div>
 
-								<div class="large-10 columns">
+                    <label for="logradouro">Endereço:</label>
 								    <input type="text" name="logradouro" id="logradouro" placeholder="Digite o Endereço" ng-model="endereco.logradouro" ng-required="true" ng-disabled="!confirm" >
 
 								    <div ng-show="editForm.logradouro.$dirty && editForm.logradouro.$invalid">
 								      <span class="error" ng-show="editForm.logradouro.$error.required">Informe o Logradouro!</span>
 								    </div>
-								</div>
-								<div class="large-2 columns">
+
+                    <label for="numero">Número:</label>
 								      <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero" ng-disabled="!confirm" >
 								    </label>
-					    		</div>
 
-					    		<div class="large-12 columns">
+                    <label for="complemento">Complemento:</label>
 							      	<input type="text" name="complemento" id="complemento" placeholder="Complemento" ng-model="endereco.complemento" ng-disabled="!confirm" >
-								</div>
 
-							</fieldset>
-					  	  </div>
-					  	</div>
-
-					  	<div class="row">
-					  		<br>
-				 			<div class="large-10 large-centered columns">
-					
 							<button id="edit" type="button" ng-click="enableInputs()" ng-show="!confirm" > Alterar Dados »</button>
 							<button id="salve" type="button" ng-disabled="editForm.$invalid" ng-hide="!confirm" ng-click="update()"> Salvar »</button>
 							<button id="cancel" type="button" ng-click="cancel()" ng-hide="!confirm"> Cancelar </button>
 
-							</div>
-						</div>
 	
 	<br>
 						<div class="row" ng-show="checkPassword" >
@@ -373,9 +286,6 @@
 
 		  	</div>
 
-			
-
-
-
-		
 		</section>
+  </div>
+</div>

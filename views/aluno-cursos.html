@@ -1,52 +1,60 @@
-	<div class="admin__heading">
-			<h2 class="subtitle"> Portal do Aluno</h2>
-			<p> Bem vindo, <b>{{user.firstname}}</b></p>
-			<h1 class="title">cArd Cursos </h1>
-		</div>
-
-
-		<section id="dashboard">
+		<section id="dashboard" class="page-courses">
 			<div class="row">
-				<div class="large-6 small-12 columns">
-					<h3>Lorem ipsum dolor sit amet</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
-		   		</div>
-				<div class="large-6 small-12 columns">
-					<h3>Lorem ipsum dolor sit amet</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, consectetur, libero! Eum omnis, maiores voluptates iste itaque cupiditate autem ab, eveniet minima tempore facilis excepturi incidunt, voluptatibus sapiente, quos dignissimos.</p>
-				</div>
 
 				<div class="small-12 columns">
 					<div class="admin__heading">
-						<br>
-						<h2 class="subtitle"> Presencial e Online</h2>
-						<h1 class="title"> Lista dos meus cursos </h1>
+						<h1 class="title">Cursos em Andamento</h1>
 					</div>
 
+            <ul class="nav-resp"  data-equalizer>
+                <li data-equalizer-watch class="current"><a  class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
+                <li data-equalizer-watch><a  class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
+                <li data-equalizer-watch><a  class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
+            </ul>
+
 						
-					    <ul ng-repeat="course in courses track by course.id" class="small-block-grid-3" >
-					   			<li>
+					    <div class="cards">
+					   			<div ng-repeat="course in courses track by course.id" class="card">
+
+                    <div ng-if="::course.enable">
+                      <a href="{{::course.links.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}"></a>
+                    </div>
+                    <div ng-if="!course.enable">
+                      <img src="{{::course.imagem}}" alt="{{::course.curso}}">
+                    </div>
+                    
+                    <div class="content">
+
+                      <p class="modalidade">{{::course.modalidade}}</p>
+
 						      		<div ng-if="::course.enable"> 
-						      			<a href="{{::course.links.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}"></a>
-						      			<p>{{::course.modalidade}}</p>
-						      			<p><a href="{{::course.links.view}}">{{::course.info.titulo||course.nome}} </a></p>
+						      			<p class="name"><a href="{{::course.links.view}}">{{::course.info.titulo||course.nome}} </a></p>
 						      		</div>
 
 						      		<div ng-if="!course.enable"> 
-						      			<img src="{{::course.imagem}}" alt="{{::course.curso}}">
-						      			<p>{{::course.modalidade}}</p>
-						      			<p>{{::course.info.titulo||course.nome}}</p>
+						      			<p class="name">{{::course.info.titulo||course.nome}}</p>
 						      		</div>
 						      		
-						     		<p>{{::course.status}} <br/> {{::course.msg}} </p>
-						      
-						      		<p><a href="{{::course.links.tira_duvidas}}"> Minhas Dúvidas </a> 
-						      			| <a href="{{::course.links.biblioteca}}"> Biblioteca </a> 
-						      			| <a href="{{::course.links.forum}}"> Forum </a> 
-						      			| <a href="{{::course.links.contrato}}"> Contrato </a> </p>
+                      <div class="green" ng-if="::course.enable">
+                        {{::course.status}}
+                      </div>
+  						     		<div class="red" ng-if="!course.enable">
+                        {{::course.status}}
+                      </div>
+                      {{::course.msg}}
+                    </div>
 
-					      		</li>
-						</ul>
+                    <div class="footer">
+                      <ul class="inline-list">
+                        <li><a href="{{::course.links.tira_duvidas}}"><i class="material-icons">help</i></a></li>
+                        <li><a href="{{::course.links.biblioteca}}"><i class="material-icons">folder</i></a></li>
+                        <li><a href="{{::course.links.forum}}"><i class="material-icons">forum</i></a></li>
+                        <li><a href="{{::course.links.contrato}}"><i class="material-icons">insert_drive_file</i></a></li>
+                      </ul>
+                    </div>
+
+			      		</div>
+						</div>
 
 		 		</div>
 			</div> <!-- //row -->

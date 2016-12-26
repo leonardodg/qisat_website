@@ -1,44 +1,32 @@
 	<div class="admin__heading">
-		<h1 class="title">Certificados</h1>
-		<p> Bem vindo, <b>{{user.firstname}}</b></p>
+		<h1 class="title">Meus certificados</h1>
 	</div>
 
-	<section id="dashboard">
-		<div class="row">
-			<div class="small-12 columns">
+	<section id="dashboard" class="page-certificates">
 
-				<table>
-				  <thead>
-				    <tr>
-				      <th width="400">Curso</th>
-				      <th width="100">Sigla</th>
-				      <th width="150">Data Solicitação</th>
-				      <th width="50">Link</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr ng-repeat="dados in certificados.return track by dados.id" >
-				      <td>{{::dados.certificate_name}}</td>
-				      <td>{{::dados.shortname}}</td>
-				      <td>{{::dados.datasolicitacaoFormat}}</td>
-				      <td>
-							<form action="{{linkCertify(dados.link)}}" method="POST" target="_blank" >
-								<input type="hidden" id="nome_aluno" name="nome_aluno" value="{{::user.nome}}">
-								<input type="hidden" id="nome_curso" name="nome_curso" value="{{::dados.certificate_name}}">
-								<input type="hidden" id="carga_horaria" name="carga_horaria" value="{{::dados.cargahoraria}}">
-								<input type="hidden" id="fundo" name="fundo" value="1">
-								<input type="hidden" id="data_inicio" name="data_inicio" value="{{::dados.timestartFormat}}">
-								<input type="hidden" id="data_fim" name="data_fim" value="{{::dados.datasolicitacaoFormat}}">
-								<input type="hidden" id="token" name="token" value="{{::dados.token}}">
-								<input type="hidden" id="nota" name="nota" value="{{::dados.nota}}">
-								<button type="submit" >Vizualizar </button></td>
-							</form>
-				    </tr>
-				  </tbody>
-				</table>
-				
-	 		</div>
+		<div class="cards">
+		    <div ng-repeat="dados in certificados.return track by dados.id" class="card">
+          <img src="http://placehold.it/300x180.jpg">
+          <div class="content">
+		      <p>{{::dados.certificate_name}}</p>
+		      <p>{{::dados.shortname}}</p>
+		      <p>{{::dados.datasolicitacaoFormat}}</p>
+          </div>
+		      <p>
+					<form action="{{linkCertify(dados.link)}}" method="POST" target="_blank" >
+						<input type="hidden" id="nome_aluno" name="nome_aluno" value="{{::user.nome}}">
+						<input type="hidden" id="nome_curso" name="nome_curso" value="{{::dados.certificate_name}}">
+						<input type="hidden" id="carga_horaria" name="carga_horaria" value="{{::dados.cargahoraria}}">
+						<input type="hidden" id="fundo" name="fundo" value="1">
+						<input type="hidden" id="data_inicio" name="data_inicio" value="{{::dados.timestartFormat}}">
+						<input type="hidden" id="data_fim" name="data_fim" value="{{::dados.datasolicitacaoFormat}}">
+						<input type="hidden" id="token" name="token" value="{{::dados.token}}">
+						<input type="hidden" id="nota" name="nota" value="{{::dados.nota}}">
+						<button type="submit" >Vizualizar </button></p>
+					</form>
+		    </div>
+		</div>
 
+    <hr class="clearfix">
 
-		</div> <!-- //row -->
 	</section>

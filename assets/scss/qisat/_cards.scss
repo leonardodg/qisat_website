@@ -73,17 +73,102 @@
   }
 }
 
-.card-course.card-format-block{ /*max-width:380px; */ border-radius: 4px;     display: inline-block; max-height: 320px;
-    .card-course-header { height: 180px; background: #444; display: inline-block; width: 100%; padding:0px; float: left; overflow: hidden;  background-size: cover; background-repeat: no-repeat; }
-    .card-course__play{}
-    .card-course__modality{ font-size: 11px; font-weight: 300; color: #838384;     float: left;    width: 100%;    display: inline-block; text-transform: uppercase}
-    .card-course__name{ font-size: 17px; font-weight: 300; color: #000; display: inline-block; height: 50px; line-height: 1.5; width: 100%; margin: 5px 0 15px 0; }
+.card-course.card-format-block{ /*max-width:380px; */
+  display: inline-block;
+  max-height: 320px;
+
+  @media only screen and (min-width: 40em) {
+    border-radius: 4px;
+  }
+
+  .card-course-header { 
+    display: none;
+
+    @media only screen and (min-width: 40em) {
+      height: 180px;
+      background: #444;
+      display: inline-block;
+      width: 100%;
+      padding:0px;
+      float: left;
+      overflow: hidden;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .card-course__play{
+    background-image: url("../images/courses/card-thumb-play-dark.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    float: left;
+    margin-top: 3px;
+    opacity: 0.3;
+    cursor: pointer;
+    margin-right: 10px;
+
+    @media only screen and (min-width: 40em) {
+      display: none;
+    }
+  }
+    // .card-course__play{}
+    .card-course__modality {
+      color: #979797;
+
+      @media only screen and (min-width: 40em) {
+        font-size: 11px;
+        font-weight: 300;
+        color: #838384;
+        float: left;
+        width: 100%;
+        display: inline-block;
+        text-transform: uppercase;
+      }
+    }
+    .card-course__name{
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+
+      @media only screen and (min-width: 40em) {
+        font-size: 17px;
+        font-weight: 300;
+        display: inline-block;
+        height: 50px;
+        line-height: 1.5;
+        width: 100%;
+        margin: 5px 0 15px 0;
+      }
+    }
     .card-course__instructors{}
     .card-course__modality{}
     .card-course--content { padding: 10px 10px 20px 10px; display: inline-block; }
   //&:hover{background-color: #d5d5d5; z-index: 0; position: relative; }
     &:hover .card-course__button{ color:#fff;   background-color: $primary-color;  border: 2px solid transparent; opacity: 1}
-    .card-course__button{  background-color: #fff; color:#000;  border:2px solid #ccc; font-size: 14px; padding: 5px 10px; border-radius: 4px; opacity: 0.3  }
+    .card-course__button{
+      opacity: 0.4;
+      color:#000;
+      background-color: #fff;
+      border:2px solid #ccc;
+      font-size: 14px;
+      padding: 3px 10px;
+      border-radius: 2px;
+      float: right;
+      margin-left: 20px;
+
+      @media only screen and (min-width: 40em) {
+        background-color: #fff;
+        color:#000;
+        padding: 5px 10px;
+        border-radius: 4px;
+        opacity: 0.3;
+        float: none;
+        margin-left: 0;
+      }
+    }
 }
 
 

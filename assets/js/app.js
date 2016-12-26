@@ -216,6 +216,8 @@ if ( $('.footer-primary__list__item').length ) {
         $('.navigation_courses__list-item--link').click(function(e) {
           e.preventDefault();
 
+            // $(this).parent().addClass("navigation_courses__list-item-active").siblings().removeClass("navigation_courses__list-item-active");
+
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 
@@ -240,7 +242,9 @@ if ( $('.footer-primary__list__item').length ) {
 ///simple modal image
    $(function() {
 
-    $('.lightbox a').simpleLightbox();
+     if ( $('.lightbox').length ) {
+        $('.lightbox a').simpleLightbox();
+      }
 
      if ( $('.section__course-gallery-list--link').length ) {
          $('.section__course-gallery-list--link').on('click', function(event){

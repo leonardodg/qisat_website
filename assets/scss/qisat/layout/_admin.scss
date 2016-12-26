@@ -57,7 +57,7 @@ margin-top: 10px;
 
 .admin_main { 
     position: relative;
-    display: inline-block;
+    // display: inline-block;
     background-color: #494949;
     margin-top: 60px;
   }
@@ -94,19 +94,32 @@ margin-top: 10px;
 }
 
 .signup {
-  margin-top: 100px;
+  margin-top: 50px;
 
   .signup__content {
-    margin: 0 auto 40px auto;
+    margin: 50px auto 40px auto;
 
     @media only screen and (min-width: 40em) {
-      max-width: 50%;
+      max-width: 80%;
 
       &.login {
         max-width: 30%;
       }
+
+      &.financeiro {
+        max-width: 90%;
+      }
     }
 
+  }
+
+  input[type='checkbox'] {
+    margin: 0;
+  }
+
+  .privacy label {
+    display: block;
+    margin-bottom: 15px;
   }
 
   .admin__heading {
