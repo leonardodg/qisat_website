@@ -58,7 +58,15 @@
  
 
 /* ==================== COURSE PAGES ==================== */
- 
+
+button.close-button, .close-button {
+  padding: 0 !important;
+  background-color: transparent !important;
+  color: #999 !important;
+  float: right;
+  font-size: 20px;
+}
+
 .page-course{
 
    &__header-group { padding: 15px 0 10px 0; display: block;   line-height: 1;
@@ -104,17 +112,17 @@
 
 #conteudo-programatico {
   .accordion-component {
-    max-width: 50%;
-    position: relative;
+    // max-width: 50%;
+    // position: relative;
   }
 
   .accordion-navigation {
     > a {
       border-right: 1px solid #eee;
 
-      &:after {
-        display: none;
-      }
+      // &:after {
+      //   display: none;
+      // }
     }
 
     &.active > a {
@@ -122,12 +130,12 @@
     }
   }
 
-  .content {
-    position: absolute;
-    left: 100%;
-    top: 0;
-    width: 100%;
-  }
+  // .content {
+  //   position: absolute;
+  //   left: 100%;
+  //   top: 0;
+  //   width: 100%;
+  // }
 
 }
 

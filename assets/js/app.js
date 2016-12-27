@@ -1,7 +1,7 @@
 
   // Foundation JavaScript
   // Documentation can be found at: http://foundation.zurb.com/docs
-  //$(document).foundation();
+  $(document).foundation();
 
    // $("#menu").metisMenu({
    //   collapseInClass: 'in';
@@ -10,7 +10,6 @@
 
 
 $(document).foundation('equalizer', 'reflow');
-
 
 
 // -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
@@ -27,6 +26,19 @@ $(document).foundation('equalizer', 'reflow');
 // }
 // );
 // -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
+ $(document).foundation(
+ {
+"magellan-expedition": {
+  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+  destination_threshold: 20, // pixels from the top of destination for it to be considered active
+  throttle_delay: 50, // calculation throttling to increase framerate
+  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+}
+}
+
+);
 
 
 $(function() {
@@ -76,6 +88,13 @@ $(function() {
 
 
 $(document).ready(function() {
+
+  $(document).on('click', ".btn-password", function(e){
+    console.log(e);
+    e.preventDefault();
+    $(".showPassword").slideToggle();
+  });
+
   if ( $('#sidebar-styker').length ) {
        $("#sidebar-styker").stick_in_parent({
         offset_top: 80,
@@ -155,6 +174,37 @@ if ( $('.footer-primary__list__item').length ) {
          $(".footer-primary__list__item").show(200);
       }
 }
+
+
+///simple modal image
+// $(function() {
+
+//   setTimeout(function(){
+//     if ( $('.lightbox').length ) {
+//       $('.lightbox a').simpleLightbox();
+//     }
+//   }, 500);
+
+//   if ( $('.section__course-gallery-list--link').length ) {
+//     $('.section__course-gallery-list--link').on('click', function(event){
+//       event.preventDefault();
+//       $(this).toggleClass("active");
+//     });
+//   }
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
 
   ///cards para transformar em card ou linha
      $(function() {

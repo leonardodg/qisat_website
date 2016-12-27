@@ -1,6 +1,6 @@
 <div class="signup">
 
-    <div class="signup__content">
+    <div class="signup__content edit">
 
     <div class="admin__heading">
 			<h1 class="title">Editar meus dados</h1>
@@ -19,77 +19,62 @@
 
 			<div class="row">
 				<div class="large-6 columns">
-				  <fieldset>
-				    <legend> Alterar Imagem </legend>
-						<div class="row">
-					 		<div class="large-6 columns">
+            <label>Imagem</label>
+            <div>
+					   	<img src="images/aluno/home-user-icon.png" alt="user" class="left thumb" width="110">
+              <button type="button" id="fileUpdate" ng-click="fileUpdate()" > Alterar Imagem »</button>
 
-						   	<img src="images/aluno/home-user-icon.png" alt="user">
+              <p><small>(Tamanho máximo: 32mb)</small></p>
+            </div>
 
-						</div>
-
-						<div class="large-6 columns">
-							<button type="button" id="fileUpdate" ng-click="fileUpdate()" > Alterar Imagem »</button>
-						</div>
-						
-					</div>
-				</fieldset>
 				</div>
-				 <div class="large-6 columns">
-					<form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
-					  <fieldset>
-					    <legend> Alterar Senha </legend>
 
-					    	
-					    <div class="row">
-					 		<div class="large-12 columns">
-						      	<div ui-alert type="{{typeMsgEditPass}}">
-						      		{{msgEditPass}}
-						    	</div>
-							 </div>
-						</div>
+				<div class="large-6 columns">
+          <label><br></label>
+          <button type="button" class="btn-password right"><i class="material-icons">lock</i> Alterar senha</button>
+          <div class="showPassword" style="display: none;clear:both;">
+          <form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
 
-						    <label for="currentPassword"> Senha Atual </label>
-						    <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
+              <div ui-alert type="{{typeMsgEditPass}}">
+                  {{msgEditPass}}
+              </div>
 
-						    <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
-						      <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
-						    </div>
+              <label for="currentPassword"> Senha Atual </label>
+            <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
 
-							<a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
-
-		  				<div class="row">
-		  					<br>
-					 		<div class="large-6 columns">
-					 			<label for="newpassword"> Nova Senha </label>
-							    <input type="password" name="newpassword" id="newpassword" placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true" autocomplete="off" >
-
-						   		 <div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
-							      <span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a nova Senha!</span>
-							    </div>
-							</div>
-
-							<div class="large-6 columns">
-								<label for="repassword"> Confirme a Senha </label>
-							    <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true" pw-check="newpassword" autocomplete="off" >
-
-							     <div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
-							      <span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a nova Senha!</span>
+            <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
+              <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
+            </div>
 
 
-							      <span class='error' ng-show='passwordForm.repassword.$error.pwmatch'>
-								    Senhas não correspondem.
-								  </span>
-							    </div>
+            <label for="newpassword"> Nova Senha </label>
+              <input type="password" name="newpassword" id="newpassword" placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true" autocomplete="off" >
 
-				    		</div>
-						</div>
+               <div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
+                <span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a nova Senha!</span>
+              </div>
 
-						<button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
 
-						</fieldset>
-				 	</form>
-		  	  </div>
+            <label for="repassword"> Confirme a Senha </label>
+              <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true" pw-check="newpassword" autocomplete="off" >
+
+               <div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
+                <span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a nova Senha!</span>
+
+
+                <span class='error' ng-show='passwordForm.repassword.$error.pwmatch'>
+                Senhas não correspondem.
+              </span>
+              </div>
+
+            <button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
+
+          <a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
+
+					</form>
+          </div>
+				</div>
+				 
 			</div>
 
       <hr>
@@ -152,7 +137,7 @@
 						    <p class="title"> Privacidade </p>
 
                 <div class="row privacy">
-                  <div class="columns small-6">
+                  <div class="columns small-12 medium-6">
                     
                     <p><strong>Autorizo receber e-mails, quando:</strong></p>
 
@@ -167,7 +152,7 @@
                       <label for="checkbox5"><input id="checkbox5" type="checkbox" checked> Quando o instrutor me responder no suporte</label>
 
                   </div>
-                  <div class="columns small-6">
+                  <div class="columns small-12 medium-6">
                     
                     <p><strong>Autorizo receber ligações, quando:</strong></p>
 
