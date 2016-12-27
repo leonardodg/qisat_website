@@ -303,7 +303,7 @@
  		<div class="section__course-gallery" ng-if="::vm.info.imgdemo.length">
  			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
 
-			<ul class="lightbox small-block-grid-6">
+			<ul class="lightbox small-block-grid-6" lightbox>
 			  <li ng-repeat="imgdemo in ::vm.info.imgdemo track by imgdemo.id"><a ng-href="{{::imgdemo.link}}" alt="{{::vm.info.seo.url}}" title="{{::vm.info.seo.url}}"><img data-caption="{{::vm.info.seo.title}}" title="{{::vm.info.seo.title}}" alt="{{::vm.info.seo.url}}" ng-src="{{::imgdemo.link}}"></a></li>
 			</ul>
  		</div> <!-- //section__course-gallery -->
@@ -585,13 +585,15 @@
 
 	<!-- GLOBAL -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-		<script src="/bower_components/angular-foundation/mm-foundation.min.js"></script>
+		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
 		<script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
 		<script src="/libs/sticky/sticky-kit.js"></script>
 		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 		<script defer src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
 		<script defer src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+		<script defer src="js/libs/simple-lightbox.js"></script>
+        <script defer src="/libs/sticky/sticky-kit.js"></script>
 	<!-- // GLOBAL -->
 
 	<!-- EXECUTA SCRIPTS QISAT -->
@@ -603,12 +605,11 @@
 	    <script defer src="js/libs/ngMask.min.js"></script>
 	    <script defer src="js/libs/ui-masks.js"></script>
 	    <script defer src="js/QiSatApp.js"></script>
-        <script defer src="/libs/sticky/sticky-kit.js"></script>
-        <script defer src="js/libs/simple-lightbox.js"></script>
 
 	    <script defer src="js/config/value.js"></script>
 		<script defer src="js/services/QiSatAPI.js"></script>
 		<script defer src="js/directive/backImg.js"></script>
+		<script defer src="js/directive/lightbox.js"></script>
 		<script defer src="js/controllers/infoController.js"></script>
 		<script defer src="js/controllers/footerController.js"></script>
 	    

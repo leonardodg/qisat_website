@@ -1,0 +1,135 @@
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+            <div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" >
+              <form name="formFilters" id="formFilters">
+
+                
+
+                <div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Buscar por nome</h5>
+                      <input type="text" name="">
+                    </div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Rótulo</h5>
+                      <ul class="menu-filter-sidebar-option-set">
+                        <li class="menu-filter-sidebar-item" ><input id="{{::filter.name}}" name="{{::filter.name}}" type="radio"  value="sel" class="with-font" /> <label for="{{::filter.name}}">Item 1<span class="menu-filter-sidebar-item--quantity">00</span> </label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input id="{{::filter.name}}" name="{{::filter.name}}" type="radio"  value="sel" class="with-font" /> <label for="{{::filter.name}}">Item 2<span class="menu-filter-sidebar-item--quantity">00</span> </label> </label> </li>
+                      </ul>
+                    </div>
+
+
+
+                    <div>
+                      <hr>
+                      <h5 class="menu-filter-sidebars--title">Rótulo</h5>
+                      <label for="selectStates" >
+                            <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.local for option in filter.inputs track by option.uf" ng-model="filter.selectStates" ng-change="filterStates(filter.selectStates)">
+                          <option value=""> Selecione o Estado </option>
+                            </select>
+                         </label>
+                    </div>
+
+
+                    <div>
+                      <hr>
+                       <h5 class="menu-filter-sidebars--title">Área de atuação</h5> 
+                       <ul class="menu-filter-sidebar-option-set">
+
+                         <li class="menu-filter-sidebar-item">
+                          
+                            <input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-types" ng-click="::filterTypes($event, item, filter)" /> 
+                            <label for="{{::item.name}}">Item 1 <span class="menu-filter-sidebar-item--quantity">00</span> </label>  </li>
+                         <li class="menu-filter-sidebar-item">
+                          
+                            <input id="{{::item.name}}" type="checkbox" class="with-font filter-checkbox filter-types" ng-click="::filterTypes($event, item, filter)" /> 
+                            <label for="{{::item.name}}">Item 2 <span class="menu-filter-sidebar-item--quantity">00</span> </label>  </li>
+                         </ul>
+                    </div>
+
+                    
+                  <hr />
+                </div>
+               </form> 
+            </div> <!-- //menu-filter-sidebars -->
+        </div>
+    </div> <!-- //large-4-->
+     <div class="large-9 columns page-professores">
+          <div class="page_content">
+            <!-- <h1>Instrutores e professores</h1> -->
+
+              <div class="professor-info">
+                <div class="text-center">
+                  <img src="http://placehold.it/130x130">
+                  <p class="name">Osny Netto</p>
+                  <p>Front-end developer</p>
+                </div>
+
+                <div class="perfil-text">
+                  <p>What is Lorem Ipsum?</p>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+              </div>
+
+
+              <div class="professor-courses">
+                <p class="subtitle">Cursos ministrados</p>
+                <div class="row">
+                  <div class="small-3 columns">
+                    <img class="thumbnail" src="http://placehold.it/150x150.jpg">
+                  </div>
+                  <div class="small-3 columns">
+                    <img class="thumbnail" src="http://placehold.it/150x150.jpg">
+                  </div>
+                  <div class="small-3 columns">
+                    <img class="thumbnail" src="http://placehold.it/150x150.jpg">
+                  </div>
+                  <div class="small-3 columns">
+                    <img class="thumbnail" src="http://placehold.it/150x150.jpg">
+                  </div>
+                </div>
+              </div>
+
+              <div class="professor-articles">
+                <p class="subtitle">Artigos escritos</p>
+                <div class="row">
+                  <div class="small-3 columns">
+                    <a href="#">
+                      <img src="http://placehold.it/70x70.jpg" class="right thumbnail">
+                      <p>Title</p>
+                      <span>jan 19, 2016</span>
+                    </a>
+                  </div>
+                  <div class="small-3 columns">
+                    <a href="#">
+                      <img src="http://placehold.it/70x70.jpg" class="right thumbnail">
+                      <p>Title</p>
+                      <span>jan 19, 2016</span>
+                    </a>
+                  </div>
+                  <div class="small-3 columns">
+                    <a href="#">
+                      <img src="http://placehold.it/70x70.jpg" class="right thumbnail">
+                      <p>Title</p>
+                      <span>jan 19, 2016</span>
+                    </a>
+                  </div>
+                  <div class="small-3 columns">
+                    <a href="#">
+                      <img src="http://placehold.it/70x70.jpg" class="right thumbnail">
+                      <p>Title</p>
+                      <span>jan 19, 2016</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              
+              </div>
+           <!-- //page_content -->
+    </div> <!-- //large-8-->
