@@ -1,0 +1,78 @@
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+            <div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" id="sidebar-styker">
+              <form name="formFilters" id="formFilters">
+
+                <div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Menu</h5>
+                    </div>
+                     <hr />
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Convênios</h5>
+                      <ul class="menu-filter-sidebar-option-set">
+                        <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais </a> </li>
+                        <li class="menu-filter-sidebar-item" > Projeto Rede Educacional 
+               <ul class="menu-filter-sidebar-option-set"> 
+                 <li class="menu-filter-sidebar-item" >  <a href="/institucional/convenios/preduc/ensino"> &nbsp&nbsp&nbsp&nbsp&nbsp Instituição de Ensino </a> </li>
+                 <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/preduc/entidade"> &nbsp&nbsp&nbsp&nbsp&nbsp Entidade de Classe </a> </li>
+               </ul>
+                        </li>
+                      </ul>
+
+                      <h5 class="menu-filter-sidebars--title"><a href="/institucional/parceiros">Parceiros</a></h5>
+                    </div>
+                  <hr />
+                </div>
+               </form> 
+            </div> <!-- //menu-filter-sidebars -->
+        </div>
+    </div> <!-- //large-4-->
+     <div class="large-9 medium-8 columns">
+          <div class="page_content">
+            <h1>Parcerias e convenios</h1>
+            <img src="images/institucional/conselhos.png" alt="">
+
+            <a href="/institucional/convenios/conselhos">cadastro</a> <br>
+            <a href="/institucional/convenios/conselhos/conveniados">conveniados</a> <br>
+            <a href="/institucional/convenios/conselhos/desconto">desconto</a>
+
+             <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div> <!-- //page_content -->
+
+                <div class="page_content">
+              <h1>Tabela Desconto Conselho - CREAS</h1>
+              
+
+            <table border="0" cellspacing="0" cellpadding="0" width="705" align="center">
+            <thead>
+              <tr>
+                <th nowrap><strong>CURSO</strong></th>
+                <th width="75"><strong>VALOR</strong></th>
+                <th width="75"><strong>VALOR PROMOCIONAL</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  > <td colspan="3" > <b>CURSOS SOFTWARES</b> </td></tr>
+              <tr ng-repeat="curso in cursosSoftware track by curso.id">
+                  <td nowrap > {{::curso.nome}} </td>
+                  <td> {{::curso.preco}} </td>
+                  <td> {{::curso.valorCREAs}} </td>
+                </tr>
+
+              <tr > <td colspan="3" > <b>CURSOS TEÓRICOS</b> </td></tr>
+              <tr ng-repeat="curso in cursosTeoricos track by curso.id">
+                  <td nowrap > {{::curso.nome}} </td>
+                  <td> {{::curso.preco}} </td>
+                  <td> {{::curso.valorCREAs}} </td>
+                </tr>
+             </tbody>
+          </table>
+
+          </div> <!-- //page_content -->
+
+    </div> <!-- //large-8-->

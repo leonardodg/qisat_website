@@ -1,0 +1,119 @@
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+            <div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" id="sidebar-styker">
+              <form name="formFilters" id="formFilters">
+
+                <div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Menu</h5>
+                    </div>
+                     <hr />
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Convênios</h5>
+                      <ul class="menu-filter-sidebar-option-set">
+                        <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais </a> </li>
+                        <li class="menu-filter-sidebar-item" > Projeto Rede Educacional 
+               <ul class="menu-filter-sidebar-option-set"> 
+                 <li class="menu-filter-sidebar-item" >  <a href="/institucional/convenios/preduc/ensino"> &nbsp&nbsp&nbsp&nbsp&nbsp Instituição de Ensino </a> </li>
+                 <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/preduc/entidade"> &nbsp&nbsp&nbsp&nbsp&nbsp Entidade de Classe </a> </li>
+               </ul>
+                        </li>
+                      </ul>
+
+                      <h5 class="menu-filter-sidebars--title"><a href="/institucional/parceiros">Parceiros</a></h5>
+                    </div>
+                  <hr />
+                </div>
+               </form> 
+            </div> <!-- //menu-filter-sidebars -->
+        </div>
+    </div> <!-- //large-4-->
+     <div class="large-9 medium-8 columns">
+          <div class="page_content">
+            <h1>Convenios Entidade de Classes </h1>
+            <img src="images/institucional/conselho.png" alt="">
+
+            <a href="/institucional/convenios/preduc/conveniadas">conveniadas</a> <br>
+            <a href="/institucional/convenios/preduc/descontos">desconto</a> <br>
+            <a href="/institucional/convenios/preduc/inscricao">inscrição</a>
+
+             <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div> <!-- //page_content -->
+
+      <div class="page_content">
+        <h1>Cadastro Entidade Classe</h1>
+          
+        <form name="cadastroEntidadeForm" id="cadastroEntidadeForm" data-abide>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="nameEntidade" class="text-right middle"> Nome da Entidade <small>*</small> </label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="nameEntidade" id="nameEntidade" placeholder="Nome Completo" ng-model="entidade.name" required>
+              <small class="error">Nome é Obrigatório!</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="nameResponsavelEntidade" class="text-right middle"> Nome do Responsável <small>*</small> </label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="nameResponsavelEntidade" id="nameResponsavelEntidade" placeholder="Nome Completo"  ng-model="entidade.responsavel" required>
+              <small class="error">Nome é Obrigatório!</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="namePresidente" class="text-right middle"> Nome do Presidente <small>*</small> </label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="namePresidente" id="namePresidente" placeholder="Nome Completo"  ng-model="entidade.presidente" required>
+              <small class="error">Nome é Obrigatório!</small>
+            </div>
+          </div>                  
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="emailEntidade" class="text-right middle ">E-mail para contato <small>*</small>
+            </div>
+            <div class="small-9 columns">
+              <input type="email" name="emailEntidade" id="emailEntidade" placeholder="Digite seu E-mail"  ng-model="entidade.email" ng-pattern="emailFormat" required >
+              <small class="error">Formato de Email incorreto!</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="phoneEntidade" class="text-right middle">Telefone para contato <small>*</small></label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD" ng-model="entidade.phone" mask="(99) 9?9999-9999" required>
+              <small class="error">Telefone é Obrigatório!</small>
+            </div>
+          </div>
+          <br>
+          <div class="row align-center">
+              <div class="small-4 large-4 large-offset-4 columns">
+                
+                    <button class="button expand" type="submit" ng-disabled="cadastroEntidadeForm.$invalid" ng-click="addInstitution(2)"> Enviar </button>
+
+                    <div data-alert class="alert-box info radius alert-2-ok" style="display: none;">
+                    Mensagem Enviada com SUCESSO!
+                  </div>
+
+                  <div data-alert class="alert-box warning  radius alert-2-error" style="display: none;">
+                    Falha no Envio da Mensagem!
+                  </div>
+              </div>
+                <div class="small-6 large-4 columns"></div>
+            </div>
+        </form>
+          </div> <!-- //page_content -->          
+    </div> <!-- //large-8-->
