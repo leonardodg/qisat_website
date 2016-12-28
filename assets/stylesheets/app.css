@@ -4030,35 +4030,37 @@ button.close-button, .close-button {
 }
 /* line 699, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li {
-  border-top: 5px solid red;
+  border-top: 1px solid #eee;
+  background-color: #FFF;
 }
-/* line 701, ../scss/qisat/structure/_pages.scss */
+/* line 703, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li.current {
   border-top: 5px solid #005285;
 }
-/* line 704, ../scss/qisat/structure/_pages.scss */
+/* line 706, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li > a {
   display: block;
   text-decoration: none;
   padding: 1em;
   text-align: center;
+  float: none !important;
 }
 
 @media screen and (min-width: 40em) {
-  /* line 717, ../scss/qisat/structure/_pages.scss */
+  /* line 720, ../scss/qisat/structure/_pages.scss */
   .nav-resp {
     display: table;
     width: 100%;
     display: flex;
   }
-  /* line 721, ../scss/qisat/structure/_pages.scss */
+  /* line 724, ../scss/qisat/structure/_pages.scss */
   .nav-resp > li {
     display: table-cell;
     display: flex;
     flex: 1 1 auto;
     border-top: none;
   }
-  /* line 727, ../scss/qisat/structure/_pages.scss */
+  /* line 730, ../scss/qisat/structure/_pages.scss */
   .nav-resp > li > a {
     width: 100%;
     -moz-box-sizing: border-box;
@@ -4066,57 +4068,57 @@ button.close-button, .close-button {
     box-sizing: border-box;
   }
 }
-/* line 737, ../scss/qisat/structure/_pages.scss */
+/* line 740, ../scss/qisat/structure/_pages.scss */
 .financeiro table {
   border: 0;
 }
-/* line 740, ../scss/qisat/structure/_pages.scss */
+/* line 743, ../scss/qisat/structure/_pages.scss */
 .financeiro table td {
   border: 1px solid #ddd;
 }
-/* line 743, ../scss/qisat/structure/_pages.scss */
+/* line 746, ../scss/qisat/structure/_pages.scss */
 .financeiro thead th {
   background-color: #FFF;
   border: 0;
 }
-/* line 748, ../scss/qisat/structure/_pages.scss */
+/* line 751, ../scss/qisat/structure/_pages.scss */
 .financeiro .box {
   border: 1px solid #bbb;
   background-color: #FFF;
   padding: 30px 25px;
 }
-/* line 753, ../scss/qisat/structure/_pages.scss */
+/* line 756, ../scss/qisat/structure/_pages.scss */
 .financeiro .box p {
   margin-bottom: 5px;
 }
-/* line 757, ../scss/qisat/structure/_pages.scss */
+/* line 760, ../scss/qisat/structure/_pages.scss */
 .financeiro .box hr {
   margin-left: -25px;
   width: 110%;
 }
-/* line 763, ../scss/qisat/structure/_pages.scss */
+/* line 766, ../scss/qisat/structure/_pages.scss */
 .financeiro .product {
   background-color: #f6f6f6;
   margin-bottom: 35px !important;
 }
 
-/* line 769, ../scss/qisat/structure/_pages.scss */
+/* line 772, ../scss/qisat/structure/_pages.scss */
 hr.clearfix {
   clear: both;
 }
 
-/* line 777, ../scss/qisat/structure/_pages.scss */
+/* line 780, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo {
   width: 50%;
   float: left;
 }
 @media screen and (min-width: 40em) {
-  /* line 777, ../scss/qisat/structure/_pages.scss */
+  /* line 780, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo {
     width: 33%;
   }
 }
-/* line 785, ../scss/qisat/structure/_pages.scss */
+/* line 788, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a {
   display: block;
   height: 120px;
@@ -4124,17 +4126,17 @@ hr.clearfix {
   padding-top: 30px;
 }
 @media screen and (min-width: 40em) {
-  /* line 785, ../scss/qisat/structure/_pages.scss */
+  /* line 788, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo a {
     height: 200px;
   }
 }
-/* line 796, ../scss/qisat/structure/_pages.scss */
+/* line 799, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a img {
   width: auto;
   max-width: 90%;
 }
-/* line 801, ../scss/qisat/structure/_pages.scss */
+/* line 804, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a span {
   display: none;
   background-color: #005B94;
@@ -4145,22 +4147,22 @@ hr.clearfix {
   font-size: 13px;
   width: 70%;
 }
-/* line 812, ../scss/qisat/structure/_pages.scss */
+/* line 815, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a:hover {
   background-color: #f6f6f6;
 }
-/* line 815, ../scss/qisat/structure/_pages.scss */
+/* line 818, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a:hover span {
   display: none;
 }
 @media screen and (min-width: 40em) {
-  /* line 815, ../scss/qisat/structure/_pages.scss */
+  /* line 818, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo a:hover span {
     display: block;
   }
 }
 
-/* line 830, ../scss/qisat/structure/_pages.scss */
+/* line 833, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a {
   text-align: center;
   border: 1px solid #ccc;
@@ -4168,15 +4170,15 @@ hr.clearfix {
   display: block;
   color: #666;
 }
-/* line 837, ../scss/qisat/structure/_pages.scss */
+/* line 840, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a.active {
   background-color: #f6f6f6;
 }
-/* line 841, ../scss/qisat/structure/_pages.scss */
+/* line 844, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a i {
   display: block;
 }
-/* line 845, ../scss/qisat/structure/_pages.scss */
+/* line 848, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a:hover {
   background-color: #f6f6f6;
 }
@@ -4356,6 +4358,18 @@ hr.clearfix {
 /* line 182, ../scss/qisat/layout/_admin.scss */
 .signup #dashboard .form-group label strong {
   color: #c00;
+}
+
+/* line 197, ../scss/qisat/layout/_admin.scss */
+.btn-password {
+  margin-bottom: 20px;
+}
+@media only screen and (max-width: 40em) {
+  /* line 197, ../scss/qisat/layout/_admin.scss */
+  .btn-password {
+    display: block !important;
+    width: 100%;
+  }
 }
 
 /* line 1, ../scss/qisat/layout/_institutional.scss */

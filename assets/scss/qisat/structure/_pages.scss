@@ -697,7 +697,9 @@ button.close-button, .close-button {
   clear: both;
 
   > li {
-    border-top: 5px solid red; // separator
+    border-top: 1px solid #eee; // separator
+    background-color: #FFF;
+
     &.current {
       border-top: 5px solid #005285;
     }
@@ -706,6 +708,7 @@ button.close-button, .close-button {
       text-decoration: none;
       padding: 1em;
       text-align: center;
+      float: none !important;
     }
     &:first-child {
       // border: none; // removes borders on first item

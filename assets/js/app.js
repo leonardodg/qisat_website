@@ -2,6 +2,11 @@
   // Foundation JavaScript
   // Documentation can be found at: http://foundation.zurb.com/docs
   $(document).foundation();
+  // setTimeout(function(){
+  //   $(document).foundation();
+  //   console.log('this');
+      
+  // }, 500);
 
    // $("#menu").metisMenu({
    //   collapseInClass: 'in';
@@ -159,21 +164,21 @@ $(function() {
 
 
 //toggle foter
-if ( $('.footer-primary__list__item').length ) {
-      if ($(window).width() < 640) {
+// if ( $('.footer-primary__list__item').length ) {
+//       if ($(window).width() < 640) {
 
-          $(function() {
-            $(".footer-primary__list__item").hide(200);
+//           $(function() {
+//             $(".footer-primary__list__item").hide(200);
 
-                 $('.footer-primary__list').children('.footer-primary__title').on('click', function(event){
-                    event.preventDefault();
-                    $(this).siblings(".footer-primary__list__item").slideToggle(200);
-                 });
-            }());
-      } else{
-         $(".footer-primary__list__item").show(200);
-      }
-}
+//                  $('.footer-primary__list').children('.footer-primary__title').on('click', function(event){
+//                     event.preventDefault();
+//                     $(this).siblings(".footer-primary__list__item").slideToggle(200);
+//                  });
+//             }());
+//       } else{
+//          $(".footer-primary__list__item").show(200);
+//       }
+// }
 
 
 ///simple modal image
