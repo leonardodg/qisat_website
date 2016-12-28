@@ -18,8 +18,10 @@
 
 	                    if (path) {
 
-	                    	if(path == '/institucional/parceiros' || path.indexOf('/institucional/convenios') >=0 )
+	                    	if(path == '/institucional/parceiros' || path == '/institucional/parceiros/' || path.indexOf('/institucional/convenios') >=0 )
 	                    		path = '/institucional/convenios-e-parceiros';
+	                    	else if(path == '/institucional/' || path == '/institucional')
+	                    		path = '/institucional/sobre-a-empresa';
 
 	                         angular.forEach(elems, function (el){
 	                         		 el = angular.element(el);

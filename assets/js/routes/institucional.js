@@ -71,7 +71,31 @@
             });            
 
             $routeProvider.when('/institucional/instrutores-e-professores', {
-              templateUrl : '/views/institucional-instrutores.html'
+              templateUrl : '/views/institucional-instrutores.html',
+              controller : 'instructorsController',
+              resolve : {
+                instrutores : function (QiSatAPI){
+                      return QiSatAPI.getInstructors()
+                                    .then( function (res){ 
+                                        if(res.status == 200 && res.data && res.data.success)
+                                            return res.data.data;
+                                      });
+                  }
+              }
+            });
+
+            $routeProvider.when('/institucional/instrutor/:id', {
+              templateUrl : '/views/institucional-instrutor.html',
+              controller : 'instructorController',
+              resolve : {
+                instrutor : function (QiSatAPI, $route){
+                      return QiSatAPI.getInstructor($route.current.params.id)
+                                    .then( function (res){ 
+                                        if(res.status == 200 && res.data && res.data.success)
+                                            return res.data.data;
+                                      });
+                  }
+              }
             });
 
             $routeProvider.when('/institucional/contatos', {

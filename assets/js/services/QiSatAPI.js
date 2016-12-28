@@ -69,6 +69,31 @@
 									return promise;
 							},
 
+							getInstructors : function () {
+									var promise = $http({ 
+														cache: true, 
+														method: 'GET', 
+														url: Config.baseUrl+'/instrutores'
+													});
+
+										promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+							getInstructor : function (id) {
+									var promise = $http({ 
+														cache: true, 
+														method: 'GET', 
+														url: Config.baseUrl+'/instrutores/'+id
+													});
+
+										promise.then( handleSuccess, handleError );
+
+									return promise;
+							},
+
+
 							getStates : function () {
 									var promise = $http({ 
 														cache: true, 
