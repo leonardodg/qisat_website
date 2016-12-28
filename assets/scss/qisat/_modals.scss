@@ -10,6 +10,7 @@
 }
 
 .reveal-modal-qisat{
+  outline: 0;
 	padding: 0; //para tirar as bordas
 	top: 20px; // é a distância do topo até o inicio do modal quando aberto
 	 .close-reveal-modal{z-index: 1000; top: 0.25rem; font-size: 2rem;}

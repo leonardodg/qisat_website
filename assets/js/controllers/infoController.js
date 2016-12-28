@@ -13,6 +13,7 @@
 
 					 	vm.modaltrailer = function () {
 				 					var modalInstance = $modal.open({ 
+                      windowClass: 'trailer',
 				 							templateUrl: '/views/modal-trailer.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
@@ -24,6 +25,7 @@
 
 					 	vm.modalcall = function () {
 				 					var modalInstance = $modal.open({ 
+                      windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
