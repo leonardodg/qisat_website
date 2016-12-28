@@ -858,14 +858,16 @@ hr.clearfix {
   padding: 0;
   list-style-type: none;
   border-top: 1px solid #eee;
-  margin-left: -20px;
-  width: 285px;
 
   ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
     border-top: 1px solid #ddd;
+
+    ul li a {
+      padding-left: 65px;
+    }
 
     li {
       a {
