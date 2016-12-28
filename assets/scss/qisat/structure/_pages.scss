@@ -65,6 +65,10 @@ button.close-button, .close-button {
   color: #999 !important;
   float: right;
   font-size: 20px;
+  margin-left: 5px;
+  margin-top: -3px;
+  span {
+  }
 }
 
 .page-course{
@@ -697,7 +701,9 @@ button.close-button, .close-button {
   clear: both;
 
   > li {
-    border-top: 5px solid red; // separator
+    border-top: 1px solid #eee; // separator
+    background-color: #FFF;
+
     &.current {
       border-top: 5px solid #005285;
     }
@@ -706,6 +712,7 @@ button.close-button, .close-button {
       text-decoration: none;
       padding: 1em;
       text-align: center;
+      float: none !important;
     }
     &:first-child {
       // border: none; // removes borders on first item
@@ -847,4 +854,58 @@ hr.clearfix {
       }
     }
   }
+}
+
+
+.menu-partners {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-top: 1px solid #eee;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border-top: 1px solid #ddd;
+
+    ul li a {
+      padding-left: 65px;
+    }
+
+    li {
+      a {
+        padding-left: 40px;
+        font-weight: normal;
+        background-color: #FFF !important;
+      }
+
+      &.active a {
+        background-color: #eee !important;
+      }
+    }
+  }
+
+  li {
+    border-bottom: 1px solid #eee;
+
+    a {
+      display: block;
+      color: #555;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 8px 10px;
+      padding-left: 20px;
+      background-color: #FFF;
+    }
+
+    &.active a {
+      background-color: #f6f6f6;
+    }
+  }
+}
+
+
+.course-page__sections#publico-alvo {
+  min-height: 200px;
 }

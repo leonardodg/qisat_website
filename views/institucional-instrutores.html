@@ -61,93 +61,16 @@
           <!-- <div class="page_content"> -->
             <!-- <h1>Instrutores e professores</h1> -->
 
-              <div class="cards">
-  <div class="card">
-    <a href="/institucional/instrutor-perfil">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-  <div class="card">
-    <a href="#">
-      <img src="http://placehold.it/130x130">
-      <div>
-        <strong>Osny Netto</strong>
-        <p>Front-end developer</p>
-      </div>
-    </a>
-  </div>
-  
-</div>
+          <div class="cards">
+            <div class="card" ng-repeat="instructor in ::instructors track by instructor.id" >
+              <a href="/institucional/instrutor/{{::instructor.id}}">
+                <img back-img="{{::instructor.imagem}}" ng-src="{{::instructor.imagem}}">
+                <div>
+                  <strong>{{::instructor.nome}}</strong>
+                  <p>{{::instructor.formacao}}</p>
+                </div>
+              </a>
+            </div>
+          </div>
            <!-- //page_content -->
     </div> <!-- //large-8-->
-
-
-
-	<li class="home__instructors__item" ng-repeat="instructor in instructors" >
-		<div class="home__instructors__card" >
-			<div class="home__instructors__card-header">
-				 <img class="home__instructors__image" ng-src="{{instructor.imagem}}" alt="{{instructor.imagem}}">
-				 <a href="{{instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{instructor.nome}}" ng-show="{{instructor.linkedin}}">Linkedin</a>
-			</div> <!-- //home__instructors__image -->
-
-			<div class="home__instructors__card-footer">
-				<strong class="home__instructors__name" ng-bind="instructor.nome" >{{instructor.nome}}</strong>
-				<span class="home__instructors__profession" ng-bind="instructor.formacao" >{{instructor.formacao}}</span>
-			</div> <!-- //home__instructors__card-footer -->
-			</div> <!-- //home__instructors__card -->
-	</li>

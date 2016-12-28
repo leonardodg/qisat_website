@@ -192,3 +192,13 @@ margin-top: 10px;
     // }
   }
 }
+
+
+.btn-password {
+  margin-bottom: 20px;
+  
+  @media only screen and (max-width: 40em) {
+    display: block !important;
+    width: 100%;
+  }
+}
