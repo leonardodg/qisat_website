@@ -249,13 +249,16 @@
 				 </div>
 
         <div class="panel callout radius" ng-repeat="item in navFilters" >
-          <button class="close-button" aria-label="Close alert" type="button">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          
           <strong>{{::item.title}} (<strong class="navLink_number">{{item.selected}}</strong>):</strong>
           <ul class="inline-list">
             <li ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
-              <a ng-href="{{::filtro.hash}}" > {{::filtro.name}} </a></p>
+              <a ng-href="{{::filtro.hash}}" >
+                <button class="close-button" aria-label="Close alert" type="button">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{::filtro.name}}
+              </a>
             </li>
           </ul>
         </div>

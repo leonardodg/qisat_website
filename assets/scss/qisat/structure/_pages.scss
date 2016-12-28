@@ -65,6 +65,10 @@ button.close-button, .close-button {
   color: #999 !important;
   float: right;
   font-size: 20px;
+  margin-left: 5px;
+  margin-top: -3px;
+  span {
+  }
 }
 
 .page-course{
@@ -899,4 +903,9 @@ hr.clearfix {
       background-color: #f6f6f6;
     }
   }
+}
+
+
+.course-page__sections#publico-alvo {
+  min-height: 200px;
 }
