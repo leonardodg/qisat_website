@@ -1,10 +1,41 @@
-  <div class="large-3 medium-4 columns grid-sidebar-left">
-       menu aqui<br>
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-     </div> <!-- //large-4-->
+<<<<<<< HEAD:views/institucional-convenios-parceiros.html
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+            <div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" id="sidebar-styker">
+              <form name="formFilters" id="formFilters">
+
+                <div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Menu</h5>
+                    </div>
+  					<hr />
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Convênios</h5>
+                      <ul class="menu-filter-sidebar-option-set">
+                        <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais </a> </li>
+                        <li class="menu-filter-sidebar-item" > Projeto Rede Educacional 
+							 <ul class="menu-filter-sidebar-option-set"> 
+							 	 <li class="menu-filter-sidebar-item" >  <a href="/institucional/convenios/preduc/ensino"> &nbsp&nbsp&nbsp&nbsp&nbsp Instituição de Ensino </a> </li>
+							 	 <li class="menu-filter-sidebar-item" > <a href="/institucional/convenios/preduc/entidade"> &nbsp&nbsp&nbsp&nbsp&nbsp Entidade de Classe </a> </li>
+							 </ul>
+                        </li>
+                      </ul>
+
+                      <h5 class="menu-filter-sidebars--title"><a href="/institucional/parceiros">Parceiros</a></h5>
+                    </div>
+                  <hr />
+                </div>
+               </form> 
+            </div> <!-- //menu-filter-sidebars -->
+        </div>
+    </div> <!-- //large-4-->
      <div class="large-9 medium-8 columns">
           <div class="page_content">
-            <h1>Parcerias e convenios</h1>
+            <h1>Parcerias e convenios - INÍCIO </h1>
              <p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div> <!-- //page_content -->
 
@@ -16,67 +47,201 @@
 
 
 
+=======
+  <div class="large-3 medium-4 columns grid-sidebar-left">
+>>>>>>> 13665590629039d52b3ba52355d1c7291c94715f:views/institucional-convenios.html
 
-					<div class="row">
-						<div class="small-3 columns">
-						  <label for="nameConselho" class="text-right middle"> Nome do Conselho <small>*</small> </label>
-						</div>
-						<div class="small-9 columns">
-						  <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="conselho.name" required>
-						  <small class="error">Nome é Obrigatório!</small>
-						</div>
-					</div>
+          <div class="page_content">
+<div class="institucional">
 
-					<div class="row">
-						<div class="small-3 columns">
-						  <label for="nameResponsavel" class="text-right middle"> Nome do Responsável <small>*</small> </label>
-						</div>
-						<div class="small-9 columns">
-						  <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="conselho.responsavel" required>
-						  <small class="error">Nome é Obrigatório!</small>
-						</div>
-					</div>	
 
-					<div class="row">
-						<div class="small-3 columns">
-						  <label for="emailResponsavel" class="text-right middle ">E-mail do Responsável <small>*</small>
-						</div>
-						<div class="small-9 columns">
-						  <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" required >
-						  <small class="error">Formato de Email incorreto!</small>
-						</div>
-					</div>
 
-					<div class="row">
-						<div class="small-3 columns">
-						  <label for="phoneResponsavel" class="text-right middle">Telefone do Responsável <small>*</small></label>
-						</div>
-						<div class="small-9 columns">
-						  <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="conselho.phone" mask="(99) 9?9999-9999" required>
-						  <small class="error">Telefone é Obrigatório!</small>
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						  <div class="small-3 large-3 columns">
-		  				  	<div class="g-recaptcha" data-sitekey="6Ld8bgcUAAAAAFeHx_7T3Vb_cBZTGDH_CZ_T_uhA" ></div>
-		  				  </div>
+  <ul class="accordion" data-accordion>
+    <li class="accordion-navigation">
+      <a href="convenios">Convênios</a>
+    </li>
+    <li class="accordion-navigation">
+      <a href="/institucional-parceiros">Parceiros</a>
+    </li>
+  </ul>
 
-						  <div class="small-4 large-4 columns">
-						  	
-						  			<button class="button expand" type="submit" ng-disabled="cadastroConselhoForm.$invalid" ng-click="addInstitution(3)"> Enviar </button>
+     </div>
+     </div>
+     </div> <!-- //large-4-->
+     <div class="large-9 medium-8 columns">
+          <div class="page_content">
+            <div class="parceiros">
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+              <div class="logo">
+                <a href="#">
+                  <img src="http://placehold.it/200x100.jpg">
+                  <span>Conheça nosso parceiro</span>
+                </a>
+              </div>
+            </div>
+          </div> <!-- //page_content -->
 
-						   			<div data-alert class="alert-box info radius alert-3-ok" style="display: none;">
-									  Mensagem Enviada com SUCESSO!
-									</div>
 
-									<div data-alert class="alert-box warning  radius alert-3-error" style="display: none;">
-									  Falha no Envio da Mensagem!
-									</div>
-						  </div>
-		  				  
-				   	</div>
-				</form>
+      <div class="page_content">
+      <div class="convenios">
+        
+        <div class="row entidades">
+          <div class="column small-4">
+            <div>
+              <a href="" class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+            </div>
+          </div>
+          <div class="column small-4">
+            <div>
+              <a href=""><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+            </div>
+          </div>
+          <div class="column small-4">
+            <div>
+              <a href=""><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <br>
+
+      <accordion close-others="oneAtATime">
+        <accordion-group heading="Como fazer o convênio?">
+          This content is straight in the template.
+        </accordion-group>
+        <accordion-group heading="Documentos para download">
+          ...
+        </accordion-group>
+        
+      </accordion>
+
+
+        <div class="admin__heading">
+          <h1>Solicitar Cadastro de Conselho</h1>
+        </div>
+
+        <form name="cadastroConselhoForm" id="cadastroConselhoForm" data-abide>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="nameConselho" class="text-right middle"> Nome do Conselho <small>*</small> </label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="conselho.name" required>
+              <small class="error">Nome é Obrigatório!</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="nameResponsavel" class="text-right middle"> Nome do Responsável <small>*</small> </label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="conselho.responsavel" required>
+              <small class="error">Nome é Obrigatório!</small>
+            </div>
+          </div>  
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="emailResponsavel" class="text-right middle ">E-mail do Responsável <small>*</small>
+            </div>
+            <div class="small-9 columns">
+              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" required >
+              <small class="error">Formato de Email incorreto!</small>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="small-3 columns">
+              <label for="phoneResponsavel" class="text-right middle">Telefone do Responsável <small>*</small></label>
+            </div>
+            <div class="small-9 columns">
+              <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="conselho.phone" mask="(99) 9?9999-9999" required>
+              <small class="error">Telefone é Obrigatório!</small>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="small-3 columns">
+            </div>
+            <div class="small-9 columns">
+
+                    <div class="g-recaptcha" data-sitekey="6Ld8bgcUAAAAAFeHx_7T3Vb_cBZTGDH_CZ_T_uhA" ></div>
+                
+                    <button class="primary" type="submit" ng-disabled="cadastroConselhoForm.$invalid" ng-click="addInstitution(3)"> Enviar </button>
+
+                    <div data-alert class="alert-box info radius alert-3-ok" style="display: none;">
+                    Mensagem Enviada com SUCESSO!
+                  </div>
+
+                  <div data-alert class="alert-box warning  radius alert-3-error" style="display: none;">
+                    Falha no Envio da Mensagem!
+                  </div>
+              </div>
+                
+            </div>
+        </form>
+
+
+      </div>
+			<div class="page_content">
+				
          	</div> <!-- //page_content -->
 
 			<div class="page_content">
@@ -360,7 +525,7 @@
          	</div> <!-- //page_content -->
 
 			<div class="page_content "> 
-          		<h1>Lista Conselho - CREAS Convêniados</h1>
+          		<h1>CREAS Convêniados</h1>
 
           			<table border="0" cellspacing="0" cellpadding="0" width="705" align="center">
 						<thead>

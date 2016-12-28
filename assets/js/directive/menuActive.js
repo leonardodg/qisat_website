@@ -17,9 +17,15 @@
 	                    		active.removeClass('menu-horizontal__item--current');
 
 	                    if (path) {
+
+	                    	if(path == '/institucional/parceiros' || path.indexOf('/institucional/convenios') >=0 )
+	                    		path = '/institucional/convenios-e-parceiros';
+
 	                         angular.forEach(elems, function (el){
-	                        	if(el && el.href.indexOf(path) > 0)
-	                        		elem = el;
+	                         		 el = angular.element(el);
+	                         		 var link = el.attr('link');
+	                        		 if(el && ((path == link) || (path.indexOf(link) >= 0)))
+	                        		 	elem = el;
 	                        });
 
 	                        if(elem){

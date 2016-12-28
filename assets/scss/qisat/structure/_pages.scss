@@ -769,3 +769,82 @@ button.close-button, .close-button {
 hr.clearfix {
   clear: both;
 }
+
+
+
+.parceiros {
+
+  .logo {
+    width: 50%;
+    float: left;
+
+    @media screen and (min-width: 40em) {
+      width: 33%;
+    }
+
+    a {
+      display: block;
+      height: 120px;
+      text-align: center;
+      padding-top: 30px;
+
+      @media screen and (min-width: 40em) {
+        height: 200px;
+        // padding-top: 30px;
+      }
+
+      img {
+        width: auto;
+        max-width: 90%;
+      }
+
+      span {
+        display: none;
+        background-color: $primary-color;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin: 20px auto;
+        color: #fff;
+        font-size: 13px;
+        width: 70%;
+      }
+
+      &:hover {
+        background-color: #f6f6f6;
+
+        span {
+          display: none;
+
+          @media screen and (min-width: 40em) {
+            display: block;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.convenios {
+  .entidades {
+    >div>div a {
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 15px;
+      display: block;
+      color: #666;
+
+      &.active {
+        background-color: #f6f6f6;
+      }
+
+      i {
+        display: block;
+      }
+
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    }
+  }
+}
