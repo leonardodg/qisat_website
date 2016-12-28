@@ -4105,6 +4105,82 @@ hr.clearfix {
   clear: both;
 }
 
+/* line 777, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo {
+  width: 50%;
+  float: left;
+}
+@media screen and (min-width: 40em) {
+  /* line 777, ../scss/qisat/structure/_pages.scss */
+  .parceiros .logo {
+    width: 33%;
+  }
+}
+/* line 785, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo a {
+  display: block;
+  height: 120px;
+  text-align: center;
+  padding-top: 30px;
+}
+@media screen and (min-width: 40em) {
+  /* line 785, ../scss/qisat/structure/_pages.scss */
+  .parceiros .logo a {
+    height: 200px;
+  }
+}
+/* line 796, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo a img {
+  width: auto;
+  max-width: 90%;
+}
+/* line 801, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo a span {
+  display: none;
+  background-color: #005B94;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin: 20px auto;
+  color: #fff;
+  font-size: 13px;
+  width: 70%;
+}
+/* line 812, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo a:hover {
+  background-color: #f6f6f6;
+}
+/* line 815, ../scss/qisat/structure/_pages.scss */
+.parceiros .logo a:hover span {
+  display: none;
+}
+@media screen and (min-width: 40em) {
+  /* line 815, ../scss/qisat/structure/_pages.scss */
+  .parceiros .logo a:hover span {
+    display: block;
+  }
+}
+
+/* line 830, ../scss/qisat/structure/_pages.scss */
+.convenios .entidades > div > div a {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 15px;
+  display: block;
+  color: #666;
+}
+/* line 837, ../scss/qisat/structure/_pages.scss */
+.convenios .entidades > div > div a.active {
+  background-color: #f6f6f6;
+}
+/* line 841, ../scss/qisat/structure/_pages.scss */
+.convenios .entidades > div > div a i {
+  display: block;
+}
+/* line 845, ../scss/qisat/structure/_pages.scss */
+.convenios .entidades > div > div a:hover {
+  background-color: #f6f6f6;
+}
+
 /* grid ---------------------------------------- */
 /* line 22, ../scss/qisat/layout/_admin.scss */
 .admin_main__container {
