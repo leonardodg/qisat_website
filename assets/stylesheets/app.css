@@ -4183,6 +4183,51 @@ hr.clearfix {
   background-color: #f6f6f6;
 }
 
+/* line 856, ../scss/qisat/structure/_pages.scss */
+.menu-partners {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-top: 1px solid #eee;
+  margin-left: -20px;
+  width: 285px;
+}
+/* line 864, ../scss/qisat/structure/_pages.scss */
+.menu-partners ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  border-top: 1px solid #ddd;
+}
+/* line 871, ../scss/qisat/structure/_pages.scss */
+.menu-partners ul li a {
+  padding-left: 40px;
+  font-weight: normal;
+  background-color: #FFF !important;
+}
+/* line 877, ../scss/qisat/structure/_pages.scss */
+.menu-partners ul li.active a {
+  background-color: #eee !important;
+}
+/* line 883, ../scss/qisat/structure/_pages.scss */
+.menu-partners li {
+  border-bottom: 1px solid #eee;
+}
+/* line 886, ../scss/qisat/structure/_pages.scss */
+.menu-partners li a {
+  display: block;
+  color: #555;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 10px;
+  padding-left: 20px;
+  background-color: #FFF;
+}
+/* line 896, ../scss/qisat/structure/_pages.scss */
+.menu-partners li.active a {
+  background-color: #f6f6f6;
+}
+
 /* grid ---------------------------------------- */
 /* line 22, ../scss/qisat/layout/_admin.scss */
 .admin_main__container {
