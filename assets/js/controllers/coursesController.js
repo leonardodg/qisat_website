@@ -5,6 +5,13 @@
 
 	angular
 		.module('QiSatApp')
+		.config( function ($locationProvider) {
+	               $locationProvider.html5Mode({
+                                              enabled: true, 
+                                              requireBase: false,
+                                              rewriteLinks: 'internal'
+                                            });
+	     })
 		.controller("CoursesController",
 			[ '$scope','$filter' , '$location', 'QiSatAPI', 'Config', 'getWatchCount', function($scope, $filter, $location, QiSatAPI, Config, getWatchCount ){
 

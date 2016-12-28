@@ -1,84 +1,107 @@
-<div class="admin__heading">
-			<h2 class="subtitle"> CArrinho </h2>
-			<h1 class="title"> Portal do Aluno  </h1>
-		</div>
+<div class="financeiro">
+<div class="breadcrumb">
+  <a href="/aluno/financeiro">Financeiro</a> / Descrição da compra
+</div>
+
+  <div class="admin__heading">
+		<h1 class="title">Descrição da compra</h1>
+	</div>
 
 
-		<section id="dashboard">
+		<section id="dashboard" class="box">
 			<div class="row">
 
-				<div class="small-12 columns">
+        <div class="small-3 columns">
+          <p><strong>Data de criação</strong></p>
+          {{::dadosCarrinho.dataFormat}}
+        </div>
 
-					<h2 class="subtitle"> Detalhes </h2>
-					<table>
-					  <thead>
-					    <tr>
-					      <th width="100">Número do Pedido</th>
-					      <th width="175">Data de criação do Carrinho</th>
-					      <th width="100">Status do Carrinho</th>
-					      <th width="100">Total</th>
-					      <th width="350">Forma Pagamento</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td>{{::dadosCarrinho.pedido}}</td>
-					      <td>{{::dadosCarrinho.dataFormat}}</td>
-					      <td>{{::dadosCarrinho.status_carrinho}}</td>
-					      <td>{{::dadosCarrinho.total}}</td>
-					      <td>{{::dadosCarrinho.dadosPagamento}}</td>
-					    </tr>
-					  </tbody>
-					</table>
+        <div class="small-3 columns">
+          <p><strong>Status do Carrinho</strong></p>
+          {{::dadosCarrinho.status_carrinho}}
+        </div>
 
-					<div ng-if="::dadosCarrinho.products.length">
-						<h2 class="subtitle"> Produtos </h2>
-						<table>
-						  <thead>
-						    <tr>
-						      <th width="150">Imagem</th>
-						      <th width="300">Produto</th>
-						      <th width="50">Quantidade</th>
-						      <th width="50">Status</th>
-						      <th width="150">Valor Unitário</th>
-						      <th width="100">Valor</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr ng-repeat="products in dadosCarrinho.products track by products.id">
-						      <td></td>
-						      <td>{{::products.nome}}</td>
-						      <td>{{::products.quantidade}}</td>
-						      <td>{{::products.status}}</td>
-						      <td>{{::products.preco}}</td>
-						      <td>{{::products.total}}</td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
+        <div class="small-3 columns">
+          <p><strong>Status da venda</strong></p>
+          --
+        </div>
 
-					<div ng-if="::dadosCarrinho.promotions.length">		
-						<h2 class="subtitle"> Promoção </h2>
-						<table>
-						  <thead>
-						    <tr>
-						      <th width="300">Promoção</th>
-						      <th width="100">Início</th>
-						      <th width="100">Fim</th>
-						      <th width="100">Desconto</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr ng-repeat="promotions in dadosCarrinho.promotions track by promotions.id">
-						      <td>{{::promotions.descricao}}</td>
-						      <td>{{::promotions.datainicioFormat}}</td>
-						      <td>{{::promotions.datafimFormat}}</td>
-						       <td>{{::promotions.desconto}}</td>
-						    </tr>
-						  </tbody>
-						</table>
-					</div>
+				<div class="small-3 columns">
+          <p><strong>Número do Pedido</strong></p>
+          {{::dadosCarrinho.pedido}}
+        </div>
+      </div>
+
+      <hr>
+
+			<div ng-if="::dadosCarrinho.products.length">
+				<table width="100%" class="product">
+				  <thead>
+				    <tr>
+				      <th width="10%">Imagem</th>
+				      <th width="40%" class="text-center">Produto</th>
+				      <th width="12%">Quantidade</th>
+				      <th width="14%">Status</th>
+				      <th width="12%">Valor Unitário</th>
+				      <th width="12%">Valor</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="products in dadosCarrinho.products track by products.id">
+				      <td></td>
+				      <td>{{::products.nome}}</td>
+				      <td>{{::products.quantidade}}</td>
+				      <td>{{::products.status}}</td>
+				      <td>{{::products.preco}}</td>
+				      <td>{{::products.total}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+
+      <hr>
+
+      <div class="row">
+
+        <div class="small-3 columns">
+          <p><strong>Total de produtos</strong></p>
+          {{::dadosCarrinho.total}}
+        </div>
+
+        <div class="small-3 columns">
+          <p><strong>Forma de pagamento</strong></p>
+          {{::dadosCarrinho.dadosPagamento}}
+        </div>
+
+        <div class="small-3 columns"></div>
+        <div class="small-3 columns"></div>
+        
+      </div>
+
+      <hr>
+
+			<div ng-if="::dadosCarrinho.promotions.length">		
+        <table width="100%" class="product">
+				  <thead>
+				    <tr>
+				      <th width="50%" class="text-center">Promoção</th>
+				      <th width="17%" class="text-center">Início</th>
+				      <th width="17%" class="text-center">Fim</th>
+				      <th width="16%" class="text-center">Desconto</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="promotions in dadosCarrinho.promotions track by promotions.id">
+				      <td>{{::promotions.descricao}}</td>
+				      <td>{{::promotions.datainicioFormat}}</td>
+				      <td>{{::promotions.datafimFormat}}</td>
+				       <td>{{::promotions.desconto}}</td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
 		 		</div>
 			</div> <!-- //row -->
 		</section>
 
+</div>

@@ -105,6 +105,21 @@
 									return promise;
 							},
 
+							getInfo : function (course) {
+									
+									var promise = $http({ 
+															cache: true, 
+															method: 'GET', 
+															url: Config.baseUrl+'/info/'+course
+														});
+
+										return promise.then( function successCallback( res ){
+											if(res.status == 200) 
+												return res.data;
+										});
+							},
+
+
 							getCourses : function () {
 									var promise = $http({ 
 													cache: true, 

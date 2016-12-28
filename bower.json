@@ -8,6 +8,7 @@
     "isotope": "^3.0.0",
     "foundation": "^5.5.3",
     "sticky-kit": "^1.1.2",
-    "PACE": "pace#^1.0.2"
+    "PACE": "pace#^1.0.2",
+    "angular-foundation": "^0.8.0"
   }
 }

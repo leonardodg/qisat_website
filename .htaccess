@@ -51,12 +51,12 @@
   RewriteRule ^curso/([^/]+)?/?$ pages/info.html [NC]
   RewriteRule ^curso/(online|presencial)/([^/]+)/?$ pages/info.html?mod=$1&curso=$2 [NC]
   
-  RewriteRule ^institucional/?$ pages/institucional-sobre-a-empresa.html [NC]
-  RewriteRule ^institucional/([^/]+)/?$ pages/institucional-$1.html [NC]
+  RewriteRule ^institucional/?$ pages/institucional.html [NC]
+  RewriteRule ^institucional/([^/]+)?/?$ pages/institucional.html [NC,L]
   
   RewriteRule ^aluno/?([^/]+)?/?$ pages/aluno.html [NC]
   RewriteRule ^aluno/(carrinho)/([^/]+)$ pages/aluno.html [NC]
-  RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno.html [NC]
+  RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno-sem-menu.html [NC]
   
   RewriteRule ^sugira/([^/]+)?/?$ pages/sugira.html?filter=$1 [NC]
   RewriteRule ^sugira/?$ pages/sugira.html [NC]

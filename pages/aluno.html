@@ -94,17 +94,17 @@
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
 
-<main class="admin_main" >
-	<div class="admin_sidebar" ng-controller="alunoController" >
+ <main class="admin_main" >
+	 <div class="admin_sidebar" ng-controller="alunoController" >
 
  		<ul class="metismenu admin__menu">
 
  			<div ng-if='isAuth' class="ng-cloak" >
- 				 <li class="item">  	<a href="/aluno/perfil" class="link"> <i class="material-icons">folder_special</i> Perfil </a>  </li>
+ 				 <li class="item">  	<a href="/aluno/perfil" class="link"> <i class="material-icons">person</i> Perfil </a>  </li>
 	            <li class="item">  	<a href="/aluno/cursos" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
-	            <li class="item">  	<a href="/aluno/certificados" class="link"> <i class="material-icons">folder_special</i> Certificados </a>  </li>
-	            <li class="item">  	<a href="/aluno/financeiro" class="link"> <i class="material-icons">folder_special</i> Financeiro </a>  </li>
-	            <li class="item">  	<a href="/login" class="link" ng-click='logout()'> <i class="material-icons">folder_special</i> Sair </a>  </li>
+	            <li class="item">  	<a href="/aluno/certificados" class="link"> <i class="material-icons">stars</i> Certificados </a>  </li>
+	            <li class="item">  	<a href="/aluno/financeiro" class="link"> <i class="material-icons">attach_money</i> Financeiro </a>  </li>
+	            <li class="item">  	<a href="/login" class="link" ng-click='logout()'> <i class="material-icons">remove_circle_outline</i> Sair </a>  </li>
  			</div>
 
 			<div ng-if='isAuth===false'class="ng-cloak" >
@@ -121,8 +121,8 @@
            
         </ul>
 
- 	</div> <!-- //admin_sidebar -->
-	<div class="admin_content" >
+ 	</div> 
+	 <div class="admin_content" >
 	
 		<div ng-if='error' class="ng-cloak" >
 			<div data-alert class="alert-box warning radius">
@@ -133,9 +133,8 @@
 
 		<div ng-view></div>
 
- 	</div> <!-- //admin_content -->
-
-</main> <!--// main-content -->
+ 	</div>
+</main>  <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
 
 				<!-- ########################## FOOTER ########################## -->
@@ -240,16 +239,15 @@
 
 
 	<!-- GLOBAL -->
-		<script defer src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+		<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 	<!-- // GLOBAL -->
 
 
 	<!-- EXECUTA SCRIPTS QISAT -->
-	    
-
-	    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
 	    <script defer src="js/libs/angular-locale_pt-br.js"></script>
 		<script defer src="js/libs/angular-cookies.min.js"></script>
 	    <script defer src="js/libs/angular-route.min.js"></script>
@@ -260,8 +258,8 @@
 
 	    <script defer src="js/config/value.js"></script>
 	    <script defer src="js/config/interceptors.js"></script>
-	    
 	    <script defer src="js/routes/portalAluno.js"></script>
+	    
 		<script defer src="js/directive/cpfCheck.js"></script>
 		<script defer src="js/directive/emailCheck.js"></script>
 		<script defer src="js/directive/pwCheck.js"></script>

@@ -135,8 +135,10 @@ body.hidden-scroll {
     -ms-touch-action: none;
     touch-action: none;
     z-index: 10000;
-    padding: 20px;
-    background-color: #004c6d;
+    padding: 0;
+    padding-top: 10px;
+    background-color: #37393b;
+    border: 1px solid #666;
 
     img {
       margin: 0;

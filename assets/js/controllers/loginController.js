@@ -12,7 +12,8 @@
 						 		credentials.remember = (scope.remember_me) ? true : false; 
 								authService.login(credentials).then(function (res){
 				 					if(res.data.success)
-				 						$location.path('/aluno/perfil');
+				 						// $location.path('/aluno/perfil');
+				 						window.location = '/aluno/perfil';
 				 					else{
 				 						scope.msgLogin = "Falha na Autenticação!";
 				 						scope.typeMsgLogin = "alert-box alert radius";

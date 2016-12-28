@@ -8,6 +8,18 @@
           
             $locationProvider.html5Mode(true);    
 
+            $routeProvider.when('/aluno', {
+              templateUrl : '/views/aluno-perfil.html', 
+              isAuth : true,
+              controller: 'perfilController',
+              resolve : {
+                Authenticated : function(authService){
+                      return authService.isAuth() || 
+                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                  }
+              }
+            });
+
             $routeProvider.when('/aluno/perfil', {
               templateUrl : '/views/aluno-perfil.html', 
               isAuth : true,
@@ -86,24 +98,5 @@
               }
             });
 
-            $routeProvider.when('/cadastro', {
-              templateUrl : '/views/cadastro.html',
-              controller : 'singupController',
-              isAuth : false
-            });
-
-            $routeProvider.when('/lembrete-de-senha', {
-              templateUrl : '/views/lembrete-de-senha.html',
-              controller : 'rememberController',
-              isAuth : false
-            });
-
-            $routeProvider.when('/login', {
-              templateUrl : '/views/login.html',
-              controller: 'loginController',
-              isAuth : false
-            });
-
-            $routeProvider.otherwise('/login');
     }]);
 })();

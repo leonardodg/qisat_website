@@ -1,0 +1,153 @@
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+            <div class="show-for-medium-down text-center show-filters">
+              <a href="#"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+            </div>
+            <div class="menu-filter-sidebars" id="sidebar-styker">
+              <form name="formFilters" id="formFilters">
+
+                <div>
+
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Buscar por nome</h5>
+                      <input type="text" name="">
+                    </div>
+  <hr />
+                    <div>
+                      <h5 class="menu-filter-sidebars--title">Formação</h5>
+                      <ul class="menu-filter-sidebar-option-set">
+                        <li class="menu-filter-sidebar-item" ><input name="arquiteto" type="radio"  value="arquiteto" class="with-font" /> <label for="arquiteto">Arquiteto</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input name="agronomo" type="radio"  value="agronomo" class="with-font" /> <label for="agronomo">Eng. Agronomo</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input name="civil" type="radio"  value="civil" class="with-font" /> <label for="civil">Eng. Civil</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input name="eletricista" type="radio"  value="eletricista" class="with-font" /> <label for="eletricista">Eng. Eletricista</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input name="sanitaria" type="radio"  value="sanitaria" class="with-font" /> <label for="sanitaria">Eng. Sanitária</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" ><input name="outros" type="radio"  value="outros" class="with-font" /> <label for="outros">Outros</label> </label> </li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <hr>
+                       <h5 class="menu-filter-sidebars--title">Área de atuação</h5> 
+                       <ul class="menu-filter-sidebar-option-set">
+
+                         <li class="menu-filter-sidebar-item">
+                            <input id="Estrutural " type="checkbox" class="with-font filter-checkbox filter-types" /> 
+                            <label for="Estrutural">Estrutural</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item">
+                            <input id="Hidrossanitaria " type="checkbox" class="with-font filter-checkbox filter-types" /> 
+                            <label for="Hidrossanitaria">Hidrossanitária </label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item">
+                            <input id="Eletrica " type="checkbox" class="with-font filter-checkbox filter-types" /> 
+                            <label for="Eletrica">Elétrica</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item">
+                            <input id="Arquitetonica " type="checkbox" class="with-font filter-checkbox filter-types" /> 
+                            <label for="Arquitetonica">Arquitetonica</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item">
+                            <input id="Agronomia" type="checkbox" class="with-font filter-checkbox filter-types" /> 
+                            <label for="Agronomia"> Agronomia </label> 
+                        </li>
+                    </div>
+                  <hr />
+                </div>
+               </form> 
+            </div> <!-- //menu-filter-sidebars -->
+        </div>
+    </div> <!-- //large-4-->
+     <div class="large-9 columns page-professores">
+          <!-- <div class="page_content"> -->
+            <!-- <h1>Instrutores e professores</h1> -->
+
+              <div class="cards">
+  <div class="card">
+    <a href="/institucional/instrutor-perfil">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+  <div class="card">
+    <a href="#">
+      <img src="http://placehold.it/130x130">
+      <div>
+        <strong>Osny Netto</strong>
+        <p>Front-end developer</p>
+      </div>
+    </a>
+  </div>
+  
+</div>
+           <!-- //page_content -->
+    </div> <!-- //large-8-->
+
+
+
+	<li class="home__instructors__item" ng-repeat="instructor in instructors" >
+		<div class="home__instructors__card" >
+			<div class="home__instructors__card-header">
+				 <img class="home__instructors__image" ng-src="{{instructor.imagem}}" alt="{{instructor.imagem}}">
+				 <a href="{{instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{instructor.nome}}" ng-show="{{instructor.linkedin}}">Linkedin</a>
+			</div> <!-- //home__instructors__image -->
+
+			<div class="home__instructors__card-footer">
+				<strong class="home__instructors__name" ng-bind="instructor.nome" >{{instructor.nome}}</strong>
+				<span class="home__instructors__profession" ng-bind="instructor.formacao" >{{instructor.formacao}}</span>
+			</div> <!-- //home__instructors__card-footer -->
+			</div> <!-- //home__instructors__card -->
+	</li>

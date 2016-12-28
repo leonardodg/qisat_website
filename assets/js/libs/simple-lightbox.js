@@ -166,7 +166,7 @@ $.fn.simpleLightbox = function( options )
 			}
 			image.html('').attr('style','');
 			curImg.appendTo(image);
-      $('<img src="images/brand/brand_small-light.svg" alt="AltoQi" style="margin: 5px auto 20px auto;">').prependTo(image);
+      $('<img src="images/brand/brand_small-light.svg" alt="AltoQi" style="opacity: 0.3;width: 76px;margin: 5px auto 20px auto;">').prependTo(image);
 			addEvents();
 			overlay.fadeIn('fast');
 			$('.sl-close').fadeIn('fast');
