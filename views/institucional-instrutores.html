@@ -9,46 +9,68 @@
                 <div>
 
                     <div>
-                      <h5 class="menu-filter-sidebars--title">Buscar por nome</h5>
-                      <input type="text" name="">
+                      <h5 class="menu-filter-sidebars--title">Buscar por nome {{search}}</h5>
+
+                      <form name="formSearch" id="formSearch"> 
+                        <input class="instructor-input-search" type="text" placeholder="Busca por nome" ng-model="searchName" >
+                      </form>
+
                     </div>
   <hr />
                     <div>
                       <h5 class="menu-filter-sidebars--title">Formação</h5>
                       <ul class="menu-filter-sidebar-option-set">
-                        <li class="menu-filter-sidebar-item" ><input name="arquiteto" type="radio"  value="arquiteto" class="with-font" /> <label for="arquiteto">Arquiteto</label> </label> </li>
-                        <li class="menu-filter-sidebar-item" ><input name="agronomo" type="radio"  value="agronomo" class="with-font" /> <label for="agronomo">Eng. Agronomo</label> </label> </li>
-                        <li class="menu-filter-sidebar-item" ><input name="civil" type="radio"  value="civil" class="with-font" /> <label for="civil">Eng. Civil</label> </label> </li>
-                        <li class="menu-filter-sidebar-item" ><input name="eletricista" type="radio"  value="eletricista" class="with-font" /> <label for="eletricista">Eng. Eletricista</label> </label> </li>
-                        <li class="menu-filter-sidebar-item" ><input name="sanitaria" type="radio"  value="sanitaria" class="with-font" /> <label for="sanitaria">Eng. Sanitária</label> </label> </li>
-                        <li class="menu-filter-sidebar-item" ><input name="outros" type="radio"  value="outros" class="with-font" /> <label for="outros">Outros</label> </label> </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Arquiteto" name="Arquiteto" type="checkbox" value="Arquiteto" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Arquiteto'"/> 
+                          <label for="Arquiteto">Arquiteto</label>
+                        </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Agronomo" name="Agronomo" type="checkbox" value="Eng. Agronomo" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Agronomo'"/> 
+                          <label for="Agronomo">Eng. Agronomo</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Civil" name="Civil" type="checkbox" value="Eng. Civil" class="with-font" ng-model="formacao"  ng-change="changeFormacao()"  ng-true-value="'Eng. Civil'" /> 
+                          <label for="Civil">Eng. Civil</label>
+                        </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Eletricista" name="Eletricista" type="checkbox" value="Eng. Eletricista" class="with-font" ng-model="formacao" ng-change="changeFormacao()"  ng-true-value="'Eng. Eletricista'" /> 
+                          <label for="Eletricista">Eng. Eletricista</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Sanitarista" name="Sanitarista" type="checkbox" value="Eng. Sanitarista" class="with-font" ng-model="formacao" ng-change="changeFormacao()"  ng-true-value="'Eng. Sanitária'"/> 
+                          <label for="Sanitarista">Eng. Sanitária</label> 
+                        </li>
+                        <li class="menu-filter-sidebar-item" >
+                          <input id="Outros" name="Outros" type="checkbox" value="" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Outros'"/> 
+                          <label for="Outros">Outros</label> 
+                        </li>
                       </ul>
                     </div>
 
                     <div>
                       <hr>
-                       <h5 class="menu-filter-sidebars--title">Área de atuação</h5> 
+                       <h5 class="menu-filter-sidebars--title">Área de atuação </h5> 
                        <ul class="menu-filter-sidebar-option-set">
 
                          <li class="menu-filter-sidebar-item">
-                            <input id="Estrutural " type="checkbox" class="with-font filter-checkbox filter-types" /> 
-                            <label for="Estrutural">Estrutural</label> 
+                            <input name="estrutural" id="estrutural" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.estrutural" ng-true-value="1" ng-change="changeCheckbox()"/>
+                            <label for="estrutural" >Estrutural</label> 
                         </li>
                         <li class="menu-filter-sidebar-item">
-                            <input id="Hidrossanitaria " type="checkbox" class="with-font filter-checkbox filter-types" /> 
-                            <label for="Hidrossanitaria">Hidrossanitária </label> 
+                            <input name="hidrossanitaria" id="hidrossanitaria" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.hidrossanitaria" ng-true-value="1" ng-change="changeCheckbox()" />
+                            <label for="hidrossanitaria"> Hidrossanitária </label> 
                         </li>
                         <li class="menu-filter-sidebar-item">
-                            <input id="Eletrica " type="checkbox" class="with-font filter-checkbox filter-types" /> 
-                            <label for="Eletrica">Elétrica</label> 
+                            <input name="eletrica"  id="eletrica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.eletrica" ng-true-value="1" ng-change="changeCheckbox()" />
+                            <label for="eletrica">Elétrica</label> 
                         </li>
                         <li class="menu-filter-sidebar-item">
-                            <input id="Arquitetonica " type="checkbox" class="with-font filter-checkbox filter-types" /> 
-                            <label for="Arquitetonica">Arquitetonica</label> 
+                            <input name="arquitetonica" id="arquitetonica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.arquitetonica"  ng-true-value="1" ng-change="changeCheckbox()"/>
+                            <label for="arquitetonica">Arquitetonica</label> 
                         </li>
                         <li class="menu-filter-sidebar-item">
-                            <input id="Agronomia" type="checkbox" class="with-font filter-checkbox filter-types" /> 
-                            <label for="Agronomia"> Agronomia </label> 
+                            <input name="agronomia" id="agronomia" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.agronomia" ng-true-value="1" ng-change="changeCheckbox()" />
+                            <label for="agronomia"> Agronomia </label> 
                         </li>
                     </div>
                   <hr />
@@ -59,10 +81,8 @@
     </div> <!-- //large-4-->
      <div class="large-9 columns page-professores">
           <!-- <div class="page_content"> -->
-            <!-- <h1>Instrutores e professores</h1> -->
-
           <div class="cards">
-            <div class="card" ng-repeat="instructor in ::instructors track by instructor.id" >
+            <div class="card" ng-repeat="instructor in instructors | filter:filterInstructor | filter:{nome:searchName} track by instructor.id" >
               <a href="/institucional/instrutor/{{::instructor.id}}">
                 <img back-img="{{::instructor.imagem}}" ng-src="{{::instructor.imagem}}">
                 <div>
