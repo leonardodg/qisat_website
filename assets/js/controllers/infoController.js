@@ -10,10 +10,29 @@
 					 		host = $location.host(), 
 					 		path = absUrl.substr(absUrl.indexOf('curso/'));
 					 		path = path.split('/');
+    					activate();
+
+					 	vm.modalplay = function () {
+				 					var modalInstance = $modal.open({ 
+                      						windowClass: 'trailer',
+				 							templateUrl: '/views/modal-trailer.html',
+				 							controller : function ($scope, $modalInstance) {
+															  $scope.cancel = function () {
+															    $modalInstance.dismiss('cancel');
+															  };
+															},
+											resolve: {
+												        video: function () {
+												          return vm.info.files;
+												        }
+												      }
+				 						});
+					 			  };
+
 
 					 	vm.modaltrailer = function () {
 				 					var modalInstance = $modal.open({ 
-                      windowClass: 'trailer',
+                      						windowClass: 'trailer',
 				 							templateUrl: '/views/modal-trailer.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
@@ -25,7 +44,7 @@
 
 					 	vm.modalcall = function () {
 				 					var modalInstance = $modal.open({ 
-                      windowClass: 'call',
+                      						windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
@@ -35,7 +54,7 @@
 				 						});
 					 			  };
 
-    					activate();
+
 
 						function activate() {
 					         return QiSatAPI.getInfo(path[2])

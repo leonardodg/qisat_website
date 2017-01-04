@@ -200,7 +200,7 @@
 										<a class="anchor navigation_courses__list-item--link" href="#proximas-turmas">Próximas turmas</a>
 									</li>
 
-									<li data-magellan-arrival="perguntas-frequentes" class="navigation_courses__list-item" ng-if="::vm.info.faq.length">
+									<li data-magellan-arrival="perguntas-frequentes" class="navigation_courses__list-item" ng-if="::vm.info.faqs.length">
 										<a class="anchor navigation_courses__list-item--link" href="#perguntas-frequentes">Perguntas frequentes</a>
 									</li>
 
@@ -310,9 +310,9 @@
  	</section>
 
 	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="::vm.info.conteudos.length">
-		<h2 class="course-page__sections--title">Conteúdo programático</h2>
+		<h2 class="course-page__sections--title">Conteúdo programático <div ng-click="vm.modalplay()">play</div></h2>
 		<accordion class="accordion-component accordion">
-			<accordion-group heading="{{conteudo.titulo}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title">
+			<accordion-group heading="{{conteudo.titulo}}" modal="{{vm.modalplay}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
 		      <div ng-bind-html="conteudo.descricao"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
@@ -587,7 +587,7 @@
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
 		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
-		<script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
+		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
 		<script src="/libs/sticky/sticky-kit.js"></script>
 		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 		<script defer src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
