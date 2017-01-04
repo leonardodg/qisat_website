@@ -20,7 +20,7 @@
                                         scope.emailremember = res.data.email;
                                     }
                                     else
-                                        console.log(res);
+                                        console.log(res); // verificar
                                 });
                                 
                             }
