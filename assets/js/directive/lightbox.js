@@ -9,7 +9,9 @@
             link: function (scope, elem, attrs) {
                 var init = function(){
                     var elems = elem.find("a");
-                    elems.simpleLightbox();
+                    elems.simpleLightbox({
+                      captions: true
+                    });
                 }
                 timer(init, 0);
             }

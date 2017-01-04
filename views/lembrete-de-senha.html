@@ -9,6 +9,14 @@
 
     <section id="dashboard">
 
+        <div data-alert class="alert-box success radius alert-send-ok" style="display: none;">
+          Mensagem Enviada com SUCESSO!
+        </div>
+
+        <div data-alert class="alert-box warning radius alert-send-error" style="display: none;">
+          Falha no Envio da Mensagem!
+        </div>
+
           <form name="rememberForm" id="rememberForm" novalidate>
 
                     <label for="email">Email:</label>
@@ -21,17 +29,13 @@
                       <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                         <span class="error" >Formato de Email incorreto!</span>
                       </div>
+
+
                   
 
                 <button id="remember" ng-click="sendMail()" class="right"> Solicitar Senha »</button>
 
-                    <div data-alert class="alert-box info radius alert-send-ok" style="display: none;">
-                    Mensagem Enviada com SUCESSO!
-                  </div>
-
-                  <div data-alert class="alert-box warning  radius alert-send-error" style="display: none;">
-                    Falha no Envio da Mensagem!
-                  </div>
+                    
 
             </fieldset>
 

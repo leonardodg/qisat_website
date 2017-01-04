@@ -13,7 +13,7 @@
 										instructor.imagem = Config.imagensUrlDefault;
 
 									if(instructor.redes_sociais){
-										instructor.linkedin = instructor.redes_sociais.find(function(el){
+										instructor.linkedin = instructor.redes_sociais.find(function (el){
 												return el.descricao == 'Linkedin';
 										});
 									}
