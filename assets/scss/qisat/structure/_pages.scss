@@ -412,6 +412,11 @@ button.close-button, .close-button {
 .accordion-component .accordion-navigation.active > a:after {content: "-"; color: $primary-color;}
 .accordion-component .accordion-navigation > a:after{    content: "+";  color: $primary-color;  margin-right: 10px;    font-size: 23px;    line-height:1; float: right}
 .accordion-component .accordion-navigation > .content {    display: none;  padding: 0 40px 40px 40px;}
+#perguntas-frequentes {
+  .iconPlay, .addProduto {
+    display: none;
+  }
+}
 
 
 
@@ -476,7 +481,7 @@ button.close-button, .close-button {
         width: 100%;
         max-width: 100%;
         display: none;
-        
+
         @media only screen and (min-width: 40em) {
           display: block;
         }

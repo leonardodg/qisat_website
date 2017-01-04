@@ -418,8 +418,8 @@
 
 	<section class="course-page__sections  course-page__sections--slim" id="perguntas-frequentes" ng-if="::vm.info.faqs.length">
 		<h2 class="course-page__sections--title">Perguntas frequentes</h2>
-		<accordion>
-			<accordion-group heading="{{faq.titulo}}" ng-repeat="faq in vm.info.faqs">
+    <accordion class="accordion-component accordion">
+			<accordion-group heading="{{faq.titulo}}" ng-repeat="faq in vm.info.faqs" class="accordion-navigation tab-title">
 		      <div ng-bind-html="faq.descricao"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
