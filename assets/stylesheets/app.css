@@ -2569,6 +2569,11 @@ input[type=checkbox].with-font:checked ~ label:before {
   width: 380px;
 }
 
+/* line 48, ../scss/qisat/_foundation_override.scss */
+.alert-box {
+  width: 100%;
+}
+
 /*'HEADER*/
 /* line 3, ../scss/qisat/structure/_header.scss */
 .header-main {
