@@ -244,6 +244,42 @@ body.cart-page {
     text-transform: uppercase;
   }
 
+  .quantity {
+    max-width: 60px;
+    float: left;
+    display: inline;
+    width: auto;
+    margin: 0 4px;
+  }
+
+  .material-icons {
+    margin-top: 5px;
+  }
+
+  .oldPrice {
+    text-decoration: line-through;
+    text-align: center;
+    display: block;
+  }
+  .newPrice {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    display: block;
+  }
+  .discount {
+    display: block;
+    padding: 5px 0;
+    opacity: 0.5;
+    color: #f00;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+
   .inline-list>li {
     float: none;
 
