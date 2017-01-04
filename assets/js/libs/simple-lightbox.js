@@ -235,7 +235,7 @@ $.fn.simpleLightbox = function( options )
 				curImg
 				.css({
 					'width':  imageWidth + 'px',
-					'height': imageHeight + 'px'
+					'height': imageHeight - 80 + 'px'
 				})
 				.fadeIn('fast');
 				opened = true;
