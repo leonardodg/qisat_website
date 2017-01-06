@@ -310,9 +310,9 @@
  	</section>
 
 	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="::vm.info.conteudos.length">
-		<h2 class="course-page__sections--title">Conteúdo programático <div ng-click="vm.modalplay()">play</div></h2>
+		<h2 class="course-page__sections--title">Conteúdo programático</h2>
 		<accordion class="accordion-component accordion">
-			<accordion-group heading="{{conteudo.titulo}}" modal="{{vm.modalplay}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
+			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" icon-carrinho="{{conteudo.dataValor}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
 		      <div ng-bind-html="conteudo.descricao"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
@@ -324,28 +324,28 @@
 		<h2 class="course-page__sections--title">Formato do curso</h2>
  		<ul class="formato-do-curso small-block-grid-2  medium-block-grid-3 large-block-grid-4">
 
-	<li class="formato-do-curso__item">
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.aulas">
 				<span class="formato-do-curso__item--top"> Quantidade  </span>
-				<span class="formato-do-curso__item--middle">15</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.aulas}}</span>
 				<span class="formato-do-curso__item--bottom">aulas</span>
 			</li>
 
 
-			<li class="formato-do-curso__item">
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tempo_acesso">
 				<span class="formato-do-curso__item--top">Prazo de conclusão </span>
-				<span class="formato-do-curso__item--middle">90</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.tempo_acesso}}</span>
 				<span class="formato-do-curso__item--bottom">dias</span>
 			</li>
 
 
-			<li class="formato-do-curso__item">
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tempo_aula">
 				<span class="formato-do-curso__item--top">Tempo por aula </span>
-				<span class="formato-do-curso__item--middle">16</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.tempo_aula}}</span>
 				<span class="formato-do-curso__item--bottom">horas</span>
 			</li>
 
  
- 			<li class="formato-do-curso__item">
+ 			<li class="formato-do-curso__item" ng-if="vm.info.formato.disponibilidade">
  				<span class="formato-do-curso__item--top">Disponível</span>
  				<span class="formato-do-curso__item--middle">24h</span>
  				<span class="formato-do-curso__item--bottom">por dia</span>
@@ -354,44 +354,52 @@
 
 
 
-			<li class="formato-do-curso__item">
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.carga_horaria">
 				<span class="formato-do-curso__item--top">Carga horária</span>
-				<span class="formato-do-curso__item--middle">18</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.carga_horaria}}</span>
 				<span class="formato-do-curso__item--bottom">horas</span>
 			</li>
 
-			<li class="formato-do-curso__item">
+			<!-- VERIFICAR SE ISSO REPRESENTA QUANTIDADE DE VAGAS PARA PRESENCIAL -->
+			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom"> 
 				<span class="formato-do-curso__item--top"> Direcionamento  </span>
 				<span class="formato-do-curso__item--middle">15-30</span>
 				<span class="formato-do-curso__item--bottom">profissionais</span>
 			</li>
 
 
- 			<li class="formato-do-curso__item">
+ 			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom">
  				<span class="formato-do-curso__item--top">Métodologia</span>
 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/metodologia-expositiva.svg" alt=""></span>
 				<span class="formato-do-curso__item--bottom">expositiva</span>
 			</li>
 
-			<li class="formato-do-curso__item">
- 				<span class="formato-do-curso__item--top">Cerficado</span>
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.certificado_digital">
+ 				<span class="formato-do-curso__item--top">Cerficado Digital</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/certificado.svg" alt=""></span>
+				<span class="formato-do-curso__item--bottom">após conclusão</span>
+			</li>
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.certificado_impresso">
+ 				<span class="formato-do-curso__item--top">Cerficado Impresso</span>
 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/certificado.svg" alt=""></span>
 				<span class="formato-do-curso__item--bottom">após conclusão</span>
 			</li>
 
 
- 			<li class="formato-do-curso__item">
+
+ 			<li class="formato-do-curso__item" ng-if="vm.info.formato.material">
  				<span class="formato-do-curso__item--top">Material</span>
 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_insert_drive_file_black_24px.svg" alt=""></span>
   			</li>
 
 
-	 		<li class="formato-do-curso__item">
+	 		<li class="formato-do-curso__item" ng-if="vm.info.formato.forum">
 	 				<span class="formato-do-curso__item--top">Fórum</span>
 	 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_forum_black_24px.svg" alt=""></span>
 	  	</li>
 
-			<li class="formato-do-curso__item">
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tira_duvidas">
 	 				<span class="formato-do-curso__item--top">Tire dúvidas</span>
 	 				<span class="formato-do-curso__item--icon"><img src="assets/images/courses/ic_live_help_black_24px.svg" alt=""></span>
 	  	</li>
@@ -399,19 +407,17 @@
  		</ul>
 	</section>
 
-	<section data-magellan-destination="ministrante" class="course-page__sections course-page__sections-about-instructor" id="ministrante">
+	<section data-magellan-destination="ministrante" class="course-page__sections course-page__sections-about-instructor" id="ministrante" ng-if="vm.info.instrutores.length">
 		<h2 class="course-page__sections--title">Autor do curso</h2>
-		<div class="row">
+		<div class="row" ng-repeat="instructor in vm.info.instrutores" >
 				<div class="medium-3 columns">
-				<img class="course-page__sections-about-instructor--avatar" src="images/instructors/instructors-thumb_4.jpg" alt="">
+				<img class="course-page__sections-about-instructor--avatar" back-img="{{instructor.imagem}}" ng-src="{{instructor.imagem}}" alt="">
  				</div> <!-- //medium-3 columns -->
 
 				<div class="medium-9 columns">
-						<p>Engenheiro Civil e Mestre em Estruturas pela Universidade Federal de Santa Catarina, possui mais de 20 anos de experiência em projetos estruturais de edifícios, obras de drenagem, saneamento e estruturas especiais em concreto armado.</p>
-						<p>Atualmente é Gerente de Produtos e Serviços da AltoQi Tecnologia aplicada a engenharia, empresa que desenvolve softwares para projetos de Estruturas de concreto armado, instalações hidráulicas e elétricas, com mais de 36 mil clientes no Brasil e no exterior.</p>
-						<p>Já ministrou mais de 200 cursos e palestras em todo o Brasil, sobre a utilização de softwares de projetos de estruturas e sobre a concepção de estruturas de concreto armado. Participa de comissões de revisão e elaboração das normas ABNT NBR 6118, NBR 9062 e do projeto de norma BIM(CEE:134).</p>
-						<p>Conecte-se com Rodrigo Boering Koerich através do linkedin</p>
+						<div ng-bind-html="instructor.descricao"></div>
 				</div> <!-- //medium-9 columns -->
+				<hr>
 		</div> <!-- //row -->
  	</section>
 
@@ -610,10 +616,12 @@
 		<script defer src="js/services/QiSatAPI.js"></script>
 		<script defer src="js/directive/backImg.js"></script>
 		<script defer src="js/directive/lightbox.js"></script>
+		<script defer src="js/directive/playDemoModal.js"></script>
+
 		<script defer src="js/controllers/infoController.js"></script>
 		<script defer src="js/controllers/footerController.js"></script>
 	    
 
-	    <script defer src="js/app.js"></script>
+	    <script src="js/app.js"></script>
 </body>
 </html>

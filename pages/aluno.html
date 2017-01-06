@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp" ng-cloak >
 <head>
 	<base href="/">
 	<meta charset="UTF-8">
@@ -94,44 +94,30 @@
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
 
- <main class="admin_main" >
+ <main class="admin_main" class="ng-cloak" >
 	 <div class="admin_sidebar" ng-controller="alunoController" >
 
  		<ul class="metismenu admin__menu">
-
- 			<div ng-if='isAuth' class="ng-cloak" >
- 				 <li class="item">  	<a href="/aluno/perfil" class="link"> <i class="material-icons">person</i> Perfil </a>  </li>
-	            <li class="item">  	<a href="/aluno/cursos" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
-	            <li class="item">  	<a href="/aluno/certificados" class="link"> <i class="material-icons">stars</i> Certificados </a>  </li>
-	            <li class="item">  	<a href="/aluno/financeiro" class="link"> <i class="material-icons">attach_money</i> Financeiro </a>  </li>
-	            <li class="item">  	<a href="/login" class="link" ng-click='logout()'> <i class="material-icons">remove_circle_outline</i> Sair </a>  </li>
+ 			<div class="ng-cloak" >
+ 				 <li class="item"> <a href="/aluno/perfil" class="link"> <i class="material-icons">person</i> Perfil </a>  </li>
+	            <li class="item"> <a href="/aluno/cursos" class="link"> <i class="material-icons">school</i> Meus Cursos  </a>  </li>
+	            <li class="item"> <a href="/aluno/certificados" class="link"> <i class="material-icons">stars</i> Certificados </a>  </li>
+	            <li class="item"> <a href="/aluno/financeiro" class="link"> <i class="material-icons">attach_money</i> Financeiro </a>  </li>
+	            <li class="item"> <a href="/login" class="link" ng-click='logout()'> <i class="material-icons">remove_circle_outline</i> Sair </a>  </li>
  			</div>
-
-			<div ng-if='isAuth===false'class="ng-cloak" >
- 				<li class="item">
- 					<a href="/login" class="link"> <i class="material-icons">folder_special</i> Login </a> 
- 				</li>
-            	<li class="item">
-            		<a href="/cadastro" class="link"> <i class="material-icons">folder_special</i> Cadastro </a>
-            	</li>
-            	<li class="item"> 
-            		<a href="/lembrete-de-senha" class="link"> <i class="material-icons">folder_special</i> Recuperar Senha </a> 
-            	</li>
- 			</div>
-           
         </ul>
 
  	</div> 
-	 <div class="admin_content" >
+	 <div class="admin_content" class="ng-cloak">
 	
-		<div ng-if='error' class="ng-cloak" >
+		<div ng-if='error' class="ng-cloak">
 			<div data-alert class="alert-box warning radius">
 			  {{error}}
 			  <a href="#" class="close">&times;</a>
 			</div>
 		</div>
 
-		<div ng-view></div>
+		<div ng-view class="ng-cloak"></div>
 
  	</div>
 </main>  <!--// main-content -->
@@ -265,6 +251,7 @@
 		<script defer src="js/directive/pwCheck.js"></script>
 		<script defer src="js/directive/uiAlert.js"></script>
 		<script defer src="js/directive/reCapthcha.js"></script>
+		<script defer src="js/directive/menuAlunoCursos.js"></script>
 		<script defer src="js/filters/filters.js"></script>
 
 		<script defer src="js/services/QiSatAPI.js"></script>
