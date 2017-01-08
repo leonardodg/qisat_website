@@ -172,6 +172,15 @@ $(function() {
 //Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(document).ready(function() {
     
+        $('body').on('click', '.page-certificates .card a', function(e){
+          e.preventDefault();
+          $(this).closest('form').submit();
+        });
+
+
+
+
+
         $('body').on('click', '.navigation_courses__list-item--link', function(e){
           e.preventDefault();
 
