@@ -19,7 +19,7 @@
                                         ctrl.$setValidity('emailCheck', false); //yes error
                                     }
                                     else
-                                        console.log(res);
+                                        console.log(res); // verificar
                                 });
                                 
                             }

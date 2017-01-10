@@ -11,21 +11,30 @@
 					 		path = absUrl.substr(absUrl.indexOf('curso/'));
 					 		path = path.split('/');
 
+						var videosDemo = [
+									   		"https://www.youtube.com/embed/fOrGTKQJqHU",
+									   		"https://www.youtube.com/embed/VBPKeNidHco"
+									   		];
+
+
+						activate();
+
 					 	vm.modaltrailer = function () {
 				 					var modalInstance = $modal.open({ 
-                      windowClass: 'trailer',
+                      						windowClass: 'trailer',
 				 							templateUrl: '/views/modal-trailer.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
 															    $modalInstance.dismiss('cancel');
 															  };
+															  $scope.video = $sce.trustAsResourceUrl(videosDemo[0]);
 															}
 				 						});
 					 			  };
 
 					 	vm.modalcall = function () {
 				 					var modalInstance = $modal.open({ 
-                      windowClass: 'call',
+                      						windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
 				 							controller : function ($scope, $modalInstance) {
 															  $scope.cancel = function () {
@@ -34,8 +43,6 @@
 															}
 				 						});
 					 			  };
-
-    					activate();
 
 						function activate() {
 					         return QiSatAPI.getInfo(path[2])
@@ -62,9 +69,20 @@
 											 		}
 
 											 		if(info.conteudos && info.conteudos.length){
+											 			// REFAZER
+											 			info.conteudos[0].demoplay = videosDemo[0]; // TEMPORARIO
+											 			info.conteudos[0].dataValor = { valor : "R$500,00", valorReal : "R$700,00", data : "Até 10/01/2017", produto : 1};
+
 											 			info.conteudos.map(function (conteudo){
 											 				conteudo.descricao = $sce.trustAsHtml(conteudo.descricao);
 											 			});
+											 		}
+
+											 		if(info.instrutores && info.instrutores.length){
+											 			info.instrutores.map(function(instrutor){
+											 				instrutor.descricao = $sce.trustAsHtml(instrutor.descricao);
+											 			});
+
 											 		}
 
 											 		if(info.produto)

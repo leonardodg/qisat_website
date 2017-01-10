@@ -6,7 +6,7 @@
 		.controller("instructorsController",
 				[ '$scope', 'Config', 'QiSatAPI', 'instrutores', 
 					function(scope, Config, QiSatAPI, instructors){
-						console.log(instructors);
+
 						if(instructors){
 							instructors.map( function (instructor) {
 								if(instructor)

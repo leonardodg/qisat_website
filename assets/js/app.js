@@ -1,50 +1,4 @@
 
-  // Foundation JavaScript
-  // Documentation can be found at: http://foundation.zurb.com/docs
-  $(document).foundation();
-  // setTimeout(function(){
-  //   $(document).foundation();
-  //   console.log('this');
-      
-  // }, 500);
-
-   // $("#menu").metisMenu({
-   //   collapseInClass: 'in';
-   // });
-
-
-
-$(document).foundation('equalizer', 'reflow');
-
-
-// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
-//  $(document).foundation(
-//  {
-// "magellan-expedition": {
-//   active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
-//   threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
-//   destination_threshold: 20, // pixels from the top of destination for it to be considered active
-//   throttle_delay: 50, // calculation throttling to increase framerate
-//   fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-//   offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
-// }
-// }
-// );
-// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
- $(document).foundation(
- {
-"magellan-expedition": {
-  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
-  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
-  destination_threshold: 20, // pixels from the top of destination for it to be considered active
-  throttle_delay: 50, // calculation throttling to increase framerate
-  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
-}
-}
-
-);
-
 
 $(function() {
   $('.show-filters a').click(function(e) {
@@ -115,29 +69,6 @@ $(document).ready(function() {
   }
 
 }());
-
-
-/* Temporário
-   temporário, usado somente para testar, a ideia é que seja feito em php,
-   se favorirar adicionar a class .buttom-favorite-active  */
-     $(function() {
-       if ( $('.buttom-favorite').length ) {
-             $('.buttom-favorite').on('click', function(){
-                   event.preventDefault();
-                  // alert("foi")
-                  $(this).toggleClass("buttom-favorite-active");
-             });
-
-
-             $('.form-button-call-me').on('click', function(){
-                        event.preventDefault();
-                       $(".section-call__form").css({"height": "0", "overflow": "hidden"});
-                       $(".section-call__done").css({"height": "initial", "overflow": "initial"});
-              });
-        }
-      }());
-/* end página cursos > botão favoritar*/
-
 
 
 
@@ -241,6 +172,15 @@ $(function() {
 //Smooth Scrolling : https://css-tricks.com/snippets/jquery/smooth-scrolling/
 $(document).ready(function() {
     
+        $('body').on('click', '.page-certificates .card a', function(e){
+          e.preventDefault();
+          $(this).closest('form').submit();
+        });
+
+
+
+
+
         $('body').on('click', '.navigation_courses__list-item--link', function(e){
           e.preventDefault();
 
@@ -255,9 +195,114 @@ $(document).ready(function() {
             }
         });
 
+         $('.buttom-favorite').on('click', function(event){
+                   event.preventDefault();
+                  $(this).toggleClass("buttom-favorite-active");
+
+                  var bookmarkURL = window.location.href;
+                  var bookmarkTitle = document.title;
+
+                  if ('addToHomescreen' in window && window.addToHomescreen.isCompatible) {
+                      // Mobile browsers
+                      addToHomescreen({ autostart: false, startDelay: 0 }).show(true);
+                  } else if (window.sidebar && window.sidebar.addPanel) {
+                      // Firefox version < 23
+                      window.sidebar.addPanel(bookmarkTitle, bookmarkURL, '');
+                  } else if ((window.sidebar && /Firefox/i.test(navigator.userAgent)) || (window.opera && window.print)) {
+                      // Firefox version >= 23 and Opera Hotlist
+                      $(this).attr({
+                          href: bookmarkURL,
+                          title: bookmarkTitle,
+                          rel: 'sidebar'
+                      });
+                      return true;
+                  } else if (window.external && ('AddFavorite' in window.external)) {
+                      // IE Favorite
+                      window.external.AddFavorite(bookmarkURL, bookmarkTitle);
+                  } else {
+                      // Other browsers (mainly WebKit - Chrome/Safari)
+                      console.log('Pease press ' + (/Mac/i.test(navigator.userAgent) ? 'CMD' : 'Strg') + ' + D to add this page to your favorites.');
+                  }
+
+                  return false;
+             });
+
     // $('body').on('click', '.anchor-link', function(event){
     //   event.preventDefault();
     //   return false;
     // });
 });
   //end Smooth Scrolling
+
+
+
+;(function ( $, window, document, undefined) {
+
+// resolver reflow temporario
+$(document).foundation({
+    accordion: {
+      callback: function(accordion) {                           
+      $(document).foundation('equalizer', 'reflow');
+    }
+  },
+  equalizer: {
+    equalize_on_stack: true,
+    act_on_hidden_el: true,
+    after_height_change: function() {
+        $(document).foundation('accordion', 'reflow');
+    }
+  }
+});
+
+}(Foundation, jQuery, this, this.document));
+
+  // Foundation JavaScript
+  // Documentation can be found at: http://foundation.zurb.com/docs
+  $(document).foundation();
+  // setTimeout(function(){
+  //   $(document).foundation();
+  //   console.log('this');
+      
+  // }, 500);
+
+   // $("#menu").metisMenu({
+   //   collapseInClass: 'in';
+   // });
+$(document).foundation('equalizer', 'reflow');
+
+
+
+
+
+
+
+// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
+//  $(document).foundation(
+//  {
+// "magellan-expedition": {
+//   active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+//   threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+//   destination_threshold: 20, // pixels from the top of destination for it to be considered active
+//   throttle_delay: 50, // calculation throttling to increase framerate
+//   fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+//   offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+// }
+// }
+// );
+// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
+ $(document).foundation(
+ {
+"magellan-expedition": {
+  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
+  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
+  destination_threshold: 20, // pixels from the top of destination for it to be considered active
+  throttle_delay: 50, // calculation throttling to increase framerate
+  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
+  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
+}
+}
+
+);
+
+
+

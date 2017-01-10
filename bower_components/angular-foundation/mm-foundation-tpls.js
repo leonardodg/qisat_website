@@ -71,7 +71,7 @@ angular.module('mm.foundation.accordion', [])
     transclude:true,              // It transcludes the contents of the directive into the template
     replace: true,                // The element containing the directive will be replaced with the template
     templateUrl:'template/accordion/accordion-group.html',
-    scope:{ heading:'@' },        // Create an isolated scope and interpolate the heading attribute onto this scope
+    scope:{ heading:'@', modal : '&' , playDemoModal : '@', iconCarrinho : '@' },        // Create an isolated scope and interpolate the heading attribute onto this scope
     controller: function() {
       this.setHeading = function(element) {
         this.heading = element;
@@ -83,6 +83,7 @@ angular.module('mm.foundation.accordion', [])
       accordionCtrl.addGroup(scope);
 
       scope.isOpen = false;
+      scope.modal = attrs.modal;
       
       if ( attrs.isOpen ) {
         getIsOpen = $parse(attrs.isOpen);
@@ -3410,10 +3411,17 @@ angular.module('mm.foundation.typeahead', ['mm.foundation.position', 'mm.foundat
 angular.module("template/accordion/accordion-group.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("template/accordion/accordion-group.html",
     "<dd>\n" +
-    "  <a ng-click=\"isOpen = !isOpen\" ng-class=\"{ active: isOpen }\"  accordion-transclude=\"heading\">{{heading}}</a>\n" +
-    "  <div class=\"content\" ng-class=\"{ active: isOpen }\" ng-transclude></div>\n" +
+    " <div ng-click=\"modal(playDemoModal)\" class=\"iconPlay\" ng-if=\"playDemoModal\">  <i class=\"material-icons\">play_arrow</i> </div>\n" +
+    " <a ng-click=\"isOpen = !isOpen\" ng-class=\"{ active: isOpen }\"  accordion-transclude=\"heading\">\n"+
+    "{{heading}}"+
+    "</a>\n" +
+
+    "<ul class=\"button-group radius hero-course__buttons-group\"><li class=\"hero-course__buttons-group--item\"><div ng-click=\"addCarrinho()\" class=\"addProduto\" ng-if=\"iconCarrinho\"><span class=\"cart\"><i class=\"material-icons\">shopping_cart</i></span><span class=\"card-course__icon-cart\"><div class=\"price_popover\"><div class=\"price_popover__header\"><p class=\"price_popover__header__info\"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p></div><div class=\"price_popover__footer\"> Adicionar ao carrinho </div></div></span></div></li></ul>\n"+
+
+    " <div class=\"content\" ng-class=\"{ active: isOpen }\" ng-transclude></div>\n" +
     "</dd>\n" +
     "");
+
 }]);
 
 angular.module("template/accordion/accordion.html", []).run(["$templateCache", function($templateCache) {

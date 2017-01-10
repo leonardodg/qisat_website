@@ -412,6 +412,11 @@ button.close-button, .close-button {
 .accordion-component .accordion-navigation.active > a:after {content: "-"; color: $primary-color;}
 .accordion-component .accordion-navigation > a:after{    content: "+";  color: $primary-color;  margin-right: 10px;    font-size: 23px;    line-height:1; float: right}
 .accordion-component .accordion-navigation > .content {    display: none;  padding: 0 40px 40px 40px;}
+#perguntas-frequentes {
+  .iconPlay, .addProduto {
+    display: none;
+  }
+}
 
 
 
@@ -462,7 +467,7 @@ button.close-button, .close-button {
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
       
-      @media only screen and (min-width: 500px) {
+      @media only screen and (min-width: 40em) {
         width: 31%;
         float: left;
         margin-right: 2%;
@@ -475,6 +480,11 @@ button.close-button, .close-button {
       img {
         width: 100%;
         max-width: 100%;
+        display: none;
+
+        @media only screen and (min-width: 40em) {
+          display: block;
+        }
       }
 
       .modalidade {
@@ -549,7 +559,7 @@ button.close-button, .close-button {
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
       
-      @media only screen and (min-width: 500px) {
+      @media only screen and (min-width: 40em) {
         width: 31%;
         float: left;
         margin-right: 2%;
@@ -562,6 +572,12 @@ button.close-button, .close-button {
       img {
         width: 100%;
         max-width: 100%;
+        display: none;
+
+        @media only screen and (min-width: 40em) {
+          display: block;
+        }
+
       }
 
       .modalidade {
@@ -581,8 +597,56 @@ button.close-button, .close-button {
         color: red;
       }
 
-      .content {
-        padding: 15px 20px;
+      .content a {
+        padding: 10px;
+        display: block;
+        
+        @media only screen and (max-width: 40em) {
+          font-size: 18px;
+          font-weight: 400;
+          color: #000;
+        }
+        @media only screen and (min-width: 40em) {
+          padding: 15px 20px;
+          padding-left: 65px;
+        }
+
+        p {
+          margin-bottom: 5px;
+          max-height: 50px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        span {
+          font-size: 12px;
+          display: none;
+
+          @media only screen and (min-width: 40em) {
+            display: block;
+          }
+        }
+        span span {
+          font-weight: bold;
+        }
+      }
+
+      .material-icons {
+        // font-size: 40px;
+        color: #ccc;
+        margin-right: 10px;
+
+        @media only screen and (min-width: 40em) {
+          font-size: 40px;
+          position: absolute;
+          margin-right: 0;
+          top: 15px;
+          left: 15px;
+        }
+      }
+
+      .details {
+        font-style: 12px;
       }
 
       .footer {
@@ -654,7 +718,7 @@ button.close-button, .close-button {
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
       
-      @media only screen and (min-width: 500px) {
+      @media only screen and (min-width: 40em) {
         width: 49%;
         float: left;
         margin-right: 2%;
@@ -908,4 +972,87 @@ hr.clearfix {
 
 .course-page__sections#publico-alvo {
   min-height: 200px;
+}
+
+
+
+.inst_filter {
+  margin: 20px 0;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  padding: 10px 30px;
+  padding-bottom: 0;
+  border-radius: 3px;
+
+  @media only screen and (min-width: 40em) {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #666;
+  }
+
+  input, select {
+    outline: 0;
+    border: 0;
+    background-color: #FFF;
+  }
+
+  select {
+    padding: 0;
+    height: auto;
+  }
+
+  input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    font-weight: normal;
+    padding-left: 30px;
+    box-shadow: none;
+  }
+
+  i {
+    color: #999;
+    top: 8px;
+    position: absolute;
+  }
+}
+
+.inst_list {
+  @media only screen and (min-width: 40em) {
+    width: 95%;
+    margin: 20px auto;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid #eee;
+    padding: 15px 10px;
+    font-size: 15px;
+  }
+
+  strong {
+    display: block;
+    font-size: 17px;
+  }
+
+  img {
+    float: left;
+    margin-right: 30px;
+  }
+
+  i {
+    float: right;
+    margin-top: 10px;
+    color: #888 !important;
+    font-size: 25px;
+  }
 }
