@@ -23,7 +23,7 @@
                       <img src="{{::course.imagem}}" alt="{{::course.curso}}">
                     </div>
                     
-                    <div class="content">
+                    <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
 
                       <p class="modalidade">{{::course.modalidade}}</p>
 
@@ -36,15 +36,15 @@
 						      		</div>
 						      		
                       <!-- FIXA TAMANHO -->
-                      <div class="green" ng-if="::course.enable">
+                      <div class="green" ng-if="::course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >
                         {{::course.status}}
                       </div>
-  						     		<div class="red" ng-if="!course.enable">
+  						     		<div class="red"  ng-if="!course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
                         {{::course.status}}
                       </div>
 
                       <!-- FIXA TAMANHO -->
-                      <div> {{::course.msg}} </div>
+                      <div  ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" > {{::course.msg}} </div>
                       
                     </div>
 
