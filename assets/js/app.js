@@ -54,6 +54,17 @@ $(document).ready(function() {
     $(".showPassword").slideToggle();
   });
 
+  $(document).on('click', ".timeline__list-group li", function(e){
+    e.preventDefault();
+
+    var getRef = $(this).closest("li").data("year");
+    console.log(getRef);
+    console.log($(document).find(".timeline__post"));
+    console.log($(document).find(".timeline__post."+getRef));
+      
+    $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
+  });
+
   if ( $('#sidebar-styker').length ) {
        $("#sidebar-styker").stick_in_parent({
         offset_top: 80,

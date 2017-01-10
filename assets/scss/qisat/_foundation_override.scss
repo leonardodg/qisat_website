@@ -48,3 +48,28 @@
 .alert-box {
   width: 100%;
 }
+
+
+ul.pagination {
+  text-align: right !important;
+  float: right;
+  clear: both;
+  margin-top: 10px;
+}
+ul.pagination li {
+  margin: 0 !important;
+}
+ul.pagination li a, ul.pagination li button {
+  color: #0078a0;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+ul.pagination li.current a, ul.pagination li.current button {
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+  }
+}

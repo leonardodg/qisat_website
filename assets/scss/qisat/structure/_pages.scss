@@ -120,6 +120,37 @@ button.close-button, .close-button {
     // position: relative;
   }
 
+  .iconPlay {
+    float: left;
+    margin-top: 17px;
+    display: inline;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #999;
+  }
+
+  .hero-course__buttons-group {
+    position: absolute;
+    right: 60px;
+    top: 13px;
+    display: inline;
+    left: auto;
+  }
+
+  .accordion .accordion-navigation, .accordion dd {
+    position: relative;
+  }
+
+  .price_popover {
+    margin-left: -70px;
+  }
+  .cart i {
+    padding: 3px;
+    border-radius: 1px;
+    color: #fff;
+    background-color: #005B94;
+  }
+
   .accordion-navigation {
     > a {
       border-right: 1px solid #eee;
@@ -466,11 +497,13 @@ button.close-button, .close-button {
       background-color: #FFF;
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
+      position: relative;
       
-      @media only screen and (min-width: 40em) {
+      @media only screen and (min-width: 64.063em) {
         width: 31%;
         float: left;
         margin-right: 2%;
+        min-height: 455px;
         
         &:nth-of-type(3n+0) {
           margin-right: 0;
@@ -482,7 +515,7 @@ button.close-button, .close-button {
         max-width: 100%;
         display: none;
 
-        @media only screen and (min-width: 40em) {
+        @media only screen and (min-width: 64.063em) {
           display: block;
         }
       }
@@ -494,7 +527,7 @@ button.close-button, .close-button {
       }
 
       .name {
-        font-size: 20px;
+        font-size: 17px;
       }
 
       .green {
@@ -511,6 +544,12 @@ button.close-button, .close-button {
       .footer {
         padding: 15px 20px;
         border-top: 1px solid #eee;
+        
+        @media only screen and (min-width: 64.063em) {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        }
 
         ul {
           margin-bottom: 0;
