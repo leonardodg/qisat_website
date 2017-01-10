@@ -4405,6 +4405,54 @@ hr.clearfix {
   font-size: 25px;
 }
 
+/* line 1060, ../scss/qisat/structure/_pages.scss */
+.button-discount {
+  display: block;
+  width: 100%;
+  margin: 40px auto;
+}
+@media only screen and (min-width: 40em) {
+  /* line 1060, ../scss/qisat/structure/_pages.scss */
+  .button-discount {
+    max-width: 50%;
+  }
+}
+
+/* line 1070, ../scss/qisat/structure/_pages.scss */
+.accordion-discount {
+  margin-bottom: 50px;
+}
+/* line 1073, ../scss/qisat/structure/_pages.scss */
+.accordion-discount dd > a {
+  font-size: 27px !important;
+  border: 1px solid #eee;
+}
+/* line 1078, ../scss/qisat/structure/_pages.scss */
+.accordion-discount dd .content {
+  padding: 20px !important;
+  background-color: #eee !important;
+  margin: 0;
+  border: 1px solid #eee;
+}
+/* line 1085, ../scss/qisat/structure/_pages.scss */
+.accordion-discount img {
+  margin: 0 auto;
+}
+/* line 1089, ../scss/qisat/structure/_pages.scss */
+.accordion-discount dd table {
+  border: 0;
+  background-color: transparent;
+}
+/* line 1093, ../scss/qisat/structure/_pages.scss */
+.accordion-discount dd table tr:nth-of-type(even), .accordion-discount dd table td {
+  background-color: transparent;
+  font-size: 16px;
+}
+/* line 1097, ../scss/qisat/structure/_pages.scss */
+.accordion-discount dd table .button {
+  margin-bottom: 0 !important;
+}
+
 /* grid ---------------------------------------- */
 /* line 22, ../scss/qisat/layout/_admin.scss */
 .admin_main__container {

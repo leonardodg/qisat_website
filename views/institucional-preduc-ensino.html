@@ -43,7 +43,35 @@
               </div>
             </div>
 
-            
+            <a href="/institucional/convenios/preduc/inscricao" class="button button-discount">Quero me inscrever com desconto</a>
+
+            <div class="accordion-discount">
+            <accordion class="accordion-component accordion">
+              <accordion-group heading="Como fazer o convênio?" class="accordion-navigation tab-title">
+                  <div>
+                    <img src="http://placehold.it/500x100.jpg">
+                  </div>
+                </accordion-group>
+             </accordion>
+            <accordion class="accordion-component accordion">
+              <accordion-group heading="Documentos para download" class="accordion-navigation tab-title">
+                  <div>
+
+                    <table>
+                      <tr>
+                        <td>Termo de Adesão.docx</td>
+                        <td><a href="#" class="button">Baixar</a></td>
+                      </tr>
+                      <tr>
+                        <td>Lista de associados.docx</td>
+                        <td><a href="#" class="button">Baixar</a></td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </accordion-group>
+            </accordion>
+            </div>
 
      
         <h1>Cadastro de Instituição</h1>
@@ -100,10 +128,11 @@
             </div>
           </div>
           <br>
+          <button class="button right" type="submit" ng-disabled="cadastroInstituicaoForm.$invalid" ng-click="addInstitution(1)"> Enviar </button>
           <div class="row align-center">
               <div class="small-4 large-4 large-offset-4 columns">
                 
-                    <button class="button expand" type="submit" ng-disabled="cadastroInstituicaoForm.$invalid" ng-click="addInstitution(1)"> Enviar </button>
+                    
 
                     <div data-alert class="alert-box info radius alert-1-ok" style="display: none;">
                     Mensagem Enviada com SUCESSO!
