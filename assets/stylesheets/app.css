@@ -3977,7 +3977,7 @@ button.close-button, .close-button {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
   border-radius: 1px;
 }
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 64.063em) {
   /* line 594, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card {
     width: 31%;
@@ -3995,7 +3995,7 @@ button.close-button, .close-button {
   max-width: 100%;
   display: none;
 }
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 64.063em) {
   /* line 611, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card img {
     display: block;
