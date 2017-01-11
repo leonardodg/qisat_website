@@ -19,6 +19,12 @@
     padding: 3px;
   }
 
+  ul.unstyle {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
   .title {
     text-transform: uppercase;
     color: #666;
