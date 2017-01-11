@@ -1,6 +1,9 @@
 $(function() {
-  $('.show-filters a').click(function(e) {
+  $(document).on('click', ".show-filters a", function(e){
     e.preventDefault();
+
+    console.log("sssssssssssssss");
+      
     var $elText = $(this).find("span");
 
     if($elText.text() == "Mostrar filtros"){

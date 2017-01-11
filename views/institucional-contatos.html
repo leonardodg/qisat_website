@@ -62,10 +62,10 @@
             <form name="contatoForm" id="contatoForm"  data-abide>
 
 			  <div class="row">
-			    <div class="small-3 medium-2 columns">
-			      <label for="name" class="text-right middle"> Nome <small>*</small> </label>
+			    <div class="small-12 medium-2 columns">
+			      <label for="name" class="middle"> Nome <small>*</small> </label>
 			    </div>
-			    <div class="small-9 medium-8 columns">
+			    <div class="small-12 medium-8 columns">
 			      <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="contato.name" required>
 			      <small class="error">Nome é Obrigatório!</small>
 			    </div>
@@ -73,11 +73,11 @@
 			  </div>
 
 			  <div class="row">
-			    <div class="small-3 medium-2 columns">
-			      <label for="email" class="text-right middle ">Email <small>*</small> </label>
+			    <div class="small-12 medium-2 columns">
+			      <label for="email" class="middle ">Email <small>*</small> </label>
 		
 			    </div>
-			    <div class="small-9 medium-8 columns">
+			    <div class="small-12 medium-8 columns">
 			      <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="contato.email" ng-pattern="emailFormat" required >
 				  <small class="error">Formato de Email incorreto!</small>
 			    </div>
@@ -85,20 +85,20 @@
 			  </div>
 
 			  <div class="row">
-			    <div class="small-3 medium-2 columns">
-			      <label for="phone" class="text-right middle">Telefone</label>
+			    <div class="small-12 medium-2 columns">
+			      <label for="phone" class="middle">Telefone</label>
 			    </div>
-			    <div class="small-9 medium-8 columns">
+			    <div class="small-12 medium-8 columns">
 			      <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="contato.phone" mask="(99) 9?9999-9999">
 			    </div>
           <div class="medium-2 columns"></div>
 			  </div>
 
 		    <div class="row">
-			    <div class="small-3 medium-2 columns">
-			      <label for="subject" class="text-right middle">Assunto</label>
+			    <div class="small-12 medium-2 columns">
+			      <label for="subject" class="middle">Assunto</label>
 			    </div>
-			    <div class="small-9 medium-8 columns">
+			    <div class="small-12 medium-8 columns">
 			      <input type="text" name="subject" id="subject" placeholder="Assunto do Contato" ng-model="contato.subject" >
 			    </div>
           <div class="medium-2 columns"></div>
@@ -106,11 +106,11 @@
 
 			   <div class="row">
 
-			   	<div class="small-3 medium-2 columns">
-			      <label for="msg" class="text-right middle"> Mensagem <small>*</small> </label>
+			   	<div class="small-12 medium-2 columns">
+			      <label for="msg" class="middle"> Mensagem <small>*</small> </label>
 
 			    </div>
-			    <div class="small-9 medium-8 columns">
+			    <div class="small-12 medium-8 columns">
 			    	<textarea name="msg" id="msg"  placeholder="Escreva sua mensagem" rows="6" ng-model="contato.msg" required ></textarea>
 			    	<small class="error">Escreva Sua Mensagem!</small>
 			    </div>

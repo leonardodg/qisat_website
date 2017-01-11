@@ -738,15 +738,47 @@ button.close-button, .close-button {
       font-size: 30px;
       margin-bottom: 0;
     }
+
+    img {
+      max-width: 200px;
+    }
   }
 
   .professor-courses {
     background-color: #333;
     color: #fff;
-    padding: 50px;
-    margin: 50px 0;
+    padding: 25px;
+    margin: 25px 0;
     margin-left: -20px;
-    width: 870px;
+    width: 115%;
+
+    .columns {
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (min-width: 40em) {
+      padding: 50px;
+      margin: 50px 0;
+      width: 870px;
+      margin-left: -20px;
+    }
+  }
+
+  .professor-articles {
+    .subtitle {
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+    .columns {
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 0;
+    }
+    span {
+      color: #666;
+    }
   }
 
   .cards {
@@ -777,20 +809,39 @@ button.close-button, .close-button {
         }
         
         > div {
-          margin-top: 30px;
-          margin-left: 150px;
+          margin-top: 10px;
+          margin-left: 120px;
           position: absolute;
           top: 0;
+          @media only screen and (min-width: 40em) {
+            margin-top: 30px;
+            margin-left: 150px;
+          }
         }
       }
       
       strong {
-        font-size: 22px;
+        font-size: 18px;
+        @media only screen and (min-width: 40em) {
+          font-size: 22px;
+        }
       }
       
       img {
+        max-width: 90px;
+        @media only screen and (min-width: 40em) {
+          max-width: 120px;
+        }
       }
     }
+  }
+}
+
+.instrutorIcons {
+  list-style-type: none; text-align: center;
+  li {
+    display: inline-block;
+    margin: 0 7px;
   }
 }
 
@@ -1137,4 +1188,18 @@ hr.clearfix {
       margin-bottom: 0 !important;
     }
   }
+}
+
+#contatoForm {
+  label {
+    text-align: left;
+
+    @media only screen and (min-width: 40em) {
+      text-align: right;
+    }
+  }
+}
+
+.show-for-small-up {
+  display: block !important;
 }
