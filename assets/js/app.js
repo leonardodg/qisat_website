@@ -54,10 +54,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     var getRef = $(this).closest("li").data("year");
-    console.log(getRef);
-    console.log($(document).find(".timeline__post"));
-    console.log($(document).find(".timeline__post."+getRef));
-      
+    $(this).addClass("active").siblings().removeClass("active");
     $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
   });
 
