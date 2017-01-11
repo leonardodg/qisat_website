@@ -28,7 +28,7 @@
                       <p class="modalidade">{{::course.modalidade}}</p>
 
 						      		<div ng-if="::course.enable"> 
-						      			<p class="name"><a href="{{::course.links.view}}" title="{{::course.info.tituloLimit||course.nomeLimit}}" >{{::course.info.tituloLimit||course.nomeLimit}} </a></p>
+						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.links.view}}" title="{{::course.info.tituloLimit||course.nomeLimit}}" >{{::course.info.tituloLimit||course.nomeLimit}} </a></p>
 						      		</div>
 
 						      		<div ng-if="!course.enable"> 
