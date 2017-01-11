@@ -15,6 +15,16 @@
 					 			pedido.valor = $filter('currency')(pedido.valor, 'R$ ');
 					 		});
 					 		scope.compras = compras;
+					 		scope.currentPage = 1;
+					 		scope.startPage = 1;
+					 		scope.itemsPerPage = 10;
+					 		scope.totalItems = compras.length;
+					 		scope.onSelectPage = function(page){
+					 			if(page==1)
+					 				scope.startPage = 1;
+					 			else
+					 				scope.startPage = scope.itemsPerPage*(page-1);
+					 		};
 					 	}
 
 					 	scope.viewCarrinho = function(id){

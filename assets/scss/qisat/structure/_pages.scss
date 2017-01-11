@@ -120,6 +120,37 @@ button.close-button, .close-button {
     // position: relative;
   }
 
+  .iconPlay {
+    float: left;
+    margin-top: 17px;
+    display: inline;
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #999;
+  }
+
+  .hero-course__buttons-group {
+    position: absolute;
+    right: 60px;
+    top: 13px;
+    display: inline;
+    left: auto;
+  }
+
+  .accordion .accordion-navigation, .accordion dd {
+    position: relative;
+  }
+
+  .price_popover {
+    margin-left: -70px;
+  }
+  .cart i {
+    padding: 3px;
+    border-radius: 1px;
+    color: #fff;
+    background-color: #005B94;
+  }
+
   .accordion-navigation {
     > a {
       border-right: 1px solid #eee;
@@ -460,17 +491,31 @@ button.close-button, .close-button {
   .cards {
     margin-top: 30px;
 
+    .icon {
+      display: block;
+      float: left;
+      color: #999;
+      margin-top: 2px;
+      margin-right: 5px;
+
+      @media only screen and (min-width: 64.063em) {
+        display: none;
+      }
+    }
+
     .card {
       margin-bottom: 15px;
       box-sizing: border-box;
       background-color: #FFF;
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
+      position: relative;
       
-      @media only screen and (min-width: 40em) {
+      @media only screen and (min-width: 64.063em) {
         width: 31%;
         float: left;
         margin-right: 2%;
+        min-height: 455px;
         
         &:nth-of-type(3n+0) {
           margin-right: 0;
@@ -482,7 +527,7 @@ button.close-button, .close-button {
         max-width: 100%;
         display: none;
 
-        @media only screen and (min-width: 40em) {
+        @media only screen and (min-width: 64.063em) {
           display: block;
         }
       }
@@ -494,7 +539,11 @@ button.close-button, .close-button {
       }
 
       .name {
-        font-size: 20px;
+        font-size: 17px;
+
+        @media only screen and (max-width: 64.063em) {
+          a {color: #000;}
+        }
       }
 
       .green {
@@ -511,6 +560,12 @@ button.close-button, .close-button {
       .footer {
         padding: 15px 20px;
         border-top: 1px solid #eee;
+        
+        @media only screen and (min-width: 64.063em) {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        }
 
         ul {
           margin-bottom: 0;
@@ -525,7 +580,7 @@ button.close-button, .close-button {
         display: block;
         position: relative;
         color: #666;
-        
+
         &:hover {
           color: #333;
         }
@@ -559,10 +614,11 @@ button.close-button, .close-button {
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
       
-      @media only screen and (min-width: 40em) {
+      @media only screen and (min-width: 64.063em) {
         width: 31%;
         float: left;
         margin-right: 2%;
+        min-height: 305px;
         
         &:nth-of-type(3n+0) {
           margin-right: 0;
@@ -574,7 +630,7 @@ button.close-button, .close-button {
         max-width: 100%;
         display: none;
 
-        @media only screen and (min-width: 40em) {
+        @media only screen and (min-width: 64.063em) {
           display: block;
         }
 
@@ -699,15 +755,43 @@ button.close-button, .close-button {
       font-size: 30px;
       margin-bottom: 0;
     }
+
+    img {
+      max-width: 200px;
+    }
   }
 
   .professor-courses {
     background-color: #333;
     color: #fff;
-    padding: 50px;
-    margin: 50px 0;
-    margin-left: -20px;
-    width: 870px;
+    padding: 25px;
+    margin: 25px 0;
+
+    .columns {
+      margin-bottom: 20px;
+    }
+
+    @media only screen and (min-width: 40em) {
+      padding: 50px;
+      margin: 50px 0;
+    }
+  }
+
+  .professor-articles {
+    .subtitle {
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+    .columns {
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 0;
+    }
+    span {
+      color: #666;
+    }
   }
 
   .cards {
@@ -738,20 +822,39 @@ button.close-button, .close-button {
         }
         
         > div {
-          margin-top: 30px;
-          margin-left: 150px;
+          margin-top: 10px;
+          margin-left: 120px;
           position: absolute;
           top: 0;
+          @media only screen and (min-width: 40em) {
+            margin-top: 30px;
+            margin-left: 150px;
+          }
         }
       }
       
       strong {
-        font-size: 22px;
+        font-size: 18px;
+        @media only screen and (min-width: 40em) {
+          font-size: 22px;
+        }
       }
       
       img {
+        max-width: 90px;
+        @media only screen and (min-width: 40em) {
+          max-width: 120px;
+        }
       }
     }
+  }
+}
+
+.instrutorIcons {
+  list-style-type: none; text-align: center;
+  li {
+    display: inline-block;
+    margin: 0 7px;
   }
 }
 
@@ -1055,4 +1158,61 @@ hr.clearfix {
     color: #888 !important;
     font-size: 25px;
   }
+}
+
+.button-discount {
+  display: block;
+  width: 100%;
+  margin: 40px auto;
+
+  @media only screen and (min-width: 40em) {
+    max-width: 50%;
+  }
+}
+
+.accordion-discount {
+  margin-bottom: 50px;
+
+  dd>a {
+    font-size: 27px !important;
+    border: 1px solid #eee;
+  }
+
+  dd .content {
+    padding: 20px !important;
+    background-color: #eee !important;
+    margin: 0;
+    border: 1px solid #eee;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+
+  dd table {
+    border: 0;
+    background-color: transparent;
+
+    tr:nth-of-type(even), td {
+      background-color: transparent;
+      font-size: 16px;
+    }
+    .button {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+#contatoForm {
+  label {
+    text-align: left;
+
+    @media only screen and (min-width: 40em) {
+      text-align: right;
+    }
+  }
+}
+
+.show-for-small-up {
+  display: block !important;
 }

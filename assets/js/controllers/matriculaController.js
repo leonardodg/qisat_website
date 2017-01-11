@@ -10,6 +10,7 @@
 					 	scope.title = "Cursos em Andamento"; 
 					 	scope.agendados = false;
 						scope.outros = false;
+						scope.filterTab = 'liberado';
 
 					 	if(authService.isLogged() && Authenticated)
 					 		scope.user = authService.getUser();
@@ -21,7 +22,7 @@
 					 			var timestart,timeend, day, month, year;
 
 					 			if(matricula.info)
-					 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 200);
+					 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
 					 			else if (matricula.nome)
 					 				matricula.nomeLimit = filterLimitName(matricula.nome, 100);
 

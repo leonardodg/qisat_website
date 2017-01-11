@@ -3,7 +3,7 @@
     <div class="signup__content financeiro">
 
     <div class="admin__heading">
-      <h1 class="title">Financeiro</h1>
+      <h1 class="title">Financeiro {{page}}</h1>
     </div>
 
 		<section id="dashboard">
@@ -22,7 +22,7 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="carrinho in compras track by carrinho.id" >
+				    <tr ng-repeat="carrinho in compras | limitTo:itemsPerPage:startPage track by carrinho.id " >
 				      <td class="text-center"><strong>{{::carrinho.pedido}}</strong></td>
 				      <td>{{::carrinho.dataFormat}}</td>
 				      <td>{{::carrinho.valor}}</td>
@@ -32,6 +32,8 @@
 				    </tr>
 				  </tbody>
 				</table>
+
+				 <pagination boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-click="onSelectPage(currentPage)"></pagination>
 						
 		 		</div>
 			</div> <!-- //row -->

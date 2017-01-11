@@ -1,8 +1,9 @@
-
-
 $(function() {
-  $('.show-filters a').click(function(e) {
+  $(document).on('click', ".show-filters a", function(e){
     e.preventDefault();
+
+    console.log("sssssssssssssss");
+      
     var $elText = $(this).find("span");
 
     if($elText.text() == "Mostrar filtros"){
@@ -35,15 +36,10 @@ $(function() {
    
 });
 
-
-
-
  $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
          event.preventDefault();
         $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
  });
-
-
 
 
 $(document).ready(function() {
@@ -52,6 +48,17 @@ $(document).ready(function() {
     console.log(e);
     e.preventDefault();
     $(".showPassword").slideToggle();
+  });
+
+  $(document).on('click', ".timeline__list-group li", function(e){
+    e.preventDefault();
+
+    var getRef = $(this).closest("li").data("year");
+    console.log(getRef);
+    console.log($(document).find(".timeline__post"));
+    console.log($(document).find(".timeline__post."+getRef));
+      
+    $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
   });
 
   if ( $('#sidebar-styker').length ) {
@@ -70,8 +77,6 @@ $(document).ready(function() {
 
 }());
 
-
-
 /* Temporário
    temporário, usado somente para testar,
    se clicar  .cd-item-remove  */
@@ -85,13 +90,6 @@ $(function() {
           });
   }
 });
-
-
-
-
-
-
-
 
 
 //toggle foter
@@ -112,60 +110,30 @@ $(function() {
 // }
 
 
-///simple modal image
-// $(function() {
+///cards para transformar em card ou linha
+   $(function() {
+      if ( $('.toggle-form-type').length ) {
 
-//   setTimeout(function(){
-//     if ( $('.lightbox').length ) {
-//       $('.lightbox a').simpleLightbox();
-//     }
-//   }, 500);
+           $('.toggle-form-type').on('click', function(event){
+                 event.preventDefault();
+                 $(this).toggleClass('toggle-form-type--active');
 
-//   if ( $('.section__course-gallery-list--link').length ) {
-//     $('.section__course-gallery-list--link').on('click', function(event){
-//       event.preventDefault();
-//       $(this).toggleClass("active");
-//     });
-//   }
+                if($('.card-course').hasClass('card-format-block')) {
+                  $(".card-course").removeClass("card-format-block").addClass("card-format-line");
+                  $(".card-course").addClass("card-format-line");
+                  $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3").addClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1");
 
-// });
-
-
-
-
+                 }
+                else if($('.card-course').hasClass('card-format-line')) {
+                  $(".card-course").removeClass("card-format-line").addClass("card-format-block");
+                  $(".card-course").addClass("card-format-block");
+                  $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3");
+                 }
 
 
-
-
-
-
-
-
-
-  ///cards para transformar em card ou linha
-     $(function() {
-        if ( $('.toggle-form-type').length ) {
-
-             $('.toggle-form-type').on('click', function(event){
-                   event.preventDefault();
-                   $(this).toggleClass('toggle-form-type--active');
-
-                  if($('.card-course').hasClass('card-format-block')) {
-                    $(".card-course").removeClass("card-format-block").addClass("card-format-line");
-                    $(".card-course").addClass("card-format-line");
-                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3").addClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1");
- 
-                   }
-                  else if($('.card-course').hasClass('card-format-line')) {
-                    $(".card-course").removeClass("card-format-line").addClass("card-format-block");
-                    $(".card-course").addClass("card-format-block");
-                    $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3");
-                   }
-
- 
-             });
-        }
-      }());
+           });
+      }
+    }());
 
 
 
@@ -232,77 +200,3 @@ $(document).ready(function() {
     //   return false;
     // });
 });
-  //end Smooth Scrolling
-
-
-
-;(function ( $, window, document, undefined) {
-
-// resolver reflow temporario
-$(document).foundation({
-    accordion: {
-      callback: function(accordion) {                           
-      $(document).foundation('equalizer', 'reflow');
-    }
-  },
-  equalizer: {
-    equalize_on_stack: true,
-    act_on_hidden_el: true,
-    after_height_change: function() {
-        $(document).foundation('accordion', 'reflow');
-    }
-  }
-});
-
-}(Foundation, jQuery, this, this.document));
-
-  // Foundation JavaScript
-  // Documentation can be found at: http://foundation.zurb.com/docs
-  $(document).foundation();
-  // setTimeout(function(){
-  //   $(document).foundation();
-  //   console.log('this');
-      
-  // }, 500);
-
-   // $("#menu").metisMenu({
-   //   collapseInClass: 'in';
-   // });
-$(document).foundation('equalizer', 'reflow');
-
-
-
-
-
-
-
-// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
-//  $(document).foundation(
-//  {
-// "magellan-expedition": {
-//   active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
-//   threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
-//   destination_threshold: 20, // pixels from the top of destination for it to be considered active
-//   throttle_delay: 50, // calculation throttling to increase framerate
-//   fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-//   offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
-// }
-// }
-// );
-// -------------------- HABILITAR MENU MOBILE NÃO FUNCIONA ----------------------------
- $(document).foundation(
- {
-"magellan-expedition": {
-  active_class: 'navigation_courses__list-item-active', // specify the class used for active sections
-  threshold: 0, // how many pixels until the magellan bar sticks, 0 = auto
-  destination_threshold: 20, // pixels from the top of destination for it to be considered active
-  throttle_delay: 50, // calculation throttling to increase framerate
-  fixed_top: 0, // top distance in pixels assigend to the fixed element on scroll
-  offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
-}
-}
-
-);
-
-
-
