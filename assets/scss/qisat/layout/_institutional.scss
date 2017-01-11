@@ -19,6 +19,24 @@
     padding: 3px;
   }
 
+  .block {
+    @media only screen and (min-width: 40em) {
+      margin-left: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &.page-contact {
+    .sub-title {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+
+      strong {
+        padding-top: 2px;
+      }
+    }
+  }
+
   ul.unstyle {
     list-style-type: none;
     padding: 0;
