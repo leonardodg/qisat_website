@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
-	<!-- <base href="http://newsite.qisat.com/assets/"> -->
-	
+	<base href="/assets">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title> QiSat | O Canal do e-Learning da Engenharia </title>
 	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
 
- 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
-	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
-	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
+  <script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+  <link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
 
 
@@ -52,48 +53,10 @@
 						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
 							<i class="material-icons">menu</i> Menu</a>
 						</li>
-			    		<li class="header-main__list header-main__list-cart"> 
-			    			<a class="header-main__item header-main__item-cart" >
-			    				<i class="material-icons">shopping_cart</i> <span class="cart_number">3</span></a>
-			    			</a>
-			    		</li>
 					</ul>
 				</nav>
 			</header>
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
-
-		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer"></div>
-				<div id="cd-cart">
-					<h2>Itens no carrinho</h2>
-				<ul class="cd-cart-items">
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-					</li>
-
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-					</li>
-
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-					</li>
-				</ul>
-				 
-					<div class="cd-cart-total">
-						<p>Total <span>R$00.00</span></p>
-					</div> <!-- cd-cart-total -->
-				 
-					<a href="/carrinho" target="_self" class="checkout-btn">Finalizar compra</a>
-					<p class="cd-go-to-cart"><a>Continuar comprando</a></p>
-				</div> <!-- cd-cart -->
-		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
 <main class="content-main">
 
@@ -115,10 +78,10 @@
           <span>Carrinho</span>
         </div>
         <div class="step step2">
-          <span>Identificação</span>
+          <span>Confirmação de dados</span>
         </div>
         <div class="step step3">
-          <span>Confirmação de dados</span>
+          <span>Pagamento</span>
         </div>
         <div class="step step4">
           <span>Confirmação de compra</span>
@@ -127,167 +90,9 @@
     </div>
   </div>
   <div class="large-9 columns">
-    <div class="widget_content no-padding">
-      <table width="100%" class="table-cart">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th class="text-center">Quant. Inscrições</th>
-            <th class="text-center">Valor unitário</th>
-            <th class="text-center">Valor</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td width="40%">
-              <img class="left thumbnail" src="http://placehold.it/60x60.jpg">
-              Curso Alvenaria Estrutural para Construtoras
-            </td>
-            <td width="18%" class="muted">
-              <a href="#"><i class="material-icons left">add_circle</i></a>
-              <input type="text" name="" class="quantity" placeholder="1">
-              <a href="#"><i class="material-icons left">remove_circle</i></a>
-            </td>
-            <td width="25%" class="muted">
-              <span class="oldPrice">R$ 560,00</span>
-              <span class="discount">Desconto promocional: -R$ 280,00</span>
-              <span class="newPrice">por R$ 280,00</span>
-            </td>
-            <td width="12%" class="muted">R$ 280,00</td>
-            <td width="5%" class="muted">
-              <a href="#"><i class="material-icons">delete_forever</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td width="40%">
-              <img class="left thumbnail" src="http://placehold.it/60x60.jpg">
-              Curso Alvenaria Estrutural para Construtoras
-            </td>
-            <td width="18%" class="muted">
-              <a href="#"><i class="material-icons left">add_circle</i></a>
-              <input type="text" name="" class="quantity" placeholder="1">
-              <a href="#"><i class="material-icons left">remove_circle</i></a>
-            </td>
-            <td width="25%" class="muted">
-              <span class="oldPrice">R$ 560,00</span>
-              <span class="discount">Desconto promocional: -R$ 280,00</span>
-              <span class="newPrice">por R$ 280,00</span>
-            </td>
-            <td width="12%" class="muted">R$ 280,00</td>
-            <td width="5%" class="muted">
-              <a href="#"><i class="material-icons">delete_forever</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td width="40%">
-              <img class="left thumbnail" src="http://placehold.it/60x60.jpg">
-              Curso Alvenaria Estrutural para Construtoras
-            </td>
-            <td width="18%" class="muted">
-              <a href="#"><i class="material-icons left">add_circle</i></a>
-              <input type="text" name="" class="quantity" placeholder="1">
-              <a href="#"><i class="material-icons left">remove_circle</i></a>
-            </td>
-            <td width="25%" class="muted">
-              <span class="oldPrice">R$ 560,00</span>
-              <span class="discount">Desconto promocional: -R$ 280,00</span>
-              <span class="newPrice">por R$ 280,00</span>
-            </td>
-            <td width="12%" class="muted">R$ 280,00</td>
-            <td width="5%" class="muted">
-              <a href="#"><i class="material-icons">delete_forever</i></a>
-            </td>
-          </tr>
-          
-        </tbody>
-      </table>
-    </div>
 
-    <div class="row">
-      <div class="column small-6">
-        <a href="#" class="button secondary"><i class="material-icons">keyboard_arrow_left</i> Acrescentar outro curso</a>
-      </div>
-      <div class="column small-6">
-        <a href="#" class="button success right" data-reveal-id="loginModal">Avançar <i class="material-icons">keyboard_arrow_right</i></a>
-      </div>
-    </div>
-
-    <div class="widget_content">
-      <p class="title">Forma de pagamento</p>
-      <table width="100%" class="table-cart">
-        <tr>
-          <th>Termos de contrato</th>
-          <td>
-            <label>
-              <input type="checkbox"> Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <th>Selecione a Forma de Pagamento</th>
-          <td>
-            <div class="row">
-              <div class="column small-12 medium-3">
-                <p>Boleto</p>
-                <ul class="inline-list">
-                  <li>
-                    <label><input type="radio"> Boleto</label>
-                  </li>
-                </ul>
-              </div>
-              <div class="column small-12 medium-9">
-                <p>Cartão de crédito</p>
-                <ul class="inline-list">
-                  <li>
-                    <label>
-                      <input type="radio"> <img src="images/cart/icon-visa.png" alt="Visa">
-                    </label>
-                  </li>
-                  <li>
-                    <label>
-                      <input type="radio"> <img src="images/cart/icon-mastercard.png" alt="MasterCard">
-                    </label>
-                  </li>
-                  <li>
-                    <label>
-                      <input type="radio"> <img src="images/cart/icon-elo.png" alt="Elo">
-                    </label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>Selecione o valor das parcelas</th>
-          <td>
-            <select>
-              <option value="1">2x de R$255,00</option>
-            </select>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div class="widget_content">
-      <p class="title">Confirmação de compra</p>
-
-      <table width="100%" class="table-cart">
-        <tr>
-          <td><i class="material-icons">launch</i></td>
-          <td>Para efetuar o pagamento e finalizar sua compra, você será redirecionado para uma página segura de pagamento onde deve informar os dados do seu cartão!</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="row">
-      <div class="column small-6">
-        <a href="#" class="button secondary"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
-      </div>
-      <div class="column small-6">
-        <a href="#" class="button success right">Efetuar pagamento <i class="material-icons">keyboard_arrow_right</i></a>
-      </div>
-    </div>
+     <div ng-view></div>
+  
   </div>
 </div>
 
@@ -296,106 +101,106 @@
 <!-- ########################## END MAIN ########################## -->
 
 
-				<!-- ########################## FOOTER ########################## -->
-					<footer class="footer-main" >
+        <!-- ########################## FOOTER ########################## -->
+          <footer class="footer-main" >
 
-						<div class="footer-primary">
-							<div class="row">
+            <div class="footer-primary">
+              <div class="row">
 
-										<ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+                    <ul class="footer-primary__columns small-block-grid-2 medium-block-grid-3 large-block-grid-6">
 
-											<li class="footer-primary__columns--item">
-											 		<ul class="footer-primary__list">
-														<li class="footer-primary__title">Sobre o QiSat</li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   target="_self"> Institucional </a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   target="_self"> Linha do Tempo </a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  target="_self">Convênios e Parceiros</a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  target="_self">Instrutores e Professores</a></li>
-													</ul>
-											</li>
+                      <li class="footer-primary__columns--item">
+                          <ul class="footer-primary__list">
+                            <li class="footer-primary__title">Sobre o QiSat</li>
+                            <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   target="_self"> Institucional </a></li>
+                            <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   target="_self"> Linha do Tempo </a></li>
+                            <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  target="_self">Convênios e Parceiros</a></li>
+                            <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  target="_self">Instrutores e Professores</a></li>
+                          </ul>
+                      </li>
 
-											<li class="footer-primary__columns--item">
-											 	<ul class="footer-primary__list">
-													<li class="footer-primary__title"> Páginas </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li>
-									 		 	</ul>
-											</li> <!-- // -->
-
-
-											<li class="footer-primary__columns--item">
-												<ul class="footer-primary__list"> 
-													<li class="footer-primary__title"> Soluções </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>		
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
-											 		</ul>
-											</li>
-
-											<li class="footer-primary__columns--item">
-												<ul class="footer-primary__list">
-													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
-												</ul>
-											</li>   
-
-											<li class="footer-primary__columns--item">
-												<ul class="footer-primary__list">
-											 		<li class="footer-primary__title"> Social </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
-
-											 	</ul>
-											</li>
-
-											<li class="footer-primary__columns--item">
-												<img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
-											</li> <!-- //  -->
-
-							</div> <!-- ///row -->
-						</div> <!-- // footer-primary -->
+                      <li class="footer-primary__columns--item">
+                        <ul class="footer-primary__list">
+                          <li class="footer-primary__title"> Páginas </li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>           
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li>
+                        </ul>
+                      </li> <!-- // -->
 
 
+                      <li class="footer-primary__columns--item">
+                        <ul class="footer-primary__list"> 
+                          <li class="footer-primary__title"> Soluções </li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>    
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
+                          </ul>
+                      </li>
+
+                      <li class="footer-primary__columns--item">
+                        <ul class="footer-primary__list">
+                           <li class="footer-primary__title"> Contato</li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+                        </ul>
+                      </li>   
+
+                      <li class="footer-primary__columns--item">
+                        <ul class="footer-primary__list">
+                          <li class="footer-primary__title"> Social </li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+
+                        </ul>
+                      </li>
+
+                      <li class="footer-primary__columns--item">
+                        <img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+                      </li> <!-- //  -->
+
+              </div> <!-- ///row -->
+            </div> <!-- // footer-primary -->
 
 
-						<div class="footer-secondary" ng-controller="footerController as vm">
-								<div class="row">
-										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
-											<li>
-													<ul class="footer-secondary__list">
-														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="vm.modaltermo()">Termos de uso</a>
-														</li>
-														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="vm.modalpolitica()">Política de privacidade</a>
-														</li>
-													</ul>
-										    </li>
 
-										    <li>
-													<ul class="footer-secondary__list footer-secondary__list--email ">
-														<li class="footer-secondary__list__item"><a href="mailto:qisat@qisat.com.br" class="footer-secondary__list__item--link">QiSat | Cursos aplicados à engenharia e Arquitetura : <strong>qisat@qisat.com.br</strong></a></li>
-													</ul>
-										   	</li>
 
-											<li>
-												<ul class="footer-secondary__list">
-														<li class="footer-secondary__list__item">
-															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-															<a href="www.altoqi.com.br" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
-														</li>
-												 </ul>
-											</li>
-						 		</div> <!-- ///row -->
-						</div> <!-- footer-secondary -->
+            <div class="footer-secondary" ng-controller="footerController as vm">
+                <div class="row">
+                    <ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+                      <li>
+                          <ul class="footer-secondary__list">
+                            <li class="footer-secondary__list__item">
+                              <a class="footer-secondary__list__item--link" ng-click="vm.modaltermo()">Termos de uso</a>
+                            </li>
+                            <li class="footer-secondary__list__item">
+                              <a class="footer-secondary__list__item--link" ng-click="vm.modalpolitica()">Política de privacidade</a>
+                            </li>
+                          </ul>
+                        </li>
 
-					</footer> <!-- footer-container -->
-					<!-- ########################## END FOOTER ########################## -->
+                        <li>
+                          <ul class="footer-secondary__list footer-secondary__list--email ">
+                            <li class="footer-secondary__list__item"><a href="mailto:qisat@qisat.com.br" class="footer-secondary__list__item--link">QiSat | Cursos aplicados à engenharia e Arquitetura : <strong>qisat@qisat.com.br</strong></a></li>
+                          </ul>
+                        </li>
+
+                      <li>
+                        <ul class="footer-secondary__list">
+                            <li class="footer-secondary__list__item">
+                              <span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+                              <a href="www.altoqi.com.br" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt=""> <img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+                            </li>
+                         </ul>
+                      </li>
+                </div> <!-- ///row -->
+            </div> <!-- footer-secondary -->
+
+          </footer> <!-- footer-container -->
+          <!-- ########################## END FOOTER ########################## -->
 
 			<!-- exit-off-canvas -->
 			<a class="exit-off-canvas"></a>
@@ -403,43 +208,30 @@
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
-   <div id="loginModal" class="reveal-modal tiny" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-      <h2 id="modalTitle">Acesso ao Portal do Aluno</h2>
-      <form>
-        <input type="text" name="username" placeholder="Nome do usuário">
-        <input type="password" name="password" placeholder="Senha de acesso">
-        <button type="submit">Entrar</button>
-      </form>
-      <p class="text-center"><a href="#">Esqueci minha senha</a></p>
-      <div class="not-member text-center">
-        <p>Ainda não tem Cadastro?</p>
-        <a href="#" class="button tiny">Crie uma conta grátis</a>
-      </div>
-      <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-    </div>
+  <!-- GLOBAL -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+    <script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+    <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
+    <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+  <!-- // GLOBAL -->
 
-	<!-- GLOBAL -->
-		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
-		<script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
-		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-	<!-- // GLOBAL -->
-
-
-	<!-- EXECUTA SCRIPTS QISAT -->
-	    
-
-	    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
-	    <script defer src="js/libs/angular-locale_pt-br.js"></script>
-		<script defer src="js/libs/angular-cookies.min.js"></script>
-	    <script defer src="js/libs/angular-route.min.js"></script>
-	    <script defer src="js/libs/angular-resource.min.js"></script>
-	    <script defer src="js/libs/ngMask.min.js"></script>
-	    <script defer src="js/libs/ui-masks.js"></script>
-	    <script defer src="js/QiSatApp.js"></script>
-	    <script defer src="js/controllers/footerController.js"></script>
-      	<script defer src="js/app.js"></script>
-
+  <!-- EXECUTA SCRIPTS QISAT -->
+      <script defer src="js/libs/angular-locale_pt-br.js"></script>
+      <script defer src="js/libs/angular-cookies.min.js"></script>
+      <script defer src="js/libs/angular-route.min.js"></script>
+      <script defer src="js/libs/angular-resource.min.js"></script>
+      <script defer src="js/libs/ngMask.min.js"></script>
+      <script defer src="js/libs/ui-masks.js"></script>
+      <script defer src="js/QiSatApp.js"></script>
+      <script defer src="js/config/value.js"></script>
+      <script defer src="js/services/QiSatAPI.js"></script>
+      <script defer src="js/controllers/footerController.js"></script>
+      <script defer src="js/controllers/compraController.js"></script>
+      <script defer src="js/services/authService.js"></script>
+      <script defer src="js/routes/carrinho.js"></script>
+      
+      <script defer src="js/app.js"></script>
+    <!-- // EXECUTA MEUS SCRIPTS -->
 </body>
 </html>
