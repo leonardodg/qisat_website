@@ -524,6 +524,10 @@ button.close-button, .close-button {
           margin-right: 0;
         }
       }
+      
+      @media only screen and (min-width: 1280px) {
+        min-height: 555px;
+      }
 
       img {
         width: 100%;
