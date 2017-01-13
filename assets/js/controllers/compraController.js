@@ -4,7 +4,7 @@
 	angular
 		.module('QiSatApp')
 		.controller('compraController', ['$scope', '$location', '$filter','authService', '$modal', 'carrinho', 'Authenticated',
-					 function(scope, $location, $filter, authService, $modal, carrinho ) {
+					 function(scope, $location, $filter, authService, $modal, carrinho, Authenticated ) {
 
 					 	var vm = this;
 
