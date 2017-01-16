@@ -4719,6 +4719,32 @@ hr.clearfix {
   }
 }
 
+/* line 1285, ../scss/qisat/structure/_pages.scss */
+.step-title {
+  font-size: 16px;
+  color: #005b8a;
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 40em) {
+  /* line 1285, ../scss/qisat/structure/_pages.scss */
+  .step-title {
+    font-size: 20px;
+  }
+}
+
+/* line 1294, ../scss/qisat/structure/_pages.scss */
+.step-desc div {
+  color: #005b8a;
+  margin-top: 10px;
+}
+@media only screen and (min-width: 40em) {
+  /* line 1294, ../scss/qisat/structure/_pages.scss */
+  .step-desc div {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
 /* grid ---------------------------------------- */
 /* line 22, ../scss/qisat/layout/_admin.scss */
 .admin_main__container {
