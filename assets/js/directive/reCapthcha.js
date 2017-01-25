@@ -3,7 +3,7 @@
 
   angular
     .module('QiSatApp')
-        .directive('reCapthcha', [function () {
+        .directive('reCapthcha', ['$timeout',function ($timeout) {
                         var ddo = {
                             restrict: 'AE',
                             scope: {},
@@ -38,8 +38,10 @@
                             function iscaptchaReady() {
                                 if (typeof grecaptcha !== "object") {
                                     // api not yet ready, retry in a while
+                                    console.log('not2');
                                     return setTimeout(iscaptchaReady, 250);
                                 }
+                                   console.log(grecaptcha);
                                 id = grecaptcha.render(
                                     elm[0], {
                                         // put your own sitekey in here, otherwise it will not

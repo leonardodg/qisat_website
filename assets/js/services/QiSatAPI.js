@@ -16,7 +16,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'post', 
-		                                                    url: Config.baseUrl+'/user/',
+		                                                    url: Config.baseUrl+'/wsc-user/createUser',
 		                                                    data: data
 		                                                        });
 
@@ -31,7 +31,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'post', 
-		                                                    url: Config.baseUrl+'/user/checkEmail',
+		                                                    url: Config.baseUrl+'/wsc-user/checkEmail',
 		                                                    data: { email: email }
 		                                                        });
 
@@ -46,7 +46,7 @@
 
 		                            var promise = $http({ 
 		                                                    method : 'post', 
-		                                                    url : Config.baseUrl+'/user/checkCPF',
+		                                                    url : Config.baseUrl+'/wsc-user/checkCPF',
 		                                                    data : { cpf: cpf }
 		                                                        });
 
@@ -61,7 +61,7 @@
 									var promise = $http({ 
 														cache: true, 
 														method: 'GET', 
-														url: Config.baseUrl+'/instrutores/top'
+														url: Config.baseUrl+'/instrutor/wsc-instrutor/top'
 													});
 
 										promise.then( handleSuccess, handleError );
@@ -73,7 +73,7 @@
 									var promise = $http({ 
 														cache: true, 
 														method: 'GET', 
-														url: Config.baseUrl+'/instrutores'
+														url: Config.baseUrl+'/instrutor/wsc-instrutor/listar'
 													});
 
 										promise.then( handleSuccess, handleError );
@@ -85,7 +85,7 @@
 									var promise = $http({ 
 														cache: true, 
 														method: 'GET', 
-														url: Config.baseUrl+'/instrutores/'+id
+														url: Config.baseUrl+'/instrutor/wsc-instrutor/get/'+id
 													});
 
 										promise.then( handleSuccess, handleError );
@@ -110,7 +110,7 @@
 									var promise = $http({ 
 															cache: true, 
 															method: 'GET', 
-															url: Config.baseUrl+'/moodle/eventos/estados'
+															url: Config.baseUrl+'/curso-presencial/wsc-curso-presencial/estados-edicoes'
 														});
 
 										promise.then( handleSuccess, handleError );
@@ -122,7 +122,7 @@
 									var promise = $http({ 
 															cache: true, 
 															method: 'GET', 
-															url: Config.baseUrl+'/moodle/produtos/top'
+															url: Config.baseUrl+'/produto/wsc-produto/destaques'
 														});
 
 										promise.then( handleSuccess, handleError );
@@ -135,12 +135,12 @@
 									var promise = $http({ 
 															cache: true, 
 															method: 'GET', 
-															url: Config.baseUrl+'/info/'+course
+															url: Config.baseUrl+'/produto/wsc-produto/get-info/'+course
 														});
 
 										return promise.then( function successCallback( res ){
 											if(res.status == 200) 
-												return res.data;
+												return res.data.retorno;
 										});
 							},
 
@@ -149,7 +149,7 @@
 									var promise = $http({ 
 													cache: true, 
 													method: 'GET', 
-													url: Config.baseUrl+'/moodle/produtos'
+													url: Config.baseUrl+'/produto/wsc-produto/listar'
 												});
 
 										promise.then( function successCallback( response ){
@@ -158,57 +158,63 @@
 														filterZpad = $filter('zpad'),
 														filterLimitName = $filter('limitName');
 
-													if(response.status == 200) courses = response.data;
+													if(response.status == 200) courses = response.data.retorno;
 													courses.map( function (course, i) {
-														var imagemFile;
+														var imagemFile, tipo;
 														if(course){
 
-															course.valorTotal = course.preco;
-															course.preco = $filter('currency')(course.preco, 'R$');
+															course.precoTotal =  $filter('currency')(course.preco, 'R$');
+															if(course.promocao){
+																course.preco = $filter('currency')(course.valorTotal, 'R$');
+																course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
+															}else
+																course.preco = $filter('currency')(course.preco, 'R$');
+
+
 															course.imgSrc = Config.imgCursoUrlDefault;
 															
 															if(course.info){
-																if(course.info.files){
-																	imagemFile = course.info.files.find(function(img) { return img.tipo == '5' });
-																	if(imagemFile) course.imgSrc =  Config.baseUrl+imagemFile.path.replace(/["\\"]/g,'/').replace( "public" ,'');
-																}
 
-																course.nome = filterLimitName(course.info.titulo);
+																imagemFile = course.imagens.find(function(img) { return img.type == 'capa' });
+																if(imagemFile) course.imgSrc = imagemFile.src;
+
+																course.nomeLimit = filterLimitName(course.info.titulo, 48);
 
 																//serie, pack, classroom, events, single, releases, free, online
-																if( course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-																	course.modalidade = "Série Online";
+																if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																	course.modalidade = tipo.nome;
 																	course.isSerie = true;
-																	course.link =  "/curso/online/"+course.info.seo.url ;
+																	course.link =  "/curso/online/"+course.info.url ;
 																	course.info.conteudos.map( function (conteudo){
 																				 var aux =  conteudo.titulo.split('-');
 																				 conteudo.capitulo = aux[0];
 																				 conteudo.nome = aux[1];
 																				});
-																}else if( course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-																	course.modalidade = "Pacote de Cursos Online";
+																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																	course.modalidade = tipo.nome;
 																	course.isPack = true;
-																	course.link =  "/curso/online/"+course.info.seo.url ;
-																}else if( course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-																	course.modalidade = "Palestra Online";
+																	course.link =  "/curso/online/"+course.info.url ;
+																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																	course.modalidade = tipo.nome;
 																	course.isLecture = true;
-																	course.link =  "/curso/online/"+course.info.seo.url ;
-																}else if( course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-																	course.modalidade = "Curso Presencial - individual";
+																	course.link =  "/curso/online/"+course.info.url ;
+																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																	course.modalidade = tipo.nome;
 																	course.isIndividual = true;
-																	course.link =  "/curso/presencial/"+course.info.seo.url ;
-																}else if( course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-																	course.modalidade = "Curso Presencial";
+																	course.link =  "/curso/presencial/"+course.info.url ;
+																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																	course.modalidade = tipo.nome;
 																	course.isClassroom = true;
-																	course.link = "/curso/presencial/"+course.info.seo.url;
-																}else if( course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-																	course.modalidade = "Curso Online";
+																	course.link = "/curso/presencial/"+course.info.url;
+																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																	course.modalidade = tipo.nome;
 																	course.isOnline = true;
-																	course.link = "/curso/online/"+course.info.seo.url ;
+																	course.link = "/curso/online/"+course.info.url ;
 																}
 															}
 														}
 													});
+
 													return courses;
 												}, handleError );
 									return promise;
@@ -220,7 +226,7 @@
 										var promise = $http({ 
 															cache: true, 
 															method: 'GET', 
-															url: Config.baseUrl+'/moodle/tipo/dados'
+															url: Config.baseUrl+'/produto/wsc-produto/produtos-tipos-id'
 														});
 
 										promise.then( handleSuccess, handleError );
@@ -231,7 +237,7 @@
 							sendMail : function (data) {
 									var promise = $http({ 
 															method: 'POST', 
-															url: Config.baseUrl+'/sendmail',
+															url: Config.baseUrl+'/wsc-user/lembrete-senha',
 															data: data
 														});
 
@@ -243,8 +249,8 @@
 							getConvenios : function () {
 								var promise = $http({ 
 															cache: true, 
-															method: 'GET', 
-															url: Config.baseUrl+'/moodle/convenios'
+															method: 'GET',
+															url: Config.baseUrl+'/convenio/wsc-convenio/instituicoes-conveniadas'
 														});
 
 											promise.then( handleSuccess, handleError );
@@ -265,13 +271,96 @@
 										return promise;
 
 							}
+
+						/*
+						 * Função reponsável por inserir convênios
+						 * Deve ser feito requisições do tipo POST, informando os seguintes parâmetros no formato JSON:
+						 * {
+						 *  ecm_convenio_tipo_instituicao_id: 1,
+						 *  mdl_cidade_id: 11139,
+						 *  nome_responsavel: (nome_responsavel),
+						 *  nome_coordenador: (nome_coordenador),
+						 *  nome_instituicao: (nome_instituicao),
+						 *  curso: (curso),
+						 *  disciplina: (disciplina),
+						 *  cargo: (cargo),
+						 *  email: (email),
+						 *  telefone: (telefone)
+						 * }
+						 *
+						 * Retornos:
+						 * 1- {'sucesso':true}
+						 * 2- {'sucesso':false, 'mensagem': 'Este Web Service não aceita esse tipo de requisição'}
+						 * 5- {'sucesso':false, 'mensagem': 'Erro ao salvar repasse'}
+						 * 6- {'sucesso':false, 'mensagem': 'Não foi possível inserir o convênio'}
+						 * */
+							,addInstitution : function (data) {
+								var promise = $http({
+									method: 'POST',
+									url: Config.baseUrl+'/convenio/wsc-convenio/inserir',
+									data: data
+								});
+
+								promise.then( handleSuccess, handleError );
+
+								return promise;
+
+							},
+						/*
+						 * Função reponsável por adicionar um interesse de um cliente em um convenio
+						 * Deve ser feito requisições do tipo POST:
+						 * http://{host}/convenio/wsc-convenio/add-interesse
+						 *
+						 * Retornos:
+						 * 1- {'sucesso':true, 'mensagem': 'Interesse registrado com sucesso'}
+						 * 2- {'sucesso':false, 'mensagem': 'O Interesse não pode ser registrado'}
+						 * 3- {'sucesso':false, 'mensagem': 'Informe os parâmetros do Interesse'}
+						 * 4- {'sucesso':false, 'mensagem': 'Informe o parâmetro Nome'}
+						 * 5- {'sucesso':false, 'mensagem': 'Informe o parâmetro Telefone'}
+						 * 6- {'sucesso':false, 'mensagem': 'Informe o parâmetro Email'}
+						 * 7- {'sucesso':false, 'mensagem': 'Informe o id do convênio'}
+						 * */
+							addInteresse : function (data) {
+								var promise = $http({
+									method: 'POST',
+									url: Config.baseUrl+'/convenio/wsc-convenio/add-interesse',
+									data: data
+								});
+
+								promise.then( handleSuccess, handleError );
+
+								return promise;
+
+							},
+							/*
+							 * Função responsável por listar todos os cursos e todos os descontos dos convenios
+							 * Deve ser feito requisições do tipo GET, sem parâmetros:
+							 * http://{host}/convenio/wsc-convenio/desconto-convenio
+							 *
+							 * Retornos:
+							 * 1- {'sucesso': true, 'ecmProduto': lista de produtos dividida por tipo com valores e descontos}
+							 *
+							 * */
+							descontoConvenio : function (data) {
+								var promise = $http({
+									method: 'POST',
+									url: Config.baseUrl+'/convenio/wsc-convenio/desconto-convenio',
+									data: data
+								});
+
+								promise.then( handleSuccess, handleError );
+
+								return promise;
+
+							}
+
 						};
 
 				return sdo;
 				
 			  	// private functions
 				function handleSuccess(res) {
-				    return res.data;
+				    return res.data.retorno;
 				}
 
 				function handleError(error) {

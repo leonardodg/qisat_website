@@ -5,10 +5,11 @@
 		.module('QiSatApp')
 		.value("Config", {
 				
-				Authorization : "QiSat",
-				baseUrl : "http://webservice.qisat.com:3000",
+				Authorization : "Digest",
+       			baseUrl : "http://local-ecommerce.qisat.com.br:83",
 				imagensUrlDefault : "http://webservice.qisat.com:3000/imagens/instrutores/instrutor.png",
 				imgCursoUrlDefault : "http://webservice.qisat.com:3000/imagens/produtos/default.png",
+				boletoUrl : "http://local-ecommerce.qisat.com.br:83/forma-pagamento-boleto-php/boleto",
 
 				convenio : { "descontoAluno" : 30, "descontoAssociado" : 20, "descontoProfessor" : 50, "descontoCREAS" : 30},
 

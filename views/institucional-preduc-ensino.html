@@ -17,6 +17,10 @@
       <li><a href="/institucional/parceiros">Parceiros</a></li>
     </ul>
   </div>
+
+  <div class="page_content show-for-medium-up">
+    <small>O Projeto QiSat Rede Educacional Online visa o intercâmbio de conhecimento entre Entidade de Classe e o QiSat - Cursos aplicados à engenharia e arquitetura, portal www.qisat.com.br, direcionado às áreas da Engenharia Civil, Elétrica, Sanitária, Agronômica e Arquitetura levando descontos especiais para o meio acadêmico nas inscrições de cursos de aperfeiçoamento técnico do canal QiSat.</small>
+  </div>
 </div>
 
      <div class="large-9 medium-8 columns">
@@ -48,8 +52,19 @@
             <div class="accordion-discount">
             <accordion class="accordion-component accordion">
               <accordion-group heading="Como fazer o convênio?" class="accordion-navigation tab-title">
-                  <div>
-                    <img src="http://placehold.it/500x100.jpg">
+                  <div class="row">
+                    <div class="column small-4 text-center step-title">1ª Etapa</div>
+                    <div class="column small-4 text-center step-title">2ª Etapa</div>
+                    <div class="column small-4 text-center step-title">3ª Etapa</div>
+                  </div>
+                  <div class="text-center">
+                    <img src="/assets/images/icons/passo-a-passo.png">
+                  </div>
+
+                  <div class="row">
+                    <div class="column small-4 text-center step-desc"><div>Preencher o termo de adesão</div></div>
+                    <div class="column small-4 text-center step-desc"><div>Preencher a lista de associados</div></div>
+                    <div class="column small-4 text-center step-desc"><div>Enviar e-mail com s dois documentos para qisat@qisat.com.br</div></div>
                   </div>
                 </accordion-group>
              </accordion>
@@ -83,7 +98,7 @@
               <label for="nameInstituicao" class="text-right middle"> Nome da Instituição <small>*</small> </label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="institution.name" required>
+              <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="institution.nome_instituicao" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>
@@ -93,7 +108,7 @@
               <label for="nameResponsavelInstituicao" class="text-right middle"> Nome do Responsável <small>*</small> </label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="institution.responsavel" required>
+              <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="institution.nome_responsavel" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>
@@ -103,7 +118,7 @@
               <label for="nameCordenador" class="text-right middle"> Nome do Coordenador <small>*</small> </label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="institution.coordenador" required>
+              <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="institution.nome_coordenador" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>                  
@@ -123,7 +138,7 @@
               <label for="phoneInstituicao" class="text-right middle">Telefone para contato <small>*</small></label>
             </div>
             <div class="small-9 columns">
-              <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="institution.phone" mask="(99) 9?9999-9999" required>
+              <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="institution.telefone" mask="(99) 9?9999-9999" required>
               <small class="error">Telefone é Obrigatório!</small>
             </div>
           </div>

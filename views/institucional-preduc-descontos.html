@@ -17,6 +17,10 @@
       <li><a href="/institucional/parceiros">Parceiros</a></li>
     </ul>
   </div>
+
+  <div class="page_content show-for-medium-up">
+    <small>O Projeto QiSat Rede Educacional Online visa o intercâmbio de conhecimento entre Entidade de Classe e o QiSat - Cursos aplicados à engenharia e arquitetura, portal www.qisat.com.br, direcionado às áreas da Engenharia Civil, Elétrica, Sanitária, Agronômica e Arquitetura levando descontos especiais para o meio acadêmico nas inscrições de cursos de aperfeiçoamento técnico do canal QiSat.</small>
+  </div>
 </div>
 
      <div class="large-9 medium-8 columns">
@@ -60,7 +64,7 @@
             <tbody>
               <tr  > <td colspan="5" > CURSOS SOFTWARES </td></tr>
               <tr ng-repeat="curso in cursosSoftware track by curso.id">
-                  <td nowrap >{{::curso.modalidade}} : {{::curso.nome}} </td>
+                  <td nowrap > {{::curso.nome}} </td>
                   <td> {{::curso.preco}} </td>
                   <td> {{::curso.valorProfessor}} </td>
                     <td> {{::curso.valorAluno}} </td>
@@ -70,7 +74,7 @@
 
               <tr > <td colspan="5" > CURSOS TEÓRICOS </td></tr>
               <tr ng-repeat="curso in cursosTeoricos track by curso.id">
-                  <td nowrap >{{::curso.modalidade}}: {{::curso.nome}} </td>
+                  <td nowrap > {{::curso.nome}} </td>
                   <td> {{::curso.preco}} </td>
                   <td> {{::curso.valorProfessor}} </td>
                     <td> {{::curso.valorAluno}} </td>

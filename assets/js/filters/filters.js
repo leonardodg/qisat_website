@@ -12,6 +12,22 @@
 			};
 		})
 
+	 	.filter("nameInstructor", function (){
+			return function (input) {
+				var output = input.toLowerCase(), length = input.length, regex = /(da|de){2}/;
+					output = output.split(' ');
+					output = output.map(function(nome, i){
+						if(regex.test(nome)) 
+							return nome;
+						else if(length>=25 && i > 0 && i < output.length-1)
+							return nome.charAt(0).toUpperCase() + '.';
+						else
+							return nome.charAt(0).toUpperCase() + nome.substring(1);
+					});
+				return output.join(' ');
+			};
+		})
+
 	 	.filter('zpad', function() {
 			return function(input, n) {
 				var zeros;

@@ -15,7 +15,7 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   }
               }
             });
@@ -27,7 +27,7 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   }
               }
             });
@@ -39,10 +39,10 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   },
                 certificados : function(authService){
-                      return authService.certificados().then(function (res){ if(res.data && res.data.success) return res.data; }, function (res){ return false });
+                      return authService.certificados().then(function (res){ if(res.data && res.data.retorno.sucesso) return res.data.retorno.certificado; }, function (res){ return false });
                   }
               }
             });
@@ -54,7 +54,7 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   }
               }
             });
@@ -66,10 +66,10 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   },
                 compras : function(authService){
-                      return authService.compras().then(function (res){ if(res.data && res.data.success) return res.data["return"]; }, function (res){ return false });
+                      return authService.compras().then(function (res){ if(res.data && res.data.retorno.sucesso) return res.data.retorno.venda; }, function (res){ return false });
                   }
               }
             });
@@ -77,11 +77,11 @@
            $routeProvider.when('/aluno/carrinho/:id', {
               templateUrl : '/views/aluno-carrinho.html',
               isAuth : true,
-              controller: 'carrinhoController',
+              controller: 'alunoCarrinhoController',
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   }
               }
             });
@@ -93,7 +93,7 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.success) || false }, function (res){ return false });
+                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
                   }
               }
             });

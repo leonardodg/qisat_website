@@ -17,7 +17,7 @@
 
 					 	authService.courses().then(function (res){
 
-					 		scope.courses = res.data;
+					 		scope.courses = res.data.retorno.matriculas;
 					 		scope.courses.map(function (matricula){
 					 			var timestart,timeend, day, month, year;
 

@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/qisat/www.qisat.com.br/issues"
   },
-  "homepage": "https://github.com/qisat/www.qisat.com.br#readme"
+  "homepage": "https://github.com/qisat/www.qisat.com.br#readme",
+  "dependencies": {}
 }

@@ -28,9 +28,11 @@
 				};
 
 		    	$rootScope.$on('$viewContentLoaded', function () {
-				    $rootScope.$apply($document.foundation(config));
-				    $rootScope.$apply($document.foundation());
-				    $rootScope.$apply($document.foundation('equalizer', 'reflow'));
+		    		$timeout(function() {
+				   		$rootScope.$apply($document.foundation(config));
+				    	$rootScope.$apply($document.foundation());
+				    	$rootScope.$apply($document.foundation('equalizer', 'reflow'));
+				    });
 			    });
 		});
 		

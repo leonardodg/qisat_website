@@ -12,6 +12,10 @@
 										var regex = /api.postmon.com.br/i;
 										   if(regex.test(config.url))
 										    delete config.headers.Authorization;
+
+										// regex = /forma-pagamento\/wsc-forma-pagamento\/requisicao/i;
+										// if(regex.test(config.url))
+										// 	console.log(config);
 										
 						                return config;
 						            }

@@ -61,7 +61,7 @@
 
 										promise = $http({ 
 								                      method: 'POST', 
-								                      url: Config.baseUrl+'/user/checkAuth',
+								                      url: Config.baseUrl+'/wsc-user/checkAuth',
 						                        	  dataType: 'jsonp',
 								                      headers : {
 															      'Content-Type' : 'application/json',    
@@ -73,8 +73,8 @@
 
 										promise.then( function success(res) {
 
-						                            	if(res.data.success){
-						                            		useCredentials(res.data.token, res.data.user);
+						                            	if(res.data.retorno.sucesso){
+						                            		useCredentials(res.data.token, res.data.retorno.usuario);
 						                            		deferred.resolve(res);
 						                            	}else{
 						                            		console.log('Error verifyAuth SEM SUCCESS');
@@ -123,6 +123,18 @@
 								window.localStorage.removeItem('token');
 								window.sessionStorage.removeItem('user');
 								window.sessionStorage.removeItem('token');
+								var promise = $http({
+									method: 'POST',
+									url: Config.baseUrl+'/wsc-user/logout',
+									dataType: 'jsonp',
+									headers : {
+										'Content-Type' : 'application/json',
+									},
+									withCredentials : true
+								});
+								promise.then( function (res){
+									return res;
+								});
 								$http.defaults.headers.common.Authorization = undefined;
 							};
 						 
@@ -130,18 +142,18 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/login',
+	                                                  url: Config.baseUrl+'/wsc-user/login',
 	                                                  data: credentials,
 	                                                  withCredentials : true,
-	                                                  headers : {
-															      'Content-Type' : 'application/json',    
-															      }
+	                                                  headers : { 'Content-Type' : 'application/json' }
 	                                                        });
 
 	                            return  promise.then( function (res){
-	                            			if(res.data.success)
-	                            				useCredentials(res.data.token, res.data.user, credentials.remember );
-	                    
+	                            			if((res && res.status == 200 && res.data)&&(res.data.retorno && res.data.retorno.sucesso))
+	                            				useCredentials(res.data.token, res.data.retorno.usuario, credentials.remember );
+
+	                            			return res;
+	                            		}, function(res){
 	                            			return res;
 	                            		});
 			                };
@@ -150,7 +162,7 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/checkPassword',
+	                                                  url: Config.baseUrl+'/wsc-user/checkPassword',
 	                                                  data: { password : password },
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -167,10 +179,10 @@
 			                };
 
 			                function update(data) {
-
+								data['id'] = authUser.id;
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/'+authUser.id,
+	                                                  url: Config.baseUrl+'/wsc-user/create-user',
 	                                                  data: data,
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -190,7 +202,7 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/matriculas',
+	                                                  url: Config.baseUrl+'/wsc-user/matriculas',
 	                                                  data: { id : authUser.id },
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -210,7 +222,7 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/financeiro',
+	                                                  url: Config.baseUrl+'/wsc-user/financeiro',
 	                                                  data: { id : authUser.id },
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -222,6 +234,7 @@
 	                                                        });
 
 	                            return  promise.then( function (res){
+
 	                            			return res;
 	                            		});
 			                };
@@ -230,7 +243,7 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/certificados',
+	                                                  url: Config.baseUrl+'/wsc-user/certificados',
 	                                                  data: { id : authUser.id },
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -250,8 +263,8 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/carrinho',
-	                                                  data: { id : id },
+	                                                  url: Config.baseUrl+'/wsc-user/financeiro/get',
+	                                                  data: { venda : id },
 	                                                  dataType: 'jsonp',
 								                      headers : {
 															      'Content-Type' : 'application/json',    
@@ -271,7 +284,7 @@
 
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/user/updatePassword',
+	                                                  url: Config.baseUrl+'/wsc-user/updatePassword',
 	                                                  data: data,
 	                                                  dataType: 'jsonp',
 								                      headers : {
@@ -306,24 +319,6 @@
 			    					certificados : certificados
 								};
 					};
-				})
-				.run(['$rootScope', '$location', '$route' ,'authService', 
-				    function ($rootScope, $location, $route, authService ) {
-
-						$rootScope.$on('$routeChangeStart', function(e, curr, prev) {
-							$rootScope.error = '';
-							if (curr && curr.$$route && !curr.$$route.isAuth && authService.isLogged() && ($location.path().indexOf('lembrete-de-senha') < 0)) {
-								window.location = '/aluno/perfil';
-							}
-						});
-
-						$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
-							if (curr && curr.$$route && curr.$$route.isAuth && !authService.isAuth() ){
-								$rootScope.error = "Acesso Restrito!";
-								window.location = '/login';
-							}
-						});
-
-			    }]);
+				});
 
 })();

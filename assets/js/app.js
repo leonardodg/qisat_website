@@ -36,10 +36,10 @@ $(function() {
    
 });
 
- $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
-         event.preventDefault();
-        $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
- });
+ // $('.header-main__item-cart,  #cd-shadow-layer, .cd-go-to-cart').on('click', function(event){
+ //         event.preventDefault();
+ //        $("#cd-cart, #cd-shadow-layer, .header-main__list-cart").toggleClass("actived");
+ // });
 
 
 $(document).ready(function() {
@@ -54,10 +54,7 @@ $(document).ready(function() {
     e.preventDefault();
 
     var getRef = $(this).closest("li").data("year");
-    console.log(getRef);
-    console.log($(document).find(".timeline__post"));
-    console.log($(document).find(".timeline__post."+getRef));
-      
+    $(this).addClass("active").siblings().removeClass("active");
     $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
   });
 

@@ -182,10 +182,12 @@
     							</div>
 
                   <div class="form-group">
-                      <re-capthcha ng-model='chaptcha' ></re-captcha>
+                      <re-capthcha ng-model='chaptcha'></re-captcha>
                       <div ng-show="submitted && createForm.$error.captcha[0].$invalid">
                         <span class="error" >Verificação Recaptcha Necessário! </span>
                       </div>
+
+                      <!-- <div class="g-recaptcha" data-sitekey="6Ld8bgcUAAAAAFeHx_7T3Vb_cBZTGDH_CZ_T_uhA"></div> -->
                   </div>
 
                   <div class="form-group">

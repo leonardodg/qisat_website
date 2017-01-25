@@ -7,24 +7,15 @@
 		<div class="cards">
 		    <div ng-repeat="dados in certificados.return track by dados.id" class="card">
           <img src="http://placehold.it/300x180.jpg">
-          <form action="{{linkCertify(dados.link)}}" method="POST" target="_blank" >
+
           <div class="content">
-          <a href="#">
+          <a ng-href="{{linkCertify(dados.link)}}" target="_blank" >
           <i class="material-icons left">stars</i>
 		      <p>{{::dados.certificate_name}}</p>
 		      <span class="details date">Solicitação em {{::dados.datasolicitacaoFormat}}</span>
           </a>
           </div>
-						<input type="hidden" id="nome_aluno" name="nome_aluno" value="{{::user.nome}}">
-						<input type="hidden" id="nome_curso" name="nome_curso" value="{{::dados.certificate_name}}">
-						<input type="hidden" id="carga_horaria" name="carga_horaria" value="{{::dados.cargahoraria}}">
-						<input type="hidden" id="fundo" name="fundo" value="1">
-						<input type="hidden" id="data_inicio" name="data_inicio" value="{{::dados.timestartFormat}}">
-						<input type="hidden" id="data_fim" name="data_fim" value="{{::dados.datasolicitacaoFormat}}">
-						<input type="hidden" id="token" name="token" value="{{::dados.token}}">
-						<input type="hidden" id="nota" name="nota" value="{{::dados.nota}}">
-						<!-- <button type="submit" >Vizualizar </button></p> -->
-					</form>
+
 		    </div>
 		</div>
 

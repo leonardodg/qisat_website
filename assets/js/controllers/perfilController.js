@@ -68,9 +68,9 @@
 					 	}
 
 					 	scope.fileUpdate = function(){
-						 		resetMSG();
+						 		/*resetMSG();
 						 		scope.typeMsgEdit = "alert-box alert radius";
-						 		scope.msgEdit = "Acão não implementada!";
+						 		scope.msgEdit = "Acão não implementada!";*/
 					 	}
 
 					 	scope.update = function(){
@@ -152,11 +152,23 @@
 							 		}
 							 	}
 
+								newdata.email_oferta = scope.user.email_oferta ? true : false;
+								newdata.email_andamento = scope.user.email_andamento ? true : false;
+								newdata.email_mensagem_privada = scope.user.email_mensagem_privada ? true : false;
+								newdata.email_ausente = scope.user.email_ausente ? true : false;
+								newdata.email_suporte = scope.user.email_suporte ? true : false;
+
+								newdata.ligacao_lancamentos = scope.user.ligacao_lancamentos ? true : false;
+								newdata.ligacao_pagamento = scope.user.ligacao_pagamento ? true : false;
+
+								newdata.sms_informacoes = scope.user.sms_informacoes ? true : false;
+								newdata.sms_lancamentos = scope.user.sms_lancamentos ? true : false;
+
 						 		authService.update(newdata)
 						 					.then(function(res){
 						 							console.log(res);
 						 							scope.confirm = false;
-						 							if(res.data.success){
+						 							if(res.data.retorno.sucesso){
 						 								scope.typeMsgEdit = "alert-box info radius";
 						 								scope.msgEdit = "Dados Atualizados com SUCESSO!";
 						 							}else{
@@ -180,7 +192,7 @@
 						 		
 						 		authService.updatePassword(data)
 						 					.then(function(res){
-						 							if(res.data.success){
+						 							if(res.data.retorno.sucesso){
 						 								scope.typeMsgEditPass = "alert-box info radius";
 						 								scope.msgEditPass = "Senha Atualizada com SUCESSO!";
 						 							}else{
@@ -198,7 +210,7 @@
 						 		authService.verifyPassword(password)
 						 					.then(function(res){
 
-						 							if(!res.data.success){
+						 							if(!res.data.retorno.sucesso){
 						 								scope.typeMsgEditConfirm = "alert-box error radius";
 						 								scope.msgEditConfirm = "Senha Incorreta!";
 						 							}else{

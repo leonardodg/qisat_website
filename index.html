@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt_BR" class="no-js" ng-app="QiSatApp">
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +14,7 @@
 	<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
 
-<body> 
+<body ng-controller="carrinhoController as buy"> 
 	<div class="off-canvas-wrap" data-offcanvas>
 		<div class="inner-wrap">
 
@@ -51,9 +51,9 @@
 						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
 							<i class="material-icons">menu</i> Menu</a>
 						</li>
-			    		<li class="header-main__list header-main__list-cart"> 
-			    			<a class="header-main__item header-main__item-cart" >
-			    				<i class="material-icons">shopping_cart</i> <span class="cart_number">3</span></a>
+			    		<li class="header-main__list header-main__list-cart" > 
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
 			    			</a>
 			    		</li>
 					</ul>
@@ -62,36 +62,29 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-			<div id="cd-shadow-layer"></div>
-			<div id="cd-cart">
-				<h2>Itens no carrinho</h2>
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
+					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					<li ng-repeat="item in buy.itens track by item.id">
+						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
+						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+						<a href="#{{item.id}}" class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true)"><i class="material-icons">close</i></a>
 					</li>
 
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					<li ng-if="!buy.qtdItens">
+						<span class="cd-text" >Nenhum Item no Carrinho!</span>
 					</li>
 
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-					</li>
 				</ul>
-			 
-				<div class="cd-cart-total">
-					<p>Total <span>R$00.00</span></p>
-				</div> <!-- cd-cart-total -->
-			 
-				<a href="/carrinho" target="_self" class="checkout-btn">Finalizar compra</a>
-				<p class="cd-go-to-cart"><a>Continuar comprando</a></p>
-			</div> <!-- cd-cart -->
+				 
+					<div class="cd-cart-total" ng-if="buy.valorTotal">
+						<p>Total <span>{{buy.totalCarrinho}}</span></p>
+					</div> <!-- cd-cart-total -->
+				 
+					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal">Finalizar compra</a>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
+				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
 
@@ -287,19 +280,29 @@
 											<li class="block-grid__courses__item" ng-repeat="course in ::topCourses track by course.id"> 
 												<div class="list-filter__inner"> 
 													<div class="card-format-ever-block">
-														<a href="course-ead.html"></a>
+														
 														<div class="card-course-inner">
-															<a href="{{::course.url}}">
+															<a ng-href="{{::course.link}}" target="_self">
 																<span class="card-course--litle-play"></span> 
 																<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 															</a>
 															<div class="card-course--content">
-																<a href="course-ead.html">  
+																<a ng-href="{{::course.link}}" target="_self">  
 																	<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
 																	<span class="card-course__modality">{{::course.modalidade}}</span>
-																	<span class="card-course__name">{{::course.nome}}</span>
+																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 																</a>
-																<a href="#" class="card-course__button">R$ {{::course.preco}}</a> 
+																<a href="#" class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+										   						<span class="card-course__icon-cart">
+										   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+										   							<div class="price_popover" ng-if="::course.promocaoDateend">
+										   								<div class="price_popover__header">
+										   									<p class="price_popover__header__info"> <s>de {{::course.precoTotal}}</s> <strong>para {{::course.preco}}</strong> Até {{::course.promocaoDateend}} </p>
+										   								</div> <!-- //price_popover__header -->
+										   								<div class="price_popover__footer" > Adicionar ao carrinho </div> <!-- //price_popover__footer -->
+										   							</div> <!-- //price_popover -->
+										   						</span>
+									   							</a>
 															</div> 
 														</div>
 													</div>
@@ -330,12 +333,12 @@
 
 												<div class="home__instructors__card" >
 													<div class="home__instructors__card-header" back-img="{{instructor.imagem}}">
-														 <a href="{{::instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{::instructor.nome}}" ng-show="{{::instructor.linkedin}}">Linkedin</a>
+														 <a href="{{::instructor.linkedin.link}}" class="home__instructors__linkedin" title="Visite o linkedin de {{::instructor.nome}}" ng-show="{{::instructor.linkedin}}" target="_blank">Linkedin</a>	
 													</div> <!-- //home__instructors__image -->
 
 													<div class="home__instructors__card-footer">
-														<strong class="home__instructors__name">{{::instructor.nome}}</strong>
-														<span class="home__instructors__profession">{{::instructor.formacao}}</span>
+														<strong class="home__instructors__name">{{::instructor.nome | nameInstructor }}</strong>
+														<span class="home__instructors__profession">&nbsp{{::instructor.formacao}}</span>
 													</div> <!-- //home__instructors__card-footer -->
 	 											</div> <!-- //home__instructors__card -->
 											</li>
@@ -364,142 +367,50 @@
 					<div name="owl-carousel-testimonials-home" class="owl-carousel owl-theme owl-carousel-testimonials-home" owl-sync>
                             <div class="item testimonial__item testimonial__background">
                                 <div class="testimonial__container" >
-                                    <p class="testimonial__quote"> "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud." </p>
-                                    <p class="testimonial__name"> <strong>Mario de Andrade</strong>,<br> Engenheiro civil na AltoQi </p>
+                                    <p class="testimonial__quote"> "A AltoQi e o QiSat estão de parabéns pela competência e seriedade no desenvolvimento dos sistemas e cursos, proporcionando o engrandecimento da engenharia brasileira." </p>
+                                    <p class="testimonial__name"> <strong>WALDINAR SAMPAIO SOARES</strong>,<br> Eng. Civil</p>
                                     <a href="#" class="play" rel="nofollow"></a>
                                 </div>
                             </div>
-                            
                             <div class="item testimonial__item testimonial__background">
                                 <div class="testimonial__container" >
-                                    <p class="testimonial__quote"> "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore." </p>
-                                    <p class="testimonial__name"> <strong>Felipe Genuino</strong>,<br> Designer e Frontend na AltoQi </p>
+                                    <p class="testimonial__quote"> "De modo geral estão todos de parabéns por elaborar software e cursos para sermos mais capacitados, com objetivo de melhorar cada vez mais a execução de nossos trabalhos disponibilizando ferramentas muito uteis e de grande necessidade para um mercado competitivo. Tendo como beneficio principal o aproveitamento melhor do tempo nas realizações das tarefas e o reconhecimento profissional. Parabéns a equipe Qisat e AltoQi." </p>
+                                    <p class="testimonial__name"> <strong>NOE DE LIMA BEZERRA</strong>,<br> Eng. Elétrica</p>
+                                    <a href="#" class="play" rel="nofollow"></a>
+                                </div>
+                            </div>
+							<div class="item testimonial__item testimonial__background">
+                                <div class="testimonial__container" >
+                                    <p class="testimonial__quote"> "Queria agradecer em primeiro lugar pela oportunidade de participar deste curso. Eu já trabalho há alguns anos com programas da AltoQi e tem nos ajudado muito na elaboração de vários projetos, agora com estes cursos do QiSat fica a certeza de que podemos nos aprofundar bem mais nestes assuntos de engenharia. Parabéns pelo trabalho de todos vocês da AltoQi e QiSat. E até o proximo curso!" </p>
+                                    <p class="testimonial__name"> <strong>ROBERTO DE MORAIS FERNANDES</strong>,<br> Eng. Civil</p>
                                     <a href="#" class="play" rel="nofollow"></a>
                                 </div>
                             </div>
 
-                        	<div class="item testimonial__item testimonial__background">
-                              <div class="testimonial__container">
-	                                <p class="testimonial__quote"> "A AltoQi e o QiSat estão de parabéns pela competência e seriedade no desenvolvimento dos sistemas e cursos, proporcionando o engrandecimento da engenharia brasileira."</p>
-	                                <p class="testimonial__name"> <strong>Mario de A.</strong></p>
-	                                <a href="#" class="play" rel="nofollow"></a>
-                            	</div>
+                            <div class="item testimonial__item testimonial__background">
+                                <div class="testimonial__container" >
+                                    <p class="testimonial__quote"> "Quanto ao atendimento comercial, principalmente em função da divulgação de outros cursos relacionados, parabenizo a equipe do qisat pelo excelente trabalho, que busca compartilhar estas informações bem como difundir o conhecimento pertinente na área." </p>
+                                    <p class="testimonial__name"> <strong>Victor Ribeiro de Castro</strong>,<br> Eng. Civil</p>
+                                    <a href="#" class="play" rel="nofollow"></a>
+                                </div>
                             </div>
 
+ 							<div class="item testimonial__item testimonial__background">
+                                <div class="testimonial__container" >
+                                    <p class="testimonial__quote"> "Parabéns pelo trabalho, esforço e exemplo de como as empresas no Brasil deveriam agir e contribuir para a evolução da nossa capacidade tecnológica." </p>
+                                    <p class="testimonial__name"> <strong>THIAGO MENDONÇA PACHECO</strong>,<br> Eng. Civil</p>
+                                    <a href="#" class="play" rel="nofollow"></a>
+                                </div>
+                            </div>
 
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Queria agradecer em primeiro lugar pela oportunidade de participar deste curso. Eu já trabalho há alguns anos com programas da AltoQi e tem nos ajudado muito na elaboração de vários projetos, agora com estes cursos do QiSat fica a certeza de que podemos nos aprofundar bem mais nestes assuntos de engenharia. Parabéns pelo trabalho de todos vocês da AltoQi e QiSat. E até o proximo curso!" </p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong> ,<br> Designer e Frontend na AltoQi 
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
+ 							<div class="item testimonial__item testimonial__background">
+                                <div class="testimonial__container" >
+                                    <p class="testimonial__quote"> "A QiSat tem uma excelente plataforma de ensino, ótima interatividade, boa interface com usuário." </p>
+                                    <p class="testimonial__name"> <strong>RICARDO DE MORAIS GALLETTI</strong>,<br> Eng. Civil</p>
+                                    <a href="#" class="play" rel="nofollow"></a>
+                                </div>
+                            </div>
 
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "De modo geral estão todos de parabéns por elaborar software e cursos para sermos mais capacitados, com objetivo de melhorar cada vez mais a execução de nossos trabalhos disponibilizando ferramentas muito úteis e de grande necessidade para um mercado competitivo, tendo como benefício principal o aproveitamento melhor do tempo nas realizações das tarefas e o reconhecimento profissional."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Quanto ao atendimento comercial, principalmente em função da divulgação de outros cursos relacionados, parabenizo a equipe do qisat pelo excelente trabalho, que busca compartilhar estas informações bem como difundir o conhecimento pertinente na área." </p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br> Designer e Frontend na AltoQi 
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Parabéns pelo trabalho, esforço e exemplo de como as empresas no Brasil deveriam agir e contribuir para a evolução da nossa capacidade tecnológica."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "A QiSat tem uma excelente plataforma de ensino, ótima interatividade, boa interface com usuário." </p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br> Designer e Frontend na AltoQi 
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Só gostaria de parabenizar pela iniciativa, tornando possivel uma capacitação rápida e eficiente a distância, para uma perfeita utilização dos softwares de engenharia."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Todos os atendentes são compreensivos e dinâmicos, sabem desenvolver um bom relacionamento cliente/negócios. Estou admirado com todo o profissionalismo e dedicação de cada profissional." </p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br> Designer e Frontend na AltoQi 
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Fiquei impressionado com o comprometimento da equipe de atendimento, que me manteve atualizado sobre o andamento e liberação da chave para realizar o curso."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Muito bom, há muito respeito ao cliente e com isso, nos leva a continuar a desfrutar dos serviços da empresa."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Tudo muito bom, ótima empresa com responsabilidade em seus prazos e planos."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
-
-							<div class="item testimonial__item testimonial__background">
-								<div class="testimonial__container">
-									<p class="testimonial__quote"> "Gostaria de parabenizar a equipe do QiSat pela elaboração deste e dos demais cursos oferecidos, como forma de garantir ao profissional engajado no aperfeiçoamento e atualização de seu conhecimento, um modelo de aprendizagem que tem ganhado maior espaçoo nos dias atuais, e que visa contribuir para a satisfação do mesmo."</p>
-									<p class="testimonial__name"> 
-										<strong>Felipe Genuino</strong>,<br>Designer e Frontend na AltoQi
-									</p>
-									<a href="#" class="play" rel="nofollow"></a>
-								</div>
-							</div>
  					</div>
       			</section>
 				<!-- |||||||||||||||||||| END SECTION-TESTIMONIALS  |||||||||||||||||||||||| -->
@@ -530,19 +441,19 @@
 													<li class="footer-primary__title"> Páginas </li>
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li>
+											 		<!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
 									 		 	</ul>
 											</li> <!-- // -->
 
 
-											<li class="footer-primary__columns--item">
+											<!-- <li class="footer-primary__columns--item">
 												<ul class="footer-primary__list"> 
 													<li class="footer-primary__title"> Soluções </li>
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>		
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
 											 		</ul>
-											</li>
+											</li> -->
 
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
@@ -598,7 +509,7 @@
 												<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
 															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-															<a href="www.altoqi.com.br" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt="">	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+															<a href="http://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" ><img class="footer-secondary__list__item--brand-image" alt="" src="" title="AltoQi" >	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
 														</li>
 												 </ul>
 											</li>
@@ -623,8 +534,9 @@
 		<script defer src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
 	<!-- // GLOBAL -->
 
-	
 	<!-- EXECUTA SCRIPTS QISAT -->
+	<script defer src="js/libs/moment.min.js"></script>
+	<script defer src="js/libs/humanize-duration.js"></script>
 
 	<script defer src="js/libs/angular-locale_pt-br.js"></script>
 	<script defer src="js/libs/angular-cookies.min.js"></script>
@@ -632,18 +544,24 @@
     <script defer src="js/libs/angular-resource.min.js"></script>
     <script defer src="js/libs/ngMask.min.js"></script>
     <script defer src="js/libs/ui-masks.js"></script>
-
+    <script defer src="js/libs/angular-timer.min.js"></script>
+    
 	<script defer src="js/QiSatApp.js"></script>
 	<script defer src="js/config/value.js"></script>
 	<script defer src="js/services/QiSatAPI.js"></script>
 	<script defer src="js/controllers/instructorsIndexController.js"></script>
 	<script defer src="js/controllers/TopCoursesController.js"></script>
 	<script defer src="js/controllers/footerController.js"></script>
+	<script defer src="js/controllers/carrinhoController.js"></script>
 	<script defer src="js/directive/backImg.js"></script>
 	<script defer src="js/directive/owlSync.js"></script>
+	<script defer src="js/filters/filters.js"></script>
+	<script defer src="js/services/authService.js"></script>
+	<script defer src="js/services/carrinho.js"></script>
 	<script defer src="js/run/foundation.js"></script>
 	<script defer src="js/app.js"></script>
 	<!-- EXECUTA SCRIPTS QISAT -->
+
 
 </body>
 </html>

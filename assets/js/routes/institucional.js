@@ -77,8 +77,8 @@
                 instrutores : function (QiSatAPI){
                       return QiSatAPI.getInstructors()
                                     .then( function (res){ 
-                                        if(res.status == 200 && res.data && res.data.success)
-                                            return res.data.data;
+                                        if(res.status == 200 && res.data.retorno)
+                                            return res.data.retorno;
                                       });
                   }
               }
@@ -91,8 +91,8 @@
                 instrutor : function (QiSatAPI, $route){
                       return QiSatAPI.getInstructor($route.current.params.id)
                                     .then( function (res){ 
-                                        if(res.status == 200 && res.data && res.data.success)
-                                            return res.data.data;
+                                        if(res.status == 200 && res.data.retorno)
+                                            return res.data.retorno;
                                       });
                   }
               }

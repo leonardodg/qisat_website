@@ -62,4 +62,6 @@
   RewriteRule ^sugira/?$ pages/sugira.html [NC]
   RewriteRule ^(duvida|duvidas)/?$ pages/duvidas.html [NC]
   RewriteRule ^(carrinho)/?$ pages/carrinho.html [NC]
+  RewriteRule ^(carrinho)/([^/]+)$ pages/carrinho.html [NC]
+  RewriteRule ^(carrinho)/([^/]+)/([^/]+)$ pages/carrinho.html [NC]
   RewriteRule ^(certificacao-proficiencia)/?$ pages/certificacao-proficiencia.html [NC]

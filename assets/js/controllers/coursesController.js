@@ -108,15 +108,14 @@
 								QiSatAPI.getCourseStates()
 										.then( function ( response ){
 											var data = [];
-											if(response.status == 200 && response.data) data = response.data;
+											if(response.status == 200 && response.data) data = response.data.retorno;
 											data.map(function (el){
-
-												if(el.estado){
+												//if(el){
 													var id = el.estado.toLowerCase();
 							     						id = '#'+id.split(' ').map(function(e){ return e.charAt(0).toUpperCase() + e.slice(1); }).join('_');	
 													el.id = id;
 													inputStates.inputs.push(el);
-												}
+												//}
 
 											});
 										});
@@ -131,19 +130,19 @@
 																el.qtds = 0;
 																if(filtro.type == 'checkbox' && !el.name) { el.name = filtro.name+i; }
 																filter  = data.find(function (value){ return el.type == value.id })
-																if(filter) el.qtds += filter.produtos;
+																if(filter) el.qtds += parseInt(filter.produtos);
 																if(el.presencial){
 																	filter = data.find(function (value){ return el.presencial == value.id })
-																	if(filter) el.qtds += filter.produtos;
+																	if(filter) el.qtds += parseInt(filter.produtos);
 																}
 																if(el.pacotes){
 																	filter = data.find(function (value){ return el.pacotes == value.id })
-																	if(filter) el.qtds += filter.produtos;
+																	if(filter) el.qtds += parseInt(filter.produtos);
 																}
 																el.qtds = filterZpad(el.qtds);
 															});
 														};
-											if(response.status == 200) data = response.data;
+											if(response.status == 200) data = response.data.retorno;
 											Config.filters.presencial.map(setData);
 											Config.filters.online.map(setData);
 									});
@@ -739,7 +738,7 @@
 						// Start Controller
 						startWatchCount();
 						QiSatAPI.getCourses().then( function(response){
-								$scope.courses = response.data;
+								$scope.courses = response.data.retorno;
 								startCourseList();
 						});
 						
