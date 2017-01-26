@@ -56,7 +56,7 @@
 							<i class="material-icons">menu</i> Menu</a>
 						</li>
 			    		<li class="header-main__list header-main__list-cart"> 
-			    			<a class="header-main__item header-main__item-cart" >
+			    			<a class="header-main__item header-main__item-cart " ng-click="buy.activeBuy()" >
 			    				<i class="material-icons">shopping_cart</i> <span class="cart_number" ng-if="buy.qtdItens">{{buy.qtdItens}}</span></a>
 			    			</a>
 			    		</li>
@@ -4448,16 +4448,16 @@
 					    <div  ng-if="::list.card=='online'" >
 				    	    <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
 								<!-- MODELO PARA LOOPING -->
-								<li class="block-grid__courses__item" ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order | limitTo:list.limit track by course.id" ng-show="course.show" >
+								<li class="block-grid__courses__item" ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
 									<div class="list-filter__inner">
 										<div class="card-course card-format-block">
 									   		<div class="card-course-inner">
-									   				<a ng-href="{{::course.link}}" target="_self">
+									   				<a ng-href="{{::course.url}}" target="_self">
 									   					<span class="card-course--litle-play"></span>
 									   					<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 									   				</a>
 									   				<div class="card-course--content" >
-									   					<a ng-href="{{::course.link}}" target="_self">
+									   					<a ng-href="{{::course.url}}" target="_self">
 									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
@@ -4480,29 +4480,28 @@
 									
 								</li>
 							</ul>
-							<a class="expanded button" ng-click="list.limit=list.limit*2" ng-show="list.limit<list.courses.length">VER MAIS</a>
 						</div>
 
 					
 								<!-- FIM MODELO PARA LOOPING | limitTo:1 -->
 	
 						<div ng-if="::list.card=='eventos'" id="::list.anchor" >
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order | limitTo:list.limit track by course.id" ng-show="course.show" >
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
 		  							<div class="card-format-ever-block"> 
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}" target="_self">
+													<a ng-href="{{::course.info.url}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}" target="_self">  
+														<a ng-href="{{::course.info.url}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
 														</a>
-													
+														<a ng-href="{{::course.info.url}}" target="_self" class="card-course__button">{{::course.preco}}</a> 	
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4510,7 +4509,7 @@
 			 								<div class="small-12 medium-8 columns">
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
-				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos | limitTo:list.limit track by edicao.id " ng-show="edicao.show" > 
+				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
 				 											<strong class="chapter"> <span class="name">{{::edicao.endereco}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong> 
 				 										</li>				 									
 				 									</ul>	
@@ -4519,21 +4518,20 @@
 		 								</div> <!-- // row -->
 									</div> <!-- // card-format-ever-block -->
 								</div>
-								<a class="expanded button" ng-click="list.limit=list.limit*2" ng-show="list.limit<list.courses.length">VER MAIS</a>
 						</div>
 
 						<div ng-if="::list.card=='pacotes'">
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order | limitTo:list.limit track by course.id" ng-show="course.show" >
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
 		  							<div class="card-format-ever-block"> 
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}" target="_self">
+													<a ng-href="{{::course.info.url}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}" target="_self">  
+														<a ng-href="{{::course.info.url}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
@@ -4555,21 +4553,20 @@
 		 								</div> <!-- // row -->
 									</div> <!-- // card-format-ever-block -->
 								</div>
-								<a class="expanded button" ng-click="list.limit=list.limit*2" ng-show="list.limit<list.courses.length">VER MAIS</a>
 						</div>
 
 						<div ng-if="::list.card=='serie'">
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order | limitTo:list.limit track by course.id" ng-show="course.show" >
+								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
 		  							<div class="card-format-ever-block"> 
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.link}}" target="_self">
+													<a ng-href="{{::course.info.url}}" target="_self">
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 													</a>
 													<div class="card-course--content">
-														<a ng-href="{{::course.link}}" target="_self">  
+														<a ng-href="{{::course.info.url}}" target="_self">  
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
@@ -4592,7 +4589,6 @@
 		 								</div> <!-- // row -->
 									</div> <!-- // card-format-ever-block -->
 								</div>
-								<a class="expanded button" ng-click="list.limit=list.limit*2" ng-show="list.limit<list.courses.length">VER MAIS</a>
 						</div>
 
 					</div>

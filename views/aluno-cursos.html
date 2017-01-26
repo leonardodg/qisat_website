@@ -17,10 +17,10 @@
 					   			<div ng-repeat="course in courses | filter : { filter : filterTab } track by course.id" class="card">
 
                     <div ng-if="::course.enable">
-                      <a href="{{::course.links.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}"></a>
+                      <a ng-href="{{::course.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}" ></a>
                     </div>
                     <div ng-if="!course.enable">
-                      <img src="{{::course.imagem}}" alt="{{::course.curso}}">
+                      <img ng-src="{{::course.imagem}}" alt="{{::course.curso}}" title="{{::course.curso}}" >
                     </div>
                     
                     <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
@@ -50,10 +50,10 @@
 
                     <div class="footer">
                       <ul class="inline-list">
-                        <li><a href="{{::course.links.tira_duvidas}}"><i class="material-icons">help</i></a></li>
-                        <li><a href="{{::course.links.biblioteca}}"><i class="material-icons">folder</i></a></li>
-                        <li><a href="{{::course.links.forum}}"><i class="material-icons">forum</i></a></li>
-                        <li><a href="{{::course.links.contrato}}"><i class="material-icons">insert_drive_file</i></a></li>
+                        <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons">help</i></a></li>
+                        <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons">folder</i></a></li>
+                        <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons">forum</i></a></li>
+                        <li ng-if="::course.contrato"><a ng-href="{{::course.contrato}}"><i class="material-icons">insert_drive_file</i></a></li>
                       </ul>
                     </div>
 

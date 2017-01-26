@@ -282,12 +282,12 @@
 													<div class="card-format-ever-block">
 														
 														<div class="card-course-inner">
-															<a ng-href="{{::course.link}}" target="_self">
+															<a ng-href="{{::course.info.url}}" target="_self">
 																<span class="card-course--litle-play"></span> 
 																<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 															</a>
 															<div class="card-course--content">
-																<a ng-href="{{::course.link}}" target="_self">  
+																<a ng-href="{{::course.info.url}}" target="_self">  
 																	<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
 																	<span class="card-course__modality">{{::course.modalidade}}</span>
 																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>

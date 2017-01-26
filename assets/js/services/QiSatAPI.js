@@ -134,8 +134,9 @@
 									
 									var promise = $http({ 
 															cache: true, 
-															method: 'GET', 
-															url: Config.baseUrl+'/produto/wsc-produto/get-info/'+course
+															method: 'POST',
+															data : { id : course },
+															url: Config.baseUrl+'/produto/wsc-produto/get-info/'
 														});
 
 										return promise.then( function successCallback( res ){
@@ -159,60 +160,50 @@
 														filterLimitName = $filter('limitName');
 
 													if(response.status == 200) courses = response.data.retorno;
-													courses.map( function (course, i) {
-														var imagemFile, tipo;
-														if(course){
+													courses = courses.map( function (course, i) {
+																if(course && course.info){
+																	var imagemFile, tipo;
+																	course.imgSrc = Config.imgCursoUrlDefault;
 
-															course.precoTotal =  $filter('currency')(course.preco, 'R$');
-															if(course.promocao){
-																course.preco = $filter('currency')(course.valorTotal, 'R$');
-																course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
-															}else
-																course.preco = $filter('currency')(course.preco, 'R$');
+																	course.precoTotal =  $filter('currency')(course.preco, 'R$');
+																	if(course.promocao){
+																		course.preco = $filter('currency')(course.valorTotal, 'R$');
+																		course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
+																	}else
+																		course.preco = $filter('currency')(course.preco, 'R$');
 
+																	imagemFile = course.imagens.find(function(img) { return img.type == 'capa' });
+																	if(imagemFile) course.imgSrc = imagemFile.src;
 
-															course.imgSrc = Config.imgCursoUrlDefault;
-															
-															if(course.info){
+																	course.nomeLimit = filterLimitName(course.info.titulo, 48);
 
-																imagemFile = course.imagens.find(function(img) { return img.type == 'capa' });
-																if(imagemFile) course.imgSrc = imagemFile.src;
-
-																course.nomeLimit = filterLimitName(course.info.titulo, 48);
-
-																//serie, pack, classroom, events, single, releases, free, online
-																if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-																	course.modalidade = tipo.nome;
-																	course.isSerie = true;
-																	course.link =  "/curso/online/"+course.info.url ;
-																	course.info.conteudos.map( function (conteudo){
-																				 var aux =  conteudo.titulo.split('-');
-																				 conteudo.capitulo = aux[0];
-																				 conteudo.nome = aux[1];
-																				});
-																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-																	course.modalidade = tipo.nome;
-																	course.isPack = true;
-																	course.link =  "/curso/online/"+course.info.url ;
-																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-																	course.modalidade = tipo.nome;
-																	course.isLecture = true;
-																	course.link =  "/curso/online/"+course.info.url ;
-																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-																	course.modalidade = tipo.nome;
-																	course.isIndividual = true;
-																	course.link =  "/curso/presencial/"+course.info.url ;
-																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-																	course.modalidade = tipo.nome;
-																	course.isClassroom = true;
-																	course.link = "/curso/presencial/"+course.info.url;
-																}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-																	course.modalidade = tipo.nome;
-																	course.isOnline = true;
-																	course.link = "/curso/online/"+course.info.url ;
+																	//serie, pack, classroom, events, single, releases, free, online
+																	if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																		course.modalidade = tipo.nome;
+																		course.isSerie = true;
+																		course.info.conteudos.map( function (conteudo){
+																					 var aux =  conteudo.titulo.split('-');
+																					 conteudo.capitulo = aux[0];
+																					 conteudo.nome = aux[1];
+																					});
+																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																		course.modalidade = tipo.nome;
+																		course.isPack = true;
+																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																		course.modalidade = tipo.nome;
+																		course.isLecture = true;
+																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																		course.modalidade = tipo.nome;
+																		course.isIndividual = true;
+																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																		course.modalidade = tipo.nome;
+																		course.isClassroom = true;
+																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																		course.modalidade = tipo.nome;
+																		course.isOnline = true;
+																	}
+																	return course;
 																}
-															}
-														}
 													});
 
 													return courses;

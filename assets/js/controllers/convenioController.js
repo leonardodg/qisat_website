@@ -7,8 +7,9 @@
 					[ '$scope','$filter' ,'QiSatAPI', 'Config', function($scope,$filter,  QiSatAPI, Config ){
 
 						$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+						$scope.states = Config.states;
+
 						var cursos = [], descontos = Config.convenio, cursosSoftware, cursosTeoricos;
-						var filterTypes = $filter('byTypes');
 
 						$scope.addInstitution = function(type){
 							var data = { type: 'add-institution-'+type }, elemts;
@@ -74,9 +75,9 @@
 												data.map(function (el){
 													el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
 												});
-												$scope.institutions = data.filter(function(el){return el.typeid == 1});
-												$scope.entidades = data.filter(function(el){return el.typeid == 2});
+												$scope.institutions = data;
 												$scope.selectInstitution = data;
+
 											});
 
 						QiSatAPI.descontoConvenio().then( function ( data ){

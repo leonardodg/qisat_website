@@ -6,7 +6,6 @@
 				    function ($rootScope, $location, $route, authService ) {
 
 						$rootScope.$on('$routeChangeStart', function(e, curr, prev) {
-							console.log('routeChangeStart');
 							$rootScope.error = '';
 							if (curr && curr.$$route && !curr.$$route.isAuth && authService.isLogged() && ($location.path().indexOf('lembrete-de-senha') < 0)) {
 								window.location = '/aluno/cursos';
@@ -16,7 +15,6 @@
 						});
 
 						$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
-							console.log('routeChangeSuccess');
 							if (curr && curr.$$route && curr.$$route.isAuth && !authService.isAuth() ){
 								$rootScope.error = "Acesso Restrito!";
 								window.location = '/login';

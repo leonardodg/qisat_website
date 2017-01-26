@@ -10,6 +10,8 @@
 					 		host = $location.host(), 
 					 		path = absUrl.substr(absUrl.indexOf('curso/'));
 					 		path = path.split('/');
+					 		path = path[0]+"/"+path[1]+"/"+path[2];
+					 		console.log(path);
 
 						var videosDemo = [
 									   		"https://www.youtube.com/embed/fOrGTKQJqHU",
@@ -45,7 +47,7 @@
 					 			  };
 
 						function activate() {
-					         return QiSatAPI.getInfo(path[2])
+					         return QiSatAPI.getInfo(path)
 					                        .then(function(info){
 					                        	console.log(info);
 					                       		if(info){
@@ -85,8 +87,11 @@
 
 											 		}
 
-											 		if(info.produto)
-										 				info.valor = $filter('currency')(info.produto.preco, 'R$ ');
+											 		info.preco = $filter('currency')(info.produto.preco, 'R$ ');
+													if(info.promocao){
+														info.precoTotal = $filter('currency')( info.valorTotal, 'R$');
+														info.promocaoDateend = $filter('date')( info.promocao.datafim*1000, 'dd/MM/yyyy' );
+													}
 						 		
 						                       		vm.info = info;
 						                       	}

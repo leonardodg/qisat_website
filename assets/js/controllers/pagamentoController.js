@@ -32,8 +32,24 @@
 													  $scope.cancel = function () {
 													    $modalInstance.dismiss('cancel');
 													  };
-													  $scope.itens = carrinhoServive.getItens();
+													  var itens = carrinhoServive.getItens(), online = [], presencial = [], tipo;
+
 													  $scope.nome = vm.user.nome;
+
+													  itens.map(function (item){
+													  	 var i = {
+													  	 			enrolperiod : item.ecm_produto.enrolperiod,
+													  	 			courses : []
+													  	 		 };
+
+													  	 	item.mdl_course.map(function(course){
+													  	 			i.courses.push( course );
+													  	 	});
+
+													  });
+
+													  $scope.itens = dados;
+
 													}
 		 						});
 			 			    };

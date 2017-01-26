@@ -4,7 +4,7 @@
 # ----- Bloqueando hotlinks em imagens ---------
   #RewriteCond %{HTTP_REFERER} !^$
   #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?newsite.com [NC]
-  #RewriteRule \.(jpg|jpeg|png|gif)$ - [NC,F,L]
+  #RewriteRule \.(jpg|jpeg|png|gif|odg)$ - [NC,F,L]
 
 # ------ Protegendo seu arquivo .htaccess -------
 <files ~ "^.*\.([Hh][Tt][Aa])">

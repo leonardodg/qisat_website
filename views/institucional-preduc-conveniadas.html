@@ -9,7 +9,7 @@
           <li><a href="/institucional/convenios/preduc/ensino"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
             <ul>
               <li class="active"><a href="/institucional/convenios/preduc/ensino">Instituição de Ensino</a></li>
-              <li><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
+              <li class="active"><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
             </ul>
           </li>
         </ul>
@@ -55,13 +55,13 @@
                 <div class="row">
                   <div class="column small-3">
                     <label>Filtrar por Estado</label>
-                    <select>
-                      <option>Todo o Brasil</option>
+                    <select ng-options="estado as estado.nome for estado in states track by estado.id" ng-model="estado" >
+                      <option value="">Todo o Brasil</option>
                     </select>
                   </div>
                   <div class="column small-9">
                     <i class="material-icons left">search</i>
-                    <input type="text" placeholder="Procure por uma instituição de ensino">
+                    <input type="text" placeholder="Procure por uma instituição de ensino" ng-model="search" >
                   </div>
                 </div>
                 </form>
@@ -69,74 +69,15 @@
 
               <div class="inst_list">
                 <ul>
-                  <li>
-                    <a href="#">
-                      <i class="material-icons">arrow_forward</i>
+                  <li ng-repeat="institution in institutions | filter:{ nome_instituicao : search, nome_estado : estado.nome } track by institution.id" >
+                    <a>
                       <span class="xxx"></span>
-                      <img src="http://placehold.it/40x40px">
-                      <strong>Título</strong>
-                      Subtítulo
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="material-icons">arrow_forward</i>
-                      <span class="xxx"></span>
-                      <img src="http://placehold.it/40x40px">
-                      <strong>Título</strong>
-                      Subtítulo
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="material-icons">arrow_forward</i>
-                      <span class="xxx"></span>
-                      <img src="http://placehold.it/40x40px">
-                      <strong>Título</strong>
-                      Subtítulo
+                      <img ng-src='{{institution.logo}}' width="50px" height="50px" >
+                      <strong>{{institution.nome_instituicao}}</strong>
+                      Enceramento do Convênio em {{institution.dataFim}}
                     </a>
                   </li>
                 </ul>
               </div>
-
-            <img src="images/institucional/lista-conveniadas-MODELO-CORRETO.png" alt="">
-
-              <ul class="list__courses">
-          <li class="block-grid__courses__item" ng-repeat="institution in institutions" > 
-              <div class="card-format-ever-line">
-                <div class="card-course-inner">
-                  <div class="card-course--content">
-                      <span > <img  ng-src='{{institution.imgScr}}' > </span>  
-                      <span class="card-course__name">{{institution.instituicao}}</span> 
-                      <span class="card-course__modality">Enceramento do Convênio {{institution.dataFim}}</span>  
-                      <a href=""><span > Solicitar Desconto </span>  </a>
-                  </div> 
-                </div>
-              </div>   
-            </li>     
-        </ul>
           </div> <!-- //page_content -->
-
-      <div class="page_content">
-              <h1>Lista Entidade de Classe Convêniadas</h1>
-
-              <ul class="list__courses" >
-            <li class="block-grid__courses__item" ng-repeat="entidade in entidades" > 
-              <div class="card-format-ever-line">
-                <div class="card-course-inner">
-                  <div class="card-course--content">
-                      <span > <img  ng-src='{{entidade.imgScr}}' > </span>  
-                      <span class="card-course__name">{{entidade.instituicao}}</span> 
-                      <span class="card-course__modality">Enceramento do Convênio {{entidade.dataFim}}</span>  
-                      <a href=""><span > Solicitar Desconto </span>  </a>
-                  </div> 
-                </div>
-              </div>   
-            </li>     
-          </ul>
-          </div> <!-- //page_content -->          
-     
-   
-
-
     </div> <!-- //large-8-->

@@ -37,27 +37,21 @@
 												if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 													course.modalidade = tipo.nome;
 													course.isSerie = true;
-													if(course.info) course.link = "/curso/online/"+course.info.url;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 													course.modalidade = tipo.nome;
 													course.isPack = true;
-													if(course.info) course.link =  "/curso/online/"+course.info.url;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
 													course.modalidade = tipo.nome;
 													course.isLecture = true;
-													if(course.info) course.link =  "/curso/online/"+course.info.url;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
 													course.modalidade = tipo.nome;
 													course.isIndividual = true;
-													if(course.info) course.link =  "/curso/presencial/"+course.info.url ;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
 													course.modalidade = tipo.nome;
 													course.isClassroom = true;
-													if(course.info) course.link = "/curso/presencial/"+course.info.url;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
 													course.modalidade = tipo.nome;
 													course.isOnline = true;
-													if(course.info) course.link = "/curso/online/"+course.info.url;
 												}
 											}	
 											

@@ -43,7 +43,7 @@
 							itens = value;
 							valorTotal = 0;
 							promoTheend = [];
-							var datenow = moment(), datapromo, promocao;
+							var datenow = moment(), datapromo, promocao, tipo;
 
 							if(value){
 								itens.map(function (item){
@@ -64,33 +64,31 @@
 
 									if(item.ecm_produto && item.ecm_produto.categorias){
 
-										if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-											item.modalidade = "Série Online";
+										if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+											item.modalidade = tipo.nome;
 											item.isSerie = true;
-										}else if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-											item.modalidade = "Pacote de Cursos Online";
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+											item.modalidade = tipo.nome;
 											item.isPack = true;
-										}else if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-											item.modalidade = "Palestra Online";
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+											item.modalidade = tipo.nome;
 											item.isLecture = true;
-										}else if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-											item.modalidade = "Curso Presencial - individual";
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+											item.modalidade = tipo.nome;
 											item.isIndividual = true;
-										}else if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-											item.modalidade = "Curso Presencial";
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+											item.modalidade = tipo.nome;
 											item.isClassroom = true;
-										}else if( item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-											item.modalidade = "Curso Online";
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+											item.modalidade = tipo.nome;
 											item.isOnline = true;
 										}
+
 									}
 
 									if(item.ecm_promocao){
 										datapromo = moment.unix(item.ecm_promocao.datafim);
-
-
-										console.log(datapromo.diff(datenow, 'hours'));
-										if(datapromo.diff(datenow, 'hours')<24){
+										if(datapromo.diff(datenow, 'hours')<3){
 											promocao = promoTheend.find(function (promo){ return promo.id == item.ecm_promocao.id });
 											item.ecm_promocao.dataTheend = datapromo.diff(datenow, 'seconds'); 
 											if(!promocao) promoTheend.push(item.ecm_promocao);

@@ -214,8 +214,35 @@
 	                                                        });
 
 	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+	                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.matriculas ){
+	                            							res.data.retorno.matriculas.map(function (curso){
+	                            								var tipo;
+	                            								if(curso && curso.produto && curso.produto.categorias){
+		                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																		curso.modalidade = tipo.nome;
+																		curso.isSerie = true;
+																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																		curso.modalidade = tipo.nome;
+																		curso.isPack = true;
+																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																		curso.modalidade = tipo.nome;
+																		curso.isLecture = true;
+																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																		curso.modalidade = tipo.nome;
+																		curso.isIndividual = true;
+																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																		curso.modalidade = tipo.nome;
+																		curso.isClassroom = true;
+																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																		curso.modalidade = tipo.nome;
+																		curso.isOnline = true;
+																	}
+	                            								}
+	                            							});
+															return res.data.retorno;
+	                            						}else
+	                            							return res;
+	                            		}, function (res){return res});
 			                };
 
 			                function compras() {
