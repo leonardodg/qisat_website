@@ -1,0 +1,109 @@
+	 <div class="large-3 columns grid-sidebar-left">
+        <div class="page_content">
+
+          <h5 class="menu-filter-sidebars--title">Menu</h5>
+          <ul class="menu-partners">
+            <li class="active"><a href="/institucional/convenios/conselhos"><i class="material-icons right">expand_more</i>Convênios</a>
+              <ul>
+                <li><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li>
+                <li><a style="background-color: #f6f6f6 !important;" href="/institucional/convenios/preduc/ensino"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+                  <ul>
+                    <li><a href="/institucional/convenios/preduc/ensino">Instituição de Ensino</a></li>
+                    <li><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/institucional/parceiros">Parceiros</a></li>
+          </ul>
+
+            
+           
+        </div>
+    </div> <!-- //large-4-->
+     <div class="large-9 medium-8 columns">
+          <div class="page_content">
+
+
+            <div class="convenios">
+              <div class="row entidades">
+                <div class="column small-12 medium-4">
+                  <div>
+                    <a href="" class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+                  </div>
+                </div>
+                <div class="column small-12 medium-4">
+                  <div>
+                    <a href=""><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+                  </div>
+                </div>
+                <div class="column small-12 medium-4">
+                  <div>
+                    <a href=""><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+              <h1>Solicitar Desconto</h1>
+          
+        <form name="descontoForm" id="descontoForm" data-abide>
+
+         <div class="row">
+            <div class="large-9 large-offset-3 column">
+                 <select name="selectInstitution" id="selectInstitution" class="selectInstitution" ng-options="institution.nome_instituicao for institution in selectInstitution track by institution.id" ng-model="desconto.institution">
+                    <option value="">  Selecione Instituição  </option>
+             </select>
+            </div>
+          </div>
+          <br>  
+
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="name" class="text-right middle"> Nome <small>*</small> </label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="desconto.name" required>
+            <small class="error">Nome é Obrigatório!</small>
+          </div>
+        </div>              
+
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="email" class="text-right middle ">E-mail <small>*</small>
+          </div>
+          <div class="small-9 columns">
+            <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="desconto.email" ng-pattern="emailFormat" required >
+            <small class="error">Formato de Email incorreto!</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-3 columns">
+            <label for="phone" class="text-right middle">Telefone <small>*</small></label>
+          </div>
+          <div class="small-9 columns">
+            <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.phone" mask="(99) 9?9999-9999" required>
+            <small class="error">Telefone é Obrigatório!</small>
+          </div>
+        </div>
+        <br>
+        <button class="button right" type="submit" ng-disabled="descontoForm.$invalid" ng-click="institutionDiscount()"> Enviar </button>
+        <div class="row align-center">
+            <div class="small-4 large-4 large-offset-4 columns">
+              
+
+                  <div data-alert class="alert-box info radius alert-discount-ok" style="display: none;">
+                  Mensagem Enviada com SUCESSO!
+                </div>
+
+                <div data-alert class="alert-box warning  radius alert-discount-error" style="display: none;">
+                  Falha no Envio da Mensagem!
+                </div>
+            </div>
+              <div class="small-6 large-4 columns"></div>
+          </div>
+      </form>
+
+    </div> <!-- //large-8-->

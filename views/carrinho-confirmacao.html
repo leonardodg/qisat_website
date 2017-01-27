@@ -1,0 +1,57 @@
+<div class="widget_content">
+  <p class="title">Confirmação de compra</p>
+
+  <table width="100%" class="table-cart">
+    <tr>
+      <td><i class="material-icons">launch</i></td>
+      <td>
+      	
+      	<div ng-if="vm.venda">
+			<span ng-if="vm.pagamento=='boleto'"> <strong>Compra Efetuada com Sucesso!</strong></span> <br/>
+			<span ng-if="vm.pagamento=='cartao'"> <strong>Pagamento de sua compra foi efetuado com SUCESSO!</strong></span><br/>
+
+			<span> Numero da Venda: <strong>{{vm.venda}}</strong> </span><br/><br/>
+
+			<span>
+			Instruções para Cursos:<br/> No prazo máximo de 48 horas* será encaminhado um e-mail informando a habilitação de acesso ao curso. Acompanhe a situação de seus cursos através de seu ambiente pessoal. <br/><br/>
+
+			Para compras através de boleto bancário deve-se considerar:<br/>
+			1)Nos Cursos à Distância a contagem dos prazos inicia após a confirmação de pagamento. Se desejar falar diretamente com a empresa, poderá fazê-lo através da Central de Inscrições. <br/><br/>
+
+			<strong>Telefone:</strong> (48) 3332-5000 / Fax: (48) 3332-5010 <br/>
+			<strong>E-mail:</strong> qisat@qisat.com.br <br/>
+			</span><br/>
+
+			<span ng-if="vm.pagamento=='boleto'">
+				Para imprimir/visualizar seu boleto bancário clique no botão.
+				<br/><br/>
+
+				<div class="row">
+					<div class="small-3 small-centered columns">				
+				 		<a ng-href="{{vm.linkBoleto}}" class="button primary text-center" target="_blank">Imprimir Boleto!</a>
+				 	</div>
+				</div>
+
+
+			</span>
+		</div>
+
+		<div ng-if="!vm.venda"> 
+			<span> <strong> Sua Venda não foi localizada!</strong> <br/>
+					Provavelmente, sua compra já foi finalizada. Para visualizar detalhamento de sua compra acessar o Portal do Aluno no menu financeiro ou entre em contato com nossa Central de Inscrições através dos contatos:<br/><br/></span>
+			<span> <strong>Telefone:</strong> (48) 3332-5000 / Fax: (48) 3332-5010 <br/>
+				   <strong>E-mail:</strong> qisat@qisat.com.br <br/>
+			</span>
+
+			<div class="row">
+					<div class="small-3 small-centered columns">				
+				 		<a ng-href="/aluno/financeiro" class="expand button primary text-center " target="_self" >Minhas Compras</a>
+				 	</div>
+			</div>
+
+		</div>
+
+      </td>
+    </tr>
+  </table>
+</div>

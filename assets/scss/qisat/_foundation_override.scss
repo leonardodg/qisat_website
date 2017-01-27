@@ -1,0 +1,75 @@
+// Override foundation button style
+
+.accordion .accordion-navigation>a, .accordion dd>a, .button, body, button {
+  font-family: $font-family-sans-serif;
+}
+.button, button {
+  padding: 0.5rem 1.5rem;
+  background-color: $primary-color;
+  color: $white;
+  // min-width: 100px;
+
+  &:hover {
+    background-color: #494949;
+    color: $white;
+  }
+
+  &.success {
+    background-color: $secondary-color;
+  }
+
+  &.expand {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+.inline-list>li>* {
+  margin: 0;
+  display: inline;
+}
+
+.error small.error, small.error, span.error {
+  background-color: transparent;
+  color: #f04124;
+  padding: 0;
+  font-size: 14px;
+}
+
+
+
+.reveal-modal {
+  padding: 0 !important;
+
+  &.call {
+    width: 380px;
+  }
+}
+
+.alert-box {
+  width: 100%;
+}
+
+
+ul.pagination {
+  text-align: right !important;
+  float: right;
+  clear: both;
+  margin-top: 10px;
+}
+ul.pagination li {
+  margin: 0 !important;
+}
+ul.pagination li a, ul.pagination li button {
+  color: #0078a0;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+ul.pagination li.current a, ul.pagination li.current button {
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+  }
+}

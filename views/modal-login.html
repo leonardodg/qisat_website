@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="large-12 columns">
+        <div ui-alert type="{{typeMsgLogin}}"  >
+          {{msgLogin}}
+      </div>
+   </div>
+</div>
+
+<div class="tiny" aria-labelledby="modalTitle">
+    <h2 id="modalTitle">Acesso ao Portal do Aluno</h2>
+    <form ng-if="!loading">
+      <input type="text" name="username" placeholder="Nome do usuário" ng-model="user.username">
+      <input type="password" name="password" placeholder="Senha de acesso" ng-model="user.password" >
+      <button type="button" ng-click="login(user)" class="expand primary">Entrar</button>
+      <!-- <a href="/carrinho/pagamento" class="button tiny" ng-click="cancel()">Entrar</a> -->
+    </form>
+
+    <div class="custom-loading" ng-if="loading">
+      <i class="material-icons">hdr_weak</i>
+      <span class="text" >Autenticando Usuário...</span>
+    </div>
+
+    <p class="text-center"><a href="/lembrete-de-senha">Esqueci minha senha</a></p>
+    <div class="not-member text-center">
+      <p>Ainda não tem Cadastro?</p>
+      <a href="/cadastro" class="button tiny">Crie uma conta grátis</a>
+    </div>
+    <a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a>
+</div>

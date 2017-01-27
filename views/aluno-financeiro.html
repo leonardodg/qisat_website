@@ -1,0 +1,43 @@
+<div class="signup">
+
+    <div class="financeiro">
+
+    <div class="admin__heading">
+      <h1 class="title">Financeiro</h1>
+    </div>
+
+		<section id="dashboard">
+			<div class="row">
+				<div class="small-12 columns">
+
+				<table width="100%" class="responsive">
+				  <thead>
+				    <tr>
+				      <th width="100">Pedido</th>
+				      <th width="175">Data</th>
+				      <th width="100">Valor</th>
+				      <th width="75">Status</th>
+				      <th width="150">Forma Pagamento</th>
+				      <th width="50">Ação</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr ng-repeat="carrinho in compras | limitTo:itemsPerPage:startPage track by carrinho.id " >
+				      <td class="text-center"><strong>{{::carrinho.pedido}}</strong></td>
+				      <td>{{::carrinho.dataFormat}}</td>
+				      <td>{{::carrinho.valor}}</td>
+				      <td>{{::carrinho.status}}</td>
+				      <td>{{::carrinho.forma_pagamento}}</td>
+				      <td><button type="button" ng-click="viewCarrinho(carrinho.carrinho)">Vizualizar</button> </td>
+				    </tr>
+				  </tbody>
+				</table>
+
+				 <pagination boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-click="onSelectPage(currentPage)"></pagination>
+						
+		 		</div>
+			</div> <!-- //row -->
+		</section>
+  </div>
+</div>
+

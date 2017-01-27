@@ -1,0 +1,65 @@
+		<section id="dashboard" class="page-courses">
+
+					<div class="admin__heading">
+						<h1 class="title">Cursos em Andamento</h1>
+					</div>
+
+            <ul class="nav-resp" menu-aluno-cursos data-equalizer>
+                <li data-equalizer-watch class="current" ng-click="filterTab ='liberado'"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
+                <li data-equalizer-watch ng-click="filterTab='finalizado'"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
+                <li data-equalizer-watch ng-click="filterTab='encerrado'" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
+                <li data-equalizer-watch ng-click="filterTab='agendado'" ng-show="agendados" ><a class="menu-horizontal__link" href="#" >Agendados</a></li>
+                <li data-equalizer-watch ng-click="filterTab='outros'" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
+            </ul>
+
+						
+					    <div class="cards">
+					   			<div ng-repeat="course in courses | filter : { filter : filterTab } track by course.id" class="card">
+
+                    <div ng-if="::course.enable">
+                      <a ng-href="{{::course.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}" ></a>
+                    </div>
+                    <div ng-if="!course.enable">
+                      <img ng-src="{{::course.imagem}}" alt="{{::course.curso}}" title="{{::course.curso}}" >
+                    </div>
+                    
+                    <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
+
+                      <p class="modalidade">{{::course.modalidade}}</p>
+
+						      		<div ng-if="::course.enable"> 
+						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.links.view}}" title="{{::course.info.tituloLimit||course.nomeLimit}}" >{{::course.info.tituloLimit||course.nomeLimit}} </a></p>
+						      		</div>
+
+						      		<div ng-if="!course.enable"> 
+						      			<p class="name">{{::course.info.tituloLimit||course.nomeLimit}}</p>
+						      		</div>
+						      		
+                      <!-- FIXA TAMANHO -->
+                      <div class="green" ng-if="::course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >
+                        {{::course.status}}
+                      </div>
+  						     		<div class="red"  ng-if="!course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
+                        {{::course.status}}
+                      </div>
+
+                      <!-- FIXA TAMANHO -->
+                      <div  ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" > {{::course.msg}}&nbsp;</div>
+                      
+                    </div>
+
+                    <div class="footer">
+                      <ul class="inline-list">
+                        <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons">help</i></a></li>
+                        <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons">folder</i></a></li>
+                        <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons">forum</i></a></li>
+                        <li ng-if="::course.contrato"><a ng-href="{{::course.contrato}}"><i class="material-icons">insert_drive_file</i></a></li>
+                      </ul>
+                    </div>
+
+			      		</div>
+						</div>
+            <hr class="clearfix">
+
+		</section>
+

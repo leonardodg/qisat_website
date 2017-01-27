@@ -1,3 +1,7 @@
+body.cart-page {
+  background-color: #fff;
+}
+
 #cd-cart {
 
 	   box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.37) !important;
@@ -148,5 +152,162 @@
   }
   #cd-cart .cd-item-remove {
     right: 2em;
+  }
+}
+
+
+.cart-page {
+  .wizard {
+    margin-left: 30px;
+    position: relative;
+    
+    .v-line {
+      width: 2px;
+      background-color: #003350;
+      position: absolute;
+      margin-left: -22px;
+      margin-top: 20px;
+      height: 130px;
+    }
+    .step {
+      padding: 10px 0;
+      position: relative;
+      color: #777;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 17px;
+        height: 17px;
+        border-radius: 20px;
+        background-color: #ddd;
+        position: absolute;
+        margin-left: -30px;
+        top: 14px;
+      }
+
+      &.active {
+        font-weight: bold;
+        color: #003350;
+
+        &:before {
+          background-color: #28B67C;
+        }
+      }
+    }
+  }
+
+  #loginModal, .loginModal {
+    
+    @media only screen and (min-width: 40em) {
+      width: 300px !important;
+      max-width: 300px !important;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #494949;
+      font-size: 18pt;
+      text-align: center;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    form {
+      a {
+        width: 100% !important;
+        display: block;
+      }
+      input {
+        text-align: center;
+      }
+      margin: 30px 25px 20px 25px;
+    }
+
+    .not-member {
+      margin-top: 30px;
+
+      p {
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 0;
+      }
+
+      .button {
+        margin-bottom: 0;
+      }
+
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #eee;
+    }
+  }
+}
+
+.table-cart {
+  border: 0;
+  color: #666;
+
+  .total {
+    text-transform: uppercase;
+  }
+
+  .quantity {
+    max-width: 60px;
+    float: left;
+    display: inline;
+    width: auto;
+    margin: 0 4px;
+  }
+
+  .material-icons {
+    margin-top: 5px;
+  }
+
+  .oldPrice {
+    text-decoration: line-through;
+    text-align: center;
+    display: block;
+  }
+  .newPrice {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    display: block;
+  }
+  .discount {
+    display: block;
+    padding: 5px 0;
+    opacity: 0.5;
+    color: #f00;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+
+  .inline-list>li {
+    float: none;
+
+    @media only screen and (min-width: 40em) {
+      float: left;
+    }
+  }
+
+  .muted {
+    color: #999;
+  }
+
+  thead th {
+    padding: 15px;
+    padding-top: 20px;
+    color: #b0c2c8;
+    background-color: #003350;
+    text-transform: uppercase;
+  }
+  td, td {
+    padding: 1rem;
   }
 }

@@ -45,6 +45,7 @@ margin-top: 10px;
 
   @media only screen and (max-width: 40em) {
     margin: 0 0 0 45px;
+    padding: 20px;
     // &:hover{margin: 0 0 0 190px;}
    } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
 
@@ -57,7 +58,7 @@ margin-top: 10px;
 
 .admin_main { 
     position: relative;
-    display: inline-block;
+    // display: inline-block;
     background-color: #494949;
     margin-top: 60px;
   }
@@ -81,14 +82,124 @@ margin-top: 10px;
 }
 
 .admin__heading{
-	border-bottom: 1px solid #ccc;
-    margin-bottom: 30px;
-    padding-bottom: 15px;
+  margin-bottom: 10px;
+  padding: 15px 0;
 
-	.title{    font-size: 36px;     margin: 0;}
+	.title{
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0;
+    color: #494949;
+  }
+
 	.subtitle{
 	    font-size: 18px;
 	    color: rgba(0, 0, 0, 0.47);
 	    margin: 0 0 -7px 0;
 	}
+}
+
+.signup {
+  // margin-top: 50px;
+
+  .thumb {
+    margin-right: 20px;
+  }
+
+  .signup__content {
+    margin: 50px auto 40px auto;
+
+    @media only screen and (min-width: 40em) {
+      max-width: 80%;
+
+      &.login {
+        max-width: 370px;
+        margin-top: 100px;
+      }
+
+      &.financeiro {
+        max-width: 100%;
+        margin-top: 0;
+      }
+
+      &.cadastro {
+        max-width: 750px;
+        margin-top: 100px;
+      }
+
+      &.edit {
+        margin-top: 0;
+      }
+    }
+
+  }
+
+  input[type='checkbox'] {
+    margin: 0;
+  }
+
+  .privacy label {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .admin__heading {
+    margin: 0 auto;
+    // @media only screen and (min-width: 40em) {
+      // max-width: 50%;
+    // }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 900;
+      color: #494949;
+    }
+  }
+
+  #dashboard {
+    background-color: #FFF;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 15px;
+
+    @media only screen and (min-width: 40em) {
+      padding: 30px;
+    }
+
+    p.title {
+      font-size: 25px;
+    }
+
+    .form-group {
+      margin: 15px 0;
+
+      input {
+        margin-bottom: 5px;
+      }
+
+      label {
+        padding-bottom: 5px;
+
+        strong {
+          color: #c00;
+        }
+      }
+
+    }
+
+    // Login
+    // &.login {
+    //   max-width: 30%;
+    // }
+  }
+}
+
+
+.btn-password {
+  margin-bottom: 20px;
+  
+  @media only screen and (max-width: 40em) {
+    display: block !important;
+    width: 100%;
+  }
 }

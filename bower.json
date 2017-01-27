@@ -1,0 +1,14 @@
+{
+  "name": "foundation-compass-app",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "owl.carousel": "owl-carousel2#^2.1.5",
+    "masonry": "^4.1.0",
+    "isotope": "^3.0.0",
+    "foundation": "^5.5.3",
+    "sticky-kit": "^1.1.2",
+    "PACE": "pace#^1.0.2",
+    "angular-foundation": "^0.8.0"
+  }
+}

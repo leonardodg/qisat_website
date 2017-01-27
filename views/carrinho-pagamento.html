@@ -1,0 +1,96 @@
+<form name="pagamentoForm" id="pagamentoForm" novalidate>
+
+    <div class="widget_content" >
+      <p class="title">Forma de pagamento</p>
+      <table width="100%" class="table-cart">
+        <tr>
+          <th>Termos de contrato</th>
+          <td>
+            <label>
+              <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="vm.contrato" > <a href="#" ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
+
+              <div ng-show="vm.submitted && pagamentoForm.contrato.$invalid">
+                  <span class="error" ng-show="pagamentoForm.contrato.$error.required">Favor ler, e aceitar o Contrato!</span>
+              </div>
+
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <th>Selecione a Forma de Pagamento</th>
+          <td>
+            <div class="row">
+              <div class="column small-12" ng-repeat="forma in vm.formasPagamentos" ng-class="{'medium-3' : forma.pagamento =='Boleto', 'medium-9' : forma.pagamento =='Cartão de Crédito'}">
+                <p>{{forma.pagamento}}</p>
+                <ul class="inline-list">
+                  <li ng-repeat="operadora in forma.operadoras" >
+                    <label><input id="pagamento" name="pagamento" type="radio" ng-model="vm.pagamento" value="{{operadora.index}}" ng-required="true" > <img ng-src="{{operadora.img.src}}" alt="" ></label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr ng-hide="vm.pagamento==4">
+          <th>Selecione o valor das parcelas</th>
+          <td>
+           <select ng-options="parcela as parcela.label for parcela in vm.parcelas track by parcela.qtd"  ng-model="vm.nparcelas">
+            </select>
+          </td>
+        </tr>
+        <tr ng-show="vm.loading" >
+          <td colspan="5" class="text-center"> 
+            <div class="custom-loading" >
+              <i class="material-icons">hdr_weak</i>
+              <span class="text" >Atualizando</span>
+            </div>
+          </td>
+      </tr>
+      </table>
+    </div>
+
+<div class="widget_content" ng-if="vm.redirect">
+  <p class="title">Realizar Pagamento</p>
+
+  <table width="100%" class="table-cart">
+    <tr>
+      <td><i class="material-icons">launch</i></td>
+      <td>Para efetuar o pagamento e finalizar sua compra, você será redirecionado para uma página segura de pagamento onde deve informar os dados do seu cartão!</td>
+    </tr>
+
+    <tr class="text-center">
+      <td colspan="2">
+        <div class="row">
+            <div class="small-6 small-centered columns">   
+
+                <span>Clique em Finalizar Pagamento ou Aguarde!</span> <br>
+           
+                <timer countdown="1000" interval="1000" >
+                  <span ng-show="seconds"> Redirecionamento Automático em: {{sseconds}} Segundo{{secondsS}}. </span>
+                </timer>
+    
+            </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="row">
+    <div class="small-3 small-centered columns">        
+        <a ng-href="{{vm.redirect}}" class="button success text-center">Finalizar Pagamento!</a>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="row" ng-if="!vm.redirect">
+  <div class="column small-6">
+    <a href="/carrinho" class="button secondary" ng-hide="vm.loading"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
+  </div>
+  <div class="column small-6">
+      <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading">Efetuar pagamento <i class="material-icons">keyboard_arrow_right</i></button>
+  </div>
+</div>
+
+</form>

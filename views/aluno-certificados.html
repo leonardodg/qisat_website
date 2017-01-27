@@ -1,0 +1,24 @@
+	<div class="admin__heading">
+		<h1 class="title">Meus certificados</h1>
+	</div>
+
+	<section id="dashboard" class="page-certificates">
+
+		<div class="cards">
+		    <div ng-repeat="dados in certificados.return track by dados.id" class="card">
+          <img src="http://placehold.it/300x180.jpg">
+
+          <div class="content">
+          <a ng-href="{{linkCertify(dados.link)}}" target="_blank" >
+          <i class="material-icons left">stars</i>
+		      <p>{{::dados.certificate_name}}</p>
+		      <span class="details date">Solicitação em {{::dados.datasolicitacaoFormat}}</span>
+          </a>
+          </div>
+
+		    </div>
+		</div>
+
+    <hr class="clearfix">
+
+	</section>

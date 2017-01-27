@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp" ng-controller="infoController as vm">
+<head>
+	<base href="/">
+	
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
+
+ 	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
+	<script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+
+	<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+	<link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+
+	<title>{{::vm.info.seo.title}}</title>
+	
+	<meta name="description" content="{{::vm.info.seo.description}}">
+	<meta name="keywords" content="{{::vm.info.seo.keywords}}">
+
+	<meta property="og:locale" content="pt_PT" />
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="{{::vm.info.seo.title}}" />
+	<meta property="og:description" content="{{::vm.info.seo.description}}" />
+	<meta property="og:url" content="{{::vm.info.seo.url}}" />
+	<meta property="og:site_name" content="QiSat" />
+
+	<meta property="og:image" content="{{::vm.info.sel.urlImgRedes}}">
+	<meta property="og:image:type" content="image/jpeg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="{{::vm.info.seo.url}}"/>
+	<meta name="twitter:domain" content="{{::vm.info.seo.description}}"/>
+	<meta name="twitter:image:src" content="{{::vm.info.seo.urlImgRedes}}"/>
+
+</head>
+<body ng-controller="carrinhoController as buy">
+
+
+	<div class="off-canvas-wrap" data-offcanvas>
+	  <div class="inner-wrap">
+		
+			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+			 <aside class="right-off-canvas-menu">
+			   <ul class="off-canvas-list">
+			     <li><label>Menu</label></li>
+			     <li><a href="/" target="_self" >Home</a></li>
+			     <li><a href="/cursos" target="_self" >Cursos</a></li>
+				 <li><a href="/aluno" target="_self" >Área do Aluno</a></li>
+				 <li><a href="/institucional" target="_self" >Institucional</a></li>
+			   </ul>
+			 </aside>
+			<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
+
+		 	<!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+			<header class="header-main">
+				<div class="header-main__brand"> <a href="/" class="anchor header-main__logo" target="_self" > QiSat </a> </div>
+				<nav class="header-main__nav">
+					<ul class="header-main__ul">
+						<li class="show-for-large-up header-main__list"> 
+							<a class="anchor header-main__item header-main__list-current
+							header-main__list-item-current" href="/" target="_self" >Home</a>
+						</li>
+						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
+							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
+						</li>
+			 			<li class="show-for-large-up header-main__list"> 
+			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+			 			</li>
+						<li class="show-for-large-up header-main__list"> 
+							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
+						</li>
+						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
+							<i class="material-icons">menu</i> Menu</a>
+						</li>
+			    		<li class="header-main__list header-main__list-cart" > 
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
+			    			</a>
+			    		</li>
+					</ul>
+				</nav>
+			</header>
+		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+
+		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
+					<h2>Itens no carrinho</h2>
+				<ul class="cd-cart-items">
+					<li ng-repeat="item in buy.itens track by item.id">
+						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
+						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+						<a href="#{{item.id}}" class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true)"><i class="material-icons">close</i></a>
+					</li>
+
+					<li ng-if="!buy.qtdItens">
+						<span class="cd-text" >Nenhum Item no Carrinho!</span>
+					</li>
+
+				</ul>
+				 
+					<div class="cd-cart-total" ng-if="buy.valorTotal">
+						<p>Total <span>{{buy.totalCarrinho}}</span></p>
+					</div> <!-- cd-cart-total -->
+				 
+					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal">Finalizar compra</a>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
+				</div> <!-- cd-cart -->
+		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
+
+
+<main class="content-main">
+
+ 	<header class="hero-course" back-img="{{::vm.info.imgtop.link}}">
+		<div class="row">
+				<div class="medium-8 columns">
+					<span class="hero-course__modality">{{::vm.info.modalidade}}</span>
+					<h1 class="hero-course__title"><span>Curso online </span>{{::vm.info.titulo}}</h1>
+					<p class="hero-course__resume">{{::vm.info.chamada}}</p>
+
+					<ul class="button-group radius hero-course__buttons-group">
+
+
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="vm.modalcall()" > <i class="material-icons">call</i></a> </li>
+
+
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-favorite" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Favoritar"><i class="material-icons">favorite</i></a></li>
+			            <li class="hero-course__buttons-group--item"><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button">{{::vm.info.precoTotal}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+			              <span class="card-course__icon-cart">
+			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
+			                  <div class="price_popover__header">
+			                    <p class="price_popover__header__info"> <s>de {{::vm.info.preco}}</s> <strong>para {{::vm.info.precoTotal}}</strong> Até {{::vm.info.promocaoDateend}} </p>
+			                  </div> <!-- //price_popover__header -->
+			                  <div class="price_popover__footer"> Adicionar ao carrinho </div>
+			                </div> <!-- //price_popover -->
+			              </span>
+			            </a></li>
+
+					</ul>
+
+				</div> <!-- //large-8-->
+				<div class="medium-4 columns">
+					<div class="hero-course__play-container">
+						<a class="hero-course__play" ng-click="vm.modaltrailer()" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
+					</div> <!--//hero-course__play-container -->
+					
+				</div> <!-- //large-3-->
+		</div> <!-- ///row -->
+
+	</header><!-- //hero-home -->
+
+
+<article class="course-page">
+ <div class="row" data-equalizer>
+				<div class="large-3 columns" data-equalizer-watch>
+							<aside id="sidebar-styker" class="aside-pages-courses">
+										<div class="navigation_courses">
+												<h4 class="navigation_courses__title">Navegação</h4>
+												<nav class="navigation_courses__nav">
+													
+ 								<ul class="navigation_courses__list" data-magellan-expedition >
+									<li data-magellan-arrival="garanta-sua-vaga" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
+										<a class="anchor navigation_courses__list-item--link"  href="#garanta-sua-vaga" >Garanta sua vaga</a>
+									</li>
+									
+									<li data-magellan-arrival="publico-alvo" class="navigation_courses__list-item" ng-if="::vm.info.persona">
+										<a class="anchor navigation_courses__list-item--link" href="#publico-alvo">Público alvo</a>
+									</li>
+
+									<li data-magellan-arrival="sobre-o-curso" class="navigation_courses__list-item">
+										<a class="anchor navigation_courses__list-item--link" href="#sobre-o-curso">Sobre o curso</a>
+									</li>
+									<li data-magellan-arrival="conteudo-programatico" class="navigation_courses__list-item" ng-if="::vm.info.conteudos.length">
+										<a class="anchor navigation_courses__list-item--link" href="#conteudo-programatico" >Conteúdo programático</a>
+									</li>
+
+									<li data-magellan-arrival="formato-do-curso" class="navigation_courses__list-item">
+										<a class="anchor navigation_courses__list-item--link" href="#formato-do-curso">Formato do curso</a>
+									</li>
+
+									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item"><a class="anchor navigation_courses__list-item--link" href="#ministrante" >Ministrante</a>
+									</li>
+
+									<li data-magellan-arrival="proximas-turmas" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
+										<a class="anchor navigation_courses__list-item--link" href="#proximas-turmas">Próximas turmas</a>
+									</li>
+
+									<li data-magellan-arrival="perguntas-frequentes" class="navigation_courses__list-item" ng-if="::vm.info.faqs.length">
+										<a class="anchor navigation_courses__list-item--link" href="#perguntas-frequentes">Perguntas frequentes</a>
+									</li>
+
+									<li data-magellan-arrival="cursos-relacionados" class="navigation_courses__list-item" ng-if="::vm.info.produtos.length"><a class="navigation_courses__list-item--link" href="#cursos-relacionados">Cursos Relacionados</a></li>
+								</ul>
+
+												</nav>
+									 	</div>
+										<!-- <a href="#" target="_blank" class="hide-for-medium-down"><img src="images/courses/banner-sidebar__product__eberick-9.png" alt="Imagem: Conheça o Software Eberick V9"></a> -->
+							</aside>
+			</div>  <!--//large-3 columns -->
+
+	<div class="large-9 columns" data-equalizer-watch>
+
+<!-- //////////////// BLOCO GARANTA SUA VAGA ////////////////////////// -->
+	<a name="garanta-sua-vaga"></a>
+	<section  data-magellan-destination="garanta-sua-vaga" id="garanta-sua-vaga" class="course-page__sections  course-page__sections--slim" ng-if="::vm.info.isClassroom">
+		<h2 class="course-page__sections--title">Garanta sua vaga</h2>
+		
+		<div class="section_gsv">
+			 <div class="row collapse">
+ 			 	<div class="medium-6 large-8 columns">
+ 			 		<ul class="section_gsv__list">
+		 			 		<li class="section_gsv__item-small">Curso Presencial</li>
+		 			 		<li class="section_gsv__item-title">Concepção e Lançamento do projeto estrutural</li>
+		 			 		<li class="section_gsv__item-subtitle">Aspectos de contratação, desenvolvimento e finalização</li>
+		 			 	</ul>
+						<ul class="section_gsv__list">
+		 			 		<li class="section_gsv__item-small">Datas</li>
+		 			 		<li class="section_gsv__item-info">3 e 4 de outubro 2015</li>
+		 			 		<li class="section_gsv__item-info">das 08:00 às 12:00 e das 13:00 às 18:00</li>
+		 			 	</ul>
+
+		 			 	<ul class="section_gsv__list">
+		 			 		<li class="section_gsv__item-small">Local</li>
+		 			 		<li class="section_gsv__item-title"><strong>Hotem Intercity Premium Florianópolis</strong></li>
+		 			 		<li class="section_gsv__item-info">Av. Paulo Fontes, 1210 - Centro</li>
+		 			 		<li class="section_gsv__item-info">Florianópolis - SC</li>
+		 			 		<li class="section_gsv__item-info">88010-230</li>
+		 			 	</ul>
+
+		 			 	<ul class="section_gsv__list">
+		 			 		<li class="section_gsv__item-small">Investimento</li>
+		 			 		<li class="section_gsv__item-title"><strong>R$ 1.350,00</strong></li>
+		 			 	</ul>
+
+		 			 	<ul class="section_gsv__list">
+		 			 		<li class="section_gsv__item-small">Número de vagas</li>
+		 			 		<li class="section_gsv__item-info">30 vagas</li>
+		 			 	</ul>
+  			 	</div> <!-- medium-6 large-8 columns -->
+			 	<div class="medium-6 large-4 columns section_gsv__black-colum">
+					<div class="section_gsv__list">
+						<div class="course__price-group">
+							<span class="section_gsv__item-small">DIGITE O NÚMERO DE VAGAS</span>
+ 		 	 			 	<span class="section_gsv__item-title"> <input class="section_gsv__item-input-numero-vagas" type="number" value="1">  <span class="section_gsv__item-text-numero-vagas"> Vagas</span></span>
+							<span class="section_gsv__item-line"> </span>
+	 			 			<span class="course__price-group__total-text">Total: 1 vaga</span>
+	 			 			<span class="course__price-group__price"> <small>R$</small> <strong>1.350,00</strong> </span>
+	 	 			 		<a href="#" class="course__price-group__button button small"> <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
+	 	 			 		<span class="course__price-group__remaining">Restam ainda 15 vagas</span>
+		 			 	</div>
+					</div>
+ 			 	</div> <!-- // medium-6 large-4 columns -->
+			 </div> <!-- // row -->
+
+ 			 	<footer class="section_gsv__footer">
+ 			 		<div class="row collapse">
+		 			 		<div class="medium-6 large-8 columns">
+			 			 		<ul class="section_gsv__list">
+				 			 		<li class="section_gsv__item-small">Informativo</li>
+				 			 		<li class="section_gsv__item-p"><p>Caso o curso não obtenha o número mínimo de 15 inscritos, a empresa resguarda o direito de prorrogação do evento no período máximo de 90 dias.</p> </li>
+				 			 	</ul>
+		 			 		</div> <!-- //medium-6 large-8 columns -->
+
+		 			 		<div class="medium-6 large-4 columns">
+		 			 			<ul class="section_gsv__list"> 
+				 			 		<li class="section_gsv__item-small"> </li>
+			  		 			 	<span class="section_gsv__item-p"><p>Após adicionar ao carrinho você terá 2 horas para efetuar o pagamento.</p> </span>
+				 			 	</ul>
+		  			 		</div> <!-- //medium-6 large-4 columns -->
+			 		</div> <!-- // row -->
+ 			 	</footer>
+
+		</div> <!-- // section_gsv -->
+	</section>
+<!-- //////////////// FIM BLOCO GARANTA SUA VAGA ////////////////////////// -->
+
+
+	<section class="course-page__sections" id="publico-alvo" data-magellan-destination="publico-alvo" ng-if="::vm.info.persona">
+		<h2 class="course-page__sections--title">Público alvo</h2>
+		<div ng-bind-html="vm.info.persona"></div>
+ 	</section>
+
+	<section class="course-page__sections" id="sobre-o-curso" data-magellan-destination="sobre-o-curso">
+		<h2 class="course-page__sections--title">Sobre o curso</h2>
+
+ 		<div ng-bind-html="::vm.info.descricao"></div>
+
+ 		<div class="section__course-gallery" ng-if="::vm.info.imgdemo.length">
+ 			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
+
+			<ul class="lightbox small-block-grid-6" lightbox>
+			  <li ng-repeat="imgdemo in ::vm.info.imgdemo track by imgdemo.id"><a ng-href="{{::imgdemo.link}}" alt="{{::vm.info.seo.url}}" title="{{::vm.info.seo.url}}"><img data-caption="{{::vm.info.seo.title}}" title="{{::vm.info.seo.title}}" alt="{{::vm.info.seo.url}}" ng-src="{{::imgdemo.link}}"></a></li>
+			</ul>
+ 		</div> <!-- //section__course-gallery -->
+ 	</section>
+
+	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="::vm.info.conteudos.length">
+		<h2 class="course-page__sections--title">Conteúdo programático</h2>
+		<accordion class="accordion-component accordion">
+			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" icon-carrinho="{{conteudo.dataValor}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
+		      <div ng-bind-html="conteudo.descricao"></div>
+		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+		    </accordion-group>
+		 </accordion>
+ 	</section>
+
+	<a name="formato-do-curso"></a>
+	<section data-magellan-destination="formato-do-curso" id="formato-do-curso" class="course-page__sections">
+		<h2 class="course-page__sections--title">Formato do curso</h2>
+ 		<ul class="formato-do-curso small-block-grid-2  medium-block-grid-3 large-block-grid-4">
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.aulas">
+				<span class="formato-do-curso__item--top"> Quantidade  </span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.aulas}}</span>
+				<span class="formato-do-curso__item--bottom">aulas</span>
+			</li>
+
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tempo_acesso">
+				<span class="formato-do-curso__item--top">Prazo de conclusão </span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.tempo_acesso}}</span>
+				<span class="formato-do-curso__item--bottom">dias</span>
+			</li>
+
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tempo_aula">
+				<span class="formato-do-curso__item--top">Tempo por aula </span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.tempo_aula}}</span>
+				<span class="formato-do-curso__item--bottom">horas</span>
+			</li>
+
+ 
+ 			<li class="formato-do-curso__item" ng-if="vm.info.formato.disponibilidade">
+ 				<span class="formato-do-curso__item--top">Disponível</span>
+ 				<span class="formato-do-curso__item--middle">24h</span>
+ 				<span class="formato-do-curso__item--bottom">por dia</span>
+ 			</li>
+
+
+
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.carga_horaria">
+				<span class="formato-do-curso__item--top">Carga horária</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.carga_horaria}}</span>
+				<span class="formato-do-curso__item--bottom">horas</span>
+			</li>
+
+			<!-- VERIFICAR SE ISSO REPRESENTA QUANTIDADE DE VAGAS PARA PRESENCIAL -->
+			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom"> 
+				<span class="formato-do-curso__item--top"> Direcionamento  </span>
+				<span class="formato-do-curso__item--middle">15-30</span>
+				<span class="formato-do-curso__item--bottom">profissionais</span>
+			</li>
+
+
+ 			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom">
+ 				<span class="formato-do-curso__item--top">Métodologia</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/metodologia-expositiva.svg" alt=""></span>
+				<span class="formato-do-curso__item--bottom">expositiva</span>
+			</li>
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.certificado_digital">
+ 				<span class="formato-do-curso__item--top">Cerficado Digital</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/certificado.svg" alt=""></span>
+				<span class="formato-do-curso__item--bottom">após conclusão</span>
+			</li>
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.certificado_impresso">
+ 				<span class="formato-do-curso__item--top">Cerficado Impresso</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/certificado.svg" alt=""></span>
+				<span class="formato-do-curso__item--bottom">após conclusão</span>
+			</li>
+
+
+
+ 			<li class="formato-do-curso__item" ng-if="vm.info.formato.material">
+ 				<span class="formato-do-curso__item--top">Material</span>
+				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_insert_drive_file_black_24px.svg" alt=""></span>
+  			</li>
+
+
+	 		<li class="formato-do-curso__item" ng-if="vm.info.formato.forum">
+	 				<span class="formato-do-curso__item--top">Fórum</span>
+	 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/ic_forum_black_24px.svg" alt=""></span>
+	  	</li>
+
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.tira_duvidas">
+	 				<span class="formato-do-curso__item--top">Tire dúvidas</span>
+	 				<span class="formato-do-curso__item--icon"><img src="assets/images/courses/ic_live_help_black_24px.svg" alt=""></span>
+	  	</li>
+
+ 		</ul>
+	</section>
+
+	<section data-magellan-destination="ministrante" class="course-page__sections course-page__sections-about-instructor" id="ministrante" ng-if="vm.info.instrutores.length">
+		<h2 class="course-page__sections--title">Autor do curso</h2>
+		<div class="row" ng-repeat="instructor in vm.info.instrutores" >
+				<div class="medium-3 columns">
+				<img class="course-page__sections-about-instructor--avatar" back-img="{{instructor.imagem}}" ng-src="{{instructor.imagem}}" alt="">
+ 				</div> <!-- //medium-3 columns -->
+
+				<div class="medium-9 columns">
+						<div ng-bind-html="instructor.descricao"></div>
+				</div> <!-- //medium-9 columns -->
+				<hr>
+		</div> <!-- //row -->
+ 	</section>
+
+
+	<section class="course-page__sections  course-page__sections--slim" id="perguntas-frequentes" ng-if="::vm.info.faqs.length">
+		<h2 class="course-page__sections--title">Perguntas frequentes</h2>
+    <accordion class="accordion-component accordion">
+			<accordion-group heading="{{faq.titulo}}" ng-repeat="faq in vm.info.faqs" class="accordion-navigation tab-title">
+		      <div ng-bind-html="faq.descricao"></div>
+		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+		    </accordion-group>
+		 </accordion>
+ 	</section>
+
+
+ 	<section class="course-page__sections course-page__sections--slim" id="cursos-relacionados" ng-if="::vm.info.produtos.length">
+ 			<h2 class="course-page__sections--title">Cursos relacionados</h2>
+			<div class="row">
+
+						<div class="large-12 columns">
+										<div class="card-course card-format-line card-format-line-static">
+													<div class="card-course-inner">
+															<div class="card-course--content" style="padding:0">
+																	<table class="card-course--content__table" style="width:100%; margin:0; background-color: transparent">
+																				<tr>
+																						<td style="width:30px;" >
+ 																							 <span data-reveal-id="modal__trailer" data-tooltip aria-haspopup="true" title="Assista o trailer"  data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
+																						</td>
+																						<td>
+																								<span class="card-course__modality">{{course-modality}}</span>
+											 													<span class="card-course__name">{{course-name}}</span>
+																						</td>
+																						<td>
+																							  <a href="#" class="card-course__button">R$ 1.350,00</a>
+																						</td>
+																				</tr>
+																  </table>
+															</div> <!-- //card-course--content -->
+ 													</div> <!-- //card-course-inner -->
+							 			 </div> <!-- //card-dourse -->
+						</div>   <!-- //large-12 columns -->
+
+			</row> <!-- //row -->
+ 	</section> <!-- //cursos-relacionados -->
+
+</div>  <!--//large-9 columns -->
+
+
+
+
+
+</div> <!-- // row -->
+
+</article>
+
+
+
+</main> <!--// main-content -->
+<!-- ########################## END MAIN ########################## -->
+				<!-- ########################## FOOTER ########################## -->
+					<footer class="footer-main" >
+
+						<div class="footer-primary">
+							<div class="row">
+
+										<ul class="footer-primary__columns small-block-grid-2 medium-block-grid-3 large-block-grid-6">
+
+											<li class="footer-primary__columns--item">
+											 		<ul class="footer-primary__list">
+														<li class="footer-primary__title">Sobre o QiSat</li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   target="_self"> Institucional </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   target="_self"> Linha do Tempo </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  target="_self">Convênios e Parceiros</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  target="_self">Instrutores e Professores</a></li>
+													</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+											 	<ul class="footer-primary__list">
+													<li class="footer-primary__title"> Páginas </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
+											 		<!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
+									 		 	</ul>
+											</li> <!-- // -->
+
+
+											<!-- <li class="footer-primary__columns--item">
+												<ul class="footer-primary__list"> 
+													<li class="footer-primary__title"> Soluções </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>		
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
+											 		</ul>
+											</li> -->
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+													 <li class="footer-primary__title"> Contato</li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+												</ul>
+											</li>   
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+											 		<li class="footer-primary__title"> Social </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+
+											 	</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+											</li> <!-- //  -->
+
+							</div> <!-- ///row -->
+						</div> <!-- // footer-primary -->
+
+
+
+
+						<div class="footer-secondary" ng-controller="footerController as vm">
+								<div class="row">
+										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+											<li>
+													<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<a class="footer-secondary__list__item--link" ng-click="vm.modaltermo()">Termos de uso</a>
+														</li>
+														<li class="footer-secondary__list__item">
+															<a class="footer-secondary__list__item--link" ng-click="vm.modalpolitica()">Política de privacidade</a>
+														</li>
+													</ul>
+										    </li>
+
+										    <li>
+													<ul class="footer-secondary__list footer-secondary__list--email ">
+														<li class="footer-secondary__list__item"><a href="mailto:qisat@qisat.com.br" class="footer-secondary__list__item--link">QiSat | Cursos aplicados à engenharia e Arquitetura : <strong>qisat@qisat.com.br</strong></a></li>
+													</ul>
+										   	</li>
+
+											<li>
+												<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+															<a href="http://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" ><img class="footer-secondary__list__item--brand-image" alt="" src="" title="AltoQi" >	<img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
+														</li>
+												 </ul>
+											</li>
+						 		</div> <!-- ///row -->
+						</div> <!-- footer-secondary -->
+
+					</footer> <!-- footer-container -->
+					<!-- ########################## END FOOTER ########################## -->
+
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
+
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
+
+	<!-- SOMENTE PÁGINA DE CURSOS -->
+
+	<!-- // <script src='js/filter-isotope.js'></script> -->
+
+	<!-- GLOBAL -->
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+		<script src="/libs/sticky/sticky-kit.js"></script>
+		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+		<script defer src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
+		<script defer src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+	<!-- // GLOBAL -->
+
+		<!-- EXECUTA SCRIPTS QISAT -->
+		<script defer src="js/libs/moment.min.js"></script>
+		<script defer src="js/libs/humanize-duration.js"></script>
+
+		<script defer src="js/libs/angular-locale_pt-br.js"></script>
+		<script defer src="js/libs/angular-cookies.min.js"></script>
+	    <script defer src="js/libs/angular-route.min.js"></script>
+	    <script defer src="js/libs/angular-resource.min.js"></script>
+	    <script defer src="js/libs/ngMask.min.js"></script>
+	    <script defer src="js/libs/ui-masks.js"></script>
+	    <script defer src="js/libs/angular-timer.min.js"></script>
+	    
+	    <script defer src="js/QiSatApp.js"></script>
+
+	    <script defer src="js/config/value.js"></script>
+		<script defer src="js/services/QiSatAPI.js"></script>
+		<script defer src="js/directive/backImg.js"></script>
+		<script defer src="js/directive/lightbox.js"></script>
+		<script defer src="js/directive/playDemoModal.js"></script>
+
+		<script defer src="js/controllers/infoController.js"></script>
+		<script defer src="js/controllers/footerController.js"></script>
+		<script defer src="js/controllers/carrinhoController.js"></script>
+		<script defer src="js/filters/filters.js"></script>
+		<script defer src="js/services/authService.js"></script>
+		<script defer src="js/services/carrinho.js"></script>
+		<script defer src="js/run/foundation.js"></script>
+	    
+
+	    <script src="js/app.js"></script>
+</body>
+</html>
