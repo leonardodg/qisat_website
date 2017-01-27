@@ -69,20 +69,19 @@
 					<li ng-repeat="item in buy.itens track by item.id">
 						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
 						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
-						<a href="#{{item.id}}" class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true)"><i class="material-icons">close</i></a>
+						<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"><i class="material-icons">close</i></a>
 					</li>
 
 					<li ng-if="!buy.qtdItens">
 						<span class="cd-text" >Nenhum Item no Carrinho!</span>
 					</li>
-
 				</ul>
 				 
 					<div class="cd-cart-total" ng-if="buy.valorTotal">
 						<p>Total <span>{{buy.totalCarrinho}}</span></p>
 					</div> <!-- cd-cart-total -->
 				 
-					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal">Finalizar compra</a>
+					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
 					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->

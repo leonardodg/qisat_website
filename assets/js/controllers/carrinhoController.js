@@ -42,18 +42,25 @@
 					 			setValues();
 					 	})();
 
-					 	vm.addItemCarrinho = function(produtoid) {
+					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
 					 		vm.loading = true;
-					 		carrinhoServive.addItem({ produto: produtoid })
+					 		var data = { produto: produtoid };
+					 		if(qtd && typeof qtd !== 'undefined' ) data.quantidade = qtd;
+					 		if(turma) data.presencial = turma;
+
+					 		carrinhoServive.addItem(data)
 					 				.then(function(itens){
 					 						setValues();
 					 					});
 					 	};
 
-					 	vm.removeItemCarrinho = function(produtoid, all) {
+					 	vm.removeItemCarrinho = function(produtoid, all, turma) {
 					 		vm.loading = true;
-					 		var all = (typeof all !== 'undefined') ?  1 : 0;
-					 		carrinhoServive.removeItem({ produto: produtoid , "remover_tudo" : all })
+					 		var data = { produto: produtoid };
+					 		if(typeof turma !== 'undefined') data.presencial = turma;
+					 		data.remover_tudo = (all && typeof all !== 'undefined') ?  1 : 0;
+
+					 		carrinhoServive.removeItem(data)
 					 				.then(function(itens){
 					 						setValues();
 					 					});

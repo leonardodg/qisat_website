@@ -5,22 +5,40 @@
 		.module('QiSatApp')
 		.controller('infoController', ['$scope','$sce', '$location', '$filter', 'QiSatAPI', '$modal',
 					 function(scope, $sce, $location, $filter, QiSatAPI, $modal) {
-					 	var vm = this, 
-					 		absUrl = $location.absUrl(), 
-					 		host = $location.host(), 
-					 		path = absUrl.substr(absUrl.indexOf('curso/'));
-					 		path = path.split('/');
-					 		path = path[0]+"/"+path[1]+"/"+path[2];
-					 		console.log(path);
+						 	var vm = this, filterLimitName = $filter('limitName'),
+						 		absUrl = $location.absUrl(),
+						 		path, search = absUrl.indexOf('?'), params, turma;
 
-						var videosDemo = [
+
+							var parseQueryString = function() {
+
+							    var str = window.location.search;
+							    var objURL = {};
+
+							    str.replace(
+							        new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+							        function( $0, $1, $2, $3 ){
+							            objURL[ $1 ] = $3;
+							        }
+							    );
+							    return objURL;
+							};
+
+							var videosDemo = [
 									   		"https://www.youtube.com/embed/fOrGTKQJqHU",
 									   		"https://www.youtube.com/embed/VBPKeNidHco"
 									   		];
 
 
-						activate();
+					 		if(search > 0){
+					 			path = absUrl.substring(absUrl.indexOf('curso/'), search);
+					 			params = parseQueryString();
+								turma = params["turma"]; 
+					 		}else
+					 			path = absUrl.substr(absUrl.indexOf('curso/'));					 		
 
+					 	moment.locale('pt-BR');
+						activate();
 					 	vm.modaltrailer = function () {
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'trailer',
@@ -46,10 +64,27 @@
 				 						});
 					 			  };
 
+					 	vm.viewTurma = function(turmaid){
+					 		if(vm.info && vm.info.produto && vm.info.produto.eventos && vm.info.produto.eventos.length){
+								var edicao, id = vm.turma.id;
+
+								edicao = vm.info.produto.eventos.find( function (evento){
+									return evento.id == turmaid;
+								});
+								edicao.hide = true;
+								vm.turma = edicao;
+
+								edicao = vm.info.produto.eventos.find( function (evento){
+									return evento.id == id;
+								});
+								edicao.hide = false;
+							}
+					 	};
+
 						function activate() {
 					         return QiSatAPI.getInfo(path)
 					                        .then(function(info){
-					                        	console.log(info);
+					                        	var tipo;
 					                       		if(info){
 					                            	info.descricao = $sce.trustAsHtml(info.descricao);
 					                            	info.persona = $sce.trustAsHtml(info.persona);
@@ -80,19 +115,111 @@
 											 			});
 											 		}
 
-											 		if(info.instrutores && info.instrutores.length){
-											 			info.instrutores.map(function(instrutor){
-											 				instrutor.descricao = $sce.trustAsHtml(instrutor.descricao);
-											 			});
-
-											 		}
-
-											 		info.preco = $filter('currency')(info.produto.preco, 'R$ ');
+													info.precoTotal =  $filter('currency')(info.produto.preco, 'R$');
 													if(info.promocao){
-														info.precoTotal = $filter('currency')( info.valorTotal, 'R$');
+														info.preco = $filter('currency')(info.valorTotal, 'R$');
 														info.promocaoDateend = $filter('date')( info.promocao.datafim*1000, 'dd/MM/yyyy' );
+													}else
+														info.preco = $filter('currency')(info.produto.preco, 'R$');
+
+
+													if(info.produto && info.produto.categorias){
+														if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+															info.modalidade = tipo.nome;
+															info.isSerie = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+															info.modalidade = tipo.nome;
+															info.isPack = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+															info.modalidade = tipo.nome;
+															info.isLecture = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+															info.modalidade = tipo.nome;
+															info.isIndividual = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+															info.modalidade = tipo.nome;
+															info.isClassroom = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+															info.modalidade = tipo.nome;
+															info.isOnline = true;
+														}
 													}
-						 		
+
+													if(info.produto && info.produto.instrutor){
+														info.produto.instrutor.map(function(instrutor){
+															instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
+														})
+													}
+
+													if(info.produto && info.produto.eventos && info.produto.eventos.length){
+
+														info.produto.eventos.map( function (evento){
+															evento.qtd = 1;
+
+															if(turma && turma == evento.id)
+																evento.hide = true;
+															else
+																evento.hide = false;
+
+															if(evento.cidade && evento.cidade.estado) {
+																evento.timestart = moment.unix(evento.data_inicio);
+																evento.timeend   = moment.unix(evento.data_fim);
+																evento.cidadeuf  = evento.cidade.nome + ' - ' +evento.cidade.estado.uf;
+																evento.datauf  = evento.cidadeuf+ ' - ' +evento.timestart.format('DD/MM/YYYY' );
+																evento.uf = evento.cidade.estado.uf;
+															}
+
+															if(evento.valor_produto = "true"){
+																evento.valor = $filter('currency')(info.produto.preco, '', 2); 
+																evento.preco = info.preco;
+															}else
+																evento.preco = $filter('currency')(evento.valor, 'R$');
+
+															evento.vagas = evento.vagas_total -  evento.vagas_preenchidas;
+
+															if(evento.local && evento.local.length){
+																evento.lugar = [];
+																evento.datas = [];
+																evento.local.map(function (edicao){
+																	var aux, novo = {};
+																	edicao.timestart = moment.unix(edicao.data_inicio);
+																	edicao.timeend = moment.unix(edicao.data_fim);
+																	edicao.timeexit = moment.unix(edicao.saida_intervalo);
+																	edicao.timeback = moment.unix(edicao.volta_intervalo);
+
+																	aux = edicao.timestart.format("dddd, D MMMM YYYY - [das] HH:mm [às] ")+ edicao.timeexit.format("HH:mm [e das] ")+edicao.timeback.format("HH:mm [às] ")+edicao.timeend.format("HH:mm");
+																	evento.datas.push(aux);
+
+																	if(edicao.local){
+																		aux = evento.lugar.find(function (lugar){ return edicao.local.id == lugar.id });
+																		if(!aux){
+																			novo.id = edicao.local.id;
+																			if(edicao.local.cidade){
+																				novo.cidade = edicao.local.cidade.nome;
+																				novo.cidadeuf = edicao.local.cidade.nome+' - '+edicao.local.cidade.estado.uf;
+																				novo.endereco = $sce.trustAsHtml(edicao.local.endereco); 
+																			}
+																			novo.nome = edicao.local.nome;
+																			evento.lugar.push(novo);
+																		}
+																	}
+																});
+															}
+														});
+
+														if(turma){
+															vm.turma = info.produto.eventos.find(function(evento){ return evento.id == turma });
+															if(!vm.turma){
+																vm.turma = info.produto.eventos[0];
+																vm.turma.hide = true;
+															}
+														}else{
+															vm.turma = info.produto.eventos[0];
+															vm.turma.hide = true;
+														}
+													}
+						 							
+						 						
 						                       		vm.info = info;
 						                       	}
 					                            return info;
