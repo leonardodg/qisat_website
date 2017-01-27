@@ -21,9 +21,9 @@
         </td>
         <td width="18%" class="muted">
 
-          <a href="#" ng-click="buy.addItemCarrinho(item.ecm_produto_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">add_circle</i></a>
+          <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">add_circle</i></a>
           <input type="text" name="" class="quantity" placeholder="{{item.quantidade}}" value="{{item.quantidade}}">
-          <a href="#" ng-click="buy.removeItemCarrinho(item.ecm_produto_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">remove_circle</i></a>
+          <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">remove_circle</i></a>
 
         </td>
         <td width="25%" class="muted">
@@ -36,7 +36,7 @@
         <td width="12%" class="muted" >{{item.totalFormat}}</td>
         <td width="5%" class="muted">
            <div ng-if="!buy.transacao" >
-              <a href="#" ng-click="buy.removeItemCarrinho(item.ecm_produto_id,true)" ng-hide="buy.loading" ><i class="material-icons">delete_forever</i></a>
+              <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id,true, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ><i class="material-icons">delete_forever</i></a>
             </div>
         </td>
       </tr>
@@ -58,8 +58,6 @@
             </div>
           </td>
       </tr>
-
-
 
     </tbody>
   </table>

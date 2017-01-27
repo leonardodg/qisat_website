@@ -73,7 +73,7 @@
 					<li ng-repeat="item in buy.itens track by item.id">
 						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
 						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
-						<a href="#{{item.id}}" class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true)"><i class="material-icons">close</i></a>
+						<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"><i class="material-icons">close</i></a>
 					</li>
 
 					<li ng-if="!buy.qtdItens">
@@ -86,7 +86,7 @@
 						<p>Total <span>{{buy.totalCarrinho}}</span></p>
 					</div> <!-- cd-cart-total -->
 				 
-					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal">Finalizar compra</a>
+					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
 					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
@@ -4452,12 +4452,12 @@
 									<div class="list-filter__inner">
 										<div class="card-course card-format-block">
 									   		<div class="card-course-inner">
-									   				<a ng-href="{{::course.url}}" target="_self">
+									   				<a ng-href="{{::course.info.url}}" target="_self">
 									   					<span class="card-course--litle-play"></span>
 									   					<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
 									   				</a>
 									   				<div class="card-course--content" >
-									   					<a ng-href="{{::course.url}}" target="_self">
+									   					<a ng-href="{{::course.info.url}}" target="_self">
 									   						<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
@@ -4491,17 +4491,20 @@
 		  								<div class="row collapse">
 			 								<div class="small-12 medium-4 columns">
 			 									<div class="card-course-inner">
-													<a ng-href="{{::course.info.url}}" target="_self">
+													<!-- <a ng-href="{{::course.info.url}}" target="_self"> -->
 														<span class="card-course--litle-play"></span>
 														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
-													</a>
+													<!-- </a> -->
 													<div class="card-course--content">
-														<a ng-href="{{::course.info.url}}" target="_self">  
+														<!-- <a ng-href="{{::course.info.url}}" target="_self">   -->
 															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
-														</a>
-														<a ng-href="{{::course.info.url}}" target="_self" class="card-course__button">{{::course.preco}}</a> 	
+														<!-- </a> -->
+														<!-- <a ng-href="{{::course.info.url}}" target="_self" class="card-course__button">{{::course.preco}}</a> 	 -->
+
+														<span class="card-course__button"> {{::course.preco}} </span>
+
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4510,7 +4513,7 @@
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
 				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
-				 											<strong class="chapter"> <span class="name">{{::edicao.endereco}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong> 
+				 											<a ng-href="{{course.info.url+'?turma='+edicao.id}}" target="_self"> <strong class="chapter"> <span class="name">{{::edicao.cidadeuf}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong>  </a>
 				 										</li>				 									
 				 									</ul>	
 				 								</div> <!-- /card-course-serie-list__container -->

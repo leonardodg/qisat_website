@@ -263,14 +263,13 @@
 											events.map( function (course){
 												course.show = true;
 												course.eventos.map( function (edicao){
-													edicao.show = true;
-													edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
-													edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
-													if(edicao.local&& edicao.local[0]&&edicao.local[0].detalhes) {
-														edicao.uf = edicao.local[0].detalhes.uf;
-														edicao.endereco  = (edicao.local && edicao.local.length) ? edicao.local[0].detalhes.cidade + ' - ' +edicao.local[0].detalhes.uf : 'Á Definir';
+													if(edicao.cidade && edicao.cidade.estado) {
+														edicao.show = true;
+														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+														edicao.uf = edicao.cidade.estado.uf;
 													}
-
 												});
 											});
 											events.map( function (course){ course.show = true });
@@ -323,12 +322,12 @@
 											events.map( function (course){
 												course.show = true;
 												course.eventos.map( function (edicao){
-													edicao.show = true;
-													edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
-													edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
-													if(edicao.local&& edicao.local[0]&&edicao.local[0].detalhes) {
-														edicao.uf = edicao.local[0].detalhes.uf;
-														edicao.endereco  = (edicao.local && edicao.local.length) ? edicao.local[0].detalhes.cidade + ' - ' +edicao.local[0].detalhes.uf : 'Á Definir';
+													if(edicao.cidade && edicao.cidade.estado) {
+														edicao.show = true;
+														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+														edicao.uf = edicao.cidade.estado.uf;
 													}
 												});
 											});

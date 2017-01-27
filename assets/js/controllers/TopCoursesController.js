@@ -15,7 +15,6 @@
 
 											course.nomeLimit = filterLimitName(course.nome, 48);
 											course.precoTotal =  $filter('currency')(course.preco, 'R$');
-											
 											if(course.promocao){
 												course.preco = $filter('currency')(course.valorTotal, 'R$');
 												course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
