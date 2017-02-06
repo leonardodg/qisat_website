@@ -35,7 +35,7 @@
 /* 'HOME SHORTCUT
 ========================================= */
 .shortcut-courses {
-    background-color: #10171b;
+    background-color: #fafafa;
     display: inline-block;
     width: 100%;
     padding: 70px 0;
@@ -43,22 +43,21 @@
 
 .shortcut-courses__title {
     text-align: center;
-    color: #fff;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: -1px;
     margin-bottom: 0;
     font-size: 36px;
     text-align: center;
-    color: #fff;
+    color: #003352;
 }
 
 .shortcut-courses__subtitle {
-    color: #fff;
+    color: #003352;
     text-align: center;
     font-weight: 300;
     font-size: 22px;
-    opacity: 0.3;
+    opacity: 0.6;
 }
 
 
@@ -84,6 +83,11 @@
 
 .shortcut-courses__solutions-free {
   background: url("../images/categorias/cursos_gratuitos.png") no-repeat;
+  background-size: cover;
+}
+
+.shortcut-courses__serie-conteudos {
+  background: url("../images/categorias/serie_conteudos.png") no-repeat;
   background-size: cover;
 }
 
@@ -338,9 +342,9 @@
 .home__section-instructors {
     //background-color: #2196f3;
     padding: 10px 0 70px 0;
-    background: #00c6ff; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #005b94, #002942); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #c1c1c1; /* fallback for old browsers */
+    /*background: -webkit-linear-gradient(to left, #00c6ff , #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to left, #005b94, #002942); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     @media only screen and (min-width: 40.063em) {
       padding: 70px 0;
@@ -449,7 +453,7 @@
 /* 'HOME NUMBERS
 ========================================= */
 @media only screen {
-      .home__section-numbers { background: linear-gradient(to left, #28b67c, #002942); padding: 0; }
+      .home__section-numbers { background: #112D3F; padding: 0; }
       .home__section-numbers--list { display: inline-block; width: 100%; line-height: 1; }
       .home__section-numbers--list-item { text-align: center; display: inline-block; color: #fff; padding: 20px 0 !important;  margin-bottom: -6px; }
       .home__section-numbers--list-item { border-right: 1px solid #444;  }
