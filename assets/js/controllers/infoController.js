@@ -8,7 +8,8 @@
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
 						 		path, search = absUrl.indexOf('?'), params, turma;
-
+					 		
+					 		moment.locale('pt-BR');
 
 							var parseQueryString = function() {
 
@@ -37,7 +38,6 @@
 					 		}else
 					 			path = absUrl.substr(absUrl.indexOf('curso/'));					 		
 
-					 	moment.locale('pt-BR');
 						activate();
 					 	vm.modaltrailer = function () {
 				 					var modalInstance = $modal.open({ 
@@ -56,10 +56,35 @@
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
-				 							controller : function ($scope, $modalInstance) {
+				 							controller : function ($scope, $modalInstance, QiSatAPI) {
+
+				 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+															  $scope.submitted = false;
+
+
 															  $scope.cancel = function () {
 															    $modalInstance.dismiss('cancel');
 															  };
+
+															  $scope.solicitarContato = function(data,callForm){
+															  		var dados = angular.copy(data);
+															  			$scope.submitted = true;
+															  		if(callForm && callForm.$valid){
+															  			$scope.loading = true;
+															  			dados.telefone = '('+data.operadora+") "+data.telefone;
+															  			QiSatAPI.callMe(data)
+					                       									    .then(function (res){
+					                       									    	console.log(res);
+															  						$scope.enviado = true;
+															  						$scope.loading = false;
+					                       									    }, function (res){
+					                       									    	console.log(res);
+															  						$scope.enviado = true;
+															  						$scope.loading = false;
+					                       									    });
+
+															  		}
+															  }
 															}
 				 						});
 					 			  };

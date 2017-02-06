@@ -5,12 +5,11 @@
 		.module('QiSatApp')
 		.controller('alunoController', 
 					 function( $scope, $location, authService ) {
-
 					 	$scope.logout = function() {
-							authService.logout();
-							// $location.path('/login');
-							window.location = '/login';
+							authService.logout()
+									   .then( function (res){
+												window.location = '/login';
+									   });
 						};
-
 					 });
 })();

@@ -65,10 +65,9 @@
 				<nav class="header-main__nav">
 					<ul class="header-main__ul">
 						<li class="show-for-large-up header-main__list"> 
-							<a class="anchor header-main__item header-main__list-current
-							header-main__list-item-current" href="/" target="_self" >Home</a>
+							<a class="anchor header-main__item" href="/" target="_self" >Home</a>
 						</li>
-						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
+						<li class="show-for-large-up header-main__list header-main__list-current header-main__list-item-current">
 							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
@@ -185,7 +184,7 @@
 										<a class="anchor navigation_courses__list-item--link" href="#formato-do-curso">Formato do curso</a>
 									</li>
 
-									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-ig="::vm.info.produto.instrutor.length"><a class="anchor navigation_courses__list-item--link" href="#ministrante" >Ministrante</a>
+									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-ig="vm.info.produto.instrutor.length"><a class="anchor navigation_courses__list-item--link" href="#ministrante" >Ministrante</a>
 									</li>
 
 									<li data-magellan-arrival="proximas-turmas" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
@@ -222,7 +221,7 @@
 		 			 	</ul>
 						<ul class="section_gsv__list" >
 		 			 		<li class="section_gsv__item-small">Datas</li>
-		 			 		<div ng-repeat="data in vm.turma.datas">
+		 			 		<div ng-repeat="data in vm.turma.datas track by $index">
 		 			 			<li class="section_gsv__item-info">{{data}}</li>
 							</div>
 		 			 	</ul>
@@ -629,7 +628,6 @@
 		<!-- EXECUTA SCRIPTS QISAT -->
 		<script defer src="js/libs/moment.min.js"></script>
 		<script defer src="js/libs/moment-with-locales.js"></script>
-		
 		<script defer src="js/libs/humanize-duration.js"></script>
 
 		<script defer src="js/libs/angular-locale_pt-br.js"></script>

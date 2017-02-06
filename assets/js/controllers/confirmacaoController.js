@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('confirmacaoController', ['$scope', '$location', 'authService', '$modal', 'carrinhoServive', 'venda', 'Authenticated', 
-					 function(scope, $location, authService, $modal, carrinhoServive, venda, Authenticated) {
+		.controller('confirmacaoController', [ 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
+					 function( authService,  carrinhoServive, venda, Authenticated) {
 					 	var vm = this;
 					 	if(venda && (authService.isLogged() && Authenticated)){
 					 		if(venda.forma_pagamento == 'Boleto'){

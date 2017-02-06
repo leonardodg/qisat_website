@@ -27,6 +27,22 @@
 		                                                });
 		                        },
 
+		                        callMe : function(data){
+
+		                        	var promise = $http({ 
+		                                                    method: 'POST', 
+		                                                    url: Config.baseUrl+'/repasse/wsc-ligamos-para-voce/salvar',
+		                                                    data: data
+		                                                        });
+
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+
+		                        },
+
 		                        checkByEmail : function (email) {
 
 		                            var promise = $http({ 
@@ -131,7 +147,7 @@
 							},
 
 							getInfo : function (course) {
-									
+
 									var promise = $http({ 
 															cache: true, 
 															method: 'POST',

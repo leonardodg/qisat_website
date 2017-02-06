@@ -758,7 +758,6 @@
 						QiSatAPI.getCourses().then( function(response){
 								$scope.courses = response.data.retorno;
 								startCourseList();
-								console.log($scope.coursesList);
 						});
 						
 						setDataFilters();

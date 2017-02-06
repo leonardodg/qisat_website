@@ -31,10 +31,24 @@ Que, entre si fazem, de um lado MN TECNOLOGIA E TREINAMENTO LTDA com sede à Av.
 															align="center" class="titulo_dados_tabela">
 															<strong>Tempo por aula</strong>
 														</div></td>
-												</tr><tr>
-																	<td>Curso Software QiElétrico a Distância</td>
-																	<td align="center">90 dias (noventa)</td>
-																	<td align="center">16 (dezesseis) horas</td></tr>
+												</tr>
+												<tr ng-repeat="produto in online track by produto.id">
+
+																<td>
+																	<div ng-repeat="curso in produto.courses" >
+																		{{curso.nome}}
+																	</div>
+																</td>
+
+																<td align="center">{{::produto.enrolperiod}}</td>
+
+																<td>
+																	<div ng-repeat="curso in produto.courses" >
+																		{{curso.time}}
+																	</div>
+																</td>
+
+												</tr>
 												</table> <br> 
 
 															<span>1.1.2
@@ -42,7 +56,7 @@ Que, entre si fazem, de um lado MN TECNOLOGIA E TREINAMENTO LTDA com sede à Av.
 
 															<span>1.1.3
 															-  A emissão do certificado encerra o prazo contratado de acesso ao curso.</span><br> <br>
-															 <span>1.1.4-  Realização do(s) Curso(s) presencial(is):</span><br> <br><table width="100%" cellpadding="3" cellspacing="0"
+															 <span ng-if="presencial.length">1.1.4-  Realização do(s) Curso(s) presencial(is):</span><br> <br><table width="100%" cellpadding="3" cellspacing="0"
 												class="table_cursos"><tr>
 													<td width="50%" class="titulo_dados_tabela"><div
 															align="left" class="titulo_dados_tabela">
@@ -56,10 +70,14 @@ Que, entre si fazem, de um lado MN TECNOLOGIA E TREINAMENTO LTDA com sede à Av.
 															align="center" class="titulo_dados_tabela">
 															<strong>Cidade/UF</strong>
 														</div></td>
-												</tr><tr>
-																					<td>Curso Software QiElétrico presencial</td>
-																					<td align="center">21/01/2017 || 21/01/2017 || 22/01/2017 || 22/01/2017 || </td>
-																					<td align="center">Florianópolis/SC</td>
+												</tr><tr ng-repeat="curso in presencial">
+																					<td>{{curso.nome}}</td>
+																					<td align="center"> 
+																						<div ng-repeat="data in curso.datas">
+																								{{data}} <br>
+																						</div> 
+																					</td>
+																					<td align="center">{{curso.local}}</td>
 																				 </tr></table>
 
 												<p>

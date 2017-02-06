@@ -4539,7 +4539,7 @@
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
 														</a>
-														<a href="#" class="card-course__button">{{::course.preco}}</a> 	
+														<a href="#" class="card-course__button" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}</a> 	
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4744,6 +4744,7 @@
 		
 <!-- ANGULARJS SCRIPTS -->
 	<script defer src="js/libs/moment.min.js"></script>
+	<script defer src="js/libs/moment-with-locales.js"></script>
 	<script defer src="js/libs/humanize-duration.js"></script>
     <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
     <script defer src="js/libs/angular-locale_pt-br.js"></script>

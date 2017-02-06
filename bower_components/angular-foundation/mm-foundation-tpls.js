@@ -3416,7 +3416,7 @@ angular.module("template/accordion/accordion-group.html", []).run(["$templateCac
     "{{heading}}"+
     "</a>\n" +
 
-    "<ul class=\"button-group radius hero-course__buttons-group\"><li class=\"hero-course__buttons-group--item\"><div ng-click=\"addCarrinho()\" class=\"addProduto\" ng-if=\"iconCarrinho\"><span class=\"cart\"><i class=\"material-icons\">shopping_cart</i></span><span class=\"card-course__icon-cart\"><div class=\"price_popover\"><div class=\"price_popover__header\"><p class=\"price_popover__header__info\"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p></div><div class=\"price_popover__footer\"> Adicionar ao carrinho </div></div></span></div></li></ul>\n"+
+    "<ul class=\"button-group radius hero-course__buttons-group\" ng-if=\"iconCarrinho\" ><li class=\"hero-course__buttons-group--item\"><div ng-click=\"addCarrinho()\" class=\"addProduto has-price_popover\" ><span class=\"cart\"><i class=\"material-icons\">shopping_cart</i></span><span class=\"card-course__icon-cart\"><div class=\"price_popover\"><div class=\"price_popover__header\"><p class=\"price_popover__header__info\"> <s>de R$ 120,00</s> <strong>para R$ 56,00</strong> Até 19/11/2016</p></div><div class=\"price_popover__footer\"> Adicionar ao carrinho </div></div></span></div></li></ul>\n"+
 
     " <div class=\"content\" ng-class=\"{ active: isOpen }\" ng-transclude></div>\n" +
     "</dd>\n" +

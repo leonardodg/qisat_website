@@ -15,38 +15,43 @@
 			</header>
 
 
-			<form class="section-call__form--form">
-			  <div class="row">
+			<form id="callForm" name="callForm" class="section-call__form--form" novalidate >
+			  <div class="row" ng-hide="enviado">
 							<div class="small-2 columns">
 									<div class="row">
 										<div class="small-12 columns">
-											<label for="call-input-name" class="call-label-icon-name"> </label>
+											<label for="nome" class="call-label-icon-name"> </label>
 										</div>
 									</div>
 							</div>
 					<div class="medium-10 columns">
 						<div class="row">
-									<div class="small-12 columns">
-	 						        <input id="call-input-name" type="text" placeholder="Seu nome" />
-							    </div>
+							<div class="small-12 columns">
+						        <input name="nome" id="nome" type="text" placeholder="Seu nome" ng-model="dados.nome" ng-required="true" />
+
+							    <div ng-show="(callForm.nome.$dirty || submitted) && callForm.nome.$invalid">
+				                    <span class="error" ng-show="callForm.nome.$error.required">Nome é Obrigatório!</span>
+			                     </div>
+						        
+					    	</div>
 						</div>
 					</div>
 			  </div>
 
 
 
-				<div class="row">
+				<div class="row" ng-hide="enviado">
 							<div class="small-2 columns">
 									<div class="row">
 										<div class="small-12 columns">
-											<label for="call-input-ddd" class="call-label-icon-phone"> </label>
+											<label for="operadora" class="call-label-icon-phone"> </label>
 										</div>
 									</div>
 							</div>
 					<div class="medium-10 columns">
 						<div class="row collapse">
 							<div class="small-4 columns">
-	 								<select id="call-input-ddd" name="ddd">
+	 								<select id="operadora" name="operadora" ng-required="true" ng-model="dados.operadora" >
 											<option value="">DD</option>
 											<option value="11">11</option>
 											<option value="12">12</option>
@@ -142,34 +147,59 @@
 											<option value="99">99</option>
 									</select>
 							</div>
+
 							<div class="small-8 columns">
 								  <label><span class="hide">Telefone</span> </label>
-									<input type="text" placeholder="9999-9999" />
+									<input id="fone" name="fone" type="text" placeholder="9999-9999"  ng-model="dados.telefone" ng-required="true" mask="9?9999-9999"  />
 							</div>
+
+							<div class="small-12 columns">
+							    <div ng-show="(callForm.operadora.$dirty || submitted) && callForm.operadora.$invalid">
+				                    <span class="error" ng-show="callForm.operadora.$error.required">Operadora de telefone é Obrigatório!</span>
+			                     </div>
+
+								<div ng-show="(callForm.fone.$dirty || submitted) && callForm.fone.$invalid">
+				                    <span class="error" ng-show="callForm.fone.$error.required">Número do telefone é Obrigatório!</span>
+			                     </div>
+
+								<div ng-show="(callForm.fone.$dirty || submitted) && callForm.fone.$invalid">
+				                    <span class="error" ng-show="callForm.fone.$error.mask">Formato do telefone Inválido!</span>
+			                     </div>
+						    </div>
+
 						</div>
 					</div>
 			  </div>
 
 
-				<div class="row">
+				<div class="row" ng-hide="enviado">
 				<div class="small-2 columns">
 						<div class="row">
 							<div class="small-12 columns">
-								<label for="call-input-email" class="call-label-icon-email"> </label>
+								<label for="email" class="call-label-icon-email"> </label>
 							</div>
 						</div>
 				</div>
 				<div class="medium-10 columns">
 					<div class="row">
-								<div class="small-12 columns">
-						        <input id="call-input-email" type="email" placeholder="seu@email.com" />
+							<div class="small-12 columns">
+						        <input id="email" name="email" type="email" placeholder="seu@email.com" ng-required="true" ng-pattern="emailFormat" email-check ng-model="dados.email" />
+
+						        <div ng-show="(callForm.email.$dirty || submitted) && callForm.email.$invalid">
+				                    <span class="error" ng-show="callForm.email.$error.required">Email é Obrigatório!</span>
+			                     </div>
+
+				                <div ng-show="callForm.email.$dirty && callForm.email.$error.pattern">
+				                    <span class="error" >Formato de Email incorreto!</span>
+				                </div>
+
 						    </div>
 					</div>
 				</div>
 			  </div>
 
 
-				<div class="row">
+				<div class="row" ng-hide="enviado">
 							<div class="small-2 columns">
 									<div class="row">
 										<div class="small-12 columns">
@@ -180,34 +210,67 @@
 					<div class="medium-10 columns">
 						<div class="row">
 									<div class="small-12 columns">
-	 										<select id="call-input-interests">
-												<option value="">Área de Interesse</option>
-												<option>Estrutural</option>
-												<option>Elétrica</option>
-												<option>Hidráulica</option>
-												<option>CAD</option>
-												<option>Outros Cursos</option>
-												<option>Gratuito</option>
-												<option>Presencial</option>
-												<option>Item da Série</option>
+	 										<select id="call-input-interests" name="call-input-interests" ng-model="dados.area" ng-required="true" >
+												<option value="" >Área de Interesse</option>
+												<option value="Estrutural" >Estrutural</option>
+												<option value="Elétrica" >Elétrica</option>
+												<option value="Hidráulica" >Hidráulica</option>
+												<option value="CAD" >CAD</option>
+												<option value="Outros Cursos" > Outros Cursos</option>
+												<option value="Gratuito" >Gratuito</option>
+												<option value="Presencial" >Presencial</option>
+												<option value="Item da Série" >Item da Série</option>
 											</select>
+
+											<div ng-show="(callForm['call-input-interests'].$dirty || submitted) && callForm['call-input-interests'].$invalid">
+						                    <span class="error" ng-show="callForm['call-input-interests'].$error.required">Selecione a Área de Interesse!</span>
+					                     </div>
 									</div>
 						</div>
 					</div>
 				</div>
 
 
-				<div class="row">
+				<div class="row" ng-hide="enviado">
 					<div class="small-2 columns"> </div>
 					<div class="medium-10 columns">
 						<div class="row">
 									<div class="small-12 columns">
-							    <button class="small button"> Ligue pra mim!</button>
+							    <button class="expand button" ng-click="solicitarContato(dados, callForm)" ng-disabled="loading" > Ligue pra mim!</button>
 							    </div>
 						</div>
 					</div>
 			  </div>
+
+			  <div class="row" ng-if="enviado" >
+								<div class="large-12 columns">
+										<span class="section-call__done--icon">
+											<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+												<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+												 width="93.827px" height="92.593px" viewBox="0 0 93.827 92.593" enable-background="new 0 0 93.827 92.593" xml:space="preserve">
+												<path fill="#2196F3" d="M46.129,1.041c-24.88,0-45.073,20.192-45.073,45.073c0,24.878,20.192,45.074,45.073,45.074
+												c24.879,0,45.073-20.196,45.073-45.074C91.202,21.233,71.008,1.041,46.129,1.041z M37.114,68.649L14.578,46.113l6.356-6.356
+												l16.18,16.136l34.21-34.209l6.356,6.399L37.114,68.649z"/>
+												</svg>
+										</span>
+										<span class="section-call__done--title">Sua solicitação de contato foi enviada com sucesso.</span>
+										<span class="section-call__done--subtitle">Em breve um de nossos atendentes entrará em contato com você.</span>
+								</div> <!-- // large-12 columns -->
+				</div><!-- // row -->
+
+			  <div class="row" ng-if="loading" >
+					<div class="large-12 columns">
+
+						    <div class="custom-loading">
+						      <i class="material-icons">hdr_weak</i>
+						      <span class="text" >Enviando Solicitação...</span>
+						    </div>
+
+					</div>
+				</div>
+
 			</form>
 		</section> <!-- /// section-call-form -->
+
 
 	</div> <!-- //modalPageCourseCall -->

@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('carrinhoController', ['$scope', '$location', '$filter','authService', 'Config', '$modal', 'carrinhoServive', '$route', '$routeParams',
-					 function(scope, $location, $filter, authService, Config, $modal, carrinhoServive, $route, $routeParams ) {
+		.controller('carrinhoController', [ '$filter', 'carrinhoServive',
+					 function( $filter, carrinhoServive ) {
 
 					 	var vm = this;
 					 	vm.loading = true;

@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('certificadoController', ['$scope', '$location','$sce', '$document', '$filter','authService','Authenticated', 'certificados',
-					 function(scope, $location, $sce, $document, $filter, authService, Authenticated, certificados ) {
+		.controller('certificadoController', ['$scope','$sce', '$filter','authService','Authenticated', 'certificados',
+					 function(scope, $sce, $filter, authService, Authenticated, certificados ) {
 
 					 	if(authService.isLogged() && Authenticated){
 					 		scope.user = authService.getUser();

@@ -132,7 +132,7 @@
 									},
 									withCredentials : true
 								});
-								promise.then( function (res){
+								return promise.then( function (res){
 									return res;
 								});
 								$http.defaults.headers.common.Authorization = undefined;

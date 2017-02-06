@@ -3,16 +3,19 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', 'carrinhoServive', 'formasPagamentos', 'Authenticated',
-					 function(scope, $location, authService, $modal, $timeout, $window, carrinhoServive, formasPagamentos, Authenticated) {
+		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
+					 function(scope, $location, authService, $modal, $timeout, $window, carrinhoServive, formasPagamentos, Authenticated, Itens) {
 
 					 	var vm = this;
 		 				var forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
 					 		vm.formasPagamentos = formasPagamentos; 
 					 		vm.pagamento = 4;
 
+					 	console.log(Itens);
+					 	moment.locale('pt-BR');
 
-					 	if(authService.isLogged() && Authenticated){
+
+					 	if(authService.isLogged() && Authenticated && Itens){
 
 					 		vm.user = authService.getUser();
 			 				if(forma) {
@@ -32,24 +35,62 @@
 													  $scope.cancel = function () {
 													    $modalInstance.dismiss('cancel');
 													  };
-													  var itens = carrinhoServive.getItens(), online = [], presencial = [], tipo;
+													  var itens = carrinhoServive.getItens(), online = [], presencial = [];
 
-													  $scope.nome = vm.user.nome;
+													  if(vm.user) $scope.nome = vm.user.nome;
 
-													  itens.map(function (item){
-													  	 var i = {
-													  	 			enrolperiod : item.ecm_produto.enrolperiod,
-													  	 			courses : []
-													  	 		 };
+													  if(itens && itens.length){
+													  	itens.map(function (item){
+													  			var dados = { id: item.id };
+														  	 	if(item.ecm_produto){
 
-													  	 	item.mdl_course.map(function(course){
-													  	 			i.courses.push( course );
-													  	 	});
+														  	 		if(item.ecm_produto.enrolperiod){
+															  	 		dados.enrolperiod = item.ecm_produto.enrolperiod.toString();
+															  	 		dados.enrolperiod = dados.enrolperiod +' ('+dados.enrolperiod.extenso()+') '+' Dias';
+														  	 		}
 
-													  });
+														  	 		dados.modalidade = item.modalidade;
+														  	 		dados.nome = item.ecm_produto.nome;
 
-													  $scope.itens = dados;
+														  	 		if(item.ecm_produto.mdl_course){
+														  	 			dados.courses = [];
+														  	 			item.ecm_produto.mdl_course.map(function(course){
+														  	 				var aux = { id: course.id };
+														  	 				if(course.fullname) aux.nome = course.fullname;
+														  	 				if(course.timeaccesssection ){
+														  	 					aux.time = course.timeaccesssection.toString();
+														  	 					aux.time = aux.time +' ('+aux.time.extenso()+') '+' Horas';
+														  	 				}
+														  	 				dados.courses.push(aux);
+														  	 			});
+														  	 		}
 
+														  	 		if(item.isOnline || item.isLecture ){
+														  	 			dados.isOnline = true;
+														  	 			online.push(dados);
+														  	 		}else if(item.isSerie || item.isPack ){
+														  	 			dados.isOnline = true;
+														  	 			online.push(dados);
+														  	 		}else if( item.isClassroom ){
+														  	 			item.isClassroom = true;
+
+														  	 			if(item.estado && item.cidade)
+														  	 				dados.local = item.cidade +' - '+item.estado;
+
+														  	 			if(item.datas && item.datas.length){
+														  	 				dados.datas = [];
+														  	 				item.datas.map(function(data){
+														  	 					dados.datas.push(moment.unix(data.data_inicio).format('DD/MM/YYYY' ));
+														  	 				});
+														  	 			}
+														  	 			presencial.push(dados);
+														  	 		}
+														  	 	}
+														  });
+
+														  $scope.online = online;
+														  $scope.presencial = presencial;
+													  }
 													}
 		 						});
 			 			    };
@@ -93,7 +134,8 @@
 						 		}
 						 	}
 
-					 	}
+					 	}else
+					 		$location.path('/carrinho');
 					 		
 				 		
 					 }]);
