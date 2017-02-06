@@ -822,7 +822,8 @@ button.close-button, .close-button {
         width: 49%;
         float: left;
         margin-right: 2%;
-        
+        height: 120px;
+
         &:nth-of-type(2n+0) {
           margin-right: 0;
         }
@@ -985,7 +986,8 @@ hr.clearfix {
 
       img {
         width: auto;
-        max-width: 90%;
+        max-width: 200px;
+        max-height: 100px;
       }
 
       span {
@@ -1156,6 +1158,10 @@ hr.clearfix {
     border-bottom: 1px solid #eee;
     padding: 15px 10px;
     font-size: 15px;
+
+    span{
+      color: #333333;
+    }
   }
 
   strong {

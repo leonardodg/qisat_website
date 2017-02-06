@@ -41,6 +41,10 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+
+  .span{
+    color: #222222;
+  }
   }
 
   .title {
@@ -102,7 +106,7 @@
 
 .gallery-sync{ }
 .gallery-sync_caption{
-  background: rgba(0, 91, 148, 0.56);
+      background: rgba(5, 5, 5, 0.6);
       margin: 0;
       font-size: 14px;
       letter-spacing: 0.5px;
@@ -115,7 +119,7 @@
 }
 
 #gallery-sync_bigger {
-  @extend .z-1; background-color: $primary-color-dark;
+  @extend .z-1; background-color: #292929;
   .item {
     padding: 0;
     margin: 0px;
@@ -129,10 +133,10 @@
 }
 
 #gallery-sync_thumb {
-  background-color: $primary-color-dark;
+  background-color: #0F0F0F;
 
   .item {
-    background-color: $primary-color-dark;
+    background-color: #005285;
     padding: 0px;
     margin: 0px;
     color: #FFF;
@@ -192,8 +196,32 @@
 
 
 
+.bloco_ano{
+  position: relative;
+  width: 130px;
+  padding: 0 0 0 10px;
+  font-size: 50px;
+  font-family: arial;
+  color: #333333;
+  text-align: left;
+  vertical-align: central;
+  margin-right:10px;
+  float:left;
+}
 
-
+.bloco_texto{
+  position: relative;
+  width: 300px;
+  height: 100%;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: arial;
+  color: #333333;
+  text-align: left;
+  vertical-align: central;
+  padding: 5px;
+  margin-top:10px;
+}
 
 
 .timeline__vertical_slider{
@@ -209,18 +237,18 @@
 
 
 
-.container-timeline{ padding: 0; background-color: #EFEFEF;   margin-bottom:40px;   @extend .z-1;}
+.container-timeline{ padding: 0; background-color: #ffffff;   margin-bottom:40px;   @extend .z-1;}
 
 
 
 
 
-.timeline__list-group--background{    background-color: #EFEFEF;}
+.timeline__list-group--background{    background-color: #FFFFFF;}
 .timeline__list-group{
   list-style: none;
     margin: 0;
     padding: 20px;
-    background-color: #EFEFEF;
+    background-color: #ffffff;
     display: inline-block;
 
   .list-group-item{
