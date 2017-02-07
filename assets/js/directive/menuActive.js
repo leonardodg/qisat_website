@@ -20,6 +20,8 @@
 
 	                    	if(path == '/institucional/parceiros' || path == '/institucional/parceiros/' || path.indexOf('/institucional/convenios') >=0 )
 	                    		path = '/institucional/convenios-e-parceiros';
+	                    	else if( path.indexOf('/institucional/instrutor') >=0 )
+	                    		path = '/institucional/instrutores-e-professores';
 	                    	else if(path == '/institucional/' || path == '/institucional')
 	                    		path = '/institucional/sobre-a-empresa';
 

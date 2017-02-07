@@ -13,13 +13,14 @@
 		})
 
 	 	.filter("nameInstructor", function (){
-			return function (input) {
+			return function (input, size) {
 				var output = input.toLowerCase(), length = input.length, regex = /(da|de){2}/;
 					output = output.split(' ');
+					size = (size || 25);
 					output = output.map(function(nome, i){
 						if(regex.test(nome)) 
 							return nome;
-						else if(length>=25 && i > 0 && i < output.length-1)
+						else if(length>=size && i > 0 && i < output.length-1)
 							return nome.charAt(0).toUpperCase() + '.';
 						else
 							return nome.charAt(0).toUpperCase() + nome.substring(1);

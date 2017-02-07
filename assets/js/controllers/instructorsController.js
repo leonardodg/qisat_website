@@ -4,12 +4,14 @@
 	angular
 		.module('QiSatApp')
 		.controller("instructorsController",
-				[ '$scope', 'Config', 'QiSatAPI', 'instrutores', 
-					function(scope, Config, QiSatAPI, instructors){
+				[ '$scope', 'Config', 'QiSatAPI', 'instrutores', '$filter',
+					function(scope, Config, QiSatAPI, instructors, $filter){
+						var filterLimitName = $filter('nameInstructor');
 
 						if(instructors){
 							instructors.map( function (instructor) {
-								if(instructor)
+								if(instructor){
+									instructor.nome = filterLimitName(instructor.nome);
 									if(!instructor.imagem)
 										instructor.imagem = Config.imagensUrlDefault;
 
@@ -18,6 +20,7 @@
 												return el.descricao == 'Linkedin';
 										});
 									}
+								}
 
 							});
 							scope.instructors = instructors;

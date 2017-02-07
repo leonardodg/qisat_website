@@ -4,7 +4,9 @@
 	angular
 		.module('QiSatApp')
 		.controller("instructorsIndexController",
-				[ '$scope', 'Config', 'QiSatAPI', function(scope, Config, QiSatAPI){
+				[ '$scope', 'Config', 'QiSatAPI', '$filter', function(scope, Config, QiSatAPI, $filter){
+
+					var filterLimitName = $filter('nameInstructor');
 
 					QiSatAPI.getInstructorsTop()
 									.then( function ( response ){
@@ -13,6 +15,8 @@
 
 											instructors.map( function (instructor) {
 												if(instructor){
+
+													instructor.nome = filterLimitName(instructor.nome);
 													if(!instructor.imagem)
 														instructor.imagem = Config.imagensUrlDefault;
 

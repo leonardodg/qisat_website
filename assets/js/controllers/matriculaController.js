@@ -59,8 +59,6 @@
 										 			}
 						 						});
 									 		}
-					 		console.log(scope.courses);
-
 					 				});
 
 					 }]);

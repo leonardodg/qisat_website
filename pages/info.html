@@ -45,7 +45,7 @@
 
 
 	<div class="off-canvas-wrap" data-offcanvas>
-	  <div class="inner-wrap">
+	  <div class="inner-wrap" ng-controller="footerController as fc">
 		
 			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
@@ -127,7 +127,7 @@
 					<ul class="button-group radius hero-course__buttons-group">
 
 
-						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="vm.modalcall()" > <i class="material-icons">call</i></a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="fc.modalcall()" > <i class="material-icons">call</i></a> </li>
 
 
 						<li class="hero-course__buttons-group--item"> <a class="button buttom-favorite" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Favoritar"><i class="material-icons">favorite</i></a></li>
@@ -503,6 +503,7 @@
 
 </main> <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
+
 				<!-- ########################## FOOTER ########################## -->
 					<footer class="footer-main" >
 
@@ -543,8 +544,8 @@
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="fc.modalcall()" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
 											</li>   
 
@@ -570,16 +571,16 @@
 
 
 
-						<div class="footer-secondary" ng-controller="footerController as vm">
+						<div class="footer-secondary">
 								<div class="row">
 										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
 											<li>
 													<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="vm.modaltermo()">Termos de uso</a>
+															<a class="footer-secondary__list__item--link" ng-click="fc.modaltermo()">Termos de uso</a>
 														</li>
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="vm.modalpolitica()">Política de privacidade</a>
+															<a class="footer-secondary__list__item--link" ng-click="fc.modalpolitica()">Política de privacidade</a>
 														</li>
 													</ul>
 										    </li>

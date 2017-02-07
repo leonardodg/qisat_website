@@ -14,7 +14,7 @@
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
-<body>
+<body ng-controller="carrinhoController as buy">
 
 
 	<div class="off-canvas-wrap" data-offcanvas>
@@ -52,9 +52,9 @@
 						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
 							<i class="material-icons">menu</i> Menu</a>
 						</li>
-			    		<li class="header-main__list header-main__list-cart"> 
-			    			<a class="header-main__item header-main__item-cart" >
-			    				<i class="material-icons">shopping_cart</i> <span class="cart_number">3</span></a>
+			    		<li class="header-main__list header-main__list-cart" > 
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
 			    			</a>
 			    		</li>
 					</ul>
@@ -63,35 +63,27 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer"></div>
-				<div id="cd-cart">
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
 					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					<li ng-repeat="item in buy.itens track by item.id">
+						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
+						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+						<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"><i class="material-icons">close</i></a>
 					</li>
 
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-					</li>
-
-					<li>
-						<span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-						<span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-						<a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+					<li ng-if="!buy.qtdItens">
+						<span class="cd-text" >Nenhum Item no Carrinho!</span>
 					</li>
 				</ul>
 				 
-					<div class="cd-cart-total">
-						<p>Total <span>R$00.00</span></p>
+					<div class="cd-cart-total" ng-if="buy.valorTotal">
+						<p>Total <span>{{buy.totalCarrinho}}</span></p>
 					</div> <!-- cd-cart-total -->
 				 
-					<a href="/carrinho" target="_self" class="checkout-btn">Finalizar compra</a>
-					<p class="cd-go-to-cart"><a>Continuar comprando</a></p>
+					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
@@ -111,7 +103,7 @@
 <!-- ########################## END MAIN ########################## -->
 
 				<!-- ########################## FOOTER ########################## -->
-					<footer class="footer-main" >
+					<footer class="footer-main" ng-controller="footerController as vm" >
 
 						<div class="footer-primary">
 							<div class="row">
@@ -150,8 +142,8 @@
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="vm.modalcall()" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
 											</li>   
 
@@ -177,7 +169,7 @@
 
 
 
-						<div class="footer-secondary" ng-controller="footerController as vm">
+						<div class="footer-secondary">
 								<div class="row">
 										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
 											<li>
@@ -248,8 +240,12 @@
 		<script defer src="js/directive/pwCheck.js"></script>
 		<script defer src="js/directive/uiAlert.js"></script>
 		<script defer src="js/directive/reCapthcha.js"></script>
+		<script defer src="js/directive/anchorLink.js"></script>
+		<script defer src="js/filters/filters.js"></script>
+
 
 		<script defer src="js/services/QiSatAPI.js"></script>
+		<script defer src="js/services/carrinho.js"></script>
 		<script defer src="js/services/authService.js"></script>
 		<script defer src="js/services/postmonService.js"></script>		
 		

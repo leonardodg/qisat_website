@@ -14,8 +14,7 @@
 									event.preventDefault();
 									anchor = anchor.replace('#', '');
 									$location.hash(anchor);
-									$anchorScroll();	
-									// return false;
+									$anchorScroll();
 								}
 							});
 					}

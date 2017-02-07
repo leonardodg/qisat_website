@@ -14,7 +14,7 @@
   <link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
-<body>
+<body ng-controller="carrinhoController as buy">
 
     <div class="off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
@@ -51,9 +51,9 @@
             <li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
               <i class="material-icons">menu</i> Menu</a>
             </li>
-              <li class="header-main__list header-main__list-cart"> 
-                <a class="header-main__item header-main__item-cart" >
-                  <i class="material-icons">shopping_cart</i> <span class="cart_number">3</span></a>
+              <li class="header-main__list header-main__list-cart" > 
+                <a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" anchor-link>
+                  <i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
                 </a>
               </li>
           </ul>
@@ -62,35 +62,27 @@
      <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
      <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-        <div id="cd-shadow-layer"></div>
-        <div id="cd-cart">
+        <div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+        <div id="cd-cart" ng-class="{ actived : buy.showBuy }">
           <h2>Itens no carrinho</h2>
         <ul class="cd-cart-items">
-          <li>
-            <span class="cd-qty">0x</span> <span class="cd-price">R$0.0</span>
-            <span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-            <a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+          <li ng-repeat="item in buy.itens track by item.id">
+            <span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
+            <span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+            <a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"><i class="material-icons">close</i></a>
           </li>
 
-          <li>
-            <span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-            <span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-            <a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
-          </li>
-
-          <li>
-            <span class="cd-qty">0x</span> <span class="cd-price">R$0.00</span>
-            <span class="cd-text">Curso de Alvenaria estrutural para Construtoras</span>
-            <a href="#0" class="cd-item-remove cd-img-replace"><i class="material-icons">close</i></a>
+          <li ng-if="!buy.qtdItens">
+            <span class="cd-text" >Nenhum Item no Carrinho!</span>
           </li>
         </ul>
          
-          <div class="cd-cart-total">
-            <p>Total <span>R$00.00</span></p>
+          <div class="cd-cart-total" ng-if="buy.valorTotal">
+            <p>Total <span>{{buy.totalCarrinho}}</span></p>
           </div> <!-- cd-cart-total -->
          
-          <a href="/carrinho" target="_self" class="checkout-btn">Finalizar compra</a>
-          <p class="cd-go-to-cart"><a>Continuar comprando</a></p>
+          <a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
+          <p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
         </div> <!-- cd-cart -->
      <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
@@ -127,13 +119,14 @@
 
 
 </main> <!--// main-content -->
+
         <!-- ########################## FOOTER ########################## -->
-          <footer class="footer-main" >
+          <footer class="footer-main" ng-controller="footerController as vm" >
 
             <div class="footer-primary">
               <div class="row">
 
-                    <ul class="footer-primary__columns small-block-grid-1 medium-block-grid-3 large-block-grid-6">
+                    <ul class="footer-primary__columns small-block-grid-2 medium-block-grid-3 large-block-grid-6">
 
                       <li class="footer-primary__columns--item">
                           <ul class="footer-primary__list">
@@ -150,25 +143,25 @@
                           <li class="footer-primary__title"> Páginas </li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>           
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li>
+                          <!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
                         </ul>
                       </li> <!-- // -->
 
 
-                      <li class="footer-primary__columns--item">
+                      <!-- <li class="footer-primary__columns--item">
                         <ul class="footer-primary__list"> 
                           <li class="footer-primary__title"> Soluções </li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>    
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
                           </ul>
-                      </li>
+                      </li> -->
 
                       <li class="footer-primary__columns--item">
                         <ul class="footer-primary__list">
                            <li class="footer-primary__title"> Contato</li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Ligamos para você" target="_self">Ligamos para você</a></li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="vm.modalcall()" >Ligamos para você</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
                         </ul>
                       </li>   
 
@@ -191,7 +184,10 @@
               </div> <!-- ///row -->
             </div> <!-- // footer-primary -->
 
-            <div class="footer-secondary" ng-controller="footerController as vm">
+
+
+
+            <div class="footer-secondary">
                 <div class="row">
                     <ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
                       <li>
@@ -215,7 +211,7 @@
                         <ul class="footer-secondary__list">
                             <li class="footer-secondary__list__item">
                               <span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-                              <a href="www.altoqi.com.br" class="footer-secondary__list__item--brand"><img class="footer-secondary__list__item--brand-image" src="" alt=""> <img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi"></a>
+                              <a href="http://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" ><img class="footer-secondary__list__item--brand-image" alt="" src="" title="AltoQi" > <img src="images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
                             </li>
                          </ul>
                       </li>
@@ -251,23 +247,29 @@
 
       <script defer src="js/QiSatApp.js"></script>
       <script defer src="js/config/value.js"></script>
-      <script defer src="js/filters/filters.js"></script>
-      <script defer src="js/services/QiSatAPI.js"></script>
-
       <script defer src="js/routes/institucional.js"></script>
+      
       <script defer src="js/directive/menuActive.js"></script>
       <script defer src="js/directive/backImg.js"></script>
       <script defer src="js/directive/owlSync.js"></script>
+      <script defer src="js/directive/anchorLink.js"></script>
+      <script defer src="js/filters/filters.js"></script>
 
       <script defer src="js/controllers/institucionalController.js"></script>
+      <script defer src="js/controllers/carrinhoController.js"></script>
       <script defer src="js/controllers/contactController.js"></script>
       <script defer src="js/controllers/convenioController.js"></script>
       <script defer src="js/controllers/footerController.js"></script>
       <script defer src="js/controllers/instructorController.js"></script>
       <script defer src="js/controllers/instructorsController.js"></script>
+    
+      <script defer src="js/services/QiSatAPI.js"></script>
+      <script defer src="js/services/authService.js"></script>
+      <script defer src="js/services/carrinho.js"></script>
+
       <script defer src="js/run/foundation.js"></script>
       
-      <script async defer src='https://www.google.com/recaptcha/api.js'></script>
+      <!-- // <script async defer src='https://www.google.com/recaptcha/api.js'></script> -->
       
 
       <script defer src="js/app.js"></script>
