@@ -3,11 +3,11 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('footerController', [ '$modal',
+		.controller('modalController', [ '$modal',
 					 function( $modal ) {
 					 	var vm = this;
 
-					 	vm.modaltermo = function () {
+					 	vm.termo = function () {
 				 					var modalInstance = $modal.open({ 
 				 							templateUrl: '/views/modal-termo-de-uso.html',
 				 							controller : function ($scope, $modalInstance) {
@@ -18,7 +18,7 @@
 				 						});
 					 			  };
 
-					 	vm.modalpolitica = function () {
+					 	vm.politica = function () {
 				 					var modalInstance = $modal.open({ 
 				 							templateUrl: '/views/modal-politica.html',
 				 							controller : function ($scope, $modalInstance) {
@@ -29,7 +29,7 @@
 				 						});
 					 			  };
 
-					 	vm.modalcall = function () {
+					 	vm.call = function () {
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
@@ -63,6 +63,36 @@
 				 						});
 					 			  };
 
+
+					 	vm.interesse = function () {
+				 					var modalInstance = $modal.open({ 
+                      						windowClass: 'interesse',
+				 							templateUrl: '/views/modal-interesse.html',
+				 							controller : function ($scope, $modalInstance, QiSatAPI) {
+
+				 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+															  $scope.submitted = false;
+
+															  $scope.cancel = function () {
+															    $modalInstance.dismiss('cancel');
+															  };
+
+															}
+				 						});
+					 			  };
+
+					 	vm.trailer = function (url) {
+				 					var modalInstance = $modal.open({ 
+                      						windowClass: 'trailer',
+				 							templateUrl: '/views/modal-trailer.html',
+				 							controller : function ($scope, $modalInstance) {
+															  $scope.cancel = function () {
+															    $modalInstance.dismiss('cancel');
+															  };
+															  $scope.video = $sce.trustAsResourceUrl(url);
+															}
+				 						});
+					 			  };
 
 					 }]);
 })();

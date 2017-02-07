@@ -45,7 +45,7 @@
 
 
 	<div class="off-canvas-wrap" data-offcanvas>
-	  <div class="inner-wrap" ng-controller="footerController as fc">
+	  <div class="inner-wrap" ng-controller="modalController as modal">
 		
 			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
@@ -127,7 +127,7 @@
 					<ul class="button-group radius hero-course__buttons-group">
 
 
-						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="fc.modalcall()" > <i class="material-icons">call</i></a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="modal.call()" > <i class="material-icons">call</i></a> </li>
 
 
 						<li class="hero-course__buttons-group--item"> <a class="button buttom-favorite" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Favoritar"><i class="material-icons">favorite</i></a></li>
@@ -147,7 +147,7 @@
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
 					<div class="hero-course__play-container">
-						<a class="hero-course__play" ng-click="vm.modaltrailer()" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
+						<a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/fOrGTKQJqHU')" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
 					</div> <!--//hero-course__play-container -->
 					
 				</div> <!-- //large-3-->
@@ -251,7 +251,15 @@
 							<span class="section_gsv__item-line"> </span>
 	 			 			<span class="course__price-group__total-text">Total: {{vm.turma.qtd}} vaga</span>
 	 			 			<span class="course__price-group__price"> <small>R$</small> <strong>{{vm.turma.valor}}</strong> </span>
-	 	 			 		<a class="course__price-group__button button small" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)"> <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
+	 	 			 		
+	 	 			 		<div ng-if="vm.turma.vagas">
+	 	 			 			<a class="course__price-group__button button small" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)"> <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
+	 	 			 		</div>
+
+	 	 			 		<div ng-if="!vm.turma.vagas" >
+	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse()"> <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
+	 	 			 		</div>
+
 	 	 			 		<span class="course__price-group__remaining">Restam ainda {{vm.turma.vagas}} vagas</span>
 		 			 	</div>
 					</div>
@@ -468,8 +476,8 @@
 
 	<!-- PROXIMAS TURMAS -->
 	<a name="proximas-turmas"></a>
-	<section data-magellan-destination="proximas-turmas" id="proximas-turmas" class="course-page__sections course-page__sections--slim" ng-if="vm.info.produto.eventos.length">
-			<h2 class="course-page__sections--title">Próximas turmas</h2>
+	<section data-magellan-destination="proximas-turmas" id="proximas-turmas" class="course-page__sections course-page__sections--slim" ng-if="vm.info.produto.eventos.length>1">
+			<h2 class="course-page__sections--title">Próximas turmas {{vm.info.produto.eventos.length}}</h2>
 			<ul class="list__courses">
 				<li class="block-grid__courses__item" ng-repeat="edicao in vm.info.produto.eventos track by edicao.id" ng-if="!edicao.hide"> 
 					<div class="card-format-ever-line">
@@ -544,7 +552,7 @@
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="fc.modalcall()" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" >Ligamos para você</a></li>
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
 											</li>   
@@ -577,10 +585,10 @@
 											<li>
 													<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="fc.modaltermo()">Termos de uso</a>
+															<a class="footer-secondary__list__item--link" ng-click="modal.termo()">Termos de uso</a>
 														</li>
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="fc.modalpolitica()">Política de privacidade</a>
+															<a class="footer-secondary__list__item--link" ng-click="modal.politica()">Política de privacidade</a>
 														</li>
 													</ul>
 										    </li>
@@ -649,7 +657,7 @@
 		<script defer src="js/directive/playDemoModal.js"></script>
 
 		<script defer src="js/controllers/infoController.js"></script>
-		<script defer src="js/controllers/footerController.js"></script>
+		<script defer src="js/controllers/modalController.js"></script>
 		<script defer src="js/controllers/carrinhoController.js"></script>
 		<script defer src="js/filters/filters.js"></script>
 		<script defer src="js/services/authService.js"></script>
