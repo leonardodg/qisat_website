@@ -30,7 +30,6 @@
 									   		"https://www.youtube.com/embed/VBPKeNidHco"
 									   		];
 
-
 					 		if(search > 0){
 					 			path = absUrl.substring(absUrl.indexOf('curso/'), search);
 					 			params = parseQueryString();
@@ -39,18 +38,7 @@
 					 			path = absUrl.substr(absUrl.indexOf('curso/'));					 		
 
 						activate();
-					 	vm.modaltrailer = function () {
-				 					var modalInstance = $modal.open({ 
-                      						windowClass: 'trailer',
-				 							templateUrl: '/views/modal-trailer.html',
-				 							controller : function ($scope, $modalInstance) {
-															  $scope.cancel = function () {
-															    $modalInstance.dismiss('cancel');
-															  };
-															  $scope.video = $sce.trustAsResourceUrl(videosDemo[0]);
-															}
-				 						});
-					 			  };
+
 
 					 	vm.viewTurma = function(turmaid){
 					 		if(vm.info && vm.info.produto && vm.info.produto.eventos && vm.info.produto.eventos.length){
