@@ -85,7 +85,7 @@
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'trailer',
 				 							templateUrl: '/views/modal-trailer.html',
-				 							controller : function ($scope, $modalInstance) {
+				 							controller : function ($scope, $modalInstance, $sce) {
 															  $scope.cancel = function () {
 															    $modalInstance.dismiss('cancel');
 															  };
