@@ -147,7 +147,7 @@
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
 					<div class="hero-course__play-container">
-						<a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/fOrGTKQJqHU')" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
+						<a class="hero-course__play" ng-click="modal.trailer(vm.info.videodemo.link)" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
 					</div> <!--//hero-course__play-container -->
 					
 				</div> <!-- //large-3-->
@@ -184,7 +184,7 @@
 										<a class="anchor navigation_courses__list-item--link" href="#formato-do-curso">Formato do curso</a>
 									</li>
 
-									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-ig="vm.info.produto.instrutor.length"><a class="anchor navigation_courses__list-item--link" href="#ministrante" >Ministrante</a>
+									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-if="vm.info.produto.instrutor.length"><a class="anchor navigation_courses__list-item--link" href="#ministrante" >Ministrante</a>
 									</li>
 
 									<li data-magellan-arrival="proximas-turmas" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
@@ -246,16 +246,17 @@
 			 	<div class="medium-6 large-4 columns section_gsv__black-colum">
 					<div class="section_gsv__list">
 						<div class="course__price-group">
-							<span class="section_gsv__item-small">DIGITE O NÚMERO DE VAGAS</span>
- 		 	 			 	<span class="section_gsv__item-title"> <input class="section_gsv__item-input-numero-vagas" type="number" ng-model="vm.turma.qtd"  min="1" max="{{vm.turma.vagas}}" >  <span class="section_gsv__item-text-numero-vagas"> Vagas</span></span>
+							<span class="section_gsv__item-small" ng-if="vm.turma.qtd" >DIGITE O NÚMERO DE VAGAS</span>
+ 		 	 			 	<span class="section_gsv__item-title" ng-if="vm.turma.qtd"> <input class="section_gsv__item-input-numero-vagas" type="number" ng-model="vm.turma.qtd"  min="1" max="{{vm.turma.vagas}}" value="{{vm.turma.qtd}}">  <span class="section_gsv__item-text-numero-vagas"> Vagas</span></span>
 							<span class="section_gsv__item-line"> </span>
-	 			 			<span class="course__price-group__total-text">Total: {{vm.turma.qtd}} vaga</span>
+	 			 			<span class="course__price-group__total-text" ng-if="vm.turma.qtd">Total: {{vm.turma.qtd}} vaga</span>
 	 			 			<span class="course__price-group__price"> <small>R$</small> <strong>{{vm.turma.valor}}</strong> </span>
 	 	 			 		
 	 	 			 		<div ng-if="vm.turma.vagas">
 	 	 			 			<a class="course__price-group__button button small" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)"> <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
 	 	 			 		</div>
 
+					
 	 	 			 		<div ng-if="!vm.turma.vagas" >
 	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse()"> <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
 	 	 			 		</div>
@@ -477,7 +478,7 @@
 	<!-- PROXIMAS TURMAS -->
 	<a name="proximas-turmas"></a>
 	<section data-magellan-destination="proximas-turmas" id="proximas-turmas" class="course-page__sections course-page__sections--slim" ng-if="vm.info.produto.eventos.length>1">
-			<h2 class="course-page__sections--title">Próximas turmas {{vm.info.produto.eventos.length}}</h2>
+			<h2 class="course-page__sections--title">Próximas turmas</h2>
 			<ul class="list__courses">
 				<li class="block-grid__courses__item" ng-repeat="edicao in vm.info.produto.eventos track by edicao.id" ng-if="!edicao.hide"> 
 					<div class="card-format-ever-line">
@@ -633,6 +634,7 @@
 		<script defer src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
 		<script defer src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
 	<!-- // GLOBAL -->
+		<script defer src="js/libs/simple-lightbox.js"></script>
 
 		<!-- EXECUTA SCRIPTS QISAT -->
 		<script defer src="js/libs/moment.min.js"></script>
