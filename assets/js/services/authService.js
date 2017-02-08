@@ -123,6 +123,7 @@
 								window.localStorage.removeItem('token');
 								window.sessionStorage.removeItem('user');
 								window.sessionStorage.removeItem('token');
+								$http.defaults.headers.common.Authorization = undefined;
 								var promise = $http({
 									method: 'POST',
 									url: Config.baseUrl+'/wsc-user/logout',
@@ -135,7 +136,6 @@
 								return promise.then( function (res){
 									return res;
 								});
-								$http.defaults.headers.common.Authorization = undefined;
 							};
 						 
 							function login(credentials) {
