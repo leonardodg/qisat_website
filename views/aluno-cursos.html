@@ -17,10 +17,10 @@
 					   			<div ng-repeat="course in courses | filter : { filter : filterTab } track by course.id" class="card">
 
                     <div ng-if="::course.enable">
-                      <a ng-href="{{::course.view}}"><img src="{{::course.imagem}}" alt="{{::course.curso}}" ></a>
+                      <a ng-href="{{::course.view}}"><img ng-src="{{::course.imgSrc}}" alt="{{::course.curso}}" title="{{::course.curso}}" ></a>
                     </div>
                     <div ng-if="!course.enable">
-                      <img ng-src="{{::course.imagem}}" alt="{{::course.curso}}" title="{{::course.curso}}" >
+                      <img ng-src="{{::course.imgSrc}}" alt="{{::course.curso}}" title="{{::course.curso}}" >
                     </div>
                     
                     <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">

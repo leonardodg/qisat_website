@@ -15,11 +15,12 @@
 					 		certificados.map(function(certificado){
 					 			certificado.datasolicitacaoFormat = $filter('date')( certificado.datasolicitacao*1000, 'dd/MM/yyyy' );
 					 			certificado.timestartFormat = $filter('date')( certificado.timestart*1000, 'dd/MM/yyyy' );
-					 			if(certificado.digital)
-					 				certificado.link = certificado.links.digital;
-					 			else
-					 				certificado.link = certificado.links.default;
-					 			
+					 			if(certificado.links)
+						 			if(certificado.digital)
+						 				certificado.link = certificado.links.digital;
+						 			else
+						 				certificado.link = certificado.links.default;
+						 			
 					 		});
 					 		scope.certificados = certificados;
 					 	}

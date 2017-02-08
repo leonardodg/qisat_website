@@ -159,7 +159,7 @@
 <article class="course-page">
  <div class="row" data-equalizer>
 				<div class="large-3 columns" data-equalizer-watch>
-							<aside id="sidebar-styker" class="aside-pages-courses">
+							<aside id="sidebar-styker" class="aside-pages-courses" sticky >
 										<div class="navigation_courses">
 												<h4 class="navigation_courses__title">Navegação</h4>
 												<nav class="navigation_courses__nav">
@@ -630,10 +630,10 @@
 
 	<!-- GLOBAL -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
-		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
-		<script src="/libs/sticky/sticky-kit.js"></script>
+		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script defer src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script defer src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+		<script defer src="/libs/sticky/sticky-kit.js"></script>
 		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 		<script defer src='/bower_components/isotope/dist/isotope.pkgd.min.js'></script>
 		<script defer src="/bower_components/masonry/dist/masonry.pkgd.min.js"></script>
@@ -660,6 +660,7 @@
 		<script defer src="js/directive/backImg.js"></script>
 		<script defer src="js/directive/anchorLink.js"></script>
 		<script defer src="js/directive/lightbox.js"></script>
+		<script defer src="js/directive/stickyKit.js"></script>
 		<script defer src="js/directive/playDemoModal.js"></script>
 
 		<script defer src="js/controllers/infoController.js"></script>
