@@ -188,8 +188,10 @@
 																	}else
 																		course.preco = $filter('currency')(course.preco, 'R$');
 
-																	imagemFile = course.imagens.find(function(img) { return img.type == 'capa' });
-																	if(imagemFile) course.imgSrc = imagemFile.src;
+																	if(course.imagens && course.imagens.length){
+																		imagemFile = course.imagens.find(function(img) { return img.type == 'Imagens - Capa' });
+																		if(imagemFile) course.imgSrc = imagemFile.src;
+																	}
 
 																	course.nomeLimit = filterLimitName(course.info.titulo, 48);
 

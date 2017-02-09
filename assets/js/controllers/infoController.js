@@ -47,13 +47,19 @@
 								edicao = vm.info.produto.eventos.find( function (evento){
 									return evento.id == turmaid;
 								});
-								edicao.hide = true;
-								vm.turma = edicao;
+								if(edicao){
+									edicao.hide = true;
+									vm.turma = edicao;
+									// $location.search('turma', turmaid);
 
-								edicao = vm.info.produto.eventos.find( function (evento){
-									return evento.id == id;
-								});
-								edicao.hide = false;
+									if(edicao.instrutor)
+										vm.info.produto.instrutor = edicao.instrutor;
+
+									edicao = vm.info.produto.eventos.find( function (evento){
+										return evento.id == id;
+									});
+									edicao.hide = false;
+								}
 							}
 					 	};
 
@@ -78,6 +84,10 @@
 
 											 			info.imgdemo = info.files.filter(function(img){
 											 				return img.tipo == "6";
+											 			});
+
+											 			info.videodemo = info.files.find(function(video){
+											 				return video.tipo == "2";
 											 			});
 											 		}
 
@@ -124,7 +134,7 @@
 													if(info.produto && info.produto.instrutor){
 														info.produto.instrutor.map(function(instrutor){
 															instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
-														})
+														});
 													}
 
 													if(info.produto && info.produto.eventos && info.produto.eventos.length){
@@ -145,7 +155,7 @@
 																evento.uf = evento.cidade.estado.uf;
 															}
 
-															if(evento.valor_produto = "true"){
+															if(evento.valor_produto == "true"){
 																evento.valor = $filter('currency')(info.produto.preco, '', 2); 
 																evento.preco = info.preco;
 															}else
@@ -181,6 +191,12 @@
 																	}
 																});
 															}
+
+															if(evento.instrutor && evento.instrutor.length){
+																evento.instrutor.map(function(instrutor){
+																	instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
+																});
+															}
 														});
 
 														if(turma){
@@ -188,17 +204,18 @@
 															if(!vm.turma){
 																vm.turma = info.produto.eventos[0];
 																vm.turma.hide = true;
-															}
+																info.produto.instrutor = info.produto.eventos[0].instrutor;
+															}else
+																info.produto.instrutor = vm.turma.instrutor;
 														}else{
 															vm.turma = info.produto.eventos[0];
 															vm.turma.hide = true;
+															info.produto.instrutor = info.produto.eventos[0].instrutor;
 														}
 													}
-						 							
-						 						
 						                       		vm.info = info;
 						                       	}
-					                            return info;
+					                            return vm.info;
 					                        });
 				        };
 		 }])

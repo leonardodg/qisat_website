@@ -21,12 +21,17 @@
 									 		if(res.matriculas){
 										 		scope.courses = res.matriculas;
 										 		scope.courses.map(function (matricula){
-										 			var timestart,timeend, day, month, year;
+										 			var timestart,timeend, day, month, year, imagemFile;
+
+										 			if(matricula.imagem && matricula.imagem.length){
+														imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
+														if(imagemFile) matricula.imgSrc = imagemFile.src;
+													}
 
 										 			if(matricula.info)
 										 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
-										 			else if (matricula.nome)
-										 				matricula.nomeLimit = filterLimitName(matricula.nome, 100);
+										 			else if (matricula.curso)
+										 				matricula.nomeLimit = filterLimitName(matricula.curso, 100);
 
 										 			if(matricula.data_conclusao){
 										 				timeend = new Date(matricula.data_conclusao*1000);

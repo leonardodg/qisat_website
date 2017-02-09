@@ -58,19 +58,19 @@ $(document).ready(function() {
     $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
   });
 
-  if ( $('#sidebar-styker').length ) {
-       $("#sidebar-styker").stick_in_parent({
-        offset_top: 80,
-        recalc_every: 1,
-       });
-  }
+  // if ( $('#sidebar-styker').length ) {
+  //      $("#sidebar-styker").stick_in_parent({
+  //       offset_top: 80,
+  //       recalc_every: 1,
+  //      });
+  // }
 
-   if ( $('#sidebar-styker--courses').length ) {
-       $("#sidebar-styker--courses").stick_in_parent({
-        offset_top: 200,
-        recalc_every: 1,
-       });
-  }
+  //  if ( $('#sidebar-styker--courses').length ) {
+  //      $("#sidebar-styker--courses").stick_in_parent({
+  //       offset_top: 200,
+  //       recalc_every: 1,
+  //      });
+  // }
 
 }());
 

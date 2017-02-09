@@ -23,13 +23,9 @@
 											
 
 											if(course.imagens && course.imagens.length){
-												imagemFile = course.imagens.find(function(img) { return img.type == 'capa' })
-												if(imagemFile)
-													course.imgSrc = imagemFile.src;
-												else
-													course.imgSrc = Config.imgCursoUrlDefault
-											}else
-												course.imgSrc = Config.imgCursoUrlDefault;
+												imagemFile = course.imagens.find(function(img) { return img.type == 'Imagens - Capa' });
+												if(imagemFile) course.imgSrc = imagemFile.src;
+											}
 
 											if(course.categorias && course.categorias.length){
 												//serie, pack, classroom, events, single, releases, free, online
