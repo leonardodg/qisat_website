@@ -71,7 +71,7 @@
 							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
-			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+			 				<a class="anchor header-main__item" href-portal target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
@@ -90,7 +90,7 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()"></div>
 				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
 					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
@@ -131,7 +131,9 @@
 
 
 						<li class="hero-course__buttons-group--item"> <a class="button buttom-favorite" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Favoritar"><i class="material-icons">favorite</i></a></li>
-			            <li class="hero-course__buttons-group--item"><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button">{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+
+
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie" ><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="buy.addItemCarrinho(vm.info.produto.id)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
 			                  <div class="price_popover__header">
@@ -142,12 +144,46 @@
 			              </span>
 			            </a></li>
 
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual" ><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse()" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
+			              <span class="card-course__icon-cart">
+			                <div class="price_popover" >
+			                  <div class="price_popover__footer">  Registro de Interesse </div>
+			                </div> <!-- //price_popover -->
+			              </span>
+			            </a></li>
+
+			             <li class="hero-course__buttons-group--item" ng-if="vm.turma">
+
+			             	<a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse()" ng-if="!vm.turma.vagas" >{{::vm.info.preco}} 
+				             	<span class="cart">
+				             		<i class="material-icons">playlist_add_check</i>
+				             	</span>
+					            <span class="card-course__icon-cart">
+					                <div class="price_popover" >
+					                  <div class="price_popover__footer" > Registro de Interesse </div>
+					                </div>
+					            </span>
+				            </a>
+
+							<a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)" ng-if="vm.turma.vagas" > {{::vm.info.preco}} 
+
+			             	<span class="cart">
+			             		<i class="material-icons">add_shopping_cart</i>
+			             	</span>
+				            
+				            <span class="card-course__icon-cart">
+				                <div class="price_popover" >
+				                  <div class="price_popover__footer"> Adicionar ao carrinho</div>
+				                </div>
+				            </span>
+			            	</a>
+			            </li>
 					</ul>
 
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
-					<div class="hero-course__play-container">
-						<a class="hero-course__play" ng-click="modal.trailer(vm.info.videodemo.link)" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt=""></a>
+					<div class="hero-course__play-container" ng-if="vm.info.videodemo" >
+						<a class="hero-course__play" ng-click="modal.trailer(vm.info.videodemo.link)" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
 					</div> <!--//hero-course__play-container -->
 					
 				</div> <!-- //large-3-->
@@ -159,7 +195,7 @@
 <article class="course-page">
  <div class="row" data-equalizer>
 				<div class="large-3 columns" data-equalizer-watch>
-							<aside id="sidebar-styker" class="aside-pages-courses" sticky >
+							<aside id="sidebar-styker" class="aside-pages-courses" >
 										<div class="navigation_courses">
 												<h4 class="navigation_courses__title">Navegação</h4>
 												<nav class="navigation_courses__nav">
@@ -309,20 +345,10 @@
  		</div> <!-- //section__course-gallery -->
  	</section>
 
-	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="vm.info.isOnline||vm.info.isClassroom||vm.info.isIndividual||isLecture">
+	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="vm.info.conteudos.length">
 		<h2 class="course-page__sections--title">Conteúdo programático</h2>
 		<accordion class="accordion-component accordion">
-			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
-		      <div ng-bind-html="conteudo.descricao"></div>
-		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
-		    </accordion-group>
-		 </accordion>
- 	</section>
-
-	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="vm.info.isSerie" >
-		<h2 class="course-page__sections--title">Conteúdo programático</h2>
-		<accordion class="accordion-component accordion">
-			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" icon-carrinho="{{conteudo.dataValor}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" >
+			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" icon-carrinho="{{conteudo.dataValor}}" add-carrinho="buy.addItemCarrinho(conteudo.dataValor.produto)" >
 		      <div ng-bind-html="conteudo.descricao"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
@@ -660,8 +686,8 @@
 		<script defer src="js/directive/backImg.js"></script>
 		<script defer src="js/directive/anchorLink.js"></script>
 		<script defer src="js/directive/lightbox.js"></script>
-		<script defer src="js/directive/stickyKit.js"></script>
 		<script defer src="js/directive/playDemoModal.js"></script>
+		<script defer src="js/directive/hrefPortal.js"></script>
 
 		<script defer src="js/controllers/infoController.js"></script>
 		<script defer src="js/controllers/modalController.js"></script>
@@ -671,7 +697,6 @@
 		<script defer src="js/services/carrinho.js"></script>
 		<script defer src="js/run/foundation.js"></script>
 	    
-
 	    <script src="js/app.js"></script>
 </body>
 </html>

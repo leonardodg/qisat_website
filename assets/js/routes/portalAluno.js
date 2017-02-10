@@ -15,9 +15,15 @@
               resolve : {
                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   }
               }
+
             });
 
             $routeProvider.when('/aluno/perfil', {
@@ -25,9 +31,14 @@
               isAuth : true,
               controller: 'perfilController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   }
               }
             });
@@ -37,11 +48,16 @@
               isAuth : true,
               controller: 'certificadoController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   },
-                certificados : function(authService){
+                  certificados : function(authService){
                       return authService.certificados().then(function (res){ if(res.data && res.data.retorno.sucesso) return res.data.retorno.certificado; }, function (res){ return false });
                   }
               }
@@ -52,11 +68,15 @@
               isAuth : true,
               controller: 'matriculaController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
-                  }
-              }
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
+                  }              }
             });
 
             $routeProvider.when('/aluno/financeiro', {
@@ -64,11 +84,16 @@
               isAuth : true,
               controller: 'financeiroController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   },
-                compras : function(authService){
+                  compras : function(authService){
                       return authService.compras().then(function (res){ if(res.data && res.data.retorno.sucesso) return res.data.retorno.venda; }, function (res){ return false });
                   }
               }
@@ -79,9 +104,14 @@
               isAuth : true,
               controller: 'alunoCarrinhoController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   }
               }
             });
@@ -91,9 +121,14 @@
               isAuth : true,
               controller: 'userController',
               resolve : {
-                Authenticated : function(authService){
+                 Authenticated : function(authService){
                       return authService.isAuth() || 
-                              authService.verifyAuth().then(function (res){ return (res.data.retorno.sucesso) || false }, function (res){ return false });
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else window.location = '/login'; 
+                                                }, function (res){ 
+                                                      window.location = '/login'; 
+                                                });
                   }
               }
             });

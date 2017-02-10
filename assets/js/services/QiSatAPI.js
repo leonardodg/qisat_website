@@ -199,11 +199,6 @@
 																	if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 																		course.modalidade = tipo.nome;
 																		course.isSerie = true;
-																		course.info.conteudos.map( function (conteudo){
-																					 var aux =  conteudo.titulo.split('-');
-																					 conteudo.capitulo = aux[0];
-																					 conteudo.nome = aux[1];
-																					});
 																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 																		course.modalidade = tipo.nome;
 																		course.isPack = true;

@@ -23,7 +23,7 @@
 							 	scope.country = Config.country;
 							 	scope.states = Config.states;
 
-						 		if(authService.isLogged() && Authenticated){
+						 		if(Authenticated){
 							 		scope.user = angular.copy(authService.getUser());
 							 		scope.user.cpfcnpj = scope.user.numero;
 							 		scope.endereco = scope.user.endereco;

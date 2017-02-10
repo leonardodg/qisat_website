@@ -43,7 +43,7 @@
 							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
-			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+			 				<a class="anchor header-main__item" href-portal target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
@@ -62,7 +62,7 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" ></div>
 				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
 					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
@@ -291,7 +291,7 @@
 																	<span class="card-course__modality">{{::course.modalidade}}</span>
 																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 																</a>
-																<a href="#" class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
 										   						<span class="card-course__icon-cart">
 										   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 										   							<div class="price_popover" ng-if="::course.promocaoDateend">
@@ -551,6 +551,7 @@
 		<script defer src="js/filters/filters.js"></script>
 		<script defer src="js/directive/backImg.js"></script>
 		<script defer src="js/directive/owlSync.js"></script>
+		<script defer src="js/directive/hrefPortal.js"></script>
 		<script defer src="js/controllers/instructorsIndexController.js"></script>
 		<script defer src="js/controllers/TopCoursesController.js"></script>
 		<script defer src="js/controllers/modalController.js"></script>

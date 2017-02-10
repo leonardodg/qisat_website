@@ -25,11 +25,6 @@
 							    return objURL;
 							};
 
-							var videosDemo = [
-									   		"https://www.youtube.com/embed/fOrGTKQJqHU",
-									   		"https://www.youtube.com/embed/VBPKeNidHco"
-									   		];
-
 					 		if(search > 0){
 					 			path = absUrl.substring(absUrl.indexOf('curso/'), search);
 					 			params = parseQueryString();
@@ -66,7 +61,7 @@
 						function activate() {
 					         return QiSatAPI.getInfo(path)
 					                        .then(function(info){
-					                        	var tipo;
+					                        	var tipo, produto, itens, valorItens = 0, videoDemo, aux;
 					                       		if(info){
 					                            	info.descricao = $sce.trustAsHtml(info.descricao);
 					                            	info.persona = $sce.trustAsHtml(info.persona);
@@ -91,24 +86,6 @@
 											 			});
 											 		}
 
-											 		if(info.conteudos && info.conteudos.length){
-											 			// REFAZER
-											 			info.conteudos[0].demoplay = videosDemo[0]; // TEMPORARIO
-											 			info.conteudos[0].dataValor = { valor : "R$500,00", valorReal : "R$700,00", data : "Até 10/01/2017", produto : 1};
-
-											 			info.conteudos.map(function (conteudo){
-											 				conteudo.descricao = $sce.trustAsHtml(conteudo.descricao);
-											 			});
-											 		}
-
-													info.precoTotal =  $filter('currency')(info.produto.preco, 'R$');
-													if(info.promocao){
-														info.preco = $filter('currency')(info.valorTotal, 'R$');
-														info.promocaoDateend = $filter('date')( info.promocao.datafim*1000, 'dd/MM/yyyy' );
-													}else
-														info.preco = $filter('currency')(info.produto.preco, 'R$');
-
-
 													if(info.produto && info.produto.categorias){
 														if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 															info.modalidade = tipo.nome;
@@ -131,11 +108,87 @@
 														}
 													}
 
+													if(info.isSerie){
+														
+														info.conteudos = [];
+														info.produto.id = [];
+
+														if(info.produto.produtos && info.produto.produtos.length){
+															produto = info.produto.produtos.find(function (prod){
+																if(prod.categorias)
+																	return prod.categorias.find(function(tipo){ return tipo.id == 41 });
+															});
+
+															itens = info.produto
+																		.produtos.filter(function (prod){
+																							if(prod.categorias)
+																								return prod.categorias
+																											.find(function(tipo){ return tipo.id == 31 });
+																						});
+															if(itens && itens.length){
+																itens.map( function (prod){ 
+																				valorItens += prod.preco; 
+																				info.produto.id.push(prod.id); 
+																				if(prod.info){
+																					aux = {
+																							preco : prod.preco,
+																							titulo : prod.info.titulo,
+																							descricao : prod.info.descricao,
+																							dataValor : {
+																								produto : prod.id,
+																								valor : $filter('currency')(prod.preco, 'R$')
+																							},
+																							info : prod.info
+																					};
+
+																					if(prod.info.files && prod.info.files.length){
+																						videoDemo = prod.info.files.find(function(file){ return file.id_tipo == "2" });
+																						if(videoDemo) aux.demoplay = videoDemo.link;
+																					}
+																					info.conteudos.push(aux);
+																				}
+																		 	});
+															}
+
+															if(produto){
+																info.produto.id = produto.id;
+																info.precoTotal =  $filter('currency')(produto.preco, 'R$');
+																if(produto.promocao){
+																	info.preco = $filter('currency')(produto.valorTotal, 'R$');
+																	info.promocaoDateend = $filter('date')( produto.promocao.datafim*1000, 'dd/MM/yyyy' );
+																}else
+																	info.preco = $filter('currency')(produto.preco, 'R$');
+															}else{
+																info.precoTotal =  $filter('currency')(valorItens, 'R$');
+																info.preco =  $filter('currency')(valorItens, 'R$');
+															}
+														}
+
+													}else{
+														info.precoTotal =  $filter('currency')(info.produto.preco, 'R$');
+														if(info.promocao){
+															info.preco = $filter('currency')(info.valorTotal, 'R$');
+															info.promocaoDateend = $filter('date')( info.promocao.datafim*1000, 'dd/MM/yyyy' );
+														}else
+															info.preco = $filter('currency')(info.produto.preco, 'R$');
+
+
+														if(info.isPack){
+
+														}
+													}
+
 													if(info.produto && info.produto.instrutor){
 														info.produto.instrutor.map(function(instrutor){
 															instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
 														});
 													}
+
+											 		if(info.conteudos && info.conteudos.length){
+											 			info.conteudos.map(function (conteudo){
+											 				conteudo.descricao = $sce.trustAsHtml(conteudo.descricao);
+											 			});
+											 		}
 
 													if(info.produto && info.produto.eventos && info.produto.eventos.length){
 

@@ -11,12 +11,9 @@
 					 		vm.formasPagamentos = formasPagamentos; 
 					 		vm.pagamento = 4;
 
-					 	console.log(Itens);
 					 	moment.locale('pt-BR');
 
-
-					 	if(authService.isLogged() && Authenticated && Itens){
-
+					 	if(Authenticated && Itens){
 					 		vm.user = authService.getUser();
 			 				if(forma) {
 			 					vm.parcelas = forma.parcelas;

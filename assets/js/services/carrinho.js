@@ -115,13 +115,15 @@
 
 					function addItem(data) {
 
+									var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+
 		                            var promise = $http({ 
 		                                                    method: 'post', 
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/add',
 		                                                    data: data,
+		                                                    headers : headers,
 													  		withCredentials : true
-
-		                                                        });
+                                                        });
 
 		                            return promise.then( function(res){
 		                            						if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso){

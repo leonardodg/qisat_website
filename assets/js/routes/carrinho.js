@@ -12,11 +12,13 @@
               controller : 'montarCarrinhoController as vm',
               resolve : {
                   Authenticated : function(authService){
-                        return authService.isAuth() || 
-                                authService.verifyAuth()
-                                           .then(function (res){ return (res.data.retorno.sucesso) || false }, 
-                                                 function (res){ return false 
-                                            });
+                      return authService.isAuth() || 
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else return false; 
+                                                }, function (res){ 
+                                                   return false;
+                                                });
                   }
               }
             });
@@ -25,18 +27,14 @@
               templateUrl : '/views/carrinho-pagamento.html',
               controller : 'pagamentoController as vm',
               resolve : {
-                  Authenticated : function(authService, $location){
-                        return authService.isAuth() || 
-                                authService.verifyAuth()
-                                           .then(function (res){ 
-                                                if (res.data.retorno.sucesso) 
-                                                  return true; 
-                                                else
-                                                  $location.path('/carrinho');
-                                            }, 
-                                            function (res){ 
-                                                $location.path('/carrinho');
-                                            });
+                  Authenticated : function(authService){
+                      return authService.isAuth() || 
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else $location.path('/carrinho'); 
+                                                }, function (res){ 
+                                                      $location.path('/carrinho');
+                                                });
                   },
                   Itens : function(carrinhoServive){
                           if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){
@@ -60,6 +58,15 @@
               templateUrl : '/views/carrinho-confirmacao.html',
               controller : 'confirmacaoController as vm',
               resolve : {
+                  Authenticated : function(authService){
+                      return authService.isAuth() || 
+                              authService.verifyAuth()
+                                         .then( function (res){ 
+                                                  if(res) return true; else $location.path('/carrinho'); 
+                                                }, function (res){ 
+                                                      $location.path('/carrinho');
+                                                });
+                  },
                   venda : function (carrinhoServive, $route){
                           if(carrinhoServive.checkCarrinho())
                               return carrinhoServive.getVenda($route.current.params.id)
@@ -69,20 +76,7 @@
                                             });
                           else
                                return false;
-                    },
-                  Authenticated : function(authService, $location){
-                        return authService.isAuth() || 
-                                authService.verifyAuth()
-                                           .then(function (res){ 
-                                                if (res.data.retorno.sucesso) 
-                                                  return true; 
-                                                else
-                                                  $location.path('/carrinho');
-                                            }, 
-                                            function (res){ 
-                                                $location.path('/carrinho');
-                                            });
-                  }
+                    }
               }
 
             });
