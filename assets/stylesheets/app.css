@@ -1691,6 +1691,7 @@ select#call-input-interests {
 .hero-pages .hero-pages__label {
   color: #fff;
   font-weight: 300;
+  font-size: 24px;
 }
 /* line 43, ../scss/qisat/_hero.scss */
 .hero-pages .hero-pages__title {
@@ -1884,7 +1885,7 @@ select#call-input-interests {
 }
 /* line 209, ../scss/qisat/_hero.scss */
 .hero-course__title span {
-  font-size: 20px;
+  font-size: 24px;
   color: #fff;
   opacity: 0.6;
   display: block;
@@ -2570,7 +2571,7 @@ input[type=checkbox].with-font:checked ~ label:before {
   padding: 0 !important;
 }
 /* line 43, ../scss/qisat/_foundation_override.scss */
-.reveal-modal.call {
+.reveal-modal.call, .reveal-modal.interesse {
   width: 380px;
 }
 
@@ -3356,7 +3357,7 @@ button.close-button, .close-button {
 /* ==================== END COURSE PAGES PRESENCIAL ==================== */
 /* line 221, ../scss/qisat/structure/_pages.scss */
 [class*=block-grid-] > li {
-  padding: 0;
+  padding: 4px;
 }
 
 /* line 227, ../scss/qisat/structure/_pages.scss */
@@ -3483,6 +3484,7 @@ button.close-button, .close-button {
   padding: 20px;
   border-radius: 3px;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 /* line 317, ../scss/qisat/structure/_pages.scss */
@@ -3494,51 +3496,56 @@ button.close-button, .close-button {
   font-weight: 300;
 }
 
-/* line 319, ../scss/qisat/structure/_pages.scss */
+/* line 318, ../scss/qisat/structure/_pages.scss */
+.course-page__sections > .textexpand {
+  color: #767676;
+}
+
+/* line 320, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim {
   padding: 0px;
 }
-/* line 321, ../scss/qisat/structure/_pages.scss */
+/* line 322, ../scss/qisat/structure/_pages.scss */
 .course-page__sections--slim .course-page__sections--title {
   padding: 20px 20px 10px 20px;
 }
 
-/* line 332, ../scss/qisat/structure/_pages.scss */
+/* line 333, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery {
   border-top: 1px solid #eee;
   padding-top: 10px;
   margin-top: 30px;
 }
-/* line 334, ../scss/qisat/structure/_pages.scss */
+/* line 335, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery .visible-img img {
   margin: 0 !important;
 }
-/* line 335, ../scss/qisat/structure/_pages.scss */
+/* line 336, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery .clearing-touch-label {
   margin-top: 0 !important;
 }
 
-/* line 338, ../scss/qisat/structure/_pages.scss */
+/* line 339, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery--subtitle {
   font-size: 13px;
   font-weight: 800;
   text-transform: uppercase;
 }
 
-/* line 340, ../scss/qisat/structure/_pages.scss */
+/* line 341, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery .clearing-thumbs li {
   transition: all 0.2s;
   -moz-transition: all 0.2s;
   -webkit-transition: all 0.2s;
 }
-/* line 345, ../scss/qisat/structure/_pages.scss */
+/* line 346, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery .clearing-thumbs li:hover {
   transform: scale(1.1);
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
 }
 
-/* line 353, ../scss/qisat/structure/_pages.scss */
+/* line 354, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list {
   padding: 1px !important;
   display: inline-block;
@@ -3547,12 +3554,12 @@ button.close-button, .close-button {
   position: relative;
 }
 
-/* line 354, ../scss/qisat/structure/_pages.scss */
+/* line 355, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link {
   position: relative;
 }
 
-/* line 355, ../scss/qisat/structure/_pages.scss */
+/* line 356, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image {
   position: relative;
   opacity: 0.9;
@@ -3560,14 +3567,14 @@ button.close-button, .close-button {
   transition: transform .2s;
 }
 
-/* line 356, ../scss/qisat/structure/_pages.scss */
+/* line 357, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link-image:hover {
   opacity: 1;
   transform: scale(1.2);
   z-index: 1;
 }
 
-/* line 358, ../scss/qisat/structure/_pages.scss */
+/* line 359, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active .section__course-gallery-list--link-image {
   position: fixed;
   top: 10%;
@@ -3581,14 +3588,14 @@ button.close-button, .close-button {
   transform: scale(1);
 }
 
-/* line 371, ../scss/qisat/structure/_pages.scss */
+/* line 372, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active {
   position: absolute;
   top: 10%;
   z-index: 10;
 }
 
-/* line 372, ../scss/qisat/structure/_pages.scss */
+/* line 373, ../scss/qisat/structure/_pages.scss */
 .section__course-gallery-list--link.active::before {
   content: "";
   background: rgba(0, 0, 0, 0.5);
@@ -3599,13 +3606,13 @@ button.close-button, .close-button {
   left: 0;
 }
 
-/* line 380, ../scss/qisat/structure/_pages.scss */
+/* line 381, ../scss/qisat/structure/_pages.scss */
 .course-page__sections-about-instructor--avatar {
   border-radius: 50%;
 }
 
 /* GARANTA SUA VAGA */
-/* line 388, ../scss/qisat/structure/_pages.scss */
+/* line 389, ../scss/qisat/structure/_pages.scss */
 .section_gsv__list {
   margin: 0;
   list-style: none;
@@ -3613,11 +3620,11 @@ button.close-button, .close-button {
   border-top: 1px solid #eee;
   border-right: 1px solid #eee;
 }
-/* line 389, ../scss/qisat/structure/_pages.scss */
+/* line 390, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item {
   line-height: auto;
 }
-/* line 390, ../scss/qisat/structure/_pages.scss */
+/* line 391, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-small {
   font-size: 0.8rem;
   line-height: 1.3;
@@ -3625,7 +3632,7 @@ button.close-button, .close-button {
   display: inline-block;
   display: block;
 }
-/* line 391, ../scss/qisat/structure/_pages.scss */
+/* line 392, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-title {
   line-height: 1;
   color: #000;
@@ -3635,32 +3642,32 @@ button.close-button, .close-button {
   width: 100%;
   display: inline-block;
 }
-/* line 392, ../scss/qisat/structure/_pages.scss */
+/* line 393, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-subtitle {
   opacity: 0.5;
 }
-/* line 393, ../scss/qisat/structure/_pages.scss */
+/* line 394, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-info {
   line-height: 1.3;
 }
-/* line 394, ../scss/qisat/structure/_pages.scss */
+/* line 395, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-p, .section_gsv__item-p p {
   font-size: .8rem;
   line-height: 1.3;
   margin-bottom: 10px;
 }
-/* line 395, ../scss/qisat/structure/_pages.scss */
+/* line 396, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-input-numero-vagas {
   border: 1px solid transparent !important;
   width: 70px !important;
   display: inline-block !important;
   text-align: center;
-  font-size: 25px !important;
+  font-size: 20px !important;
   vertical-align: middle;
   border-bottom: 2px solid #005b94 !important;
   margin: 10px 0 0 0 !important;
 }
-/* line 396, ../scss/qisat/structure/_pages.scss */
+/* line 397, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-text-numero-vagas {
   color: #fff;
   font-size: 17px;
@@ -3670,23 +3677,23 @@ button.close-button, .close-button {
   margin: 10px 0 0 0 !important;
   display: inline-block;
 }
-/* line 397, ../scss/qisat/structure/_pages.scss */
+/* line 398, ../scss/qisat/structure/_pages.scss */
 .section_gsv__item-line {
   margin-bottom: 30px;
   display: inline-block;
   width: 100%;
 }
-/* line 399, ../scss/qisat/structure/_pages.scss */
+/* line 400, ../scss/qisat/structure/_pages.scss */
 .section_gsv__footer, .section_gsv__header {
   display: inline-block;
   width: 100%;
 }
-/* line 400, ../scss/qisat/structure/_pages.scss */
+/* line 401, ../scss/qisat/structure/_pages.scss */
 .section_gsv__black-colum {
   background: #001b2b;
   color: #fff;
 }
-/* line 402, ../scss/qisat/structure/_pages.scss */
+/* line 403, ../scss/qisat/structure/_pages.scss */
 .section_gsv_comp_add_cart_botton {
   margin: 0;
   padding: 10px;
@@ -3694,33 +3701,33 @@ button.close-button, .close-button {
   width: 100%;
 }
 
-/* line 406, ../scss/qisat/structure/_pages.scss */
+/* line 407, ../scss/qisat/structure/_pages.scss */
 .course__price-group {
   padding: 62px 0;
 }
-/* line 407, ../scss/qisat/structure/_pages.scss */
+/* line 408, ../scss/qisat/structure/_pages.scss */
 .course__price-group__total-text {
   font-size: 0.8rem;
   line-height: 1.3;
   opacity: 0.6;
 }
-/* line 408, ../scss/qisat/structure/_pages.scss */
+/* line 409, ../scss/qisat/structure/_pages.scss */
 .course__price-group__price {
   width: 100%;
   display: inline-block;
   text-align: center;
 }
-/* line 409, ../scss/qisat/structure/_pages.scss */
+/* line 410, ../scss/qisat/structure/_pages.scss */
 .course__price-group__price small {
   line-height: auto;
 }
-/* line 410, ../scss/qisat/structure/_pages.scss */
+/* line 411, ../scss/qisat/structure/_pages.scss */
 .course__price-group__price strong {
   font-size: 43px;
   letter-spacing: -2px;
   font-weight: 800;
 }
-/* line 412, ../scss/qisat/structure/_pages.scss */
+/* line 413, ../scss/qisat/structure/_pages.scss */
 .course__price-group__button {
   margin: 0;
   padding: 13px 10px !important;
@@ -3729,7 +3736,7 @@ button.close-button, .close-button {
   font-size: 16px !important;
   border-radius: 3px;
 }
-/* line 413, ../scss/qisat/structure/_pages.scss */
+/* line 414, ../scss/qisat/structure/_pages.scss */
 .course__price-group__remaining {
   display: inline-block;
   width: 100%;
@@ -3740,43 +3747,43 @@ button.close-button, .close-button {
 
 /* END GARANTA SUA VAGA */
 /* FORMATO DO CURSO*/
-/* line 420, ../scss/qisat/structure/_pages.scss */
+/* line 421, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso {
   margin: 0;
 }
-/* line 421, ../scss/qisat/structure/_pages.scss */
+/* line 422, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item {
   text-align: center;
   line-height: 1;
   border: 1px solid rgba(238, 238, 238, 0.5);
   padding: 20px !important;
 }
-/* line 422, ../scss/qisat/structure/_pages.scss */
+/* line 423, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--top {
   font-size: 13px;
   display: block;
 }
-/* line 423, ../scss/qisat/structure/_pages.scss */
+/* line 424, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--middle {
   font-size: 50px;
   font-weight: 800;
   display: block;
   letter-spacing: -2px;
 }
-/* line 424, ../scss/qisat/structure/_pages.scss */
+/* line 425, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--bottom {
   font-size: 16px;
   opacity: 0.7;
   display: block;
 }
-/* line 425, ../scss/qisat/structure/_pages.scss */
+/* line 426, ../scss/qisat/structure/_pages.scss */
 .formato-do-curso__item--icon img {
   width: 50px;
   margin-top: 5px;
 }
 
 /*CONTEUDO PROGRAMATICO*/
-/* line 434, ../scss/qisat/structure/_pages.scss */
+/* line 435, ../scss/qisat/structure/_pages.scss */
 .label-free {
   background-color: #005B94;
   border: 1px solid #004875;
@@ -3830,50 +3837,55 @@ button.close-button, .close-button {
   padding: 0 40px 40px 40px;
 }
 
-/* line 447, ../scss/qisat/structure/_pages.scss */
+/* line 446, ../scss/qisat/structure/_pages.scss */
+.accordion-component .accordion-navigation > .content > .textexpand {
+  color: #666666;
+}
+
+/* line 448, ../scss/qisat/structure/_pages.scss */
 #perguntas-frequentes .iconPlay, #perguntas-frequentes .addProduto {
   display: none;
 }
-/* line 450, ../scss/qisat/structure/_pages.scss */
+/* line 451, ../scss/qisat/structure/_pages.scss */
 #perguntas-frequentes .button-group {
   display: none;
 }
 
-/* line 458, ../scss/qisat/structure/_pages.scss */
+/* line 459, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .sub-title {
   font-size: 18px;
   text-transform: uppercase;
   margin-bottom: 0;
 }
-/* line 463, ../scss/qisat/structure/_pages.scss */
+/* line 464, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .sub-title i {
   font-size: 32px;
 }
-/* line 469, ../scss/qisat/structure/_pages.scss */
+/* line 470, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .grid-sidebar-left p.block {
   margin-left: 37px;
 }
-/* line 473, ../scss/qisat/structure/_pages.scss */
+/* line 474, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .grid-sidebar-left ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 478, ../scss/qisat/structure/_pages.scss */
+/* line 479, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .grid-sidebar-left ul i {
   margin-right: 10px;
 }
-/* line 482, ../scss/qisat/structure/_pages.scss */
+/* line 483, ../scss/qisat/structure/_pages.scss */
 .page-insitucional .grid-sidebar-left ul li {
   padding: 2px 0;
   margin: 0 8px;
 }
 
-/* line 494, ../scss/qisat/structure/_pages.scss */
+/* line 495, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards {
   margin-top: 30px;
 }
-/* line 497, ../scss/qisat/structure/_pages.scss */
+/* line 498, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .icon {
   display: block;
   float: left;
@@ -3882,12 +3894,12 @@ button.close-button, .close-button {
   margin-right: 5px;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 497, ../scss/qisat/structure/_pages.scss */
+  /* line 498, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .icon {
     display: none;
   }
 }
-/* line 509, ../scss/qisat/structure/_pages.scss */
+/* line 510, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card {
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -3897,112 +3909,112 @@ button.close-button, .close-button {
   position: relative;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 509, ../scss/qisat/structure/_pages.scss */
+  /* line 510, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card {
     width: 31%;
     float: left;
     margin-right: 2%;
     min-height: 455px;
   }
-  /* line 523, ../scss/qisat/structure/_pages.scss */
+  /* line 524, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card:nth-of-type(3n+0) {
     margin-right: 0;
   }
 }
 @media only screen and (min-width: 1280px) {
-  /* line 509, ../scss/qisat/structure/_pages.scss */
+  /* line 510, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card {
     min-height: 555px;
   }
 }
-/* line 532, ../scss/qisat/structure/_pages.scss */
+/* line 533, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card img {
   width: 100%;
   max-width: 100%;
   display: none;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 532, ../scss/qisat/structure/_pages.scss */
+  /* line 533, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card img {
     display: block;
   }
 }
-/* line 542, ../scss/qisat/structure/_pages.scss */
+/* line 543, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .modalidade {
   text-transform: uppercase;
   font-size: 11px;
   margin-bottom: 10px;
 }
-/* line 548, ../scss/qisat/structure/_pages.scss */
+/* line 549, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .name {
   font-size: 17px;
 }
 @media only screen and (max-width: 64.063em) {
-  /* line 552, ../scss/qisat/structure/_pages.scss */
+  /* line 553, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card .name a {
     color: #000;
   }
 }
-/* line 556, ../scss/qisat/structure/_pages.scss */
+/* line 557, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .green {
   color: green;
 }
-/* line 559, ../scss/qisat/structure/_pages.scss */
+/* line 560, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .red {
   color: red;
 }
-/* line 563, ../scss/qisat/structure/_pages.scss */
+/* line 564, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .content {
   padding: 15px 20px;
 }
-/* line 567, ../scss/qisat/structure/_pages.scss */
+/* line 568, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .footer {
   padding: 15px 20px;
   border-top: 1px solid #eee;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 567, ../scss/qisat/structure/_pages.scss */
+  /* line 568, ../scss/qisat/structure/_pages.scss */
   .page-courses .cards .card .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
   }
 }
-/* line 577, ../scss/qisat/structure/_pages.scss */
+/* line 578, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .footer ul {
   margin-bottom: 0;
 }
-/* line 581, ../scss/qisat/structure/_pages.scss */
+/* line 582, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card .footer a, .page-courses .cards .card .footer a:visited {
   color: #005B94;
 }
-/* line 586, ../scss/qisat/structure/_pages.scss */
+/* line 587, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card a {
   display: block;
   position: relative;
   color: #666;
 }
-/* line 591, ../scss/qisat/structure/_pages.scss */
+/* line 592, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card a:hover {
   color: #333;
 }
-/* line 595, ../scss/qisat/structure/_pages.scss */
+/* line 596, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card a > div {
   margin-top: 30px;
   margin-left: 150px;
   position: absolute;
   top: 0;
 }
-/* line 603, ../scss/qisat/structure/_pages.scss */
+/* line 604, ../scss/qisat/structure/_pages.scss */
 .page-courses .cards .card strong {
   font-size: 22px;
 }
 
-/* line 614, ../scss/qisat/structure/_pages.scss */
+/* line 615, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards {
   margin-top: 30px;
 }
-/* line 617, ../scss/qisat/structure/_pages.scss */
+/* line 618, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card {
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -4011,55 +4023,55 @@ button.close-button, .close-button {
   border-radius: 1px;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 617, ../scss/qisat/structure/_pages.scss */
+  /* line 618, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card {
     width: 31%;
     float: left;
     margin-right: 2%;
     min-height: 305px;
   }
-  /* line 630, ../scss/qisat/structure/_pages.scss */
+  /* line 631, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card:nth-of-type(3n+0) {
     margin-right: 0;
   }
 }
-/* line 635, ../scss/qisat/structure/_pages.scss */
+/* line 636, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card img {
   width: 100%;
   max-width: 100%;
   display: none;
 }
 @media only screen and (min-width: 64.063em) {
-  /* line 635, ../scss/qisat/structure/_pages.scss */
+  /* line 636, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card img {
     display: block;
   }
 }
-/* line 646, ../scss/qisat/structure/_pages.scss */
+/* line 647, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .modalidade {
   text-transform: uppercase;
   font-size: 11px;
   margin-bottom: 10px;
 }
-/* line 652, ../scss/qisat/structure/_pages.scss */
+/* line 653, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .name {
   font-size: 20px;
 }
-/* line 656, ../scss/qisat/structure/_pages.scss */
+/* line 657, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .green {
   color: green;
 }
-/* line 659, ../scss/qisat/structure/_pages.scss */
+/* line 660, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .red {
   color: red;
 }
-/* line 663, ../scss/qisat/structure/_pages.scss */
+/* line 664, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .content a {
   padding: 10px;
   display: block;
 }
 @media only screen and (max-width: 40em) {
-  /* line 663, ../scss/qisat/structure/_pages.scss */
+  /* line 664, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card .content a {
     font-size: 18px;
     font-weight: 400;
@@ -4067,13 +4079,13 @@ button.close-button, .close-button {
   }
 }
 @media only screen and (min-width: 40em) {
-  /* line 663, ../scss/qisat/structure/_pages.scss */
+  /* line 664, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card .content a {
     padding: 15px 20px;
     padding-left: 65px;
   }
 }
-/* line 677, ../scss/qisat/structure/_pages.scss */
+/* line 678, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .content a p {
   margin-bottom: 5px;
   min-height: 50px;
@@ -4081,28 +4093,28 @@ button.close-button, .close-button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 685, ../scss/qisat/structure/_pages.scss */
+/* line 686, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .content a span {
   font-size: 12px;
   display: none;
 }
 @media only screen and (min-width: 40em) {
-  /* line 685, ../scss/qisat/structure/_pages.scss */
+  /* line 686, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card .content a span {
     display: block;
   }
 }
-/* line 693, ../scss/qisat/structure/_pages.scss */
+/* line 694, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .content a span span {
   font-weight: bold;
 }
-/* line 698, ../scss/qisat/structure/_pages.scss */
+/* line 699, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .material-icons {
   color: #ccc;
   margin-right: 10px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 698, ../scss/qisat/structure/_pages.scss */
+  /* line 699, ../scss/qisat/structure/_pages.scss */
   .page-certificates .cards .card .material-icons {
     font-size: 40px;
     position: absolute;
@@ -4111,108 +4123,108 @@ button.close-button, .close-button {
     left: 15px;
   }
 }
-/* line 712, ../scss/qisat/structure/_pages.scss */
+/* line 713, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .details {
   font-style: 12px;
 }
-/* line 716, ../scss/qisat/structure/_pages.scss */
+/* line 717, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .footer {
   padding: 15px 20px;
   border-top: 1px solid #eee;
 }
-/* line 720, ../scss/qisat/structure/_pages.scss */
+/* line 721, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .footer ul {
   margin-bottom: 0;
 }
-/* line 724, ../scss/qisat/structure/_pages.scss */
+/* line 725, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card .footer a, .page-certificates .cards .card .footer a:visited {
   color: #005B94;
 }
-/* line 729, ../scss/qisat/structure/_pages.scss */
+/* line 730, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card a {
   display: block;
   position: relative;
   color: #666;
 }
-/* line 734, ../scss/qisat/structure/_pages.scss */
+/* line 735, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card a:hover {
   color: #333;
 }
-/* line 738, ../scss/qisat/structure/_pages.scss */
+/* line 739, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card a > div {
   margin-top: 30px;
   margin-left: 150px;
   position: absolute;
   top: 0;
 }
-/* line 746, ../scss/qisat/structure/_pages.scss */
+/* line 747, ../scss/qisat/structure/_pages.scss */
 .page-certificates .cards .card strong {
   font-size: 22px;
 }
 
-/* line 757, ../scss/qisat/structure/_pages.scss */
+/* line 758, ../scss/qisat/structure/_pages.scss */
 .page-professores .button {
   margin: 0 auto 15px auto;
   display: block !important;
 }
 @media only screen and (min-width: 40em) {
-  /* line 757, ../scss/qisat/structure/_pages.scss */
+  /* line 758, ../scss/qisat/structure/_pages.scss */
   .page-professores .button {
     float: left;
   }
 }
 @media only screen and (min-width: 40em) {
-  /* line 765, ../scss/qisat/structure/_pages.scss */
+  /* line 766, ../scss/qisat/structure/_pages.scss */
   .page-professores .professor-info {
     margin: 0 80px;
   }
 }
-/* line 770, ../scss/qisat/structure/_pages.scss */
+/* line 771, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-info p.name {
   font-size: 30px;
   margin-bottom: 0;
 }
-/* line 775, ../scss/qisat/structure/_pages.scss */
+/* line 776, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-info img {
   max-width: 200px;
 }
-/* line 780, ../scss/qisat/structure/_pages.scss */
+/* line 781, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-courses {
   background-color: #333;
   color: #fff;
   padding: 25px;
   margin: 25px 0;
 }
-/* line 786, ../scss/qisat/structure/_pages.scss */
+/* line 787, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-courses .columns {
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 780, ../scss/qisat/structure/_pages.scss */
+  /* line 781, ../scss/qisat/structure/_pages.scss */
   .page-professores .professor-courses {
     padding: 50px;
     margin: 50px 0;
   }
 }
-/* line 797, ../scss/qisat/structure/_pages.scss */
+/* line 798, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-articles .subtitle {
   color: #888;
   text-transform: uppercase;
   margin-bottom: 25px;
 }
-/* line 802, ../scss/qisat/structure/_pages.scss */
+/* line 803, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-articles .columns {
   margin-bottom: 20px;
 }
-/* line 805, ../scss/qisat/structure/_pages.scss */
+/* line 806, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-articles p {
   margin: 0;
 }
-/* line 808, ../scss/qisat/structure/_pages.scss */
+/* line 809, ../scss/qisat/structure/_pages.scss */
 .page-professores .professor-articles span {
   color: #666;
 }
-/* line 814, ../scss/qisat/structure/_pages.scss */
+/* line 815, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card {
   margin-bottom: 15px;
   box-sizing: border-box;
@@ -4221,29 +4233,29 @@ button.close-button, .close-button {
   border-radius: 1px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 814, ../scss/qisat/structure/_pages.scss */
+  /* line 815, ../scss/qisat/structure/_pages.scss */
   .page-professores .cards .card {
     width: 49%;
     float: left;
     margin-right: 2%;
     height: 120px;
   }
-  /* line 827, ../scss/qisat/structure/_pages.scss */
+  /* line 828, ../scss/qisat/structure/_pages.scss */
   .page-professores .cards .card:nth-of-type(2n+0) {
     margin-right: 0;
   }
 }
-/* line 832, ../scss/qisat/structure/_pages.scss */
+/* line 833, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card a {
   display: block;
   position: relative;
   color: #666;
 }
-/* line 837, ../scss/qisat/structure/_pages.scss */
+/* line 838, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card a:hover {
   color: #333;
 }
-/* line 841, ../scss/qisat/structure/_pages.scss */
+/* line 842, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card a > div {
   margin-top: 10px;
   margin-left: 120px;
@@ -4251,45 +4263,45 @@ button.close-button, .close-button {
   top: 0;
 }
 @media only screen and (min-width: 40em) {
-  /* line 841, ../scss/qisat/structure/_pages.scss */
+  /* line 842, ../scss/qisat/structure/_pages.scss */
   .page-professores .cards .card a > div {
     margin-top: 30px;
     margin-left: 150px;
   }
 }
-/* line 853, ../scss/qisat/structure/_pages.scss */
+/* line 854, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card strong {
   font-size: 18px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 853, ../scss/qisat/structure/_pages.scss */
+  /* line 854, ../scss/qisat/structure/_pages.scss */
   .page-professores .cards .card strong {
     font-size: 22px;
   }
 }
-/* line 860, ../scss/qisat/structure/_pages.scss */
+/* line 861, ../scss/qisat/structure/_pages.scss */
 .page-professores .cards .card img {
   max-width: 90px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 860, ../scss/qisat/structure/_pages.scss */
+  /* line 861, ../scss/qisat/structure/_pages.scss */
   .page-professores .cards .card img {
     max-width: 120px;
   }
 }
 
-/* line 870, ../scss/qisat/structure/_pages.scss */
+/* line 871, ../scss/qisat/structure/_pages.scss */
 .instrutorIcons {
   list-style-type: none;
   text-align: center;
 }
-/* line 872, ../scss/qisat/structure/_pages.scss */
+/* line 873, ../scss/qisat/structure/_pages.scss */
 .instrutorIcons li {
   display: inline-block;
   margin: 0 7px;
 }
 
-/* line 879, ../scss/qisat/structure/_pages.scss */
+/* line 880, ../scss/qisat/structure/_pages.scss */
 .nav-resp {
   margin-bottom: 30px;
   list-style: none;
@@ -4298,16 +4310,16 @@ button.close-button, .close-button {
   background-color: #FFF;
   clear: both;
 }
-/* line 887, ../scss/qisat/structure/_pages.scss */
+/* line 888, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li {
   border-top: 1px solid #eee;
   background-color: #FFF;
 }
-/* line 891, ../scss/qisat/structure/_pages.scss */
+/* line 892, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li.current {
   border-top: 5px solid #005285;
 }
-/* line 894, ../scss/qisat/structure/_pages.scss */
+/* line 895, ../scss/qisat/structure/_pages.scss */
 .nav-resp > li > a {
   display: block;
   text-decoration: none;
@@ -4317,20 +4329,20 @@ button.close-button, .close-button {
 }
 
 @media screen and (min-width: 40em) {
-  /* line 908, ../scss/qisat/structure/_pages.scss */
+  /* line 909, ../scss/qisat/structure/_pages.scss */
   .nav-resp {
     display: table;
     width: 100%;
     display: flex;
   }
-  /* line 912, ../scss/qisat/structure/_pages.scss */
+  /* line 913, ../scss/qisat/structure/_pages.scss */
   .nav-resp > li {
     display: table-cell;
     display: flex;
     flex: 1 1 auto;
     border-top: none;
   }
-  /* line 918, ../scss/qisat/structure/_pages.scss */
+  /* line 919, ../scss/qisat/structure/_pages.scss */
   .nav-resp > li > a {
     width: 100%;
     -moz-box-sizing: border-box;
@@ -4338,57 +4350,57 @@ button.close-button, .close-button {
     box-sizing: border-box;
   }
 }
-/* line 928, ../scss/qisat/structure/_pages.scss */
+/* line 929, ../scss/qisat/structure/_pages.scss */
 .financeiro table {
   border: 0;
 }
-/* line 931, ../scss/qisat/structure/_pages.scss */
+/* line 932, ../scss/qisat/structure/_pages.scss */
 .financeiro table td {
   border: 1px solid #ddd;
 }
-/* line 934, ../scss/qisat/structure/_pages.scss */
+/* line 935, ../scss/qisat/structure/_pages.scss */
 .financeiro thead th {
   background-color: #FFF;
   border: 0;
 }
-/* line 939, ../scss/qisat/structure/_pages.scss */
+/* line 940, ../scss/qisat/structure/_pages.scss */
 .financeiro .box {
   border: 1px solid #bbb;
   background-color: #FFF;
   padding: 30px 25px;
 }
-/* line 944, ../scss/qisat/structure/_pages.scss */
+/* line 945, ../scss/qisat/structure/_pages.scss */
 .financeiro .box p {
   margin-bottom: 5px;
 }
-/* line 948, ../scss/qisat/structure/_pages.scss */
+/* line 949, ../scss/qisat/structure/_pages.scss */
 .financeiro .box hr {
   margin-left: -25px;
   width: 110%;
 }
-/* line 954, ../scss/qisat/structure/_pages.scss */
+/* line 955, ../scss/qisat/structure/_pages.scss */
 .financeiro .product {
   background-color: #f6f6f6;
   margin-bottom: 35px !important;
 }
 
-/* line 960, ../scss/qisat/structure/_pages.scss */
+/* line 961, ../scss/qisat/structure/_pages.scss */
 hr.clearfix {
   clear: both;
 }
 
-/* line 968, ../scss/qisat/structure/_pages.scss */
+/* line 969, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo {
   width: 50%;
   float: left;
 }
 @media screen and (min-width: 40em) {
-  /* line 968, ../scss/qisat/structure/_pages.scss */
+  /* line 969, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo {
     width: 33%;
   }
 }
-/* line 976, ../scss/qisat/structure/_pages.scss */
+/* line 977, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a {
   display: block;
   height: 120px;
@@ -4396,18 +4408,18 @@ hr.clearfix {
   padding-top: 30px;
 }
 @media screen and (min-width: 40em) {
-  /* line 976, ../scss/qisat/structure/_pages.scss */
+  /* line 977, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo a {
     height: 200px;
   }
 }
-/* line 987, ../scss/qisat/structure/_pages.scss */
+/* line 988, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a img {
   width: auto;
   max-width: 200px;
   max-height: 100px;
 }
-/* line 993, ../scss/qisat/structure/_pages.scss */
+/* line 994, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a span {
   display: none;
   background-color: #005B94;
@@ -4418,22 +4430,22 @@ hr.clearfix {
   font-size: 13px;
   width: 70%;
 }
-/* line 1004, ../scss/qisat/structure/_pages.scss */
+/* line 1005, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a:hover {
   background-color: #f6f6f6;
 }
-/* line 1007, ../scss/qisat/structure/_pages.scss */
+/* line 1008, ../scss/qisat/structure/_pages.scss */
 .parceiros .logo a:hover span {
   display: none;
 }
 @media screen and (min-width: 40em) {
-  /* line 1007, ../scss/qisat/structure/_pages.scss */
+  /* line 1008, ../scss/qisat/structure/_pages.scss */
   .parceiros .logo a:hover span {
     display: block;
   }
 }
 
-/* line 1022, ../scss/qisat/structure/_pages.scss */
+/* line 1023, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a {
   text-align: center;
   border: 1px solid #ccc;
@@ -4441,52 +4453,52 @@ hr.clearfix {
   display: block;
   color: #666;
 }
-/* line 1029, ../scss/qisat/structure/_pages.scss */
+/* line 1030, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a.active {
   background-color: #f6f6f6;
 }
-/* line 1033, ../scss/qisat/structure/_pages.scss */
+/* line 1034, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a i {
   display: block;
 }
-/* line 1037, ../scss/qisat/structure/_pages.scss */
+/* line 1038, ../scss/qisat/structure/_pages.scss */
 .convenios .entidades > div > div a:hover {
   background-color: #f6f6f6;
 }
 
-/* line 1045, ../scss/qisat/structure/_pages.scss */
+/* line 1046, ../scss/qisat/structure/_pages.scss */
 .menu-partners {
   margin: 0;
   padding: 0;
   list-style-type: none;
   border-top: 1px solid #eee;
 }
-/* line 1051, ../scss/qisat/structure/_pages.scss */
+/* line 1052, ../scss/qisat/structure/_pages.scss */
 .menu-partners ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
   border-top: 1px solid #ddd;
 }
-/* line 1057, ../scss/qisat/structure/_pages.scss */
+/* line 1058, ../scss/qisat/structure/_pages.scss */
 .menu-partners ul ul li a {
   padding-left: 65px;
 }
-/* line 1062, ../scss/qisat/structure/_pages.scss */
+/* line 1063, ../scss/qisat/structure/_pages.scss */
 .menu-partners ul li a {
   padding-left: 40px;
   font-weight: normal;
   background-color: #FFF !important;
 }
-/* line 1068, ../scss/qisat/structure/_pages.scss */
+/* line 1069, ../scss/qisat/structure/_pages.scss */
 .menu-partners ul li.active a {
   background-color: #eee !important;
 }
-/* line 1074, ../scss/qisat/structure/_pages.scss */
+/* line 1075, ../scss/qisat/structure/_pages.scss */
 .menu-partners li {
   border-bottom: 1px solid #eee;
 }
-/* line 1077, ../scss/qisat/structure/_pages.scss */
+/* line 1078, ../scss/qisat/structure/_pages.scss */
 .menu-partners li a {
   display: block;
   color: #555;
@@ -4496,17 +4508,17 @@ hr.clearfix {
   padding-left: 20px;
   background-color: #FFF;
 }
-/* line 1087, ../scss/qisat/structure/_pages.scss */
+/* line 1088, ../scss/qisat/structure/_pages.scss */
 .menu-partners li.active a {
   background-color: #f6f6f6;
 }
 
-/* line 1094, ../scss/qisat/structure/_pages.scss */
+/* line 1095, ../scss/qisat/structure/_pages.scss */
 .course-page__sections#publico-alvo {
   min-height: 200px;
 }
 
-/* line 1100, ../scss/qisat/structure/_pages.scss */
+/* line 1101, ../scss/qisat/structure/_pages.scss */
 .inst_filter {
   margin: 20px 0;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
@@ -4515,31 +4527,31 @@ hr.clearfix {
   border-radius: 3px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 1100, ../scss/qisat/structure/_pages.scss */
+  /* line 1101, ../scss/qisat/structure/_pages.scss */
   .inst_filter {
     width: 95%;
     margin: 20px auto;
   }
 }
-/* line 1112, ../scss/qisat/structure/_pages.scss */
+/* line 1113, ../scss/qisat/structure/_pages.scss */
 .inst_filter label {
   display: block;
   text-transform: uppercase;
   font-size: 11px;
   color: #666;
 }
-/* line 1119, ../scss/qisat/structure/_pages.scss */
+/* line 1120, ../scss/qisat/structure/_pages.scss */
 .inst_filter input, .inst_filter select {
   outline: 0;
   border: 0;
   background-color: #FFF;
 }
-/* line 1125, ../scss/qisat/structure/_pages.scss */
+/* line 1126, ../scss/qisat/structure/_pages.scss */
 .inst_filter select {
   padding: 0;
   height: auto;
 }
-/* line 1130, ../scss/qisat/structure/_pages.scss */
+/* line 1131, ../scss/qisat/structure/_pages.scss */
 .inst_filter input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -4547,7 +4559,7 @@ hr.clearfix {
   padding-left: 30px;
   box-shadow: none;
 }
-/* line 1138, ../scss/qisat/structure/_pages.scss */
+/* line 1139, ../scss/qisat/structure/_pages.scss */
 .inst_filter i {
   color: #999;
   top: 8px;
@@ -4555,39 +4567,39 @@ hr.clearfix {
 }
 
 @media only screen and (min-width: 40em) {
-  /* line 1145, ../scss/qisat/structure/_pages.scss */
+  /* line 1146, ../scss/qisat/structure/_pages.scss */
   .inst_list {
     width: 95%;
     margin: 20px auto;
   }
 }
-/* line 1151, ../scss/qisat/structure/_pages.scss */
+/* line 1152, ../scss/qisat/structure/_pages.scss */
 .inst_list ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 1157, ../scss/qisat/structure/_pages.scss */
+/* line 1158, ../scss/qisat/structure/_pages.scss */
 .inst_list li {
   border-bottom: 1px solid #eee;
   padding: 15px 10px;
   font-size: 15px;
 }
-/* line 1162, ../scss/qisat/structure/_pages.scss */
+/* line 1163, ../scss/qisat/structure/_pages.scss */
 .inst_list li span {
   color: #333333;
 }
-/* line 1167, ../scss/qisat/structure/_pages.scss */
+/* line 1168, ../scss/qisat/structure/_pages.scss */
 .inst_list strong {
   display: block;
   font-size: 17px;
 }
-/* line 1172, ../scss/qisat/structure/_pages.scss */
+/* line 1173, ../scss/qisat/structure/_pages.scss */
 .inst_list img {
   float: left;
   margin-right: 30px;
 }
-/* line 1177, ../scss/qisat/structure/_pages.scss */
+/* line 1178, ../scss/qisat/structure/_pages.scss */
 .inst_list i {
   float: right;
   margin-top: 10px;
@@ -4595,72 +4607,72 @@ hr.clearfix {
   font-size: 25px;
 }
 
-/* line 1185, ../scss/qisat/structure/_pages.scss */
+/* line 1186, ../scss/qisat/structure/_pages.scss */
 .button-discount {
   display: block;
   width: 100%;
   margin: 40px auto;
 }
 @media only screen and (min-width: 40em) {
-  /* line 1185, ../scss/qisat/structure/_pages.scss */
+  /* line 1186, ../scss/qisat/structure/_pages.scss */
   .button-discount {
     max-width: 50%;
   }
 }
 
-/* line 1195, ../scss/qisat/structure/_pages.scss */
+/* line 1196, ../scss/qisat/structure/_pages.scss */
 .accordion-discount {
   margin-bottom: 50px;
 }
-/* line 1198, ../scss/qisat/structure/_pages.scss */
+/* line 1199, ../scss/qisat/structure/_pages.scss */
 .accordion-discount dd > a {
   font-size: 27px !important;
   border: 1px solid #eee;
 }
-/* line 1203, ../scss/qisat/structure/_pages.scss */
+/* line 1204, ../scss/qisat/structure/_pages.scss */
 .accordion-discount dd .content {
   padding: 20px !important;
   background-color: #eee !important;
   margin: 0;
   border: 1px solid #eee;
 }
-/* line 1210, ../scss/qisat/structure/_pages.scss */
+/* line 1211, ../scss/qisat/structure/_pages.scss */
 .accordion-discount img {
   margin: 0 auto;
 }
-/* line 1214, ../scss/qisat/structure/_pages.scss */
+/* line 1215, ../scss/qisat/structure/_pages.scss */
 .accordion-discount dd table {
   border: 0;
   background-color: transparent;
 }
-/* line 1218, ../scss/qisat/structure/_pages.scss */
+/* line 1219, ../scss/qisat/structure/_pages.scss */
 .accordion-discount dd table tr:nth-of-type(even), .accordion-discount dd table td {
   background-color: transparent;
   font-size: 16px;
 }
-/* line 1222, ../scss/qisat/structure/_pages.scss */
+/* line 1223, ../scss/qisat/structure/_pages.scss */
 .accordion-discount dd table .button {
   margin-bottom: 0 !important;
 }
 
-/* line 1229, ../scss/qisat/structure/_pages.scss */
+/* line 1230, ../scss/qisat/structure/_pages.scss */
 #contatoForm label {
   text-align: left;
 }
 @media only screen and (min-width: 40em) {
-  /* line 1229, ../scss/qisat/structure/_pages.scss */
+  /* line 1230, ../scss/qisat/structure/_pages.scss */
   #contatoForm label {
     text-align: right;
   }
 }
 
-/* line 1238, ../scss/qisat/structure/_pages.scss */
+/* line 1239, ../scss/qisat/structure/_pages.scss */
 .show-for-small-up {
   display: block !important;
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* line 1242, ../scss/qisat/structure/_pages.scss */
+  /* line 1243, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive {
     /* Force table to not be like tables anymore */
     display: block;
@@ -4669,21 +4681,21 @@ hr.clearfix {
     Label the data
     */
   }
-  /* line 1247, ../scss/qisat/structure/_pages.scss */
+  /* line 1248, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive thead, .financeiro .responsive tbody, .financeiro .responsive th, .financeiro .responsive td, .financeiro .responsive tr {
     display: block;
   }
-  /* line 1252, ../scss/qisat/structure/_pages.scss */
+  /* line 1253, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-  /* line 1258, ../scss/qisat/structure/_pages.scss */
+  /* line 1259, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive tr {
     border: 1px solid #ccc;
   }
-  /* line 1260, ../scss/qisat/structure/_pages.scss */
+  /* line 1261, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td {
     /* Behave  like a "row" */
     border: none;
@@ -4691,7 +4703,7 @@ hr.clearfix {
     position: relative;
     padding-left: 50%;
   }
-  /* line 1268, ../scss/qisat/structure/_pages.scss */
+  /* line 1269, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:before {
     /* Now like a table header */
     position: absolute;
@@ -4702,52 +4714,52 @@ hr.clearfix {
     padding-right: 10px;
     white-space: nowrap;
   }
-  /* line 1282, ../scss/qisat/structure/_pages.scss */
+  /* line 1283, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(1):before {
     content: "Pedido";
   }
-  /* line 1283, ../scss/qisat/structure/_pages.scss */
+  /* line 1284, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(2):before {
     content: "Data";
   }
-  /* line 1284, ../scss/qisat/structure/_pages.scss */
+  /* line 1285, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(3):before {
     content: "Valor";
   }
-  /* line 1285, ../scss/qisat/structure/_pages.scss */
+  /* line 1286, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(4):before {
     content: "Status";
   }
-  /* line 1286, ../scss/qisat/structure/_pages.scss */
+  /* line 1287, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(5):before {
     content: "Pagamento";
   }
-  /* line 1287, ../scss/qisat/structure/_pages.scss */
+  /* line 1288, ../scss/qisat/structure/_pages.scss */
   .financeiro .responsive td:nth-of-type(6):before {
     content: "";
   }
 }
 
-/* line 1291, ../scss/qisat/structure/_pages.scss */
+/* line 1292, ../scss/qisat/structure/_pages.scss */
 .step-title {
   font-size: 16px;
   color: #005b8a;
   margin-bottom: 10px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 1291, ../scss/qisat/structure/_pages.scss */
+  /* line 1292, ../scss/qisat/structure/_pages.scss */
   .step-title {
     font-size: 20px;
   }
 }
 
-/* line 1300, ../scss/qisat/structure/_pages.scss */
+/* line 1301, ../scss/qisat/structure/_pages.scss */
 .step-desc div {
   color: #005b8a;
   margin-top: 10px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 1300, ../scss/qisat/structure/_pages.scss */
+  /* line 1301, ../scss/qisat/structure/_pages.scss */
   .step-desc div {
     margin-left: 30px;
     margin-right: 30px;
@@ -4973,38 +4985,39 @@ hr.clearfix {
   background-color: #fff;
   padding: 20px;
   border-radius: 3px;
+  text-align: justify;
 }
-/* line 18, ../scss/qisat/layout/_institutional.scss */
+/* line 19, ../scss/qisat/layout/_institutional.scss */
 .page_content.no-padding, .widget_content.no-padding {
   padding: 3px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 22, ../scss/qisat/layout/_institutional.scss */
+  /* line 23, ../scss/qisat/layout/_institutional.scss */
   .page_content .block, .widget_content .block {
     margin-left: 30px;
     margin-bottom: 30px;
   }
 }
-/* line 30, ../scss/qisat/layout/_institutional.scss */
+/* line 31, ../scss/qisat/layout/_institutional.scss */
 .page_content.page-contact .sub-title, .widget_content.page-contact .sub-title {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-/* line 34, ../scss/qisat/layout/_institutional.scss */
+/* line 35, ../scss/qisat/layout/_institutional.scss */
 .page_content.page-contact .sub-title strong, .widget_content.page-contact .sub-title strong {
   padding-top: 2px;
 }
-/* line 40, ../scss/qisat/layout/_institutional.scss */
+/* line 41, ../scss/qisat/layout/_institutional.scss */
 .page_content ul.unstyle, .widget_content ul.unstyle {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-/* line 45, ../scss/qisat/layout/_institutional.scss */
+/* line 46, ../scss/qisat/layout/_institutional.scss */
 .page_content ul.unstyle .span, .widget_content ul.unstyle .span {
   color: #222222;
 }
-/* line 50, ../scss/qisat/layout/_institutional.scss */
+/* line 51, ../scss/qisat/layout/_institutional.scss */
 .page_content .title, .widget_content .title {
   text-transform: uppercase;
   color: #666;
@@ -5014,25 +5027,25 @@ hr.clearfix {
   width: 105%;
 }
 
-/* line 60, ../scss/qisat/layout/_institutional.scss */
+/* line 61, ../scss/qisat/layout/_institutional.scss */
 .page_content {
   margin-bottom: 40px;
 }
 
-/* line 61, ../scss/qisat/layout/_institutional.scss */
+/* line 62, ../scss/qisat/layout/_institutional.scss */
 .widget_content {
   margin-bottom: 10px;
 }
-/* line 63, ../scss/qisat/layout/_institutional.scss */
+/* line 64, ../scss/qisat/layout/_institutional.scss */
 .widget_content p {
   font-size: 0.9em;
   margin-bottom: 9px;
 }
-/* line 64, ../scss/qisat/layout/_institutional.scss */
+/* line 65, ../scss/qisat/layout/_institutional.scss */
 .widget_content--slim {
   padding: 0;
 }
-/* line 66, ../scss/qisat/layout/_institutional.scss */
+/* line 67, ../scss/qisat/layout/_institutional.scss */
 .widget_content__title {
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -5041,18 +5054,18 @@ hr.clearfix {
   color: #979797;
   letter-spacing: 1px;
 }
-/* line 67, ../scss/qisat/layout/_institutional.scss */
+/* line 68, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list {
   list-style: none;
   margin: 0;
 }
-/* line 69, ../scss/qisat/layout/_institutional.scss */
+/* line 70, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list__item {
   margin-bottom: 10px;
   line-height: 1.3;
   font-size: 13px;
 }
-/* line 71, ../scss/qisat/layout/_institutional.scss */
+/* line 72, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list__item strong {
   font-size: 11px;
   font-weight: 600;
@@ -5061,7 +5074,7 @@ hr.clearfix {
   display: block;
   line-height: 1;
 }
-/* line 83, ../scss/qisat/layout/_institutional.scss */
+/* line 84, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > a, .widget_content .accordion dd > a {
   background: #fff;
   display: block;
@@ -5071,23 +5084,23 @@ hr.clearfix {
   font-weight: 600;
   color: #979797 !important;
 }
-/* line 92, ../scss/qisat/layout/_institutional.scss */
+/* line 93, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > .content, .widget_content .accordion dd > .content {
   padding: .9375rem 20px;
 }
-/* line 93, ../scss/qisat/layout/_institutional.scss */
+/* line 94, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > .content.active, .widget_content .accordion dd > .content.active {
   background: #444;
   color: rgba(255, 255, 255, 0.61);
 }
-/* line 94, ../scss/qisat/layout/_institutional.scss */
+/* line 95, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation, .widget_content .accordion dd {
   border-bottom: 1px solid #eee;
 }
 
 /* 'gallery-sync
 ========================================= */
-/* line 108, ../scss/qisat/layout/_institutional.scss */
+/* line 109, ../scss/qisat/layout/_institutional.scss */
 .gallery-sync_caption {
   background: rgba(5, 5, 5, 0.6);
   margin: 0;
@@ -5101,11 +5114,11 @@ hr.clearfix {
   right: 0;
 }
 
-/* line 121, ../scss/qisat/layout/_institutional.scss */
+/* line 122, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger {
   background-color: #292929;
 }
-/* line 123, ../scss/qisat/layout/_institutional.scss */
+/* line 124, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger .item {
   padding: 0;
   margin: 0px;
@@ -5115,16 +5128,16 @@ hr.clearfix {
   border-radius: 3px;
   text-align: center;
 }
-/* line 131, ../scss/qisat/layout/_institutional.scss */
+/* line 132, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger .item img {
   border-radius: 3px 3px 0 0;
 }
 
-/* line 135, ../scss/qisat/layout/_institutional.scss */
+/* line 136, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb {
   background-color: #0F0F0F;
 }
-/* line 138, ../scss/qisat/layout/_institutional.scss */
+/* line 139, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item {
   background-color: #005285;
   padding: 0px;
@@ -5137,39 +5150,39 @@ hr.clearfix {
   cursor: pointer;
   opacity: 0.5;
 }
-/* line 149, ../scss/qisat/layout/_institutional.scss */
+/* line 150, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item h1 {
   font-size: 18px;
 }
-/* line 150, ../scss/qisat/layout/_institutional.scss */
+/* line 151, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item img {
   background-blend-mode: multiply;
 }
-/* line 152, ../scss/qisat/layout/_institutional.scss */
+/* line 153, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .current .item {
   background-color: #0c83e7;
   opacity: 1;
 }
 
-/* line 161, ../scss/qisat/layout/_institutional.scss */
+/* line 162, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav {
   /*default owl-theme theme reset .disabled:hover links */
   margin: 0 !important;
 }
-/* line 164, ../scss/qisat/layout/_institutional.scss */
+/* line 165, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav [class*='owl-'] {
   transition: all .3s ease;
 }
-/* line 166, ../scss/qisat/layout/_institutional.scss */
+/* line 167, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav [class*='owl-'].disabled:hover {
   background-color: #D6D6D6;
 }
 
-/* line 175, ../scss/qisat/layout/_institutional.scss */
+/* line 176, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme {
   position: relative;
 }
-/* line 177, ../scss/qisat/layout/_institutional.scss */
+/* line 178, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-next, #gallery-sync_bigger.owl-theme .owl-prev {
   width: 22px;
   height: 40px;
@@ -5177,18 +5190,18 @@ hr.clearfix {
   position: absolute;
   top: 50%;
 }
-/* line 184, ../scss/qisat/layout/_institutional.scss */
+/* line 185, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-prev {
   left: 10px;
 }
-/* line 187, ../scss/qisat/layout/_institutional.scss */
+/* line 188, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-next {
   right: 10px;
 }
 
 /* 'end gallery-sync
 ========================================= */
-/* line 199, ../scss/qisat/layout/_institutional.scss */
+/* line 200, ../scss/qisat/layout/_institutional.scss */
 .bloco_ano {
   position: relative;
   width: 130px;
@@ -5202,7 +5215,7 @@ hr.clearfix {
   float: left;
 }
 
-/* line 212, ../scss/qisat/layout/_institutional.scss */
+/* line 213, ../scss/qisat/layout/_institutional.scss */
 .bloco_texto {
   position: relative;
   width: 300px;
@@ -5217,42 +5230,42 @@ hr.clearfix {
   margin-top: 10px;
 }
 
-/* line 227, ../scss/qisat/layout/_institutional.scss */
+/* line 228, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider {
   padding: 20px 40px;
 }
-/* line 229, ../scss/qisat/layout/_institutional.scss */
+/* line 230, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component {
   line-height: auto;
 }
-/* line 230, ../scss/qisat/layout/_institutional.scss */
+/* line 231, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__handle {
   line-height: auto;
 }
-/* line 231, ../scss/qisat/layout/_institutional.scss */
+/* line 232, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__handle-number {
   position: absolute;
   left: 40px;
   top: -3px;
 }
-/* line 233, ../scss/qisat/layout/_institutional.scss */
+/* line 234, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__active-segment {
   line-height: auto;
 }
 
-/* line 240, ../scss/qisat/layout/_institutional.scss */
+/* line 241, ../scss/qisat/layout/_institutional.scss */
 .container-timeline {
   padding: 0;
   background-color: #ffffff;
   margin-bottom: 40px;
 }
 
-/* line 246, ../scss/qisat/layout/_institutional.scss */
+/* line 247, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group--background {
   background-color: #FFFFFF;
 }
 
-/* line 247, ../scss/qisat/layout/_institutional.scss */
+/* line 248, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group {
   list-style: none;
   margin: 0;
@@ -5260,7 +5273,7 @@ hr.clearfix {
   background-color: #ffffff;
   display: inline-block;
 }
-/* line 254, ../scss/qisat/layout/_institutional.scss */
+/* line 255, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item {
   position: relative;
   display: block;
@@ -5273,37 +5286,37 @@ hr.clearfix {
   transition: all 0.5s;
   cursor: pointer;
 }
-/* line 256, ../scss/qisat/layout/_institutional.scss */
+/* line 257, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:hover {
   background-color: #eee;
 }
-/* line 257, ../scss/qisat/layout/_institutional.scss */
+/* line 258, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:hover .arrow {
   opacity: 0.5;
 }
-/* line 259, ../scss/qisat/layout/_institutional.scss */
+/* line 260, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active {
   background-color: #25373A;
 }
-/* line 261, ../scss/qisat/layout/_institutional.scss */
+/* line 262, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .list-group-item-date {
   background: #fff;
   color: #25373A;
 }
-/* line 262, ../scss/qisat/layout/_institutional.scss */
+/* line 263, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .title {
   color: #fff;
 }
-/* line 263, ../scss/qisat/layout/_institutional.scss */
+/* line 264, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .subtitle {
   color: #fff;
 }
-/* line 264, ../scss/qisat/layout/_institutional.scss */
+/* line 265, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .arrow {
   color: #fff;
   opacity: 1;
 }
-/* line 266, ../scss/qisat/layout/_institutional.scss */
+/* line 267, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .arrow {
   position: absolute;
   right: 20px;
@@ -5312,18 +5325,18 @@ hr.clearfix {
   opacity: 0;
   transition: all 0.5s;
 }
-/* line 267, ../scss/qisat/layout/_institutional.scss */
+/* line 268, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .title {
   display: block;
   height: 26px;
   overflow: hidden;
 }
-/* line 268, ../scss/qisat/layout/_institutional.scss */
+/* line 269, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .subtitle {
   opacity: 0.5;
   font-weight: 300;
 }
-/* line 269, ../scss/qisat/layout/_institutional.scss */
+/* line 270, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .list-group-item-date {
   background: #25373A;
   width: 50px;
@@ -5338,40 +5351,40 @@ hr.clearfix {
   font-weight: 800;
   margin-right: 20px;
 }
-/* line 271, ../scss/qisat/layout/_institutional.scss */
+/* line 272, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-/* line 276, ../scss/qisat/layout/_institutional.scss */
+/* line 277, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:last-child {
   margin-bottom: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 
-/* line 287, ../scss/qisat/layout/_institutional.scss */
+/* line 288, ../scss/qisat/layout/_institutional.scss */
 .timeline__post--background {
   background-color: #25373A;
 }
 
-/* line 290, ../scss/qisat/layout/_institutional.scss */
+/* line 291, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__header img {
   max-width: 100%;
 }
-/* line 292, ../scss/qisat/layout/_institutional.scss */
+/* line 293, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body {
   padding: 20px 40px;
 }
-/* line 294, ../scss/qisat/layout/_institutional.scss */
+/* line 295, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body__meta {
   color: #fff;
 }
-/* line 295, ../scss/qisat/layout/_institutional.scss */
+/* line 296, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p {
   color: #C6CCCE;
 }
-/* line 296, ../scss/qisat/layout/_institutional.scss */
+/* line 297, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p.lead {
   font-size: 1.5rem;
   font-weight: 300;
@@ -5568,7 +5581,7 @@ body.cart-page {
   position: absolute;
   margin-left: -22px;
   margin-top: 20px;
-  height: 130px;
+  height: 96px;
 }
 /* line 172, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .step {

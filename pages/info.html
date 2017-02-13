@@ -349,7 +349,7 @@
 		<h2 class="course-page__sections--title">Conteúdo programático</h2>
 		<accordion class="accordion-component accordion">
 			<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}" ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title" icon-carrinho="{{conteudo.dataValor}}" add-carrinho="buy.addItemCarrinho(conteudo.dataValor.produto)" >
-		      <div ng-bind-html="conteudo.descricao"></div>
+		      <div class="textexpand" ng-bind-html="conteudo.descricao"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
 		 </accordion>
@@ -467,7 +467,7 @@
 		<h2 class="course-page__sections--title">Perguntas frequentes</h2>
     <accordion class="accordion-component accordion">
 			<accordion-group heading="{{faq.titulo}}" ng-repeat="faq in vm.info.faqs" class="accordion-navigation tab-title">
-		      <div ng-bind-html="faq.descricao"></div>
+		      <div ng-bind-html="faq.descricao" class="textexpand"></div>
 		      <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
 		    </accordion-group>
 		 </accordion>

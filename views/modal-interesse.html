@@ -8,8 +8,8 @@
 			<header class="section-call__form--header">
 				<div class="row">
 					<div class="large-12 columns">
-				 			<h4 class="section-call__form--header-title">A QiSat liga pra você!</h4>
-				  		<p>Para sua comodidade a QiSat liga pra você. Preencha os campos abaixo e após clicar no botão ligar aguarde que um de nossos atendentes entrará em contato.</p>
+				 			<h4 class="section-call__form--header-title">Registro de Interesse</h4>
+				  		<p><b>Este evento esta lotado.<br><br>Registre aqui seu interesse em lista de espera.</b> Assim, se houver desistência de inscritos ou uma nova edição deste curso entraremos em contato primeiramente com você.</p>
 					</div>
 				</div>
 			</header>
@@ -200,43 +200,11 @@
 
 
 				<div class="row" ng-hide="enviado">
-							<div class="small-2 columns">
-									<div class="row">
-										<div class="small-12 columns">
-											<label for="call-input-interests" class="call-label-icon-interests"> </label>
-										</div>
-									</div>
-							</div>
-					<div class="medium-10 columns">
-						<div class="row">
-									<div class="small-12 columns">
-	 										<select id="call-input-interests" name="call-input-interests" ng-model="dados.area" ng-required="true" >
-												<option value="" >Área de Interesse</option>
-												<option value="Estrutural" >Estrutural</option>
-												<option value="Elétrica" >Elétrica</option>
-												<option value="Hidráulica" >Hidráulica</option>
-												<option value="CAD" >CAD</option>
-												<option value="Outros Cursos" > Outros Cursos</option>
-												<option value="Gratuito" >Gratuito</option>
-												<option value="Presencial" >Presencial</option>
-												<option value="Item da Série" >Item da Série</option>
-											</select>
-
-											<div ng-show="(callForm['call-input-interests'].$dirty || submitted) && callForm['call-input-interests'].$invalid">
-						                    <span class="error" ng-show="callForm['call-input-interests'].$error.required">Selecione a Área de Interesse!</span>
-					                     </div>
-									</div>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="row" ng-hide="enviado">
 					<div class="small-2 columns"> </div>
 					<div class="medium-10 columns">
 						<div class="row">
 									<div class="small-12 columns">
-							    <button class="expand button" ng-click="solicitarContato(dados, callForm)" ng-disabled="loading" > Ligue pra mim!</button>
+							    <button class="expand button" ng-click="solicitarContato(dados, callForm)" ng-disabled="loading" > Enviar</button>
 							    </div>
 						</div>
 					</div>
