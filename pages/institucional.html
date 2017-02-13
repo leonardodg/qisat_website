@@ -43,7 +43,7 @@
               <a class="anchor header-main__item " href="/cursos" target="_self">Cursos</a>
             </li>
             <li class="show-for-large-up header-main__list"> 
-              <a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+              <a class="anchor header-main__item" href-portal target="_self">Área do Aluno</a>
             </li>
             <li class="show-for-large-up header-main__list"> 
               <a class="anchor header-main__item header-main__list-current header-main__list-item-current" href="/institucional" target="_self">Institucional</a>
@@ -62,7 +62,7 @@
      <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
      <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-        <div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+        <div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()"></div>
         <div id="cd-cart" ng-class="{ actived : buy.showBuy }">
           <h2>Itens no carrinho</h2>
         <ul class="cd-cart-items">
@@ -254,6 +254,7 @@
       <script defer src="js/config/value.js"></script>
       <script defer src="js/routes/institucional.js"></script>
       
+      <script defer src="js/directive/hrefPortal.js"></script>
       <script defer src="js/directive/menuActive.js"></script>
       <script defer src="js/directive/backImg.js"></script>
       <script defer src="js/directive/owlSync.js"></script>

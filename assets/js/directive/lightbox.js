@@ -10,7 +10,9 @@
                 var init = function(){
                     var elems = elem.find("a");
                     elems.simpleLightbox({
-                      captions: true
+                      captions: true,
+                      widthRatio : 0.75,
+                      heightRatio : 0.75
                     });
                 }
                 timer(init, 0);

@@ -73,27 +73,26 @@
 
 										promise.then( function success(res) {
 
-						                            	if(res.data.retorno.sucesso){
+						                            	if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
 						                            		useCredentials(res.data.token, res.data.retorno.usuario);
-						                            		deferred.resolve(res);
+						                            		deferred.resolve(true);
 						                            	}else{
 						                            		console.log('Error verifyAuth SEM SUCCESS');
 						                            		destroyUserCredentials();
-						                            		deferred.reject(res);
+						                            		deferred.reject(false);
 						                            	}
 						                            		
 						                            }, function error(res) {
 
 						                            	console.log('Error verifyAuth FALHA!');
 						                            	destroyUserCredentials();
-						                            	deferred.reject(res);
+						                            	deferred.reject(false);
 
 						                            });
 
 									}else{
-										deferred.reject(function(res){ return res });
+										deferred.reject(function(res){ return false });
 									}
-
 
 						            return deferred.promise;
 		                		};
@@ -139,7 +138,6 @@
 							};
 						 
 							function login(credentials) {
-
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
 	                                                  url: Config.baseUrl+'/wsc-user/login',
@@ -159,95 +157,116 @@
 			                };
 
 			                function verifyPassword(password) {
+		                		var deferred = $q.defer(), promise;
+								
+								if(isAuth()){
+		                           promise = $http({ 
+		                                                  method: 'POST', 
+		                                                  url: Config.baseUrl+'/wsc-user/checkPassword',
+		                                                  data: { password : password },
+		                                                  dataType: 'jsonp',
+									                      headers : {
+																      'Content-Type' : 'application/json',    
+																      'Authorization': Config.Authorization+" "+authToken
+																      },
+														   withCredentials : true
 
-	                           var promise = $http({ 
-	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/wsc-user/checkPassword',
-	                                                  data: { password : password },
-	                                                  dataType: 'jsonp',
-								                      headers : {
-															      'Content-Type' : 'application/json',    
-															      'Authorization': Config.Authorization+" "+authToken
-															      },
-													   withCredentials : true
+		                                                        });
 
-	                                                        });
-
-	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+		                            return  promise.then( function (res){
+		                            			return res;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
 			                };
 
 			                function update(data) {
-								data['id'] = authUser.id;
-	                           var promise = $http({ 
-	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/wsc-user/create-user',
-	                                                  data: data,
-	                                                  dataType: 'jsonp',
+		                		var deferred = $q.defer(), promise;
+								
+								if(isAuth()){
+									data['id'] = authUser.id;
+		                            promise = $http({ 
+		                                              method: 'POST', 
+		                                              url: Config.baseUrl+'/wsc-user/create-user',
+		                                              data: data,
+		                                              dataType: 'jsonp',
 								                      headers : {
 															      'Content-Type' : 'application/json',    
 															      'Authorization': Config.Authorization+" "+authToken
 															      },
 													   withCredentials : true
+	                                            	});
 
-	                                                        });
-
-	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+		                            return  promise.then( function (res){
+		                            			return res;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
 			                };
 
 			                function courses() {
+			                	var deferred = $q.defer(), promise;
 
-	                           var promise = $http({ 
-	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/wsc-user/matriculas',
-	                                                  data: { id : authUser.id },
-	                                                  dataType: 'jsonp',
-								                      headers : {
-															      'Content-Type' : 'application/json',    
-															      'Authorization': Config.Authorization+" "+authToken
-															      },
-													   withCredentials : true
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  url: Config.baseUrl+'/wsc-user/matriculas',
+                                                  data: { id : authUser.id },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
 
-	                                                        });
+                                                        });
 
-	                            return  promise.then( function (res){
-	                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.matriculas ){
-	                            							res.data.retorno.matriculas.map(function (curso){
-	                            								var tipo;
-	                            								if(curso && curso.produto && curso.produto.categorias){
-		                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-																		curso.modalidade = tipo.nome;
-																		curso.isSerie = true;
-																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-																		curso.modalidade = tipo.nome;
-																		curso.isPack = true;
-																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-																		curso.modalidade = tipo.nome;
-																		curso.isLecture = true;
-																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-																		curso.modalidade = tipo.nome;
-																		curso.isIndividual = true;
-																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-																		curso.modalidade = tipo.nome;
-																		curso.isClassroom = true;
-																	}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-																		curso.modalidade = tipo.nome;
-																		curso.isOnline = true;
-																	}
-	                            								}
-	                            							});
-															return res.data.retorno;
-	                            						}else
-	                            							return res;
-	                            		}, function (res){return res});
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.matriculas ){
+		                            							res.data.retorno.matriculas.map(function (curso){
+		                            								var tipo;
+		                            								if(curso && curso.produto && curso.produto.categorias){
+			                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																			curso.modalidade = tipo.nome;
+																			curso.isSerie = true;
+																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																			curso.modalidade = tipo.nome;
+																			curso.isPack = true;
+																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																			curso.modalidade = tipo.nome;
+																			curso.isLecture = true;
+																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																			curso.modalidade = tipo.nome;
+																			curso.isIndividual = true;
+																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																			curso.modalidade = tipo.nome;
+																			curso.isClassroom = true;
+																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																			curso.modalidade = tipo.nome;
+																			curso.isOnline = true;
+																		}
+		                            								}
+		                            							});
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
 			                };
 
 			                function compras() {
-
-	                           var promise = $http({ 
+			                		var deferred = $q.defer(), promise;
+									
+									if(isAuth()){
+			                           	promise = $http({ 
 	                                                  method: 'POST', 
 	                                                  url: Config.baseUrl+'/wsc-user/financeiro',
 	                                                  data: { id : authUser.id },
@@ -260,35 +279,47 @@
 
 	                                                        });
 
-	                            return  promise.then( function (res){
+			                            return  promise.then( function (res){
+			                            			return res;
+			                            		});
 
-	                            			return res;
-	                            		});
+									}else{
+										deferred.reject(function(res){ return false });
+										return deferred.promise;
+									}
 			                };
 
 			                function certificados() {
+		                			var deferred = $q.defer(), promise;
+									
+									if(isAuth()){
+	                           			promise = $http({ 
+		                                                  method: 'POST', 
+		                                                  url: Config.baseUrl+'/wsc-user/certificados',
+		                                                  data: { id : authUser.id },
+		                                                  dataType: 'jsonp',
+									                      headers : {
+																      'Content-Type' : 'application/json',    
+																      'Authorization': Config.Authorization+" "+authToken
+																      },
+														   withCredentials : true
 
-	                           var promise = $http({ 
-	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/wsc-user/certificados',
-	                                                  data: { id : authUser.id },
-	                                                  dataType: 'jsonp',
-								                      headers : {
-															      'Content-Type' : 'application/json',    
-															      'Authorization': Config.Authorization+" "+authToken
-															      },
-													   withCredentials : true
+		                                                        });
 
-	                                                        });
-
-	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+			                            return  promise.then( function (res){
+			                            			return res;
+			                            		});
+									}else{
+										deferred.reject(function(res){ return false });
+										return deferred.promise;
+									}
 			                };
 
 			                function carrinho(id) {
-
-	                           var promise = $http({ 
+			                	var deferred = $q.defer(), promise;
+									
+								if(isAuth()){
+		                        	promise = $http({ 
 	                                                  method: 'POST', 
 	                                                  url: Config.baseUrl+'/wsc-user/financeiro/get',
 	                                                  data: { venda : id },
@@ -301,33 +332,40 @@
 
 	                                                        });
 
-	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+		                            return  promise.then( function (res){
+		                            			return res;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
 			                };
-
 
 			                function updatePassword(data) {
+			                	var deferred = $q.defer(), promise;
 
-	                           var promise = $http({ 
-	                                                  method: 'POST', 
-	                                                  url: Config.baseUrl+'/wsc-user/updatePassword',
-	                                                  data: data,
-	                                                  dataType: 'jsonp',
-								                      headers : {
-															      'Content-Type' : 'application/json',    
-															      'Authorization': Config.Authorization+" "+authToken
-															      },
-													   withCredentials : true
+								if(isAuth()){
+                    				promise = $http({ 
+                                                  method: 'POST', 
+                                                  url: Config.baseUrl+'/wsc-user/updatePassword',
+                                                  data: data,
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
 
-	                                                        });
+                                                        });
 
-	                            return  promise.then( function (res){
-	                            			return res;
-	                            		});
+		                            return  promise.then( function (res){
+		                            			return res;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
 			                };
-
-
 
 							return {
 									login : login, 

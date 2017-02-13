@@ -19,8 +19,6 @@
 					 				carrinho.getCarrinho().then(function(res){
 					 					vm.itens = res['ecm_carrinho_item'];
 					 				});
-					 			// console.log(vm.itens);
-					 			// vm.itens = ['0'];
 					 	})();	
 
 					 	

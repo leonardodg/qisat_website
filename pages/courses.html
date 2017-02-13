@@ -47,7 +47,7 @@
 							<a class="anchor header-main__item header-main__list-item-current" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
-			 				<a class="anchor header-main__item" href="/aluno" target="_self">Área do Aluno</a>
+			 				<a class="anchor header-main__item" href-portal target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
@@ -66,7 +66,7 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ></div>
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()"></div>
 				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
 					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
@@ -4462,7 +4462,7 @@
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 									   					</a>
-									   					<a href="#" class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+									   					<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
 									   						<span class="card-course__icon-cart">
 									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 									   							<div class="price_popover" ng-if="::course.promocaoDateend" >
@@ -4539,7 +4539,18 @@
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
 														</a>
-														<a href="#" class="card-course__button" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}</a> 	
+														<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+															<span class="card-course__icon-cart">
+									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+									   							<div class="price_popover" ng-if="::course.promocaoDateend" >
+									   								<div class="price_popover__header">
+									   									<p class="price_popover__header__info"> <s>de {{::course.precoTotal}}</s> <strong>para {{::course.preco}}</strong> Até {{::course.promocaoDateend}} </p>
+									   								</div> <!-- //price_popover__header -->
+									   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
+									   							</div> <!-- //price_popover -->
+									   						</span>
+
+														</a> 	
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4548,7 +4559,7 @@
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
 				 										<li class="card-course-serie__item" ng-repeat="produto in ::course.produtos track by produto.id" > 
-				 											<strong class="chapter"> <span class="name"><a ng-href="{{::produto.url}}" >{{::produto.nome}}</a></span> </strong> 
+				 											<strong class="chapter">Curso</strong> <span class="name">{{::produto.nome}}</span> </strong> 
 				 										</li>				 									
 				 									</ul>	
 				 								</div> <!-- /card-course-serie-list__container -->
@@ -4574,7 +4585,7 @@
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
 														</a>
-														<a href="#" class="card-course__button">{{::course.preco}}</a> 	
+														<a class="card-course__button">{{::course.preco}}</a> 	
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4583,8 +4594,8 @@
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
 				 					
-				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.info.conteudos track by conteudo.id" > 
-				 											 <strong class="chapter">{{::conteudo.capitulo}}</strong> <span class="name">{{::conteudo.nome}}</span>
+				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.produtos track by conteudo.id" > 
+				 											 <strong class="chapter">Capítulo</strong> <span class="name">{{::conteudo.nome}}</span>
 				 										</li>				 									
 				 									</ul>	
 				 								</div> <!-- /card-course-serie-list__container -->
@@ -4766,6 +4777,7 @@
 	
 	<script defer src="js/filters/filters.js"></script>
 	<script defer src="js/directive/backImg.js"></script>
+	<script defer src="js/directive/hrefPortal.js"></script>
 
 	<script defer src="js/controllers/modalController.js"></script>
 	<script defer src="js/controllers/carrinhoController.js"></script>

@@ -12,59 +12,60 @@
 						scope.outros = false;
 						scope.filterTab = 'liberado';
 
-					 	if(authService.isLogged() && Authenticated)
+					 	if(Authenticated){
 					 		scope.user = authService.getUser();
 
-					 	authService.courses()
-					 			   .then(function (res){
+						 	authService.courses()
+						 			   .then(function (res){
 
-									 		if(res.matriculas){
-										 		scope.courses = res.matriculas;
-										 		scope.courses.map(function (matricula){
-										 			var timestart,timeend, day, month, year, imagemFile;
+										 		if(res.matriculas){
+											 		scope.courses = res.matriculas;
+											 		scope.courses.map(function (matricula){
+											 			var timestart,timeend, day, month, year, imagemFile;
 
-										 			if(matricula.imagem && matricula.imagem.length){
-														imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
-														if(imagemFile) matricula.imgSrc = imagemFile.src;
-													}
+											 			if(matricula.imagem && matricula.imagem.length){
+															imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
+															if(imagemFile) matricula.imgSrc = imagemFile.src;
+														}
 
-										 			if(matricula.info)
-										 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
-										 			else if (matricula.curso)
-										 				matricula.nomeLimit = filterLimitName(matricula.curso, 100);
+											 			if(matricula.info)
+											 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
+											 			else if (matricula.curso)
+											 				matricula.nomeLimit = filterLimitName(matricula.curso, 100);
 
-										 			if(matricula.data_conclusao){
-										 				timeend = new Date(matricula.data_conclusao*1000);
-										 				day = timeend.getDate();
-														month = timeend.getMonth()+1;
-														year = timeend.getFullYear();
-										 				matricula.msg = "Concluído em "+day+"/"+month+"/"+year;
-										 				matricula.filter = 'finalizado';
-										 			}else if(matricula.status == "Curso Agendado"){
-										 				timestart = new Date(matricula.timestart*1000);
-										 				day = timestart.getDate();
-														month = timestart.getMonth()+1;
-														year = timestart.getFullYear();
-										 				matricula.msg = " Data de Inicío "+day+"/"+month+"/"+year;
-										 				matricula.filter = 'agendado';
-										 				if(!scope.agendados) scope.agendados = true;
-										 			}else if(matricula.status == "Liberado para Acesso"){
-										 				matricula.enable = true;
-										 				timestart = new Date(matricula.timestart*1000);
-										 				day = timestart.getDate();
-														month = timestart.getMonth()+1;
-														year = timestart.getFullYear();
-										 				matricula.msg = "Expira em "+day+"/"+month+"/"+year;
-										 				matricula.filter = 'liberado';
-										 			}else if(matricula.status == "Prazo Encerrado"){
-										 				matricula.filter = 'encerrado';
-										 			}else{
-										 				matricula.filter = 'outros';
-										 				if(!scope.outros) scope.outros = true;
-										 			}
-						 						});
-									 		}
-					 				});
+											 			if(matricula.data_conclusao){
+											 				timeend = new Date(matricula.data_conclusao*1000);
+											 				day = timeend.getDate();
+															month = timeend.getMonth()+1;
+															year = timeend.getFullYear();
+											 				matricula.msg = "Concluído em "+day+"/"+month+"/"+year;
+											 				matricula.filter = 'finalizado';
+											 			}else if(matricula.status == "Curso Agendado"){
+											 				timestart = new Date(matricula.timestart*1000);
+											 				day = timestart.getDate();
+															month = timestart.getMonth()+1;
+															year = timestart.getFullYear();
+											 				matricula.msg = " Data de Inicío "+day+"/"+month+"/"+year;
+											 				matricula.filter = 'agendado';
+											 				if(!scope.agendados) scope.agendados = true;
+											 			}else if(matricula.status == "Liberado para Acesso"){
+											 				matricula.enable = true;
+											 				timestart = new Date(matricula.timestart*1000);
+											 				day = timestart.getDate();
+															month = timestart.getMonth()+1;
+															year = timestart.getFullYear();
+											 				matricula.msg = "Expira em "+day+"/"+month+"/"+year;
+											 				matricula.filter = 'liberado';
+											 			}else if(matricula.status == "Prazo Encerrado"){
+											 				matricula.filter = 'encerrado';
+											 			}else{
+											 				matricula.filter = 'outros';
+											 				if(!scope.outros) scope.outros = true;
+											 			}
+							 						});
+										 		}
+						 				});
+						}
 
 					 }]);
 })();

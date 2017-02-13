@@ -166,7 +166,7 @@ $.fn.simpleLightbox = function( options )
 			}
 			image.html('').attr('style','');
 			curImg.appendTo(image);
-      $('<img src="images/brand/brand_small-light.svg" alt="AltoQi" style="opacity: 0.3;width: 76px;margin: 5px auto 20px auto;">').prependTo(image);
+      $('<img src="images/brand/brand_small-light.svg" alt="QiSat" title="QiSat" style="opacity: 0.3;width: 76px;margin: 5px auto 20px auto;">').prependTo(image);
 			addEvents();
 			overlay.fadeIn('fast');
 			$('.sl-close').fadeIn('fast');
@@ -228,14 +228,14 @@ $.fn.simpleLightbox = function( options )
 				}
 
 				$('.sl-image').css({
-					'top':    ( $( window ).height() - imageHeight ) / 2 + 'px',
+					'top':    ( $( window ).height() - imageHeight ) / 2.5 + 'px',
 					'left':   ( $( window ).width() - imageWidth - globalScrollbarwidth)/ 2 + 'px'
 				});
 				spinner.hide();
 				curImg
 				.css({
 					'width':  imageWidth + 'px',
-					'height': imageHeight - 80 + 'px'
+					'height': imageHeight + 'px'
 				})
 				.fadeIn('fast');
 				opened = true;
