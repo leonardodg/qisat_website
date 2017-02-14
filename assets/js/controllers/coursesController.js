@@ -75,6 +75,14 @@
 								$scope.navLinks = [{title:"Todos os cursos", href : "/cursos"}];
 								switch ($scope.path) {
 								  case "/cursos/online":
+								  case "/cursos/online/teorico":
+								  case "/cursos/online/software":
+								  case "/cursos/series":
+								  case "/cursos/online/estrutural":
+								  case "/cursos/online/eletrica":
+								  case "/cursos/online/hidraulica":
+								  case "/cursos/online/arquitetonica":
+								  case "/cursos/online/agronomica":
 								  		$scope.filters = Config.filters.online;
 								  		$scope.navLinks.push({title:"Online"});
 								    break;
@@ -86,7 +94,7 @@
 								  case "/cursos/lancamentos":
 								  	  	$scope.navLinks.push({title:"Lançamentos" });
 								    break;
-								  case "/cursos/gratuitos":
+								  case "/cursos/online/gratuito":
 								  	  	$scope.navLinks.push({title:"Gratutitos" });
 								    break;
 							  	  default:
@@ -150,7 +158,7 @@
 
 						startCourseList = function(uncheck){
 								var  remove, series, packages, classroom, events, single, releases, 
-									 free, online, list, filter, elemts, selected, show;
+									 free, online, list, filter, elemts, elem, inputs, selected, show;
 
 								// ALTERAR ELEMENTOS DOM
 								if(uncheck){
@@ -172,201 +180,275 @@
 									filter = $scope.coursesList.filter(function (list){ return list.show || list.selected });
 									filter.map( function (list){ list.show = false; list.selected = false; });
 
-									if( $scope.path == '/cursos/lancamentos' ){
+									switch ($scope.path) {
+										case '/cursos/lancamentos':
+											list = $scope.coursesList.find(function (list){ return list.type == 39 });
+											if(!list) {
+												releases = filterTypes($scope.courses, 39);
+												releases.map( function (course){ course.show = true });
+												show = (releases && releases.length) ? true : false;
+												$scope.coursesList.push({ title : 'Lançamentos', courses : releases, type: 39, show : show, card : 'online', limit:6 });
+											}else list.show = true;
+										break;
+										case'/cursos/online/gratuito':
+											list = $scope.coursesList.find(function (list){ return list.type == 8 });
+											if(!list) {
+												free = filterTypes($scope.courses, 8);
+												free.map( function (course){ course.show = true });
+												show = (free && free.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Gratuitos', courses : free, type: 8, show : show, card : 'online', limit:6 });
+											}else list.show = true;
+										break;
+									  	case "/cursos/online":
+										case "/cursos/online/teorico":
+										case "/cursos/online/software":
+										case "/cursos/series":
+										case "/cursos/online/estrutural":
+										case "/cursos/online/eletrica":
+										case "/cursos/online/hidraulica":
+										case "/cursos/online/arquitetonica":
+										case "/cursos/online/agronomica":
 
-										list = $scope.coursesList.find(function (list){ return list.type == 39 });
-										if(!list) {
-											releases = filterTypes($scope.courses, 39);
-											releases.map( function (course){ course.show = true });
-											show = (releases && releases.length) ? true : false;
-											$scope.coursesList.push({ title : 'Lançamentos', courses : releases, type: 39, show : show, card : 'online', limit:6 });
-										}else list.show = true;
+											list = $scope.coursesList.find(function (list){ return list.type == 2 });
+											if(!list) {
+												online = filterTypes($scope.courses, 2);
+												remove = [];
+												online.map(function (course, i){ if(!course.info || course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) remove.push(i); })
+												remove.map( function (i){ delete(online[i]) });
+												online = online.filter( function (el){ return el });
+												online.map( function (course){ course.show = true });
+												show = (online && online.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Online', courses : online, type: 2, show : show, card : 'online', name : 'Online', limit:6 });
+											}else list.show = true;
 
-									}else if( $scope.path == '/cursos/gratuitos' ){
+											list = $scope.coursesList.find(function (list){ return list.type == 32 });
+											if(!list) {
+												series = filterTypes($scope.courses, 32);
+												remove = [];
+												series.map( function (course, i){ if(!course.info) remove.push(i); });
+												remove.map( function (i){ delete(series[i]) });
+												series = series.filter( function (el){ return el });
+												series.map( function (course){ course.show = true });
+												show = (series && series.length) ? true : false;
+												$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : show, card : 'serie', name : 'Series', limit:3 }); // >>>> CORRETO SERIE
+											}else list.show = true;
 
-										list = $scope.coursesList.find(function (list){ return list.type == 8 });
-										if(!list) {
-											free = filterTypes($scope.courses, 8);
-											free.map( function (course){ course.show = true });
-											show = (free && free.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Gratuitos', courses : free, type: 8, show : show, card : 'online', limit:6 });
-										}else list.show = true;
+											list = $scope.coursesList.find(function (list){ return list.type == 17 });
+											if(!list) {
+												packages = filterTypes($scope.courses, 17);
+												remove = [];
+												packages.map( function (course, i){ if(!course.info) remove.push(i); });
+												remove.map( function (i){ delete(packages[i]) });
+												packages = packages.filter( function (el){ return el });
+												packages.map( function (course){ course.show = true });
+												show = (packages && packages.length) ? true : false;
+												$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : packages, type: 17, show : show, card : 'pacotes', name : 'Pacotes', limit:3 }); // >>>> CORRETO SERIE
+											}else list.show = true;
 
-									}else if( $scope.path == '/cursos/online' ){
-
-										list = $scope.coursesList.find(function (list){ return list.type == 2 });
-										if(!list) {
-											online = filterTypes($scope.courses, 2);
-											remove = [];
-											online.map(function (course, i){ if(!course.info || course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) remove.push(i); })
-											remove.map( function (i){ delete(online[i]) });
-											online = online.filter( function (el){ return el });
-											online.map( function (course){ course.show = true });
-											show = (online && online.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Online', courses : online, type: 2, show : show, card : 'online', name : 'Online', limit:6 });
-										}else list.show = true;
-
-										list = $scope.coursesList.find(function (list){ return list.type == 32 });
-										if(!list) {
-											series = filterTypes($scope.courses, 32);
-											remove = [];
-											series.map( function (course, i){ if(!course.info) remove.push(i); });
-											remove.map( function (i){ delete(series[i]) });
-											series = series.filter( function (el){ return el });
-											series.map( function (course){ course.show = true });
-											show = (series && series.length) ? true : false;
-											$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : show, card : 'serie', name : 'Series', limit:3 }); // >>>> CORRETO SERIE
-										}else list.show = true;
-
-										list = $scope.coursesList.find(function (list){ return list.type == 17 });
-										if(!list) {
-											packages = filterTypes($scope.courses, 17);
-											remove = [];
-											packages.map( function (course, i){ if(!course.info) remove.push(i); });
-											remove.map( function (i){ delete(packages[i]) });
-											packages = packages.filter( function (el){ return el });
-											packages.map( function (course){ course.show = true });
-											show = (packages && packages.length) ? true : false;
-											$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : packages, type: 17, show : show, card : 'pacotes', name : 'Pacotes', limit:3 }); // >>>> CORRETO SERIE
-										}else list.show = true;
-									
-									}else if( $scope.path == '/cursos/presenciais' ){
-
-										list = $scope.coursesList.find(function (list){ return list.type == 12 });
-										if(!list) {
-											single = filterTypes($scope.courses, 12);
-											// remove = [];
-											// single.map( function (course, i){ if(!course.info) remove.push(i); });
-											// remove.map( function (i){ delete(single[i]) });
-											// single = classroom.filter( function (el){ return el });
-											single.map( function (course){ course.show = true });
-											show = (single && single.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial - Individual ', courses : single, type: 12, show : show, card : 'online', name : 'Individual', limit:3 });
-										}else list.show = true;
-
-										list = $scope.coursesList.find(function (list){ return list.type == 10 });
-										if(!list) {
+											if($scope.path == '/cursos/online/teorico'){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Tipo' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													elemts = elemts.inputs.find(function(el){ return el.type == 24 });
+													angular.element('#Tipo0').prop('checked', true);
+													$scope.filterTypes(angular.element('#Tipo0'), elemts);
+												}
+											}else if($scope.path == '/cursos/online/software'){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Tipo' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													elemts = elemts.inputs.find(function(el){ return el.type == 23 });
+													angular.element('#Tipo1').prop('checked', true);
+													$scope.filterTypes(angular.element('#Tipo1'), elemts);
+												}
+											}else if($scope.path == '/cursos/series'){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Combinacoes' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													elemts = elemts.inputs.find(function(el){ return el.type == 32 });
+													angular.element('#series').prop('checked', true);
+													$scope.filterTypesProduts(angular.element('#series'), elemts);
+												}
+											}else if($scope.path == "/cursos/online/estrutural" ){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Area' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													inputs = elemts.inputs.find(function(el){ return el.type == 3 });
+													elem = angular.element('#estrutural');
+													elem.prop('checked', true);
+													$scope.addListFilter(elem, inputs, elemts);
+												}
+											}else if($scope.path == "/cursos/online/eletrica" ){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Area' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													inputs = elemts.inputs.find(function(el){ return el.type == 4 });
+													elem = angular.element('#eletrica');
+													elem.prop('checked', true);
+													$scope.addListFilter(elem, inputs, elemts);
+												}
+											}else if($scope.path == "/cursos/online/hidraulica" ){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Area' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													inputs = elemts.inputs.find(function(el){ return el.type == 6 });
+													elem = angular.element('#hidraulica');
+													elem.prop('checked', true);
+													$scope.addListFilter(elem, inputs, elemts);
+												}
+											}else if($scope.path == "/cursos/online/agronomica" ){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Area' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													inputs = elemts.inputs.find(function(el){ return el.type == 34 });
+													elem = angular.element('#agronomica');
+													elem.prop('checked', true);
+													$scope.addListFilter(elem, inputs, elemts);
+												}
+											}else if($scope.path == "/cursos/online/arquitetonica" ){
+												elemts = $scope.filters.find(function(el){ return el.name == 'Area' });
+												if(elemts && elemts.inputs && elemts.inputs.length){
+													inputs = elemts.inputs.find(function(el){ return el.type == 35 });
+													elem = angular.element('#arquitetonica');
+													elem.prop('checked', true);
+													$scope.addListFilter(elem, inputs, elemts);
+												}
+											}
+										break;
+										case '/cursos/presenciais':
+											list = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
 											classroom = filterTypes($scope.courses, 10);
 											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
-											classroom = classroom.filter(function (course){ return !course.eventos });
-											remove = [];
-											classroom.map( function (course, i){ if(!course.info || course.categorias.find(function(tipo){ return tipo.id == 12 })) remove.push(i); });
-											remove.map( function (i){ delete(classroom[i]) });
-											classroom = classroom.filter( function (el){ return el });
-											classroom.map( function (course){ course.show = true });
-											show = (classroom && classroom.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial', courses : classroom, type: 10, show : show, card : 'online', name : 'Presencial', limit:6 });
-										}else list.show = true;
-
-										list = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
-										if(!list && events){
-											events.map( function (course){
-												course.show = true;
-												course.eventos.map( function (edicao){
-													if(edicao.cidade && edicao.cidade.estado) {
-														edicao.show = true;
-														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
-														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
-														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
-														edicao.uf = edicao.cidade.estado.uf;
-													}
+											if(!list && events){
+												events.map( function (course){
+													course.show = true;
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
 												});
-											});
-											events.map( function (course){ course.show = true });
-											show = (events && events.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial - Eventos', courses : events, type: 'eventos', show : show, card : 'eventos', name : 'Eventos', limit:3 });
-										}else if(list) list.show = true;
+												events.map( function (course){ course.show = true });
+												show = (events && events.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial - Eventos', courses : events, type: 'eventos', show : show, card : 'eventos', name : 'Eventos', limit:3 });
+											}else if(list) list.show = true;
 
-									}else{
+											list = $scope.coursesList.find(function (list){ return list.type == 12 });
+											if(!list) {
+												single = filterTypes($scope.courses, 12);
+												// remove = [];
+												// single.map( function (course, i){ if(!course.info) remove.push(i); });
+												// remove.map( function (i){ delete(single[i]) });
+												// single = classroom.filter( function (el){ return el });
+												single.map( function (course){ course.show = true });
+												show = (single && single.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial - Individual ', courses : single, type: 12, show : show, card : 'online', name : 'Individual', limit:3 });
+											}else list.show = true;
 
-										list = $scope.coursesList.find(function (list){ return list.type == 2 });
-										if(!list) {
-											online = filterTypes($scope.courses, 2);
-											remove = [];
-											online.map(function (course, i){ if(!course.info || course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) remove.push(i); })
-											remove.map( function (i){ delete(online[i]) });
-											online = online.filter( function (el){ return el });
-											online.map( function (course){ course.show = true });
-											show = (online && online.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Online', courses : online, type: 2, show : show, card : 'online', name : 'Online'  });
-										}else list.show = true;
+											list = $scope.coursesList.find(function (list){ return list.type == 10 });
+											if(!list) {
+												classroom = classroom.filter(function (course){ return !course.eventos });
+												remove = [];
+												classroom.map( function (course, i){ if(!course.info || course.categorias.find(function(tipo){ return tipo.id == 12 })) remove.push(i); });
+												remove.map( function (i){ delete(classroom[i]) });
+												classroom = classroom.filter( function (el){ return el });
+												classroom.map( function (course){ course.show = true });
+												show = (classroom && classroom.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial', courses : classroom, type: 10, show : show, card : 'online', name : 'Presencial', limit:6 });
+											}else list.show = true;
 
-										list = $scope.coursesList.find(function (list){ return list.type == 12 });
-										if(!list) {
-											single = filterTypes($scope.courses, 12);
-											// remove = [];
-											// single.map( function (course, i){ if(!course.info) remove.push(i); });
-											// remove.map( function (i){ delete(single[i]) });
-											// single = classroom.filter( function (el){ return el });
-											single.map( function (course){ course.show = true });
-											show = (single && single.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial - Individual ', courses : single, type: 12, show : show, card : 'online', name : 'Individual', limit:3 });
-										}else list.show = true;
+										break;
+										default:
 
-										list = $scope.coursesList.find(function (list){ return list.type == 10 });
-										if(!list) {
+											list = $scope.coursesList.find(function (list){ return list.type == 2 });
+											if(!list) {
+												online = filterTypes($scope.courses, 2);
+												remove = [];
+												online.map(function (course, i){ if(!course.info || course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) remove.push(i); })
+												remove.map( function (i){ delete(online[i]) });
+												online = online.filter( function (el){ return el });
+												online.map( function (course){ course.show = true });
+												show = (online && online.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Online', courses : online, type: 2, show : show, card : 'online', name : 'Online'  });
+											}else list.show = true;
+
+											list = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
 											classroom = filterTypes($scope.courses, 10);
 											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
-											classroom = classroom.filter(function (course){ return !course.eventos });
-											remove = [];
-											classroom.map( function (course, i){ if(!course.info || course.categorias.find(function(tipo){ return tipo.id == 12 })) remove.push(i); });
-											remove.map( function (i){ delete(classroom[i]) });
-											classroom = classroom.filter( function (el){ return el });
-											classroom.map( function (course){ course.show = true });
-											show = (classroom && classroom.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial', courses : classroom, type: 10, show : show, card : 'online', name : 'Presencial', limit:6 });
-										}else list.show = true;
-
-										list = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
-										if(!list && events){
-											events.map( function (course){
-												course.show = true;
-												course.eventos.map( function (edicao){
-													if(edicao.cidade && edicao.cidade.estado) {
-														edicao.show = true;
-														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
-														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
-														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
-														edicao.uf = edicao.cidade.estado.uf;
-													}
+											if(!list && events){
+												events.map( function (course){
+													course.show = true;
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
 												});
-											});
-											events.map( function (course){ course.show = true });
-											show = (events && events.length) ? true : false;
-											$scope.coursesList.push({ title : 'Cursos Presencial - Eventos', courses : events, type: 'eventos', show : show, card : 'eventos', name : 'Eventos',limit:3 });
-										}else if(list) list.show = true;
+												events.map( function (course){ course.show = true });
+												show = (events && events.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial - Eventos', courses : events, type: 'eventos', show : show, card : 'eventos', name : 'Eventos',limit:3 });
+											}else if(list) list.show = true;
 
-										list = $scope.coursesList.find(function (list){ return list.type == 32 });
-										if(!list) {
-											series = filterTypes($scope.courses, 32);
-											remove = [];
-											series.map( function (course, i){ if(!course.info) remove.push(i); });
-											remove.map( function (i){ delete(series[i]) });
-											series = series.filter( function (el){ return el });
-											series.map( function (course){ course.show = true });
-											show = (series && series.length) ? true : false;
-											$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : show, card : 'serie', name : 'Series', limit:3 }); // >>>> CORRETO SERIE
-										}else list.show = true;
+											list = $scope.coursesList.find(function (list){ return list.type == 32 });
+											if(!list) {
+												series = filterTypes($scope.courses, 32);
+												remove = [];
+												series.map( function (course, i){ if(!course.info) remove.push(i); });
+												remove.map( function (i){ delete(series[i]) });
+												series = series.filter( function (el){ return el });
+												series.map( function (course){ course.show = true });
+												show = (series && series.length) ? true : false;
+												$scope.coursesList.push({ title : 'Série Online', courses : series, type: 32, show : show, card : 'serie', name : 'Series', limit:3 }); // >>>> CORRETO SERIE
+											}else list.show = true;
 
-										list = $scope.coursesList.find(function (list){ return list.type == 17 });
-										if(!list) {
-											packages = filterTypes($scope.courses, 17);
-											remove = [];
-											packages.map( function (course, i){ if(!course.info) remove.push(i); });
-											remove.map( function (i){ delete(packages[i])});
-											packages = packages.filter( function (el){ return el });
-											packages.map( function (course){ course.show = true });
-											show = (packages && packages.length) ? true : false;
-											$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : packages, type: 17, show : show, card : 'pacotes', name : 'Pacotes',limit:3 }); // >>>> CORRETO SERIE
-										}else list.show = true;
+											list = $scope.coursesList.find(function (list){ return list.type == 17 });
+											if(!list) {
+												packages = filterTypes($scope.courses, 17);
+												remove = [];
+												packages.map( function (course, i){ if(!course.info) remove.push(i); });
+												remove.map( function (i){ delete(packages[i])});
+												packages = packages.filter( function (el){ return el });
+												packages.map( function (course){ course.show = true });
+												show = (packages && packages.length) ? true : false;
+												$scope.coursesList.push({ title : 'Pacote de Cursos Online', courses : packages, type: 17, show : show, card : 'pacotes', name : 'Pacotes',limit:3 }); // >>>> CORRETO SERIE
+											}else list.show = true;
+
+											list = $scope.coursesList.find(function (list){ return list.type == 12 });
+											if(!list) {
+												single = filterTypes($scope.courses, 12);
+												// remove = [];
+												// single.map( function (course, i){ if(!course.info) remove.push(i); });
+												// remove.map( function (i){ delete(single[i]) });
+												// single = classroom.filter( function (el){ return el });
+												single.map( function (course){ course.show = true });
+												show = (single && single.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial - Individual ', courses : single, type: 12, show : show, card : 'online', name : 'Individual', limit:3 });
+											}else list.show = true;
+
+											list = $scope.coursesList.find(function (list){ return list.type == 10 });
+											if(!list) {
+												classroom = classroom.filter(function (course){ return !course.eventos });
+												remove = [];
+												classroom.map( function (course, i){ if(!course.info || course.categorias.find(function(tipo){ return tipo.id == 12 })) remove.push(i); });
+												remove.map( function (i){ delete(classroom[i]) });
+												classroom = classroom.filter( function (el){ return el });
+												classroom.map( function (course){ course.show = true });
+												show = (classroom && classroom.length) ? true : false;
+												$scope.coursesList.push({ title : 'Cursos Presencial', courses : classroom, type: 10, show : show, card : 'online', name : 'Presencial', limit:6 });
+											}else list.show = true;
+										break;
 									}
 								}
+								// console.log($scope.coursesList);
 						}
 
 						$scope.filterTypes = function ( $event, item ) {
-							var checkbox = $event.target;
+							var checkbox = $event.target||$event[0];
 							var selected, filter, elemts;
 							var otherItem; 
+							console.log(checkbox);
+							console.log(item);
 								
 							selected = $scope.coursesList.find( function (el){ return el.type == item.type });
 							if(checkbox.checked) {
@@ -468,7 +550,7 @@
 									}
 
 									filter = $scope.coursesList.filter( function (el){ 
-										return(((el.type == 2 || el.type == 10 || el.type == 32 || el.type == 17 || el.type == 'eventos' ) && el.show )||((el.parent == 2 || el.parent == 32 || el.parent == 17  || el.parent == 10 || el.parent == 'eventos' ) && el.selected ))
+											return(((el.type == 2 || el.type == 10 || el.type == 32 || el.type == 17 || el.type == 'eventos' ) && el.show )||((el.parent == 2 || el.parent == 32 || el.parent == 17  || el.parent == 10 || el.parent == 'eventos' ) && el.selected ))
 										});
 
 									if(!selected.checked){
@@ -600,7 +682,7 @@
 						}
 
 						$scope.filterTypesProduts = function ( $event, item ) {
-							var checkbox = $event.target;
+							var checkbox = $event.target||$event[0];
 							var otherType = (item.type == 32) ? 17 : 32;
 							var selected, otherSelected, filter, elemts;
 
@@ -663,7 +745,7 @@
 						};
 
 						$scope.addListFilter = function ( $event, item, parent ) {
-							var checkbox = $event.target;
+							var checkbox = $event.target||$event[0];
 							var index, newList, filter, courses, selected, show, card;
 
 							var addNavFilter = function(name){

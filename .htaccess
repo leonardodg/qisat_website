@@ -39,7 +39,7 @@
   RewriteRule ^cursos/?$ pages/courses.html [NC]
 
   RewriteRule ^cursos/(lancamentos|gratuitos|destaques)?/?$ pages/courses.html?filter1=$1 [NC]
-  RewriteRule ^cursos/(online|presenciais)/?$ pages/courses.html?mod=$1 [NC]
+  RewriteRule ^cursos/(online|presenciais|series)/?$ pages/courses.html?mod=$1 [NC]
   RewriteRule ^cursos/(online|presenciais)/(lancamentos|gratuitos|destaques)/?$ pages/courses.html?mod=$1&filter1=$2 [NC]
   RewriteRule ^cursos/(online)/(estrutural|eletrica|hidraulica|arquitetonica|agronomica|cad)/?$ pages/courses.html?mod=$1&filter2=$2 [NC]
   RewriteRule ^cursos/(online)/(teorico|software)/?$ pages/courses.html?mod=$1&filter3=$2 [NC]

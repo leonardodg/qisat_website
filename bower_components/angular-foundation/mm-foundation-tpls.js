@@ -3416,7 +3416,7 @@ angular.module("template/accordion/accordion-group.html", []).run(["$templateCac
     "{{heading}}"+
     "</a>\n" +
 
-    "<ul class=\"button-group radius hero-course__buttons-group\" ng-if=\"iconCarrinho\" ><li class=\"hero-course__buttons-group--item\"><div ng-click=\"addCarrinho()\" class=\"addProduto has-price_popover\" ><span class=\"cart\"><i class=\"material-icons\">shopping_cart</i></span><span class=\"card-course__icon-cart\"><div class=\"price_popover\"><div class=\"price_popover__header\"><p class=\"price_popover__header__info\"> <strong> Adicionar capítulo individual </strong> </p></div><div class=\"price_popover__footer\"> R$150,00 {{iconCarrinho.valor}} </div></div></span></div></li></ul>\n"+
+    "<ul class=\"button-group radius hero-course__buttons-group\" ng-if=\"iconCarrinho\" ><li class=\"hero-course__buttons-group--item\"><div ng-click=\"addCarrinho()\" class=\"addProduto has-price_popover\" ><span class=\"cart\"><i class=\"material-icons\">shopping_cart</i></span><span class=\"card-course__icon-cart\"><div class=\"price_popover\"><div class=\"price_popover__header\"><p class=\"price_popover__header__info\"> <strong> Adicionar capítulo individual </strong> </p></div><div class=\"price_popover__footer\"> {{iconCarrinho}} </div></div></span></div></li></ul>\n"+
 
     " <div class=\"content\" ng-class=\"{ active: isOpen }\" ng-transclude></div>\n" +
     "</dd>\n" +

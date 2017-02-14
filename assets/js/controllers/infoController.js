@@ -108,62 +108,58 @@
 														}
 													}
 
-													if(info.isSerie){
+													if(info.isSerie && info.produto.produtos && info.produto.produtos.length){
 														
 														info.conteudos = [];
 														info.produto.id = [];
+														produto = info.produto.produtos.find(function (prod){
+															if(prod && prod.categorias)
+																return prod.categorias.find(function(tipo){ return tipo.id == 41 });
+														});
 
-														if(info.produto.produtos && info.produto.produtos.length){
-															produto = info.produto.produtos.find(function (prod){
-																if(prod.categorias)
-																	return prod.categorias.find(function(tipo){ return tipo.id == 41 });
-															});
+														itens = info.produto
+																	.produtos.filter(function (prod){
+																						if(prod && prod.categorias)
+																							return prod.categorias
+																										.find(function(tipo){ return tipo.id == 31 });
+																					});
+														if(itens && itens.length){
+															itens.map( function (prod){ 
+																			valorItens += prod.preco; 
+																			info.produto.id.push(prod.id); 
+																			if(prod && prod.info){
+																				aux = {
+																						preco : prod.preco,
+																						titulo : prod.info.titulo,
+																						descricao : prod.info.descricao,
+																						dataValor : {
+																							produto : prod.id,
+																							valor : $filter('currency')(prod.preco, 'R$')
+																						},
+																						info : prod.info
+																				};
 
-															itens = info.produto
-																		.produtos.filter(function (prod){
-																							if(prod.categorias)
-																								return prod.categorias
-																											.find(function(tipo){ return tipo.id == 31 });
-																						});
-															if(itens && itens.length){
-																itens.map( function (prod){ 
-																				valorItens += prod.preco; 
-																				info.produto.id.push(prod.id); 
-																				if(prod.info){
-																					aux = {
-																							preco : prod.preco,
-																							titulo : prod.info.titulo,
-																							descricao : prod.info.descricao,
-																							dataValor : {
-																								produto : prod.id,
-																								valor : $filter('currency')(prod.preco, 'R$')
-																							},
-																							info : prod.info
-																					};
-
-																					if(prod.info.files && prod.info.files.length){
-																						videoDemo = prod.info.files.find(function(file){ return file.id_tipo == "2" });
-																						if(videoDemo) aux.demoplay = videoDemo.link;
-																					}
-																					info.conteudos.push(aux);
+																				if(prod.info.files && prod.info.files.length){
+																					videoDemo = prod.info.files.find(function(file){ return file.id_tipo == "2" });
+																					if(videoDemo) aux.demoplay = videoDemo.link;
 																				}
-																		 	});
-															}
-
-															if(produto){
-																info.produto.id = produto.id;
-																info.precoTotal =  $filter('currency')(produto.preco, 'R$');
-																if(produto.promocao){
-																	info.preco = $filter('currency')(produto.valorTotal, 'R$');
-																	info.promocaoDateend = $filter('date')( produto.promocao.datafim*1000, 'dd/MM/yyyy' );
-																}else
-																	info.preco = $filter('currency')(produto.preco, 'R$');
-															}else{
-																info.precoTotal =  $filter('currency')(valorItens, 'R$');
-																info.preco =  $filter('currency')(valorItens, 'R$');
-															}
+																				info.conteudos.push(aux);
+																			}
+																	 	});
 														}
 
+														if(produto){
+															info.produto.id = produto.id;
+															info.precoTotal =  $filter('currency')(produto.preco, 'R$');
+															if(produto.promocao){
+																info.preco = $filter('currency')(produto.valorTotal, 'R$');
+																info.promocaoDateend = $filter('date')( produto.promocao.datafim*1000, 'dd/MM/yyyy' );
+															}else
+																info.preco = $filter('currency')(produto.preco, 'R$');
+														}else{
+															info.precoTotal =  $filter('currency')(valorItens, 'R$');
+															info.preco =  $filter('currency')(valorItens, 'R$');
+														}
 													}else{
 														info.precoTotal =  $filter('currency')(info.produto.preco, 'R$');
 														if(info.promocao){
@@ -173,8 +169,41 @@
 															info.preco = $filter('currency')(info.produto.preco, 'R$');
 
 
-														if(info.isPack){
+														if(info.isPack && info.produto.produtos && info.produto.produtos.length){
+															info.conteudos = [];
 
+															info.produto.produtos.map( function (prod){ 
+																			if(prod && prod.info){
+																				var aux = {}, aulas, tempo, horas;
+																					
+																				aux.preco = prod.preco;
+																				aux.id = prod.info.id;
+																				aux.titulo = prod.nome;
+																				aux.descricao = prod.info.descricao;
+
+																				if(prod.info.files && prod.info.files.length){
+																					videoDemo = prod.info.files.find(function(file){ return file.id_tipo == "2" });
+																					if(videoDemo) aux.demoplay = videoDemo.link;
+																				}
+
+																				if(prod.info.qtd_aulas) { 
+																					prod.info.qtd_aulas = prod.info.qtd_aulas.toString(); 
+																					aux.descricao +=  '<br><strong> Quantidade de Aulas:</strong>&nbsp;'+prod.info.qtd_aulas+'('+prod.info.qtd_aulas.extenso()+') aulas';
+																				}
+
+																				if(prod.tempo_aula){
+																					prod.tempo_aula = prod.tempo_aula.toString();
+																					aux.descricao += '<br><strong> Tempo de acesso disponível por aula:</strong>&nbsp;'+prod.tempo_aula+' ('+prod.tempo_aula.extenso()+') horas';
+																				}
+
+																				if(prod.info.carga_horaria ) {
+																					prod.info.carga_horaria = prod.info.carga_horaria.toString();
+																					aux.descricao += '<br><strong> Carga horária:</strong>&nbsp;'+prod.info.carga_horaria+' ('+prod.info.carga_horaria.extenso()+') horas';
+																				}
+																
+																				info.conteudos.push(aux);
+																			}
+																	 	});
 														}
 													}
 

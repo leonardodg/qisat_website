@@ -20,8 +20,8 @@
 <body ng-controller="carrinhoController as buy">
 
 
-	<div class="off-canvas-wrap" data-offcanvas>
-	  <div class="inner-wrap">
+	<div class="off-canvas-wrap" data-offcanvas >
+	  <div class="inner-wrap" ng-controller="modalController as modal">
 
 		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
@@ -148,7 +148,7 @@
 												<i class="material-icons">chevron_right</i> </a>
 										</li>
 										<li class="menu-filter-sidebar-item" >
-											<a class="menu-filter-sidebar-item--link" href="/cursos/gratuitos"  > Cursos Gratuitos
+											<a class="menu-filter-sidebar-item--link" href="/cursos/online/gratuito"  > Cursos Gratuitos
 												<i class="material-icons">chevron_right</i></a>
 										</li>
 						 		  	</ul>
@@ -4462,7 +4462,8 @@
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 									   					</a>
-									   					<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+									   					<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" 
+									   					ng-if="list.type==2"  >{{::course.preco}}
 									   						<span class="card-course__icon-cart">
 									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 									   							<div class="price_popover" ng-if="::course.promocaoDateend" >
@@ -4473,6 +4474,20 @@
 									   							</div> <!-- //price_popover -->
 									   						</span>
 									   					</a>
+
+									   					<a class="card-course__button has-price_popover" ng-click="modal.interesse()" ng-if="list.type==12||list.type==10" >	{{::course.preco}}
+											             	
+										             		<span class="cart">
+										             			<i class="material-icons">playlist_add_check</i>
+										             		 </span>
+											             	
+												            <span class="card-course__icon-cart">
+												                <div class="price_popover" >
+												                  <div class="price_popover__footer" > Registro de Interesse </div>
+												                </div>
+												            </span>
+											            </a>
+
 									   				</div>  <!-- //card-course-content -->
 									   		</div> <!-- //card-course-inner -->
 										</div> <!-- //card-course -->
@@ -4481,9 +4496,7 @@
 								</li>
 							</ul>
 						</div>
-
-					
-								<!-- FIM MODELO PARA LOOPING | limitTo:1 -->
+						<!-- FIM MODELO PARA LOOPING | limitTo:1 -->
 	
 						<div ng-if="::list.card=='eventos'" id="::list.anchor" >
 								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
@@ -4585,7 +4598,7 @@
 															<span class="card-course__modality">{{::course.modalidade}}</span>  
 															<span class="card-course__name">{{::course.nome}}</span> 
 														</a>
-														<a class="card-course__button">{{::course.preco}}</a> 	
+														<a class="card-course__button" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}</a> 	
 													</div> 
 												</div>
 			 								</div> <!-- // columns -->
@@ -4594,7 +4607,7 @@
 				 								<div class="card-course-serie"> 
 				 									<ul class="card-course-serie__list">
 				 					
-				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.produtos track by conteudo.id" > 
+				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.produtos track by $index" > 
 				 											 <strong class="chapter">Capítulo</strong> <span class="name">{{::conteudo.nome}}</span>
 				 										</li>				 									
 				 									</ul>	
@@ -4629,7 +4642,7 @@
 <!-- ########################## END MAIN ########################## -->
 
 				<!-- ########################## FOOTER ########################## -->
-					<footer class="footer-main" ng-controller="modalController as modal" >
+					<footer class="footer-main" >
 
 						<div class="footer-primary">
 							<div class="row">
