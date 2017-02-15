@@ -4,12 +4,10 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope','$filter' ,'QiSatAPI', 'Config', function($scope,$filter,  QiSatAPI, Config ){
+					[ '$scope','$filter' ,'QiSatAPI', 'Config', function($scope,$filter, QiSatAPI, Config ){
 
 						$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 						$scope.states = Config.states;
-
-						var cursos = [], descontos = Config.convenio, cursosSoftware, cursosTeoricos;
 
 						$scope.addInstitution = function(type){
 							var data = { type: 'add-institution-'+type }, elemts;
@@ -80,41 +78,5 @@
 
 											});
 
-						QiSatAPI.descontoConvenio().then( function ( data ){
-							$scope.cursosSoftware = $.map(data.data.retorno.software, function(value, index) {
-								return [value];
-							});
-							$scope.cursosTeoricos = $.map(data.data.retorno.teoricos, function(value, index) {
-								return [value];
-							});
-							$scope.cursosSoftware.map(function(course){
-								course.preco = $filter('currency')(course.preco, 'R$');
-								course.valorAluno = $filter('currency')(course.valorAluno, 'R$');
-								course.valorAssociado = $filter('currency')(course.valorAssociado, 'R$');
-								course.valorProfessor = $filter('currency')(course.valorProfessor, 'R$');
-								course.valorCREAs = $filter('currency')(course.valorCREAs, 'R$');
-							});
-							$scope.cursosTeoricos.map(function(course){
-								course.preco = $filter('currency')(course.preco, 'R$');
-								course.valorAluno = $filter('currency')(course.valorAluno, 'R$');
-								course.valorAssociado = $filter('currency')(course.valorAssociado, 'R$');
-								course.valorProfessor = $filter('currency')(course.valorProfessor, 'R$');
-								course.valorCREAs = $filter('currency')(course.valorCREAs, 'R$');
-							});
-							$scope.cursosSoftware.sort(function (a, b) {
-								if (a.nome > b.nome)
-									return 1;
-								if (a.nome < b.nome)
-									return -1;
-								return 0;
-							});
-							$scope.cursosTeoricos.sort(function (a, b) {
-								if (a.nome > b.nome)
-									return 1;
-								if (a.nome < b.nome)
-									return -1;
-								return 0;
-							});
-						});
-				}]);
+			}]);
 })();

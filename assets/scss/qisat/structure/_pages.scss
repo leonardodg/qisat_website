@@ -967,12 +967,6 @@ hr.clearfix {
 .parceiros {
 
   .logo {
-    width: 50%;
-    float: left;
-
-    @media screen and (min-width: 40em) {
-      width: 33%;
-    }
 
     a {
       display: block;
@@ -989,6 +983,7 @@ hr.clearfix {
         width: auto;
         max-width: 200px;
         max-height: 100px;
+        padding-bottom: 20px;
       }
 
       span {
@@ -1007,6 +1002,7 @@ hr.clearfix {
 
         span {
           display: none;
+          margin-bottom: 20px;
 
           @media screen and (min-width: 40em) {
             display: block;
@@ -1227,7 +1223,7 @@ hr.clearfix {
   }
 }
 
-#contatoForm {
+#contatoForm, #cadastroConselhoForm, #cadastroInstituicaoForm, #cadastroEntidadeForm, #descontoForm {
   label {
     text-align: left;
 
@@ -1289,6 +1285,103 @@ hr.clearfix {
     td:nth-of-type(6):before { content: ""; }
   }
 }
+
+.tableCreasResponsive {
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    display: block; 
+    thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 35%; 
+    }
+    
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 5%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+    }
+    
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before { content: "Curso"; }
+    td:nth-of-type(2):before { content: "Valor"; }
+    td:nth-of-type(3):before { content: "Total"; }
+
+  }
+}
+
+.tablePreducResponsive {
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    display: block; 
+    thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 35%; 
+    }
+    
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 5%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+    }
+    
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before { content: "Curso"; }
+    td:nth-of-type(2):before { content: "Valor"; }
+    td:nth-of-type(3):before { content: "Professor"; }
+    td:nth-of-type(4):before { content: "Aluno"; }
+    td:nth-of-type(5):before { content: "Assosiado"; }
+
+  }
+}
+
 
 .step-title {
   font-size: 16px;

@@ -6,7 +6,7 @@
       <li class="active"><a href="/institucional/convenios/conselhos"><i class="material-icons right">expand_more</i>Convênios</a>
         <ul>
           <li class="active"><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li></li>
-          <li><a href="/institucional/convenios/preduc/ensino"><i class="material-icons right">chevron_right</i>Projeto Rede Educacional</a></li>
+          <li><a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons right">chevron_right</i>Projeto Rede Educacional</a></li>
         </ul>
       </li>
       <li><a href="/institucional/parceiros">Parceiros</a></li>
@@ -21,54 +21,64 @@
      <div class="large-9 medium-8 columns">
           <div class="page_content">
 
-
-
             <div class="convenios">
               <div class="row entidades">
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+                    <a href="/institucional/convenios/conselhos" ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos/conveniados"><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+                    <a class="active"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos/desconto" class="active"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+                    <a href="/institucional/convenios/conselhos/cadastro"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+
                   </div>
                 </div>
               </div>
             </div>
 
             <h1>Tabela Desconto Conselho - CREAS</h1>
-
-            <table width="100%" class="responsive">
+            <h4>CURSOS SOFTWARES</h4>
+            <table width="100%" class="tableCreasResponsive">
             <thead>
               <tr>
                 <th nowrap><strong>CURSO</strong></th>
-                <th width="75"><strong>VALOR</strong></th>
-                <th width="75"><strong>VALOR PROMOCIONAL</strong></th>
+                <th ><strong>VALOR</strong></th>
+                <th ><strong>VALOR PROMOCIONAL</strong></th>
               </tr>
             </thead>
             <tbody>
-              <tr  > <td colspan="3" > <b>CURSOS SOFTWARES</b> </td></tr>
               <tr ng-repeat="curso in cursosSoftware track by curso.id">
-                  <td nowrap > {{::curso.nome}} </td>
-                  <td> {{::curso.preco}} </td>
-                  <td> {{::curso.valorCREAs}} </td>
-                </tr>
-
-              <tr > <td colspan="3" > <b>CURSOS TEÓRICOS</b> </td></tr>
-              <tr ng-repeat="curso in cursosTeoricos track by curso.id">
-                  <td nowrap > {{::curso.nome}} </td>
+                  <td> {{::curso.nome}} </td>
                   <td> {{::curso.preco}} </td>
                   <td> {{::curso.valorCREAs}} </td>
                 </tr>
              </tbody>
           </table>
+
+          <h4>CURSOS TEÓRICOS</h4>
+          <table width="100%" class="tableCreasResponsive">
+            <thead>
+              <tr>
+                <th><strong>CURSO</strong></th>
+                <th ><strong>VALOR</strong></th>
+                <th ><strong>VALOR PROMOCIONAL</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="curso in cursosTeoricos track by curso.id">
+                  <td> {{::curso.nome}} </td>
+                  <td> {{::curso.preco}} </td>
+                  <td> {{::curso.valorCREAs}} </td>
+                </tr>
+             </tbody>
+          </table>
+
 
           </div> <!-- //page_content -->
 

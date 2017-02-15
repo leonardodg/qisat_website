@@ -6,7 +6,7 @@
       <li class="active"><a href="/institucional/convenios/conselhos"><i class="material-icons right">expand_more</i>Convênios</a>
         <ul>
           <li><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li>
-          <li><a href="/institucional/convenios/preduc/ensino"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+          <li><a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
             <ul>
               <li><a href="/institucional/convenios/preduc/ensino">Instituição de Ensino</a></li>
               <li class="active"><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
@@ -32,17 +32,17 @@
               <div class="row entidades">
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/preduc/entidade" class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
-                  </div>
-                </div>
-                <div class="column small-12 medium-4">
-                  <div>
                     <a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
                     <a href="/institucional/convenios/preduc/descontos"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+                  </div>
+                </div>
+                <div class="column small-12 medium-4">
+                  <div>
+                    <a href="/institucional/convenios/preduc/entidade" class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
                   </div>
                 </div>
               </div>
@@ -95,50 +95,50 @@
         <form name="cadastroEntidadeForm" id="cadastroEntidadeForm" data-abide>
 
           <div class="row">
-            <div class="small-3 columns">
-              <label for="nameEntidade" class="text-right middle"> Nome da Entidade <small>*</small> </label>
+            <div class="small-12 medium-3 columns">
+              <label for="nameEntidade" class="middle"> Nome da Entidade <small>*</small> </label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-12 medium-9 columns">
               <input type="text" name="nameEntidade" id="nameEntidade" placeholder="Nome Completo" ng-model="entidade.nome_instituicao" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>
 
           <div class="row">
-            <div class="small-3 columns">
-              <label for="nameResponsavelEntidade" class="text-right middle"> Nome do Responsável <small>*</small> </label>
+            <div class="small-12 medium-3 columns">
+              <label for="nameResponsavelEntidade" class="middle"> Nome do Responsável <small>*</small> </label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-12 medium-9 columns">
               <input type="text" name="nameResponsavelEntidade" id="nameResponsavelEntidade" placeholder="Nome Completo"  ng-model="entidade.nome_responsavel" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>
 
           <div class="row">
-            <div class="small-3 columns">
-              <label for="namePresidente" class="text-right middle"> Nome do Presidente <small>*</small> </label>
+            <div class="small-12 medium-3 columns">
+              <label for="namePresidente" class="middle"> Nome do Presidente <small>*</small> </label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-12 medium-9 columns">
               <input type="text" name="namePresidente" id="namePresidente" placeholder="Nome Completo"  ng-model="entidade.nome_coordenador" required>
               <small class="error">Nome é Obrigatório!</small>
             </div>
           </div>                  
 
           <div class="row">
-            <div class="small-3 columns">
-              <label for="emailEntidade" class="text-right middle ">E-mail para contato <small>*</small>
+            <div class="small-12 medium-3 columns">
+              <label for="emailEntidade" class="middle ">E-mail para contato <small>*</small>
             </div>
-            <div class="small-9 columns">
+            <div class="small-12 medium-9 columns">
               <input type="email" name="emailEntidade" id="emailEntidade" placeholder="Digite seu E-mail"  ng-model="entidade.email" ng-pattern="emailFormat" required >
               <small class="error">Formato de Email incorreto!</small>
             </div>
           </div>
 
           <div class="row">
-            <div class="small-3 columns">
-              <label for="phoneEntidade" class="text-right middle">Telefone para contato <small>*</small></label>
+            <div class="small-12 medium-3 columns">
+              <label for="phoneEntidade" class="middle">Telefone para contato <small>*</small></label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-12 medium-9 columns">
               <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD" ng-model="entidade.telefone" mask="(99) 9?9999-9999" required>
               <small class="error">Telefone é Obrigatório!</small>
             </div>

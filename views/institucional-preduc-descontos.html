@@ -6,7 +6,7 @@
       <li class="active"><a href="/institucional/convenios/conselhos"><i class="material-icons right">expand_more</i>Convênios</a>
         <ul>
           <li><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li>
-          <li><a href="/institucional/convenios/preduc/ensino"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+          <li><a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
             <ul>
               <li class="active"><a href="/institucional/convenios/preduc/ensino">Instituição de Ensino</a></li>
               <li class="active"><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
@@ -26,21 +26,14 @@
      <div class="large-9 medium-8 columns">
           <div class="page_content">
 
-
-
           <div class="convenios">
             <div class="row entidades">
-              <div class="column small-4">
-                <div>
-                  <a href="/institucional/convenios/preduc/ensino"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
-                </div>
-              </div>
-              <div class="column small-4">
+              <div class="column small-12 medium-6">
                 <div>
                   <a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
                 </div>
               </div>
-              <div class="column small-4">
+              <div class="column small-12 medium-6">
                 <div>
                   <a href="/institucional/convenios/preduc/descontos" class="active"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
                 </div>
@@ -48,38 +41,48 @@
             </div>
           </div>
 
+          <h1>Tabela Desconto Instituições & Entidade de Classe </h1>
+          <h4>CURSOS SOFTWARES</h4>
 
-              <h1>Tabela Desconto Instituições & Entidade de Classe </h1>
-
-          <table border="0" cellspacing="0" cellpadding="0" width="705" align="center">
+          <table class="tablePreducResponsive" >
             <thead>
               <tr>
-                <th nowrap><strong>CURSO</strong></th>
-                <th width="75"><strong>VALOR</strong></th>
-                <th width="75"><strong>PROFESSOR</strong></th>
-                <th width="75"><strong>ALUNO</strong></th>
-                <th width="75"><strong>ASSOCIADO</strong></th>
+                <th><strong>CURSO</strong></th>
+                <th><strong>VALOR</strong></th>
+                <th><strong>PROFESSOR</strong></th>
+                <th><strong>ALUNO</strong></th>
+                <th><strong>ASSOCIADO</strong></th>
               </tr>
             </thead>
             <tbody>
-              <tr  > <td colspan="5" > CURSOS SOFTWARES </td></tr>
               <tr ng-repeat="curso in cursosSoftware track by curso.id">
-                  <td nowrap > {{::curso.nome}} </td>
+                  <td > <span title="{{::curso.nome}}">{{::curso.nomeLimit}}</span> </td>
                   <td> {{::curso.preco}} </td>
                   <td> {{::curso.valorProfessor}} </td>
-                    <td> {{::curso.valorAluno}} </td>
-                      <td> {{::curso.valorAssociado}} </td>
-
+                  <td> {{::curso.valorAluno}} </td>
+                  <td> {{::curso.valorAssociado}} </td>
                 </tr>
+             </tbody>
+          </table>
 
-              <tr > <td colspan="5" > CURSOS TEÓRICOS </td></tr>
+         <h4>CURSOS TEÓRICOS</h4>
+         <table class="tablePreducResponsive" >
+            <thead>
+              <tr>
+                <th><strong>CURSO</strong></th>
+                <th><strong>VALOR</strong></th>
+                <th><strong>PROFESSOR</strong></th>
+                <th><strong>ALUNO</strong></th>
+                <th><strong>ASSOCIADO</strong></th>
+              </tr>
+            </thead>
+            <tbody>
               <tr ng-repeat="curso in cursosTeoricos track by curso.id">
-                  <td nowrap > {{::curso.nome}} </td>
+                  <td> <span title="{{::curso.nome}}">{{::curso.nomeLimit}}</span> </td>
                   <td> {{::curso.preco}} </td>
                   <td> {{::curso.valorProfessor}} </td>
-                    <td> {{::curso.valorAluno}} </td>
-                      <td> {{::curso.valorAssociado}} </td>
-
+                  <td> {{::curso.valorAluno}} </td>
+                  <td> {{::curso.valorAssociado}} </td>
                 </tr>
              </tbody>
           </table>

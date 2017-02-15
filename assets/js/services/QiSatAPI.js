@@ -381,17 +381,17 @@
 							 * 1- {'sucesso': true, 'ecmProduto': lista de produtos dividida por tipo com valores e descontos}
 							 *
 							 * */
-							descontoConvenio : function (data) {
+							descontoConvenio : function () {
 								var promise = $http({
-									method: 'POST',
-									url: Config.baseUrl+'/convenio/wsc-convenio/desconto-convenio',
-									data: data
+									method: 'GET',
+									url: Config.baseUrl+'/convenio/wsc-convenio/desconto-convenio'
 								});
 
-								promise.then( handleSuccess, handleError );
-
-								return promise;
-
+								return promise.then( function(res){
+									if((res && res.status == 200 && res.data)&&(res.data.retorno))
+										return res.data.retorno;
+									return false;
+								}, function(res){ return res });
 							}
 
 						};
