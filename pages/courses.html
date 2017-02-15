@@ -4523,9 +4523,9 @@
 			 								</div> <!-- // columns -->
 
 			 								<div class="small-12 medium-8 columns">
-				 								<div class="card-course-serie"> 
-				 									<ul class="card-course-serie__list">
-				 										<li class="card-course-serie__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
+				 								<div class="card-course-presencial"> 
+				 									<ul class="card-course-presencial__list">
+				 										<li class="card-course-presencial__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
 				 											<a ng-href="{{course.info.url+'?turma='+edicao.id}}" target="_self"> <strong class="chapter"> <span class="name">{{::edicao.cidadeuf}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong>  </a>
 				 										</li>				 									
 				 									</ul>	
