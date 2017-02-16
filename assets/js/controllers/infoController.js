@@ -223,6 +223,8 @@
 
 														info.produto.eventos.map( function (evento){
 															evento.qtd = 1;
+															evento.isClass = true;
+															evento.curso = info.titulo;
 
 															if(turma && turma == evento.id)
 																evento.hide = true;

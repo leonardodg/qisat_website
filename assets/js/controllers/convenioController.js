@@ -12,19 +12,16 @@
 						$scope.addInstitution = function(type){
 							var data = { type: 'add-institution-'+type }, elemts;
 
-							if(type == 1) {
+							if(type == 1)
 								data = $scope.institution;
-								data.ecm_convenio_tipo_instituicao_id = 'Instituição de Ensino';
-							} else if(type == 2) {
+							else if(type == 2) {
 								data = $scope.entidade;
-								data.ecm_convenio_tipo_instituicao_id = 'Entidade de Classe';
 								data.cargo = 'Presidente';
-							} else if(type == 3) {
+							}else if(type == 3) 
 								data = $scope.conselho;
-								data.ecm_convenio_tipo_instituicao_id = 'Conselho';
-							} else return;
+							else return;
 
-							data.typeid = type;
+							data.ecm_convenio_tipo_instituicao_id = type;
 							elemts = angular.element('.alert-box');
 							elemts.css('display', 'none');
 
@@ -33,6 +30,9 @@
 												if(response.data.retorno.sucesso){
 													elemts = angular.element('.alert-'+type+'-ok');
 													elemts.css('display', 'inline-block');
+													$scope.conselho = {};
+													$scope.entidade = {};
+													$scope.institution = {};
 												}else{
 													elemts = angular.element('.alert-'+type+'-error');
 													elemts.css('display', 'inline-block');
@@ -46,14 +46,15 @@
 						$scope.institutionDiscount = function(){
 							var data = $scope.desconto, elemts;
 
-							data.id = data.institution.id;
-
 							elemts = angular.element('.alert-box');
 							elemts.css('display', 'none');
+							data.ecm_convenio_id = data.institution.id;
+							delete(data.institution);
 
 							QiSatAPI.addInteresse(data)
 										.then( function ( response ){
 												if(response.data.retorno.sucesso){
+													$scope.desconto = {};
 													elemts = angular.element('.alert-discount-ok');
 													elemts.css('display', 'inline-block');
 												}else{

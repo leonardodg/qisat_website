@@ -43,6 +43,22 @@
 
 		                        },
 
+		                        repasse : function(data){
+
+		                        	var promise = $http({ 
+		                                                    method: 'POST', 
+		                                                    url: Config.baseUrl+'/repasse/wsc-repasse/salvar',
+		                                                    data: data
+		                                                        });
+
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+
+		                        },		                        
+
 		                        checkByEmail : function (email) {
 
 		                            var promise = $http({ 
@@ -274,7 +290,7 @@
 										return promise;
 							},
 
-							sendMail : function (data) {
+							remember : function (data) {
 									var promise = $http({ 
 															method: 'POST', 
 															url: Config.baseUrl+'/wsc-user/lembrete-senha',
@@ -368,9 +384,7 @@
 								});
 
 								promise.then( handleSuccess, handleError );
-
 								return promise;
-
 							},
 							/*
 							 * Função responsável por listar todos os cursos e todos os descontos dos convenios

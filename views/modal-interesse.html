@@ -5,10 +5,15 @@
                   <span class="brand-qisat-small brand-qisat-small-light"></span>
            </header>
 
-			<header class="section-call__form--header">
+			<header class="section-call__form--header" ng-hide="enviado">
 				<div class="row">
 					<div class="large-12 columns">
 				 			<h4 class="section-call__form--header-title">Registro de Interesse</h4>
+				 			
+				 			<p ng-if="tipo=='presencial'"> Mensagem Interesse Curso Presencial </p>
+				 			<p ng-if="tipo=='individual'"> Mensagem Interesse Curso Individual </p>
+				 			<p ng-if="tipo=='turma'"> Mensagem Interesse em Turma </p>
+
 				  		<p><b>Este evento esta lotado.<br><br>Registre aqui seu interesse em lista de espera.</b> Assim, se houver desistência de inscritos ou uma nova edição deste curso entraremos em contato primeiramente com você.</p>
 					</div>
 				</div>
@@ -154,16 +159,16 @@
 							</div>
 
 							<div class="small-12 columns">
-							    <div ng-show="(callForm.operadora.$dirty || submitted) && callForm.operadora.$invalid">
-				                    <span class="error" ng-show="callForm.operadora.$error.required">Operadora de telefone é Obrigatório!</span>
+							    <div ng-show="(insteresseForm.operadora.$dirty || submitted) && insteresseForm.operadora.$invalid">
+				                    <span class="error" ng-show="insteresseForm.operadora.$error.required">Operadora de telefone é Obrigatório!</span>
 			                     </div>
 
-								<div ng-show="(callForm.fone.$dirty || submitted) && callForm.fone.$invalid">
-				                    <span class="error" ng-show="callForm.fone.$error.required">Número do telefone é Obrigatório!</span>
+								<div ng-show="(insteresseForm.fone.$dirty || submitted) && insteresseForm.fone.$invalid">
+				                    <span class="error" ng-show="insteresseForm.fone.$error.required">Número do telefone é Obrigatório!</span>
 			                     </div>
 
-								<div ng-show="(callForm.fone.$dirty || submitted) && callForm.fone.$invalid">
-				                    <span class="error" ng-show="callForm.fone.$error.mask">Formato do telefone Inválido!</span>
+								<div ng-show="(insteresseForm.fone.$dirty || submitted) && insteresseForm.fone.$invalid">
+				                    <span class="error" ng-show="insteresseForm.fone.$error.mask">Formato do telefone Inválido!</span>
 			                     </div>
 						    </div>
 
@@ -185,11 +190,11 @@
 							<div class="small-12 columns">
 						        <input id="email" name="email" type="email" placeholder="seu@email.com" ng-required="true" ng-pattern="emailFormat" email-check ng-model="dados.email" />
 
-						        <div ng-show="(callForm.email.$dirty || submitted) && callForm.email.$invalid">
-				                    <span class="error" ng-show="callForm.email.$error.required">Email é Obrigatório!</span>
+						        <div ng-show="(insteresseForm.email.$dirty || submitted) && insteresseForm.email.$invalid">
+				                    <span class="error" ng-show="insteresseForm.email.$error.required">Email é Obrigatório!</span>
 			                     </div>
 
-				                <div ng-show="callForm.email.$dirty && callForm.email.$error.pattern">
+				                <div ng-show="insteresseForm.email.$dirty && insteresseForm.email.$error.pattern">
 				                    <span class="error" >Formato de Email incorreto!</span>
 				                </div>
 
@@ -204,7 +209,7 @@
 					<div class="medium-10 columns">
 						<div class="row">
 									<div class="small-12 columns">
-							    <button class="expand button" ng-click="solicitarContato(dados, callForm)" ng-disabled="loading" > Enviar</button>
+							    <button class="expand button" ng-click="submit(dados, insteresseForm)" ng-disabled="loading" > Enviar</button>
 							    </div>
 						</div>
 					</div>
@@ -221,7 +226,7 @@
 												l16.18,16.136l34.21-34.209l6.356,6.399L37.114,68.649z"/>
 												</svg>
 										</span>
-										<span class="section-call__done--title">Sua solicitação de contato foi enviada com sucesso.</span>
+										<span class="section-call__done--title">Seu registro de interesse foi enviado com sucesso.</span>
 										<span class="section-call__done--subtitle">Em breve um de nossos atendentes entrará em contato com você.</span>
 								</div> <!-- // large-12 columns -->
 				</div><!-- // row -->
