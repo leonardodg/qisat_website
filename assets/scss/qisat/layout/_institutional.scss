@@ -42,9 +42,17 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    
+
+    li:hover{
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
 
   .span{
     color: #222222;
+
   }
   }
 

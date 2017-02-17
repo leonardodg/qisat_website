@@ -484,7 +484,7 @@
       .testimonial{
         &__background { background-position: left top; background-size: cover;}
         &__background{}
-        &__quote { padding: 0 40px; font-style: italic; font-size: 1.7em; line-height: 1.2; letter-spacing: 0.02em; color: #fff; font-weight: 300; }
+        &__quote { padding: 0 40px; font-style: italic; font-size: 1.7em; line-height: 1.2; letter-spacing: 0.02em; color: #fff; font-weight: 300; text-align: justify; }
         &__name{ font-size: 0.75em; font-weight: 500; text-transform: uppercase; color: #939da5; letter-spacing: 0.15em; margin-top: 2rem; padding: 0 40px; }
         &__item { display: inline-block; width: 100%; min-height: 500px; }
       }
