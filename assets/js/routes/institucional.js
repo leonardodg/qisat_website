@@ -20,18 +20,15 @@
             });
             
             $routeProvider.when('/institucional/convenios-e-parceiros', {
-               templateUrl : '/views/institucional-parceiros.html',
-               controller : 'convenioController'
+               templateUrl : '/views/institucional-parceiros.html'
             });
 
             $routeProvider.when('/institucional/parceiros', {
-              templateUrl : '/views/institucional-parceiros.html',
-              controller : 'convenioController'
+              templateUrl : '/views/institucional-parceiros.html'
             });
 
             $routeProvider.when('/institucional/convenios/conselhos', {
-              templateUrl : '/views/institucional-conselhos-conveniados.html',
-              controller : 'convenioController'
+              templateUrl : '/views/institucional-conselhos-conveniados.html'
             });
 
             $routeProvider.when('/institucional/convenios/conselhos/cadastro', {
@@ -97,13 +94,48 @@
 
             $routeProvider.when('/institucional/convenios/preduc/conveniadas', {
               templateUrl : '/views/institucional-preduc-conveniadas.html',
-              controller : 'convenioController'
+              controller :  function($scope,  Config, institutions){
+                            $scope.states = Config.states;
+                            $scope.institutions = institutions;
+              },
 
+              resolve : {
+                    institutions : function (QiSatAPI, $filter){
+                          return QiSatAPI.getConvenios()
+                                         .then( function ( response ){
+                                                var data = [];
+                                                if(response.status == 200) 
+                                                  data = response.data.retorno.ecmConvenio;
+                                                data.map(function (el){
+                                                  el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
+                                                });
+                                                return data;
+                                          });
+                      }
+                  }
             });
 
             $routeProvider.when('/institucional/convenios/preduc/inscricao', {
               templateUrl : '/views/institucional-preduc-inscricao.html',
-              controller : 'convenioController'
+              controller :  function($scope,  Config, institutions){
+                            $scope.states = Config.states;
+                            $scope.selectInstitution = institutions;
+              },
+
+              resolve : {
+                    institutions : function (QiSatAPI, $filter){
+                          return QiSatAPI.getConvenios()
+                                         .then( function ( response ){
+                                                var data = [];
+                                                if(response.status == 200) 
+                                                  data = response.data.retorno.ecmConvenio;
+                                                data.map(function (el){
+                                                  el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
+                                                });
+                                                return data;
+                                          });
+                      }
+                  }
             });            
 
             $routeProvider.when('/institucional/instrutores-e-professores', {

@@ -315,19 +315,6 @@
 
 							},
 
-							login : function (data) {
-								var promise = $http({ 
-															method: 'POST', 
-															url: Config.baseUrl+'/moodle/login',
-															data: data
-														});
-
-										promise.then( handleSuccess, handleError );
-
-										return promise;
-
-							}
-
 						/*
 						 * Função reponsável por inserir convênios
 						 * Deve ser feito requisições do tipo POST, informando os seguintes parâmetros no formato JSON:
@@ -350,7 +337,7 @@
 						 * 5- {'sucesso':false, 'mensagem': 'Erro ao salvar repasse'}
 						 * 6- {'sucesso':false, 'mensagem': 'Não foi possível inserir o convênio'}
 						 * */
-							,addInstitution : function (data) {
+							addInstitution : function (data) {
 								var promise = $http({
 									method: 'POST',
 									url: Config.baseUrl+'/convenio/wsc-convenio/inserir',
