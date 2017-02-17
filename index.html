@@ -16,7 +16,7 @@
 
 <body ng-controller="carrinhoController as buy"> 
 	<div class="off-canvas-wrap" data-offcanvas>
-		<div class="inner-wrap">
+		<div class="inner-wrap" ng-controller="modalController as modal">
 
 			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
@@ -291,7 +291,9 @@
 																	<span class="card-course__modality">{{::course.modalidade}}</span>
 																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 																</a>
-																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+
+
+																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie" >{{::course.preco}}
 										   						<span class="card-course__icon-cart">
 										   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 										   							<div class="price_popover" ng-if="::course.promocaoDateend">
@@ -302,6 +304,20 @@
 										   							</div> <!-- //price_popover -->
 										   						</span>
 									   							</a>
+
+									   							<a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="course.isIndividual||course.isClassroom"  >	{{::course.preco}}
+													             	
+												             		<span class="cart">
+												             			<i class="material-icons">playlist_add_check</i>
+												             		 </span>
+													             	
+														            <span class="card-course__icon-cart">
+														                <div class="price_popover" >
+														                  <div class="price_popover__footer" > Registro de Interesse </div>
+														                </div>
+														            </span>
+													            </a>
+
 															</div> 
 														</div>
 													</div>
@@ -418,7 +434,7 @@
 
 
 				<!-- ########################## FOOTER ########################## -->
-					<footer class="footer-main" ng-controller="modalController as modal" >
+					<footer class="footer-main">
 
 						<div class="footer-primary">
 							<div class="row">

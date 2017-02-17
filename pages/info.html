@@ -144,7 +144,7 @@
 			              </span>
 			            </a></li>
 
-			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual||vm.info.isClassroom" ><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse()" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual||(vm.info.isClassroom&&!vm.turma)" ><a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse(vm.info)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" >
 			                  <div class="price_popover__footer">  Registro de Interesse </div>
@@ -154,7 +154,7 @@
 
 			             <li class="hero-course__buttons-group--item" ng-if="vm.turma">
 
-			             	<a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse()" ng-if="!vm.turma.vagas" >{{::vm.info.preco}} 
+			             	<a class="button buttom-price has-price_popover card-course__button" anchor-link class="button" ng-click="modal.interesse(vm.turma)" ng-if="!vm.turma.vagas" >{{::vm.info.preco}} 
 				             	<span class="cart">
 				             		<i class="material-icons">playlist_add_check</i>
 				             	</span>
@@ -294,7 +294,7 @@
 
 					
 	 	 			 		<div ng-if="!vm.turma.vagas" >
-	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse()"> <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
+	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse(vm.turma)"> <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
 	 	 			 		</div>
 
 	 	 			 		<span class="course__price-group__remaining">Restam ainda {{vm.turma.vagas}} vagas</span>

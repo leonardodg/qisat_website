@@ -6,6 +6,7 @@
 		.controller('rememberController', ['$scope', '$location', 'QiSatAPI', 'authService',
 					 function(scope, $location, QiSatAPI, authService ) {
 
+					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.sendMail = function(){
 							var data = { email : scope.email }, alertBox, sendOk, error ;
 								alertBox = angular.element(document.querySelectorAll('.alert-box'));
@@ -13,13 +14,15 @@
 								error = angular.element(document.querySelector('.alert-send-error'));
 								alertBox.css('display', 'none');
 
-							QiSatAPI.sendMail(data)
+							QiSatAPI.remember(data)
 										.then( function ( response ){
-											console.log(response);
-												if(response.data.retorno.sucesso)
+												if(response && response.data && response.data.retorno && response.data.retorno.sucesso)
 													sendOk.css('display', 'inline-block');
-											    else
+											    else{
 												 	error.css('display', 'inline-block');
+												 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem)
+												 		error.append('<br/> <span>'+response.data.retorno.mensagem+' </span>');
+											    }
 											}, function ( response ){
 												error.css('display', 'inline-block');
 											});
