@@ -47,7 +47,7 @@
 
 
 						scope.filterInstructor = function(elem){
-									var result, keys = [];
+									var result, keys = [], formacoes = ['Arquiteto', 'Eng. Agronomo', 'Eng. Civil', 'Eng. Eletricista', 'Eng. Sanitarista'];
 									if(scope.areas || scope.formacao) {
 										result = false;
 										if(scope.areas)
@@ -55,12 +55,12 @@
 										if (keys.length){
 											keys.map(function(key, index) {
 											   if(scope.areas[key] == elem.areas[key])
-											  	 result = true
+											  	 result = true;
 											});
 										}
 
-										if (scope.formacao == elem.formacao || (elem.formacao == "Outros" && scope.formacao != elem.formacao))
-								   			result = true
+										if (scope.formacao == elem.formacao || (scope.formacao == "Outros" && formacoes.indexOf(elem.formacao) < 0))
+								   			result = true;
 									}else result = true;
 									return result;
 						};

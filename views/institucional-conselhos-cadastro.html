@@ -45,45 +45,60 @@
             
         <h1>Solicitar Cadastro de Conselho</h1>
           
-        <form name="cadastroConselhoForm" id="cadastroConselhoForm" data-abide>
+        <form name="cadastroConselhoForm" id="cadastroConselhoForm" novalidate>
 
           <div class="row">
             <div class="small-12 medium-3 columns">
-              <label for="nameConselho" class="middle"> Nome do Conselho <small>*</small> </label>
+              <label for="nameConselho" class="middle"> Nome do Conselho <strong title="Campo Obrigatório">*</strong>
+              </label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="conselho.nome_instituicao" required>
-              <small class="error">Nome é Obrigatório!</small>
+              <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="conselho.nome_instituicao" ng-required="true">
+              <div ng-show="cadastroConselhoForm.nameConselho.$dirty && cadastroConselhoForm.nameConselho.$invalid">
+                  <span class="error" ng-show="cadastroConselhoForm.nameConselho.$error.required">Conselho é Obrigatório!</span>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="small-12 medium-3 columns">
-              <label for="nameResponsavel" class="middle"> Nome do Responsável <small>*</small> </label>
+              <label for="nameResponsavel" class="middle"> Nome do Responsável <strong title="Campo Obrigatório">*</strong> </label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="conselho.nome_responsavel" required>
-              <small class="error">Nome é Obrigatório!</small>
+              <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="conselho.nome_responsavel" ng-required="true">
+              <div ng-show="cadastroConselhoForm.nameResponsavel.$dirty && cadastroConselhoForm.nameResponsavel.$invalid">
+                  <span class="error" ng-show="cadastroConselhoForm.nameResponsavel.$error.required">Responsável é Obrigatório!</span>
+              </div>
             </div>
           </div>  
 
           <div class="row">
             <div class="small-12 medium-3 columns">
-              <label for="emailResponsavel" class="middle">E-mail do Responsável <small>*</small>
+              <label for="emailResponsavel" class="middle">E-mail do Responsável <strong title="Campo Obrigatório">*</strong>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" required >
-              <small class="error">Formato de Email incorreto!</small>
+              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" ng-required="true" >
+
+              <div ng-show="cadastroConselhoForm.emailResponsavel.$dirty && cadastroConselhoForm.emailResponsavel.$invalid">
+                    <span class="error" ng-show="cadastroConselhoForm.emailResponsavel.$error.required">Email é Obrigatório!</span>
+              </div>
+
+              <div ng-show="cadastroConselhoForm.emailResponsavel.$dirty && cadastroConselhoForm.emailResponsavel.$error.pattern">
+                <span class="error" >Formato de Email incorreto!</span>
+              </div>
+
             </div>
           </div>
 
           <div class="row">
             <div class="small-12 medium-3 columns">
-              <label for="phoneResponsavel" class="middle">Telefone do Responsável <small>*</small></label>
+              <label for="phoneResponsavel" class="middle">Telefone do Responsável <strong title="Campo Obrigatório">*</strong></label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="conselho.telefone" mask="(99) 9?9999-9999" required>
-              <small class="error">Telefone é Obrigatório!</small>
+              <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="conselho.telefone" mask="(99) 9?9999-9999" ng-required="true">
+             <div ng-show="cadastroConselhoForm.phoneResponsavel.$dirty && cadastroConselhoForm.phoneResponsavel.$invalid">
+                  <span class="error" ng-show="cadastroConselhoForm.phoneResponsavel.$error.required">Telefone é Obrigatório!</span>
+            </div>
             </div>
           </div>
           <br>

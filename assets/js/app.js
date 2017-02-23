@@ -2,8 +2,6 @@ $(function() {
   $(document).on('click', ".show-filters a", function(e){
     e.preventDefault();
 
-    console.log("sssssssssssssss");
-      
     var $elText = $(this).find("span");
 
     if($elText.text() == "Mostrar filtros"){
@@ -43,50 +41,11 @@ $(function() {
 
 
 $(document).ready(function() {
-
   $(document).on('click', ".btn-password", function(e){
-    console.log(e);
     e.preventDefault();
     $(".showPassword").slideToggle();
   });
-
-  $(document).on('click', ".timeline__list-group li", function(e){
-    e.preventDefault();
-
-    var getRef = $(this).closest("li").data("year");
-    $(this).addClass("active").siblings().removeClass("active");
-    $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
-  });
-
-  // if ( $('#sidebar-styker').length ) {
-  //      $("#sidebar-styker").stick_in_parent({
-  //       offset_top: 80,
-  //       recalc_every: 1,
-  //      });
-  // }
-
-  //  if ( $('#sidebar-styker--courses').length ) {
-  //      $("#sidebar-styker--courses").stick_in_parent({
-  //       offset_top: 200,
-  //       recalc_every: 1,
-  //      });
-  // }
-
 }());
-
-/* Temporário
-   temporário, usado somente para testar,
-   se clicar  .cd-item-remove  */
-
-$(function() {
-  if ( $('.cd-item-remove').length ) {
-           $('.cd-item-remove').on('click', function(event){
-                   //event.preventDefault();
-                  $(this).parent().addClass("remove");
-                    console.log("clicado");
-          });
-  }
-});
 
 
 //toggle foter
@@ -126,8 +85,6 @@ $(function() {
                   $(".card-course").addClass("card-format-block");
                   $(".list-filter").removeClass("small-block-grid-1 medium-block-grid-1 large-block-grid-1").addClass("small-block-grid-1 medium-block-grid-3 large-block-grid-3");
                  }
-
-
            });
       }
     }());
@@ -142,23 +99,6 @@ $(document).ready(function() {
           $(this).closest('form').submit();
         });
 
-
-
-
-
-        $('body').on('click', '.navigation_courses__list-item--link', function(e){
-          e.preventDefault();
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-
-            if (target.length) {
-              $('html, body').animate({
-                scrollTop: (target.offset().top)-80
-              }, 1000);
-              return false;
-            }
-        });
 
          $('.buttom-favorite').on('click', function(event){
                    event.preventDefault();

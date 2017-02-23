@@ -15,25 +15,28 @@
 								error = angular.element(document.querySelector('.alert-send-error'));
 								alertBox.css('display', 'none');
 
-								dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
-								dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
-								dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
-								dados.corpo_email += '<b>telefone:</b> '+$scope.contato.phone+' <br/>';
-								dados.corpo_email += '<b>Origem:</b> QiSat <br/><br/>';
-								dados.corpo_email += ' <b>Assunto:</b> '+$scope.contato.subject+' <br />';
-								dados.corpo_email += ' <b>Mensagem:</b><br />';
-								dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
+								if($scope.contatoForm.$valid){
+									dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
+									dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
+									dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
+									dados.corpo_email += '<b>telefone:</b> '+$scope.contato.phone+' <br/>';
+									dados.corpo_email += '<b>Origem:</b> QiSat <br/><br/>';
+									dados.corpo_email += ' <b>Assunto:</b> '+$scope.contato.subject+' <br />';
+									dados.corpo_email += ' <b>Mensagem:</b><br />';
+									dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
 
-								QiSatAPI.repasse(dados)
-											.then( function ( response ){
-													if(response.statusText=="OK"){
-														$scope.contato = {};
-														sendOk.css('display', 'inline-block');
-													}else
-													 	error.css('display', 'inline-block');
-												}, function ( response ){
-													error.css('display', 'inline-block');
-												});
+									QiSatAPI.repasse(dados)
+												.then( function ( response ){
+														if(response.statusText=="OK"){
+															$scope.contato = {};
+															$scope.contatoForm.$setPristine();
+															sendOk.css('display', 'inline-block');
+														}else
+														 	error.css('display', 'inline-block');
+													}, function ( response ){
+														error.css('display', 'inline-block');
+													});
+								}
 						}
 
 						$scope.modalcall = function () {
