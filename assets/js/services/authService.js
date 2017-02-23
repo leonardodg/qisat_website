@@ -208,6 +208,35 @@
 								}
 			                };
 
+
+			                function getUserDados(id) {
+		                		var deferred = $q.defer(), promise;
+								
+								if(isAuth()){
+									var data = { id: authUser.id };
+		                            promise = $http({ 
+		                                              method: 'POST', 
+		                                              url: Config.baseUrl+'/wsc-user/user',
+		                                              data: data,
+		                                              dataType: 'jsonp',
+								                      headers : {
+															      'Content-Type' : 'application/json',    
+															      'Authorization': Config.Authorization+" "+authToken
+															      },
+													   withCredentials : true
+	                                            	});
+
+		                            return  promise.then( function (res){
+		                            			if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.user)
+		                            				return res.data.retorno.user;
+		                            			return false;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
 			                function courses() {
 			                	var deferred = $q.defer(), promise;
 
@@ -376,6 +405,7 @@
 			    					verifyPassword : verifyPassword,
 			    					updatePassword : updatePassword,
 			    					getUser : getUser,
+			    					getUserDados : getUserDados,
 			    					getToken : getToken, 
 			    					update : update,
 			    					courses : courses,

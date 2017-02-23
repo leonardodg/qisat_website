@@ -3,14 +3,19 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('matriculaController', [ '$scope','authService','Authenticated', '$filter',
-					 function(scope, authService, Authenticated, $filter ) {
+		.controller('matriculaController', [ '$scope', '$rootScope', 'authService','Authenticated', '$filter', 'Config',
+					 function( scope, $rootScope, authService, Authenticated, $filter, Config) {
 					 	var filterLimitName = $filter('limitName');
 
+						$rootScope.loading = true;
 					 	scope.title = "Cursos em Andamento"; 
 					 	scope.agendados = false;
 						scope.outros = false;
 						scope.filterTab = 'liberado';
+
+						scope.setFilterTab = function(val){
+							scope.filterTab = val;
+						}
 
 					 	if(Authenticated){
 					 		scope.user = authService.getUser();
@@ -25,8 +30,13 @@
 
 											 			if(matricula.imagem && matricula.imagem.length){
 															imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
-															if(imagemFile) matricula.imgSrc = imagemFile.src;
-														}
+															if(imagemFile){
+																// if(imagemFile.src.indexOf('upload/http://')>=0)
+																	// imagemFile.src = imagemFile.src.replace('upload/http://', 'http://');
+																matricula.imgSrc = imagemFile.src;
+															}
+														}else
+															matricula.imgSrc = Config.imgCursoUrlDefault;
 
 											 			if(matricula.info)
 											 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
@@ -64,6 +74,7 @@
 											 			}
 							 						});
 										 		}
+												$rootScope.loading = false;
 						 				});
 						}
 

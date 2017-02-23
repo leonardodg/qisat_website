@@ -1,15 +1,15 @@
 		<section id="dashboard" class="page-courses">
 
 					<div class="admin__heading">
-						<h1 class="title">Cursos em Andamento</h1>
+						<h1 class="title">Cursos em Andamento </h1>
 					</div>
 
-            <ul class="nav-resp" menu-aluno-cursos data-equalizer>
-                <li data-equalizer-watch class="current" ng-click="filterTab ='liberado'"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
-                <li data-equalizer-watch ng-click="filterTab='finalizado'"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
-                <li data-equalizer-watch ng-click="filterTab='encerrado'" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
-                <li data-equalizer-watch ng-click="filterTab='agendado'" ng-show="agendados" ><a class="menu-horizontal__link" href="#" >Agendados</a></li>
-                <li data-equalizer-watch ng-click="filterTab='outros'" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
+            <ul class="nav-resp" menu-aluno-cursos data-equalizer ng-init="filterTab ='liberado'" ng-if="courses.length" >
+                <li data-equalizer-watch class="current" ng-click="setFilterTab('liberado')"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
+                <li data-equalizer-watch ng-click="setFilterTab('finalizado')"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
+                <li data-equalizer-watch ng-click="setFilterTab('encerrado')" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
+                <li data-equalizer-watch ng-click="setFilterTab('agendado')" ng-show="agendados" ><a class="menu-horizontal__link" href="#" >Agendados</a></li>
+                <li data-equalizer-watch ng-click="setFilterTab('outros')" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
             </ul>
 
 						

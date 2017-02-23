@@ -1,6 +1,6 @@
 <form name="pagamentoForm" id="pagamentoForm" novalidate>
 
-    <div class="widget_content" >
+    <div class="widget_content" ng-if="!buy.transacao" >
       <p class="title">Forma de pagamento</p>
       <table width="100%" class="table-cart">
         <tr>
@@ -84,13 +84,35 @@
 
 </div>
 
-<div class="row" ng-if="!vm.redirect">
+<div class="row" ng-if="!vm.redirect && !buy.transacao">
   <div class="column small-6">
     <a href="/carrinho" class="button secondary" ng-hide="vm.loading"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
   </div>
   <div class="column small-6">
       <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading">Realizar Compra <i class="material-icons">keyboard_arrow_right</i></button>
   </div>
+</div>
+
+<div class="widget_content" class="text-center" ng-if="buy.transacao">
+  <p class="title">Pagamento não Finalizado!</p>
+
+  <table width="100%" class="table-cart">
+    <tr class="text-center">
+      <td class="text-center">
+
+        <div class="row">
+            <div class="small-6 small-centered columns">   
+
+                <span class="error">Sua compra possui uma transação não finalizada, favor conclua o pagamento através do link:</span><br>
+           
+                 <a ng-href="{{buy.transacao.url}}" class="button success text-center">Finalizar Pagamento!</a>
+    
+            </div>
+        </div>
+
+      </td>
+    </tr>
+  </table>
 </div>
 
 </form>

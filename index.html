@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="/bower_components/foundation/css/foundation.min.css"> <!-- Resource style -->
 
  	<link rel="stylesheet" href="stylesheets/app.css"> <!-- Resource style -->
-	<script src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+	<script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
 	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 							<a class="anchor header-main__item header-main__list-current
 							header-main__list-item-current" href="/" target="_self" >Home</a>
 						</li>
-						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
+						<li class="show-for-large-up header-main__list ">
 							<a class="anchor header-main__item" href="/cursos" target="_self">Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list"> 
@@ -73,7 +73,7 @@
 					</li>
 
 					<li ng-if="!buy.qtdItens">
-						<span class="cd-text" >Nenhum Item no Carrinho!</span>
+						<span class="cd-text" >Nenhum item no carrinho.</span>
 					</li>
 				</ul>
 				 
@@ -538,6 +538,11 @@
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
 
+    <!--[if IE 9]>
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+            <script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script>
+    <![endif]-->
+
 	<!-- GLOBAL -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
@@ -578,6 +583,7 @@
 		<script defer src="js/run/foundation.js"></script>
 		<script defer src="js/app.js"></script>
 		<!-- EXECUTA SCRIPTS QISAT -->
+
 
 
 </body>

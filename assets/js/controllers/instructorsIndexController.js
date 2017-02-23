@@ -5,9 +5,7 @@
 		.module('QiSatApp')
 		.controller("instructorsIndexController",
 				[ '$scope', 'Config', 'QiSatAPI', '$filter', function(scope, Config, QiSatAPI, $filter){
-
 					var filterLimitName = $filter('nameInstructor');
-
 					QiSatAPI.getInstructorsTop()
 									.then( function ( response ){
 											var instructors = [];
@@ -30,7 +28,5 @@
 											});
 											scope.instructors = instructors;
 									});
-
-
 		}]);
 })();

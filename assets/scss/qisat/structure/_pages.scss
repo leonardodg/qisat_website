@@ -187,6 +187,8 @@ button.close-button, .close-button {
 .login-loading {
   min-height: 313px;
   padding: 31px;
+  position: relative;
+  top: 100px;
 }
 
  /* ================== END COURSE PAGES ================== */
@@ -519,25 +521,22 @@ button.close-button, .close-button {
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
       position: relative;
+      min-height: 475px;
       
       @media only screen and (min-width: 64.063em) {
         width: 31%;
         float: left;
         margin-right: 2%;
-        min-height: 455px;
         
         &:nth-of-type(3n+0) {
           margin-right: 0;
         }
       }
-      
-      @media only screen and (min-width: 1280px) {
-        min-height: 555px;
-      }
 
       img {
         width: 100%;
         max-width: 100%;
+        min-height: 240px;
         display: none;
 
         @media only screen and (min-width: 64.063em) {
@@ -641,6 +640,7 @@ button.close-button, .close-button {
       img {
         width: 100%;
         max-width: 100%;
+        min-height: 240px;
         display: none;
 
         @media only screen and (min-width: 64.063em) {

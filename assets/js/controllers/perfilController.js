@@ -6,6 +6,49 @@
 		.controller('perfilController', ['$scope', '$location', 'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
 					 function(scope, $location, QiSatAPI, authService, Authenticated, postmon, Config ) {
 
+						function validateCNPJ(c) {
+							var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+							c = c.replace(/[^\d]/g,'').split('');
+							if(c.length !== 14) {
+								return false;
+							}
+
+							for (var i = 0, n = 0; i < 12; i++) {
+								n += c[i] * b[i+1];
+							}
+							n = 11 - n%11;
+							n = n >= 10 ? 0 : n;
+							if (parseInt(c[12]) !== n)  {
+								return false;
+							}
+
+							for (i = 0, n = 0; i <= 12; i++) {
+								n += c[i] * b[i];
+							}
+							n = 11 - n%11;
+							n = n >= 10 ? 0 : n;
+							if (parseInt(c[13]) !== n)  {
+								return false;
+							}
+							return true;
+						};
+
+						function validateCPF(cpf) {
+							cpf = cpf.replace(/[^\d]+/g,'');
+							if (cpf === '' || cpf === '00000000000' || cpf.length !== 11) {
+								return false;
+							}
+							function validateDigit(digit) {
+								var add = 0;
+								var init = digit - 9;
+								for (var i = 0; i < 9; i ++) {
+									add += parseInt(cpf.charAt(i + init)) * (i+1);
+								}
+								return (add%11)%10 === parseInt(cpf.charAt(digit));
+							}
+							return validateDigit(9) && validateDigit(10);
+						};
+
 					 	function resetMSG(){
 					 		delete(scope.typeMsgEdit);
 					 		delete(scope.msgEdit);
@@ -36,13 +79,17 @@
 							 		if(scope.endereco.estado) 
 							 			scope.endereco.selectStates = scope.states.find(function(state){ return state.uf == scope.endereco.estado });
 
-							 		if(!scope.user.email) scope.notEmail = false;
-							 		else scope.notEmail = true;
-							 		if(!scope.user.cpfcnpj) scope.notCPF = false;
-							 		else {
+							 		if(!scope.user.email) scope.getEmail = true;
+
+							 		if(scope.user.cpfcnpj){
 							 			scope.user.cpfcnpj = scope.user.cpfcnpj.replace(/[^\d]+/g,'');
-							 			scope.notCPF = true;
-							 		}
+							 			if(scope.user.cpfcnpj .length <= 11) 
+											if(!validateCPF(scope.user.cpfcnpj))
+												scope.getCPF = true;
+										else if(!validateCNPJ(scope.user.cpfcnpj))
+												scope.getCPF = true;
+							 		}else
+							 			scope.getCPF = true;
 
 							 		if(scope.user.endereco.cep) 
 							 			scope.user.endereco.cep = scope.user.endereco.cep.replace(/[^\d]+/g,'');
@@ -53,14 +100,16 @@
 					 	}
 
 					 	scope.buscaCEP = function(cep){
-					 		postmon.getCEP(cep).then(function(data){
-					 			if(data){
-						 			scope.endereco = data;
-						 			scope.endereco.selectStates = States.find(function(state){ return data.estado == state.uf });
-						 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
-						 		}
-					 			return data;
-					 		});
+					 		if(cep && !scope.editForm.cep.$invalid){
+						 		postmon.getCEP(cep).then(function(data){
+						 			if(data){
+							 			scope.endereco = data;
+							 			scope.endereco.selectStates = scope.states.find(function(state){ return data.estado == state.uf });
+							 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
+							 		}
+						 			return data;
+						 		});
+					 		}
 					 	}
 
 					 	scope.enableInputs = function(){
@@ -84,10 +133,10 @@
 						 		if(scope.user.lastname && scope.user.lastname !== user.lastname)
 						 			newdata.lastname = scope.user.lastname;
 
-						 		if(scope.user.email && !scope.notEmail && scope.user.email !== user.email)
+						 		if(scope.user.email && scope.user.email !== user.email)
 						 			newdata.email = scope.user.email;
 
-						 		if(scope.user.cpfcnpj && !scope.notCPF && scope.user.cpfcnpj !== user.cpfcnpj.replace(/\D/g,"")){
+						 		if(scope.user.cpfcnpj && scope.user.cpfcnpj !== user.numero.replace(/\D/g,"")){
 						 				aux = scope.user.cpfcnpj;
 						 				if(aux.length == 11){
 						 					if(!user.tipousuario || (user.tipousuario && user.tipousuario !== 'fisico')){ 

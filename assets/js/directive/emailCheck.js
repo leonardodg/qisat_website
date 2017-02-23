@@ -15,11 +15,8 @@
                                 QiSatAPI.checkByEmail(ctrl.$viewValue).then(function(res){
                                      if(res.data && res.data.retorno && !res.data.retorno.sucesso)
                                         ctrl.$setValidity('emailCheck', true); //no error
-                                    else if(res.data && res.data.retorno && res.data.retorno.sucesso){
+                                    else if(res.data && res.data.retorno && res.data.retorno.sucesso)
                                         ctrl.$setValidity('emailCheck', false); //yes error
-                                    }
-                                    else
-                                        console.log(res); // verificar
                                 });
                                 
                             }
