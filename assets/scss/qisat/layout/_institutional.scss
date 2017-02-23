@@ -174,7 +174,7 @@
     [class*='owl-'] {
       transition: all .3s ease;
       &.disabled:hover {
-       background-color: #D6D6D6;
+       background-color: #d6d6d6;
       }
     }
 
@@ -193,9 +193,13 @@
   }
   .owl-prev {
     left: 10px;
+    background-color: rgba(128, 128, 128, 0.4);
+    &:hover{ background-color: #929292; }
   }
   .owl-next {
     right: 10px;
+    background-color: rgba(128, 128, 128, 0.4);
+    &:hover{ background-color: #929292; }
   }
   //.owl-prev.disabled{display: none}
 }
