@@ -4,9 +4,28 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope','QiSatAPI', '$modal', function($scope, QiSatAPI, $modal){
+					[ '$scope','QiSatAPI', '$modal', '$controller', function($scope, QiSatAPI, $modal, $controller){
 						
-						$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+						var modalController = $controller('modalController');
+							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+							$scope.modalcall = modalController.call;
+			                $scope.submitted = false;
+			                $scope.isDisabled = true;
+
+			            $scope.addNew = function(){
+			                      $scope.submitted = true;
+			                      if($scope.emailNew){
+			                        $scope.isDisabled = false;
+			                        QiSatAPI.newsletter($scope.emailNew).then(function (res){
+			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+			                              $scope.submitted = false;
+			                              $scope.isDisabled = true;
+			                              delete($scope.emailNew);
+			                              $scope.newForm.$setPristine();
+			                            }
+			                        });
+			                      }
+			            };
 
 						$scope.sendMail = function(){
 							var alertBox, sendOk, error, dados = {};
@@ -37,40 +56,6 @@
 														error.css('display', 'inline-block');
 													});
 								}
-						}
-
-						$scope.modalcall = function () {
-				 					var modalInstance = $modal.open({ 
-                      						windowClass: 'call',
-				 							templateUrl: '/views/modal-call.html',
-				 							controller : function ($scope, $modalInstance, QiSatAPI) {
-
-				 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
-															  $scope.submitted = false;
-
-															  $scope.cancel = function () {
-															    $modalInstance.dismiss('cancel');
-															  };
-
-															  $scope.solicitarContato = function(data,callForm){
-															  		var dados = angular.copy(data);
-															  			$scope.submitted = true;
-															  		if(callForm && callForm.$valid){
-															  			$scope.loading = true;
-															  			dados.telefone = '('+data.operadora+") "+data.telefone;
-															  			QiSatAPI.callMe(data)
-					                       									    .then(function (res){
-															  						$scope.enviado = true;
-															  						$scope.loading = false;
-					                       									    }, function (res){
-															  						$scope.enviado = true;
-															  						$scope.loading = false;
-					                       									    });
-
-															  		}
-															  }
-															}
-				 						});
-					 			  };
+						};
 				}]);
 })();

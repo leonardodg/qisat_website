@@ -41,12 +41,12 @@
       </tr>
      
       <tr ng-if="buy.qtdItens">
-          <td colspan="3" class="text-right"> Total da Compra:</td>
-          <td colspan="2" class="text-center"> {{buy.totalCarrinho}}</td>
+          <td colspan="3" class="text-right"> <strong> Total da Compra:</strong></td>
+          <td colspan="2" class="text-center"><strong>{{buy.totalCarrinho}}</strong></td>
       </tr>
 
       <tr ng-if="!buy.qtdItens && !buy.loading" ng-cloak>
-          <td colspan="5" class="text-center"> Nenhum item no carrinho.</td>
+          <td colspan="5" class="text-center"> <strong>Nenhum item no carrinho.</strong></td>
       </tr>
 
       <tr ng-show="buy.loading" >

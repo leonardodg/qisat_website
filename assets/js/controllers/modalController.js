@@ -33,14 +33,32 @@
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'call',
 				 							templateUrl: '/views/modal-call.html',
-				 							controller : function ($scope, $modalInstance, QiSatAPI) {
+				 							controller : function ($scope, $modalInstance, QiSatAPI, authService) {
 
+															  var user = authService.getUser();
+															  var regex = /\(([^)]+)\)/, operadora, aux, phone;
 				 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 															  $scope.submitted = false;
 
 															  $scope.cancel = function () {
 															    $modalInstance.dismiss('cancel');
 															  };
+
+															  if(user){
+															  	$scope.dados = {
+															  	 				nome : user.firstname+' '+user.lastname,
+															  	 				email : user.email
+															  	 };
+															  	 
+															  	 aux = user.phone1.match(regex);
+															  	 phone = user.phone1.replace(/[^\d]+/g,'');
+															  	 if(aux && aux.length && aux[1])
+															  	 	$scope.dados.operadora = aux[1]
+															  	 if(phone.length <= 9)
+															  	 	data.telefone = phone;
+															  	 else
+															  	 	$scope.dados.telefone = phone.substr(2);
+															  }
 
 															  $scope.solicitarContato = function(data,callForm){
 															  		var dados = angular.copy(data);
@@ -58,7 +76,7 @@
 					                       									    });
 
 															  		}
-															  }
+															  };
 															}
 				 						});
 					 			  };

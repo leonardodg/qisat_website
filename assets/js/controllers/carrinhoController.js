@@ -15,7 +15,9 @@
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
 					 		if(vm.itens && vm.itens.length){
 		 						vm.showBuy = true;
-					 			vm.qtdItens = vm.itens.length;
+					 			vm.qtdItens = vm.itens.reduce(function(a, b){
+					 				return a + b.quantidade;
+					 			}, 0);
 		 						vm.valorTotal = carrinhoServive.getValorTotal();
 					 			vm.totalCarrinho = $filter('currency')(vm.valorTotal, 'R$');
 		 					}else{

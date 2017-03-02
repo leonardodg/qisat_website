@@ -13,7 +13,7 @@ body.cart-page {
 	height: 100%;
 	width: 320px;
  
-     z-index: 2;
+     z-index: 10;
 
 	/* header height */
 	padding-top: 63px;
@@ -71,7 +71,7 @@ body.cart-page {
 	.cd-qty, 
     .cd-price { color: #a5aebc; }
     .cd-price { }
-    .cd-text  { font-size: 13px; width: 100%; display: inline-block;}
+    .cd-text  { font-size: 13px; width: 95%; display: inline-block; }
 }
 
 
@@ -149,9 +149,6 @@ body.cart-page {
   }
   #cd-cart .cd-cart-items li {
     padding: 1em 2em;
-  }
-  #cd-cart .cd-item-remove {
-    right: 2em;
   }
 }
 

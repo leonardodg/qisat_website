@@ -186,6 +186,10 @@
 								      <span class="error" ng-show="editForm.cep.$error.required">Informe o CEP</span>
 								    </div>
 
+								    <div ng-show="errorcep">
+					                  <span class="error" >{{errorcep}} </span>
+					                </div>
+
 								    <label for="selectCountry">País
 							         <select name="selectCountry" id="selectCountry" class="selectCountry" ng-options="option.pais for option in country track by option.sigla" ng-model="endereco.selectCountry" ng-disabled="!confirm">
 	 										<option value=""> Selecione o País </option>

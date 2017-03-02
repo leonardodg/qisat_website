@@ -5615,7 +5615,7 @@ body.cart-page {
   background: #FFF;
   height: 100%;
   width: 320px;
-  z-index: 2;
+  z-index: 10;
   /* header height */
   padding-top: 63px;
   overflow-y: auto;
@@ -5672,7 +5672,7 @@ body.cart-page {
 /* line 74, ../scss/qisat/layout/_carrinho.scss */
 #cd-cart .cd-text {
   font-size: 13px;
-  width: 100%;
+  width: 95%;
   display: inline-block;
 }
 
@@ -5774,18 +5774,13 @@ body.cart-page {
   #cd-cart .cd-cart-items li {
     padding: 1em 2em;
   }
-
-  /* line 153, ../scss/qisat/layout/_carrinho.scss */
-  #cd-cart .cd-item-remove {
-    right: 2em;
-  }
 }
-/* line 160, ../scss/qisat/layout/_carrinho.scss */
+/* line 157, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard {
   margin-left: 30px;
   position: relative;
 }
-/* line 164, ../scss/qisat/layout/_carrinho.scss */
+/* line 161, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .v-line {
   width: 2px;
   background-color: #003350;
@@ -5794,13 +5789,13 @@ body.cart-page {
   margin-top: 20px;
   height: 96px;
 }
-/* line 172, ../scss/qisat/layout/_carrinho.scss */
+/* line 169, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .step {
   padding: 10px 0;
   position: relative;
   color: #777;
 }
-/* line 177, ../scss/qisat/layout/_carrinho.scss */
+/* line 174, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .step:before {
   content: "";
   display: block;
@@ -5812,23 +5807,23 @@ body.cart-page {
   margin-left: -30px;
   top: 14px;
 }
-/* line 189, ../scss/qisat/layout/_carrinho.scss */
+/* line 186, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .step.active {
   font-weight: bold;
   color: #003350;
 }
-/* line 193, ../scss/qisat/layout/_carrinho.scss */
+/* line 190, ../scss/qisat/layout/_carrinho.scss */
 .cart-page .wizard .step.active:before {
   background-color: #28B67C;
 }
 @media only screen and (min-width: 40em) {
-  /* line 200, ../scss/qisat/layout/_carrinho.scss */
+  /* line 197, ../scss/qisat/layout/_carrinho.scss */
   .cart-page #loginModal, .cart-page .loginModal {
     width: 300px !important;
     max-width: 300px !important;
   }
 }
-/* line 207, ../scss/qisat/layout/_carrinho.scss */
+/* line 204, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal h2, .cart-page .loginModal h2 {
   margin-top: 30px;
   color: #494949;
@@ -5837,47 +5832,47 @@ body.cart-page {
   margin-left: 50px;
   margin-right: 50px;
 }
-/* line 216, ../scss/qisat/layout/_carrinho.scss */
+/* line 213, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal form, .cart-page .loginModal form {
   margin: 30px 25px 20px 25px;
 }
-/* line 217, ../scss/qisat/layout/_carrinho.scss */
+/* line 214, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal form a, .cart-page .loginModal form a {
   width: 100% !important;
   display: block;
 }
-/* line 221, ../scss/qisat/layout/_carrinho.scss */
+/* line 218, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal form input, .cart-page .loginModal form input {
   text-align: center;
 }
-/* line 227, ../scss/qisat/layout/_carrinho.scss */
+/* line 224, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal .not-member, .cart-page .loginModal .not-member {
   margin-top: 30px;
   padding: 15px;
   border-radius: 5px;
   background-color: #eee;
 }
-/* line 230, ../scss/qisat/layout/_carrinho.scss */
+/* line 227, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal .not-member p, .cart-page .loginModal .not-member p {
   margin: 0;
   margin-bottom: 10px;
   padding: 0;
 }
-/* line 236, ../scss/qisat/layout/_carrinho.scss */
+/* line 233, ../scss/qisat/layout/_carrinho.scss */
 .cart-page #loginModal .not-member .button, .cart-page .loginModal .not-member .button {
   margin-bottom: 0;
 }
 
-/* line 247, ../scss/qisat/layout/_carrinho.scss */
+/* line 244, ../scss/qisat/layout/_carrinho.scss */
 .table-cart {
   border: 0;
   color: #666;
 }
-/* line 251, ../scss/qisat/layout/_carrinho.scss */
+/* line 248, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .total {
   text-transform: uppercase;
 }
-/* line 255, ../scss/qisat/layout/_carrinho.scss */
+/* line 252, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .quantity {
   max-width: 60px;
   float: left;
@@ -5885,24 +5880,24 @@ body.cart-page {
   width: auto;
   margin: 0 4px;
 }
-/* line 263, ../scss/qisat/layout/_carrinho.scss */
+/* line 260, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .material-icons {
   margin-top: 5px;
 }
-/* line 267, ../scss/qisat/layout/_carrinho.scss */
+/* line 264, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .oldPrice {
   text-decoration: line-through;
   text-align: center;
   display: block;
 }
-/* line 272, ../scss/qisat/layout/_carrinho.scss */
+/* line 269, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .newPrice {
   font-size: 16px;
   color: #666;
   text-align: center;
   display: block;
 }
-/* line 278, ../scss/qisat/layout/_carrinho.scss */
+/* line 275, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .discount {
   display: block;
   padding: 5px 0;
@@ -5911,25 +5906,25 @@ body.cart-page {
   font-size: 11px;
   text-align: center;
 }
-/* line 287, ../scss/qisat/layout/_carrinho.scss */
+/* line 284, ../scss/qisat/layout/_carrinho.scss */
 .table-cart img {
   margin-right: 10px;
 }
-/* line 291, ../scss/qisat/layout/_carrinho.scss */
+/* line 288, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .inline-list > li {
   float: none;
 }
 @media only screen and (min-width: 40em) {
-  /* line 291, ../scss/qisat/layout/_carrinho.scss */
+  /* line 288, ../scss/qisat/layout/_carrinho.scss */
   .table-cart .inline-list > li {
     float: left;
   }
 }
-/* line 299, ../scss/qisat/layout/_carrinho.scss */
+/* line 296, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .muted {
   color: #999;
 }
-/* line 303, ../scss/qisat/layout/_carrinho.scss */
+/* line 300, ../scss/qisat/layout/_carrinho.scss */
 .table-cart thead th {
   padding: 15px;
   padding-top: 20px;
@@ -5937,7 +5932,7 @@ body.cart-page {
   background-color: #003350;
   text-transform: uppercase;
 }
-/* line 310, ../scss/qisat/layout/_carrinho.scss */
+/* line 307, ../scss/qisat/layout/_carrinho.scss */
 .table-cart td, .table-cart td {
   padding: 1rem;
 }

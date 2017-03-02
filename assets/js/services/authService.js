@@ -147,6 +147,7 @@
 	                                                        });
 
 	                            return  promise.then( function (res){
+	                            			console.log(res);
 	                            			if((res && res.status == 200 && res.data)&&(res.data.retorno && res.data.retorno.sucesso))
 	                            				useCredentials(res.data.token, res.data.retorno.usuario, credentials.remember );
 
@@ -227,6 +228,7 @@
 	                                            	});
 
 		                            return  promise.then( function (res){
+		                            			console.log(res);
 		                            			if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.user)
 		                            				return res.data.retorno.user;
 		                            			return false;
@@ -259,7 +261,7 @@
 		                            							res.data.retorno.matriculas.map(function (curso){
 		                            								var tipo;
 		                            								if(curso && curso.produto && curso.produto.categorias){
-			                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+			                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 || tipo.id == 33 || tipo.id == 41 })) { // Séries
 																			curso.modalidade = tipo.nome;
 																			curso.isSerie = true;
 																		}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes

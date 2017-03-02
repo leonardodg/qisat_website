@@ -17,10 +17,10 @@
 					   			<div ng-repeat="course in courses | filter : { filter : filterTab } track by course.id" class="card">
 
                     <div ng-if="::course.enable">
-                      <a ng-href="{{::course.view}}"><img ng-src="{{::course.imgSrc}}" alt="{{::course.curso}}" title="{{::course.curso}}" ></a>
+                      <a ng-href="{{::course.view}}"><img ng-src="{{::course.imgSrc}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>
                     </div>
                     <div ng-if="!course.enable">
-                      <img ng-src="{{::course.imgSrc}}" alt="{{::course.curso}}" title="{{::course.curso}}" >
+                      <img ng-src="{{::course.imgSrc}}" alt="{{::course.nome}}" title="{{::course.nome}}" >
                     </div>
                     
                     <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
@@ -28,11 +28,11 @@
                       <p class="modalidade">{{::course.modalidade}}</p>
 
 						      		<div ng-if="::course.enable"> 
-						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.links.view}}" title="{{::course.info.tituloLimit||course.nomeLimit}}" >{{::course.info.tituloLimit||course.nomeLimit}} </a></p>
+						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.links.view}}" title="{{::course.nome}}" >{{::course.nomeLimit}} </a></p>
 						      		</div>
 
 						      		<div ng-if="!course.enable"> 
-						      			<p class="name">{{::course.info.tituloLimit||course.nomeLimit}}</p>
+						      			<p class="name">{{::course.nomeLimit}}</p>
 						      		</div>
 						      		
                       <!-- FIXA TAMANHO -->

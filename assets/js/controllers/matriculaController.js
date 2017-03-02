@@ -31,17 +31,23 @@
 											 			if(matricula.imagem && matricula.imagem.length){
 															imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
 															if(imagemFile){
-																// if(imagemFile.src.indexOf('upload/http://')>=0)
-																	// imagemFile.src = imagemFile.src.replace('upload/http://', 'http://');
+																 if(imagemFile.src.indexOf('upload/http://')>=0)
+																		imagemFile.src = imagemFile.src.replace('upload/http://', 'http://');
 																matricula.imgSrc = imagemFile.src;
 															}
 														}else
 															matricula.imgSrc = Config.imgCursoUrlDefault;
 
-											 			if(matricula.info)
-											 				matricula.info.tituloLimit = filterLimitName(matricula.info.titulo, 100);
-											 			else if (matricula.curso)
+											 			if(matricula.produto){
+											 				matricula.nome = matricula.produto.nome;
+											 				matricula.nomeLimit = filterLimitName(matricula.produto.nome, 100);
+											 			}else if(matricula.info){
+											 				matricula.nome = matricula.info.titulo;
+											 				matricula.nomeLimit = filterLimitName(matricula.info.titulo, 100);
+											 			}else if (matricula.curso){
+											 				matricula.nome = matricula.curso;
 											 				matricula.nomeLimit = filterLimitName(matricula.curso, 100);
+											 			}
 
 											 			if(matricula.data_conclusao){
 											 				timeend = new Date(matricula.data_conclusao*1000);
@@ -60,7 +66,7 @@
 											 				if(!scope.agendados) scope.agendados = true;
 											 			}else if(matricula.status == "Liberado para Acesso"){
 											 				matricula.enable = true;
-											 				timestart = new Date(matricula.timestart*1000);
+											 				timestart = new Date(matricula.timeend*1000);
 											 				day = timestart.getDate();
 															month = timestart.getMonth()+1;
 															year = timestart.getFullYear();

@@ -34,7 +34,7 @@
 #  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
 
-  RewriteRule ^(css|images|js|stylesheets|libs)/(.*)$ /assets/$1/$2 [NC,L]
+  RewriteRule ^(css|images|js|stylesheets|libs|files)/(.*)$ /assets/$1/$2 [NC,L]
   
   RewriteRule ^cursos/?$ pages/courses.html [NC]
 

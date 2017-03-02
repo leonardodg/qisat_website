@@ -39,8 +39,30 @@
           <hr>
           <p class="sub-title"><strong>Newsletter</strong></p>
           <p>Quer receber nossas atualizações?<br>Inscreva-se em nossa newsletter!</p>
-          <input type="text" name="">
-          <button>Enviar</button>
+          
+          <form name="newForm" id="newForm" novalidate>
+          <div class="row">
+             <div class="large-12 columns">
+               <div class="row collapse">
+                 <div class="small-10 columns">
+                   <input type="email" name="emailNew" id="emailNew" ng-model="emailNew"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }"  >
+                 </div>
+                 <div class="small-2 columns">
+                   <button class="button postfix" ng-disabled="newForm.emailNew.$invalid" ng-click="addNew()" ><i class="material-icons" >done</i></button>
+                 </div>
+               </div>
+                  <div ng-show="newForm.emailNew.$dirty && newForm.emailNew.$invalid">
+                    <span class="error" ng-show="newForm.emailNew.$error.required">Email Obrigatório!</span>
+                  </div>
+
+                  <div ng-show="newForm.emailNew.$dirty && newForm.emailNew.$error.pattern">
+                    <span class="error" >Formato de Email incorreto!</span>
+                  </div>
+             </div>
+           </div>
+            </form>
+
+
           <hr>
 
        </div>

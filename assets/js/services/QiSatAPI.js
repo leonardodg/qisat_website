@@ -57,7 +57,8 @@
 		                                                    return res; 
 		                                                });
 
-		                        },		                        
+		                        },
+
 
 		                        checkByEmail : function (email) {
 
@@ -283,6 +284,29 @@
 															cache: true, 
 															method: 'GET', 
 															url: Config.baseUrl+'/produto/wsc-produto/produtos-tipos-id'
+														});
+
+										promise.then( handleSuccess, handleError );
+
+										return promise;
+							},
+
+
+							identidadeVisual : function (email) {
+										var promise = $http({ 
+															method: 'GET', 
+															url: Config.baseUrl+'/identidade-visual/'+email
+														});
+
+										promise.then( handleSuccess, handleError );
+
+										return promise;
+							},
+
+							newsletter : function (email) {
+										var promise = $http({ 
+															method: 'GET', 
+															url: Config.baseUrl+'/newsletter/'+email
 														});
 
 										promise.then( handleSuccess, handleError );

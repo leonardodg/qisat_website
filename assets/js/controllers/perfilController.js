@@ -69,27 +69,43 @@
 						 		if(Authenticated){
 							 		scope.user = angular.copy(authService.getUser());
 							 		scope.user.cpfcnpj = scope.user.numero;
-							 		scope.endereco = scope.user.endereco;
 
-							 		if(scope.endereco.pais) 
-							 			scope.endereco.selectCountry = scope.country.find(function(country){ return country.sigla == scope.endereco.pais });
-							 		else 
+							 		if(scope.user.endereco){
+								 		scope.endereco = scope.user.endereco;
+										scope.endereco.cidade = scope.user.city;
+										scope.endereco.bairro = scope.user.endereco.district;
+										scope.endereco.pais	= scope.user.country;
+										scope.endereco.estado = scope.user.endereco.state;
+										scope.endereco.numero = scope.user.endereco.number;
+										scope.endereco.complemento = scope.user.endereco.complement;
+
+										if(scope.endereco.pais) 
+							 				scope.endereco.selectCountry = scope.country.find(function(country){ return country.sigla == scope.endereco.pais });
+								 		else 
+								 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
+
+								 		if(scope.endereco.estado) 
+								 			scope.endereco.selectStates = scope.states.find(function(state){ return state.uf == scope.endereco.estado });
+								 		else
+								 			scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
+							 		}else{
 							 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
-
-							 		if(scope.endereco.estado) 
-							 			scope.endereco.selectStates = scope.states.find(function(state){ return state.uf == scope.endereco.estado });
+							 			scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
+							 		}
 
 							 		if(!scope.user.email) scope.getEmail = true;
-
+							 		
 							 		if(scope.user.cpfcnpj){
 							 			scope.user.cpfcnpj = scope.user.cpfcnpj.replace(/[^\d]+/g,'');
-							 			if(scope.user.cpfcnpj .length <= 11) 
+							 			if(scope.user.cpfcnpj.length <= 11){
 											if(!validateCPF(scope.user.cpfcnpj))
 												scope.getCPF = true;
-										else if(!validateCNPJ(scope.user.cpfcnpj))
+										}else if(!validateCNPJ(scope.user.cpfcnpj)){
 												scope.getCPF = true;
-							 		}else
+										}
+							 		}else{
 							 			scope.getCPF = true;
+							 		}
 
 							 		if(scope.user.endereco.cep) 
 							 			scope.user.endereco.cep = scope.user.endereco.cep.replace(/[^\d]+/g,'');
@@ -108,6 +124,9 @@
 							 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
 							 		}
 						 			return data;
+						 		}, function(data){
+						 			if(data.status == 404)
+						 				scope.errorcep = 'Dados do CEP não localizado!';
 						 		});
 					 		}
 					 	}
@@ -215,9 +234,10 @@
 
 						 		authService.update(newdata)
 						 					.then(function(res){
-						 							console.log(res);
 						 							scope.confirm = false;
 						 							if(res.data.retorno.sucesso){
+						 								scope.getCPF = false;
+						 								scope.getEmail = false;
 						 								scope.typeMsgEdit = "alert-box info radius";
 						 								scope.msgEdit = "Dados Atualizados com SUCESSO!";
 						 							}else{

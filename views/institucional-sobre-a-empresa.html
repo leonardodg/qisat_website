@@ -73,18 +73,24 @@
    <div class="widget_content">
      <h3 class="widget_content__title">Download da identidade visual </h3>
      <p> Insira seu email para baixar a identidade visual, caso precise entre em contato conosto pelo e-mail design@qisat.com.br ou (48) 33325000.</p>
-     <form class="" action="index.html" method="post"  data-abide>
+     <form name="visualForm" id="visualForm" novalidate>
           <div class="row">
              <div class="large-12 columns">
                <div class="row collapse">
                  <div class="small-10 columns">
-                   <input type="email" required placeholder="seu@email.com">
+                   <input type="email" name="email" id="email" ng-model="email"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }"  >
                  </div>
                  <div class="small-2 columns">
-                   <button class="button postfix" type="submit"><i class="material-icons">cloud_download</i></button>
+                   <a class="button postfix" ng-href="{{isDisabled ? '': '/files/Manual da Marca QiSat.pdf'}}" target="_self" download="Manual QiSat.pdf" ng-disabled="isDisabled" ng-click="solicitarIdentidade()" ><i class="material-icons" >cloud_download</i></a>
                  </div>
                </div>
-               <small class="error">Email obrigatório</small>
+                  <div ng-show="visualForm.email.$dirty && visualForm.email.$invalid">
+                    <span class="error" ng-show="visualForm.email.$error.required">Email Obrigatório!</span>
+                  </div>
+
+                  <div ng-show="visualForm.email.$dirty && visualForm.email.$error.pattern">
+                    <span class="error" >Formato de Email incorreto!</span>
+                  </div>
              </div>
            </div>
      </form>

@@ -7,12 +7,64 @@
           function ( $httpProvider, $locationProvider, $routeProvider ) {
             $locationProvider.html5Mode(true); 
 
+            function aboutController ($scope, QiSatAPI){
+                  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+                  $scope.submitted = false;
+                  $scope.isDisabled = true;
+                  $scope.solicitarIdentidade = function(){
+                      $scope.submitted = true;
+                      if($scope.email){
+                        $scope.isDisabled = false;
+                        QiSatAPI.identidadeVisual($scope.email).then(function (res){
+                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+                              $scope.submitted = false;
+                              $scope.isDisabled = true;
+                              delete($scope.email);
+                              $scope.visualForm.$setPristine();
+                            }
+                        });
+                      }
+                  }
+              };
+
+              function descontosConvenio (QiSatAPI){
+                          return QiSatAPI.descontoConvenio().then( function ( res ){
+                                    if(res && res.sucesso){
+                                        var result = { cursosSoftware : [], cursosTeoricos : [] };
+                                        angular.forEach(res.software, function(value) {
+                                            result.cursosSoftware.push(value);
+                                        });
+
+                                        angular.forEach(res.teoricos, function(value) {
+                                          result.cursosTeoricos.push(value);
+                                        });
+
+                                        return result;
+                                    }
+                                });
+              };
+
+              function institutions (QiSatAPI, $filter){
+                          return QiSatAPI.getConvenios()
+                                         .then( function ( response ){
+                                                var data = [];
+                                                if(response.status == 200) 
+                                                  data = response.data.retorno.ecmConvenio;
+                                                data.map(function (el){
+                                                  el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
+                                                });
+                                                return data;
+                                          });
+              };
+
             $routeProvider.when('/institucional', {
-              templateUrl : '/views/institucional-sobre-a-empresa.html'
+              templateUrl : '/views/institucional-sobre-a-empresa.html',
+              controller : aboutController
             });
 
             $routeProvider.when('/institucional/sobre-a-empresa', {
-              templateUrl : '/views/institucional-sobre-a-empresa.html'
+              templateUrl : '/views/institucional-sobre-a-empresa.html', 
+              controller : aboutController
             });
 
             $routeProvider.when('/institucional/linha-do-tempo', {
@@ -37,26 +89,9 @@
             });
 
             $routeProvider.when('/institucional/convenios/conselhos/desconto', {
-              templateUrl : '/views/institucional-conselhos-desconto.html',
-              controller : 'descontosConvenioController',
-              resolve : {
-                    descontosConvenio : function (QiSatAPI){
-                          return QiSatAPI.descontoConvenio().then( function ( res ){
-                                    if(res && res.sucesso){
-                                        var result = { cursosSoftware : [], cursosTeoricos : [] };
-                                        angular.forEach(res.software, function(value) {
-                                            result.cursosSoftware.push(value);
-                                        });
-
-                                        angular.forEach(res.teoricos, function(value) {
-                                          result.cursosTeoricos.push(value);
-                                        });
-
-                                        return result;
-                                    }
-                                });
-                      }
-                  }
+                    templateUrl : '/views/institucional-conselhos-desconto.html',
+                    controller : 'descontosConvenioController',
+                    resolve : { descontosConvenio : descontosConvenio }
             });
 
             $routeProvider.when('/institucional/convenios/preduc/ensino', {
@@ -70,72 +105,27 @@
             });
 
             $routeProvider.when('/institucional/convenios/preduc/descontos', {
-              templateUrl : '/views/institucional-preduc-descontos.html',
-              controller : 'descontosConvenioController',
-              resolve : {
-                    descontosConvenio : function (QiSatAPI){
-                          return QiSatAPI.descontoConvenio().then( function ( res ){
-                                    if(res && res.sucesso){
-                                        var result = { cursosSoftware : [], cursosTeoricos : [] };
-                                        angular.forEach(res.software, function(value) {
-                                            result.cursosSoftware.push(value);
-                                        });
-
-                                        angular.forEach(res.teoricos, function(value) {
-                                          result.cursosTeoricos.push(value);
-                                        });
-
-                                        return result;
-                                    }
-                                });
-                      }
-                  }
+                    templateUrl : '/views/institucional-preduc-descontos.html',
+                    controller : 'descontosConvenioController',
+                    resolve : { descontosConvenio : descontosConvenio }
             });
 
             $routeProvider.when('/institucional/convenios/preduc/conveniadas', {
-              templateUrl : '/views/institucional-preduc-conveniadas.html',
-              controller :  function($scope,  Config, institutions){
-                            $scope.states = Config.states;
-                            $scope.institutions = institutions;
-              },
-
-              resolve : {
-                    institutions : function (QiSatAPI, $filter){
-                          return QiSatAPI.getConvenios()
-                                         .then( function ( response ){
-                                                var data = [];
-                                                if(response.status == 200) 
-                                                  data = response.data.retorno.ecmConvenio;
-                                                data.map(function (el){
-                                                  el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
-                                                });
-                                                return data;
-                                          });
-                      }
-                  }
+                  templateUrl : '/views/institucional-preduc-conveniadas.html',
+                  controller :  function($scope,  Config, institutions){
+                                $scope.states = Config.states;
+                                $scope.institutions = institutions;
+                  },
+                  resolve : { institutions : institutions }
             });
 
             $routeProvider.when('/institucional/convenios/preduc/inscricao', {
-              templateUrl : '/views/institucional-preduc-inscricao.html',
-              controller :  function($scope,  Config, institutions){
-                            $scope.states = Config.states;
-                            $scope.selectInstitution = institutions;
-              },
-
-              resolve : {
-                    institutions : function (QiSatAPI, $filter){
-                          return QiSatAPI.getConvenios()
-                                         .then( function ( response ){
-                                                var data = [];
-                                                if(response.status == 200) 
-                                                  data = response.data.retorno.ecmConvenio;
-                                                data.map(function (el){
-                                                  el.dataFim = $filter('date')( el.timeend*1000, 'dd/MM/yy' );
-                                                });
-                                                return data;
-                                          });
-                      }
-                  }
+                  templateUrl : '/views/institucional-preduc-inscricao.html',
+                  controller :  function($scope,  Config, institutions){
+                                  $scope.states = Config.states;
+                                  $scope.selectInstitution = institutions;
+                                },
+                  resolve : { institutions : institutions }
             });            
 
             $routeProvider.when('/institucional/instrutores-e-professores', {
