@@ -52,35 +52,7 @@
 													elemts.css('display', 'inline-block');
 												});
 							}
-						}
-
-						$scope.institutionDiscount = function(){
-							var data = angular.copy($scope.desconto), elemts;
-
-							elemts = angular.element('.alert-box');
-							elemts.css('display', 'none');
-
-							if($scope.descontoForm && $scope.descontoForm.$valid){
-								data.ecm_convenio_id = data.institution.id;
-								delete(data.institution);
-
-								QiSatAPI.addInteresse(data)
-											.then( function ( response ){
-													if(response.data.retorno.sucesso){
-														$scope.desconto = {};
-														$scope.descontoForm.$setPristine();
-														elemts = angular.element('.alert-discount-ok');
-														elemts.css('display', 'inline-block');
-													}else{
-														elemts = angular.element('.alert-discount-error');
-														elemts.css('display', 'inline-block');
-													}
-												}, function ( response ){
-													elemts = angular.element('.alert-discount-error');
-													elemts.css('display', 'inline-block');
-												});
-							}
-						}
+						};
 
 			}]);
 })();
