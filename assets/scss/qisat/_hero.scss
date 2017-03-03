@@ -15,9 +15,9 @@
   padding: 70px 0;
   @media only screen and (min-width: 64.063em) {   padding: 100px 0; } /* min-width 1025px, large screens */
 
-  background-color: $primary-color; /* fallback for old browsers */
-  background-image: -webkit-linear-gradient(to left, #1e3c72 , #2a5298); /* Chrome 10-25, Safari 5.1-6 */
-  background-image: linear-gradient(to left, #1e3c72 , #2a5298); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #333; /* fallback for old browsers */
+  background-image: #333; /* Chrome 10-25, Safari 5.1-6 */
+  background-image: #333; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   &.hero-pages__insitucional {
     background-image: url("../images/hero/hero-institucional.jpg");
@@ -85,13 +85,13 @@
 .hero-page-course {
     background-image: url("../images/hero/hero-course-background.jpg");
     /* background: #232526; */
-    background: -webkit-linear-gradient(to left, #232526, #414345);
+    background: #333;
     /* background: linear-gradient(to left, #232526, #414345); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
     /* border-bottom: 1px solid #555; */
-    background-color: $primary-color;
+    background-color: #333;
     width: 100%;
     float: left;
 }

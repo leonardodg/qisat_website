@@ -6,10 +6,10 @@
 		.value("Config", {
 				
 				Authorization : "Digest",
-       			baseUrl : "http://local-ecommerce.qisat.com.br:83/",
+       			baseUrl : "http://ecommercelocal.qisat.com.br",
 				imagensUrlDefault : "/images/instructors/instrutor.png",
 				imgCursoUrlDefault : "/images/courses/curso-online.jpg",
-				boletoUrl : "http://local-ecommerce.qisat.com.br:83/forma-pagamento-boleto-php/boleto",
+				boletoUrl : "http://ecommercelocal.qisat.com.br/forma-pagamento-boleto-php/boleto",
 
 				convenio : { "descontoAluno" : 30, "descontoAssociado" : 20, "descontoProfessor" : 50, "descontoCREAS" : 30},
 

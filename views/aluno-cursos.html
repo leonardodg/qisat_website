@@ -41,19 +41,20 @@
                       </div>
   						     		<div class="red"  ng-if="!course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
                         {{::course.status}}
-                      </div>
+                      </div> 
+
 
                       <!-- FIXA TAMANHO -->
-                      <div  ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" > {{::course.msg}}&nbsp;</div>
+                      <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" ><span class="msg"> {{::course.msg}}&nbsp;</span></div>
                       
                     </div>
 
                     <div class="footer">
                       <ul class="inline-list">
-                        <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons">help</i></a></li>
-                        <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons">folder</i></a></li>
-                        <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons">forum</i></a></li>
-                        <li ng-if="::course.contrato"><a ng-href="{{::course.contrato}}"><i class="material-icons">insert_drive_file</i></a></li>
+                        <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons" alt="Tira Dúvidas" title="Tira Dúvidas">live_help</i></a></li>
+                        <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons" alt="Biblioteca" title="Biblioteca">folder</i></a></li>
+                        <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons" alt="Fórum" title="Fórum">forum</i></a></li>
+                        <li ng-if="::course.contrato"><a ng-href="{{::course.contrato}}"><i class="material-icons" alt="Contrato" title="Contrato">insert_drive_file</i></a></li>
                       </ul>
                     </div>
 
