@@ -147,10 +147,8 @@
 	                                                        });
 
 	                            return  promise.then( function (res){
-	                            			console.log(res);
 	                            			if((res && res.status == 200 && res.data)&&(res.data.retorno && res.data.retorno.sucesso))
 	                            				useCredentials(res.data.token, res.data.retorno.usuario, credentials.remember );
-
 	                            			return res;
 	                            		}, function(res){
 	                            			return res;
@@ -198,6 +196,28 @@
 															      'Authorization': Config.Authorization+" "+authToken
 															      },
 													   withCredentials : true
+	                                            	});
+
+		                            return  promise.then( function (res){
+		                            			return res;
+		                            		});
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+			                function updateFile(data) {
+		                		var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                            promise = $http({ 
+		                                              method: 'POST', 
+		                                              url: Config.baseUrl+'/wsc-user/uploadImagemUsuario',
+		                                              data: data,
+								                      headers : {  'Content-Type': undefined, 'Authorization': Config.Authorization+" "+authToken },
+													  withCredentials : true,
+													  transformRequest: angular.identity
 	                                            	});
 
 		                            return  promise.then( function (res){
@@ -410,6 +430,7 @@
 			    					getUserDados : getUserDados,
 			    					getToken : getToken, 
 			    					update : update,
+			    					updateFile : updateFile,
 			    					courses : courses,
 			    					compras :  compras,
 			    					carrinho : carrinho,

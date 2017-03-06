@@ -62,6 +62,7 @@
 						 		resetMSG();
 						 		scope.confirm = false;
 							 	scope.checkPassword = false;
+							 	scope.showEditPassword = false;
 							 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							 	scope.country = Config.country;
 							 	scope.states = Config.states;
@@ -112,8 +113,15 @@
 
 							 		if(scope.user.phone1) 
 							 			scope.user.phone1 = scope.user.phone1.replace(/[^\d]+/g,'');
+
+							 		if(!scope.user.picture)
+							 			scope.user.picture = Config.imgUserDefault;
 						 		}
 					 	}
+
+					 	scope.clickEditPassword = function(){
+					 		scope.showEditPassword = !scope.showEditPassword;
+					 	};
 
 					 	scope.buscaCEP = function(cep){
 					 		if(cep && !scope.editForm.cep.$invalid){
@@ -135,10 +143,28 @@
 					 			scope.checkPassword = true;
 					 	}
 
-					 	scope.fileUpdate = function(){
-						 		/*resetMSG();
-						 		scope.typeMsgEdit = "alert-box alert radius";
-						 		scope.msgEdit = "Acão não implementada!";*/
+					 	var inputFile = angular.element('#picture');
+				 			inputFile.on("change", function(e){
+				 				var picture = document.querySelector('#picture');
+						 		var data = new FormData();
+
+						 		data.append('picture', picture.files[0]);
+
+								authService.updateFile(data)
+							 					.then(function(res){
+							 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+							 								scope.typeMsgEditFile = "alert-box info radius";
+							 								scope.msgEditFile = "Dados Atualizados com SUCESSO!";
+							 							}else{
+							 								scope.typeMsgEditFile = "alert-box alert radius";
+							 								scope.msgEditFile = "Falha ao atualizar dados!";
+							 							}
+							 							return res;
+							 						});	
+						 	});
+
+					 	scope.fileClick = function(){
+						 	inputFile.click();
 					 	}
 
 					 	scope.update = function(){
@@ -155,7 +181,7 @@
 						 		if(scope.user.email && scope.user.email !== user.email)
 						 			newdata.email = scope.user.email;
 
-						 		if(scope.user.cpfcnpj && scope.user.cpfcnpj !== user.numero.replace(/\D/g,"")){
+						 		if( (!user.numero && scope.user.cpfcnpj) || (scope.user.cpfcnpj && user.numero && scope.user.cpfcnpj !== user.numero.replace(/\D/g,""))){
 						 				aux = scope.user.cpfcnpj;
 						 				if(aux.length == 11){
 						 					if(!user.tipousuario || (user.tipousuario && user.tipousuario !== 'fisico')){ 
@@ -258,7 +284,7 @@
 						 					 userid : user.id
 						 					};
 						 			resetMSG();
-						 		
+
 						 		authService.updatePassword(data)
 						 					.then(function(res){
 						 							if(res.data.retorno.sucesso){
@@ -268,6 +294,7 @@
 						 								scope.typeMsgEditPass = "alert-box alert radius";
 						 								scope.msgEditPass = "Falha ao tentar atualizar a Senha!";
 						 							}
+						 							scope.showEditPassword = false;
 						 							return res;
 						 						});		
 

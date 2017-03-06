@@ -25,7 +25,7 @@
 
               <div class="form-group">
                    <label for="email">E-mail <strong title="Campo Obrigatório">*</strong> </label>
-                  <input type="text" name="email" id="email" placeholder="Digite e-mail válido" ng-model="cadastro.email" ng-required="true" ng-pattern="emailFormat" email-check >
+                  <input type="text" name="email" id="email" placeholder="Digite e-mail válido" ng-model="cadastro.email" ng-required="true" ng-pattern="emailFormat" email-check ng-model-options="{ debounce: 1000 }" >
 
                   <div ng-show="(createForm.email.$dirty || submitted) && createForm.email.$invalid">
                     <span class="error" ng-show="createForm.email.$error.required">E-mail é obrigatório</span>

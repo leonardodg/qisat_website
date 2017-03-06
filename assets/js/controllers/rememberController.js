@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('rememberController', ['$scope', '$location', 'QiSatAPI', 'authService',
-					 function(scope, $location, QiSatAPI, authService ) {
+		.controller('rememberController', ['$scope', '$location', 'QiSatAPI',
+					 function(scope, $location, QiSatAPI ) {
 
 					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.sendMail = function(){
@@ -16,9 +16,10 @@
 
 							QiSatAPI.remember(data)
 										.then( function ( response ){
-												if(response && response.data && response.data.retorno && response.data.retorno.sucesso)
+												if(response && response.data && response.data.retorno && response.data.retorno.sucesso){ 
 													sendOk.css('display', 'inline-block');
-											    else{
+													delete(scope.email);
+											    }else{
 												 	error.css('display', 'inline-block');
 												 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem)
 												 		error.append('<br/> <span>'+response.data.retorno.mensagem+' </span>');

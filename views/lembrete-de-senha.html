@@ -1,52 +1,36 @@
 <div class="signup">
-
     <div class="signup__content login">
+      <div class="admin__heading admin__heading_login">
+        <h1 class="title">Recuperar senha</h1>
+      </div>
 
-                
-    <div class="admin__heading admin__heading_login">
-      <h1 class="title">Recuperar senha</h1>
-    </div>
+      <section id="dashboard">
+          <div data-alert class="alert-box success radius alert-send-ok" style="display: none;">
+            Mensagem Enviada com SUCESSO!
+          </div>
 
-    <section id="dashboard">
+          <div data-alert class="alert-box warning radius alert-send-error" style="display: none;">
+            Falha no Envio da Mensagem!
+          </div>
 
-        <div data-alert class="alert-box success radius alert-send-ok" style="display: none;">
-          Mensagem Enviada com SUCESSO!
-        </div>
+            <form name="rememberForm" id="rememberForm" novalidate>
 
-        <div data-alert class="alert-box warning radius alert-send-error" style="display: none;">
-          Falha no Envio da Mensagem!
-        </div>
+                      <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
 
-          <form name="rememberForm" id="rememberForm" novalidate>
+                        <div ng-show="rememberForm.email.$dirty && rememberForm.email.$invalid">
+                          <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
+                        </div>
 
-                    <label for="email">Email:</label>
-                      <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" >
+                        <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
+                          <span class="error" >Formato de Email incorreto!</span>
+                        </div>
 
-                      <div ng-show="rememberForm.email.$dirty && rememberForm.email.$invalid">
-                        <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
-                      </div>
-
-                      <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
-                        <span class="error" >Formato de Email incorreto!</span>
-                      </div>
-
-                <button id="remember" ng-click="sendMail()" class="right" ng-disabled="rememberForm.$invalid" > Solicitar Senha »</button>
-
-                    
-
-            </fieldset>
-
-            <br class="clearfix">
-            <br class="clearfix">
-
-
-          </form>
-
-
-
-
-
-        </section>
+                  <button id="remember" ng-click="sendMail()" class="right" ng-disabled="rememberForm.$invalid" > Solicitar Senha »</button>
+              <br class="clearfix">
+              <br class="clearfix">
+            </form>
+          </section>
     </div>
 </div>
 

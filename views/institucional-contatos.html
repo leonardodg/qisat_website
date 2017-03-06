@@ -20,7 +20,7 @@
           <hr>
 
           <ul class="unstyle">
-	          <li ><span><i class="material-icons">question_answer </i>Fale conosco pelo chat</span></li>
+	          <li ng-click="showZopim()"  zopim ><span><i class="material-icons">question_answer </i>Fale conosco pelo chat</span></li>
 	          <li ng-click="modalcall()" ><span><i class="material-icons">smartphone </i>Ligamos para você</span></li>
 <!--           <li><span href="#"><i class="material-icons">comment</i> Sugira um curso</span></li>
           <li><span href="#"><i class="material-icons">person_add</i> Indique a um amigo</span></li> -->
@@ -100,7 +100,7 @@
 		
 			    </div>
 			    <div class="small-12 medium-8 columns">
-			      <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="contato.email" ng-pattern="emailFormat" ng-required="true" >
+			      <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="contato.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
 				   <div ng-show="contatoForm.email.$dirty && contatoForm.email.$invalid">
                     <span class="error" ng-show="contatoForm.email.$error.required">Email Obrigatório!</span>

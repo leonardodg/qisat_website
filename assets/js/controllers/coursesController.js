@@ -24,6 +24,7 @@
 							$scope.navFilters = [];
 							$scope.coursesList = [];
 							$scope.states = "Selecione o Estado";
+							$scope.loading = true;
 
 							//$scope.totalShow = 0;
 
@@ -441,6 +442,7 @@
 									}
 								}
 								// console.log($scope.coursesList);
+								
 						}
 
 						$scope.filterTypes = function ( $event, item ) {
@@ -840,6 +842,7 @@
 						QiSatAPI.getCourses().then( function(response){
 								$scope.courses = response.data.retorno;
 								startCourseList();
+								$scope.loading = false;
 						});
 						
 						setDataFilters();

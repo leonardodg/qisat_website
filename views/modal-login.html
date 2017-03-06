@@ -1,3 +1,4 @@
+<br>
 <div class="row">
   <div class="large-12 columns">
         <div ui-alert type="{{typeMsgLogin}}"  >
@@ -7,23 +8,40 @@
 </div>
 
 <div class="tiny" aria-labelledby="modalTitle">
-    <h2 id="modalTitle">Acesso ao Portal do Aluno</h2>
-    <form ng-if="!loading">
-      <input type="text" name="username" placeholder="Nome do usuário" ng-model="user.username">
-      <input type="password" name="password" placeholder="Senha de acesso" ng-model="user.password" >
-      <button type="button" ng-click="login(user)" class="expand primary">Entrar</button>
-      <!-- <a href="/carrinho/pagamento" class="button tiny" ng-click="cancel()">Entrar</a> -->
-    </form>
+
+    <div ng-if="!remember && !loading">
+
+        <h2 id="modalTitle">Identifique-se</h2>
+        <form name="loginForm" id="loginForm" novalidate >
+          <input type="text" id="username" name="username" placeholder="Nome do usuário" ng-model="user.username">
+          <input type="password" id="password" name="password" placeholder="Senha de acesso" ng-model="user.password" >
+          <button type="button" ng-click="login(user)" class="expand primary">Entrar</button>
+        </form>
+        <p class="text-center" ><a ng-click="clickremember()" >Esqueci minha senha</a></p>
+    </div>
+
+    <div ng-if="remember">
+        <h2 id="modalTitle">Recuperar senha</h2>
+        <form name="rememberForm" id="rememberForm" novalidate>
+                  <input type="text" name="email" id="email" placeholder="Digite Seu Email" ng-model="email" ng-required="true" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
+
+                  <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
+                    <span class="error" >Formato de Email incorreto!</span>
+                  </div>
+            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" > Solicitar Senha »</button>
+      </form>
+      <br class="clearfix">
+      <br class="clearfix">
+    </div> 
 
     <div class="custom-loading" ng-if="loading">
       <i class="material-icons">hdr_weak</i>
       <span class="text" >Autenticando Usuário...</span>
     </div>
 
-    <p class="text-center"><a href="/lembrete-de-senha">Esqueci minha senha</a></p>
     <div class="not-member text-center">
       <p>Ainda não tem Cadastro?</p>
-      <a href="/cadastro" class="button tiny">Crie uma conta grátis</a>
+      <a href="/cadastro" class="button" target="_self" >Cadastre-se</a>
     </div>
     <a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a>
 </div>

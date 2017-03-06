@@ -11,9 +11,16 @@
 						vm.modallogin = function () {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
-		 							controller : function ($scope, $modalInstance) {
+		 							controller : function ($scope, $modalInstance, QiSatAPI) {
+
+		 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+
 													  $scope.cancel = function () {
 													    $modalInstance.dismiss('cancel');
+													  };
+
+													  $scope.clickremember = function () {
+													  	 $scope.remember = !$scope.remember;
 													  };
 
 													  $scope.login = function(credentials) {
@@ -33,6 +40,31 @@
 												 					}
 												 					return res;
 													 			});
+														};
+
+														$scope.sendMail = function(email){
+															var data = { email : email };
+																$scope.msgLogin = "";
+										 						$scope.typeMsgLogin = false;
+
+
+															QiSatAPI.remember(data)
+																		.then( function ( response ){
+																				if(response && response.data && response.data.retorno && response.data.retorno.sucesso){ 
+																					$scope.msgLogin = "Mensagem Enviada!";
+														 							$scope.typeMsgLogin = "alert-box info radius";
+																					delete($scope.email);
+																					$scope.remember = false;
+																			    }else{
+																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem){
+																				 		$scope.msgLogin = "Falha na Solicitação!";
+														 								$scope.typeMsgLogin = "alert-box alert radius";
+																				 	}
+																			    }
+																			}, function ( response ){
+																				$scope.msgLogin = "Falha na Solicitação!";
+														 						$scope.typeMsgLogin = "alert-box alert radius";
+																			});
 														};
 
 													},

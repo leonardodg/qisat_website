@@ -77,7 +77,7 @@
               <label for="emailResponsavel" class="middle">E-mail do Responsável <strong title="Campo Obrigatório">*</strong>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" ng-required="true" >
+              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
               <div ng-show="cadastroConselhoForm.emailResponsavel.$dirty && cadastroConselhoForm.emailResponsavel.$invalid">
                     <span class="error" ng-show="cadastroConselhoForm.emailResponsavel.$error.required">Email é Obrigatório!</span>

@@ -4,13 +4,33 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope','QiSatAPI', '$modal', '$controller', function($scope, QiSatAPI, $modal, $controller){
+					[ '$scope','QiSatAPI', '$modal', '$controller', 'authService', function($scope, QiSatAPI, $modal, $controller, authService){
 						
 						var modalController = $controller('modalController');
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							$scope.modalcall = modalController.call;
 			                $scope.submitted = false;
 			                $scope.isDisabled = true;
+			                $scope.zopim = false;
+
+			            $scope.showZopim = function(){
+			            	 var user = authService.getUser();
+			            	 $zopim.livechat.setOnConnected (function (){
+                            						
+                            						$zopim.livechat.departments.setVisitorDepartment(111831);
+
+                            						if(user){
+	                            						$zopim.livechat.set({
+														      language: 'pt-br',
+														      name: user.firstname+' '+user.lastname,
+														      email: user.email,
+														      phone: user.phone1
+														    });
+                            						}
+
+                            						$zopim.livechat.window.show();
+					                			});
+			            };
 
 			            $scope.addNew = function(){
 			                      $scope.submitted = true;

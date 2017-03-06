@@ -40,12 +40,7 @@ $(function() {
  // });
 
 
-$(document).ready(function() {
-  $(document).on('click', ".btn-password", function(e){
-    e.preventDefault();
-    $(".showPassword").slideToggle();
-  });
-}());
+
 
 
 //toggle foter

@@ -188,7 +188,7 @@
 				<div class="medium-10 columns">
 					<div class="row">
 							<div class="small-12 columns">
-						        <input id="email" name="email" type="email" placeholder="seu@email.com" ng-required="true" ng-pattern="emailFormat" email-check ng-model="dados.email" />
+						        <input id="email" name="email" type="email" placeholder="seu@email.com" ng-required="true" ng-pattern="emailFormat" email-check ng-model="dados.email" ng-model-options="{ debounce: 1000 }" />
 
 						        <div ng-show="(insteresseForm.email.$dirty || submitted) && insteresseForm.email.$invalid">
 				                    <span class="error" ng-show="insteresseForm.email.$error.required">Email é Obrigatório!</span>

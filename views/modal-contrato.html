@@ -61,33 +61,38 @@ span.subitem{
 <p><span class=topico><b>1.1</b> O objeto deste contrato é prestação ao ALUNO pelo QISAT dos cursos listados a seguir:</span><br>
 <span class=subtopico><b>1.1.1</b> Conteúdo do(s) Curso(s) via internet:</span></p>
 
-<table width="100%" cellpadding="3" cellspacing="0" class="table_cursos">
+<table width="100%" cellpadding="3" cellspacing="0" class="table_cursos" >
 	<tr>
 		<td width="50%" align="left" class="titulo_dados_tabela"><b>Curso</b></td>
 		<td width="25%" align="center" class="titulo_dados_tabela"><b>Prazo de Acesso</b></td>
 		<td width="25%" align="center" class="titulo_dados_tabela"><b>Tempo por aula</b></td>
 	</tr>
-	<tr ng-repeat="produto in online track by produto.id">
+	<tr ng-repeat="produto in online track by produto.id" ng-if="online.length">
 		<td ng-repeat="curso in produto.courses" >{{curso.nome}}</td>
 		<td align="center">{{::produto.enrolperiod}}</td>
         <td align="center" ng-repeat="curso in produto.courses" >{{curso.time}}</td>
 	</tr>
+
+	<tr ng-if="!online.length" > <td colspan="3"> Nenhum curso online. </td></tr>
 </table>
 
 <p><span class=subtopico><b>1.1.2</b> Emissão eletrônica de certificado de participação, caso o ALUNO atinja 95% (noventa e cinco por cento) de participação no(s) curso(s), a validação dos acessos é verificada através do controle de acesso do QISAT. Parágrafo único: O acesso ao treinamento - objeto deste contrato - pode dar-se a qualquer dia e a qualquer horário (24 horas por dia, inclusive finais de semanas e feriados), respeitando os limites máximos de acessos por aula (em horas) e no treinamento (contados automaticamente a partir da data da aquisição).</span><br> 
 <span class=subtopico><b>1.1.3</b> A emissão do certificado encerra o prazo contratado de acesso ao curso.</span><br>
-<span class=subtopico  ng-if="presencial.length"><b>1.1.4</b>  Realização do(s) Curso(s) presencial(is):</span></p>
+<span class=subtopico ><b>1.1.4</b>  Realização do(s) Curso(s) presencial(is):</span></p>
 
-<table width="100%" cellpadding="3" cellspacing="0" class="table_cursos">
+<table width="100%" cellpadding="3" cellspacing="0" class="table_cursos" >
 <tr>
     <td width="50%" class="titulo_dados_tabela"><div align="left" class="titulo_dados_tabela"><strong>Curso</strong></div></td>
     <td width="25%" class="titulo_dados_tabela"><div align="center" class="titulo_dados_tabela"><strong>Data</strong></div></td>
     <td width="25%" class="titulo_dados_tabela"><div align="center" class="titulo_dados_tabela"><strong>Cidade/UF</strong></div></td>
 </tr>
-<tr ng-repeat="curso in presencial">
+<tr ng-repeat="curso in presencial" ng-if="presencial.length">
 	<td>{{curso.nome}}</td>
 	<td><div align="center" ng-repeat="data in curso.datas">{{data}} <br></div></td>
 	<td><div align="center"> {{curso.local}}</div></td></tr>
+
+	<tr ng-if="!presencial.length" > <td colspan="3"> Nenhum curso presencial. </td></tr>
+
 </table>
 
 

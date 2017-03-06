@@ -8,8 +8,8 @@
 
 					 	var vm = this;
 		 				var forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
-					 		vm.formasPagamentos = formasPagamentos; 
-					 		vm.pagamento = 4;
+					 		vm.formasPagamentos = formasPagamentos.reverse(); 
+					 		vm.pagamento = 1;
 
 					 	moment.locale('pt-BR');
 

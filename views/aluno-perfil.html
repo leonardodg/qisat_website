@@ -19,10 +19,18 @@
 
 			<div class="row">
 				<div class="large-6 columns">
+
+		            <div ui-alert type="{{typeMsgEditFile}}">
+		                  {{msgEditFile}}
+		            </div>
+
             <label>Imagem</label>
             <div>
-					   	<img src="images/aluno/home-user-icon.png" alt="user" class="left thumb" width="110">
-              <button type="button" id="picture" ng-click="fileUpdate()" > Alterar Imagem »</button>
+            	<form name="fileForm" id="fileForm"  novalidate>
+	              <input type="file" id="picture" name="picture" ng-hide="true" ng-change="fileChanged()" ng-model="files" />
+				  <img ng-src="{{user.picture}}" alt="user" class="left thumb" width="110">
+	              <button type="button" id="picture" ng-click="fileClick()" > Alterar Imagem »</button>
+	             </form>
 
               <p><small>(Tamanho máximo: 32mb)</small></p>
             </div>
@@ -30,14 +38,16 @@
 				</div>
 
 				<div class="large-6 columns">
-          <label><br></label>
-          <button type="button" class="btn-password right"><i class="material-icons">lock</i> Alterar senha</button>
-          <div class="showPassword" style="display: none;clear:both;">
-          <form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
+          	<br>
 
-              <div ui-alert type="{{typeMsgEditPass}}">
+            <div ui-alert type="{{typeMsgEditPass}}">
                   {{msgEditPass}}
-              </div>
+            </div>
+
+
+          <button type="button" class="btn-password right" ng-click="clickEditPassword()" ng-if="!showEditPassword" ><i class="material-icons">lock</i> Alterar senha</button>
+          <div class="showPassword" style="clear:both;" ng-show="showEditPassword">
+          <form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
 
               <label for="currentPassword"> Senha Atual </label>
             <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
@@ -67,6 +77,7 @@
               </span>
               </div>
 
+            <button type="cancel" id="showEditPassword" ng-click="clickEditPassword()" > Cancela </button>
             <button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
 
           <a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
@@ -97,7 +108,7 @@
 					    </div>
 					 
               <label for="email">Email:</label>
-					    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="user.email" ng-required="true" ng-disabled="(!confirm) || (confirm && !getEmail)" ng-pattern="emailFormat" >
+					    <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="user.email" ng-required="true" ng-disabled="(!confirm) || (confirm && !getEmail)" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
 
 					    <div ng-show="editForm.email.$dirty && editForm.email.$invalid">
 					      <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>

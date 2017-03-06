@@ -20,7 +20,7 @@
           <th>Selecione a Forma de Pagamento</th>
           <td>
             <div class="row">
-              <div class="column small-12" ng-repeat="forma in vm.formasPagamentos" ng-class="{'medium-3' : forma.pagamento =='Boleto', 'medium-9' : forma.pagamento =='Cartão de Crédito'}">
+              <div ng-repeat="forma in vm.formasPagamentos" ng-class="{'medium-3 small-12 columns end' : forma.pagamento =='Boleto', 'medium-7 small-12 columns' : forma.pagamento =='Cartão de Crédito'}">
                 <p>{{forma.pagamento}}</p>
                 <ul class="inline-list">
                   <li ng-repeat="operadora in forma.operadoras" >

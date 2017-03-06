@@ -82,7 +82,7 @@
      <div class="large-9 columns page-professores">
           <!-- <div class="page_content"> -->
           <div class="cards">
-            <div class="card" ng-repeat="instructor in instructors | filter:filterInstructor | filter:{nome:searchName} track by instructor.id" >
+            <div class="card" ng-repeat="instructor in instructors | filter:filterInstructor | filter:{nome:searchName} | orderBy:'nome':reverse track by instructor.id" >
               <a href="/institucional/instrutor/{{::instructor.id}}">
                 <img back-img="{{::instructor.imagem}}" ng-src="{{::instructor.imagem}}">
                 <div>
