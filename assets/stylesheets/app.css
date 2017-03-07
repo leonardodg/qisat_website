@@ -5195,41 +5195,45 @@ hr.clearfix {
   text-align: justify;
 }
 /* line 19, ../scss/qisat/layout/_institutional.scss */
+.page_content .align, .widget_content .align {
+  text-align: left;
+}
+/* line 24, ../scss/qisat/layout/_institutional.scss */
 .page_content.no-padding, .widget_content.no-padding {
   padding: 3px;
 }
 @media only screen and (min-width: 40em) {
-  /* line 23, ../scss/qisat/layout/_institutional.scss */
+  /* line 28, ../scss/qisat/layout/_institutional.scss */
   .page_content .block, .widget_content .block {
     margin-left: 30px;
     margin-bottom: 30px;
   }
 }
-/* line 31, ../scss/qisat/layout/_institutional.scss */
+/* line 36, ../scss/qisat/layout/_institutional.scss */
 .page_content.page-contact .sub-title, .widget_content.page-contact .sub-title {
   text-transform: uppercase;
   margin-bottom: 10px;
 }
-/* line 35, ../scss/qisat/layout/_institutional.scss */
+/* line 40, ../scss/qisat/layout/_institutional.scss */
 .page_content.page-contact .sub-title strong, .widget_content.page-contact .sub-title strong {
   padding-top: 2px;
 }
-/* line 41, ../scss/qisat/layout/_institutional.scss */
+/* line 46, ../scss/qisat/layout/_institutional.scss */
 .page_content ul.unstyle, .widget_content ul.unstyle {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-/* line 47, ../scss/qisat/layout/_institutional.scss */
+/* line 52, ../scss/qisat/layout/_institutional.scss */
 .page_content ul.unstyle li:hover, .widget_content ul.unstyle li:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-/* line 53, ../scss/qisat/layout/_institutional.scss */
+/* line 58, ../scss/qisat/layout/_institutional.scss */
 .page_content ul.unstyle .span, .widget_content ul.unstyle .span {
   color: #222222;
 }
-/* line 59, ../scss/qisat/layout/_institutional.scss */
+/* line 64, ../scss/qisat/layout/_institutional.scss */
 .page_content .title, .widget_content .title {
   text-transform: uppercase;
   color: #666;
@@ -5239,31 +5243,31 @@ hr.clearfix {
   width: 105%;
 }
 
-/* line 69, ../scss/qisat/layout/_institutional.scss */
+/* line 74, ../scss/qisat/layout/_institutional.scss */
 .page_content {
   margin-bottom: 40px;
 }
 
-/* line 70, ../scss/qisat/layout/_institutional.scss */
+/* line 75, ../scss/qisat/layout/_institutional.scss */
 .page_content > .align {
   margin-bottom: 40px;
   text-align: left;
 }
 
-/* line 71, ../scss/qisat/layout/_institutional.scss */
+/* line 76, ../scss/qisat/layout/_institutional.scss */
 .widget_content {
   margin-bottom: 10px;
 }
-/* line 73, ../scss/qisat/layout/_institutional.scss */
+/* line 78, ../scss/qisat/layout/_institutional.scss */
 .widget_content p {
   font-size: 0.9em;
   margin-bottom: 9px;
 }
-/* line 74, ../scss/qisat/layout/_institutional.scss */
+/* line 79, ../scss/qisat/layout/_institutional.scss */
 .widget_content--slim {
   padding: 0;
 }
-/* line 76, ../scss/qisat/layout/_institutional.scss */
+/* line 81, ../scss/qisat/layout/_institutional.scss */
 .widget_content__title {
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -5272,18 +5276,18 @@ hr.clearfix {
   color: #979797;
   letter-spacing: 1px;
 }
-/* line 77, ../scss/qisat/layout/_institutional.scss */
+/* line 82, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list {
   list-style: none;
   margin: 0;
 }
-/* line 79, ../scss/qisat/layout/_institutional.scss */
+/* line 84, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list__item {
   margin-bottom: 10px;
   line-height: 1.3;
   font-size: 13px;
 }
-/* line 81, ../scss/qisat/layout/_institutional.scss */
+/* line 86, ../scss/qisat/layout/_institutional.scss */
 .widget_content__list__item strong {
   font-size: 11px;
   font-weight: 600;
@@ -5292,7 +5296,7 @@ hr.clearfix {
   display: block;
   line-height: 1;
 }
-/* line 93, ../scss/qisat/layout/_institutional.scss */
+/* line 98, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > a, .widget_content .accordion dd > a {
   background: #fff;
   display: block;
@@ -5302,23 +5306,23 @@ hr.clearfix {
   font-weight: 600;
   color: #979797 !important;
 }
-/* line 102, ../scss/qisat/layout/_institutional.scss */
+/* line 107, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > .content, .widget_content .accordion dd > .content {
   padding: .9375rem 20px;
 }
-/* line 103, ../scss/qisat/layout/_institutional.scss */
+/* line 108, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation > .content.active, .widget_content .accordion dd > .content.active {
   background: #444;
   color: rgba(255, 255, 255, 0.61);
 }
-/* line 104, ../scss/qisat/layout/_institutional.scss */
+/* line 109, ../scss/qisat/layout/_institutional.scss */
 .widget_content .accordion .accordion-navigation, .widget_content .accordion dd {
   border-bottom: 1px solid #eee;
 }
 
 /* 'gallery-sync
 ========================================= */
-/* line 118, ../scss/qisat/layout/_institutional.scss */
+/* line 123, ../scss/qisat/layout/_institutional.scss */
 .gallery-sync_caption {
   background: rgba(5, 5, 5, 0.6);
   margin: 0;
@@ -5332,11 +5336,11 @@ hr.clearfix {
   right: 0;
 }
 
-/* line 131, ../scss/qisat/layout/_institutional.scss */
+/* line 136, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger {
   background-color: #292929;
 }
-/* line 133, ../scss/qisat/layout/_institutional.scss */
+/* line 138, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger .item {
   padding: 0;
   margin: 0px;
@@ -5346,16 +5350,16 @@ hr.clearfix {
   border-radius: 3px;
   text-align: center;
 }
-/* line 141, ../scss/qisat/layout/_institutional.scss */
+/* line 146, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger .item img {
   border-radius: 3px 3px 0 0;
 }
 
-/* line 145, ../scss/qisat/layout/_institutional.scss */
+/* line 150, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb {
   background-color: #0F0F0F;
 }
-/* line 148, ../scss/qisat/layout/_institutional.scss */
+/* line 153, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item {
   background-color: #005285;
   padding: 0px;
@@ -5368,39 +5372,39 @@ hr.clearfix {
   cursor: pointer;
   opacity: 0.5;
 }
-/* line 159, ../scss/qisat/layout/_institutional.scss */
+/* line 164, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item h1 {
   font-size: 18px;
 }
-/* line 160, ../scss/qisat/layout/_institutional.scss */
+/* line 165, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .item img {
   background-blend-mode: multiply;
 }
-/* line 162, ../scss/qisat/layout/_institutional.scss */
+/* line 167, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_thumb .current .item {
   background-color: #0c83e7;
   opacity: 1;
 }
 
-/* line 171, ../scss/qisat/layout/_institutional.scss */
+/* line 176, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav {
   /*default owl-theme theme reset .disabled:hover links */
   margin: 0 !important;
 }
-/* line 174, ../scss/qisat/layout/_institutional.scss */
+/* line 179, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav [class*='owl-'] {
   transition: all .3s ease;
 }
-/* line 176, ../scss/qisat/layout/_institutional.scss */
+/* line 181, ../scss/qisat/layout/_institutional.scss */
 .owl-theme .owl-nav [class*='owl-'].disabled:hover {
   background-color: #d6d6d6;
 }
 
-/* line 185, ../scss/qisat/layout/_institutional.scss */
+/* line 190, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme {
   position: relative;
 }
-/* line 187, ../scss/qisat/layout/_institutional.scss */
+/* line 192, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-next, #gallery-sync_bigger.owl-theme .owl-prev {
   width: 22px;
   height: 40px;
@@ -5408,28 +5412,28 @@ hr.clearfix {
   position: absolute;
   top: 50%;
 }
-/* line 194, ../scss/qisat/layout/_institutional.scss */
+/* line 199, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-prev {
   left: 10px;
   background-color: rgba(128, 128, 128, 0.4);
 }
-/* line 197, ../scss/qisat/layout/_institutional.scss */
+/* line 202, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-prev:hover {
   background-color: #929292;
 }
-/* line 199, ../scss/qisat/layout/_institutional.scss */
+/* line 204, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-next {
   right: 10px;
   background-color: rgba(128, 128, 128, 0.4);
 }
-/* line 202, ../scss/qisat/layout/_institutional.scss */
+/* line 207, ../scss/qisat/layout/_institutional.scss */
 #gallery-sync_bigger.owl-theme .owl-next:hover {
   background-color: #929292;
 }
 
 /* 'end gallery-sync
 ========================================= */
-/* line 213, ../scss/qisat/layout/_institutional.scss */
+/* line 218, ../scss/qisat/layout/_institutional.scss */
 .bloco_ano {
   position: relative;
   width: 130px;
@@ -5443,7 +5447,7 @@ hr.clearfix {
   float: left;
 }
 
-/* line 226, ../scss/qisat/layout/_institutional.scss */
+/* line 231, ../scss/qisat/layout/_institutional.scss */
 .bloco_texto {
   position: relative;
   width: 300px;
@@ -5458,42 +5462,42 @@ hr.clearfix {
   margin-top: 10px;
 }
 
-/* line 241, ../scss/qisat/layout/_institutional.scss */
+/* line 246, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider {
   padding: 20px 40px;
 }
-/* line 243, ../scss/qisat/layout/_institutional.scss */
+/* line 248, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component {
   line-height: auto;
 }
-/* line 244, ../scss/qisat/layout/_institutional.scss */
+/* line 249, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__handle {
   line-height: auto;
 }
-/* line 245, ../scss/qisat/layout/_institutional.scss */
+/* line 250, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__handle-number {
   position: absolute;
   left: 40px;
   top: -3px;
 }
-/* line 247, ../scss/qisat/layout/_institutional.scss */
+/* line 252, ../scss/qisat/layout/_institutional.scss */
 .timeline__vertical_slider__component__active-segment {
   line-height: auto;
 }
 
-/* line 254, ../scss/qisat/layout/_institutional.scss */
+/* line 259, ../scss/qisat/layout/_institutional.scss */
 .container-timeline {
   padding: 0;
   background-color: #ffffff;
   margin-bottom: 40px;
 }
 
-/* line 260, ../scss/qisat/layout/_institutional.scss */
+/* line 265, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group--background {
   background-color: #FFFFFF;
 }
 
-/* line 261, ../scss/qisat/layout/_institutional.scss */
+/* line 266, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group {
   list-style: none;
   margin: 0;
@@ -5501,7 +5505,7 @@ hr.clearfix {
   background-color: #ffffff;
   display: inline-block;
 }
-/* line 268, ../scss/qisat/layout/_institutional.scss */
+/* line 273, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item {
   position: relative;
   display: block;
@@ -5514,37 +5518,37 @@ hr.clearfix {
   transition: all 0.5s;
   cursor: pointer;
 }
-/* line 270, ../scss/qisat/layout/_institutional.scss */
+/* line 275, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:hover {
   background-color: #eee;
 }
-/* line 271, ../scss/qisat/layout/_institutional.scss */
+/* line 276, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:hover .arrow {
   opacity: 0.5;
 }
-/* line 273, ../scss/qisat/layout/_institutional.scss */
+/* line 278, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active {
   background-color: #25373A;
 }
-/* line 275, ../scss/qisat/layout/_institutional.scss */
+/* line 280, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .list-group-item-date {
   background: #fff;
   color: #25373A;
 }
-/* line 276, ../scss/qisat/layout/_institutional.scss */
+/* line 281, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .title {
   color: #fff;
 }
-/* line 277, ../scss/qisat/layout/_institutional.scss */
+/* line 282, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .subtitle {
   color: #fff;
 }
-/* line 278, ../scss/qisat/layout/_institutional.scss */
+/* line 283, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .arrow {
   color: #fff;
   opacity: 1;
 }
-/* line 280, ../scss/qisat/layout/_institutional.scss */
+/* line 285, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .arrow {
   position: absolute;
   right: 20px;
@@ -5553,18 +5557,18 @@ hr.clearfix {
   opacity: 0;
   transition: all 0.5s;
 }
-/* line 281, ../scss/qisat/layout/_institutional.scss */
+/* line 286, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .title {
   display: block;
   height: 26px;
   overflow: hidden;
 }
-/* line 282, ../scss/qisat/layout/_institutional.scss */
+/* line 287, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .subtitle {
   opacity: 0.5;
   font-weight: 300;
 }
-/* line 283, ../scss/qisat/layout/_institutional.scss */
+/* line 288, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .list-group-item-date {
   background: #25373A;
   width: 50px;
@@ -5579,40 +5583,40 @@ hr.clearfix {
   font-weight: 800;
   margin-right: 20px;
 }
-/* line 285, ../scss/qisat/layout/_institutional.scss */
+/* line 290, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-/* line 290, ../scss/qisat/layout/_institutional.scss */
+/* line 295, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:last-child {
   margin-bottom: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 
-/* line 301, ../scss/qisat/layout/_institutional.scss */
+/* line 306, ../scss/qisat/layout/_institutional.scss */
 .timeline__post--background {
   background-color: #25373A;
 }
 
-/* line 304, ../scss/qisat/layout/_institutional.scss */
+/* line 309, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__header img {
   max-width: 100%;
 }
-/* line 306, ../scss/qisat/layout/_institutional.scss */
+/* line 311, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body {
   padding: 20px 40px;
 }
-/* line 308, ../scss/qisat/layout/_institutional.scss */
+/* line 313, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body__meta {
   color: #fff;
 }
-/* line 309, ../scss/qisat/layout/_institutional.scss */
+/* line 314, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p {
   color: #C6CCCE;
 }
-/* line 310, ../scss/qisat/layout/_institutional.scss */
+/* line 315, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p.lead {
   font-size: 1.5rem;
   font-weight: 300;
