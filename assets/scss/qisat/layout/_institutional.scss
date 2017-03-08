@@ -16,6 +16,10 @@
   border-radius: $global-radius;
   text-align: justify;
 
+ .align {
+    text-align: left;
+  }
+
   &.no-padding {
     padding: 3px;
   }

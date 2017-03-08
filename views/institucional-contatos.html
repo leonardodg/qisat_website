@@ -28,7 +28,7 @@
           
           <hr>
           <p class="sub-title"><strong>Redes sociais</strong></p>
-          <p>Siga o QiSat nas redes sociais e acompanhe as novidades e lançamentos</p>
+          <p>Siga o QiSat nas redes sociais e acompanhe as novidades e lançamentos.</p>
           <ul class="inline-list">
             <li><a href="https://www.facebook.com/qisat" target="_blank"><img src="images/icons/facebook.png" alt="QiSat no Facebook" width="24" ></a></li>
             <li><a href="https://twitter.com/QiSat" target="_blank"><img src="images/icons/twitter.png" alt="QiSat no Twitter" width="24"></a></li>
@@ -53,11 +53,11 @@
                  </div>
                </div>
                   <div ng-show="newForm.emailNew.$dirty && newForm.emailNew.$invalid">
-                    <span class="error" ng-show="newForm.emailNew.$error.required">Email Obrigatório!</span>
+                    <span class="error" ng-show="newForm.emailNew.$error.required">Email obrigatório</span>
                   </div>
 
                   <div ng-show="newForm.emailNew.$dirty && newForm.emailNew.$error.pattern">
-                    <span class="error" >Formato de Email incorreto!</span>
+                    <span class="error" >Formato de email incorreto</span>
                   </div>
              </div>
            </div>
@@ -73,7 +73,7 @@
 
             Esses canais são para dúvidas sobre nossos serviços, auxílio na contratação, críticas, sugestões e feedbacks.</p>
 
-            <p>Lembrando que o suporte aos cursos é realizado apenas dentro da plataforma, onde você conta com um sistema<br> de tickets avançado em cada aula para falar diretamente com o tutor.</p>
+            <p class="align">O suporte aos cursos é realizado apenas dentro da plataforma de ensino, onde você conta com a ferramenta "Tira Dúvidas" para falar diretamente com o tutor.</p>
 
             <p>Deixe seus dados que em breve entraremos em contato.</p>
             <br>
@@ -88,7 +88,7 @@
 			    <div class="small-12 medium-8 columns">
 			      <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="contato.name" ng-required="true">
 			       <div ng-show="contatoForm.name.$dirty && contatoForm.name.$invalid">
-                <span class="error" ng-show="contatoForm.name.$error.required">Nome Obrigatório!</span>
+                <span class="error" ng-show="contatoForm.name.$error.required">Nome obrigatório</span>
               </div>
 			    </div>
           <div class="medium-2 columns"></div>
@@ -96,18 +96,19 @@
 
 			  <div class="row">
 			    <div class="small-12 medium-2 columns">
-			      <label for="email" class="middle ">Email <strong title="Campo Obrigatório">*</strong> </label>
+			      <label for="email" class="middle ">E-mail <strong title="Campo Obrigatório">*</strong> </label>
 		
 			    </div>
 			    <div class="small-12 medium-8 columns">
+          
 			      <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="contato.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
 				   <div ng-show="contatoForm.email.$dirty && contatoForm.email.$invalid">
-                    <span class="error" ng-show="contatoForm.email.$error.required">Email Obrigatório!</span>
+                    <span class="error" ng-show="contatoForm.email.$error.required">Email obrigatório</span>
                   </div>
 
                   <div ng-show="contatoForm.email.$dirty && contatoForm.email.$error.pattern">
-                    <span class="error" >Formato de Email incorreto!</span>
+                    <span class="error" >Formato de e-mail incorreto</span>
                   </div>
 
 			    </div>
@@ -132,7 +133,7 @@
 			      <input type="text" name="subject" id="subject" placeholder="Assunto do Contato" ng-model="contato.subject" ng-required="true">
 
 			      <div ng-show="contatoForm.subject.$dirty && contatoForm.subject.$invalid">
-                    <span class="error" ng-show="contatoForm.subject.$error.required">Assunto Obrigatório!</span>
+                    <span class="error" ng-show="contatoForm.subject.$error.required">Assunto obrigatório</span>
                   </div>
 
 			    </div>
@@ -146,9 +147,9 @@
 
 			    </div>
 			    <div class="small-12 medium-8 columns">
-			    	<textarea name="msg" id="msg"  placeholder="Escreva sua mensagem" rows="6" ng-model="contato.msg" ng-required="true" ></textarea>
+			    	<textarea name="msg" id="msg"  placeholder="Escreva a mensagem" rows="6" ng-model="contato.msg" ng-required="true" ></textarea>
 			    	 <div ng-show="contatoForm.msg.$dirty && contatoForm.msg.$invalid">
-                    <span class="error" ng-show="contatoForm.msg.$error.required">Assunto Obrigatório!</span>
+                    <span class="error" ng-show="contatoForm.msg.$error.required">Mensagem é obrigatório</span>
                   </div>
 
 			    </div>
@@ -167,7 +168,7 @@
 					  			<button class="button expand" type="submit" ng-disabled="contatoForm.$invalid" ng-click="sendMail()"> Enviar </button>
 
 					   			<div data-alert class="alert-box info radius alert-send-ok" style="display: none;">
-								  Mensagem Enviada com SUCESSO!
+								  Mensagem enviada com SUCESSO!
 								</div>
 
 								<div data-alert class="alert-box warning  radius alert-send-error" style="display: none;">
