@@ -826,10 +826,16 @@ button.close-button, .close-button {
     }
     p {
       margin: 0;
+      text-align: left;
     }
     span {
       color: #666;
     }
+    img {
+        @media only screen and (max-width: 40em) {
+            display: none;
+          }
+      }
   }
 
   .cards {

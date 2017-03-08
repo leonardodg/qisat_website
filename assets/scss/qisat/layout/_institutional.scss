@@ -182,7 +182,7 @@
 }
 
 //arrows on first carousel
-#gallery-sync_bigger.owl-theme {
+#gallery-sync_bigger.owl-theme, #owl-carousel-produto.owl-theme {
   position: relative;
   .owl-next, .owl-prev {
     width: 22px;
@@ -203,6 +203,8 @@
   }
   //.owl-prev.disabled{display: none}
 }
+
+.owl-carousel-produto__item{ margin: 25px; }
 
 
 /* 'end gallery-sync
@@ -310,10 +312,3 @@
    p.lead{font-size: 1.5rem;  font-weight: 300;}
  }
 }
-
-
-
-
-
-
-
