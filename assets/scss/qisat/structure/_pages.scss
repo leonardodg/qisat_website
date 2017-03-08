@@ -446,6 +446,7 @@ button.close-button, .close-button {
 /* PERGUNTAS FREQUENTES*/
 .accordion-component .accordion-navigation > a:hover { background: none;}
 .accordion-component .accordion-navigation > a{ background: none; border-top: 1px solid #eee;}
+.accordion-component .accordion-navigation .title_convenio > a{ background: none; border-top: 1px solid #eee; font-weight: bold;}
 .accordion-component .accordion-navigation.active > a{ background: none; color: $primary-color; font-weight: 600;}
 .accordion-component .accordion-navigation.active > a:after {content: "-"; color: $primary-color;}
 .accordion-component .accordion-navigation > a:after{    content: "+";  color: $primary-color;  margin-right: 10px;    font-size: 23px;    line-height:1; float: right}
