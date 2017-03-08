@@ -95,6 +95,16 @@ $(document).ready(function() {
         });
 
 
+        // TINHA DO TEMPO - INSTITUCIONAL
+        $(document).on('click', ".timeline__list-group li", function(e){
+          e.preventDefault();
+
+          var getRef = $(this).closest("li").data("year");
+          $(this).addClass("active").siblings().removeClass("active");
+          $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
+        });
+
+
          $('.buttom-favorite').on('click', function(event){
                    event.preventDefault();
                   $(this).toggleClass("buttom-favorite-active");
