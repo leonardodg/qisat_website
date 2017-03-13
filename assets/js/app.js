@@ -22,7 +22,7 @@ $(function() {
         $('html, body').animate({
           scrollTop: target.offset().top
         }, 1000);
-      }
+      }    
   });
 
    $(".map__state").click(function() {
@@ -95,15 +95,23 @@ $(document).ready(function() {
 
         // TINHA DO TEMPO - INSTITUCIONAL
         $(document).on('click', ".timeline__list-group li", function(e){
-          e.preventDefault();
+           var getRef = $(this).data("year");
+           var target = $('[name=' + getRef +']');
 
-          var getRef = $(this).closest("li").data("year");
-          $(this).addClass("active").siblings().removeClass("active");
+            $('.list-group-item.active').removeClass("active");
+            $(this).addClass("active");
 
-          $(".timeline__post.active").removeClass("active").hide();
-          $(document).find(".timeline__post.year-"+getRef).fadeIn("fast", function () {
-              $(this).addClass("active");
-          });
+            $(".timeline__post.active").removeClass("active").hide();
+            $(document).find(".timeline__post.year-"+getRef).fadeIn("fast", function () {
+                $(this).addClass("active");
+            });
+
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000);
+
+            e.preventDefault();
+            return false;
         });
 
          $(document).on('click', '.buttom-favorite', function(event){

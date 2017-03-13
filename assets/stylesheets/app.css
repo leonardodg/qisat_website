@@ -5620,12 +5620,12 @@ hr.clearfix {
 }
 /* line 320, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active {
-  background-color: #25373A;
+  background-color: #012c48;
 }
 /* line 322, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .list-group-item-date {
   background: #fff;
-  color: #25373A;
+  color: #012c48;
 }
 /* line 323, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item.active .title {
@@ -5656,8 +5656,9 @@ hr.clearfix {
 /* line 329, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .title {
   display: block;
-  height: 26px;
+  height: 48px;
   overflow: hidden;
+  font-size: 15px;
 }
 /* line 330, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .subtitle {
@@ -5666,7 +5667,7 @@ hr.clearfix {
 }
 /* line 331, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .list-group-item-date {
-  background: #25373A;
+  background: #012c48;
   width: 50px;
   float: left;
   height: 50px;
@@ -5703,7 +5704,7 @@ hr.clearfix {
 
 /* line 357, ../scss/qisat/layout/_institutional.scss */
 .timeline__post--background {
-  background-color: #25373A;
+  background-color: #01263e;
 }
 
 /* line 358, ../scss/qisat/layout/_institutional.scss */
@@ -5717,21 +5718,22 @@ hr.clearfix {
 /* line 363, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body {
   padding: 20px 40px;
+  text-align: justify;
 }
-/* line 365, ../scss/qisat/layout/_institutional.scss */
+/* line 366, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body__meta {
   color: #fff;
 }
-/* line 366, ../scss/qisat/layout/_institutional.scss */
+/* line 367, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p {
   color: #C6CCCE;
 }
-/* line 367, ../scss/qisat/layout/_institutional.scss */
+/* line 368, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p.lead {
   font-size: 1.5rem;
   font-weight: 300;
 }
-/* line 369, ../scss/qisat/layout/_institutional.scss */
+/* line 370, ../scss/qisat/layout/_institutional.scss */
 .timeline__post.active {
   display: block;
 }

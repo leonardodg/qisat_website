@@ -318,17 +318,17 @@
                 .arrow{opacity: 0.5;}
             }
      &.active{
-            background-color: #25373A;
-            .list-group-item-date{   background: #fff; color: #25373A; }
+            background-color: #012c48;
+            .list-group-item-date{   background: #fff; color: #012c48; }
             .title{color:#fff}
             .subtitle{color:#fff}
             .arrow{color: #fff; opacity: 1;}
             a {color:#fff}
           }
     .arrow{ position: absolute; right: 20px; top: 50%; margin-top: -10px; opacity: 0; transition: all 0.5s}
-    .title{ display: block; height: 26px; overflow: hidden; }
+    .title{ display: block; height: 48px; overflow: hidden; font-size: 15px; }
     .subtitle { opacity: 0.5; font-weight: 300;}
-    .list-group-item-date{ background: #25373A; width: 50px; float: left; height: 50px; border-radius: 50%; display: inline-block; font-size: 12px; line-height: 4; text-align: center; color: #fff; font-weight: 800; margin-right: 20px; }
+    .list-group-item-date{ background: #012c48; width: 50px; float: left; height: 50px; border-radius: 50%; display: inline-block; font-size: 12px; line-height: 4; text-align: center; color: #fff; font-weight: 800; margin-right: 20px; }
 
     &:first-child {
         border-top-left-radius: 4px;
@@ -354,7 +354,7 @@
 
 
 
-.timeline__post--background{ background-color: #25373A; }
+.timeline__post--background{ background-color: #01263e; }
 .timeline__post{
   display: none;
   &__header{
@@ -362,6 +362,7 @@
  }
  &__body{
        padding: 20px 40px;
+       text-align: justify;
    &__meta{color: #fff}
    p{color: #C6CCCE}
    p.lead{font-size: 1.5rem;  font-weight: 300;}
