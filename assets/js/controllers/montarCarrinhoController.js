@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('montarCarrinhoController', ['$scope', '$location',  '$filter', '$modal','carrinhoServive', 'authService', 'Authenticated',
-					 function(scope, $location, $filter, $modal, carrinhoServive, authService, Authenticated) {
+		.controller('montarCarrinhoController', ['$scope', '$location', '$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService', 'Authenticated',
+					 function(scope, $location, $window, $route, $filter, $modal, carrinhoServive, authService, Authenticated) {
 
 					 	var vm = this;
 			 			 
@@ -78,6 +78,13 @@
 					 		else
 					 			$location.path('/carrinho/pagamento');
 					 	};
-				 		
+
+					 	vm.cancelTransacao = function(){
+					 		carrinhoServive.cancelarTransacao().then(function(res){
+					 			if(res.sucesso)
+					 				window.location = '/carrinho/pagamento';
+					 		});
+					 	};
+
 					 }]);
 })();

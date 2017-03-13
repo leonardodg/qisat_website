@@ -2,7 +2,7 @@
 
     <div class="widget_content" ng-if="!buy.transacao" >
       <p class="title">Forma de pagamento</p>
-      <table width="100%" class="table-cart">
+      <table width="100%" class="table-cart tablePagamento">
         <tr>
           <th>Termos de contrato</th>
           <td>
@@ -23,7 +23,7 @@
               <div ng-repeat="forma in vm.formasPagamentos" ng-class="{'medium-3 small-12 columns end' : forma.pagamento =='Boleto', 'medium-7 small-12 columns' : forma.pagamento =='Cartão de Crédito'}">
                 <p>{{forma.pagamento}}</p>
                 <ul class="inline-list">
-                  <li ng-repeat="operadora in forma.operadoras" >
+                  <li ng-repeat="operadora in forma.operadoras">
                     <label><input id="pagamento" name="pagamento" type="radio" ng-model="vm.pagamento" value="{{operadora.index}}" ng-required="true" > <img ng-src="{{operadora.img.src}}" alt="" ></label>
                   </li>
                 </ul>
@@ -76,7 +76,7 @@
   </table>
 
   <div class="row">
-    <div class="small-3 small-centered columns">        
+    <div class="small-12 large-3 large-centered columns">        
         <a ng-href="{{vm.redirect}}" class="button success text-center">Finalizar Pagamento</a>
     </div>
   </div>
@@ -85,34 +85,40 @@
 </div>
 
 <div class="row" ng-if="!vm.redirect && !buy.transacao">
-  <div class="column small-6">
+  <div class="small-6 medium-6 large-6 columns">
     <a href="/carrinho" class="button secondary" ng-hide="vm.loading"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
   </div>
-  <div class="column small-6">
+  <div class="small-6 medium-6 large-6 columns">
       <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading">Realizar Compra <i class="material-icons">keyboard_arrow_right</i></button>
   </div>
 </div>
 
-<div class="widget_content" class="text-center" ng-if="buy.transacao">
-  <p class="title">Pagamento não Finalizado!</p>
 
-  <table width="100%" class="table-cart">
-    <tr class="text-center">
-      <td class="text-center">
+<!-- HTML COPY PAGE CARRINHO-PAGAMENTO.HTML AND CARRINHO-MONTAR.HTML -->
+<div class="widget_content" class="text-center" ng-if="buy.transacao">
+        <p class="title">Pagamento não Finalizado!</p>
 
         <div class="row">
-            <div class="small-6 small-centered columns">   
-
-                <span class="error">Sua compra possui uma transação não finalizada, favor conclua o pagamento através do link:</span><br>
-           
-                 <a ng-href="{{buy.transacao.url}}" class="button success text-center">Finalizar Pagamento!</a>
-    
+            <div class="small-12 large-6 large-centered columns text-center">  
+                <span class="error">Sua compra possui uma transação não finalizada, favor conclua o pagamento  ou selecione outra forma de pagamento.</span><br>
             </div>
         </div>
 
-      </td>
-    </tr>
-  </table>
+        <div class="row">
+            <div class="small-12 large-6 large-centered columns text-center">  
+                <p> Forma de Pagamento: <strong> {{buy.transacao.forma_pagamento}} </strong> <br>
+                    Operadora: <strong>{{buy.transacao.operadora}}</strong> <br>
+                    Parcelas : <strong>{{buy.transacao.parcelas}}</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-11 large-4 large-centered small-centered  columns texte-center">  
+                  <button class="button" ng-click="vm.cancelTransacao()">Alterar</button>
+                  <a ng-href="{{buy.transacao.url}}" class="button success ">Finalizar</a>
+            </div>
+        </div>
 </div>
 
 </form>

@@ -1,7 +1,7 @@
 
 
 <div class="widget_content no-padding" >
-  <table width="100%" class="table-cart">
+  <table width="100%" class="table-cart tableResponsive">
     <thead>
       <tr>
         <th>Produto</th>
@@ -15,24 +15,27 @@
 
 
       <tr ng-repeat="item in buy.itens track by item.id">
-        <td width="40%">
+        <td >
           {{item.modalidade}}: {{item.nome}} 
         </td>
-        <td width="18%" class="muted">
+        <td class="muted">
 
-          <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">add_circle</i></a>
+          <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" class="item-action"><i class="material-icons left">remove_circle</i></a>
           <input type="text" name="" class="quantity" placeholder="{{item.quantidade}}" value="{{item.quantidade}}">
-          <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" ><i class="material-icons left">remove_circle</i></a>
+          <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" class="item-action"><i class="material-icons left">add_circle</i></a>
 
         </td>
-        <td width="25%" class="muted">
+        <td class="muted">
+          <div ng-if="!item.ecm_promocao">
+            <span class="muted">{{item.valorFormat}}</span>
+          </div>
           <div ng-if="item.ecm_promocao">
             <span class="oldPrice">{{item.valorFormat}}</span>
             <span class="discount">Desconto promocional: -{{item.valorPromocaoFormat}}</span>
             <span class="newPrice">por {{item.precoFormat}}</span>
           </div>
         </td>
-        <td width="12%" class="muted" >{{item.totalFormat}}</td>
+        <td class="muted" >{{item.totalFormat}}</td>
         <td width="5%" class="muted">
            <div ng-if="!buy.transacao" >
               <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id,true, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ><i class="material-icons">delete_forever</i></a>
@@ -40,7 +43,7 @@
         </td>
       </tr>
      
-      <tr ng-if="buy.qtdItens">
+      <tr ng-if="buy.qtdItens" class="rowTotal">
           <td colspan="3" class="text-right"> <strong> Total da Compra:</strong></td>
           <td colspan="2" class="text-center"><strong>{{buy.totalCarrinho}}</strong></td>
       </tr>
@@ -49,7 +52,7 @@
           <td colspan="5" class="text-center"> <strong>Nenhum item no carrinho.</strong></td>
       </tr>
 
-      <tr ng-show="buy.loading" >
+      <tr ng-show="buy.loading">
           <td colspan="5" class="text-center"> 
             <div class="custom-loading" >
               <i class="material-icons">hdr_weak</i>
@@ -90,24 +93,29 @@
 </div>
 
 
+<!-- HTML COPY PAGE CARRINHO-PAGAMENTO.HTML AND CARRINHO-MONTAR.HTML -->
 <div class="widget_content" class="text-center" ng-if="buy.transacao">
-  <p class="title">Pagamento não Finalizado!</p>
-
-  <table width="100%" class="table-cart">
-    <tr class="text-center">
-      <td class="text-center">
+        <p class="title">Pagamento não Finalizado!</p>
 
         <div class="row">
-            <div class="small-6 small-centered columns">   
-
-                <span class="error">Sua compra possui uma transação não finalizada, favor conclua o pagamento através do link:</span><br>
-           
-                 <a ng-href="{{buy.transacao.url}}" class="button success text-center">Finalizar Pagamento!</a>
-    
+            <div class="small-12 large-6 large-centered columns text-center">  
+                <span class="error">Sua compra possui uma transação não finalizada, favor conclua o pagamento  ou selecione outra forma de pagamento.</span><br>
             </div>
         </div>
 
-      </td>
-    </tr>
-  </table>
+        <div class="row">
+            <div class="small-12 large-6 large-centered columns text-center">  
+                <p> Forma de Pagamento: <strong> {{buy.transacao.forma_pagamento}} </strong> <br>
+                    Operadora: <strong>{{buy.transacao.operadora}}</strong> <br>
+                    Parcelas : <strong>{{buy.transacao.parcelas}}</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-11 large-4 large-centered small-centered  columns texte-center">  
+                  <button class="button" ng-click="vm.cancelTransacao()">Alterar</button>
+                  <a ng-href="{{buy.transacao.url}}" class="button success ">Finalizar</a>
+            </div>
+        </div>
 </div>

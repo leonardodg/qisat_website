@@ -160,6 +160,27 @@
 		                                                });
 		                        };
 
+					function cancelarTransacao() {
+
+		                            var promise = $http({ 
+		                                                    method: 'get', 
+		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/cancelar-transacao',
+		                                                    headers : { 'Authorization': Config.Authorization+" "+authService.getToken() },
+		                                                    withCredentials : true
+		                                                        });
+
+		                            return promise.then( function(res){ 
+		                            						console.log(res);
+		                                                    if(res && res.status == 200 && res.data && res.data.retorno ){
+		                                                    	return res.data.retorno; 
+		                                                    }else{
+		                                                    	return res;
+		                                                    }
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+		                        };
+
 
 					function getFormas() {
 
@@ -292,6 +313,7 @@
 		                        destroyCarrinho : destroyCarrinho,
 		                        checkCarrinho : checkCarrinho,
 		                        getCarrinho : getCarrinho,
+		                        cancelarTransacao : cancelarTransacao,
 		                        getFormas : getFormas,
 		                        getVenda : getVenda,
 		                        setFormasPagamentos : setFormasPagamentos, 

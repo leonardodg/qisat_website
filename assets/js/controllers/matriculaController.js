@@ -28,15 +28,8 @@
 											 		scope.courses.map(function (matricula){
 											 			var timestart,timeend, day, month, year, imagemFile;
 
-											 			if(matricula.imagem && matricula.imagem.length){
-															imagemFile = matricula.imagem.find(function(img) { return img.descricao == 'Imagens - Capa' });
-															if(imagemFile){
-																 if(imagemFile.src.indexOf('upload/http://')>=0)
-																		imagemFile.src = imagemFile.src.replace('upload/http://', 'http://');
-																matricula.imgSrc = imagemFile.src;
-															}
-														}else
-															matricula.imgSrc = Config.imgCursoUrlDefault;
+											 			if(!matricula.imagem)
+															matricula.imagem = Config.imgCursoUrlDefault;
 
 											 			if(matricula.produto){
 											 				matricula.nome = matricula.produto.nome;

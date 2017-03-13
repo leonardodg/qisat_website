@@ -5640,7 +5640,11 @@ hr.clearfix {
   color: #fff;
   opacity: 1;
 }
-/* line 327, ../scss/qisat/layout/_institutional.scss */
+/* line 326, ../scss/qisat/layout/_institutional.scss */
+.timeline__list-group .list-group-item.active a {
+  color: #fff;
+}
+/* line 328, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .arrow {
   position: absolute;
   right: 20px;
@@ -5649,18 +5653,18 @@ hr.clearfix {
   opacity: 0;
   transition: all 0.5s;
 }
-/* line 328, ../scss/qisat/layout/_institutional.scss */
+/* line 329, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .title {
   display: block;
   height: 26px;
   overflow: hidden;
 }
-/* line 329, ../scss/qisat/layout/_institutional.scss */
+/* line 330, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .subtitle {
   opacity: 0.5;
   font-weight: 300;
 }
-/* line 330, ../scss/qisat/layout/_institutional.scss */
+/* line 331, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item .list-group-item-date {
   background: #25373A;
   width: 50px;
@@ -5675,43 +5679,61 @@ hr.clearfix {
   font-weight: 800;
   margin-right: 20px;
 }
-/* line 332, ../scss/qisat/layout/_institutional.scss */
+/* line 333, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-/* line 337, ../scss/qisat/layout/_institutional.scss */
+/* line 338, ../scss/qisat/layout/_institutional.scss */
 .timeline__list-group .list-group-item:last-child {
   margin-bottom: 0;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+/* line 344, ../scss/qisat/layout/_institutional.scss */
+.timeline__list-group .list-group-item a {
+  color: #25373A;
+}
+@media only screen and (max-width: 40em) {
+  /* line 347, ../scss/qisat/layout/_institutional.scss */
+  .timeline__list-group .list-group-item i {
+    display: none;
+  }
+}
 
-/* line 348, ../scss/qisat/layout/_institutional.scss */
+/* line 357, ../scss/qisat/layout/_institutional.scss */
 .timeline__post--background {
   background-color: #25373A;
 }
 
-/* line 351, ../scss/qisat/layout/_institutional.scss */
+/* line 358, ../scss/qisat/layout/_institutional.scss */
+.timeline__post {
+  display: none;
+}
+/* line 361, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__header img {
   max-width: 100%;
 }
-/* line 353, ../scss/qisat/layout/_institutional.scss */
+/* line 363, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body {
   padding: 20px 40px;
 }
-/* line 355, ../scss/qisat/layout/_institutional.scss */
+/* line 365, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body__meta {
   color: #fff;
 }
-/* line 356, ../scss/qisat/layout/_institutional.scss */
+/* line 366, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p {
   color: #C6CCCE;
 }
-/* line 357, ../scss/qisat/layout/_institutional.scss */
+/* line 367, ../scss/qisat/layout/_institutional.scss */
 .timeline__post__body p.lead {
   font-size: 1.5rem;
   font-weight: 300;
+}
+/* line 369, ../scss/qisat/layout/_institutional.scss */
+.timeline__post.active {
+  display: block;
 }
 
 /* line 1, ../scss/qisat/layout/_carrinho.scss */
@@ -5989,28 +6011,28 @@ body.cart-page {
 .table-cart .quantity {
   max-width: 60px;
   float: left;
-  display: inline;
+  display: inline-block;
   width: auto;
   margin: 0 4px;
 }
-/* line 260, ../scss/qisat/layout/_carrinho.scss */
+/* line 261, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .material-icons {
   margin-top: 5px;
 }
-/* line 264, ../scss/qisat/layout/_carrinho.scss */
+/* line 265, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .oldPrice {
   text-decoration: line-through;
   text-align: center;
   display: block;
 }
-/* line 269, ../scss/qisat/layout/_carrinho.scss */
+/* line 270, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .newPrice {
   font-size: 16px;
   color: #666;
   text-align: center;
   display: block;
 }
-/* line 275, ../scss/qisat/layout/_carrinho.scss */
+/* line 276, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .discount {
   display: block;
   padding: 5px 0;
@@ -6019,25 +6041,31 @@ body.cart-page {
   font-size: 11px;
   text-align: center;
 }
-/* line 284, ../scss/qisat/layout/_carrinho.scss */
+/* line 285, ../scss/qisat/layout/_carrinho.scss */
 .table-cart img {
   margin-right: 10px;
 }
-/* line 288, ../scss/qisat/layout/_carrinho.scss */
+/* line 289, ../scss/qisat/layout/_carrinho.scss */
+.table-cart a.item-action {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  float: left;
+}
+/* line 295, ../scss/qisat/layout/_carrinho.scss */
+.table-cart a.item-action i {
+  width: 100%;
+  height: 100%;
+}
+/* line 301, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .inline-list > li {
-  float: none;
+  float: left;
 }
-@media only screen and (min-width: 40em) {
-  /* line 288, ../scss/qisat/layout/_carrinho.scss */
-  .table-cart .inline-list > li {
-    float: left;
-  }
-}
-/* line 296, ../scss/qisat/layout/_carrinho.scss */
+/* line 305, ../scss/qisat/layout/_carrinho.scss */
 .table-cart .muted {
   color: #999;
 }
-/* line 300, ../scss/qisat/layout/_carrinho.scss */
+/* line 309, ../scss/qisat/layout/_carrinho.scss */
 .table-cart thead th {
   padding: 15px;
   padding-top: 20px;
@@ -6045,9 +6073,423 @@ body.cart-page {
   background-color: #003350;
   text-transform: uppercase;
 }
-/* line 307, ../scss/qisat/layout/_carrinho.scss */
+/* line 316, ../scss/qisat/layout/_carrinho.scss */
 .table-cart td, .table-cart td {
   padding: 1rem;
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 328, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive {
+    /* Force table to not be like tables anymore */
+    display: block;
+    /* Hide table headers (but not display: none;, for accessibility) */
+  }
+  /* line 333, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive thead, .tableResponsive tbody, .tableResponsive th, .tableResponsive td, .tableResponsive tr {
+    display: block;
+  }
+  /* line 338, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  /* line 344, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr {
+    border: 1px solid #ccc;
+  }
+  /* line 346, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 25%;
+  }
+  /* line 354, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 15px;
+    left: 6px;
+    width: 100%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /* line 366, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(1) {
+    width: 100%;
+  }
+  /* line 367, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(2) {
+    width: 100%;
+    height: 50px;
+    padding-top: 5px;
+  }
+  /* line 368, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(3) {
+    width: 100%;
+  }
+  /* line 369, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(4) {
+    width: 100%;
+  }
+  /* line 372, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(1):before {
+    content: "Produto";
+  }
+  /* line 373, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(2):before {
+    content: "Qtd.";
+  }
+  /* line 374, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(3):before {
+    content: "Valor Unt.";
+  }
+  /* line 375, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(4):before {
+    content: "Valor";
+  }
+  /* line 376, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:not(:nth-last-of-type(2)) td:nth-of-type(5) {
+    display: none;
+  }
+  /* line 380, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:nth-last-of-type(2) td:nth-of-type(1) {
+    display: none;
+  }
+  /* line 381, ../scss/qisat/layout/_carrinho.scss */
+  .tableResponsive tr:nth-last-of-type(2) td:nth-of-type(2):before {
+    content: "Total da Compra:";
+    width: 50%;
+  }
+}
+
+/* line 387, ../scss/qisat/layout/_carrinho.scss */
+body.cart-page {
+  background-color: #fff;
+}
+
+/* line 391, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart {
+  box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.37) !important;
+  position: fixed;
+  top: 0;
+  right: -320px;
+  background: #FFF;
+  height: 100%;
+  width: 320px;
+  z-index: 10;
+  /* header height */
+  padding-top: 63px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: right 0.3s;
+}
+/* line 412, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart.actived {
+  right: 0;
+}
+/* line 416, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart > * {
+  padding: 0 1em;
+}
+/* line 428, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart h2 {
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1rem;
+  background-color: #005285;
+  margin: 0;
+  color: #fff;
+}
+/* line 438, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-items {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 440, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-items li {
+  position: relative;
+  padding: 1em;
+  border-top: 1px solid #e0e6ef;
+  transition: all 0.5s;
+}
+/* line 446, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-items li.remove {
+  opacity: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 0;
+}
+/* line 453, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-items li:last-child {
+  border-bottom: 1px solid #e0e6ef;
+}
+/* line 457, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-qty,
+#cd-cart .cd-price {
+  color: #a5aebc;
+}
+/* line 460, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-text {
+  font-size: 13px;
+  width: 95%;
+  display: inline-block;
+}
+
+/* line 464, ../scss/qisat/layout/_carrinho.scss */
+#cd-shadow-layer {
+  position: fixed;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(67, 87, 121, 0.6);
+  cursor: pointer;
+  z-index: 2;
+  display: none;
+}
+/* line 475, ../scss/qisat/layout/_carrinho.scss */
+#cd-shadow-layer.actived {
+  display: block;
+  -webkit-animation: cd-fade-in 0.3s;
+  -moz-animation: cd-fade-in 0.3s;
+  animation: cd-fade-in 0.3s;
+}
+
+/* line 482, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-item-remove {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+/* line 497, ../scss/qisat/layout/_carrinho.scss */
+.no-touch #cd-cart .cd-item-remove:hover {
+  background-color: #e0e6ef;
+}
+
+/* line 500, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-total {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+/* line 504, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-total span {
+  float: right;
+}
+
+/* line 507, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-cart-total::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* line 513, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .checkout-btn {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #7dcf85;
+  color: #FFF;
+  text-align: center;
+}
+
+/* line 522, ../scss/qisat/layout/_carrinho.scss */
+.no-touch #cd-cart .checkout-btn:hover {
+  background: #a2dda8;
+}
+
+/* line 525, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-go-to-cart {
+  text-align: center;
+  margin: 1em 0;
+}
+
+/* line 529, ../scss/qisat/layout/_carrinho.scss */
+#cd-cart .cd-go-to-cart a {
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 1200px) {
+  /* line 533, ../scss/qisat/layout/_carrinho.scss */
+  #cd-cart > * {
+    padding: 0 2em;
+  }
+
+  /* line 536, ../scss/qisat/layout/_carrinho.scss */
+  #cd-cart .cd-cart-items li {
+    padding: 1em 2em;
+  }
+}
+/* line 543, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard {
+  margin-left: 30px;
+  position: relative;
+}
+/* line 547, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard .v-line {
+  width: 2px;
+  background-color: #003350;
+  position: absolute;
+  margin-left: -22px;
+  margin-top: 20px;
+  height: 96px;
+}
+/* line 555, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard .step {
+  padding: 10px 0;
+  position: relative;
+  color: #777;
+}
+/* line 560, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard .step:before {
+  content: "";
+  display: block;
+  width: 17px;
+  height: 17px;
+  border-radius: 20px;
+  background-color: #ddd;
+  position: absolute;
+  margin-left: -30px;
+  top: 14px;
+}
+/* line 572, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard .step.active {
+  font-weight: bold;
+  color: #003350;
+}
+/* line 576, ../scss/qisat/layout/_carrinho.scss */
+.cart-page .wizard .step.active:before {
+  background-color: #28B67C;
+}
+@media only screen and (min-width: 40em) {
+  /* line 583, ../scss/qisat/layout/_carrinho.scss */
+  .cart-page #loginModal, .cart-page .loginModal {
+    width: 300px !important;
+    max-width: 300px !important;
+  }
+}
+/* line 590, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal h2, .cart-page .loginModal h2 {
+  margin-top: 30px;
+  color: #494949;
+  font-size: 18pt;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+/* line 599, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal form, .cart-page .loginModal form {
+  margin: 30px 25px 20px 25px;
+}
+/* line 600, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal form a, .cart-page .loginModal form a {
+  width: 100% !important;
+  display: block;
+}
+/* line 604, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal form input, .cart-page .loginModal form input {
+  text-align: center;
+}
+/* line 610, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member, .cart-page .loginModal .not-member {
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+/* line 613, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member p, .cart-page .loginModal .not-member p {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+/* line 619, ../scss/qisat/layout/_carrinho.scss */
+.cart-page #loginModal .not-member .button, .cart-page .loginModal .not-member .button {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* line 630, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento {
+    /* Force table to not be like tables anymore */
+    display: block;
+    /* Hide table headers (but not display: none;, for accessibility) */
+  }
+  /* line 635, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento thead, .tablePagamento tbody, .tablePagamento th, .tablePagamento td, .tablePagamento tr {
+    display: block;
+  }
+  /* line 640, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  /* line 646, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento tr {
+    border: 1px solid #ccc;
+  }
+  /* line 648, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    width: 100%;
+  }
+  /* line 656, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 15px;
+    left: 6px;
+    width: 100%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /* line 668, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento td:nth-of-type(1) {
+    width: 100%;
+  }
+  /* line 669, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento td:nth-of-type(2) {
+    width: 100%;
+  }
+  /* line 670, ../scss/qisat/layout/_carrinho.scss */
+  .tablePagamento td:nth-of-type(3) {
+    width: 100%;
+  }
+}
+
+/* line 676, ../scss/qisat/layout/_carrinho.scss */
+.pag-confirm {
+  color: #666;
+}
+/* line 678, ../scss/qisat/layout/_carrinho.scss */
+.pag-confirm .material-icons {
+  margin-top: 5px;
 }
 
 /* line 27, ../scss/_simplelightbox.scss */
