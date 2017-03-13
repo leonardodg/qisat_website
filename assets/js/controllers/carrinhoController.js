@@ -32,12 +32,19 @@
 					 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){ 
 				 				carrinhoServive.getCarrinho()
 				 						.then(function (res){
+				 							  var valor;
 				 								if(res.sucesso && res.carrinho)
 				 									setValues();
 				 								else if(!res.sucesso && res.transacao){
 				 									setValues();
 				 									vm.transacao = res.transacao;
 				 									vm.transacao.data_envio = $filter('date')( vm.transacao.data_envio*1000, 'dd/MM/yyyy' );
+				 									if(vm.transacao.numero_parcelas	 > 1){
+				 										valor = vm.transacao.valor / vm.transacao.numero_parcelas;
+				 										valor = $filter('currency')(valor, 'R$');
+				 									}else
+				 										valor = $filter('currency')(vm.transacao.valor, 'R$');
+				 									vm.transacao.parcelas = vm.transacao.numero_parcelas+'x de '+valor;
 				 								}
 			 								});
 					 		}else			 		

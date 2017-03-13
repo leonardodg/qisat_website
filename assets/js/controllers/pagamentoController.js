@@ -131,9 +131,14 @@
 						 		}
 						 	}
 
+ 						 	vm.cancelTransacao = function(){
+						 		carrinhoServive.cancelarTransacao().then(function(res){
+						 			if(res.sucesso)
+						 				$window.location.reload();
+						 		});
+						 	};
+
 					 	}else
 					 		$location.path('/carrinho');
-					 		
-				 		
 					 }]);
 })();

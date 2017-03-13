@@ -14,17 +14,15 @@ $(function() {
       
   });
 
-  $('.anchor').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+ 
+  $(document).on('click', ".anchor", function(e){
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length) {
         $('html, body').animate({
           scrollTop: target.offset().top
         }, 1000);
-        return false;
       }
-    }
   });
 
    $(".map__state").click(function() {
@@ -101,11 +99,14 @@ $(document).ready(function() {
 
           var getRef = $(this).closest("li").data("year");
           $(this).addClass("active").siblings().removeClass("active");
-          $(document).find(".timeline__post.year-"+getRef).fadeIn("fast").siblings().fadeOut("fast");
+
+          $(".timeline__post.active").removeClass("active").hide();
+          $(document).find(".timeline__post.year-"+getRef).fadeIn("fast", function () {
+              $(this).addClass("active");
+          });
         });
 
-
-         $('.buttom-favorite').on('click', function(event){
+         $(document).on('click', '.buttom-favorite', function(event){
                    event.preventDefault();
                   $(this).toggleClass("buttom-favorite-active");
 

@@ -252,10 +252,11 @@ body.cart-page {
   .quantity {
     max-width: 60px;
     float: left;
-    display: inline;
+    display: inline-block;
     width: auto;
     margin: 0 4px;
   }
+
 
   .material-icons {
     margin-top: 5px;
@@ -285,12 +286,20 @@ body.cart-page {
     margin-right: 10px;
   }
 
-  .inline-list>li {
-    float: none;
-
-    @media only screen and (min-width: 40em) {
+  a.item-action {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
       float: left;
+
+      i {
+          width: 100%;
+          height: 100%;
+      }
     }
+
+  .inline-list>li {
+    float: left;
   }
 
   .muted {
@@ -306,5 +315,367 @@ body.cart-page {
   }
   td, td {
     padding: 1rem;
+  }
+
+  // td:nth-of-type(1) { width : 40%; }
+  // td:nth-of-type(2) { width : 18%; }
+  // td:nth-of-type(3) { width : 25%; }
+  // td:nth-of-type(4) { width : 12%; }
+  // td:nth-of-type(5) { width : 5%; }
+}
+
+
+.tableResponsive {
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    display: block; 
+    thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 25%; 
+    }
+    
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 15px;
+      left: 6px;
+      width: 100%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+    }
+
+    tr:not(:nth-last-of-type(2)){
+      td:nth-of-type(1) { width : 100%; }
+      td:nth-of-type(2) { width : 100%; height : 50px; padding-top: 5px;}
+      td:nth-of-type(3) { width : 100%; }
+      td:nth-of-type(4) { width : 100%; }
+
+
+      td:nth-of-type(1):before { content: "Produto"; }
+      td:nth-of-type(2):before { content: "Qtd."; }
+      td:nth-of-type(3):before { content: "Valor Unt."; }
+      td:nth-of-type(4):before { content: "Valor"; }
+      td:nth-of-type(5) { display : none; }
+    }
+
+    tr:nth-last-of-type(2){
+        td:nth-of-type(1) { display : none; }
+        td:nth-of-type(2):before { content: "Total da Compra:"; width : 50%; }
+    }
+
+  }
+}
+
+body.cart-page {
+  background-color: #fff;
+}
+
+#cd-cart {
+
+     box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.37) !important;
+
+  position: fixed;
+  top: 0;
+ right: -320px;
+  background: #FFF;
+  height: 100%;
+  width: 320px;
+ 
+     z-index: 10;
+
+  /* header height */
+  padding-top: 63px;
+ 
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+ 
+  transition: right 0.3s;
+ 
+  &.actived {
+    right: 0;
+  }
+
+  > * {
+    padding: 0 1em;
+  }
+
+  // h2 {
+  //   font-size: 14px;
+  //   font-size: 0.875rem;
+  //   font-weight: bold;
+  //   text-transform: uppercase;
+  //   margin: 1em 0;
+  // }
+
+  h2{
+  font-size: 0.875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 1rem;
+    background-color: #005285;
+    margin: 0;
+    color: #fff;
+  }
+
+  .cd-cart-items { padding: 0; margin: 0; list-style: none;
+
+      li {
+      position: relative;
+      padding: 1em;
+      border-top: 1px solid #e0e6ef;
+      transition: all 0.5s;
+
+      &.remove {
+          opacity: 0;
+          padding: 0;
+          overflow: hidden;
+          height: 0;
+      }
+
+      &:last-child {border-bottom: 1px solid #e0e6ef;}
+    }
+  }
+
+  .cd-qty, 
+    .cd-price { color: #a5aebc; }
+    .cd-price { }
+    .cd-text  { font-size: 13px; width: 95%; display: inline-block; }
+}
+
+
+   #cd-shadow-layer{
+    position: fixed;
+    min-height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(67, 87, 121, 0.6);
+    cursor: pointer;
+    z-index: 2;
+    display: none;
+
+      &.actived{     display: block;
+    -webkit-animation: cd-fade-in 0.3s;
+    -moz-animation: cd-fade-in 0.3s;
+    animation: cd-fade-in 0.3s;  }
+   }
+ 
+ 
+#cd-cart .cd-item-remove {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  text-align: center;
+ }
+.no-touch #cd-cart .cd-item-remove:hover {
+  background-color: #e0e6ef;
+}
+#cd-cart .cd-cart-total {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#cd-cart .cd-cart-total span {
+  float: right;
+}
+#cd-cart .cd-cart-total::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+#cd-cart .checkout-btn {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #7dcf85;
+  color: #FFF;
+  text-align: center;
+}
+.no-touch #cd-cart .checkout-btn:hover {
+  background: #a2dda8;
+}
+#cd-cart .cd-go-to-cart {
+  text-align: center;
+  margin: 1em 0;
+}
+#cd-cart .cd-go-to-cart a {
+  text-decoration: underline;
+}
+@media only screen and (min-width: 1200px) {
+  #cd-cart > * {
+    padding: 0 2em;
+  }
+  #cd-cart .cd-cart-items li {
+    padding: 1em 2em;
+  }
+}
+
+
+.cart-page {
+  .wizard {
+    margin-left: 30px;
+    position: relative;
+    
+    .v-line {
+      width: 2px;
+      background-color: #003350;
+      position: absolute;
+      margin-left: -22px;
+      margin-top: 20px;
+      height: 96px;
+    }
+    .step {
+      padding: 10px 0;
+      position: relative;
+      color: #777;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 17px;
+        height: 17px;
+        border-radius: 20px;
+        background-color: #ddd;
+        position: absolute;
+        margin-left: -30px;
+        top: 14px;
+      }
+
+      &.active {
+        font-weight: bold;
+        color: #003350;
+
+        &:before {
+          background-color: #28B67C;
+        }
+      }
+    }
+  }
+
+  #loginModal, .loginModal {
+    
+    @media only screen and (min-width: 40em) {
+      width: 300px !important;
+      max-width: 300px !important;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #494949;
+      font-size: 18pt;
+      text-align: center;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    form {
+      a {
+        width: 100% !important;
+        display: block;
+      }
+      input {
+        text-align: center;
+      }
+      margin: 30px 25px 20px 25px;
+    }
+
+    .not-member {
+      margin-top: 30px;
+
+      p {
+        margin: 0;
+        margin-bottom: 10px;
+        padding: 0;
+      }
+
+      .button {
+        margin-bottom: 0;
+      }
+
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #eee;
+    }
+  }
+}
+
+.tablePagamento {
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    /* Force table to not be like tables anymore */
+    display: block; 
+    thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      width: 100%; 
+    }
+    
+    td:before { 
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 15px;
+      left: 6px;
+      width: 100%; 
+      padding-right: 10px; 
+      white-space: nowrap;
+    }
+
+
+  td:nth-of-type(1) { width : 100%; }
+  td:nth-of-type(2) { width : 100%; }
+  td:nth-of-type(3) { width : 100%; }
+
+
+  }
+}
+
+.pag-confirm{
+    color: #666;
+    .material-icons {
+    margin-top: 5px;
   }
 }

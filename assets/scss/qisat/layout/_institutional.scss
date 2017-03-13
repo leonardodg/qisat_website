@@ -282,6 +282,7 @@
             .title{color:#fff}
             .subtitle{color:#fff}
             .arrow{color: #fff; opacity: 1;}
+            a {color:#fff}
           }
     .arrow{ position: absolute; right: 20px; top: 50%; margin-top: -10px; opacity: 0; transition: all 0.5s}
     .title{ display: block; height: 26px; overflow: hidden; }
@@ -299,6 +300,14 @@
         border-bottom-left-radius: 4px;
     }
 
+    a {color:#25373A}
+
+    @media only screen and (max-width: 40em) {
+      i {
+          display: none;
+      }
+    }
+
   }
 }
 
@@ -306,6 +315,7 @@
 
 .timeline__post--background{ background-color: #25373A; }
 .timeline__post{
+  display: none;
   &__header{
   img{ max-width: 100%}
  }
@@ -315,4 +325,5 @@
    p{color: #C6CCCE}
    p.lead{font-size: 1.5rem;  font-weight: 300;}
  }
+ &.active{ display: block;}
 }
