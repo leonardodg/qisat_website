@@ -354,7 +354,15 @@
 
 
 
-.timeline__post--background{ background-color: #01263e; }
+.timeline__post--background{ 
+    background-color: #01263e; 
+    min-height:850px;
+
+    @media only screen and (max-width: 40em) {
+      min-height:1px;
+    }
+
+}
 .timeline__post{
   display: none;
   &__header{
@@ -365,7 +373,19 @@
        text-align: justify;
    &__meta{color: #fff}
    p{color: #C6CCCE}
-   p.lead{font-size: 1.5rem;  font-weight: 300;}
+   p.lead{
+      font-size: 1.5rem;  
+      font-weight: 300;
+
+      
+      @media only screen and (max-width: 40em) {
+        text-align: left;
+      }
+
+   }
+
+
+
  }
  &.active{ display: block;}
 }

@@ -1,5 +1,6 @@
 	<div class="admin__heading">
-		<h1 class="title">Meus certificados</h1>
+		<h1 class="title" ng-if="certificados.length">Meus certificados</h1>
+		<h1 class="title" ng-if="certificados&&!certificados.length">Nenhum curso conclúido.</h1>
 	</div>
 
 	<section id="dashboard" class="page-certificates">

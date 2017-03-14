@@ -200,17 +200,17 @@
             </accordion>
 
             <accordion class="accordion-component accordion">
-              <accordion-group heading="Documentos para download" class="accordion-navigation tab-title">
+              <accordion-group heading="Documentos para download" class="accordion-navigation tab-title" is-open="vm.openDownload">
                   <div>
-
+                    <p> Para realizar download dos arquivos, preencha o termo de adesão.</p> 
                     <table>
                       <tr>
-                        <td>Termo de Adesão.docx</td>
-                        <td><a href="#" class="button">Baixar</a></td>
+                        <td>Termo de Adesão.pdf</td>
+                        <td><a ng-href="{{vm.linkDownload}}" class="button" target="_self" download="Termo de Adesão.pdf" >Baixar</a></td>
                       </tr>
                       <tr>
-                        <td>Lista de associados.docx</td>
-                        <td><a href="#" class="button">Baixar</a></td>
+                        <td>Lista de Alunos e Professores.xls</td>
+                        <td><a ng-href="{{vm.linkDownload ? '/files/PREDUC - INSTITUIÇÃO DE ENSINO - Lista de Alunos e Professores.xls': ''}}" target="_self" download="Lista de Alunos e Professores.xls" class="button">Baixar</a></td>
                       </tr>
                     </table>
 

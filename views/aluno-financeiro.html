@@ -3,7 +3,8 @@
     <div class="financeiro">
 
     <div class="admin__heading">
-      <h1 class="title">Financeiro</h1>
+      <h1 class="title" ng-if="compras.length">Minhas Compras</h1>
+      <h1 class="title" ng-if="compras&&!compras.length">Nenhum carrinho registrado.</h1>
     </div>
 
 		<section id="dashboard" ng-if="compras.length">

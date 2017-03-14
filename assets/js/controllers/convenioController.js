@@ -47,9 +47,15 @@
 														}else if(vm.cadastroInstituicaoForm){
 															vm.cadastroInstituicaoForm.$setPristine();
 															vm.institution = {};
+															vm.openAdd = false;
+															vm.openDownload = true;
+															vm.linkDownload = response.data.retorno.link;
 														}else if(vm.cadastroEntidadeForm){
 															vm.cadastroEntidadeForm.$setPristine();
 															vm.entidade = {};
+															vm.openAdd = false;
+															vm.openDownload = true;
+															vm.linkDownload = response.data.retorno.link;
 														}
 													}else{
 														elemts = angular.element(error);

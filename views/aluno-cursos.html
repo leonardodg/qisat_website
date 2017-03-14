@@ -4,7 +4,7 @@
 						<h1 class="title">Cursos em Andamento </h1>
 					</div>
 
-            <ul class="nav-resp" menu-aluno-cursos data-equalizer ng-init="filterTab ='liberado'" ng-if="courses.length" >
+            <ul class="nav-resp" menu-aluno-cursos data-equalizer ng-init="filterTab ='liberado'" >
                 <li data-equalizer-watch class="current" ng-click="setFilterTab('liberado')"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
                 <li data-equalizer-watch ng-click="setFilterTab('finalizado')"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
                 <li data-equalizer-watch ng-click="setFilterTab('encerrado')" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
@@ -12,9 +12,17 @@
                 <li data-equalizer-watch ng-click="setFilterTab('outros')" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
             </ul>
 
+              <div ng-if="!filtered.length&&courses">
+                  <br>
+                  <h2 ng-if="filterTab=='liberado'"> Nenhum curso liberado.</h2>
+                  <h2 ng-if="filterTab=='finalizado'"> Nenhum curso finalizado.</h2>
+                  <h2 ng-if="filterTab=='encerrado'"> Nenhum curso encerrado.</h2>
+                  <h2 ng-if="filterTab=='agendado'"> Nenhum curso agendado.</h2>
+                  <h2 ng-if="filterTab=='outros'"> Nenhum curso.</h2>
+              </div>
 						
 					    <div class="cards">
-					   			<div ng-repeat="course in courses | filter : { filter : filterTab } track by course.id" class="card">
+					   			<div ng-repeat="course in courses | filter : { filter : filterTab } as filtered track by course.id" class="card">
 
                     <div ng-if="::course.enable">
                       <a ng-href="{{::course.view}}"><img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>

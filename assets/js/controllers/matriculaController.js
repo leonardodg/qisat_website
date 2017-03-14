@@ -22,7 +22,7 @@
 
 						 	authService.courses()
 						 			   .then(function (res){
-
+						 			   			scope.courses = [];
 										 		if(res.matriculas){
 											 		scope.courses = res.matriculas;
 											 		scope.courses.map(function (matricula){
