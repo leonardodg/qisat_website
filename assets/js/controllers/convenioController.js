@@ -4,24 +4,32 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope','$filter' ,'QiSatAPI', 'Config', function($scope,$filter, QiSatAPI, Config ){
+					[ '$scope','$filter' ,'$location','QiSatAPI', 'Config', function($scope,$filter, $location, QiSatAPI, Config ){
 
-						$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+						var vm = this;
+						vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 
-						$scope.addInstitution = function(type){
+						if($location.hash() == 'cadastro')
+							vm.openAdd = true;
+
+						vm.open = function (){
+							vm.openAdd = true;
+						};
+
+						vm.addInstitution = function(type){
 							var data = { }, elemts, alert = '.alert-'+type+'-ok', error = '.alert-'+type+'-error';
 
-							if( ($scope.cadastroConselhoForm && $scope.cadastroConselhoForm.$valid) ||
-								($scope.cadastroInstituicaoForm && $scope.cadastroInstituicaoForm.$valid) ||
-								($scope.cadastroEntidadeForm && $scope.cadastroEntidadeForm.$valid)){
+							if( (vm.cadastroConselhoForm && vm.cadastroConselhoForm.$valid) ||
+								(vm.cadastroInstituicaoForm && vm.cadastroInstituicaoForm.$valid) ||
+								(vm.cadastroEntidadeForm && vm.cadastroEntidadeForm.$valid)){
 
 								if(type == 1)
-									data = $scope.institution;
+									data = vm.institution;
 								else if(type == 2){
-									data = $scope.entidade;
+									data = vm.entidade;
 									data.cargo = 'Presidente';
 								}else if(type == 3)
-									data = $scope.conselho;
+									data = vm.conselho;
 								else return;
 
 								data.ecm_convenio_tipo_instituicao_id = type;
@@ -33,15 +41,15 @@
 													if(response.data.retorno.sucesso){
 														elemts = angular.element(alert);
 														elemts.css('display', 'inline-block');
-														if($scope.cadastroConselhoForm){
-															$scope.cadastroConselhoForm.$setPristine();
-															$scope.conselho = {};
-														}else if($scope.cadastroInstituicaoForm){
-															$scope.cadastroInstituicaoForm.$setPristine();
-															$scope.institution = {};
-														}else if($scope.cadastroEntidadeForm){
-															$scope.cadastroEntidadeForm.$setPristine();
-															$scope.entidade = {};
+														if(vm.cadastroConselhoForm){
+															vm.cadastroConselhoForm.$setPristine();
+															vm.conselho = {};
+														}else if(vm.cadastroInstituicaoForm){
+															vm.cadastroInstituicaoForm.$setPristine();
+															vm.institution = {};
+														}else if(vm.cadastroEntidadeForm){
+															vm.cadastroEntidadeForm.$setPristine();
+															vm.entidade = {};
 														}
 													}else{
 														elemts = angular.element(error);

@@ -40,12 +40,14 @@
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
-                    <a class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+                    <a href="#cadastro" ng-click="vm.open()" ><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
 
                   </div>
                 </div>
               </div>
             </div>
+
+            <a href="/institucional/convenios/preduc/inscricao" class="button button-discount">Quero me inscrever com desconto</a>
 
             <h1>Projeto Rede Educacional</h1>
             <p>
@@ -106,20 +108,20 @@
                 </accordion-group>
              </accordion>
 
-            <accordion class="accordion-component accordion">
-              <accordion-group heading="Preencher o termo de adesão" class="accordion-navigation tab-title">
+            <accordion class="accordion-component accordion" name="cadastro" id="cadastro">
+              <accordion-group heading="Preencher o termo de adesão" class="accordion-navigation tab-title" is-open="vm.openAdd">
                   <div>
 
-                  <form name="cadastroInstituicaoForm" id="cadastroInstituicaoForm" novalidate>
+                  <form name="vm.cadastroInstituicaoForm" id="vm.cadastroInstituicaoForm" novalidate>
 
                     <div class="row">
                       <div class="small-12 medium-3 columns">
                         <label for="nameInstituicao" class="middle"> Nome da Instituição <strong title="Campo Obrigatório">*</strong> </label>
                       </div>
                       <div class="small-12 medium-9 columns">
-                        <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="institution.nome_instituicao" ng-required="true">
-                        <div ng-show="cadastroInstituicaoForm.nameInstituicao.$dirty && cadastroInstituicaoForm.nameInstituicao.$invalid">
-                            <span class="error" ng-show="cadastroInstituicaoForm.nameInstituicao.$error.required">Nome é Obrigatório!</span>
+                        <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="vm.institution.nome_instituicao" ng-required="true">
+                        <div ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$dirty && vm.cadastroInstituicaoForm.nameInstituicao.$invalid">
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$error.required">Nome é Obrigatório!</span>
                         </div>
                       </div>
                     </div>
@@ -129,9 +131,9 @@
                         <label for="nameResponsavelInstituicao" class="middle"> Nome do Responsável <strong title="Campo Obrigatório">*</strong> </label>
                       </div>
                       <div class="small-12 medium-9 columns">
-                        <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="institution.nome_responsavel" ng-required="true">
-                        <div ng-show="cadastroInstituicaoForm.nameResponsavelInstituicao.$dirty && cadastroInstituicaoForm.nameResponsavelInstituicao.$invalid">
-                            <span class="error" ng-show="cadastroInstituicaoForm.nameResponsavelInstituicao.$error.required">Responsável é Obrigatório!</span>
+                        <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="vm.institution.nome_responsavel" ng-required="true">
+                        <div ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$dirty && vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$invalid">
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$error.required">Responsável é Obrigatório!</span>
                         </div>
                       </div>
                     </div>
@@ -141,9 +143,9 @@
                         <label for="nameCordenador" class="middle"> Nome do Coordenador <strong title="Campo Obrigatório">*</strong> </label>
                       </div>
                       <div class="small-12 medium-9 columns">
-                        <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="institution.nome_coordenador" ng-required="true">
-                        <div ng-show="cadastroInstituicaoForm.nameCordenador.$dirty && cadastroInstituicaoForm.nameCordenador.$invalid">
-                            <span class="error" ng-show="cadastroInstituicaoForm.nameCordenador.$error.required">Coordenador é Obrigatório!</span>
+                        <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="vm.institution.nome_coordenador" ng-required="true">
+                        <div ng-show="vm.cadastroInstituicaoForm.nameCordenador.$dirty && vm.cadastroInstituicaoForm.nameCordenador.$invalid">
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameCordenador.$error.required">Coordenador é Obrigatório!</span>
                         </div>
                       </div>
                     </div>                  
@@ -153,13 +155,13 @@
                         <label for="emailInstituicao" class="middle ">E-mail para contato <strong title="Campo Obrigatório">*</strong>
                       </div>
                       <div class="small-12 medium-9 columns">
-                        <input type="email" name="emailInstituicao" id="emailInstituicao" placeholder="Digite seu E-mail"  ng-model="institution.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
+                        <input type="email" name="emailInstituicao" id="emailInstituicao" placeholder="Digite seu E-mail"  ng-model="vm.institution.email" ng-pattern="vm.emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
-                         <div ng-show="cadastroInstituicaoForm.emailInstituicao.$dirty && cadastroInstituicaoForm.emailInstituicao.$invalid">
-                              <span class="error" ng-show="cadastroInstituicaoForm.emailInstituicao.$error.required">Email é Obrigatório!</span>
+                         <div ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$dirty && vm.cadastroInstituicaoForm.emailInstituicao.$invalid">
+                              <span class="error" ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$error.required">Email é Obrigatório!</span>
                         </div>
 
-                        <div ng-show="cadastroInstituicaoForm.emailInstituicao.$dirty && cadastroInstituicaoForm.emailInstituicao.$error.pattern">
+                        <div ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$dirty && vm.cadastroInstituicaoForm.emailInstituicao.$error.pattern">
                           <span class="error" >Formato de Email incorreto!</span>
                         </div>
 
@@ -171,20 +173,18 @@
                         <label for="phoneInstituicao" class="middle">Telefone para contato <small>*</small></label>
                       </div>
                       <div class="small-12 medium-9 columns">
-                        <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="institution.telefone" mask="(99) 9?9999-9999" ng-required="true">
-                        <div ng-show="cadastroInstituicaoForm.phoneInstituicao.$dirty && cadastroInstituicaoForm.phoneInstituicao.$invalid">
-                           <span class="error" ng-show="cadastroInstituicaoForm.phoneInstituicao.$error.required">Telefone é Obrigatório!</span>
+                        <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="vm.institution.telefone" mask="(99) 9?9999-9999" ng-required="true">
+                        <div ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$dirty && vm.cadastroInstituicaoForm.phoneInstituicao.$invalid">
+                           <span class="error" ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$error.required">Telefone é Obrigatório!</span>
                         </div>
                       </div>
                     </div>
                     <br>
-                    <button class="button right" type="submit" ng-disabled="cadastroInstituicaoForm.$invalid" ng-click="addInstitution(1)"> Enviar </button>
+                    <button class="button right" type="submit" ng-disabled="vm.cadastroInstituicaoForm.$invalid" ng-click="vm.addInstitution(1)"> Enviar </button>
                     <div class="row align-center">
                         <div class="small-4 large-4 large-offset-4 columns">
-                          
-                              
-
-                              <div data-alert class="alert-box info radius alert-1-ok" style="display: none;">
+                            
+                            <div data-alert class="alert-box info radius alert-1-ok" style="display: none;">
                               Mensagem Enviada com SUCESSO!
                             </div>
 

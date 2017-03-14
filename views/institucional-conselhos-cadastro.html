@@ -25,7 +25,7 @@
               <div class="row entidades">
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos" ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+                    <a href="/institucional/convenios/conselhos/conveniados" ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
-                    <a class="active"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
+                    <a href="#cadastro" ng-click="vm.open()"><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
 
                   </div>
                 </div>
@@ -123,7 +123,7 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
 
             <div class="accordion-discount">
             <accordion class="accordion-component accordion">
-              <accordion-group heading="Como fazer o Convênio" class="accordion-navigation tab-title">
+              <accordion-group heading="Como fazer o Convênio" class="accordion-navigation tab-title" >
                   <div class="row">
                     <div class="column small-4 text-center step-title">1ª Etapa</div>
                     <div class="column small-4 text-center step-title">2ª Etapa</div>
@@ -141,11 +141,11 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
                 </accordion-group>
              </accordion>
 
-            <accordion class="accordion-component accordion">
-              <accordion-group heading="Solicitar Cadastro de Conselho" class="accordion-navigation tab-title">
+            <accordion class="accordion-component accordion" name="cadastro" id="cadastro">
+              <accordion-group heading="Solicitar Cadastro de Conselho" class="accordion-navigation tab-title" is-open="vm.openAdd">
                   <div>
           
-        <form name="cadastroConselhoForm" id="cadastroConselhoForm" novalidate>
+        <form name="vm.cadastroConselhoForm" id="cadastroConselhoForm" novalidate>
 
           <div class="row">
             <div class="small-12 medium-3 columns">
@@ -153,9 +153,9 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
               </label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="conselho.nome_instituicao" ng-required="true">
-              <div ng-show="cadastroConselhoForm.nameConselho.$dirty && cadastroConselhoForm.nameConselho.$invalid">
-                  <span class="error" ng-show="cadastroConselhoForm.nameConselho.$error.required">Conselho é Obrigatório!</span>
+              <input type="text" name="nameConselho" id="nameConselho" placeholder="Nome Completo" ng-model="vm.conselho.nome_instituicao" ng-required="true">
+              <div ng-show="vm.cadastroConselhoForm.nameConselho.$dirty && vm.cadastroConselhoForm.nameConselho.$invalid">
+                  <span class="error" ng-show="vm.cadastroConselhoForm.nameConselho.$error.required">Conselho é Obrigatório!</span>
               </div>
             </div>
           </div>
@@ -165,9 +165,9 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
               <label for="nameResponsavel" class="middle"> Nome do Responsável <strong title="Campo Obrigatório">*</strong> </label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="conselho.nome_responsavel" ng-required="true">
-              <div ng-show="cadastroConselhoForm.nameResponsavel.$dirty && cadastroConselhoForm.nameResponsavel.$invalid">
-                  <span class="error" ng-show="cadastroConselhoForm.nameResponsavel.$error.required">Responsável é Obrigatório!</span>
+              <input type="text" name="nameResponsavel" id="nameResponsavel" placeholder="Nome Completo"  ng-model="vm.conselho.nome_responsavel" ng-required="true">
+              <div ng-show="vm.cadastroConselhoForm.nameResponsavel.$dirty && vm.cadastroConselhoForm.nameResponsavel.$invalid">
+                  <span class="error" ng-show="vm.cadastroConselhoForm.nameResponsavel.$error.required">Responsável é Obrigatório!</span>
               </div>
             </div>
           </div>  
@@ -177,13 +177,13 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
               <label for="emailResponsavel" class="middle">E-mail do Responsável <strong title="Campo Obrigatório">*</strong>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="conselho.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
+              <input type="email" name="emailResponsavel" id="emailResponsavel" placeholder="Digite o E-mail"  ng-model="vm.conselho.email" ng-pattern="vm.emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
-              <div ng-show="cadastroConselhoForm.emailResponsavel.$dirty && cadastroConselhoForm.emailResponsavel.$invalid">
-                    <span class="error" ng-show="cadastroConselhoForm.emailResponsavel.$error.required">Email é Obrigatório!</span>
+              <div ng-show="vm.cadastroConselhoForm.emailResponsavel.$dirty && vm.cadastroConselhoForm.emailResponsavel.$invalid">
+                    <span class="error" ng-show="vm.cadastroConselhoForm.emailResponsavel.$error.required">Email é Obrigatório!</span>
               </div>
 
-              <div ng-show="cadastroConselhoForm.emailResponsavel.$dirty && cadastroConselhoForm.emailResponsavel.$error.pattern">
+              <div ng-show="vm.cadastroConselhoForm.emailResponsavel.$dirty && vm.cadastroConselhoForm.emailResponsavel.$error.pattern">
                 <span class="error" >Formato de Email incorreto!</span>
               </div>
 
@@ -195,20 +195,16 @@ Tem como principal negócio o desenvolvimento e comercialização de cursos pres
               <label for="phoneResponsavel" class="middle">Telefone do Responsável <strong title="Campo Obrigatório">*</strong></label>
             </div>
             <div class="small-12 medium-9 columns">
-              <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="conselho.telefone" mask="(99) 9?9999-9999" ng-required="true">
-             <div ng-show="cadastroConselhoForm.phoneResponsavel.$dirty && cadastroConselhoForm.phoneResponsavel.$invalid">
-                  <span class="error" ng-show="cadastroConselhoForm.phoneResponsavel.$error.required">Telefone é Obrigatório!</span>
+              <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD" ng-model="vm.conselho.telefone" mask="(99) 9?9999-9999" ng-required="true">
+             <div ng-show="vm.cadastroConselhoForm.phoneResponsavel.$dirty && vm.cadastroConselhoForm.phoneResponsavel.$invalid">
+                  <span class="error" ng-show="vm.cadastroConselhoForm.phoneResponsavel.$error.required">Telefone é Obrigatório!</span>
             </div>
             </div>
           </div>
           <br>
-          
-          <div class="text-right" style="clear: both">
-            <div class="g-recaptcha" style="float: right;margin-bottom: 15px;" data-sitekey="6Ld8bgcUAAAAAFeHx_7T3Vb_cBZTGDH_CZ_T_uhA" ></div>
-          </div>
 
           <div class="text-right" style="clear: both">
-            <button class="button" type="submit" ng-disabled="cadastroConselhoForm.$invalid" ng-click="addInstitution(3)"> Enviar </button>
+            <button class="button" type="submit" ng-disabled="vm.cadastroConselhoForm.$invalid" ng-click="vm.addInstitution(3)"> Enviar </button>
           </div>
 
           <div class="row">

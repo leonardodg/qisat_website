@@ -80,12 +80,12 @@
             });
 
             $routeProvider.when('/institucional/convenios/conselhos', {
-              templateUrl : '/views/institucional-conselhos-conveniados.html'
+              templateUrl : '/views/institucional-conselhos-cadastro.html',
+              controller : 'convenioController as vm'
             });
 
-            $routeProvider.when('/institucional/convenios/conselhos/cadastro', {
-              templateUrl : '/views/institucional-conselhos-cadastro.html',
-              controller : 'convenioController'
+            $routeProvider.when('/institucional/convenios/conselhos/conveniados', {
+              templateUrl : '/views/institucional-conselhos-conveniados.html',
             });
 
             $routeProvider.when('/institucional/convenios/conselhos/desconto', {
@@ -96,12 +96,12 @@
 
             $routeProvider.when('/institucional/convenios/preduc/ensino', {
               templateUrl : '/views/institucional-preduc-ensino.html',
-              controller : 'convenioController'
+              controller : 'convenioController as vm'
             });
 
             $routeProvider.when('/institucional/convenios/preduc/entidade', {
               templateUrl : '/views/institucional-preduc-entidade.html',
-              controller : 'convenioController'
+              controller : 'convenioController as vm'
             });
 
             $routeProvider.when('/institucional/convenios/preduc/descontos', {
