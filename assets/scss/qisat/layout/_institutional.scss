@@ -5,6 +5,10 @@
   @media only screen and (min-width: 64.063em) {padding-left: 0; } /* min-width 1025px, large screens */
 }
 
+.grid-sidebar-left{
+  @media only screen and (min-width: 64.063em) {padding-right: 0; } /* min-width 1025px, large screens */
+}
+
 .page_text, .widget_text{
   @extend .z-1;
   width: 100%;
@@ -318,8 +322,8 @@
                 .arrow{opacity: 0.5;}
             }
      &.active{
-            background-color: #012c48;
-            .list-group-item-date{   background: #fff; color: #012c48; }
+            background-color: #444;
+            .list-group-item-date{   background: #fff; color: #444; }
             .title{color:#fff}
             .subtitle{color:#fff}
             .arrow{color: #fff; opacity: 1;}
@@ -328,7 +332,7 @@
     .arrow{ position: absolute; right: 20px; top: 50%; margin-top: -10px; opacity: 0; transition: all 0.5s}
     .title{ display: block; height: 48px; overflow: hidden; font-size: 15px; }
     .subtitle { opacity: 0.5; font-weight: 300;}
-    .list-group-item-date{ background: #012c48; width: 50px; float: left; height: 50px; border-radius: 50%; display: inline-block; font-size: 12px; line-height: 4; text-align: center; color: #fff; font-weight: 800; margin-right: 20px; }
+    .list-group-item-date{ background: #444; width: 50px; float: left; height: 50px; border-radius: 50%; display: inline-block; font-size: 12px; line-height: 4; text-align: center; color: #fff; font-weight: 800; margin-right: 20px; }
 
     &:first-child {
         border-top-left-radius: 4px;
@@ -355,7 +359,7 @@
 
 
 .timeline__post--background{ 
-    background-color: #01263e; 
+    background-color: #ebebeb;
     min-height:850px;
 
     @media only screen and (max-width: 40em) {
@@ -363,6 +367,7 @@
     }
 
 }
+
 .timeline__post{
   display: none;
   &__header{
@@ -371,21 +376,16 @@
  &__body{
        padding: 20px 40px;
        text-align: justify;
-   &__meta{color: #fff}
-   p{color: #C6CCCE}
+   &__meta{color: #01263e}
+   p{color: #333333}
    p.lead{
       font-size: 1.5rem;  
       font-weight: 300;
 
-      
       @media only screen and (max-width: 40em) {
         text-align: left;
       }
-
    }
-
-
-
  }
  &.active{ display: block;}
 }

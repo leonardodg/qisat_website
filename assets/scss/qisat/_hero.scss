@@ -83,7 +83,6 @@
 
 
 .hero-page-course {
-    background-image: url("../images/hero/hero-course-background.jpg");
     /* background: #232526; */
     background: #333;
     /* background: linear-gradient(to left, #232526, #414345); */
@@ -92,6 +91,7 @@
     background-position: center bottom;
     /* border-bottom: 1px solid #555; */
     background-color: #333;
+    background-image: url("../images/hero/hero-course-background.jpg");
     width: 100%;
     float: left;
 }
