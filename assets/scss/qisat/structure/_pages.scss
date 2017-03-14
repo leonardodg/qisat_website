@@ -523,6 +523,11 @@ button.close-button, .close-button {
       border-radius: 1px;
       position: relative;
       min-height: 475px;
+
+  transition: all 0.5s;
+   @extend .z-1;  width: 100%;  background-color: #fff;    z-index: 1; position: relative;
+   &:hover{ @extend .z-3; @include translate(0, -5px) }
+   &:hover * {transition: all 0.5s; }
       
       @media only screen and (min-width: 64.063em) {
         width: 31%;
@@ -642,6 +647,11 @@ button.close-button, .close-button {
       background-color: #FFF;
       box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
       border-radius: 1px;
+
+      transition: all 0.5s;
+      @extend .z-1;  width: 100%;  background-color: #fff;    z-index: 1; position: relative;
+      &:hover{ @extend .z-3; @include translate(0, -5px) }
+      &:hover * {transition: all 0.5s; }
       
       @media only screen and (min-width: 64.063em) {
         width: 31%;
@@ -1278,6 +1288,7 @@ hr.clearfix {
 .show-for-small-up {
   display: block !important;
 }
+
 
 .financeiro .responsive {
   @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
