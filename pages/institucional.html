@@ -18,7 +18,7 @@
 <body ng-controller="carrinhoController as buy">
 
     <div class="off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+      <div class="inner-wrap" ng-controller="modalController as modal">
 
       <!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
        <aside class="right-off-canvas-menu">
@@ -91,11 +91,16 @@
 
   <header class="hero-pages hero-pages__insitucional" ng-controller="institucionalController as vm">
    <div class="row">
-       <div class="medium-12 columns">
+       <div class="medium-8 columns">
          <span class="hero-pages__label">Institucional</span>
          <h1 class="hero-pages__title">Conheça o QiSat</h1>
          <p class="hero-pages__tagline"> O maior portal de cursos para engenheiros e arquitetos</p>
        </div> <!-- //large-12-->
+       <div class="medium-4 columns">
+          <div class="hero-course__play-container" >
+            <a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI')" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
+          </div> <!--//hero-course__play-container -->
+        </div> <!-- //large-3-->
    </div> <!-- ///row -->
  </header><!-- //hero-home -->
 
@@ -122,7 +127,7 @@
 </main> <!--// main-content -->
 
         <!-- ########################## FOOTER ########################## -->
-          <footer class="footer-main" ng-controller="modalController as modal" >
+          <footer class="footer-main" >
 
             <div class="footer-primary">
               <div class="row">
@@ -251,6 +256,7 @@
       <script defer src="js/libs/ngMask.min.js"></script>
       <script defer src="js/libs/ui-masks.js"></script>
       <script defer src="js/libs/angular-timer.min.js"></script>
+      <script defer src="js/libs/ng-infinite-scroll.min.js"></script>
 
       <script defer src="js/QiSatApp.js"></script>
       <script defer src="js/config/value.js"></script>

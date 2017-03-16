@@ -213,49 +213,32 @@
 			 </div>  <!-- // large-3 columns  -->
 
 
-			 <div class="small-12 medium-8 large-9 columns" >
+			 <div class="small-12 medium-8 large-9 columns" ng-cloak>
 			 	 <div class="row">
-				 	<div class="large-9 columns">
-            <header class="page-course__header-group">
-              <span class="page-course__header-group--suptitle">Você está visualizando  </span>
-                  <ul class="page-course__breadcrumbs breadcrumbs" ng-cloak>
-                    <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
-                      <a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
-                      <span ng-if="!link.href" > {{::link.title}} </span>
-                    </li>
-                  </ul>
-            </header>
-          </div>
-				    <div class="large-3 columns">
-				      <label>Ordernar Por: 
-				        <select name="orderby" ng-model="order" >
-										<option value="" selected="selected" > Selecione Ordenação </option>
-										<option value="+preco" > Menor Preço </option>
-										<option value="-preco" > Maior Preço </option>
-										<option value="+nome"  > A - Z </option>
-										<option value="-nome"  > Z - A </option>
-									</select>
-				      </label>
-				    </div>
-				 </div>
+				 	<div class="large-9 columns ng-cloak">
+		            <header class="page-course__header-group">
+		              <span class="page-course__header-group--suptitle">Você está visualizando  </span>
+		                  <ul class="page-course__breadcrumbs breadcrumbs" ng-cloak>
+		                    <li ng-repeat="link in navLinks" ng-class="{ 'current' : !link.href }" >
+		                      <a ng-if="link.href" ng-href="{{link.href}}" > {{::link.title}} </a>
+		                      <span ng-if="!link.href" > {{::link.title}} </span>
+		                    </li>
+		                  </ul>
+		            </header>
+      			</div>
 
-        <div class="panel callout radius" ng-repeat="item in navFilters" ng-cloak>
-          
-          <strong>{{::item.title}} (<strong class="navLink_number">{{item.selected}}</strong>):</strong>
-          <ul class="inline-list">
-            <li ng-repeat="filtro in item.inputs" ng-if="filtro.selected" >
-              <a ng-href="{{::filtro.hash}}" >
-                <button class="close-button" aria-label="Close alert" type="button">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                {{::filtro.name}}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-
-				 <!--  - Watchers: {{ watchCount }}  -->
+		 		<div class="large-3 columns ng-cloak">
+			      <label>Ordernar Por: 
+			        <select name="orderby" ng-model="order" >
+									<option value="" selected="selected" > Selecione Ordenação </option>
+									<option value="+preco" > Menor Preço </option>
+									<option value="-preco" > Maior Preço </option>
+									<option value="+nome"  > A - Z </option>
+									<option value="-nome"  > Z - A </option>
+								</select>
+			      </label>
+			    </div>
+		 </div>
 
 				<section class="section__state ng-cloak" ng-if="presencial">
 						<div class="row">
@@ -4444,15 +4427,15 @@
 						</header><!-- //page-course__header-group | byTypes:types:op | limitTo:3  -->
 					    
 					    <div  ng-if="::list.card=='online'" >
-				    	    <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" >
-								<!-- MODELO PARA LOOPING -->
+				    	    <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3" infinite-scroll='loadMore(list)' infinite-scroll-disabled='list.noscroll'>
+
 								<li class="block-grid__courses__item" ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
 									<div class="list-filter__inner">
 										<div class="card-course card-format-block">
 									   		<div class="card-course-inner">
 									   				<a ng-href="{{::course.info.url}}" target="_self">
 									   					<span class="card-course--litle-play"></span>
-									   					<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
+									   					<img bn-lazy-src="{{course.imgSrc}}" width="100%" height="180px" class="card-course-header" >
 									   				</a>
 									   				<div class="card-course--content" >
 									   					<a ng-href="{{::course.info.url}}" target="_self">
@@ -4460,8 +4443,7 @@
 									   						<span class="card-course__modality">{{::course.modalidade}}</span>
 									   						<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 									   					</a>
-									   					<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" 
-									   					ng-if="list.type==2"  >{{::course.preco}}
+									   					<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)">{{::course.preco}}
 									   						<span class="card-course__icon-cart">
 									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 									   							<div class="price_popover" ng-if="::course.promocaoDateend" >
@@ -4485,137 +4467,103 @@
 												                </div>
 												            </span>
 											            </a>
-
-									   				</div>  <!-- //card-course-content -->
-									   		</div> <!-- //card-course-inner -->
-										</div> <!-- //card-course -->
-									</div> <!-- //list-filter__inner -->
-									
+									   				</div>
+									   		</div> 
+										</div> 
+									</div> 
 								</li>
 							</ul>
 						</div>
-						<!-- FIM MODELO PARA LOOPING | limitTo:1 -->
+
+						<div ng-if="::list.card!='online'" id="::list.anchor" infinite-scroll='loadMore(list)' infinite-scroll-disabled='list.noscroll'> 
+							<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
+								<div class="card-format-ever-block"> 
+									<div class="row collapse">
+										<div class="small-12 medium-4 columns">
+											<div class="card-course-inner" ng-if="::list.card=='eventos'" >
+												<span class="card-course--litle-play"></span>
+												<img bn-lazy-src="{{course.imgSrc}}" width="100%" height="180px" class="card-course-header" >
+												<div class="card-course--content">
+													<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+													<span class="card-course__modality">{{::course.modalidade}}</span>  
+													<span class="card-course__name">{{::course.nome}}</span> 
+													<span class="card-course__button"> {{::course.preco}} </span>
+												</div> 
+											</div>
+
+											<div class="card-course-inner" ng-if="::list.card=='serie'" >
+												<a ng-href="{{::course.info.url}}" target="_self">
+													<span class="card-course--litle-play"></span>
+													<img bn-lazy-src="{{course.imgSrc}}" width="100%" height="180px" class="card-course-header" > 
+												</a>
+												<div class="card-course--content">
+													<a ng-href="{{::course.info.url}}" target="_self">  
+														<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+														<span class="card-course__modality">{{::course.modalidade}}</span>  
+														<span class="card-course__name">{{::course.nome}}</span> 
+													</a>
+													<a class="card-course__button" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}</a> 	
+												</div> 
+											</div>
+
+											<div class="card-course-inner" ng-if="::list.card=='pacotes'">
+												<a ng-href="{{::course.info.url}}" target="_self">
+													<span class="card-course--litle-play"></span>
+													<img bn-lazy-src="{{course.imgSrc}}" width="100%" height="180px" class="card-course-header" >
+												</a>
+												<div class="card-course--content">
+													<a ng-href="{{::course.info.url}}" target="_self">  
+														<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
+														<span class="card-course__modality">{{::course.modalidade}}</span>  
+														<span class="card-course__name">{{::course.nome}}</span> 
+													</a>
+													<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
+														<span class="card-course__icon-cart">
+								   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+								   							<div class="price_popover" ng-if="::course.promocaoDateend" >
+								   								<div class="price_popover__header">
+								   									<p class="price_popover__header__info"> <s>de {{::course.precoTotal}}</s> <strong>para {{::course.preco}}</strong> Até {{::course.promocaoDateend}} </p>
+								   								</div>
+								   								<div class="price_popover__footer"> Adicionar ao carrinho </div>
+								   							</div> 
+								   						</span>
+
+													</a> 	
+												</div> 
+											</div>
+										</div>
+
+										<div class="small-12 medium-8 columns">
+											<div class="card-course-presencial" ng-if="::list.card=='eventos'" > 
+												<ul class="card-course-presencial__list">
+													<li class="card-course-presencial__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
+														<a ng-href="{{course.info.url+'?turma='+edicao.id}}" target="_self"> <strong class="chapter"> <span class="name">{{::edicao.cidadeuf}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong>  </a>
+													</li>				 									
+												</ul>	
+											</div> 
+
+											<div class="card-course-serie" ng-if="::list.card=='serie'"> 
+												<ul class="card-course-serie__list">
+													<li class="card-course-serie__item" ng-repeat="conteudo in ::course.produtos track by $index" > 
+														 <strong class="chapter">Capítulo</strong> <span class="name">{{::conteudo.nome}}</span>
+													</li>				 									
+												</ul>	
+											</div> 
+
+											<div class="card-course-serie" ng-if="::list.card=='pacotes'"> 
+												<ul class="card-course-serie__list">
+													<li class="card-course-serie__item" ng-repeat="produto in ::course.produtos track by produto.id" > 
+														<strong class="chapter">Curso</strong> <span class="name">{{::produto.nome}}</span> </strong> 
+													</li>				 									
+												</ul>	
+											</div> 
+
+										</div> 
+									</div> 
+								</div> 
+							</div>
+						</div>
 	
-						<div ng-if="::list.card=='eventos'" id="::list.anchor" >
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
-		  							<div class="card-format-ever-block"> 
-		  								<div class="row collapse">
-			 								<div class="small-12 medium-4 columns">
-			 									<div class="card-course-inner">
-													<!-- <a ng-href="{{::course.info.url}}" target="_self"> -->
-														<span class="card-course--litle-play"></span>
-														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
-													<!-- </a> -->
-													<div class="card-course--content">
-														<!-- <a ng-href="{{::course.info.url}}" target="_self">   -->
-															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
-															<span class="card-course__modality">{{::course.modalidade}}</span>  
-															<span class="card-course__name">{{::course.nome}}</span> 
-														<!-- </a> -->
-														<!-- <a ng-href="{{::course.info.url}}" target="_self" class="card-course__button">{{::course.preco}}</a> 	 -->
-
-														<span class="card-course__button"> {{::course.preco}} </span>
-
-													</div> 
-												</div>
-			 								</div> <!-- // columns -->
-
-			 								<div class="small-12 medium-8 columns">
-				 								<div class="card-course-presencial"> 
-				 									<ul class="card-course-presencial__list">
-				 										<li class="card-course-presencial__item" ng-repeat="edicao in course.eventos track by edicao.id " ng-show="edicao.show" > 
-				 											<a ng-href="{{course.info.url+'?turma='+edicao.id}}" target="_self"> <strong class="chapter"> <span class="name">{{::edicao.cidadeuf}}</span> - {{::edicao.timestart}} até {{::edicao.timeend}} </strong>  </a>
-				 										</li>				 									
-				 									</ul>	
-				 								</div> <!-- /card-course-serie-list__container -->
-		 	 								</div> <!-- // columns -->
-		 								</div> <!-- // row -->
-									</div> <!-- // card-format-ever-block -->
-								</div>
-						</div>
-
-						<div ng-if="::list.card=='pacotes'">
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
-		  							<div class="card-format-ever-block"> 
-		  								<div class="row collapse">
-			 								<div class="small-12 medium-4 columns">
-			 									<div class="card-course-inner">
-													<a ng-href="{{::course.info.url}}" target="_self">
-														<span class="card-course--litle-play"></span>
-														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
-													</a>
-													<div class="card-course--content">
-														<a ng-href="{{::course.info.url}}" target="_self">  
-															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
-															<span class="card-course__modality">{{::course.modalidade}}</span>  
-															<span class="card-course__name">{{::course.nome}}</span> 
-														</a>
-														<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}
-															<span class="card-course__icon-cart">
-									   							<!-- <i class="material-icons">add_shopping_cart</i> -->
-									   							<div class="price_popover" ng-if="::course.promocaoDateend" >
-									   								<div class="price_popover__header">
-									   									<p class="price_popover__header__info"> <s>de {{::course.precoTotal}}</s> <strong>para {{::course.preco}}</strong> Até {{::course.promocaoDateend}} </p>
-									   								</div> <!-- //price_popover__header -->
-									   								<div class="price_popover__footer"> Adicionar ao carrinho </div> <!-- //price_popover__footer -->
-									   							</div> <!-- //price_popover -->
-									   						</span>
-
-														</a> 	
-													</div> 
-												</div>
-			 								</div> <!-- // columns -->
-
-			 								<div class="small-12 medium-8 columns">
-				 								<div class="card-course-serie"> 
-				 									<ul class="card-course-serie__list">
-				 										<li class="card-course-serie__item" ng-repeat="produto in ::course.produtos track by produto.id" > 
-				 											<strong class="chapter">Curso</strong> <span class="name">{{::produto.nome}}</span> </strong> 
-				 										</li>				 									
-				 									</ul>	
-				 								</div> <!-- /card-course-serie-list__container -->
-		 	 								</div> <!-- // columns -->
-		 								</div> <!-- // row -->
-									</div> <!-- // card-format-ever-block -->
-								</div>
-						</div>
-
-						<div ng-if="::list.card=='serie'">
-								<div ng-repeat="course in list.courses | filter:{nome : search} | orderBy:order track by course.id" ng-show="course.show" >
-		  							<div class="card-format-ever-block"> 
-		  								<div class="row collapse">
-			 								<div class="small-12 medium-4 columns">
-			 									<div class="card-course-inner">
-													<a ng-href="{{::course.info.url}}" target="_self">
-														<span class="card-course--litle-play"></span>
-														<div class="card-course-header" back-img="{{::course.imgSrc}}" ></div> 
-													</a>
-													<div class="card-course--content">
-														<a ng-href="{{::course.info.url}}" target="_self">  
-															<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span> 
-															<span class="card-course__modality">{{::course.modalidade}}</span>  
-															<span class="card-course__name">{{::course.nome}}</span> 
-														</a>
-														<a class="card-course__button" ng-click="buy.addItemCarrinho(course.id)" >{{::course.preco}}</a> 	
-													</div> 
-												</div>
-			 								</div> <!-- // columns -->
-
-			 								<div class="small-12 medium-8 columns">
-				 								<div class="card-course-serie"> 
-				 									<ul class="card-course-serie__list">
-				 					
-				 										<li class="card-course-serie__item" ng-repeat="conteudo in ::course.produtos track by $index" > 
-				 											 <strong class="chapter">Capítulo</strong> <span class="name">{{::conteudo.nome}}</span>
-				 										</li>				 									
-				 									</ul>	
-				 								</div> <!-- /card-course-serie-list__container -->
-		 	 								</div> <!-- // columns -->
-		 								</div> <!-- // row -->
-									</div> <!-- // card-format-ever-block -->
-								</div>
-						</div>
-
 					</div>
 
 					<div class="custom-loading" ng-init="loading=true" ng-if="loading" >
@@ -4772,6 +4720,7 @@
     <script defer src="js/libs/ngMask.min.js"></script>
     <script defer src="js/libs/ui-masks.js"></script>
     <script defer src="js/libs/angular-timer.min.js"></script>
+    <script defer src="js/libs/ng-infinite-scroll.min.js"></script>
     
 	<script  defer src="js/QiSatApp.js"></script>
 
@@ -4784,6 +4733,7 @@
 	
 	<script defer src="js/filters/filters.js"></script>
 	<script defer src="js/directive/backImg.js"></script>
+	<script defer src="js/directive/bnLazySrc.js"></script>
 	<script defer src="js/directive/hrefPortal.js"></script>
 
 	<script defer src="js/controllers/modalController.js"></script>
