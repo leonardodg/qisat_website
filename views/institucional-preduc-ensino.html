@@ -18,9 +18,6 @@
     </ul>
   </div>
 
-  <div class="page_content show-for-medium-up">
-    <small>O <b>Projeto QiSat Rede Educacional Online</b> visa o intercâmbio de conhecimento entre Entidade de Classe e o QiSat - Cursos aplicados à engenharia e arquitetura, portal www.qisat.com.br, direcionado às áreas da Engenharia Civil, Elétrica, Sanitária, Agronômica e Arquitetura levando descontos especiais para o meio acadêmico nas inscrições de cursos de aperfeiçoamento técnico do canal QiSat.</small>
-  </div>
 </div>
 
      <div class="large-9 medium-8 columns">
@@ -103,7 +100,7 @@
                   <div class="row">
                     <div class="column small-4 text-center step-desc"><div>Preencher o termo de adesão</div></div>
                     <div class="column small-4 text-center step-desc"><div>Preencher a lista de associados</div></div>
-                    <div class="column small-4 text-center step-desc"><div>Enviar e-mail com s dois documentos para qisat@qisat.com.br</div></div>
+                    <div class="column small-4 text-center step-desc"><div>Enviar e-mail com os dois documentos para qisat@qisat.com.br</div></div>
                   </div>
                 </accordion-group>
              </accordion>
@@ -121,7 +118,7 @@
                       <div class="small-12 medium-9 columns">
                         <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="vm.institution.nome_instituicao" ng-required="true">
                         <div ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$dirty && vm.cadastroInstituicaoForm.nameInstituicao.$invalid">
-                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$error.required">Nome é Obrigatório!</span>
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$error.required">Nome é obrigatório.</span>
                         </div>
                       </div>
                     </div>
@@ -133,7 +130,7 @@
                       <div class="small-12 medium-9 columns">
                         <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="vm.institution.nome_responsavel" ng-required="true">
                         <div ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$dirty && vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$invalid">
-                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$error.required">Responsável é Obrigatório!</span>
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$error.required">Responsável é obrigatório.</span>
                         </div>
                       </div>
                     </div>
@@ -145,7 +142,7 @@
                       <div class="small-12 medium-9 columns">
                         <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="vm.institution.nome_coordenador" ng-required="true">
                         <div ng-show="vm.cadastroInstituicaoForm.nameCordenador.$dirty && vm.cadastroInstituicaoForm.nameCordenador.$invalid">
-                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameCordenador.$error.required">Coordenador é Obrigatório!</span>
+                            <span class="error" ng-show="vm.cadastroInstituicaoForm.nameCordenador.$error.required">Coordenador é obrigatório.</span>
                         </div>
                       </div>
                     </div>                  
@@ -158,11 +155,11 @@
                         <input type="email" name="emailInstituicao" id="emailInstituicao" placeholder="Digite seu E-mail"  ng-model="vm.institution.email" ng-pattern="vm.emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
                          <div ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$dirty && vm.cadastroInstituicaoForm.emailInstituicao.$invalid">
-                              <span class="error" ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$error.required">Email é Obrigatório!</span>
+                              <span class="error" ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$error.required">E-mail é obrigatório.</span>
                         </div>
 
                         <div ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$dirty && vm.cadastroInstituicaoForm.emailInstituicao.$error.pattern">
-                          <span class="error" >Formato de Email incorreto!</span>
+                          <span class="error" >Formato de e-mail incorreto.</span>
                         </div>
 
                       </div>
@@ -175,7 +172,7 @@
                       <div class="small-12 medium-9 columns">
                         <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="vm.institution.telefone" mask="(99) 9?9999-9999" ng-required="true">
                         <div ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$dirty && vm.cadastroInstituicaoForm.phoneInstituicao.$invalid">
-                           <span class="error" ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$error.required">Telefone é Obrigatório!</span>
+                           <span class="error" ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$error.required">Telefone é obrigatório.</span>
                         </div>
                       </div>
                     </div>
@@ -185,11 +182,11 @@
                         <div class="small-4 large-4 large-offset-4 columns">
                             
                             <div data-alert class="alert-box info radius alert-1-ok" style="display: none;">
-                              Mensagem Enviada com SUCESSO!
+                              Mensagem enviada com SUCESSO!
                             </div>
 
                             <div data-alert class="alert-box warning  radius alert-1-error" style="display: none;">
-                              Falha no Envio da Mensagem!
+                              Falha no envio da mensagem.
                             </div>
                         </div>
                           <div class="small-6 large-4 columns"></div>

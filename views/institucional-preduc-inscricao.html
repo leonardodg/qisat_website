@@ -66,7 +66,7 @@
           <div class="small-12 medium-9 columns">
             <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="desconto.nome" ng-required="true">
             <div ng-show="descontoForm.name.$dirty && descontoForm.name.$invalid">
-                <span class="error" ng-show="descontoForm.name.$error.required">Nome é Obrigatório!</span>
+                <span class="error" ng-show="descontoForm.name.$error.required">Nome é obrigatório.</span>
               </div>
           </div>
         </div>              
@@ -78,11 +78,11 @@
           <div class="small-12 medium-9 columns">
             <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="desconto.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
               <div ng-show="descontoForm.email.$dirty && descontoForm.email.$invalid">
-                    <span class="error" ng-show="cadastroEntidadeForm.email.$error.required">Email é Obrigatório!</span>
+                    <span class="error" ng-show="cadastroEntidadeForm.email.$error.required">Email é obrigatório.</span>
               </div>
 
               <div ng-show="descontoForm.email.$dirty && descontoForm.email.$error.pattern">
-                <span class="error" >Formato de Email incorreto!</span>
+                <span class="error" >Formato de e-mail incorreto.</span>
               </div>
           </div>
         </div>
@@ -94,7 +94,7 @@
           <div class="small-12 medium-9 columns">
             <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.telefone" mask="(99) 9?9999-9999" ng-required="true">
             <div ng-show="descontoForm.phone.$dirty && descontoForm.phone.$invalid">
-                 <span class="error" ng-show="descontoForm.phone.$error.required">Telefone é Obrigatório!</span>
+                 <span class="error" ng-show="descontoForm.phone.$error.required">Telefone é obrigatório.</span>
             </div>
           </div>
         </div>
@@ -105,11 +105,11 @@
               
 
                   <div data-alert class="alert-box info radius alert-discount-ok" style="display: none;">
-                  Mensagem Enviada com SUCESSO!
+                  Mensagem enviada com SUCESSO!
                 </div>
 
                 <div data-alert class="alert-box warning  radius alert-discount-error" style="display: none;">
-                  Falha no Envio da Mensagem!
+                  Falha no envio da mensagem.
                 </div>
             </div>
               <div class="small-6 large-4 columns"></div>

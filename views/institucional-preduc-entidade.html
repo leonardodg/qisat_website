@@ -18,9 +18,6 @@
     </ul>
   </div>
 
-  <div class="page_content show-for-medium-up">
-    <small>O <b>Projeto QiSat Rede Educacional Online</b> visa o intercâmbio de conhecimento entre Entidade de Classe e o QiSat - Cursos aplicados à engenharia e arquitetura, portal www.qisat.com.br, direcionado às áreas da Engenharia Civil, Elétrica, Sanitária, Agronômica e Arquitetura levando descontos especiais para o meio acadêmico nas inscrições de cursos de aperfeiçoamento técnico do canal QiSat.</small>
-  </div>
 </div>
 
      <div class="large-9 medium-8 columns">
@@ -104,7 +101,7 @@
                   <div class="row">
                     <div class="column small-4 text-center step-desc"><div>Preencher o termo de adesão</div></div>
                     <div class="column small-4 text-center step-desc"><div>Preencher a lista de associados</div></div>
-                    <div class="column small-4 text-center step-desc"><div>Enviar e-mail com s dois documentos para qisat@qisat.com.br</div></div>
+                    <div class="column small-4 text-center step-desc"><div>Enviar e-mail com os dois documentos para qisat@qisat.com.br</div></div>
                   </div>
                 </accordion-group>
              </accordion>
@@ -123,7 +120,7 @@
             <div class="small-12 medium-9 columns">
               <input type="text" name="nameEntidade" id="nameEntidade" placeholder="Nome Completo" ng-model="vm.entidade.nome_instituicao" ng-required="true">
               <div ng-show="vm.cadastroEntidadeForm.nameEntidade.$dirty && vm.cadastroEntidadeForm.nameEntidade.$invalid">
-                <span class="error" ng-show="vm.cadastroEntidadeForm.nameEntidade.$error.required">Entidade é Obrigatório!</span>
+                <span class="error" ng-show="vm.cadastroEntidadeForm.nameEntidade.$error.required">Entidade é obrigatório.</span>
               </div>
             </div>
           </div>
@@ -135,7 +132,7 @@
             <div class="small-12 medium-9 columns">
               <input type="text" name="nameResponsavelEntidade" id="nameResponsavelEntidade" placeholder="Nome Completo"  ng-model="vm.entidade.nome_responsavel" ng-required="true">
                <div ng-show="vm.cadastroEntidadeForm.nameResponsavelEntidade.$dirty && vm.cadastroEntidadeForm.nameResponsavelEntidade.$invalid">
-                  <span class="error" ng-show="vm.cadastroEntidadeForm.nameResponsavelEntidade.$error.required">Responsável é Obrigatório!</span>
+                  <span class="error" ng-show="vm.cadastroEntidadeForm.nameResponsavelEntidade.$error.required">Responsável é obrigatório.</span>
               </div>
             </div>
           </div>
@@ -147,7 +144,7 @@
             <div class="small-12 medium-9 columns">
               <input type="text" name="namePresidente" id="namePresidente" placeholder="Nome Completo" ng-model="vm.entidade.nome_coordenador" ng-required="true">
               <div ng-show="vm.cadastroEntidadeForm.namePresidente.$dirty && vm.cadastroEntidadeForm.namePresidente.$invalid">
-                <span class="error" ng-show="vm.cadastroEntidadeForm.namePresidente.$error.required">Presidente é Obrigatório!</span>
+                <span class="error" ng-show="vm.cadastroEntidadeForm.namePresidente.$error.required">Presidente é obrigatório.</span>
               </div>
             </div>
           </div>                  
@@ -159,11 +156,11 @@
             <div class="small-12 medium-9 columns">
               <input type="email" name="emailEntidade" id="emailEntidade" placeholder="Digite seu E-mail"  ng-model="vm.entidade.email" ng-pattern="vm.emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
               <div ng-show="vm.cadastroEntidadeForm.emailEntidade.$dirty && vm.cadastroEntidadeForm.emailEntidade.$invalid">
-                    <span class="error" ng-show="vm.cadastroEntidadeForm.emailEntidade.$error.required">Email é Obrigatório!</span>
+                    <span class="error" ng-show="vm.cadastroEntidadeForm.emailEntidade.$error.required">Email é obrigatório.</span>
               </div>
 
               <div ng-show="vm.cadastroEntidadeForm.emailEntidade.$dirty && vm.cadastroEntidadeForm.emailEntidade.$error.pattern">
-                <span class="error" >Formato de Email incorreto!</span>
+                <span class="error" >Formato de e-mail incorreto.</span>
               </div>
             </div>
           </div>
@@ -175,7 +172,7 @@
             <div class="small-12 medium-9 columns">
               <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD" ng-model="vm.entidade.telefone" mask="(99) 9?9999-9999" ng-required="true">
               <div ng-show="vm.cadastroEntidadeForm.phoneEntidade.$dirty && vm.cadastroEntidadeForm.phoneEntidade.$invalid">
-                 <span class="error" ng-show="vm.cadastroEntidadeForm.phoneEntidade.$error.required">Telefone é Obrigatório!</span>
+                 <span class="error" ng-show="vm.cadastroEntidadeForm.phoneEntidade.$error.required">Telefone é obrigatório.</span>
               </div>
             </div>
           </div>
@@ -184,11 +181,11 @@
           <div class="row align-center">
               <div class="small-4 large-4 large-offset-4 columns">
                     <div data-alert class="alert-box info radius alert-2-ok" style="display: none;">
-                    Mensagem Enviada com SUCESSO!
+                    Mensagem enviada com SUCESSO!
                   </div>
 
                   <div data-alert class="alert-box warning  radius alert-2-error" style="display: none;">
-                    Falha no Envio da Mensagem!
+                    Falha no envio da mensagem.
                   </div>
               </div>
                 <div class="small-6 large-4 columns"></div>

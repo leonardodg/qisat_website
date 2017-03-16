@@ -107,7 +107,7 @@ $(document).ready(function() {
             });
 
             $('html, body').animate({
-              scrollTop: target.offset().top
+              scrollTop: target.offset().top -70
             }, 1000);
 
             e.preventDefault();
