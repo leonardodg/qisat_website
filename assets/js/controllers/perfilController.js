@@ -90,6 +90,7 @@
 								 		else
 								 			scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
 							 		}else{
+							 			scope.endereco = {};
 							 			scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
 							 			scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
 							 		}
@@ -108,7 +109,7 @@
 							 			scope.getCPF = true;
 							 		}
 
-							 		if(scope.user.endereco.cep) 
+							 		if(scope.user.endereco && scope.user.endereco.cep) 
 							 			scope.user.endereco.cep = scope.user.endereco.cep.replace(/[^\d]+/g,'');
 
 							 		if(scope.user.phone1) 

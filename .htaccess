@@ -58,6 +58,8 @@
   RewriteRule ^(carrinho)/([^/]+)$ pages/carrinho.html [NC]
   RewriteRule ^(carrinho)/([^/]+)/([^/]+)$ pages/carrinho.html [NC]
   RewriteRule ^(certificacao-proficiencia)/?$ pages/certificacao-proficiencia.html [NC]
+  RewriteRule ^(hub)/?$ pages/cross-storage.html [NC]
+  RewriteRule ^(termos-de-uso|politica-de-privacidade)/?$ pages/basic.html [NC]
 
   <ifModule mod_gzip.c>
     mod_gzip_on Yes

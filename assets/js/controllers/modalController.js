@@ -127,7 +127,6 @@
 																  		}else
 															  				dados.assunto_email = '[QiSat] Registro de Interesse';
 
-															  			console.log(dados);
 															  			$scope.loading = true;
 															  			
 															  			QiSatAPI.repasse(dados)

@@ -14,11 +14,12 @@
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
-<body ng-controller="carrinhoController as buy">
-	<div class="off-canvas-wrap" >
+<body>
+
+	<div class="off-canvas-wrap">
 	  <div class="inner-wrap">
 
-	<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+		<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
 			 <aside class="right-off-canvas-menu">
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
@@ -41,8 +42,8 @@
 						<li class="show-for-large-up header-main__list  header-main__list__has--submenu ">
 							<a class="anchor header-main__item " href="/cursos" target="_self">Cursos</a>
 						</li>
-			 			<li class="show-for-large-up header-main__list header-main__list-item-current"> 
-			 				<a class="anchor header-main__item header-main__list-item-current" href-portal target="_self">Área do Aluno</a>
+			 			<li class="show-for-large-up header-main__list"> 
+			 				<a class="anchor header-main__item" href-portal target="_self">Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
@@ -51,55 +52,19 @@
 							<a class="right-off-canvas-toggle menu-icon header-main__item"> 
 								<span><i class="material-icons">menu</i> Menu </span> </a>
 						</li>
-			    		<li class="header-main__list header-main__list-cart" > 
-			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
-			    				<i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
-			    			</a>
-			    		</li>
 					</ul>
 				</nav>
 			</header>
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
-		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()"></div>
-				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
-					<h2>Itens no carrinho</h2>
-				<ul class="cd-cart-items">
-					<li ng-repeat="item in buy.itens track by item.id">
-						<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
-						<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
-						<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"><i class="material-icons">close</i></a>
-					</li>
-
-					<li ng-if="!buy.qtdItens">
-						<span class="cd-text" >Nenhum item no carrinho.</span>
-					</li>
-				</ul>
-				 
-					<div class="cd-cart-total" ng-if="buy.valorTotal">
-						<p><strong>Total </strong> <span> <strong> {{buy.totalCarrinho}} </strong><span></p>
-					</div> <!-- cd-cart-total -->
-				 
-					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
-					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
-				</div> <!-- cd-cart -->
-		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
-
-	
-		<div ng-if='error' class="ng-cloak" >
-			<div data-alert class="alert-box warning radius">
-			  {{error}}
-			  <a href="#" class="close">&times;</a>
-			</div>
-		</div>
-
-		<div ng-view class="ng-cloak" ></div>
-
- 	<!-- </div> -->
-
-<!-- </main> -->  <!--// main-content -->
-<!-- ########################## END MAIN ########################## -->
+		<main  class="content-main" ng-cloak >
+			  <div class="row">
+			  	<br>
+			  	<div class="large-12 columns course-page__sections">
+			  		<div ng-view></div>
+			  	</div>
+			  </div>
+		</main>  <!--// main-content -->
 
 				<!-- ########################## FOOTER ########################## -->
 					<footer class="footer-main" ng-controller="modalController as modal" >
@@ -124,9 +89,9 @@
 													<li class="footer-primary__title"> Páginas </li>
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-											 		<!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
 									 		 	</ul>
 											</li> <!-- // -->
+
 
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
@@ -135,7 +100,7 @@
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
 											</li> 
-											
+
 										 	<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list"> 
 													<li class="footer-primary__title"> Blogs </li>
@@ -169,18 +134,16 @@
 						</div> <!-- // footer-primary -->
 
 
-
-
 						<div class="footer-secondary">
 								<div class="row">
 										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
 											<li>
 													<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="modal.termo()">Termos de uso</a>
+															<a class="footer-secondary__list__item--link" ng-href="/termos-de-uso" target="_self" >Termos de uso</a>
 														</li>
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="modal.politica()">Política de privacidade</a>
+															<a class="footer-secondary__list__item--link" ng-href="/politica-de-privacidade" target="_self" >Política de privacidade</a>
 														</li>
 													</ul>
 										    </li>
@@ -206,21 +169,14 @@
 					<!-- ########################## END FOOTER ########################## -->
 			<!-- exit-off-canvas -->
 			<a class="exit-off-canvas"></a>
-
-
 		</div> <!-- //inner-wrap -->
 	 </div><!-- //off-canvas-wrap -->
-
-
-
-
-
 
 	<!-- EXECUTA SCRIPTS QISAT -->
 	    
 	    <script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script src="js/libs/angular.min.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
 		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
 		<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
@@ -238,40 +194,14 @@
 	    <script defer src="js/libs/ng-infinite-scroll.min.js"></script>
 
 	    <script defer src="js/QiSatApp.js"></script>
-
 	    <script defer src="js/config/value.js"></script>
-	    <script defer src="js/routes/portalAluno-semMenu.js"></script>
-	    
+	    <script defer src="js/routes/basic.js"></script>
 	    <script defer src="js/directive/hrefPortal.js"></script>
-		<script defer src="js/directive/cpfCheck.js"></script>
-		<script defer src="js/directive/emailCheck.js"></script>
-		<script defer src="js/directive/pwCheck.js"></script>
-		<script defer src="js/directive/uiAlert.js"></script>
-		<script defer src="js/directive/reCapthcha.js"></script>
 		<script defer src="js/directive/anchorLink.js"></script>
-		<script defer src="js/filters/filters.js"></script>
-
-
-		<script defer src="js/services/QiSatAPI.js"></script>
-		<script defer src="js/services/carrinho.js"></script>
-		<script defer src="js/services/authService.js"></script>
-		<script defer src="js/services/postmonService.js"></script>		
-		
-	    <script defer src="js/controllers/singupController.js"></script>
-	    <script defer src="js/controllers/loginController.js"></script>
-	    <script defer src="js/controllers/rememberController.js"></script>
 	    <script defer src="js/controllers/modalController.js"></script>
-		<script defer src="js/controllers/carrinhoController.js"></script>
-
+	    <script defer src="js/services/authService.js"></script>
 	    <script defer src="js/run/foundation.js"></script>
-
-	   <!--  // <script async defer src='https://www.google.com/recaptcha/api.js'></script>
-	   		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-	    	 // <script async defer src="js/libs/facebook.conection.js"></script> -->
-
-	   <script defer src="js/app.js"></script>
-
-	   
+	    <script defer src="js/app.js"></script>
 
 </body>
 </html>

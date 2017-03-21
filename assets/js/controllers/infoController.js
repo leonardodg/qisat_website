@@ -302,12 +302,5 @@
 					                            return vm.info;
 					                        });
 				        };
-		 }])
-		.run(function($rootScope, $location, $anchorScroll) {
-			    $rootScope.$on('$locationChangeSuccess', function (event, newUrl, oldUrl) {
-			    	if($location.hash()) 
-			    		$anchorScroll();
-			    });
-		});
-
+		 }]);
 })();

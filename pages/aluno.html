@@ -14,7 +14,7 @@
 </head>
 <body ng-controller="carrinhoController as buy">
 
-	<div class="off-canvas-wrap" data-offcanvas>
+	<div class="off-canvas-wrap">
 	  <div class="inner-wrap">
 
 	<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
@@ -46,8 +46,9 @@
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
 						</li>
-						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
-							<i class="material-icons">menu</i> Menu</a>
+						<li class="hide-for-large-up header-main__list"> 
+							<a class="right-off-canvas-toggle menu-icon header-main__item"> 
+								<span><i class="material-icons">menu</i> Menu </span> </a>
 						</li>
 			    		<li class="header-main__list header-main__list-cart" > 
 			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
@@ -146,23 +147,26 @@
 									 		 	</ul>
 											</li> <!-- // -->
 
-
-											<!-- <li class="footer-primary__columns--item">
-												<ul class="footer-primary__list"> 
-													<li class="footer-primary__title"> Soluções </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>		
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
-											 		</ul>
-											</li> -->
-
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contato</li>
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" >Ligamos para você</a></li>
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
-											</li>   
+											</li>  
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list"> 
+													<li class="footer-primary__title"> Blogs </li>
+													
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank" >Blog Mais Engenharia </a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank"> BLog Eberick </a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank" > Blog QiBuilder </a></li>
+
+											 		</ul>
+											</li> 
 
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
@@ -231,7 +235,7 @@
 	<!-- GLOBAL -->
 		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
 		<script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script src="js/libs/angular.min.js"></script>  <!-- defern erro chrome unmindecode -->
 		<script src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
 		<script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 	<!-- // GLOBAL -->

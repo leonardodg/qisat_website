@@ -10,19 +10,25 @@ p.MsoNormal,  div.MsoNormal
 	}
 
 div.WordSection1
-	{page:WordSection1;
-	margin-left: 50px;
-	margin-top: 10px;
-	margin-right: 50px;
-	margin-bottom: 10px;
-	padding:30px;
-	color: #333333;
-	line-height:107%;
-	font-size:11.5pt;
-	font-family:"Calibri",sans-serif;
-	text-align:justify;
-	line-height:normal;
+	{
+		page:WordSection1;
+		margin: 10px 50px 10px 50px;
+		padding: 30px;
+		color: #333333;
+		line-height:107%;
+		font-size:11.5pt;
+		font-family:"Calibri",sans-serif;
+		text-align:justify;
+		line-height:normal;
 	}
+
+@media only screen and (max-width: 40em) { 
+	div.WordSection1 {
+		margin: 5px;
+		padding: 5px;
+	}
+}
+
 </style>
 
 
@@ -89,4 +95,4 @@ div.WordSection1
 
 
 </div>
-<a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a>
+<a class="close-reveal-modal" aria-label="Close" ng-click="cancel()" ng-if="cancel">&#215;</a>

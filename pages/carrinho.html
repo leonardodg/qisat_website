@@ -11,14 +11,10 @@
   <script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
   <link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="/bower_components/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
 </head>
 
-
 <body class="cart-page" ng-controller='carrinhoController as buy'>
-
-	<div class="off-canvas-wrap" data-offcanvas>
+	<div class="off-canvas-wrap">
 	  <div class="inner-wrap">
 
 	<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
@@ -27,7 +23,7 @@
 			     <li><label>Menu</label></li>
 			     <li><a href="/" target="_self" >Home</a></li>
 			     <li><a href="/cursos" target="_self" >Cursos</a></li>
-				 <li><a href="/aluno" target="_self" >Área do Aluno</a></li>
+				 <li><a href-portal target="_self" >Área do Aluno</a></li>
 				 <li><a href="/institucional" target="_self" >Institucional</a></li>
 			   </ul>
 			 </aside>
@@ -50,9 +46,10 @@
 						<li class="show-for-large-up header-main__list"> 
 							<a class="anchor header-main__item" href="/institucional" target="_self">Institucional</a>
 						</li>
-						<li class="hide-for-large-up header-main__list"> <a class="right-off-canvas-toggle header-main__item" href="#"> 
-							<i class="material-icons">menu</i> Menu</a>
-						</li>
+						<li class="hide-for-large-up header-main__list"> 
+              <a class="right-off-canvas-toggle menu-icon header-main__item"> 
+                <span><i class="material-icons">menu</i> Menu </span> </a>
+            </li>
 					</ul>
 				</nav>
 			</header>
@@ -60,48 +57,39 @@
 
 <main class="content-main">
 
-<header class="hero-pages hero-pages__cart">
-   <div class="row">
-       <div class="medium-12 columns">
-         <h1 class="hero-pages__title">Checkout</h1>
-       </div> <!-- //large-12-->
-   </div> <!-- ///row -->
- </header>
+  <header class="hero-pages hero-pages__cart">
+     <div class="row">
+         <div class="medium-12 columns">
+           <h1 class="hero-pages__title">Checkout</h1>
+         </div> <!-- //large-12-->
+     </div> <!-- ///row -->
+  </header>
 
-<div class="row">
-
-  <div class="large-3 columns">
-    <div class="widget_content" menu-carrinho-active>
-      <div class="wizard">
-        <div class="v-line"></div>
-        <div class="step step1">
-          <span>Carrinho</span>
-        </div>
-        <div class="step step2">
-          <span>Pagamento</span>
-        </div>
-        <div class="step step3">
-          <span>Confirmação de compra</span>
+  <div class="row">
+    <div class="large-3 columns">
+      <div class="widget_content" menu-carrinho-active>
+        <div class="wizard">
+          <div class="v-line"></div>
+          <div class="step step1">
+            <span>Carrinho</span>
+          </div>
+          <div class="step step2">
+            <span>Pagamento</span>
+          </div>
+          <div class="step step3">
+            <span>Confirmação de compra</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="large-9 columns">
+       <div ng-view></div>
+    </div>
   </div>
-  <div class="large-9 columns">
-
-     <div ng-view></div>
-
-  </div>
-
-
-
-
-</div>
-
-
 
 </main> <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
-
 
         <!-- ########################## FOOTER ########################## -->
           <footer class="footer-main" ng-controller="modalController as modal" >
@@ -126,19 +114,8 @@
                           <li class="footer-primary__title"> Páginas </li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>           
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-                          <!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
                         </ul>
                       </li> <!-- // -->
-
-
-                      <!-- <li class="footer-primary__columns--item">
-                        <ul class="footer-primary__list"> 
-                          <li class="footer-primary__title"> Soluções </li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/curso" title="Sugira um Curso"  target="_self">Sugira um Curso </a></li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/nova-turma" title="Sugira uma nova Turma"  target="_self">Sugira uma nova Turma </a></li>    
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/sugira/funcionalidade" title="Sugira uma Funcionalidade"  target="_self">Sugira uma Funcionalidade </a></li>
-                          </ul>
-                      </li> -->
 
                       <li class="footer-primary__columns--item">
                         <ul class="footer-primary__list">
@@ -146,7 +123,20 @@
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" >Ligamos para você</a></li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
                         </ul>
-                      </li>   
+                      </li>  
+
+                      <li class="footer-primary__columns--item">
+                        <ul class="footer-primary__list"> 
+                          <li class="footer-primary__title"> Blogs </li>
+                          
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank" >Blog Mais Engenharia </a></li>
+
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank"> BLog Eberick </a></li>
+
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank" > Blog QiBuilder </a></li>
+
+                          </ul>
+                      </li> 
 
                       <li class="footer-primary__columns--item">
                         <ul class="footer-primary__list">
@@ -166,9 +156,6 @@
 
               </div> <!-- ///row -->
             </div> <!-- // footer-primary -->
-
-
-
 
             <div class="footer-secondary">
                 <div class="row">
@@ -213,9 +200,8 @@
   <!-- GLOBAL -->
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
     <script src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-    <script src="js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+    <script src="js/libs/angular.min.js"></script>  <!-- defern erro chrome unmindecode -->
     <script src="/bower_components/angular-foundation/mm-foundation-tpls.min.js"></script>
-    <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
   <!-- // GLOBAL -->
 
   <!-- EXECUTA SCRIPTS QISAT -->

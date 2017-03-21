@@ -150,7 +150,7 @@
 						startCourseList = function(uncheck){
 								var  series, packages, classroom, events, single, releases, free, online, 
 									 list, listOnline, listSeries, listPacks, listSingle, listEvents, listClass, 
-									 filter, elemts, elem, inputs, selected, show, tipo, len = 6;
+									 filter, elemts, elem, inputs, selected, show, tipo, len;
 
 								// ALTERAR ELEMENTOS DOM
 								if(uncheck){
@@ -244,33 +244,69 @@
 											list = listOnline;
 
 									}else if($scope.path.indexOf('/cursos/presenciais')>=0){ 
-										listEvents = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
-										classroom = filterTypes($scope.courses, 10);
-										events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
-										if(!listEvents && events){
-											events.map( function (course){
-												course.eventos.map( function (edicao){
-													if(edicao.cidade && edicao.cidade.estado) {
-														edicao.show = true;
-														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
-														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
-														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
-														edicao.uf = edicao.cidade.estado.uf;
-													}
-												});
-											});
-											show = (events && events.length) ? true : false;
-											listEvents = { title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
-											$scope.coursesList.push(listEvents);
-										}else if(listEvents) listEvents.show = true;
 
-										listSingle = $scope.coursesList.find(function (list){ return list.type == 12 });
-										if(!listSingle) {
-											single = filterTypes($scope.courses, 12);
-											show = (single && single.length) ? true : false;
-											listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
-											$scope.coursesList.push(listSingle);
-										}else listSingle.show = true;
+										if($scope.path == '/cursos/presenciais/individuais'){
+
+											listSingle = $scope.coursesList.find(function (list){ return list.type == 12 });
+											if(!listSingle) {
+												single = filterTypes($scope.courses, 12);
+												show = (single && single.length) ? true : false;
+												listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
+												$scope.coursesList.push(listSingle);
+											}else listSingle.show = true;
+
+											listEvents = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
+											classroom = filterTypes($scope.courses, 10);
+											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
+											if(!listEvents && events){
+												events.map( function (course){
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
+												});
+												show = (events && events.length) ? true : false;
+												listEvents = { title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
+												$scope.coursesList.push(listEvents);
+											}else if(listEvents) listEvents.show = true;
+
+
+										}else{
+
+											listEvents = $scope.coursesList.find(function (list){ return list.type == 'eventos' });
+											classroom = filterTypes($scope.courses, 10);
+											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
+											if(!listEvents && events){
+												events.map( function (course){
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
+												});
+												show = (events && events.length) ? true : false;
+												listEvents = { title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
+												$scope.coursesList.push(listEvents);
+											}else if(listEvents) listEvents.show = true;
+
+											listSingle = $scope.coursesList.find(function (list){ return list.type == 12 });
+											if(!listSingle) {
+												single = filterTypes($scope.courses, 12);
+												show = (single && single.length) ? true : false;
+												listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
+												$scope.coursesList.push(listSingle);
+											}else listSingle.show = true;
+
+										}
 
 										listClass = $scope.coursesList.find(function (list){ return list.type == 10 });
 										if(!listClass) {
@@ -281,10 +317,6 @@
 											$scope.coursesList.push(listClass);
 										}else listClass.show = true;
 
-										if($scope.path == '/cursos/presenciais/individuais')
-											list = listSingle;
-										else
-											list = listEvents;
 
 									}else{
 
@@ -352,12 +384,16 @@
 											listClass = { title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show}; 
 											$scope.coursesList.push(listClass);
 										}else listClass.show = true;
-
-										list = listOnline;
 									}
 
-									if(list && list.courses && list.courses.length)
-										while(len--) if(list.courses[len]) list.courses[len].show = true;
+									if($scope.coursesList.length){
+										$scope.coursesList.map(function(list, i){
+											if(list && list.courses && list.courses.length){
+												len = (i == 0 && list.card == 'online') ? 3 : 1;
+												while(len--) if(list.courses[len]) list.courses[len].show = true;
+											}
+										});
+									}
 									
 									switch($scope.path){
 											case '/cursos/online/series':
@@ -404,7 +440,7 @@
 												break;
 									}
 								}
-								console.log($scope.coursesList);
+								// console.log($scope.coursesList);
 						};
 
 						$scope.loadMore = function (list) {
