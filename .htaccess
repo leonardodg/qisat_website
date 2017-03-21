@@ -40,9 +40,13 @@
   RewriteRule ^cursos/(lancamentos|gratuitos)?/?$ pages/courses.html [NC]
   RewriteRule ^cursos/(online|presenciais)/?$ pages/courses.html [NC]
   RewriteRule ^cursos/(online|presenciais)/([^/]+)/?$ pages/courses.html [NC]
+  RewriteRule ^curso/(online)/(pacote/serie)?/?$ pages/courses.html [NC]
+  RewriteRule ^curso/(online|presencial)/?$ pages/courses.html [NC]
+  RewriteRule ^curso/?$ pages/courses.html [NC]
 
   RewriteRule ^curso/([^/]+)?/?$ pages/info.html [NC]
-  RewriteRule ^curso/(online|presencial)/([^/]+)/?$ pages/info.html?mod=$1&curso=$2 [NC]
+  RewriteRule ^curso/(online|presencial)/([^/]+)/?$ pages/info.html [NC]
+  RewriteRule ^curso/(online)/(gratuito|serie|pacote)/([^/]+)/?$ pages/info.html [NC]
   
   RewriteRule ^institucional/?$ pages/institucional.html [NC]
   RewriteRule ^institucional/([^/]+)?/?([^/]+)?/?([^/]+)?$ pages/institucional.html [NC,L]
