@@ -84,6 +84,10 @@
 											 			info.videodemo = info.files.find(function(video){
 											 				return video.tipo == "2";
 											 			});
+
+											 			if(info.videodemo && info.videodemo.link && info.videodemo.link.indexOf('qisat.com')>=0)
+											 				info.videodemo.class = 'videoDemo';
+											 			
 											 		}
 
 													if(info.produto && info.produto.categorias){

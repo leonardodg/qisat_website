@@ -8,7 +8,7 @@
 
 					 	$rootScope.loading = true;
 				 		scope.currentPage = 1;
-				 		scope.startPage = 1;
+				 		scope.startPage = 0;
 				 		scope.itemsPerPage = 10;
 
 					 	if(Authenticated){
@@ -30,7 +30,7 @@
 
 						scope.onSelectPage = function(page){
 				 			if(page==1)
-				 				scope.startPage = 1;
+				 				scope.startPage = 0;
 				 			else
 				 				scope.startPage = scope.itemsPerPage*(page-1);
 				 		};

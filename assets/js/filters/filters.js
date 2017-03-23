@@ -25,6 +25,10 @@
 						else
 							return nome.charAt(0).toUpperCase() + nome.substring(1);
 					});
+
+					if(output.join(' ').length >= size)
+						output[output.length-1] = output[output.length-1].charAt(0).toUpperCase() + '.';
+
 				return output.join(' ');
 			};
 		})

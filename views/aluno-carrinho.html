@@ -1,87 +1,89 @@
 <div class="financeiro">
-<div class="breadcrumb">
-  <a href="/aluno/financeiro">Financeiro</a> / Descrição da compra
-</div>
+	<div class="breadcrumb">
+	  <a href="/aluno/financeiro">Financeiro</a> / Descrição da compra
+	</div>
 
-  <div class="admin__heading">
+  	<div class="admin__heading">
 		<h1 class="title">Descrição da compra</h1>
 	</div>
 
 
-		<section id="dashboard" class="box">
-			<div class="row">
+	<section id="dashboard" class="box">
+		<div class="row">
+	        <div class="small-12 medium-6 large-3 columns">
+	          <p><strong>Data de criação</strong></p>
+	          {{::dadosCarrinho.dataFormat}}
+	        </div>
 
-        <div class="small-3 columns">
-          <p><strong>Data de criação</strong></p>
-          {{::dadosCarrinho.dataFormat}}
-        </div>
+	        <div class="small-12 medium-6 large-3 columns">
+	          <p><strong>Status do Carrinho</strong></p>
+	          {{::dadosCarrinho.status_carrinho}}
+	        </div>
 
-        <div class="small-3 columns">
-          <p><strong>Status do Carrinho</strong></p>
-          {{::dadosCarrinho.status_carrinho}}
-        </div>
+	        <div class="small-12 medium-6 large-3 columns">
+	          <p><strong>Status da venda</strong></p>
+	          --
+	        </div>
 
-        <div class="small-3 columns">
-          <p><strong>Status da venda</strong></p>
-          --
-        </div>
+			<div class="small-12 medium-6 large-3 columns">
+	          <p><strong>Número do Pedido</strong></p>
+	          {{::dadosCarrinho.pedido}}
+	        </div>
+    	</div>
 
-				<div class="small-3 columns">
-          <p><strong>Número do Pedido</strong></p>
-          {{::dadosCarrinho.pedido}}
-        </div>
-      </div>
+  		<hr>
 
-      <hr>
+		<div class="row">
+	        <div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.products.length">
 
-			<div ng-if="::dadosCarrinho.products.length">
-				<table width="100%" class="product">
-				  <thead>
-				    <tr>
-				      <th width="10%">Imagem</th>
-				      <th width="40%" class="text-center">Produto</th>
-				      <th width="12%">Quantidade</th>
-				      <th width="14%">Status</th>
-				      <th width="12%">Valor Unitário</th>
-				      <th width="12%">Valor</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr ng-repeat="products in dadosCarrinho.products track by products.id">
-				      <td></td>
-				      <td>{{::products.nome}}</td>
-				      <td>{{::products.quantidade}}</td>
-				      <td>{{::products.status}}</td>
-				      <td>{{::products.preco}}</td>
-				      <td>{{::products.total}}</td>
-				    </tr>
-				  </tbody>
-				</table>
-			</div>
+					<table width="100%" class="product tableResp tableProduto">
+					  <thead>
+					    <tr>
+					      <th width="50%" class="text-center">Produto</th>
+					      <th width="10%">Quantidade</th>
+					      <th width="15%">Status</th>
+					      <th width="12%">Valor Unitário</th>
+					      <th width="12%">Valor</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr ng-repeat="products in dadosCarrinho.products track by products.id">
+					      <td>{{::products.nome}}</td>
+					      <td>{{::products.quantidade}}</td>
+					      <td>{{::products.status}}</td>
+					      <td>{{::products.preco}}</td>
+					      <td>{{::products.total}}</td>
+					    </tr>
+					  </tbody>
+					</table>
 
-      <hr>
+	        </div>
+	 	</div>
 
-      <div class="row">
+      	<hr>
 
-        <div class="small-3 columns">
-          <p><strong>Total de produtos</strong></p>
-          {{::dadosCarrinho.total}}
-        </div>
+     	 <div class="row">
+	        <div class="small-12 medium-12 large-4 columns">
+	          <p><strong>Valor da Compra</strong></p>
+	          <p>{{::dadosCarrinho.total}}</p>
+	        </div>
 
-        <div class="small-3 columns">
-          <p><strong>Forma de pagamento</strong></p>
-          {{::dadosCarrinho.dadosPagamento}}
-        </div>
+	        <div class="small-12 medium-12 large-4  columns">
+	          <p><strong>Quatidades de Produtos</strong></p>
+	          <p>{{::dadosCarrinho.quantidade}}</p>
+	        </div>
 
-        <div class="small-3 columns"></div>
-        <div class="small-3 columns"></div>
-        
-      </div>
+	        <div class="small-12 medium-12 large-4 columns">
+	          <p><strong>Forma de pagamento</strong></p>
+	          <p>{{::dadosCarrinho.dadosPagamento}} </p>
+	        </div>
+      	</div>
 
-      <hr>
+     	<hr>
 
-			<div ng-if="::dadosCarrinho.promotions.length">		
-        <table width="100%" class="product">
+		<div class="row">
+	        <div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.promotions.length">
+        		<table width="100%" class="product tableResp tablePromo">
 				  <thead>
 				    <tr>
 				      <th width="50%" class="text-center">Promoção</th>
@@ -99,9 +101,8 @@
 				    </tr>
 				  </tbody>
 				</table>
-			</div>
-		 		</div>
-			</div> <!-- //row -->
-		</section>
+	        </div>
+		</div>
 
+	</section>
 </div>

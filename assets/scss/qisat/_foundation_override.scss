@@ -39,11 +39,23 @@
 
 .reveal-modal {
   padding: 0 !important;
+  top:50px;
 
   &.call, &.interesse {
     width: 380px;
   }
+
+  &.videoDemo {
+
+      height: 720px;
+      width: 1014px; 
+      min-width: 1014px;
+      min-height: 720px;
+      overflow: none;
+  }
+
 }
+
 
 .alert-box {
   width: 100%;

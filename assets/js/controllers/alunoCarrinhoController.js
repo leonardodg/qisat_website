@@ -23,13 +23,16 @@
 							 							if(dadosCarrinho.forma_pagamento == 'Boleto')
 							 								dadosCarrinho.dadosPagamento = "À vista no Boleto";
 							 							else 
-							 								dadosCarrinho.dadosPagamento = dadosCarrinho.numero_parcelas+"x de "+dadosCarrinho.valor_parcelas+" no "+dadosCarrinho.operadora;
+							 								dadosCarrinho.dadosPagamento = dadosCarrinho.numero_parcelas+"x de "+dadosCarrinho.valor_parcelas+" em "+dadosCarrinho.operadora;
 
 							 							if(dadosCarrinho.products.length){
+							 								var qtd = 0;
 							 								dadosCarrinho.products.map(function(prod){
+							 									qtd += prod.quantidade;
 							 								    prod.preco = $filter('currency')(prod.preco, 'R$ ');
 							 								    prod.total = $filter('currency')(prod.total, 'R$ ');
 							 								});
+							 								dadosCarrinho.quantidade = qtd;
 							 							}
 
 							 							if(dadosCarrinho.promotions && dadosCarrinho.promotions.length ){

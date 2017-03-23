@@ -15,6 +15,8 @@
 												if(instructor){
 
 													instructor.nome = filterLimitName(instructor.nome);
+													instructor.formacao = filterLimitName(instructor.formacao);
+
 													if(!instructor.imagem)
 														instructor.imagem = Config.imagensUrlDefault;
 

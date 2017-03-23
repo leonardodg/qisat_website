@@ -6,7 +6,6 @@
 .modalPageCourseCall{
     max-width: 100% !important; padding: 0px;
     @media only screen and (min-width: 40.063em) { max-width: 380px!important;}
-
 }
 
 .reveal-modal-qisat{
@@ -19,6 +18,11 @@
 			.brand-qisat-small{  width: 76px;    height: 25px;    opacity: 0.3; }
   			&:before { position: absolute; bottom: -14px; content: ''; left: 50%; width: 0; height: 0; margin-left: -15px; border-right: 15px solid transparent; border-top: 15px solid darken(#575B5D, 13); border-left: 15px solid transparent; }
      }
+
+         .flex-video.widescreen {
+    	    @media only screen and (min-width: 40.063em) { padding-top : 100px;  }
+   
+	}
 }
 
 

@@ -145,9 +145,10 @@
 				 						});
 					 			  };
 
-					 	vm.trailer = function (url) {
+					 	vm.trailer = function (url, classModel) {
+					 				var windowClass = classModel ? classModel : 'trailer';
 				 					var modalInstance = $modal.open({ 
-                      						windowClass: 'trailer',
+                      						windowClass: windowClass,
 				 							templateUrl: '/views/modal-trailer.html',
 				 							controller : function ($scope, $modalInstance, $sce) {
 															  $scope.cancel = function () {

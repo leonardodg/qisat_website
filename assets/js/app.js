@@ -97,21 +97,25 @@ $(document).ready(function() {
         $(document).on('click', ".timeline__list-group li", function(e){
            var getRef = $(this).data("year");
            var target = $('[name=' + getRef +']');
+           var random = Math.floor(Math.random() * (70 - 50)) + 50;
 
-            $('.list-group-item.active').removeClass("active");
-            $(this).addClass("active");
+           if(target.length){
+              e.preventDefault();
+            
+              $('.list-group-item.active').removeClass("active");
+              $(this).addClass("active");
 
-            $(".timeline__post.active").removeClass("active").hide();
-            $(document).find(".timeline__post.year-"+getRef).fadeIn("fast", function () {
+              $(".timeline__post.active").removeClass("active").hide();
+              $(document).find(".timeline__post.year-"+getRef).fadeIn("fast", function () {
                 $(this).addClass("active");
-            });
+              });
 
-            $('html, body').animate({
-              scrollTop: target.offset().top -70
-            }, 1000);
+              $('html, body').animate({
+                scrollTop: target.offset().top - random
+              }, 1000);
 
-            e.preventDefault();
-            return false;
+              return false;
+           }
         });
 
          $(document).on('click', '.buttom-favorite', function(event){

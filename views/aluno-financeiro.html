@@ -4,7 +4,7 @@
 
     <div class="admin__heading">
       <h1 class="title" ng-if="compras.length">Minhas Compras</h1>
-      <h1 class="title" ng-if="compras&&!compras.length">Nenhum carrinho registrado.</h1>
+      <h1 class="title" ng-if="compras&&!compras.length">Nenhuma venda registrada.</h1>
     </div>
 
 		<section id="dashboard" ng-if="compras.length">
@@ -14,7 +14,7 @@
 				<table width="100%" class="responsive" >
 				  <thead>
 				    <tr>
-				      <th width="100">Pedido</th>
+				      <th width="100">Venda</th>
 				      <th width="175">Data</th>
 				      <th width="100">Valor</th>
 				      <th width="75">Status</th>
@@ -23,13 +23,13 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr ng-repeat="carrinho in compras | limitTo:itemsPerPage:startPage track by carrinho.id " >
-				      <td class="text-center"><strong>{{::carrinho.pedido}}</strong></td>
-				      <td>{{::carrinho.dataFormat}}</td>
-				      <td>{{::carrinho.valor}}</td>
-				      <td>{{::carrinho.status}}</td>
-				      <td>{{::carrinho.forma_pagamento}}</td>
-				      <td><button type="button" ng-click="viewCarrinho(carrinho.carrinho)">Vizualizar</button> </td>
+				    <tr ng-repeat="venda in compras | limitTo:itemsPerPage:startPage track by venda.id " >
+				      <td class="text-center"><strong>{{::venda.pedido}}</strong></td>
+				      <td>{{::venda.dataFormat}}</td>
+				      <td>{{::venda.valor}}</td>
+				      <td>{{::venda.status}}</td>
+				      <td>{{::venda.forma_pagamento}}</td>
+				      <td><button type="button" ng-click="viewCarrinho(venda.id)">Vizualizar</button> </td>
 				    </tr>
 				  </tbody>
 				</table>

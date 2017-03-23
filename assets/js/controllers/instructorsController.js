@@ -7,6 +7,16 @@
 				[ '$scope', 'Config', 'QiSatAPI', 'instrutores', '$filter',
 					function(scope, Config, QiSatAPI, instructors, $filter){
 						var filterLimitName = $filter('nameInstructor');
+				 		scope.currentPage = 1;
+				 		scope.startPage = 0;
+				 		scope.itemsPerPage = 10;
+
+				 		scope.onSelectPage = function(page){
+				 			if(page==1)
+				 				scope.startPage = 0;
+				 			else
+				 				scope.startPage = scope.itemsPerPage*(page-1);
+				 		};
 
 						if(instructors){
 							instructors.map( function (instructor) {
@@ -24,7 +34,6 @@
 
 							});
 							scope.instructors = instructors;
-
 						}
 
 						scope.changeCheckbox = function(){
@@ -45,6 +54,12 @@
 							 	delete(scope.formacao);
 						};
 
+						scope.$watch('filtered', function() {
+							 if(  scope.formacao || scope.searchName || (scope.areas && Object.keys(scope.areas).length))
+						     	scope.totalItems = scope.filtered.length;
+						     else
+								scope.totalItems = scope.instructors.length;
+						});
 
 						scope.filterInstructor = function(elem){
 									var result, keys = [], formacoes = ['Arquiteto', 'Eng. Agronomo', 'Eng. Civil', 'Eng. Eletricista', 'Eng. Sanitarista'];
