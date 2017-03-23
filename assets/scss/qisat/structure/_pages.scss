@@ -147,8 +147,9 @@ button.close-button, .close-button {
   .cart i {
     padding: 3px;
     border-radius: 1px;
-    color: #fff;
-    background-color: #005B94;
+    color: #005B94;
+    background-color: #fff;
+    cursor: pointer;
   }
 
   .accordion-navigation {
