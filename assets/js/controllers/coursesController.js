@@ -108,8 +108,8 @@
 								$scope.navLinks = [{title:"Todos os cursos", href : "/cursos"}];
 								switch ($scope.path) {
 								  case "/cursos/online":
-								  case "/cursos/online/series":
-								  case "/cursos/online/pacotes":
+								  case "/cursos/online/serie":
+								  case "/cursos/online/pacote":
 								  case "/cursos/online/teorico":
 								  case "/cursos/online/software":
 								  case "/cursos/online/estrutural":
@@ -236,9 +236,9 @@
 											$scope.coursesList.push(listPacks);
 										}else listPacks.show = true;
 
-										if($scope.path == '/cursos/online/series')
+										if($scope.path == '/cursos/online/serie')
 											list = listSeries;
-										else if($scope.path == '/cursos/online/pacotes')
+										else if($scope.path == '/cursos/online/pacote')
 											list = listPacks;
 										else
 											list = listOnline;
@@ -396,10 +396,10 @@
 									}
 									
 									switch($scope.path){
-											case '/cursos/online/series':
+											case '/cursos/online/serie':
 												setFilterTipo('Combinacoes', 32, '#series');
 												break;
-											case '/cursos/online/pacotes':
+											case '/cursos/online/pacote':
 												setFilterTipo('Combinacoes', 17, '#pacotes');
 												break;
 											case '/cursos/online/teorico':
