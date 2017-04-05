@@ -3411,7 +3411,7 @@ angular.module('mm.foundation.typeahead', ['mm.foundation.position', 'mm.foundat
 angular.module("template/accordion/accordion-group.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("template/accordion/accordion-group.html",
     "<dd>\n" +
-    " <div ng-click=\"modal(playDemoModal)\" class=\"iconPlay\" ng-if=\"playDemoModal\">  <i class=\"material-icons\">play_circle_outline</i> </div>\n" +
+    " <div ng-click=\"modal(playDemoModal, 'videoDemo')\" class=\"iconPlay\" ng-if=\"playDemoModal\">  <i class=\"material-icons\">play_circle_outline</i> </div>\n" +
     " <a ng-click=\"isOpen = !isOpen\" ng-class=\"{ active: isOpen }\"  accordion-transclude=\"heading\">\n"+
     "{{heading}}"+
     "</a>\n" +

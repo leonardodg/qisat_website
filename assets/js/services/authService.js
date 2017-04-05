@@ -5,7 +5,7 @@
 	 	.module('QiSatApp')
 	 	.provider('authService',  function(){
 
-					var authToken, authUser, persistent, checkAuth = false;
+					var authToken, authUser, persistent, checkAuth = false, redirect;
 						
 		 			(function load(){
 		 				var token, user;
@@ -16,10 +16,24 @@
 	 						setToken(token);
 	 						setUser(user);
 						}
+
+						redirect = window.localStorage.getItem('redirect');
 					})();
 
 					function isAuth() {
 						return checkAuth;
+					};
+
+					function getRedirect(){
+						if (redirect && typeof redirect !== "undefined" && redirect !== "undefined" )
+							return redirect;
+					};
+
+					function setRedirect(url){
+						if (url && typeof url !== "undefined" && url !== "undefined" )
+							window.localStorage.setItem('redirect', url);
+						else
+							window.localStorage.removeItem('redirect');
 					};
 
 					function getUser() {
@@ -122,6 +136,7 @@
 								window.localStorage.removeItem('token');
 								window.sessionStorage.removeItem('user');
 								window.sessionStorage.removeItem('token');
+								window.localStorage.removeItem('redirect');
 								$http.defaults.headers.common.Authorization = undefined;
 								var promise = $http({
 									method: 'POST',
@@ -147,8 +162,11 @@
 	                                                        });
 
 	                            return  promise.then( function (res){
-	                            			if((res && res.status == 200 && res.data)&&(res.data.retorno && res.data.retorno.sucesso))
-	                            				useCredentials(res.data.token, res.data.retorno.usuario, credentials.remember );
+	                            			
+	                            				if((res && res.status == 200 && res.data)&&(res.data.retorno && res.data.retorno.sucesso)){
+	                            					useCredentials(res.data.token, res.data.retorno.usuario, credentials.remember );
+	                            				}
+	                            			
 	                            			return res;
 	                            		}, function(res){
 	                            			return res;
@@ -434,7 +452,9 @@
 			    					courses : courses,
 			    					compras :  compras,
 			    					carrinho : carrinho,
-			    					certificados : certificados
+			    					certificados : certificados,
+			    					getRedirect : getRedirect,
+			    					setRedirect : setRedirect
 								};
 					};
 				});

@@ -579,52 +579,6 @@ body.cart-page {
       }
     }
   }
-
-  #loginModal, .loginModal {
-    
-    @media only screen and (min-width: 40em) {
-      width: 300px !important;
-      max-width: 300px !important;
-    }
-
-    h2 {
-      margin-top: 30px;
-      color: #494949;
-      font-size: 18pt;
-      text-align: center;
-      margin-left: 50px;
-      margin-right: 50px;
-    }
-
-    form {
-      a {
-        width: 100% !important;
-        display: block;
-      }
-      input {
-        text-align: center;
-      }
-      margin: 30px 25px 20px 25px;
-    }
-
-    .not-member {
-      margin-top: 30px;
-
-      p {
-        margin: 0;
-        margin-bottom: 10px;
-        padding: 0;
-      }
-
-      .button {
-        margin-bottom: 0;
-      }
-
-      padding: 15px;
-      border-radius: 5px;
-      background-color: #eee;
-    }
-  }
 }
 
 .tablePagamento {

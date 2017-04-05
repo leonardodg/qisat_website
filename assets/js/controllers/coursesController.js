@@ -13,7 +13,7 @@
                                             });
 	     })
 		.controller("CoursesController",
-			[ '$scope','$filter' , '$location', 'QiSatAPI', 'Config', 'getWatchCount', function($scope, $filter, $location, QiSatAPI, Config, getWatchCount ){
+			[ '$scope', '$controller', '$filter', '$location', 'QiSatAPI', 'Config', 'getWatchCount', 'authService', function($scope, $controller, $filter, $location, QiSatAPI, Config, getWatchCount, authService ){
 
 						var filterTypes = $filter('byTypes'),
 							filterZpad = $filter('zpad'),
@@ -24,6 +24,16 @@
 							$scope.coursesList = [];
 							$scope.states = "Selecione o Estado";
 							$scope.loading = true;
+						var modalController = $controller('modalController');
+
+						var Authenticated = false;
+						(function(){
+	                    		authService.isAuth() || 
+	                            authService.verifyAuth()
+	                                       .then( function (res){ 
+                                                   Authenticated = (res) ? true : false; 
+                                                });
+	                  	}());							
 
 						var setDataFilters = (function(){ 
 							var inputStates;
@@ -442,6 +452,13 @@
 								}
 								// console.log($scope.coursesList);
 						};
+
+						$scope.inscricao = function(){
+					 		if(!Authenticated)
+					 			modalController.login('/aluno/cursos', '/cadastro');
+					 		else
+					 			window.location = '/aluno/cursos';
+					 	};
 
 						$scope.loadMore = function (list) {
 							var filter, pos = 0, len;

@@ -159,5 +159,82 @@
 				 						});
 					 			  };
 
+						vm.login = function (urlNext, urlRedirect) {
+		 					var modalInstance = $modal.open({
+		 							templateUrl: '/views/modal-login.html',
+		 							controller : function ($scope, $modalInstance, QiSatAPI, authService) {
+
+		 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+
+													  $scope.cancel = function () {
+													    $modalInstance.dismiss('cancel');
+													  };
+
+													  $scope.redirectSignup = function () {
+														  	window.location = urlRedirect; //'/cadastro' 
+														  	authService.setRedirect(urlNext); //'/carrinho/pagamento' || curso-free
+													  };
+
+													  $scope.clickremember = function () {
+													  	 $scope.remember = !$scope.remember;
+													  };
+
+													  $scope.login = function(credentials) {
+														 		credentials.remember =  true; 
+														 		$scope.msgLogin = "";
+										 						$scope.typeMsgLogin = false;
+										 						$scope.loading = true;
+
+																authService.login(credentials).then(function (res){
+																	var url;
+												 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
+												 						$scope.cancel();
+
+												 						if(url = authService.getRedirect()){
+												 							authService.setRedirect();
+												 							window.location = url;
+												 						}else
+												 							window.location = urlNext;
+
+												 					}else{
+												 						$scope.msgLogin = "Falha na Autenticação!";
+												 						$scope.typeMsgLogin = "alert-box alert radius";
+												 						$scope.loading = false;
+												 					}
+												 					return res;
+													 			});
+														};
+
+														$scope.sendMail = function(email){
+															var data = { email : email };
+																$scope.msgLogin = "";
+										 						$scope.typeMsgLogin = false;
+
+
+															QiSatAPI.remember(data)
+																		.then( function ( response ){
+																				if(response && response.data && response.data.retorno && response.data.retorno.sucesso){ 
+																					$scope.msgLogin = "Mensagem Enviada!";
+														 							$scope.typeMsgLogin = "alert-box info radius";
+																					delete($scope.email);
+																					$scope.remember = false;
+																			    }else{
+																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem){
+																				 		$scope.msgLogin = "Falha na Solicitação!";
+														 								$scope.typeMsgLogin = "alert-box alert radius";
+																				 	}
+																			    }
+																			}, function ( response ){
+																				$scope.msgLogin = "Falha na Solicitação!";
+														 						$scope.typeMsgLogin = "alert-box alert radius";
+																			});
+														};
+
+													},
+									windowClass : 'loginModal'
+		 						});
+			 			};
+
+
 					 }]);
 })();

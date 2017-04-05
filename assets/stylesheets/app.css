@@ -442,7 +442,7 @@ th {
 
 /*
 	http://sassme.arc90.com/
-	Fun├º├Áes cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
 */
 /* line 77, ../scss/qisat/_globals.scss */
 body {
@@ -819,6 +819,18 @@ article {
 /* line 310, ../scss/qisat/_globals.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+/* line 314, ../scss/qisat/_globals.scss */
+.icon-AltoQi {
+  background-image: url("http://intranet.altoqi.com.br/sites/all/themes/altoqi/images-sf40fd0d584.png");
+  background-position: 0 -1654px;
+  width: 23px;
+  height: 25px;
+  margin: 5px 10px 0 2px;
+  content: "";
+  display: block;
+  float: left;
 }
 
 /* 'HERO COURSES
@@ -1666,6 +1678,53 @@ select#call-input-interests {
 }
 
 /*END MODAL CALL*/
+@media only screen and (min-width: 40em) {
+  /* line 48, ../scss/qisat/_modals.scss */
+  #loginModal, .loginModal {
+    width: 300px !important;
+    max-width: 300px !important;
+  }
+}
+/* line 55, ../scss/qisat/_modals.scss */
+#loginModal h2, .loginModal h2 {
+  margin-top: 30px;
+  color: #494949;
+  font-size: 18pt;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+/* line 64, ../scss/qisat/_modals.scss */
+#loginModal form, .loginModal form {
+  margin: 30px 25px 20px 25px;
+}
+/* line 65, ../scss/qisat/_modals.scss */
+#loginModal form a, .loginModal form a {
+  width: 100% !important;
+  display: block;
+}
+/* line 69, ../scss/qisat/_modals.scss */
+#loginModal form input, .loginModal form input {
+  text-align: center;
+}
+/* line 75, ../scss/qisat/_modals.scss */
+#loginModal .not-member, .loginModal .not-member {
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #eee;
+}
+/* line 78, ../scss/qisat/_modals.scss */
+#loginModal .not-member p, .loginModal .not-member p {
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+/* line 84, ../scss/qisat/_modals.scss */
+#loginModal .not-member .button, .loginModal .not-member .button {
+  margin-bottom: 0;
+}
+
 /*
   1. Hero hero
   2. Hero Courses
@@ -6608,75 +6667,29 @@ body.cart-page {
 .cart-page .wizard .step.active:before {
   background-color: #28B67C;
 }
-@media only screen and (min-width: 40em) {
-  /* line 583, ../scss/qisat/layout/_carrinho.scss */
-  .cart-page #loginModal, .cart-page .loginModal {
-    width: 300px !important;
-    max-width: 300px !important;
-  }
-}
-/* line 590, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal h2, .cart-page .loginModal h2 {
-  margin-top: 30px;
-  color: #494949;
-  font-size: 18pt;
-  text-align: center;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-/* line 599, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal form, .cart-page .loginModal form {
-  margin: 30px 25px 20px 25px;
-}
-/* line 600, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal form a, .cart-page .loginModal form a {
-  width: 100% !important;
-  display: block;
-}
-/* line 604, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal form input, .cart-page .loginModal form input {
-  text-align: center;
-}
-/* line 610, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal .not-member, .cart-page .loginModal .not-member {
-  margin-top: 30px;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #eee;
-}
-/* line 613, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal .not-member p, .cart-page .loginModal .not-member p {
-  margin: 0;
-  margin-bottom: 10px;
-  padding: 0;
-}
-/* line 619, ../scss/qisat/layout/_carrinho.scss */
-.cart-page #loginModal .not-member .button, .cart-page .loginModal .not-member .button {
-  margin-bottom: 0;
-}
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* line 630, ../scss/qisat/layout/_carrinho.scss */
+  /* line 584, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento {
     /* Force table to not be like tables anymore */
     display: block;
     /* Hide table headers (but not display: none;, for accessibility) */
   }
-  /* line 635, ../scss/qisat/layout/_carrinho.scss */
+  /* line 589, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento thead, .tablePagamento tbody, .tablePagamento th, .tablePagamento td, .tablePagamento tr {
     display: block;
   }
-  /* line 640, ../scss/qisat/layout/_carrinho.scss */
+  /* line 594, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-  /* line 646, ../scss/qisat/layout/_carrinho.scss */
+  /* line 600, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento tr {
     border: 1px solid #ccc;
   }
-  /* line 648, ../scss/qisat/layout/_carrinho.scss */
+  /* line 602, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento td {
     /* Behave  like a "row" */
     border: none;
@@ -6684,7 +6697,7 @@ body.cart-page {
     position: relative;
     width: 100%;
   }
-  /* line 656, ../scss/qisat/layout/_carrinho.scss */
+  /* line 610, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento td:before {
     /* Now like a table header */
     position: absolute;
@@ -6695,25 +6708,25 @@ body.cart-page {
     padding-right: 10px;
     white-space: nowrap;
   }
-  /* line 668, ../scss/qisat/layout/_carrinho.scss */
+  /* line 622, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento td:nth-of-type(1) {
     width: 100%;
   }
-  /* line 669, ../scss/qisat/layout/_carrinho.scss */
+  /* line 623, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento td:nth-of-type(2) {
     width: 100%;
   }
-  /* line 670, ../scss/qisat/layout/_carrinho.scss */
+  /* line 624, ../scss/qisat/layout/_carrinho.scss */
   .tablePagamento td:nth-of-type(3) {
     width: 100%;
   }
 }
 
-/* line 676, ../scss/qisat/layout/_carrinho.scss */
+/* line 630, ../scss/qisat/layout/_carrinho.scss */
 .pag-confirm {
   color: #666;
 }
-/* line 678, ../scss/qisat/layout/_carrinho.scss */
+/* line 632, ../scss/qisat/layout/_carrinho.scss */
 .pag-confirm .material-icons {
   margin-top: 5px;
 }

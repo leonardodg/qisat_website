@@ -3,24 +3,14 @@
 
 	angular
 		.module('QiSatApp')
-		.directive('playDemoModal', [ '$modal','$sce',function ($modal, $sce) {
+		.directive('playDemoModal', [ '$modal','$sce', '$controller' ,function ($modal, $sce, $controller) {
 	        return {
 	            restrict: 'A',
 	            scope: false,
 	            controller: function () {
-			 					this.modal = function(src){ 
-				 								$modal.open({ 
-		                      						windowClass: 'trailer',
-						 							templateUrl: '/views/modal-trailer.html',
-						 							controller : function ($scope, $modalInstance) {
-																	  $scope.cancel = function () {
-																	    $modalInstance.dismiss('cancel');
-																	  };
-																	  $scope.video = $sce.trustAsResourceUrl(src);
-																	}
-						 							});
-						 						};
-				 			  	},
+    				var modalController = $controller('modalController');
+    				this.modal = modalController.trailer;
+				},
 	            link: function (scope, elem, attrs, ctrl) {
 	            	if(attrs.playDemoModal)
 	            		attrs.modal = ctrl.modal;

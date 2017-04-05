@@ -125,7 +125,7 @@
 																	.produtos.filter(function (prod){
 																						if(prod && prod.categorias)
 																							return prod.categorias
-																										.find(function(tipo){ return tipo.id == 31 });
+																										.find(function(tipo){ return tipo.id == 33 });
 																					});
 														if(itens && itens.length){
 															itens.map( function (prod){ 
