@@ -164,7 +164,7 @@
 															info.precoTotal =  $filter('currency')(valorItens, 'R$');
 															info.preco =  $filter('currency')(valorItens, 'R$');
 														}
-													}else{
+													}else if(info.produto){
 														info.precoTotal =  $filter('currency')(info.produto.preco, 'R$');
 														if(info.promocao){
 															info.preco = $filter('currency')(info.valorTotal, 'R$');

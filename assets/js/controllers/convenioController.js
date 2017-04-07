@@ -4,10 +4,10 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope','$filter' ,'$location','QiSatAPI', 'Config', function($scope,$filter, $location, QiSatAPI, Config ){
+					[ '$scope', '$controller', '$filter' ,'$location','QiSatAPI', 'Config', function($scope, $controller, $filter, $location, QiSatAPI, Config ){
 
-						var vm = this;
-						vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+						var vm = this, modalController = $controller('modalController');
+							vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 
 						if($location.hash() == 'cadastro')
 							vm.openAdd = true;
@@ -17,11 +17,13 @@
 						};
 
 						vm.addInstitution = function(type){
-							var data = { }, elemts, alert = '.alert-'+type+'-ok', error = '.alert-'+type+'-error';
+							var data = { };
 
 							if( (vm.cadastroConselhoForm && vm.cadastroConselhoForm.$valid) ||
 								(vm.cadastroInstituicaoForm && vm.cadastroInstituicaoForm.$valid) ||
 								(vm.cadastroEntidadeForm && vm.cadastroEntidadeForm.$valid)){
+
+								vm.send = true;
 
 								if(type == 1)
 									data = vm.institution;
@@ -33,14 +35,12 @@
 								else return;
 
 								data.ecm_convenio_tipo_instituicao_id = type;
-								elemts = angular.element('.alert-box');
-								elemts.css('display', 'none');
 
 								QiSatAPI.addInstitution(data)
 											.then( function ( response ){
+													vm.send = false;
 													if(response.data.retorno.sucesso){
-														elemts = angular.element(alert);
-														elemts.css('display', 'inline-block');
+
 														if(vm.cadastroConselhoForm){
 															vm.cadastroConselhoForm.$setPristine();
 															vm.conselho = {};
@@ -57,13 +57,15 @@
 															vm.openDownload = true;
 															vm.linkDownload = response.data.retorno.link;
 														}
-													}else{
-														elemts = angular.element(error);
-														elemts.css('display', 'inline-block');
-													}
+
+														modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Em breve entraremos em contato." } });
+
+													}else
+														modalController.alert({ main : { title : "Falha na Solicitação de Cadastro!" }});
+
+													
 												}, function ( response ){
-													elemts = angular.element(error);
-													elemts.css('display', 'inline-block');
+													modalController.alert();
 												});
 							}
 						};

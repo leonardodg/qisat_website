@@ -13,7 +13,7 @@
 
 					 	vm.nextCompra = function(){
 					 		if(!Authenticated)
-					 			vm.modallogin('/carrinho/pagamento', '/cadastro');
+					 			vm.modallogin('/carrinho/pagamento');
 					 		else
 					 			$location.path('/carrinho/pagamento');
 					 	};

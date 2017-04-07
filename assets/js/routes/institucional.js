@@ -121,34 +121,32 @@
 
             $routeProvider.when('/institucional/convenios/preduc/inscricao', {
                   templateUrl : '/views/institucional-preduc-inscricao.html',
-                  controller :  function($scope,  Config, QiSatAPI, institutions){
-                                  $scope.states = Config.states;
-                                  $scope.selectInstitution = institutions;
+                  controller :  function($scope, $controller, Config, QiSatAPI, institutions){
+                                  var modalController = $controller('modalController');
+                                    $scope.states = Config.states;
+                                    $scope.selectInstitution = institutions;
 
                                   $scope.institutionDiscount = function(){
-                                    var data = angular.copy($scope.desconto), elemts;
-
-                                    elemts = angular.element('.alert-box');
-                                    elemts.css('display', 'none');
+                                    var data = angular.copy($scope.desconto)
 
                                     if($scope.descontoForm && $scope.descontoForm.$valid){
+                                      $scope.send = true;
                                       data.ecm_convenio_id = data.institution.id;
                                       delete(data.institution);
 
                                       QiSatAPI.addInteresse(data)
                                             .then( function ( response ){
+                                                  $scope.send = false;
+
                                                 if(response.data.retorno.sucesso){
                                                   $scope.desconto = {};
                                                   $scope.descontoForm.$setPristine();
-                                                  elemts = angular.element('.alert-discount-ok');
-                                                  elemts.css('display', 'inline-block');
-                                                }else{
-                                                  elemts = angular.element('.alert-discount-error');
-                                                  elemts.css('display', 'inline-block');
-                                                }
+                                                  modalController.alert({ success : true, main : { title : "Obrigado, por solicitar o Insteresse!", subtitle : " Em breve entraremos em contato." } });
+                                                }else
+                                                  modalController.alert({ main : { title : "Falha na Solicitação!" }});
+                                                
                                               }, function ( response ){
-                                                elemts = angular.element('.alert-discount-error');
-                                                elemts.css('display', 'inline-block');
+                                                  modalController.alert();
                                               });
                                     }
                                   };

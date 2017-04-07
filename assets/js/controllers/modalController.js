@@ -82,6 +82,39 @@
 					 			  };
 
 
+					 	/*
+
+							@paramts msgs = object 
+											Attrs : 
+												header = object 
+													Attrs :
+														title = string
+														subtitle = string
+
+												main = object 
+													Attrs :
+														title = string
+														subtitle = string
+
+												success = boolean
+
+
+					 	*/
+					 	vm.alert = function (msgs) {
+				 					var modalInstance = $modal.open({ 
+                      						windowClass: 'call',
+				 							templateUrl: '/views/modal-alert.html',
+				 							controller : function ($scope, $modalInstance) {
+				 												$scope.msgs = msgs;
+
+																$scope.cancel = function () {
+																	$modalInstance.dismiss('cancel');
+																};
+															}
+				 						});
+					 			  };
+
+
 					 	vm.interesse = function (course) {
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'interesse',
@@ -159,7 +192,7 @@
 				 						});
 					 			  };
 
-						vm.login = function (urlNext, urlRedirect) {
+						vm.login = function (urlBack, urlNext, callback) {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
 		 							controller : function ($scope, $modalInstance, QiSatAPI, authService) {
@@ -171,8 +204,9 @@
 													  };
 
 													  $scope.redirectSignup = function () {
-														  	window.location = urlRedirect; //'/cadastro' 
-														  	authService.setRedirect(urlNext); //'/carrinho/pagamento' || curso-free
+													  	 	//'/carrinho/pagamento' || '/cursos/online/gratuito'
+														  	authService.setRedirect(urlBack);
+														  	window.location = '/cadastro'; 
 													  };
 
 													  $scope.clickremember = function () {
@@ -181,9 +215,7 @@
 
 													  $scope.login = function(credentials) {
 														 		credentials.remember =  true; 
-														 		$scope.msgLogin = "";
-										 						$scope.typeMsgLogin = false;
-										 						$scope.loading = true;
+														 		$scope.alert = false;
 
 																authService.login(credentials).then(function (res){
 																	var url;
@@ -193,40 +225,41 @@
 												 						if(url = authService.getRedirect()){
 												 							authService.setRedirect();
 												 							window.location = url;
-												 						}else
+												 						}else if(urlNext)
 												 							window.location = urlNext;
+												 						else if(typeof callback === "function")
+												 							callback();
 
+												 						return res.data.retorno.sucesso;
 												 					}else{
-												 						$scope.msgLogin = "Falha na Autenticação!";
-												 						$scope.typeMsgLogin = "alert-box alert radius";
+												 						$scope.alert = { main : { title : "Falha na Autenticação!" } };
 												 						$scope.loading = false;
 												 					}
-												 					return res;
+												 					return false;
+													 			}, function(res){ 
+													 				$scope.alert = { main : { title : "Falha na Autenticação!" } };
+											 						$scope.loading = false;
+											 						return false;
 													 			});
 														};
 
 														$scope.sendMail = function(email){
 															var data = { email : email };
-																$scope.msgLogin = "";
-										 						$scope.typeMsgLogin = false;
-
+										 						$scope.alert = false;
 
 															QiSatAPI.remember(data)
 																		.then( function ( response ){
 																				if(response && response.data && response.data.retorno && response.data.retorno.sucesso){ 
-																					$scope.msgLogin = "Mensagem Enviada!";
-														 							$scope.typeMsgLogin = "alert-box info radius";
+																					$scope.alert = { success : true, main : { title : "Lembrete de senha enviado com Sucesso!"} };
 																					delete($scope.email);
 																					$scope.remember = false;
 																			    }else{
 																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem){
-																				 		$scope.msgLogin = "Falha na Solicitação!";
-														 								$scope.typeMsgLogin = "alert-box alert radius";
+																				 		$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} }
 																				 	}
 																			    }
 																			}, function ( response ){
-																				$scope.msgLogin = "Falha na Solicitação!";
-														 						$scope.typeMsgLogin = "alert-box alert radius";
+																				$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} };
 																			});
 														};
 

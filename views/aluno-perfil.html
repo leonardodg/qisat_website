@@ -10,40 +10,22 @@
 		<section id="dashboard">
 
 			<div class="row">
-		 		<div class="large-12 columns">
-			      	<div ui-alert type="{{typeMsgEdit}}" close="true" >
-			      		{{msgEdit}}
-			    	</div>
-				 </div>
-			</div>
-
-			<div class="row">
 				<div class="large-6 columns">
 
-		            <div ui-alert type="{{typeMsgEditFile}}">
-		                  {{msgEditFile}}
+		            <label>Imagem</label>
+		            <div>
+		            	<form name="fileForm" id="fileForm"  novalidate>
+			              <input type="file" id="picture" name="picture" ng-hide="true" ng-change="fileChanged()" ng-model="files" />
+						  <img ng-src="{{user.picture}}" alt="user" class="left thumb" width="110">
+			              <button type="button" id="picture" ng-click="fileClick()" > Alterar Imagem »</button>
+			             </form>
+
+		              <p><small>(Tamanho máximo: 32mb)</small></p>
 		            </div>
-
-            <label>Imagem</label>
-            <div>
-            	<form name="fileForm" id="fileForm"  novalidate>
-	              <input type="file" id="picture" name="picture" ng-hide="true" ng-change="fileChanged()" ng-model="files" />
-				  <img ng-src="{{user.picture}}" alt="user" class="left thumb" width="110">
-	              <button type="button" id="picture" ng-click="fileClick()" > Alterar Imagem »</button>
-	             </form>
-
-              <p><small>(Tamanho máximo: 32mb)</small></p>
-            </div>
 
 				</div>
 
 				<div class="large-6 columns">
-          	<br>
-
-            <div ui-alert type="{{typeMsgEditPass}}">
-                  {{msgEditPass}}
-            </div>
-
 
           <button type="button" class="btn-password right" ng-click="clickEditPassword()" ng-if="!showEditPassword" ><i class="material-icons">lock</i> Alterar senha</button>
           <div class="showPassword" style="clear:both;" ng-show="showEditPassword">
@@ -260,12 +242,6 @@
 									    <div ng-show="passwordForm.checkPassword.$dirty && passwordForm.checkPassword.$invalid">
 									      <span class="error" ng-show="passwordForm.checkPassword.$error.required">Informe sua Atual Senha!</span>
 									    </div>
-
-									     <div ui-alert type="{{typeMsgEditConfirm}}">
-								      		{{msgEditConfirm}}
-								    	</div>
-
-
 									</div>
 
 									<div class="large-6 columns">

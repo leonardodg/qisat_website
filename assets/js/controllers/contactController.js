@@ -37,45 +37,49 @@
 			                      if($scope.emailNew){
 			                        $scope.isDisabled = false;
 			                        QiSatAPI.newsletter($scope.emailNew).then(function (res){
-			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
-			                              $scope.submitted = false;
-			                              $scope.isDisabled = true;
-			                              delete($scope.emailNew);
-			                              $scope.newForm.$setPristine();
-			                            }
+		                        		$scope.submitted = false;
+			                            $scope.isDisabled = true;
+			                            delete($scope.emailNew);
+			                            $scope.newForm.$setPristine();
+
+			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
+			                            	modalController.alert({ success : true, main : { title : "Obrigado, seu intersse foi cadastrado!", subtitle : " Em breve enviaremos novidades pelo E-mail." } });
+			                          	else
+			                          		modalController.alert();
+			                            
 			                        });
 			                      }
 			            };
 
 						$scope.sendMail = function(){
-							var alertBox, sendOk, error, dados = {};
-								alertBox = angular.element(document.querySelectorAll('.alert-box'));
-								sendOk = angular.element(document.querySelector('.alert-send-ok'));
-								error = angular.element(document.querySelector('.alert-send-error'));
-								alertBox.css('display', 'none');
+							var dados = {};
+							
+							if($scope.contatoForm.$valid){
+								$scope.send = true;
+								dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
+								dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
+								dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
+								dados.corpo_email += '<b>telefone:</b> '+$scope.contato.phone+' <br/>';
+								dados.corpo_email += '<b>Origem:</b> QiSat <br/><br/>';
+								dados.corpo_email += ' <b>Assunto:</b> '+$scope.contato.subject+' <br />';
+								dados.corpo_email += ' <b>Mensagem:</b><br />';
+								dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
 
-								if($scope.contatoForm.$valid){
-									dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
-									dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
-									dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
-									dados.corpo_email += '<b>telefone:</b> '+$scope.contato.phone+' <br/>';
-									dados.corpo_email += '<b>Origem:</b> QiSat <br/><br/>';
-									dados.corpo_email += ' <b>Assunto:</b> '+$scope.contato.subject+' <br />';
-									dados.corpo_email += ' <b>Mensagem:</b><br />';
-									dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
+								QiSatAPI.repasse(dados)
+											.then( function ( response ){
+													$scope.contato = {};
+													$scope.send = false;
+													$scope.contatoForm.$setPristine();
 
-									QiSatAPI.repasse(dados)
-												.then( function ( response ){
-														if(response.statusText=="OK"){
-															$scope.contato = {};
-															$scope.contatoForm.$setPristine();
-															sendOk.css('display', 'inline-block');
-														}else
-														 	error.css('display', 'inline-block');
-													}, function ( response ){
-														error.css('display', 'inline-block');
-													});
-								}
+													if(response.statusText=="OK")
+														modalController.alert({ success : true, main : { title : "Obrigado, por entra em contatos!", subtitle : " Em breve enviamos sua resposta." } });
+													else
+														modalController.alert({ main : { title : "Falha no envio do E-mail!" }});
+													
+												}, function ( response ){
+													modalController.alert();
+												});
+							}
 						};
 				}]);
 })();

@@ -13,7 +13,7 @@
                                             });
 	     })
 		.controller("CoursesController",
-			[ '$scope', '$controller', '$filter', '$location', 'QiSatAPI', 'Config', 'getWatchCount', 'authService', function($scope, $controller, $filter, $location, QiSatAPI, Config, getWatchCount, authService ){
+			[ '$scope', '$controller', '$filter', '$location', 'QiSatAPI', 'Config', 'getWatchCount', 'authService', '$timeout', function($scope, $controller, $filter, $location, QiSatAPI, Config, getWatchCount, authService, $timeout ){
 
 						var filterTypes = $filter('byTypes'),
 							filterZpad = $filter('zpad'),
@@ -26,14 +26,18 @@
 							$scope.loading = true;
 						var modalController = $controller('modalController');
 
-						var Authenticated = false;
-						(function(){
-	                    		authService.isAuth() || 
-	                            authService.verifyAuth()
-	                                       .then( function (res){ 
-                                                   Authenticated = (res) ? true : false; 
-                                                });
-	                  	}());							
+						var authenticated = function(){
+		                      return authService.isAuth() || 
+		                              authService.verifyAuth()
+		                                         .then( function (res){ 
+		                                                  return (res) ? true : false;
+		                                                }, function (res){ 
+		                                                     return false;
+		                                                });
+
+	                  	};	
+	                  	authenticated();		
+
 
 						var setDataFilters = (function(){ 
 							var inputStates;
@@ -453,11 +457,43 @@
 								// console.log($scope.coursesList);
 						};
 
-						$scope.inscricao = function(){
-					 		if(!Authenticated)
-					 			modalController.login('/aluno/cursos', '/cadastro');
-					 		else
-					 			window.location = '/aluno/cursos';
+						$scope.inscricao = function(produto){
+							var auth = authenticated();
+
+							function enrol(){
+								authService.inscricao(produto)
+				 					   .then(function (res) {
+				 							if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.link){
+				 								modalController.alert({ success : true, main : { title : "Matricula no curso realizada!", subtitle : " Você será redirecionado para página do curso." } });
+				 								$timeout(function() {
+											      	window.location = res.data.retorno.link;
+											      }, 10000);
+				 							}else
+				 								modalController.alert({ main : { title : "Falha para realizar Matricular!", subtitle : " Entre em contato con a central de Inscrições." } });
+
+				 						}, function(){
+				 							modalController.alert({ main : { title : "Falha para realizar Matricular!", subtitle : " Entre em contato con a central de Inscrições." } });
+				 						});
+							};
+
+					 		if(auth === true){
+					 			console.log('loginok')
+				 				enrol();
+					 		}else if (auth === false){
+					 			console.log('nologin1');
+					 			modalController.login('/aluno/cursos', false, enrol);
+					 		}else{
+					 			console.log('noauth');
+					 			auth.then(function(res){
+				 					if(auth === true){
+				 						console.log('noauth-loginok');
+						 				enrol();
+							 		}else{
+							 			console.log('noauth-nologin2');
+							 			modalController.login('/aluno/cursos', false, enrol);
+							 		}
+					 			});
+					 		}
 					 	};
 
 						$scope.loadMore = function (list) {

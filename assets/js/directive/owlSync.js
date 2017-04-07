@@ -9,12 +9,54 @@
 					restrict: 'A',
 					link: function(scope, element, attrs) {
 							var init;
-							if(attrs.name == "owl-carousel-institucional"){
+					        var sync1 = angular.element("#gallery-sync_bigger");
+					        var sync2 = angular.element("#gallery-sync_thumb");
+					        var slidesPerPage = 6; //globaly define number of elements per page
+					        var syncedSecondary = true;
 
-						        var sync1 = angular.element("#gallery-sync_bigger");
-						        var sync2 = angular.element("#gallery-sync_thumb");
-						        var slidesPerPage = 6; //globaly define number of elements per page
-						        var syncedSecondary = true;
+					        function syncPosition (el){
+					          //if you set loop to false, you have to restore this next line
+					          //var current = el.item.index;
+
+					          //if you disable loop you have to comment this block
+					          var count = el.item.count-1;
+					          var current = Math.round(el.item.index - (el.item.count/2) - 0.5);
+					          if(current < 0) {
+					            current = count;
+					          }
+					          if(current > count) {
+					            current = 0;
+					          }
+					          //end block
+
+					          if(sync2){
+						          sync2
+						            .find(".owl-item")
+						            .removeClass("current")
+						            .eq(current)
+						            .addClass("current");
+						          var onscreen = sync2.find('.owl-item.active').length - 1;
+						          var start = sync2.find('.owl-item.active').first().index();
+						          var end = sync2.find('.owl-item.active').last().index();
+
+						          if (current > end) {
+						            sync2.data('owl.carousel').to(current, 100, true);
+						          }
+						          if (current < start) {
+						            sync2.data('owl.carousel').to(current - onscreen, 100, true);
+						          }
+					      	  }
+					        };
+
+					        function syncPosition2(el) {
+					          if(syncedSecondary && sync1) {
+					            var number = el.item.index;
+					            sync1.data('owl.carousel').to(number, 100, true);
+					          }
+					        };
+
+
+							if(attrs.name == "owl-carousel-institucional"){
 
 						        sync1.owlCarousel({
 						          items : 1,
@@ -41,45 +83,6 @@
 						          slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
 						          responsiveRefreshRate : 100
 						        }).on('changed.owl.carousel', syncPosition2);
-
-						        function syncPosition(el) {
-						          //if you set loop to false, you have to restore this next line
-						          //var current = el.item.index;
-
-						          //if you disable loop you have to comment this block
-						          var count = el.item.count-1;
-						          var current = Math.round(el.item.index - (el.item.count/2) - 0.5);
-						          if(current < 0) {
-						            current = count;
-						          }
-						          if(current > count) {
-						            current = 0;
-						          }
-						          //end block
-
-						          sync2
-						            .find(".owl-item")
-						            .removeClass("current")
-						            .eq(current)
-						            .addClass("current");
-						          var onscreen = sync2.find('.owl-item.active').length - 1;
-						          var start = sync2.find('.owl-item.active').first().index();
-						          var end = sync2.find('.owl-item.active').last().index();
-
-						          if (current > end) {
-						            sync2.data('owl.carousel').to(current, 100, true);
-						          }
-						          if (current < start) {
-						            sync2.data('owl.carousel').to(current - onscreen, 100, true);
-						          }
-						        }
-
-						        function syncPosition2(el) {
-						          if(syncedSecondary) {
-						            var number = el.item.index;
-						            sync1.data('owl.carousel').to(number, 100, true);
-						          }
-						        }
 
 						        sync2.on("click", ".owl-item", function(e){
 						          e.preventDefault();
@@ -129,8 +132,6 @@
 								};
 								$timeout(init, 0);
 						    }
-
-                            
 					}
 			}
   		});

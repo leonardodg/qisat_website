@@ -398,17 +398,17 @@
 			</li>
 
 			<!-- VERIFICAR SE ISSO REPRESENTA QUANTIDADE DE VAGAS PARA PRESENCIAL -->
-			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom"> 
+			<li class="formato-do-curso__item" ng-if="vm.info.formato.disponibilidade"> 
 				<span class="formato-do-curso__item--top"> Direcionamento  </span>
-				<span class="formato-do-curso__item--middle">15-30</span>
+				<span class="formato-do-curso__item--middle">{{vm.info.formato.disponibilidade}}</span>
 				<span class="formato-do-curso__item--bottom">profissionais</span>
 			</li>
 
 
- 			<li class="formato-do-curso__item" ng-if="vm.info.isClassroom">
+ 			<li class="formato-do-curso__item" ng-if="vm.info.formato.metodologia">
  				<span class="formato-do-curso__item--top">Métodologia</span>
 				<span class="formato-do-curso__item--icon"> <img src="assets/images/courses/metodologia-expositiva.svg" alt=""></span>
-				<span class="formato-do-curso__item--bottom">expositiva</span>
+				<span class="formato-do-curso__item--bottom">{{vm.info.formato.metodologia}}</span>
 			</li>
 
 			<li class="formato-do-curso__item" ng-if="vm.info.formato.certificado_digital">

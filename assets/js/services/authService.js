@@ -331,6 +331,35 @@
 								}
 			                };
 
+
+		                  function inscricao(produto) {
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  url: Config.baseUrl+'/web-service/wsc-inscricao/inscrever',
+                                                  data: { produto : produto },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+				                            				return res;
+					                            		}, function (res){return res});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
 			                function compras() {
 			                		var deferred = $q.defer(), promise;
 									
@@ -450,6 +479,7 @@
 			    					update : update,
 			    					updateFile : updateFile,
 			    					courses : courses,
+			    					inscricao : inscricao,
 			    					compras :  compras,
 			    					carrinho : carrinho,
 			    					certificados : certificados,

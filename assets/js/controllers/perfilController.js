@@ -3,8 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('perfilController', ['$scope', '$location', 'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
-					 function(scope, $location, QiSatAPI, authService, Authenticated, postmon, Config ) {
+		.controller('perfilController', ['$scope', '$controller', '$location', 'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
+					 function(scope, $controller, $location, QiSatAPI, authService, Authenticated, postmon, Config ) {
+
+						var modalController = $controller('modalController');
 
 						function validateCNPJ(c) {
 							var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
@@ -49,17 +51,8 @@
 							return validateDigit(9) && validateDigit(10);
 						};
 
-					 	function resetMSG(){
-					 		delete(scope.typeMsgEdit);
-					 		delete(scope.msgEdit);
-					 		delete(scope.typeMsgEditPass);
-					 		delete(scope.msgEditPass);
-					 		delete(scope.typeMsgEditConfirm);
-					 		delete(scope.msgEditConfirm);
-					 	}
 
 					 	function init() {
-						 		resetMSG();
 						 		scope.confirm = false;
 							 	scope.checkPassword = false;
 							 	scope.showEditPassword = false;
@@ -153,15 +146,13 @@
 
 								authService.updateFile(data)
 							 					.then(function(res){
-							 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
-							 								scope.typeMsgEditFile = "alert-box info radius";
-							 								scope.msgEditFile = "Dados Atualizados com SUCESSO!";
-							 							}else{
-							 								scope.typeMsgEditFile = "alert-box alert radius";
-							 								scope.msgEditFile = "Falha ao atualizar dados!";
-							 							}
+							 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
+							 								modalController.alert({ success : true, main : { title : "Dados Atualizados com Sucesso!"} });
+							 							else
+							 								modalController.alert({ main : { title : "Falha ao atualizar os dados!"} });
+							 							
 							 							return res;
-							 						});	
+							 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });	
 						 	});
 
 					 	scope.fileClick = function(){
@@ -171,7 +162,6 @@
 					 	scope.update = function(){
 						 		var user = authService.getUser();
 						 		var newdata = {}, aux;
-						 			resetMSG();
 
 						 		if(scope.user.firstname && scope.user.firstname !== user.firstname)
 						 			newdata.firstname = scope.user.firstname;
@@ -265,14 +255,12 @@
 						 							if(res.data.retorno.sucesso){
 						 								scope.getCPF = false;
 						 								scope.getEmail = false;
-						 								scope.typeMsgEdit = "alert-box info radius";
-						 								scope.msgEdit = "Dados Atualizados com SUCESSO!";
-						 							}else{
-						 								scope.typeMsgEditPass = "alert-box alert radius";
-						 								scope.msgEdit = "Falha ao atualizar dados!";
-						 							}
+						 								modalController.alert({ success : true, main : { title : "Dados Atualizados com Sucesso!"} });
+						 							}else
+						 								modalController.alert({ main : { title : "Falha ao atualizar dados!"} });
+
 						 							return res;
-						 						});		
+						 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });		
 
 					 	}
 
@@ -284,41 +272,34 @@
 						 					 renewpassword : scope.repassword,
 						 					 userid : user.id
 						 					};
-						 			resetMSG();
 
 						 		authService.updatePassword(data)
 						 					.then(function(res){
-						 							if(res.data.retorno.sucesso){
-						 								scope.typeMsgEditPass = "alert-box info radius";
-						 								scope.msgEditPass = "Senha Atualizada com SUCESSO!";
-						 							}else{
-						 								scope.typeMsgEditPass = "alert-box alert radius";
-						 								scope.msgEditPass = "Falha ao tentar atualizar a Senha!";
-						 							}
+						 							if(res.data.retorno.sucesso)
+						 								modalController.alert({ success : true, main : { title : "Senha Atualizada com Sucesso!"} });
+						 							else
+						 								modalController.alert({ main : { title : "Falha ao atualizar os dados!"} });
+
 						 							scope.showEditPassword = false;
 						 							return res;
-						 						});		
+						 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });	
 
 					 	}
 
 					 	scope.verifyPassword = function(password){
 					 		
-						 		resetMSG();
 						 		authService.verifyPassword(password)
 						 					.then(function(res){
 
-						 							if(!res.data.retorno.sucesso){
-						 								scope.typeMsgEditConfirm = "alert-box error radius";
-						 								scope.msgEditConfirm = "Senha Incorreta!";
-						 							}else{
+						 							if(!res.data.retorno.sucesso)
+						 								modalController.alert({ main : { title : "Falha na Autenticação!"} });
+						 							else{
 						 								scope.checkPassword = false;
 						 								scope.confirm = true;
-						 								scope.typeMsgEdit = "alert-box info radius";
-						 								scope.msgEdit = "Confirmação de Senha ok!";
 						 							}
 
 						 							return res;
-						 						});
+						 						}, function(res){ modalController.alert({ main : { title : "Falha na Autenticação!"} }) });
 					 	}
 
 					 	scope.cancel = init;

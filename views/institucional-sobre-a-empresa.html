@@ -47,7 +47,7 @@
              <div class="large-12 columns">
                <div class="row collapse">
                  <div class="small-10 columns">
-                   <input type="email" name="email" id="email" ng-model="email"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }"  >
+                   <input type="email" name="email" id="email" ng-model="email"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" >
                  </div>
                  <div class="small-2 columns">
                    <a class="button postfix" ng-href="{{isDisabled ? '': '/files/Manual da Marca QiSat.pdf'}}" target="_self" download="Manual QiSat.pdf" ng-disabled="isDisabled" ng-click="solicitarIdentidade()" ><i class="material-icons" >cloud_download</i></a>

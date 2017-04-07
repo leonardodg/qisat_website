@@ -14,41 +14,32 @@
           <form name="loginForm" accept-charset="UTF-8" novalidate ng-show="!loading" >
 
             <div id="emailLogin">
+              <div class="row">
+                <div class="column small-12">
+                  <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input autocapitalize="off" autocorrect="off" id="username" name="username" placeholder="Usuário" type="text" ng-model="credentials.username" >
+                  </div>
 
-                <div class="row">
-                    <div class="large-12 columns">
-                          <div ui-alert type="{{typeMsgLogin}}" close="true" >
-                            {{msgLogin}}
-                        </div>
-                     </div>
-                </div>
-          
-            <div class="row">
-              <div class="column small-12">
-                <div class="form-group">
-                  <label for="username">Usuário</label>
-                  <input autocapitalize="off" autocorrect="off" id="username" name="username" placeholder="Usuário" type="text" ng-model="credentials.username" >
-                </div>
+                  <div class="form-group">
+                    <label for="username">Senha</label>
+                    <input id="password" name="password" placeholder="Senha" type="password" ng-model="credentials.password" ng-required="true">
+                  </div>
 
-                <div class="form-group">
-                  <label for="username">Senha</label>
-                  <input id="password" name="password" placeholder="Senha" type="password" ng-model="credentials.password" ng-required="true">
-                </div>
+                  <div class="form-group">
+                    <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me" ng-model="remember_me" > Lembrar senha
+                  </div>
 
-                <div class="form-group">
-                  <input checked="checked" id="remember_me" name="remember_me" type="checkbox" value="remember_me" ng-model="remember_me" > Lembrar senha
-                </div>
+                  <div class="form-group">
+                    <button name="signIn" ng-click="login(credentials)" class="expand primary" ng-disabled="loginForm.$invalid" >Acessar »</button>
+                  </div>
 
-                <div class="form-group">
-                  <button name="signIn" ng-click="login(credentials)" class="expand primary" ng-disabled="loginForm.$invalid" >Acessar »</button>
-                </div>
-
-                <div class="text-center">
-                  <br>
-                  <a href="/cadastro">Cadastre-se</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/lembrete-de-senha">Esqueci a minha senha</a>
+                  <div class="text-center">
+                    <br>
+                    <a href="/cadastro">Cadastre-se</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/lembrete-de-senha">Esqueci a minha senha</a>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
           </form>
 

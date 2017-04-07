@@ -3,9 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('singupController', ['$rootScope', '$scope', 'QiSatAPI', 'postmon', 'Config', '$location', 'authService',
-					 function($rootScope, scope, QiSatAPI, postmon, Config, $location, authService) {
+		.controller('singupController', ['$scope', '$controller', 'QiSatAPI', 'postmon', 'Config', '$location', 'authService',
+					 function(scope, $controller, QiSatAPI, postmon, Config, $location, authService) {
 
+					 	var modalController = $controller('modalController');
 					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.country = Config.country;
 					 	scope.states = Config.states;
@@ -31,8 +32,7 @@
 					 	scope.create = function(){
 						 		var newdata = {}, aux;
 						 		scope.submitted = true;
-							 	scope.typeMsgCreate = "";
-						 		scope.msgCreate = "";
+
 
 						 		// if(!scope.createForm.$error.captcha){
 
@@ -114,8 +114,7 @@
 						 							var credentials = { password : scope.cadastro.password };
 
 						 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
-						 								scope.typeMsgCreate = "alert-box info radius";
-						 								scope.msgCreate = "Cadastro Criado com SUCESSO!";
+						 								
 												 		scope.cadastro = {};
 												 		scope.password = '';
 												 		scope.endereco = {};
@@ -123,24 +122,13 @@
 												 		scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
 												 		scope.createForm.$setPristine();
 												 		scope.submitted = false;
+												 	
+												 		modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Orientação de acesso enviado para o email." } });
 
-												 		
-												 		credentials.username = res.data.retorno.usuario.username;
-
-												 		authService.login(credentials).then(function (res){
-										 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso))
-										 						window.location = '/aluno/cursos';
-										 					else
-										 						$location.path('/login');
-										 					
-											 			});
-
-						 							}else{
-						 								scope.typeMsgCreate = "alert-box alert radius";
-						 								scope.msgCreate = "Falha ao atualizar dados!";
-						 							}
+						 							}else
+						 								modalController.alert({ main : { title : "Falha para realizar o Cadastro!" } });
 						 							return res;
-						 						});	
+						 						}, function(){ modalController.alert({ main : { title : "Falha para realizar o Cadastro!" } }); });	
 
 						 		}
 
