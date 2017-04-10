@@ -14,7 +14,8 @@
 
 	 	.filter("nameInstructor", function (){
 			return function (input, size) {
-				var output = input.toLowerCase(), length = input.length, regex = /(da|de){2}/;
+				if(input){
+					var output = input.toLowerCase(), length = input.length, regex = /(da|de){2}/;
 					output = output.split(' ');
 					size = (size || 25);
 					output = output.map(function(nome, i){
@@ -29,7 +30,8 @@
 					if(output.join(' ').length >= size)
 						output[output.length-1] = output[output.length-1].charAt(0).toUpperCase() + '.';
 
-				return output.join(' ');
+					return output.join(' ');
+				}
 			};
 		})
 
