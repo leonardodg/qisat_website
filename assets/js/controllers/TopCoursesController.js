@@ -4,7 +4,55 @@
 	angular
 		.module('QiSatApp')
 		.controller("TopCoursesController",
-			function($scope, QiSatAPI, Config, $filter){
+			function($scope, $controller, QiSatAPI, Config, $filter, $timeout, authService){
+
+						var modalController = $controller('modalController');
+						var authenticated = function(){
+		                      return authService.isAuth() || 
+		                              authService.verifyAuth()
+		                                         .then( function (res){ 
+		                                                  return (res) ? true : false;
+		                                                }, function (res){ 
+		                                                     return false;
+		                                                });
+
+	                  	};	
+	                  	authenticated();
+
+						$scope.inscricao = function(produto){
+							var auth = authenticated();
+
+							function enrol(){
+								authService.inscricao(produto)
+				 					   .then(function (res) {
+				 							if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.link){
+				 								modalController.alert({ success : true, main : { title : "Matricula no curso realizada!", subtitle : " Você será redirecionado para página do curso." } });
+				 								$timeout(function() {
+											      	window.location = res.data.retorno.link;
+											      }, 10000);
+				 							}else
+				 								modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+
+				 						}, function(){
+				 							modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+				 						});
+							};
+
+					 		if(auth === true){
+				 				enrol();
+					 		}else if (auth === false){
+					 			modalController.login('/', false, enrol);
+					 		}else{
+					 			auth.then(function(res){
+				 					if(auth === true){
+						 				enrol();
+							 		}else{
+							 			modalController.login('/', false, enrol);
+							 		}
+					 			});
+					 		}
+					 	};
+
 						QiSatAPI.getCoursesTop()
 								.then( function ( response ){
 									var courses = [], filterLimitName = $filter('limitName');
@@ -21,7 +69,10 @@
 
 											if(course.categorias && course.categorias.length){
 												//serie, pack, classroom, events, single, releases, free, online
-												if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+												if(tipo = course.categorias.find(function(tipo){ return tipo.id == 8 })){ // Gratuito
+													course.modalidade = tipo.nome;
+													course.isFree = true;
+												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 													course.modalidade = tipo.nome;
 													course.isSerie = true;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
@@ -50,6 +101,18 @@
 														return prod.categorias.find(function(tipo){ return tipo.id == 41 });
 												});
 
+												itens = course.produtos.filter(function (prod){
+																			if(prod && prod.categorias)
+																				return prod.categorias.find(function(tipo){ return tipo.id == 33 });
+																		});
+
+												if(itens && itens.length){
+													itens.map( function (prod){ 
+																	valorItens += prod.preco; 
+																	course.id.push(prod.id);
+															 	});
+												}
+
 												if(produto){
 													course.id = produto.id;
 													course.precoTotal =  $filter('currency')(produto.preco, 'R$');
@@ -59,19 +122,6 @@
 													}else
 														course.preco = $filter('currency')(produto.preco, 'R$');
 												}else{
-													itens = course.produtos.filter(function (prod){
-																				if(prod && prod.categorias)
-																					return prod.categorias
-																								.find(function(tipo){ return tipo.id == 33 });
-																			});
-
-													if(itens && itens.length){
-														itens.map( function (prod){ 
-																		valorItens += prod.preco; 
-																		course.id.push(prod.id);
-																 	});
-													}
-
 													course.precoTotal =  $filter('currency')(valorItens, 'R$');
 													course.preco =  $filter('currency')(valorItens, 'R$');
 												}

@@ -92,12 +92,21 @@
 
 				<div class="hero-home">
 					<div class="row">
+
+					<!-- 	<video id="banner-home-video-1_html5_api" class="vjs-tech" poster="http://drupal8.altoqi.com.br/themes/custom/altoqi/assets/videos/banners/01.jpg" src="themes/custom/altoqi/assets/videos/banners/01.mp4" loop="">
+			                   <source src="http://drupal8.altoqi.com.br/themes/custom/altoqi/assets/videos/banners/01.mp4" type="video/mp4">
+			            </video>
+			         -->    	
 						<span class="hero-home__intro">invista em você</span>
 						<h1 class="hero-home__title">Construa uma carreira de sucesso</h1>
 						<h3 class="hero-home__subtitle"> Aprimore suas habilidades e amplie seu conhecimento <br> sobre engenharia </h3>
 		 				<a href="/cursos" class="button-line--light"> Conheça nossos cursos 
 		 					<i class="material-icons">keyboard_arrow_right</i>
 		 				</a>
+
+
+		 			
+
 					</div> <!-- ///row -->
 				</div><!-- //hero-home -->
 
@@ -315,6 +324,20 @@
 														            <span class="card-course__icon-cart">
 														                <div class="price_popover" >
 														                  <div class="price_popover__footer" > Registro de Interesse </div>
+														                </div>
+														            </span>
+													            </a>
+
+
+													            <a class="card-course__button has-price_popover" ng-click="inscricao(course.id)" ng-if="course.isFree" >	
+													             	
+												             		<span class="cart">
+												             			<i class="material-icons">school</i>
+												             		 </span>
+													             	
+														            <span class="card-course__icon-cart">
+														                <div class="price_popover" >
+														                  <div class="price_popover__footer" > Inscrever-se </div>
 														                </div>
 														            </span>
 													            </a>

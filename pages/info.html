@@ -125,7 +125,7 @@
 					<h1 class="hero-course__title"><span>{{::vm.info.modalidade}}</span>{{::vm.info.titulo}}</h1>
 					<p class="hero-course__resume">{{::vm.info.chamada}}</p>
 
-					<ul class="button-group radius hero-course__buttons-group">
+					<ul class="button-group radius hero-course__buttons-group" ng-cloak>
 
 
 						<li class="hero-course__buttons-group--item"> <a class="button buttom-call" anchor-link data-tooltip aria-haspopup="true" class="has-tip tip-top" data-options="show_on:large" title="Ligamos para você" ng-click="modal.call()" > <i class="material-icons">call</i></a> </li>
@@ -150,6 +150,12 @@
 			                <div class="price_popover" >
 			                  <div class="price_popover__footer">  Registro de Interesse </div>
 			                </div> <!-- //price_popover -->
+			              </span>
+			            </a></li>
+
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isFree" >
+			            	<a class="button buttom-price card-course__button" anchor-link class="button" ng-click="vm.inscricao(vm.info.produto.id)" > Inscrever-se <span class="cart"><i class="material-icons">school</i></span>
+			              <span class="card-course__icon-cart">
 			              </span>
 			            </a></li>
 
@@ -519,7 +525,7 @@
 									<span class="card-course__modality">{{vm.info.modalidade}}</span> 
 									<span class="card-course__name">{{vm.info.titulo}}</span>
 									<span class="card-course__modality">{{edicao.datauf}}</span>
-								</a><a class="card-course__button" data-magellan-arrival="garanta-sua-vaga" ng-click="vm.viewTurma(edicao.id)" href="#garanta-sua-vaga" anchor-link>Saiba mais</a>
+								</a><a class="card-course__button anchor" ng-click="vm.viewTurma(edicao.id)" href="#garanta-sua-vaga" anchor-link>Saiba mais</a>
 							</div>
 						</div>
 					</div>

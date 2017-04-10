@@ -3,11 +3,12 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('infoController', ['$scope','$sce', '$location', '$filter', 'QiSatAPI', '$modal',
-					 function(scope, $sce, $location, $filter, QiSatAPI, $modal) {
+		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$filter', '$timeout','QiSatAPI', 'authService',
+					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
-						 		path, search = absUrl.indexOf('?'), params, turma;
+						 		path, search = absUrl.indexOf('?'), params, turma,
+						 		modalController = $controller('modalController');
 					 		
 					 		moment.locale('pt-BR');
 
@@ -30,9 +31,55 @@
 					 			params = parseQueryString();
 								turma = params["turma"]; 
 					 		}else
-					 			path = absUrl.substr(absUrl.indexOf('curso/'));					 		
+					 			path = absUrl.substr(absUrl.indexOf('curso/'));	
 
-						activate();
+							var authenticated = function(){
+			                      return authService.isAuth() || 
+			                              authService.verifyAuth()
+			                                         .then( function (res){ 
+			                                                  return (res) ? true : false;
+			                                                }, function (res){ 
+			                                                     return false;
+			                                                });
+
+		                  	};	
+
+							vm.inscricao = function(produto){
+								var auth = authenticated();
+
+								function enrol(){
+									authService.inscricao(produto)
+					 					   .then(function (res) {
+					 							if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.link){
+					 								modalController.alert({ success : true, main : { title : "Matricula no curso realizada!", subtitle : " Você será redirecionado para página do curso." } });
+					 								$timeout(function() {
+												      	window.location = res.data.retorno.link;
+												      }, 10000);
+					 							}else
+					 								modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+
+					 						}, function(){
+					 							modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+					 						});
+								};
+
+						 		if(auth === true){
+					 				enrol();
+						 		}else if (auth === false){
+						 			modalController.login('/', false, enrol);
+						 		}else{
+						 			auth.then(function(res){
+					 					if(auth === true){
+							 				enrol();
+								 		}else{
+								 			modalController.login('/', false, enrol);
+								 		}
+						 			});
+						 		}
+						 	};
+
+		                  	authenticated();
+							activate();
 
 
 					 	vm.viewTurma = function(turmaid){
@@ -91,7 +138,10 @@
 											 		}
 
 													if(info.produto && info.produto.categorias){
-														if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+														if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 8 })){ // Gratuito
+															info.modalidade = tipo.nome;
+															info.isFree = true;
+														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 															info.modalidade = tipo.nome;
 															info.isSerie = true;
 														}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes

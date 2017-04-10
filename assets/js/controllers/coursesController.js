@@ -469,27 +469,22 @@
 											      	window.location = res.data.retorno.link;
 											      }, 10000);
 				 							}else
-				 								modalController.alert({ main : { title : "Falha para realizar Matricular!", subtitle : " Entre em contato con a central de Inscrições." } });
+				 								modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
 
 				 						}, function(){
-				 							modalController.alert({ main : { title : "Falha para realizar Matricular!", subtitle : " Entre em contato con a central de Inscrições." } });
+				 							modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
 				 						});
 							};
 
 					 		if(auth === true){
-					 			console.log('loginok')
 				 				enrol();
 					 		}else if (auth === false){
-					 			console.log('nologin1');
 					 			modalController.login('/aluno/cursos', false, enrol);
 					 		}else{
-					 			console.log('noauth');
 					 			auth.then(function(res){
 				 					if(auth === true){
-				 						console.log('noauth-loginok');
 						 				enrol();
 							 		}else{
-							 			console.log('noauth-nologin2');
 							 			modalController.login('/aluno/cursos', false, enrol);
 							 		}
 					 			});

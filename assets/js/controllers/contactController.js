@@ -72,7 +72,7 @@
 													$scope.contatoForm.$setPristine();
 
 													if(response.statusText=="OK")
-														modalController.alert({ success : true, main : { title : "Obrigado, por entra em contatos!", subtitle : " Em breve enviamos sua resposta." } });
+														modalController.alert({ success : true, main : { title : "Obrigado, por entra em contato!", subtitle : " Em breve enviamos sua resposta." } });
 													else
 														modalController.alert({ main : { title : "Falha no envio do E-mail!" }});
 													
