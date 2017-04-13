@@ -128,7 +128,7 @@
 						 							}else
 						 								modalController.alert({ main : { title : "Falha para realizar o Cadastro!" } });
 						 							return res;
-						 						}, function(){ modalController.alert({ main : { title : "Falha para realizar o Cadastro!" } }); });	
+						 						}, function(){ modalController.alert({ main : { title : "Falha para realizar o Cadastro." } }); });	
 
 						 		}
 

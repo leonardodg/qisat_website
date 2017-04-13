@@ -57,11 +57,24 @@
 															vm.openDownload = true;
 															vm.linkDownload = response.data.retorno.link;
 														}
+														
+														/* Solicitar newsletter (/institucional/contatos) 
+														modalController.alert({ success : true, main : { title : "Obrigado! Seu e-mail foi cadastrado.", subtitle : "A equipe QiSat manterá você informado sobre novidades." } });
 
-														modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Em breve entraremos em contato." } });
+														/* Solicitar interesse em cadastrar um CREA (/institucional/convenios/conselhos) 
+														modalController.alert({ success : true, main : { title : "Obrigado! Sua solicitação foi enviada.", subtitle : "A equipe QiSat entrará em contato em breve." } });
+
+														/* Preencher o termo de adesão para instituição de ensino (PREDUC) (/institucional/convenios/preduc/ensino) 
+														modalController.alert({ success : true, main : { title : "Obrigado! Os dados foram registrados.", subtitle : "Faça o download do termo de adesão e da lista de alunos e professores. A equipe QiSat entrará em contato em breve." } });
+
+
+
+														*/
+
+														modalController.alert({ success : true, main : { title : "Obrigado! Sua solicitação foi enviada.", subtitle : "A equipe QiSat entrará em contato em breve." } });
 
 													}else
-														modalController.alert({ main : { title : "Falha na Solicitação de Cadastro!" }});
+														modalController.alert({ main : { title : "Falha na Solicitação de Cadastro." }});
 
 													
 												}, function ( response ){
