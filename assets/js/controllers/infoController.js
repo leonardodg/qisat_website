@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$filter', '$timeout','QiSatAPI', 'authService',
-					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService) {
+		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$filter', '$timeout','QiSatAPI', 'authService', 'Config',
+					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService, Config) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
 						 		path, search = absUrl.indexOf('?'), params, turma,
@@ -162,7 +162,7 @@
 														}
 													}
 
-													if(info.isSerie && info.produto.produtos && info.produto.produtos.length){
+													if(info.isSerie && info.produto && info.produto.produtos && info.produto.produtos.length){
 														
 														info.conteudos = [];
 														info.produto.id = [];
@@ -264,6 +264,7 @@
 													if(info.produto && info.produto.instrutor){
 														info.produto.instrutor.map(function(instrutor){
 															instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
+															if(!instrutor.ecm_imagem_id) instrutor.imagem = { src : Config.imagensUrlDefault };
 														});
 													}
 
