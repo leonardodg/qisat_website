@@ -226,7 +226,7 @@
 										if(!listOnline) {
 											tipo = $scope.tipos.find(function(el){ return el.id == 2 });
 											online = filterTypes($scope.courses, 2);
-											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) return true; });
+											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
 											show = (online && online.length) ? true : false;
 											listOnline = { title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
 											$scope.coursesList.push(listOnline);
@@ -338,7 +338,7 @@
 										if(!listOnline) {
 											tipo = $scope.tipos.find(function(el){ return el.id == 2 });
 											online = filterTypes($scope.courses, 2);
-											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9) })) return true; });
+											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
 											show = (online && online.length) ? true : false;
 											listOnline = { title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
 											$scope.coursesList.push(listOnline);

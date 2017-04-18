@@ -9,18 +9,7 @@
 
             $routeProvider.when('/carrinho', {
               templateUrl : '/views/carrinho-montar.html',
-              controller : 'montarCarrinhoController as vm',
-              resolve : {
-                  Authenticated : function(authService){
-                      return authService.isAuth() || 
-                              authService.verifyAuth()
-                                         .then( function (res){ 
-                                                  if(res) return true; else return false; 
-                                                }, function (res){ 
-                                                   return false;
-                                                });
-                  }
-              }
+              controller : 'montarCarrinhoController as vm'
             });
 
             $routeProvider.when('/carrinho/pagamento', {
