@@ -43,7 +43,7 @@
 			                            $scope.newForm.$setPristine();
 
 			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
-			                            	modalController.alert({ success : true, main : { title : "Obrigado, seu intersse foi cadastrado!", subtitle : " Em breve enviaremos novidades pelo E-mail." } });
+			                            	modalController.alert({ success : true, main : { title : "Obrigado! Seu e-mail foi cadastrado.", subtitle : "A equipe QiSat manterá você informado sobre novidades." } });
 			                          	else
 			                          		modalController.alert();
 			                            
@@ -72,7 +72,7 @@
 													$scope.contatoForm.$setPristine();
 
 													if(response.statusText=="OK")
-														modalController.alert({ success : true, main : { title : "Obrigado, por entra em contato!", subtitle : " Em breve enviamos sua resposta." } });
+														modalController.alert({ success : true, main : { title : "Obrigado! Sua mensagem foi enviada.", subtitle : "Em breve a equipe QiSat entrará em contato." } });
 													else
 														modalController.alert({ main : { title : "Falha no envio do E-mail!" }});
 													

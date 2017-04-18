@@ -112,7 +112,7 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 .z-4 { box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3), 0 14px 12px 0 rgba(0, 0, 0, 0.17) !important; }
 .z-5 { box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15) !important; }
 
-.material-icons{vertical-align: middle;
+.material-icons{vertical-align: middle; cursor: pointer;
 	&slick-prev {color: #333; margin-left: 46%; font-size: 40px; cursor: pointer;}
 	&slick-next {color: #333; margin-left: 46%; font-size: 40px; cursor: pointer;}
 }
