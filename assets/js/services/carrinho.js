@@ -64,7 +64,10 @@
 
 									if(item.ecm_produto && item.ecm_produto.categorias){
 
-										if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+										if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 33 })) { // Item Séries
+											item.modalidade = tipo.nome;
+											item.isSerie = true;
+										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 41 })) { // Curso Série
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes

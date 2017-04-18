@@ -204,7 +204,6 @@
 													  };
 
 													  $scope.redirectSignup = function () {
-													  	 	//'/carrinho/pagamento' || '/cursos/online/gratuito'
 														  	authService.setRedirect(urlBack);
 														  	window.location = '/cadastro'; 
 													  };
