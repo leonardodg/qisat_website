@@ -22,9 +22,10 @@
               </div>
 						
 					    <div class="cards">
+
 					   			<div ng-repeat="course in courses | filter : { filter : filterTab } as filtered track by course.id" class="card">
 
-                    <div ng-if="::course.enable">
+                    <div ng-if="course.enable">
                       <a ng-href="{{::course.view}}"><img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>
                     </div>
                     <div ng-if="!course.enable">
@@ -33,32 +34,39 @@
                     
                     <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
 
-                      <p class="modalidade">{{::course.modalidade}}</p>
+                      <p class="modalidade"> &nbsp {{::course.modalidade}}</p>
 
-						      		<div ng-if="::course.enable"> 
+						      		<div ng-if="course.enable"> 
 						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.view}}" title="{{::course.nome}}" >{{::course.nomeLimit}} </a></p>
 						      		</div>
 
 						      		<div ng-if="!course.enable"> 
 						      			<p class="name">{{::course.nomeLimit}}</p>
 						      		</div>
-						      		
-                      <!-- FIXA TAMANHO -->
-                      <div class="green" ng-if="::course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >
-                        {{::course.status}}
+
+                      <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >
+                          <div class="green" ng-if="course.enable">
+                            {{::course.status}}
+                          </div>
+      						     		<div class="red" ng-if="!course.enable">
+                            {{::course.status}}
+                          </div> 
                       </div>
-  						     		<div class="red"  ng-if="!course.enable" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
-                        {{::course.status}}
-                      </div> 
 
-
-                      <!-- FIXA TAMANHO -->
                       <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" ><span class="msg"> {{::course.msg}}&nbsp;</span></div>
                       
                     </div>
 
                     <div class="footer">
                       <ul class="inline-list">
+
+                       <li ng-if="::course.enable">
+                            <a ng-href="{{::course.view}}">
+                              <i class="material-icons" alt="Acessar Curso" title="Acessar Curso" >school</i> 
+                            </a>
+                        </li>
+
+
                         <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons" alt="Tira Dúvidas" title="Tira Dúvidas">live_help</i></a></li>
                         <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons" alt="Biblioteca" title="Biblioteca">folder</i></a></li>
                         <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons" alt="Fórum" title="Fórum">forum</i></a></li>
