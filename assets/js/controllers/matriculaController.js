@@ -12,6 +12,7 @@
 					 	scope.agendados = false;
 						scope.outros = false;
 						scope.filterTab = 'liberado';
+						moment.locale('pt-BR');
 
 						scope.setFilterTab = function(val){
 							scope.filterTab = val;
@@ -43,30 +44,41 @@
 											 			}
 
 											 			if(matricula.data_conclusao){
-											 				timeend = new Date(matricula.data_conclusao*1000);
-											 				day = timeend.getDate();
-															month = timeend.getMonth()+1;
-															year = timeend.getFullYear();
-											 				matricula.msg = "Concluído em "+day+"/"+month+"/"+year;
-											 				matricula.filter = 'finalizado';
+											 				timeend = moment.unix(matricula.data_conclusao);
+											 				if(timeend.isValid())
+											 					matricula.msg = "Certificado em "+timeend.format('DD/MM/YYYY' );
+
+											 				if(moment.unix(matricula.timeend).isAfter()){
+											 					matricula.enable = true;
+											 					matricula.filter = 'liberado';
+											 				}else
+											 					matricula.filter = 'finalizado';
+											 		
 											 			}else if(matricula.status == "Curso Agendado"){
-											 				timestart = new Date(matricula.timestart*1000);
-											 				day = timestart.getDate();
-															month = timestart.getMonth()+1;
-															year = timestart.getFullYear();
-											 				matricula.msg = " Data de Inicío "+day+"/"+month+"/"+year;
+															timestart = moment.unix(matricula.timestart);
+															if(timestart.isValid()) 
+																matricula.msg = " Data de Inicío "+timestart.format('DD/MM/YYYY' );
 											 				matricula.filter = 'agendado';
 											 				if(!scope.agendados) scope.agendados = true;
 											 			}else if(matricula.status == "Liberado para Acesso"){
 											 				matricula.enable = true;
-											 				timestart = new Date(matricula.timeend*1000);
-											 				day = timestart.getDate();
-															month = timestart.getMonth()+1;
-															year = timestart.getFullYear();
-											 				matricula.msg = "Expira em "+day+"/"+month+"/"+year;
+
+											 				if(matricula.timeend){
+												 				timeend = moment.unix(matricula.timeend);
+												 				if(timeend.isValid()) 
+												 					matricula.msg = "Expira em "+timeend.format('DD/MM/YYYY');
+											 				}
+
 											 				matricula.filter = 'liberado';
 											 			}else if(matricula.status == "Prazo Encerrado"){
 											 				matricula.filter = 'encerrado';
+											 				if(matricula.timeend){
+											 					timestart = moment.unix(matricula.timestart);
+												 				timeend = moment.unix(matricula.timeend);
+												 				if(timeend.isValid() && timestart.isValid())
+												 					matricula.msg = "Liberado "+timestart.format('DD/MM/YYYY')+" - Expirou em "+timeend.format('DD/MM/YYYY');
+											 				}
+
 											 			}else{
 											 				matricula.filter = 'outros';
 											 				if(!scope.outros) scope.outros = true;
