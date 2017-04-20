@@ -3,37 +3,37 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('loginController', ['$rootScope', '$scope', '$location', 'authService',
-					 function($rootScope, scope, $location, authService ) {
+		.controller('loginController', [ '$scope', '$controller',  '$location', 'authService',
+					 function(scope, $controller, $location, authService ) {
 
-					 	scope.remember_me = true;
-					 	scope.login = function(credentials) {
-					 		scope.loading = true;
-							$rootScope.msgLogin = "";
-	 						$rootScope.typeMsgLogin = "";
+					 		var modalController = $controller('modalController');
 
-				 			if(scope.loginForm && scope.loginForm.$valid){
-						 		credentials.remember = (scope.remember_me) ? true : false; 
-								authService.login(credentials).then(function (res){
-									var url;
-				 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
-				 						if(url = authService.getRedirect()){
-				 							authService.setRedirect();
-				 							window.location = url;
-				 						}else
-				 							window.location = '/aluno/cursos';
-				 					}else{
-				 						$rootScope.msgLogin = "Falha na Autenticação!";
-				 						$rootScope.typeMsgLogin = "alert-box alert radius";
-				 						scope.loading = false;
-				 					}
-				 					return res;
-					 			});
-							}else{
-								$rootScope.msgLogin = "Informe os dados de Acesso!";
-		 						$rootScope.typeMsgLogin = "alert-box alert radius";
-		 						scope.loading = false;
-							}
-						};
+						 	scope.remember_me = true;
+						 	scope.login = function(credentials) {
+						 		scope.loading = true;
+
+					 			if(scope.loginForm && scope.loginForm.$valid){
+					 				credentials.username = credentials.username.replace(/^\s+|\s+$/g,"");
+					 				credentials.password = credentials.password.replace(/^\s+|\s+$/g,"");
+							 		credentials.remember = (scope.remember_me) ? true : false; 
+									authService.login(credentials).then(function (res){
+										var url;
+					 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
+					 						if(url = authService.getRedirect()){
+					 							authService.setRedirect();
+					 							window.location = url;
+					 						}else
+					 							window.location = '/aluno/cursos';
+					 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.mensagem))
+					 						modalController.alert({ main : { title : "Falha na Autenticação!", subtitle : res.data.retorno.mensagem } });
+					 					else
+					 						modalController.alert({ main : { title : "Falha na Autenticação!" } });
+					 					scope.loading = false;
+
+					 					return res;
+						 			}, function(){ modalController.alert() });
+								}
+			 					scope.loading = false;
+							};
 					 }]);
 })();

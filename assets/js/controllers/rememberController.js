@@ -15,9 +15,11 @@
 												if(response && response.data && response.data.retorno && response.data.retorno.sucesso){
 													modalController.alert({ success : true, main : { title : "Lembrete de senha enviado com Sucesso!"} });
 													delete(scope.email);
-											    }else{
+											    }else if((response.status == 200)&&(response && response.data && response.data.retorno && response.data.retorno.mensagem))
+					 								modalController.alert({  main : { title : "Falha no Envio da Mensagem.", subtitle : response.data.retorno.mensagem } });
+											    else
 											    	modalController.alert({  main : { title : "Falha no Envio da Mensagem."} });
-											    }
+											    
 											}, function ( response ){
 												modalController.alert({  main : { title : "Falha no Envio da Mensagem."} });
 											});

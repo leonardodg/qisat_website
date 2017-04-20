@@ -230,13 +230,15 @@
 												 							callback();
 
 												 						return res.data.retorno.sucesso;
-												 					}else{
-												 						$scope.alert = { main : { title : "Falha na Autenticação!" } };
+												 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.mensagem))
+					 													$scope.alert = { main : { title : "Falha na Autenticação!", subtitle : res.data.retorno.mensagem }};
+												 					else{
+												 						$scope.alert = { main : { title : "Falha na Autenticação!" }};
 												 						$scope.loading = false;
 												 					}
 												 					return false;
 													 			}, function(res){ 
-													 				$scope.alert = { main : { title : "Falha na Autenticação!" } };
+													 				$scope.alert = { main : { title : "Falha na Autenticação!" }};
 											 						$scope.loading = false;
 											 						return false;
 													 			});
