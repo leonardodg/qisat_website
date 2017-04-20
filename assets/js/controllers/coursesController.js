@@ -149,7 +149,7 @@
 								  	  	$scope.navLinks.push({title:"Lançamentos" });
 								    break;
 								  case "/cursos/online/gratuito":
-								  	  	$scope.navLinks.push({title:"Gratutitos" });
+								  	  	$scope.navLinks.push({title:"Gratuitos" });
 								    break;
 							  	  default:
 								  	  break;
