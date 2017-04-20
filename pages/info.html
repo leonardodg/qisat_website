@@ -388,13 +388,11 @@
 			</li>
 
  
- 			<li class="formato-do-curso__item" ng-if="vm.info.formato.disponibilidade">
+ 			<li class="formato-do-curso__item" ng-if="vm.info.isFree||vm.info.isPack||vm.info.isOnline||vm.info.isSerie">
  				<span class="formato-do-curso__item--top">Disponível</span>
  				<span class="formato-do-curso__item--middle">24h</span>
  				<span class="formato-do-curso__item--bottom">por dia</span>
  			</li>
-
-
 
 
 			<li class="formato-do-curso__item" ng-if="vm.info.formato.carga_horaria">

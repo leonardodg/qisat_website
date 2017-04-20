@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('certificadoController', ['$rootScope','$scope','$sce', '$filter','authService','Authenticated', 'Config',
-					 function($rootScope, scope, $sce, $filter, authService, Authenticated, Config ) {
+		.controller('certificadoController', ['$rootScope','$scope','$sce',  '$window', '$filter','authService','Authenticated', 'Config',
+					 function($rootScope, scope, $sce, $window, $filter, authService, Authenticated, Config ) {
 
 					 	if(Authenticated){
 						 	$rootScope.loading = true;
@@ -33,7 +33,7 @@
 					 	}
 
 					 	scope.linkCertify = function(link) {
-						    return $sce.trustAsResourceUrl(link);
+						    $window.open(link);
 						};
 
 					 }]);

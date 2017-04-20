@@ -1,6 +1,6 @@
 	<div class="admin__heading">
 		<h1 class="title" ng-if="certificados.length">Meus certificados</h1>
-		<h1 class="title" ng-if="certificados&&!certificados.length">Nenhum curso conclúido.</h1>
+		<h1 class="title" ng-if="certificados&&!certificados.length">Nenhum curso concluído.</h1>
 	</div>
 
 	<section id="dashboard" class="page-certificates">
@@ -11,7 +11,7 @@
 
           <div class="content">
           	<div ng-if="dados.link">
-          		<a ng-href="{{linkCertify(dados.link)}}" target="_blank" >
+          		<a ng-href="{{dados.link}}" ng-click="linkCertify(dados.link)" >
           	</div>
           <i class="material-icons left">stars</i>
 		      <p>{{::dados.certificate_name}}</p>
