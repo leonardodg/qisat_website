@@ -46,16 +46,16 @@
 
 															  if(user){
 															  	$scope.dados = {
-															  	 				nome : user.firstname+' '+user.lastname,
-															  	 				email : user.email
+												  	 				nome : user.firstname+' '+user.lastname,
+												  	 				email : user.email
 															  	 };
 															  	 
 															  	 aux = user.phone1.match(regex);
 															  	 phone = user.phone1.replace(/[^\d]+/g,'');
 															  	 if(aux && aux.length && aux[1])
-															  	 	$scope.dados.operadora = aux[1]
+															  	 	$scope.dados.operadora = aux[1];
 															  	 if(phone.length <= 9)
-															  	 	data.telefone = phone;
+															  	 	$scope.dados.telefone = phone;
 															  	 else
 															  	 	$scope.dados.telefone = phone.substr(2);
 															  }
