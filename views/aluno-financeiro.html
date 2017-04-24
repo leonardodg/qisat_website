@@ -29,7 +29,15 @@
 				      <td>{{::venda.valor}}</td>
 				      <td>{{::venda.status}}</td>
 				      <td>{{::venda.forma_pagamento}}</td>
-				      <td><button type="button" ng-click="viewCarrinho(venda.id)">Vizualizar</button> </td>
+				      <td>
+				      		<button type="button" ng-click="viewCarrinho(venda.id)" title="Detalhes da Compra" > 
+				      			<i class="material-icons">zoom_in</i>
+				      		</button> 
+				      		<a class="button" ng-href="{{::venda.boleto}}" target="_blank" ng-if="venda.boleto" title="Visualizar boleto">
+				      			<i class="material-icons">print</i>
+				      		</a> 
+
+				      </td>
 				    </tr>
 				  </tbody>
 				</table>
