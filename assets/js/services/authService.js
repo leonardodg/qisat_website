@@ -140,6 +140,7 @@
 								$http.defaults.headers.common.Authorization = undefined;
 								var promise = $http({
 									method: 'POST',
+									loading : true,
 									url: Config.baseUrl+'/wsc-user/logout',
 									dataType: 'jsonp',
 									headers : {
@@ -155,6 +156,7 @@
 							function login(credentials) {
 	                           var promise = $http({ 
 	                                                  method: 'POST', 
+	                                                  loading : true,
 	                                                  url: Config.baseUrl+'/wsc-user/login',
 	                                                  data: credentials,
 	                                                  withCredentials : true,
@@ -179,6 +181,7 @@
 								if(isAuth()){
 		                           promise = $http({ 
 		                                                  method: 'POST', 
+		                                                  loading : true,
 		                                                  url: Config.baseUrl+'/wsc-user/checkPassword',
 		                                                  data: { password : password },
 		                                                  dataType: 'jsonp',
@@ -206,6 +209,7 @@
 									data['id'] = authUser.id;
 		                            promise = $http({ 
 		                                              method: 'POST', 
+		                                              loading : true,
 		                                              url: Config.baseUrl+'/wsc-user/create-user',
 		                                              data: data,
 		                                              dataType: 'jsonp',
@@ -231,6 +235,7 @@
 								if(isAuth()){
 		                            promise = $http({ 
 		                                              method: 'POST', 
+		                                              loading : true,
 		                                              url: Config.baseUrl+'/wsc-user/uploadImagemUsuario',
 		                                              data: data,
 								                      headers : {  'Content-Type': undefined, 'Authorization': Config.Authorization+" "+authToken },
@@ -283,6 +288,7 @@
 								if(isAuth()){
 		                           	promise = $http({ 
                                                   method: 'POST', 
+                                                  loading : true,
                                                   url: Config.baseUrl+'/wsc-user/matriculas',
                                                   data: { id : authUser.id },
                                                   dataType: 'jsonp',
@@ -338,6 +344,7 @@
 								if(isAuth()){
 		                           	promise = $http({ 
                                                   method: 'POST', 
+                                                  loading : true,
                                                   url: Config.baseUrl+'/web-service/wsc-inscricao/inscrever',
                                                   data: { produto : produto },
                                                   dataType: 'jsonp',
@@ -366,6 +373,7 @@
 									if(isAuth()){
 			                           	promise = $http({ 
 	                                                  method: 'POST', 
+	                                                  loading : true,
 	                                                  url: Config.baseUrl+'/wsc-user/financeiro',
 	                                                  data: { id : authUser.id },
 	                                                  dataType: 'jsonp',
@@ -393,6 +401,7 @@
 									if(isAuth()){
 	                           			promise = $http({ 
 		                                                  method: 'POST', 
+		                                                  loading : true,
 		                                                  url: Config.baseUrl+'/wsc-user/certificados',
 		                                                  data: { id : authUser.id },
 		                                                  dataType: 'jsonp',
@@ -419,6 +428,7 @@
 								if(isAuth()){
 		                        	promise = $http({ 
 	                                                  method: 'POST', 
+	                                                  loading : true,
 	                                                  url: Config.baseUrl+'/wsc-user/financeiro/get',
 	                                                  data: { venda : id },
 	                                                  dataType: 'jsonp',
@@ -445,6 +455,7 @@
 								if(isAuth()){
                     				promise = $http({ 
                                                   method: 'POST', 
+                                                  loading : true,
                                                   url: Config.baseUrl+'/wsc-user/updatePassword',
                                                   data: data,
                                                   dataType: 'jsonp',

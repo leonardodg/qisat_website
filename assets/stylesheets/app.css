@@ -442,7 +442,7 @@ th {
 
 /*
 	http://sassme.arc90.com/
-	Fun├º├Áes cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
+	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
 */
 /* line 77, ../scss/qisat/_globals.scss */
 body {
@@ -832,6 +832,11 @@ article {
   content: "";
   display: block;
   float: left;
+}
+
+/* line 326, ../scss/qisat/_globals.scss */
+body.wait, body.wait * {
+  cursor: wait !important;
 }
 
 /* 'HERO COURSES

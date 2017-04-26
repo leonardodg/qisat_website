@@ -122,6 +122,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'post', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/add',
 		                                                    data: data,
 		                                                    headers : headers,
@@ -167,6 +168,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'get', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/cancelar-transacao',
 		                                                    headers : { 'Authorization': Config.Authorization+" "+authService.getToken() },
 		                                                    withCredentials : true
@@ -189,6 +191,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'GET', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/forma-pagamento/wsc-forma-pagamento/formas',
 		                                                    headers : {
 															      'Content-Type' : 'application/json',
@@ -241,6 +244,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'POST', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/forma-pagamento/wsc-forma-pagamento/requisicao',
 		                                                    data: data,
 		                                                    dataType: 'jsonp',
@@ -265,6 +269,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'POST', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/vendas/wsc-minhas-compras/get/'+id,
 		                                                    dataType: 'jsonp',
 										                    headers : {
@@ -289,6 +294,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'post', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/remove',
 		                                                    data: data,
 													  		withCredentials : true

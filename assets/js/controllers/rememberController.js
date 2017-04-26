@@ -9,6 +9,7 @@
 					 	var  modalController = $controller('modalController');
 					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.sendMail = function(){
+					 		scope.loading = true;
 							var data = { email : scope.email }
 							QiSatAPI.remember(data)
 										.then( function ( response ){
@@ -19,9 +20,10 @@
 					 								modalController.alert({  main : { title : "Falha no Envio da Mensagem.", subtitle : response.data.retorno.mensagem } });
 											    else
 											    	modalController.alert({  main : { title : "Falha no Envio da Mensagem."} });
-											    
+											    scope.loading = false;
 											}, function ( response ){
 												modalController.alert({  main : { title : "Falha no Envio da Mensagem."} });
+												scope.loading = false;
 											});
 						}
 

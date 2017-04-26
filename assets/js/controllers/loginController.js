@@ -24,16 +24,19 @@
 					 							window.location = url;
 					 						}else
 					 							window.location = '/aluno/cursos';
-					 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.mensagem))
+					 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.mensagem)){
 					 						modalController.alert({ main : { title : "Falha na Autenticação!", subtitle : res.data.retorno.mensagem } });
-					 					else
+					 						scope.loading = false;
+					 					}
+					 					else{
 					 						modalController.alert({ main : { title : "Falha na Autenticação!" } });
-					 					scope.loading = false;
-
+					 						scope.loading = false;
+					 					}
+					 					
 					 					return res;
-						 			}, function(){ modalController.alert() });
+						 			}, function(){ scope.loading = false; modalController.alert(); });
 								}
-			 					scope.loading = false;
+			 					
 							};
 					 }]);
 })();

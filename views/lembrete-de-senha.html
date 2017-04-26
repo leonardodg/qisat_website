@@ -5,7 +5,7 @@
       </div>
 
       <section id="dashboard">
-            <form name="rememberForm" id="rememberForm" novalidate>
+            <form name="rememberForm" id="rememberForm" novalidate ng-show="!loading" >
 
                       <label for="email">Email:</label>
                         <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
@@ -22,6 +22,12 @@
               <br class="clearfix">
               <br class="clearfix">
             </form>
+
+          <div class="custom-loading" ng-if="loading">
+            <i class="material-icons">hdr_weak</i>
+            <span class="text" >Enviando Solicitação...</span>
+          </div>
+
           </section>
     </div>
 </div>

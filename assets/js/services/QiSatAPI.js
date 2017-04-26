@@ -15,7 +15,8 @@
 		                        createUser : function (data) {
 
 		                            var promise = $http({ 
-		                                                    method: 'post', 
+		                                                    method: 'post',
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/wsc-user/createUser',
 		                                                    data: data
 		                                                        });
@@ -30,7 +31,8 @@
 		                        callMe : function(data){
 
 		                        	var promise = $http({ 
-		                                                    method: 'POST', 
+		                                                    method: 'POST',
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/repasse/wsc-ligamos-para-voce/salvar',
 		                                                    data: data
 		                                                        });
@@ -47,6 +49,7 @@
 
 		                        	var promise = $http({ 
 		                                                    method: 'POST', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/repasse/wsc-repasse/salvar',
 		                                                    data: data
 		                                                        });
@@ -64,6 +67,7 @@
 
 		                            var promise = $http({ 
 		                                                    method: 'post', 
+		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/wsc-user/checkEmail',
 		                                                    data: { email: email }
 		                                                        });
@@ -79,6 +83,7 @@
 
 		                            var promise = $http({ 
 		                                                    method : 'post', 
+		                                                    loading : true,
 		                                                    url : Config.baseUrl+'/wsc-user/checkCPF',
 		                                                    data : { cpf: cpf }
 		                                                        });
@@ -117,6 +122,7 @@
 							getInstructor : function (id) {
 									var promise = $http({ 
 														cache: true, 
+														loading : true,
 														method: 'GET', 
 														url: Config.baseUrl+'/instrutor/wsc-instrutor/get/'+id
 													});
@@ -167,6 +173,7 @@
 
 									var promise = $http({ 
 															cache: true, 
+															loading : true,
 															method: 'POST',
 															data : { id : course },
 															url: Config.baseUrl+'/produto/wsc-produto/get-info/'
@@ -182,6 +189,7 @@
 							getCourses : function () {
 									var promise = $http({ 
 													cache: true, 
+													loading : true,
 													method: 'GET', 
 													url: Config.baseUrl+'/produto/wsc-produto/listar'
 												});
@@ -301,6 +309,7 @@
 							identidadeVisual : function (email) {
 										var promise = $http({ 
 															method: 'GET', 
+															loading : true,
 															url: Config.baseUrl+'/identidade-visual/'+email
 														});
 
@@ -312,6 +321,7 @@
 							newsletter : function (email) {
 										var promise = $http({ 
 															method: 'GET', 
+															loading : true,
 															url: Config.baseUrl+'/newsletter/'+email
 														});
 
@@ -323,6 +333,7 @@
 							remember : function (data) {
 									var promise = $http({ 
 															method: 'POST', 
+															loading : true,
 															url: Config.baseUrl+'/wsc-user/lembrete-senha',
 															data: data
 														});
@@ -370,6 +381,7 @@
 							addInstitution : function (data) {
 								var promise = $http({
 									method: 'POST',
+									loading : true,
 									url: Config.baseUrl+'/convenio/wsc-convenio/inserir',
 									data: data
 								});
@@ -396,6 +408,7 @@
 							addInteresse : function (data) {
 								var promise = $http({
 									method: 'POST',
+									loading : true,
 									url: Config.baseUrl+'/convenio/wsc-convenio/add-interesse',
 									data: data
 								});
