@@ -123,7 +123,7 @@
 					      <span class="error" >CPF/CNPJ inválido!</span>
 					    </div>
 
-					    <div ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$error.cpfCheck">
+					    <div ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$error.cpfCheck && !(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
 		                  <span class="error" ng-show="errocpf" >{{errocpf}} </span>
 		                </div>
 

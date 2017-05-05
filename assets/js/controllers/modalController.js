@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('modalController', [ '$modal',
-					 function( $modal ) {
+		.controller('modalController', [ '$modal', 'authService',
+					 function( $modal, authService ) {
 					 	var vm = this;
 
 					 	vm.termo = function () {
@@ -178,6 +178,129 @@
 				 						});
 					 			  };
 
+
+					 	vm.update = function (urlNext, callback) {
+					 					var user = authService.getUser(), modalInstance;
+
+					 					if(user && (!user.email || !user.numero)){
+
+					 						modalInstance = $modal.open({ 
+	                      						windowClass: 'interesse',
+					 							templateUrl: '/views/modal-update.html',
+					 							controller : function ($scope, $modalInstance, QiSatAPI) {
+					 											  
+					 											  $scope.dados = {};
+					 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+																  $scope.submitted = false;
+																  $scope.zopim = false;
+
+																  $scope.cancel = function () {
+																    $modalInstance.dismiss('cancel');
+																  };
+
+				 											  	  if(!user.email)
+				 											  	  	$scope.getEmail = true;
+
+				 											  	  if(!user.numero)
+				 											  	  	$scope.getCpf = true;
+
+														          $scope.showZopim = function(){
+														          		 var chave;
+														            	 $zopim.livechat.setOnConnected (function (){
+											                            						$zopim.livechat.departments.setVisitorDepartment(111831);
+											                            						if(user){
+											                            							chave = user.idnumber ? ' - '+user.idnumber : '';
+												                            						$zopim.livechat.set({
+																									      language: 'pt-br',
+																									      name: user.firstname+' '+user.lastname+chave,
+																									      email: user.email,
+																									      phone: user.phone1
+																									    });
+											                            						}
+
+											                            						$zopim.livechat.say('Solicito ajuda para cadastra/atualizar CPF ou CNPJ: '+$scope.dados.cpfcnpj);
+											                            						$zopim.livechat.window.show();
+																                			});
+														          };
+				 											  	  
+
+																  $scope.remember = function(email){
+																		var data = { email : email };
+																		$scope.msgRemember = '';
+																		QiSatAPI.remember(data)
+																					.then( function ( response ){
+																							if(response && response.data && response.data.retorno && response.data.retorno.sucesso)
+																								$scope.msgRemember = "Lembrete de senha enviado com Sucesso!";
+																						    else
+																						    	$scope.msgRemember = "Falha no Envio da Mensagem.";
+
+																						}, function ( response ){
+																							$scope.msgRemember = "Falha no Envio da Mensagem.";
+																						});
+																  };
+
+																  $scope.submit = function(data,form){
+																  		var newdata = {}, aux;
+															  			$scope.submitted = true;
+																  		if(form && form.$valid){
+
+																	 		if(data.email && data.email !== user.email && $scope.getEmail)
+																	 			newdata.email = data.email;
+
+																	 		if( (!user.numero && data.cpfcnpj) || (data.cpfcnpj && user.numero && data.cpfcnpj !== user.numero.replace(/\D/g,"")) && $scope.getCpf ){
+																	 				aux = data.cpfcnpj;
+																	 				if(aux.length == 11){
+																	 					if(!user.tipousuario || (user.tipousuario && user.tipousuario !== 'fisico')){ 
+																				 			newdata.tipousuario = 'fisico';
+																				 		}
+
+																	 					aux = aux.replace( /(\d{3})(\d)/ , "$1.$2"); 
+																					    aux = aux.replace( /(\d{3})(\d)/ , "$1.$2"); 
+																					    aux = aux.replace( /(\d{3})(\d{1,2})$/ , "$1-$2");
+																	 				}else{
+																	 					if(!user.tipousuario || (user.tipousuario && user.tipousuario !== 'juridico')){ 
+																				 			newdata.tipousuario = 'juridico';
+																				 		}
+
+																					    aux = aux.replace( /^(\d{2})(\d)/ , "$1.$2"); 
+																					    aux = aux.replace( /^(\d{2})\.(\d{3})(\d)/ , "$1.$2.$3"); 
+																					    aux = aux.replace( /\.(\d{3})(\d)/ , ".$1/$2");
+																					    aux = aux.replace( /(\d{4})(\d)/ , "$1-$2");
+																					}
+																					newdata.numero = aux;
+																	 		}
+																	 		
+																	 		authService.update(newdata)
+																	 					.then(function(res){
+																	 							$modalInstance.dismiss('cancel');
+																	 							if(!res || !res.data || !res.data.retorno || !res.data.retorno.sucesso)
+																	 								vm.alert({ main : { title : "Falha ao atualizar dados!"}});
+																	 							else if(urlNext)
+																		 							window.location = urlNext;
+																		 						else if(typeof callback === "function")
+																		 							callback();
+
+																	 						}, function(res){ vm.alert({ main : { title : "Falha ao atualizar os dados!"} }) });		
+
+
+																  		}
+																  };
+
+
+																$scope.logout = function() {
+																	$modalInstance.dismiss('cancel');
+																	authService.logout()
+																			   .then( function (res){
+																			   		vm.login('/carrinho/', '/carrinho/');
+																			   });
+																};
+
+															}
+
+					 						});
+					 				}
+					 			};
+
 					 	vm.trailer = function (url, classModel) {
 					 				var windowClass = classModel ? classModel : 'trailer';
 				 					var modalInstance = $modal.open({ 
@@ -219,8 +342,7 @@
 																authService.login(credentials).then(function (res){
 																	var url;
 												 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
-												 						$scope.cancel();
-
+												 						$modalInstance.dismiss('cancel');
 												 						if(url = authService.getRedirect()){
 												 							authService.setRedirect();
 												 							window.location = url;

@@ -3,10 +3,11 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('perfilController', ['$scope', '$controller', '$location', 'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
-					 function(scope, $controller, $location, QiSatAPI, authService, Authenticated, postmon, Config ) {
+		.controller('perfilController', ['$scope', '$controller', '$location', '$analytics',  'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
+					 function(scope, $controller, $location, $analytics, QiSatAPI, authService, Authenticated, postmon, Config ) {
 
 						var modalController = $controller('modalController');
+						$analytics.pageTrack($location.path());
 
 						function validateCNPJ(c) {
 							var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];

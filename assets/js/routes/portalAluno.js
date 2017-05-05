@@ -19,9 +19,9 @@
             };
 
             $routeProvider.when('/aluno', {
-              templateUrl : '/views/aluno-perfil.html', 
+              templateUrl : '/views/aluno-cursos.html', 
               isAuth : true,
-              controller: 'perfilController',
+              controller: 'matriculaController',
               resolve : {
                 Authenticated : Authenticated
               }

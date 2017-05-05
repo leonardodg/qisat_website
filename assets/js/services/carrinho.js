@@ -209,24 +209,31 @@
 
 		                                                    				 forma = res.data.retorno.formas[key]; 
 		                                                    				 forma.index = key;
-		                                                    				 operadoras = Object.keys(forma.operadoras).map(function (o) { 
-		                                                    				 	var operadora = { index : o, img : forma.operadoras[o] };
-		                                                    				 	return operadora;
-		                                                    				 });
-		                                                    				 forma.operadoras = operadoras;
 
- 		                                                    				 tipos = Object.keys(forma.tipos).map(function (t) { 
-		                                                    				 	var tipo = { index : t, img : forma.tipos[t] };
-		                                                    				 	return tipo;
-		                                                    				 });
-		                                                    				 forma.tipos = tipos;
+		                                                    				 if(forma.operadoras){
+			                                                    				 operadoras = Object.keys(forma.operadoras).map(function (o) { 
+			                                                    				 	var operadora = { index : o, img : forma.operadoras[o] };
+			                                                    				 	return operadora;
+			                                                    				 });
+			                                                    				 forma.operadoras = operadoras;
+		                                                    				 }
 
- 		                                                    				 parcelas = Object.keys(forma.parcelas).map(function (p) { 
-		                                                    				 	var parcela = { qtd : p };
-		                                                    				 	parcela.valor = $filter('currency')(forma.parcelas[p], 'R$');
-		                                                    				 	return parcela;
-		                                                    				 });
-		                                                    				 forma.parcelas = parcelas;		                                                    				 
+		                                                    				 if(forma.tipos){
+	 		                                                    				 tipos = Object.keys(forma.tipos).map(function (t) { 
+			                                                    				 	var tipo = { index : t, img : forma.tipos[t] };
+			                                                    				 	return tipo;
+			                                                    				 });
+			                                                    				 forma.tipos = tipos;
+		                                                    				 }
+
+		                                                    				 if(forma.parcelas){
+	 		                                                    				 parcelas = Object.keys(forma.parcelas).map(function (p) { 
+			                                                    				 	var parcela = { qtd : p };
+			                                                    				 	parcela.valor = $filter('currency')(forma.parcelas[p], 'R$');
+			                                                    				 	return parcela;
+			                                                    				 });
+			                                                    				 forma.parcelas = parcelas;
+		                                                    				 }	                                                    				 
 
 		                                                    				 return forma;
 

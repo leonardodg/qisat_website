@@ -3,18 +3,18 @@
     <h5 class="menu-filter-sidebars--title">Menu</h5>
 
     <ul class="menu-partners">
-      <li class="active"><a href="/institucional/convenios/conselhos"><i class="material-icons right">expand_more</i>Convênios</a>
+      <li class="active"><a href="/institucional/convenios/conselhos" analytics-on ><i class="material-icons right">expand_more</i>Convênios</a>
         <ul>
-          <li><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li>
-          <li><a href="/institucional/convenios/preduc/conveniadas"><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+          <li><a href="/institucional/convenios/conselhos" analytics-on >Projeto Conselhos Regionais</a></li>
+          <li><a href="/institucional/convenios/preduc/conveniadas" analytics-on ><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
             <ul>
-              <li class="active"><a href="/institucional/convenios/preduc/ensino">Instituição de Ensino</a></li>
-              <li><a href="/institucional/convenios/preduc/entidade">Entidade de Classe</a></li>
+              <li class="active"><a href="/institucional/convenios/preduc/ensino" analytics-on >Instituição de Ensino</a></li>
+              <li><a href="/institucional/convenios/preduc/entidade" analytics-on >Entidade de Classe</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="/institucional/parceiros">Parceiros</a></li>
+      <li><a href="/institucional/parceiros" analytics-on >Parceiros</a></li>
     </ul>
   </div>
 
@@ -27,24 +27,23 @@
               <div class="row entidades">
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos" ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+                    <a href="/institucional/convenios/conselhos" analytics-on  ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
-                    <a href="/institucional/convenios/conselhos/desconto"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+                    <a href="/institucional/convenios/conselhos/desconto" analytics-on ><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
                   </div>
                 </div>
                 <div class="column small-12 medium-4">
                   <div>
                     <a href="#cadastro" ng-click="vm.open()" ><i class="material-icons">insert_drive_file</i> CADASTRAR ENTIDADE</a>
-
                   </div>
                 </div>
               </div>
             </div>
 
-            <a href="/institucional/convenios/preduc/inscricao" class="button button-discount">Quero me inscrever com desconto</a>
+            <a href="/institucional/convenios/preduc/inscricao" class="button button-discount" analytics-on >Quero me inscrever com desconto</a>
 
             <h1>Projeto Rede Educacional</h1>
             <p>
@@ -179,7 +178,7 @@
                     
                     <div class="row">
                      <div class="small-12 medium-3 large-12 columns">
-                        <button class="button right" type="submit" ng-disabled="vm.cadastroInstituicaoForm.$invalid||vm.send" ng-click="vm.addInstitution(1)"> Enviar </button>
+                        <button class="button right" type="submit" ng-disabled="vm.cadastroInstituicaoForm.$invalid||vm.send" ng-click="vm.addInstitution(1)" analytics-on analytics-event="Cadastro ensino" > Enviar </button>
                       </div>
                     </div>
                     
@@ -195,11 +194,11 @@
                     <table>
                       <tr>
                         <td>Termo de Adesão.pdf</td>
-                        <td><a ng-href="{{vm.linkDownload}}" class="button" target="_self" download="Termo de Adesão.pdf" >Baixar</a></td>
+                        <td><a ng-href="{{vm.linkDownload}}" class="button" target="_self" download="Termo de Adesão.pdf" analytics-on analytics-event="download termo ensino" >Baixar</a></td>
                       </tr>
                       <tr>
                         <td>Lista de Alunos e Professores.xls</td>
-                        <td><a ng-href="{{vm.linkDownload ? '/files/PREDUC - INSTITUIÇÃO DE ENSINO - Lista de Alunos e Professores.xls': ''}}" target="_self" download="Lista de Alunos e Professores.xls" class="button">Baixar</a></td>
+                        <td><a ng-href="{{vm.linkDownload ? '/files/PREDUC - INSTITUIÇÃO DE ENSINO - Lista de Alunos e Professores.xls': ''}}" target="_self" download="Lista de Alunos e Professores.xls" class="button" analytics-on analytics-event="download lista ensino"  >Baixar</a></td>
                       </tr>
                     </table>
 

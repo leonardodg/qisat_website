@@ -3,10 +3,11 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('singupController', ['$scope', '$controller', 'QiSatAPI', 'postmon', 'Config', '$location', 'authService',
-					 function(scope, $controller, QiSatAPI, postmon, Config, $location, authService) {
+		.controller('singupController', ['$scope', '$controller', 'QiSatAPI', 'postmon', 'Config', '$location', '$analytics', 'authService',
+					 function(scope, $controller, QiSatAPI, postmon, Config, $location, $analytics, authService) {
 
 					 	var modalController = $controller('modalController');
+					 	$analytics.pageTrack($location.path());
 					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.country = Config.country;
 					 	scope.states = Config.states;
@@ -27,7 +28,23 @@
 						 			return data;
 						 		});
 					 		}
-					 	}
+					 	};
+
+					 	scope.remember = function(){
+							var data = { email : scope.cadastro.email };
+								scope.msgRemember = '';
+								QiSatAPI.remember(data)
+											.then( function ( response ){
+													if(response && response.data && response.data.retorno && response.data.retorno.sucesso)
+														scope.msgRemember = "Lembrete de senha enviado com Sucesso!";
+												    else if((response.status == 200)&&(response && response.data && response.data.retorno && response.data.retorno.mensagem))
+						 								scope.msgRemember = "Falha no Envio da Mensagem. "+response.data.retorno.mensagem;
+												    else
+												    	scope.msgRemember = "Falha no Envio da Mensagem.";
+												}, function ( response ){
+													scope.msgRemember = "Falha no Envio da Mensagem.";
+												});
+						};
 
 					 	scope.create = function(){
 						 		var newdata = {}, aux;
@@ -132,14 +149,14 @@
 
 						 		}
 
-					 	}
+					 	};
 
 					 	scope.cancel = function(){
 					 		scope.submitted = false;
 					 		scope.cadastro = null;
 					 		scope.endereco = null;
 					 		scope.createForm.$setPristine();
-					 	}
+					 	};
 
 					 }]);
 })();

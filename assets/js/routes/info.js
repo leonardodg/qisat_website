@@ -12,7 +12,6 @@
               template : '',
               resolve : {
                     Info : function (QiSatAPI, $route){
-                            console.log($route.current.params);
                               return QiSatAPI.getInfo ('curso/online/'+$route.current.params.id)
                                              .then(function (info){
                                                   return info;

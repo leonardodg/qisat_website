@@ -16,7 +16,7 @@
               templateUrl : '/views/carrinho-pagamento.html',
               controller : 'pagamentoController as vm',
               resolve : {
-                  Authenticated : function(authService){
+                  Authenticated : function(authService, $location){
                       return authService.isAuth() || 
                               authService.verifyAuth()
                                          .then( function (res){ 
@@ -47,7 +47,7 @@
               templateUrl : '/views/carrinho-confirmacao.html',
               controller : 'confirmacaoController as vm',
               resolve : {
-                  Authenticated : function(authService){
+                  Authenticated : function(authService, $location){
                       return authService.isAuth() || 
                               authService.verifyAuth()
                                          .then( function (res){ 

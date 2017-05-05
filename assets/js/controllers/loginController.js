@@ -3,10 +3,11 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('loginController', [ '$scope', '$controller',  '$location', 'authService',
-					 function(scope, $controller, $location, authService ) {
+		.controller('loginController', [ '$scope', '$controller', '$location', '$analytics', 'authService',
+					 function(scope, $controller, $location, $analytics, authService ) {
 
 					 		var modalController = $controller('modalController');
+					 		$analytics.pageTrack($location.path());
 
 						 	scope.remember_me = true;
 						 	scope.login = function(credentials) {

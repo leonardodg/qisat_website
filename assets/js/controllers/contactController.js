@@ -4,9 +4,11 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope','QiSatAPI', '$modal', '$controller', 'authService', function($scope, QiSatAPI, $modal, $controller, authService){
+					[ '$scope', '$location', '$analytics', 'QiSatAPI', '$modal', '$controller', 'authService', 
+						function($scope, $location, $analytics, QiSatAPI, $modal, $controller, authService){
 						
 						var modalController = $controller('modalController');
+							$analytics.pageTrack($location.path());
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							$scope.modalcall = modalController.call;
 			                $scope.submitted = false;

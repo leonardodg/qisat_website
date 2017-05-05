@@ -7,7 +7,7 @@
           <th>Termos de contrato</th>
           <td>
             <label>
-              <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="vm.contrato" > <a href="#" ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
+              <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="vm.contrato" > <a ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
 
               <div ng-show="vm.submitted && pagamentoForm.contrato.$invalid">
                   <span class="error" ng-show="pagamentoForm.contrato.$error.required">Favor ler e aceitar o Contrato.</span>
@@ -17,14 +17,14 @@
           </td>
         </tr>
         <tr>
-          <th>Selecione a Forma de Pagamento</th>
+          <th>Selecione a Forma de Pagamento  </th>
           <td>
             <div class="row">
               <div ng-repeat="forma in vm.formasPagamentos" ng-class="{'medium-3 small-12 columns end' : forma.pagamento =='Boleto', 'medium-7 small-12 columns' : forma.pagamento =='Cartão de Crédito'}">
                 <p>{{forma.pagamento}}</p>
                 <ul class="inline-list">
                   <li ng-repeat="operadora in forma.operadoras">
-                    <label><input id="pagamento" name="pagamento" type="radio" ng-model="vm.pagamento" value="{{operadora.index}}" ng-required="true" > <img ng-src="{{operadora.img.src}}" alt="" ></label>
+                    <label><input id="pagamento" name="pagamento" type="radio" ng-model="vm.pagamento" value="{{operadora.index}}" ng-required="true" > <img ng-src="{{operadora.img.src}}" alt="{{operadora.img.nome}}" ></label>
                   </li>
                 </ul>
               </div>
@@ -77,7 +77,7 @@
 
   <div class="row">
     <div class="small-12 large-3 large-centered columns">        
-        <a ng-href="{{vm.redirect}}" class="button success text-center">Finalizar Pagamento</a>
+        <a ng-href="{{vm.redirect}}" class="button success text-center" analytics-on analytics-event="carrinho finalizar cartao" >Finalizar Pagamento</a>
     </div>
   </div>
 
@@ -89,7 +89,7 @@
     <a href="/carrinho" class="button secondary" ng-hide="vm.loading"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
   </div>
   <div class="small-6 medium-6 large-6 columns">
-      <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading">Realizar Compra <i class="material-icons">keyboard_arrow_right</i></button>
+      <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading" analytics-on analytics-event="carrinho comprar">Realizar Compra <i class="material-icons">keyboard_arrow_right</i></button>
   </div>
 </div>
 
@@ -115,8 +115,8 @@
 
         <div class="row">
             <div class="small-11 large-4 large-centered small-centered  columns texte-center">  
-                  <button class="button" ng-click="vm.cancelTransacao()">Alterar</button>
-                  <a ng-href="{{buy.transacao.url}}" class="button success ">Finalizar</a>
+                  <button class="button" ng-click="vm.cancelTransacao()" analytics-on analytics-event="carrinho cancel" >Alterar</button>
+                  <a ng-href="{{buy.transacao.url}}" class="button success" analytics-on analytics-event="carrinho pagar transacao">Finalizar</a>
             </div>
         </div>
 </div>

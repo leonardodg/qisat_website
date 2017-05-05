@@ -53,8 +53,8 @@
 			                <span><i class="material-icons">menu</i> Menu </span> </a>
 			            </li>
 			    		<li class="header-main__list header-main__list-cart" > 
-			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()">
-			    				<i class="material-icons">shopping_cart</i> <span class="cart_number"ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho Itens"  >
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number" ng-if="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span></a>
 			    			</a>
 			    		</li>
 					</ul>
@@ -63,7 +63,7 @@
 		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
 		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" ></div>
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close"></div>
 				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
 					<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
@@ -83,7 +83,7 @@
 					</div> <!-- cd-cart-total -->
 				 
 					<a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
-					<p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close" ><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
@@ -303,7 +303,7 @@
 																</a>
 
 
-																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie" >{{::course.preco}}
+																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie" analytics-on analytics-event="addItem" >{{::course.preco}}
 										   						<span class="card-course__icon-cart">
 										   							<!-- <i class="material-icons">add_shopping_cart</i> -->
 										   							<div class="price_popover" ng-if="::course.promocaoDateend">
@@ -315,7 +315,7 @@
 										   						</span>
 									   							</a>
 
-									   							<a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="course.isIndividual||course.isClassroom"  >	{{::course.preco}}
+									   							<a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="course.isIndividual||course.isClassroom" analytics-on analytics-event="addInteresse" >	{{::course.preco}}
 													             	
 												             		<span class="cart">
 												             			<i class="material-icons">playlist_add_check</i>
@@ -329,7 +329,7 @@
 													            </a>
 
 
-													            <a class="card-course__button has-price_popover" ng-click="inscricao(course.id)" ng-if="course.isFree" >	
+													            <a class="card-course__button has-price_popover" ng-click="inscricao(course.id)" ng-if="course.isFree" analytics-on analytics-event="addInscricao" >	
 													             	
 												             		<span class="cart">
 												             			<i class="material-icons">school</i>
@@ -488,7 +488,7 @@
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" analytics-on analytics-event="callme" >Ligamos para você</a></li>
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
 												</ul>
 											</li>  
@@ -595,6 +595,8 @@
 	    <script defer src="js/libs/ui-masks.js"></script>
 	    <script defer src="js/libs/angular-timer.min.js"></script>
     	<script defer src="js/libs/ng-infinite-scroll.min.js"></script>	    
+	    <script defer src="js/libs/angulartics.min.js"></script>
+    	<script defer src="js/libs/angulartics-ga.min.js"></script>	   
 	    
 		<script defer src="js/QiSatApp.js"></script>
 		<script defer src="js/config/value.js"></script>
@@ -612,6 +614,15 @@
 		<script defer src="js/services/carrinho.js"></script>
 		<script defer src="js/run/foundation.js"></script>
 		<script defer src="js/app.js"></script>
+
+		<script > 
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-98371985-1', 'none'); 
+		</script>
 		<!-- EXECUTA SCRIPTS QISAT -->
 
 

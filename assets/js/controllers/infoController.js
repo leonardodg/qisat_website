@@ -3,12 +3,13 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$filter', '$timeout','QiSatAPI', 'authService', 'Config',
-					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService, Config) {
+		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$analytics' ,'$filter', '$timeout','QiSatAPI', 'authService', 'Config',
+					 function(scope, $controller, $sce, $location, $analytics, $filter, $timeout, QiSatAPI, authService, Config) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
 						 		path, search = absUrl.indexOf('?'), params, turma,
 						 		modalController = $controller('modalController');
+						 		$analytics.pageTrack($location.path());
 					 		
 					 		moment.locale('pt-BR');
 

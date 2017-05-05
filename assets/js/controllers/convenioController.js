@@ -4,10 +4,13 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope', '$controller', '$filter' ,'$location','QiSatAPI', 'Config', function($scope, $controller, $filter, $location, QiSatAPI, Config ){
+					[ '$scope', '$controller', '$filter' ,'$location','$analytics','QiSatAPI', 'Config', 
+						function($scope, $controller, $filter, $location, $analytics, QiSatAPI, Config ){
 
 						var vm = this, modalController = $controller('modalController');
 							vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+
+						$analytics.pageTrack($location.path());
 
 						if($location.hash() == 'cadastro')
 							vm.openAdd = true;

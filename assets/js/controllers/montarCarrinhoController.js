@@ -3,13 +3,14 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('montarCarrinhoController', ['$scope', '$controller', '$location', '$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService',
-					 function(scope, $controller, $location, $window, $route, $filter, $modal, carrinhoServive, authService) {
+		.controller('montarCarrinhoController', ['$scope', '$controller', '$location', '$analytics' ,'$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService',
+					 function(scope, $controller, $location,$analytics, $window, $route, $filter, $modal, carrinhoServive, authService) {
 
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
 			 			 
 						vm.modallogin = modalController.login;
+						$analytics.pageTrack($location.path());
 
 						var authenticated = function(){
 		                      return authService.isAuth() || 
@@ -26,16 +27,24 @@
 					 	vm.nextCompra = function(){
 					 		var auth = authenticated();
 
+					 		function redirect(){
+					 			var user = authService.getUser();
+					 			if(user && (!user.email || !user.numero))
+									modalController.update('/carrinho/pagamento');
+								else
+				 					$location.path('/carrinho/pagamento');
+					 		}
+
 							if(auth === true){
-				 				$location.path('/carrinho/pagamento', '/carrinho/pagamento');
+								redirect();
 					 		}else if (auth === false){
-					 			modalController.login('/carrinho/pagamento', '/carrinho/pagamento');
+					 			modalController.login('/carrinho/pagamento', false, redirect );
 					 		}else{
 					 			auth.then(function(res){
 				 					if(auth === true){
-						 				$location.path('/carrinho/pagamento', '/carrinho/pagamento');
+						 				redirect();
 							 		}else{
-							 			modalController.login('/carrinho/pagamento', '/carrinho/pagamento');
+							 			modalController.login('/carrinho/pagamento', false, redirect );
 							 		}
 					 			});
 					 		}

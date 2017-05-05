@@ -20,8 +20,8 @@
           <hr>
 
           <ul class="unstyle">
-	          <li ng-click="showZopim()"  zopim ><span><i class="material-icons">question_answer </i>Fale conosco pelo chat</span></li>
-	          <li ng-click="modalcall()" ><span><i class="material-icons">smartphone </i>Ligamos para você</span></li>
+	          <li ng-click="showZopim()" zopim analytics-on analytics-event="zopim" ><span><i class="material-icons">question_answer </i>Fale conosco pelo chat</span></li>
+	          <li ng-click="modalcall()" analytics-on analytics-event="callme" ><span><i class="material-icons">smartphone </i>Ligamos para você</span></li>
 <!--           <li><span href="#"><i class="material-icons">comment</i> Sugira um curso</span></li>
           <li><span href="#"><i class="material-icons">person_add</i> Indique a um amigo</span></li> -->
           </ul>
@@ -49,7 +49,7 @@
                    <input type="email" name="emailNew" id="emailNew" ng-model="emailNew"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }"  >
                  </div>
                  <div class="small-2 columns">
-                   <button class="button postfix" ng-disabled="newForm.emailNew.$invalid" ng-click="addNew()" ><i class="material-icons" >done</i></button>
+                   <button class="button postfix" ng-disabled="newForm.emailNew.$invalid" ng-click="addNew()" ><i class="material-icons" analytics-on analytics-event="newsletter" >done</i></button>
                  </div>
                </div>
                   <div ng-show="newForm.emailNew.$dirty && newForm.emailNew.$invalid">
@@ -160,7 +160,7 @@
 				<div class="row align-center">
 					  <div class="small-6 large-4 columns">&nbsp</div>
 					  <div class="small-4 large-4 columns">
-					  			<button class="button expand" type="submit" ng-disabled="contatoForm.$invalid||send" ng-click="sendMail()"> Enviar </button>
+					  			<button class="button expand" type="submit" ng-disabled="contatoForm.$invalid||send" ng-click="sendMail()" analytics-on analytics-event="contato"> Enviar </button>
 					  </div>
 	  				<div class="small-6 large-4 columns"></div>
 			   	</div>

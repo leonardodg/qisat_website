@@ -3,15 +3,26 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
-					 function(scope, $location, authService, $modal, $timeout, $window, carrinhoServive, formasPagamentos, Authenticated, Itens) {
-
-					 	var vm = this;
-		 				var forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
-					 		vm.formasPagamentos = formasPagamentos.reverse(); 
-					 		vm.pagamento = 1;
+		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$analytics', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
+					 function(scope, $location, authService, $modal, $timeout, $window, $analytics, carrinhoServive, formasPagamentos, Authenticated, Itens) {
 
 					 	moment.locale('pt-BR');
+					 	$analytics.pageTrack($location.path());
+
+					 	var vm = this, forma;
+				 		vm.pagamento = 1;
+		 				if(formasPagamentos){
+		 					forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
+		 					formasPagamentos.map(function(forma){ 
+		 						forma.operadoras = forma.operadoras.map(function(op){
+		 							if(op.img && op.img.nome)
+		 								op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
+		 							return op;
+		 						}); 
+		 					});
+				 			vm.formasPagamentos = formasPagamentos.reverse(); 
+		 				}
+
 
 					 	if(Authenticated && Itens){
 					 		vm.user = authService.getUser();
@@ -101,7 +112,9 @@
 						 			data.contrato = 1;
 						 			data.operadora = parseInt(vm.pagamento);
 									tipoPagamento = vm.formasPagamentos.find(function (forma){ return forma.operadoras.find(function (op){ return op.index == vm.pagamento })});
-									if(tipoPagamento) data.tipoPagamento = parseInt(tipoPagamento.index);
+									// melhorar solução para quando forma de pogamento possuir mais de um tipo ativo
+									if(tipoPagamento && tipoPagamento.tipos) 
+										data.tipoPagamento = parseInt(tipoPagamento.tipos[0].index);
 									data.valorParcelas = parseInt(vm.nparcelas.qtd);
 
 									carrinhoServive.getCarrinho()
@@ -116,7 +129,7 @@
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
 						 										
 																if(vm.pagamento==4)
-																	$location.path('/carrinho/confirmacao/'+res.venda)
+																	$location.path('/carrinho/confirmacao/'+res.venda);
 																else{
 																	vm.loading = false;
 																	vm.redirect = res.url;

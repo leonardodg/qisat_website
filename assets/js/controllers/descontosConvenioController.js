@@ -4,8 +4,10 @@
 	angular
 		.module('QiSatApp')
 		.controller("descontosConvenioController", 
-					[ '$scope','$filter','descontosConvenio', function($scope,$filter, descontosConvenio){
+					[ '$scope', '$location', '$analytics', '$filter','descontosConvenio', 
+					   function($scope, $location, $analytics, $filter, descontosConvenio){
 						var filterLimitName = $filter('limitName');
+						$analytics.pageTrack($location.path());
 
 						if(descontosConvenio){
 							descontosConvenio.cursosSoftware.map(function(course){

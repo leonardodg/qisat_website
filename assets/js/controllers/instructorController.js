@@ -4,10 +4,11 @@
 	angular
 		.module('QiSatApp')
 		.controller("instructorController",
-				[ '$scope', '$sce', '$filter', 'Config', 'QiSatAPI', 'instrutor',  
-					function(scope, $sce, $filter, Config, QiSatAPI, instructor){
+				[ '$scope', '$sce', '$filter', '$location', '$analytics', 'Config', 'QiSatAPI', 'instrutor',  
+					function(scope, $sce, $filter, $location, $analytics, Config, QiSatAPI, instructor){
 
 							var filterLimitName = $filter('nameInstructor');
+							$analytics.pageTrack($location.path());
 
 								if(instructor){
 									instructor.nome = filterLimitName(instructor.nome,200);

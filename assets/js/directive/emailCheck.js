@@ -11,12 +11,17 @@
 
                 elem.on('blur', function () {
                         scope.$apply(function () {
+                            if(scope.msgRemember)
+                                scope.msgRemember = '';
+
                             if(!ctrl.$error.pattern && !ctrl.$error.required){
                                 QiSatAPI.checkByEmail(ctrl.$viewValue).then(function(res){
                                      if(res.data && res.data.retorno && !res.data.retorno.sucesso)
                                         ctrl.$setValidity('emailCheck', true); //no error
-                                    else if(res.data && res.data.retorno && res.data.retorno.sucesso)
+                                    else if(res.data && res.data.retorno && res.data.retorno.sucesso){
                                         ctrl.$setValidity('emailCheck', false); //yes error
+                                        scope.erroemail = res.data.retorno.mensagem;
+                                    }
                                 });
                                 
                             }

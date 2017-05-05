@@ -1,4 +1,8 @@
-<div class="tiny" aria-labelledby="modalTitle" ng-if="!alert">
+<div class="tiny reveal-modal-qisat" aria-labelledby="modalTitle" ng-if="!alert">
+
+    <header class="reveal-modal-header">
+          <span class="brand-qisat-small brand-qisat-small-light"></span>
+   </header>
 
     <div ng-if="!remember && !loading">
 
@@ -6,7 +10,7 @@
         <form name="loginForm" id="loginForm" novalidate >
           <input type="text" id="username" name="username" placeholder="Nome do usuário" ng-model="user.username">
           <input type="password" id="password" name="password" placeholder="Senha de acesso" ng-model="user.password" >
-          <button type="button" ng-click="login(user)" class="expand primary">Entrar</button>
+          <button type="button" ng-click="login(user)" class="expand primary" analytics-on analytics-event="carrinho login">Entrar</button>
         </form>
         <p class="text-center" ><a ng-click="clickremember()" >Esqueci minha senha</a></p>
     </div>
@@ -19,7 +23,7 @@
                   <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                     <span class="error" >Formato de Email incorreto!</span>
                   </div>
-            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" > Solicitar Senha »</button>
+            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="carrinho remember" > Solicitar Senha »</button>
       </form>
       <br class="clearfix">
       <br class="clearfix">
@@ -32,9 +36,9 @@
 
     <div class="not-member text-center">
       <p>Ainda não tem Cadastro?</p>
-      <a class="button" ng-click="redirectSignup()" >Cadastre-se</a>
+      <a class="button" ng-click="redirectSignup()" analytics-on analytics-event="carrinho cadastro" >Cadastre-se</a>
     </div>
-    <a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a>
+    <a class="close-reveal-modal" aria-label="Close" ng-click="cancel()" analytics-on analytics-event="carrinho close login" >&#215;</a>
 </div>
 
 
@@ -50,7 +54,7 @@
       <div class="row">
         <div class="large-12 columns">
             <h4 class="section-call__form--header-title" ng-if="alert.header.title"> 
-              {{ng-if="alert.header.title"}} 
+              {{alert.header.title}} 
             </h4>
               <p ng-if="alert.header.subtitle" > {{alert.header.subtitle}} </p>
         </div>

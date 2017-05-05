@@ -3,10 +3,12 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('rememberController', ['$scope', '$controller', '$location', 'QiSatAPI',
-					 function(scope,$controller, $location, QiSatAPI ) {
+		.controller('rememberController', ['$scope', '$controller', '$location', '$analytics', 'QiSatAPI',
+					 function(scope,$controller, $location, $analytics, QiSatAPI ) {
 
 					 	var  modalController = $controller('modalController');
+					 	$analytics.pageTrack($location.path());
+					 	
 					 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 					 	scope.sendMail = function(){
 					 		scope.loading = true;

@@ -5,7 +5,7 @@
 			.module('QiSatApp')
 			.config(['$httpProvider', function ($httpProvider) {
 
-					        function loading() {
+					        function loading($q) {
 					        	var body = angular.element(document).find('body');
 
 								return {
@@ -22,6 +22,13 @@
 
 									      	return response;
 									    },
+
+									    'responseError': function(rejection) {
+									    	if ( rejection && rejection.config && rejection.config.loading )
+									    		body.removeClass('wait');
+
+									      	 return $q.reject(rejection);
+									    }
 
 								};
 							};

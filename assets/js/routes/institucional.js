@@ -7,10 +7,11 @@
           function ( $httpProvider, $locationProvider, $routeProvider ) {
             $locationProvider.html5Mode(true); 
 
-            function aboutController ($scope, QiSatAPI){
+            function aboutController ($scope, $location, $analytics, QiSatAPI){
                   $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
                   $scope.submitted = false;
                   $scope.isDisabled = true;
+                  $analytics.pageTrack($location.path());
                   $scope.solicitarIdentidade = function(){
                       $scope.submitted = true;
                       if($scope.email){
@@ -27,7 +28,8 @@
                   }
               };
 
-              function descontosConvenio (QiSatAPI){
+              function descontosConvenio ($location, $analytics, QiSatAPI){
+                          $analytics.pageTrack($location.path());
                           return QiSatAPI.descontoConvenio().then( function ( res ){
                                     if(res && res.sucesso){
                                         var result = { cursosSoftware : [], cursosTeoricos : [] };
@@ -44,7 +46,8 @@
                                 });
               };
 
-              function institutions (QiSatAPI, $filter){
+              function institutions ($location, $analytics, QiSatAPI, $filter){
+                          $analytics.pageTrack($location.path());
                           return QiSatAPI.getConvenios()
                                          .then( function ( response ){
                                                 var data = [];
@@ -55,6 +58,11 @@
                                                 });
                                                 return data;
                                           });
+              };
+
+
+              function allController($location, $analytics){
+                        $analytics.pageTrack($location.path());
               };
 
             $routeProvider.when('/institucional', {
@@ -68,15 +76,18 @@
             });
 
             $routeProvider.when('/institucional/linha-do-tempo', {
-              templateUrl : '/views/institucional-linha-do-tempo.html'
+              templateUrl : '/views/institucional-linha-do-tempo.html',
+              controller : allController
             });
             
             $routeProvider.when('/institucional/convenios-e-parceiros', {
-               templateUrl : '/views/institucional-parceiros.html'
+               templateUrl : '/views/institucional-parceiros.html',
+               controller : allController
             });
 
             $routeProvider.when('/institucional/parceiros', {
-              templateUrl : '/views/institucional-parceiros.html'
+              templateUrl : '/views/institucional-parceiros.html',
+              controller : allController
             });
 
             $routeProvider.when('/institucional/convenios/conselhos', {
@@ -112,7 +123,8 @@
 
             $routeProvider.when('/institucional/convenios/preduc/conveniadas', {
                   templateUrl : '/views/institucional-preduc-conveniadas.html',
-                  controller :  function($scope,  Config, institutions){
+                  controller :  function($scope, $location, $analytics, Config, institutions){
+                                $analytics.pageTrack($location.path());
                                 $scope.states = Config.states;
                                 $scope.institutions = institutions;
                   },
@@ -121,10 +133,11 @@
 
             $routeProvider.when('/institucional/convenios/preduc/inscricao', {
                   templateUrl : '/views/institucional-preduc-inscricao.html',
-                  controller :  function($scope, $controller, Config, QiSatAPI, institutions){
+                  controller :  function($scope, $location, $analytics, $controller, Config, QiSatAPI, institutions){
                                   var modalController = $controller('modalController');
                                     $scope.states = Config.states;
                                     $scope.selectInstitution = institutions;
+                                    $analytics.pageTrack($location.path());
 
                                   $scope.institutionDiscount = function(){
                                     var data = angular.copy($scope.desconto)

@@ -3,9 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('certificadoController', ['$rootScope','$scope','$sce',  '$window', '$filter','authService','Authenticated', 'Config',
-					 function($rootScope, scope, $sce, $window, $filter, authService, Authenticated, Config ) {
+		.controller('certificadoController', ['$rootScope','$scope','$sce', '$location', '$analytics', '$window', '$filter','authService','Authenticated', 'Config',
+					 function($rootScope, scope, $sce, $location, $analytics, $window, $filter, authService, Authenticated, Config ) {
 
+					 	$analytics.pageTrack($location.path());
 					 	if(Authenticated){
 						 	$rootScope.loading = true;
 					 		scope.user = authService.getUser();

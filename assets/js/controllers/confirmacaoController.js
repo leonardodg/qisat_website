@@ -3,9 +3,11 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('confirmacaoController', [ 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
-					 function( authService,  carrinhoServive, venda, Authenticated) {
+		.controller('confirmacaoController', [ '$location', '$analytics', 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
+					 function( $location, $analytics, authService,  carrinhoServive, venda, Authenticated) {
 					 	var vm = this;
+					 	$analytics.pageTrack($location.path());
+
 					 	if(venda && (authService.isLogged() && Authenticated)){
 					 		if(venda.forma_pagamento == 'Boleto'){
 					 			vm.pagamento = 'boleto';

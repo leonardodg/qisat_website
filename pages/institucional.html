@@ -64,7 +64,7 @@
      <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 
      <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
-        <div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()"></div>
+        <div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close"></div>
         <div id="cd-cart" ng-class="{ actived : buy.showBuy }">
           <h2>Itens no carrinho</h2>
         <ul class="cd-cart-items">
@@ -84,7 +84,7 @@
           </div> <!-- cd-cart-total -->
          
           <a href="/carrinho" class="checkout-btn" ng-if="buy.valorTotal" target="_self">Finalizar compra</a>
-          <p class="cd-go-to-cart" ng-click="buy.activeBuy()"><a>Continuar comprando</a></p>
+          <p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close"><a>Continuar comprando</a></p>
         </div> <!-- cd-cart -->
      <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
@@ -100,7 +100,7 @@
        <div class="medium-4 columns">
           <div class="hero-course__play-container" >
             <a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI?rel=0&arp;autoplay=1
-')" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
+')" anchor-link analytics-event="Play" analytics-category="Videos Institucional" ><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
           </div> <!--//hero-course__play-container -->
         </div> <!-- //large-3-->
    </div> <!-- ///row -->
@@ -111,12 +111,11 @@
      <div class="medium-12 columns">
        <nav class="menu-horizontal">
          <ul class="menu-horizontal__list" menu-active data-equalizer>
-          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current"><a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" link="/institucional/sobre-a-empresa">Sobre a empresa</a></li>
-          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/linha-do-tempo"
-            link="/institucional/linha-do-tempo">Linha do tempo</a></li>
-          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" link="/institucional/convenios-e-parceiros">Convênios e Parceiros</a></li>
-          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a  class="menu-horizontal__link" href="/institucional/instrutores-e-professores" link="/institucional/instrutores-e-professores">Instrutores e Professores</a></li>
-         <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/contatos" link="/institucional/contatos">Entre em Contato</a></li>        
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current"><a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" link="/institucional/sobre-a-empresa" analytics-on >Sobre a empresa</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/linha-do-tempo" link="/institucional/linha-do-tempo" analytics-on >Linha do tempo</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" link="/institucional/convenios-e-parceiros"  analytics-on >Convênios e Parceiros</a></li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/instrutores-e-professores" link="/institucional/instrutores-e-professores" analytics-on >Instrutores e Professores</a></li>
+         <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/contatos" link="/institucional/contatos" analytics-on >Entre em Contato</a></li>        
         </ul>
        </nav>
      </div> <!-- //large-12-->
@@ -161,7 +160,7 @@
                       <li class="footer-primary__columns--item">
                         <ul class="footer-primary__list">
                            <li class="footer-primary__title"> Contato</li>
-                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" >Ligamos para você</a></li>
+                          <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" analytics-on analytics-event="callme" >Ligamos para você</a></li>
                           <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
                         </ul>
                       </li>
@@ -263,6 +262,8 @@
       <script defer src="js/libs/ui-masks.js"></script>
       <script defer src="js/libs/angular-timer.min.js"></script>
       <script defer src="js/libs/ng-infinite-scroll.min.js"></script>
+      <script defer src="js/libs/angulartics.min.js"></script>
+      <script defer src="js/libs/angulartics-ga.min.js"></script> 
 
       <script defer src="js/QiSatApp.js"></script>
       <script defer src="js/config/value.js"></script>
@@ -299,7 +300,14 @@
 
       <script defer src="js/app.js"></script>
     <!-- // EXECUTA MEUS SCRIPTS -->
+      <script > 
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-98371985-1', 'none'); 
+      </script>
 
 </body>
 </html>

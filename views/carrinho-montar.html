@@ -18,7 +18,7 @@
         <td >
           {{item.modalidade}}: {{item.nome}} 
         </td>
-        <td class="muted">
+        <td class="muted qtd">
 
           <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacao" class="item-action"><i class="material-icons left">remove_circle</i></a>
           <input type="text" name="" class="quantity" placeholder="{{item.quantidade}}" value="{{item.quantidade}}">
@@ -70,7 +70,7 @@
     <a href="/cursos" class="button secondary" target="_self" ><i class="material-icons">keyboard_arrow_left</i> Acrescentar outro curso</a>
   </div>
   <div class="column small-6">
-    <a href="#" class="button success right" ng-click="vm.nextCompra()" ng-hide="!buy.qtdItens" >Avançar <i class="material-icons">keyboard_arrow_right</i></a>
+    <a class="button success right" ng-click="vm.nextCompra()" ng-hide="!buy.qtdItens" analytics-on analytics-event="carrinho avanca" >Avançar <i class="material-icons">keyboard_arrow_right</i></a>
   </div>
 </div>
 
@@ -114,8 +114,8 @@
 
         <div class="row">
             <div class="small-11 large-4 large-centered small-centered  columns texte-center">  
-                  <button class="button" ng-click="vm.cancelTransacao()">Alterar</button>
-                  <a ng-href="{{buy.transacao.url}}" class="button success ">Finalizar</a>
+                  <button class="button" ng-click="vm.cancelTransacao()" analytics-on analytics-event="carrinho cancel">Alterar</button>
+                  <a ng-href="{{buy.transacao.url}}" class="button success " analytics-on analytics-event="carrinho pagar cartao" >Finalizar</a>
             </div>
         </div>
 </div>

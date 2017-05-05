@@ -49,7 +49,7 @@
                    <input type="email" name="email" id="email" ng-model="email"  placeholder="seu@email.com" ng-pattern="emailFormat" ng-required="true" >
                  </div>
                  <div class="small-2 columns">
-                   <a class="button postfix" ng-href="{{isDisabled ? '': '/files/Manual da Marca QiSat.pdf'}}" target="_self" download="Manual QiSat.pdf" ng-disabled="isDisabled" ng-click="solicitarIdentidade()" ><i class="material-icons" >cloud_download</i></a>
+                   <a class="button postfix" ng-href="{{isDisabled ? '': '/files/Manual da Marca QiSat.pdf'}}" target="_self" download="Manual QiSat.pdf" ng-disabled="isDisabled" ng-click="solicitarIdentidade()" analytics-on analytics-event="download identidade"  ><i class="material-icons" >cloud_download</i></a>
                  </div>
                </div>
                   <div ng-show="visualForm.email.$dirty && visualForm.email.$invalid">
