@@ -2,9 +2,9 @@
 
 
 # ----- Bloqueando hotlinks em imagens ---------
-  #RewriteCond %{HTTP_REFERER} !^$
-  #RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?newsite.com [NC]
-  #RewriteRule \.(jpg|jpeg|png|gif|odg)$ - [NC,F,L]
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^http(s)?://(www|local-site)\.?qisat.com.br [NC]
+  RewriteRule \.(jpg|jpeg|png|gif|odg)$ - [NC,F,L]
 
 # ------ Protegendo seu arquivo .htaccess -------
 <files ~ "^.*\.([Hh][Tt][Aa])">
@@ -25,6 +25,7 @@
 #  ErrorDocument 401 /erros/authreqd.html
 #  ErrorDocument 403 /erros/forbid.html
 #  ErrorDocument 500 /erros/serverr.html
+ErrorDocument 404 /index.html
 
 # ------- Bloquear listagem de diretórios -------
   Options -Indexes
@@ -33,8 +34,7 @@
 #  RewriteCond %{HTTPS} !on
 #  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 
-
-  RewriteRule ^(css|images|js|stylesheets|libs|files)/(.*)$ /assets/$1/$2 [NC,L]
+  RewriteRule ^(css|images|js|stylesheets|libs|files|fonts)/(.*)$ /assets/$1/$2 [NC,L]
   
   RewriteRule ^cursos/?$ pages/courses.html [NC]
   RewriteRule ^cursos/(lancamentos|gratuitos)?/?$ pages/courses.html [NC]
@@ -54,16 +54,18 @@
   RewriteRule ^aluno/?([^/]+)?/?$ pages/aluno.html [NC]
   RewriteRule ^aluno/(carrinho)/([^/]+)$ pages/aluno.html [NC]
   RewriteRule ^(login|cadastro|lembrete-de-senha)/?$ pages/aluno-sem-menu.html [NC]
-  
-  RewriteRule ^sugira/([^/]+)?/?$ pages/sugira.html?filter=$1 [NC]
-  RewriteRule ^sugira/?$ pages/sugira.html [NC]
-  RewriteRule ^(duvida|duvidas)/?$ pages/duvidas.html [NC]
+
   RewriteRule ^(carrinho)/?$ pages/carrinho.html [NC]
   RewriteRule ^(carrinho)/([^/]+)$ pages/carrinho.html [NC]
   RewriteRule ^(carrinho)/([^/]+)/([^/]+)$ pages/carrinho.html [NC]
-  RewriteRule ^(certificacao-proficiencia)/?$ pages/certificacao-proficiencia.html [NC]
-  RewriteRule ^(hub)/?$ pages/cross-storage.html [NC]
-  RewriteRule ^(termos-de-uso|politica-de-privacidade)/?$ pages/basic.html [NC]
+  RewriteRule ^(hub)/?$ pages/cross-storage.html [NC,L]
+  RewriteRule ^(termos-de-uso|politica-de-privacidade)/?$ pages/basic.html [NC,L]
+
+  RewriteRule ^(ecommerce)/(produtos)/?d([^/]+)?/?$ index.html [NC,L]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^ /index.html
 
   <ifModule mod_gzip.c>
     mod_gzip_on Yes

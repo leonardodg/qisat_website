@@ -8,7 +8,6 @@ Disallow: /views
 Disallow: /assets
 Disallow: /files
 Disallow: /fonts
-Disallow: /js
 Disallow: /libs
 Disallow: /scss
 Disallow: /css
