@@ -1,0 +1,16 @@
+User-Agent: *
+Disallow: /carrinho
+Disallow: /aluno
+Disallow: /convenio
+Disallow: /ecommerce
+Disallow: /bower_components
+Disallow: /views
+Disallow: /assets
+Disallow: /files
+Disallow: /fonts
+Disallow: /js
+Disallow: /libs
+Disallow: /scss
+Disallow: /css
+Disallow: /stylesheets
+Disallow: /hub
