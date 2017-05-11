@@ -61,7 +61,7 @@ ErrorDocument 404 /index.html
   RewriteRule ^(hub)/?$ pages/cross-storage.html [NC,L]
   RewriteRule ^(termos-de-uso|politica-de-privacidade)/?$ pages/basic.html [NC,L]
 
-  RewriteRule ^(ecommerce)/(produtos)/?d([^/]+)?/?$ index.html [NC,L]
+  RewriteRule ^(ecommerce)/(produtos)/?([^/]+)?/?$ index.html [NC,L]
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
   RewriteRule ^ - [L]
