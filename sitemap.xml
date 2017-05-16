@@ -10,169 +10,209 @@
   <loc>http://www.qisat.com.br/</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>1</priority>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>0.9</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/lancamentos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>1</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/gratuito</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>1</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/serie</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/pacote</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/teorico</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/software</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/estrutural</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/eletrica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/hidraulica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/arquitetonica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/online/agronomica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>1</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/individuais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/teorico</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/software</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/estrutural</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/eletrica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cursos/presenciais/hidraulica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cursos/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/aluno</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/aluno/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/login</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>0.9</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/login/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/lembrete-de-senha</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/lembrete-de-senha/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/cadastro</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>0.9</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/cadastro/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/instrutores-e-professores</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/sobre-a-empresa</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>0.9</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/linha-do-tempo</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios-e-parceiros</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/parceiros</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/conselhos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/conselhos/conveniados</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/conselhos/desconto</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/preduc/ensino</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/preduc/entidade</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/preduc/descontos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url><url>
   <loc>http://www.qisat.com.br/institucional/convenios/preduc/conveniadas</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/convenios/preduc/inscricao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 <url>
   <loc>http://www.qisat.com.br/institucional/contatos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
   <priority>0.9</priority>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/institucional/" /> 
 </url>
 
 
@@ -180,261 +220,313 @@
   <loc>
     http://www.qisat.com.br/curso/online/eberick-v10</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+   <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/durabilidade-das-estruturas-concreto</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/nbr-6118-introducao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/nbr-6118-analise-da-estrutura</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/nbr-6118-topicos-especiais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/nr-18</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/alvenaria-estrutural-construtoras</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/alvenaria-estrutural-projetistas</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/conceitos-de-estabilidade-global</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pre-moldado-fundamentos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/fundacoes-engenharia-geotecnica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/altoqi-premium</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-estrutural-teoria</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-estrutural-teoria-e-pratica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/lumine-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/eberick-v9</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/software-cabeamento-lumine-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/sistemas-cabeamento-estruturado</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-eletricas-residenciais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-eletricas-prediais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/software-cabeamento-lumine-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/solucoes-de-contencao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/nr-10</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qieletrico</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/qibuilder</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-eletrico-teoria</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-eletrico-teoria-e-pratica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote-cabeamento-estruturado</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qihidrossanitario</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qiincendio</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/hydros-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/incendio-hydros-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-esgoto-sanitario</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-aguas-pluviais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-quente-geracao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-quente-distribuicao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-fria-fundamentos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-fria-dimensionamento</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/combate-a-incendio-hidrantes-e-mangotinhos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-hidraulico-teoria</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/pacote/projeto-hidraulico-teoria-e-pratica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qibuilder-cad</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qibuilder-gerenciador-de-arquivos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/qibuilder-editor-de-armaduras</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/desempenho-de-edificacoes-habitacionais-requisitos-gerais</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/marketing-para-engenharia-arquitetura-e-agronomia</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/gestao-de-projetos-em-escritorios</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/alvenaria-estrutural-arquitetos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/acustica-aplicada-a-home-theater</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/acustica-arquitetonica-fundamentos-e-conceitos</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/requisitos-para-desenvolvimento-de-projetos-de-edificacoes</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/gratuito/etiquetagem-de-eficiencia-energetica</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
@@ -445,91 +537,109 @@
   <loc>
     http://www.qisat.com.br/curso/presencial/concepcao-e-lancamento-projeto-estrutural</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/eberick-conceitos-analises-e-aplicacoes</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/eberick-pre-moldado-presencial</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/qieletrico</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/lumine-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/qihidrossanitario</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/qiincendio</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/sistema-hidraulico-preventivo</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/hydros-v4</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/qieditor-de-armaduras</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/bases-para-o-licencimento-ambiental</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/eberick-pre-moldado</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/irrigacao-e-drenagem-outorga-e-planejamento-da-irrigacao</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/presencial/incendio-Hydros-v4 </loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/gratuito/impressao-3d-maquetes-de-projeto</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/tecnologia-concreto-especificacao-e-dosagem</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/irrigacao-e-drenagem-irrigacao-para-horticultura-e-paisagismo</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 <url>
   <loc>
     http://www.qisat.com.br/curso/online/serie/administracao-como-negociar-e-vender-servicos-de-engenharia-e-arquitetura</loc>
   <lastmod>2017-05-09T19:56:41+00:00</lastmod>
+  <xhtml:link rel="alternate" hreflang="pt-br" href="http://www.qisat.com.br/curso/" /> 
 </url>
 
 </urlset>
