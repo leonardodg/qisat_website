@@ -143,9 +143,7 @@
 									loading : true,
 									url: Config.baseUrl+'/wsc-user/logout',
 									dataType: 'jsonp',
-									headers : {
-										'Content-Type' : 'application/json',
-									},
+									headers : { 'Content-Type' : 'application/json' },
 									withCredentials : true
 								});
 								return promise.then( function (res){
@@ -159,8 +157,9 @@
 	                                                  loading : true,
 	                                                  url: Config.baseUrl+'/wsc-user/login',
 	                                                  data: credentials,
-	                                                  withCredentials : true,
-	                                                  headers : { 'Content-Type' : 'application/json' }
+	                                     			  dataType: 'jsonp',
+	                                                  headers : { 'Content-Type' : 'application/json' },
+	                                                  withCredentials : true
 	                                                        });
 
 	                            return  promise.then( function (res){
