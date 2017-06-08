@@ -11,6 +11,7 @@
 											var instructors = [];
 											if(response.status == 200 && response.data.retorno) instructors = response.data.retorno;
 
+
 											instructors.map( function (instructor) {
 												if(instructor){
 
