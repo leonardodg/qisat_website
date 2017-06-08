@@ -64,7 +64,7 @@
                   <li ng-repeat="institution in institutions | filter:{ nome_instituicao : search, nome_estado : estado.nome } track by institution.id" >
                     <span>
                       <span class="xxx"></span>
-                      <img ng-src='{{institution.logo}}' width="50px" height="50px" >
+                      <img ng-src="{{institution.logo}}" width="50px" height="50px" >
                       <strong>{{institution.nome_instituicao}}</strong>
                       Enceramento do Convênio em {{institution.dataFim}}
                     </span>

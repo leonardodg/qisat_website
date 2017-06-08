@@ -6,6 +6,7 @@
     .config([ '$httpProvider', '$locationProvider', '$routeProvider',
           function ( $httpProvider, $locationProvider, $routeProvider ) {
             $locationProvider.html5Mode(true); 
+            $locationProvider.hashPrefix('!');
 
             function aboutController ($scope, $location, $analytics, QiSatAPI){
                   $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;

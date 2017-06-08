@@ -7,6 +7,7 @@
           function ( $httpProvider, $locationProvider, $routeProvider ) {
           
             $locationProvider.html5Mode(true); 
+            $locationProvider.hashPrefix('!');
 
             $routeProvider.when('/termos-de-uso', {
                 templateUrl : '/views/modal-termo-de-uso.html'

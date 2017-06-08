@@ -1,11 +1,5 @@
   RewriteEngine On
 
-
-# ----- Bloqueando hotlinks em imagens ---------
-#  RewriteCond %{HTTP_REFERER} !^$
-#  RewriteCond %{HTTP_REFERER} !^http(s)?://(www|local-site)\.?qisat.com.br [NC]
-#  RewriteRule \.(jpg|jpeg|png|gif|odg)$ - [NC,F,L]
-
 # ------ Protegendo seu arquivo .htaccess -------
 <files ~ "^.*\.([Hh][Tt][Aa])">
   order allow,deny
@@ -33,6 +27,38 @@ ErrorDocument 404 /index.html
 # ------- http para https ------------  
 #  RewriteCond %{HTTPS} !on
 #  RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+# Prerender
+#<IfModule mod_headers.c>
+#   RequestHeader set X-Prerender-Token "OKvJFVm7TiuhYJ60hO0e"
+#</IfModule>
+
+#<IfModule mod_proxy_http.c>
+# RewriteCond %{HTTP_USER_AGENT} baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
+# RewriteCond %{QUERY_STRING} _escaped_fragment_
+# 
+# # Only proxy the request to Prerender if it's a request for HTML
+# RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) http://service.prerender.io/http://www.qisat.com.br/$2 [P,L]
+#</IfModule>
+
+RewriteCond %{ENV:PROXIFY} !true
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{QUERY_STRING} _escaped_fragment_= [NC]
+RewriteRule .* - [E=PROXIFY:true,E=REQUEST_PATH:%{REQUEST_URI}]
+
+### If the request is issued by another known bot, set a flag to proxify the request to SEO4Ajax
+### Note: the 5 following lines can be commented if you are using #! URLs
+RewriteCond %{ENV:PROXIFY} !true
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{HTTP_USER_AGENT} !(googlebot/|googlebot-mobile|yandexbot|pinterest.*ios|mail\.ru|seznambot|screaming) [NC]
+RewriteCond %{HTTP_USER_AGENT} (bot|spider|pinterest|crawler|archiver|flipboardproxy|mediapartners|facebookexternalhit|quora|whatsapp) [NC]
+RewriteRule .* - [E=PROXIFY:true,E=REQUEST_PATH:%{REQUEST_URI}]
+
+## Proxify the request to SEO4Ajax
+RewriteCond %{ENV:PROXIFY} true
+RewriteRule ^(.*)$ http://api.seo4ajax.com/2b6ce2aaf73bdc3fc16911f3752ccbf1%{ENV:REQUEST_PATH} [P,QSA,L]
+
+
 
   RewriteRule ^(css|images|js|stylesheets|libs|files|fonts)/(.*)$ /assets/$1/$2 [NC,L]
   

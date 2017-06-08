@@ -7,16 +7,16 @@
 
 		<div class="cards">
 		    <div ng-repeat="dados in ::certificados" class="card">
-          <img ng-src="{{dados.imagem}}">
+         
+         	<a ng-href="{{dados.link}}" ng-click="linkCertify(dados.link)" > <img ng-src="{{dados.imagem}}"> </a>
 
           <div class="content">
-          	<div ng-if="dados.link">
-          		<a ng-href="{{dados.link}}" ng-click="linkCertify(dados.link)" >
-          	</div>
-          <i class="material-icons left">stars</i>
-		      <p>{{::dados.certificate_name}}</p>
-		      <span class="details date">Solicitação em {{::dados.datasolicitacaoFormat}}</span>
-          </a>
+	          <a ng-href="{{dados.link}}" ng-click="linkCertify(dados.link)" >
+			
+	          	  <i class="material-icons left">stars</i>
+			      <p>{{::dados.certificate_name}}</p>
+			      <span class="details date">Solicitação em {{::dados.datasolicitacaoFormat}}</span>
+	          </a>
           </div>
 
 		    </div>

@@ -2,7 +2,7 @@
 
     <div class="signup__content edit">
 
-    <div class="admin__heading">
+    	<div class="admin__heading">
 			<h1 class="title">Editar meus dados</h1>
 			<!-- <p> Bem vindo, <b>{{user.firstname}}</b></p> -->
 		</div>
@@ -17,7 +17,7 @@
 		            	<form name="fileForm" id="fileForm"  novalidate>
 			              <input type="file" id="picture" name="picture" ng-hide="true" ng-change="fileChanged()" ng-model="files" />
 						  <img ng-src="{{user.picture}}" alt="user" class="left thumb" width="110">
-			              <button type="button" id="picture" ng-click="fileClick()" > Alterar Imagem »</button>
+			              <button type="button" ng-click="fileClick()" > Alterar Imagem »</button>
 			             </form>
 
 		              <p><small>(Tamanho máximo: 32mb)</small></p>
@@ -27,50 +27,54 @@
 
 				<div class="large-6 columns">
 
-          <button type="button" class="btn-password right" ng-click="clickEditPassword()" ng-if="!showEditPassword" ><i class="material-icons">lock</i> Alterar senha</button>
-          <div class="showPassword" style="clear:both;" ng-show="showEditPassword">
-          <form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
+      				<button type="button" class="btn-password right" ng-click="clickEditPassword()" ng-if="!showEditPassword" ><i class="material-icons">lock</i> Alterar senha</button>
+			          <div class="showPassword" style="clear:both;" ng-show="showEditPassword">
+			          		<form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
 
-              <label for="currentPassword"> Senha Atual </label>
-            <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
+					              <label for="currentPassword"> Senha Atual </label>
+						            <input type="password" name="currentPassword" id="currentPassword" placeholder="Digite a sua senha Atual" ng-model="currentPassword" ng-required="true" autocomplete="off" >
 
-            <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
-              <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
-            </div>
-
-
-            <label for="newpassword"> Nova Senha </label>
-              <input type="password" name="newpassword" id="newpassword" placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true" autocomplete="off" >
-
-               <div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
-                <span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a nova Senha!</span>
-              </div>
+						            <div ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
+						              <span class="error" ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual Senha!</span>
+						            </div>
 
 
-            <label for="repassword"> Confirme a Senha </label>
-              <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true" pw-check="newpassword" autocomplete="off" >
+						            <label for="newpassword"> Nova Senha </label>
+						              <input type="password" name="newpassword" id="newpassword" placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true" autocomplete="off" >
 
-               <div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
-                <span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a nova Senha!</span>
+						               <div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
+						                <span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a nova Senha!</span>
+						              </div>
 
 
-                <span class='error' ng-show='passwordForm.repassword.$error.pwmatch'>
-                Senhas não correspondem.
-              </span>
-              </div>
+						            <label for="repassword"> Confirme a Senha </label>
+						              <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true" pw-check="newpassword" autocomplete="off" >
 
-            <button type="cancel" id="showEditPassword" ng-click="clickEditPassword()" > Cancela </button>
-            <button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
+						               <div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
+						                <span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a nova Senha!</span>
 
-          <a href="/lembrete-de-senha" target="_self" > Esqueci a minha senha! </a>
 
-					</form>
-          </div>
+						                <span class="error" ng-show="passwordForm.repassword.$error.pwmatch">
+						                Senhas não correspondem.
+						              </span>
+						              </div>
+
+						            <button type="cancel" id="showEditPassword" ng-click="clickEditPassword()" > Cancela </button>
+						            <button type="button" id="editPassword" ng-click="editPassword()" > Alterar Senha »</button>
+
+						          <a href="/lembrete-de-senha" target="_self" > Esqueci a minha senha! </a>
+
+								</form>
+			          </div>
 				</div>
 				 
 			</div>
+			<hr>
 
-      <hr>
+
+			<div class="row">
+				<div class="large-12 columns">
+				
 				<form name="editForm" id="editForm" novalidate>
   			    <p class="title">Dados Pessoais </p>
 
@@ -131,7 +135,7 @@
 					     <input type="text" name="crea" id="crea" placeholder="Digite CREA" ng-model="user.numero_crea" ng-disabled="!confirm" >
 
 
-						    <p class="title"> Privacidade </p>
+				<p class="title"> Privacidade </p>
 
                 <div class="row privacy">
                   <div class="columns small-12 medium-6">
@@ -167,7 +171,6 @@
                   </div>
                 </div>
 
-							</fieldset>
               <br>
 
 						    <p class="title">Endereço</p>
@@ -219,7 +222,6 @@
 
                     <label for="numero">Número:</label>
 								      <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero" ng-disabled="!confirm" >
-								    </label>
 
                     <label for="complemento">Complemento:</label>
 							      	<input type="text" name="complemento" id="complemento" placeholder="Complemento" ng-model="endereco.complemento" ng-disabled="!confirm" >
@@ -251,8 +253,8 @@
 								</fieldset>
 						  	  </div>
 					  	</div>
-					</div>
 				</form>
+				</div>
 			</div> <!-- //row -->
 		</section>
   </div>

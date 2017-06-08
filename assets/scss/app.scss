@@ -1,42 +1,27 @@
 @import "compass/css3";
 @import "compass/utilities";
-@import 'qisat/normalize';
 
-//libs
-
-//foundation
-@import url(../libs/foundation/css/foundation.min.css);
-
-
-//owl
-@import url(../libs/owl.carousel/assets/owl.carousel.min.css);
-@import url(../libs/owl.carousel/assets/owl.theme.default.min.css);
+@import 'libs/normalize';
+@import 'libs/foundation';
+@import 'libs/slick';
+@import 'libs/owl.carousel/owl.carousel';
+@import 'libs/owl.carousel/owl.theme.default';
 
 @import 'qisat/fonts';
-
 @import 'qisat/globals';
-@import 'qisat/inputs_custom';
-
-
 @import 'qisat/home';
 @import 'qisat/modals';
-
-
 @import 'qisat/hero';
 @import 'qisat/brands';
 @import 'qisat/cards';
 @import 'qisat/filter-sidebar';
-
 @import 'qisat/foundation_override';
-
-
 @import 'qisat/structure/header';
 @import 'qisat/structure/footer';
 @import 'qisat/structure/offcanvas';
 @import 'qisat/structure/pages';
-
 @import 'qisat/layout/admin';
 @import 'qisat/layout/institutional';
 @import 'qisat/layout/carrinho';
 
-@import 'simplelightbox';
+@import 'libs/simplelightbox';

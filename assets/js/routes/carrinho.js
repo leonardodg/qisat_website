@@ -5,7 +5,8 @@
     .module('QiSatApp')
     .config([ '$httpProvider', '$locationProvider', '$routeProvider',
           function ( $httpProvider, $locationProvider, $routeProvider ) {
-            $locationProvider.html5Mode(true); 
+            $locationProvider.html5Mode(true);
+            $locationProvider.hashPrefix('!');
 
             $routeProvider.when('/carrinho', {
               templateUrl : '/views/carrinho-montar.html',

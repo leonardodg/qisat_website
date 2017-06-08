@@ -359,6 +359,7 @@
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
+  -webkit-font-feature-settings: 'liga';
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
 

@@ -6,7 +6,8 @@
     .config([ '$httpProvider', '$locationProvider', '$routeProvider',
           function ( $httpProvider, $locationProvider, $routeProvider ) {
           
-            $locationProvider.html5Mode(true); 
+            $locationProvider.html5Mode(true);
+            $locationProvider.hashPrefix('!'); 
 
             function Authenticated(authService){
                       return authService.isAuth() || 

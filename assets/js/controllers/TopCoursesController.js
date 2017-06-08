@@ -57,13 +57,17 @@
 								.then( function ( response ){
 									var courses = [], filterLimitName = $filter('limitName');
 									if(response.status == 200) courses = response.data.retorno;
+									
 									courses.map( function (course) {
 										var imagemFile, tipo, produto, itens, valorItens = 0;
 										if(course){
 
 											course.nomeLimit = filterLimitName(course.nome, 48);
+
 											if(course.imagens && course.imagens.length){
-												imagemFile = course.imagens.find(function(img) { return img.type == 'Imagens - Capa' });
+												imagemFile = course.imagens.find( function(img) { 
+													return img && img.type == 'Imagens - Capa'; 
+												});
 												if(imagemFile) course.imgSrc = imagemFile.src;
 											}
 

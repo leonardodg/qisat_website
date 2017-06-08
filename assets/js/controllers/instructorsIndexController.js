@@ -20,9 +20,9 @@
 													if(!instructor.imagem)
 														instructor.imagem = Config.imagensUrlDefault;
 
-													if(instructor.redes_sociais){
+													if(instructor.redes_sociais && instructor.redes_sociais.length){
 														instructor.linkedin = instructor.redes_sociais.find(function(el){
-																return el.descricao == 'Linkedin';
+																return el && el.descricao == 'Linkedin';
 														});
 													}
 												}

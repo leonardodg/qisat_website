@@ -3,7 +3,7 @@
             <div class="show-for-small-down text-center show-filters">
               <a href="#" style="display: block;"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
             </div>
-            <div class="menu-filter-sidebars" id="sidebar-styker">
+            <div class="menu-filter-sidebars" id="sidebar-styker" sticky>
               <form name="formFilters" id="formFilters">
 
                 <div>
@@ -72,6 +72,7 @@
                             <input name="agronomia" id="agronomia" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.agronomia" ng-true-value="1" ng-change="changeCheckbox()" />
                             <label for="agronomia"> Agronomia </label> 
                         </li>
+                        </ul>
                     </div>
                   <hr />
                 </div>
