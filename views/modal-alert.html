@@ -16,9 +16,9 @@
 			</div>
 		</header>
 
-		<div class="row" >
+		<div class="row text-center" >
 			<div class="large-12 columns">
-				<span class="section-call__done--icon row" ng-if="msgs.success">
+				<span class="section-call__done--icon" ng-if="msgs.success">
 					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 						<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="93.827px" height="92.593px" viewbox="0 0 93.827 92.593" enable-background="new 0 0 93.827 92.593" xml:space="preserve">
@@ -28,7 +28,7 @@
 						</svg>
 				</span>
 
-				<span class="section-call__done--icon row" ng-if="!msgs.success">
+				<span class="section-call__done--icon" ng-if="!msgs.success">
 					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 						<svg version="1.1" id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="120" height="120" viewbox="0 0 24 24">
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 
-		<div class="row" ng-if="msgs.main">
+		<div class="row text-center" ng-if="msgs.main">
 			<div class="large-12 columns">
 					<span class="section-call__done--title" ng-if="msgs.main.title" > {{msgs.main.title}} </span>
 					<span class="section-call__done--subtitle" ng-if="msgs.main.subtitle"> {{msgs.main.subtitle}} </span>

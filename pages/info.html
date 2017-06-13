@@ -563,19 +563,15 @@
 											<li class="footer-primary__columns--item">
 											 	<ul class="footer-primary__list">
 													<li class="footer-primary__title"> Páginas </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos" title="Todos os Cursos"  target="_self">Cursos</a></li>				 		
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Cursos"  target="_self">Área do Aluno</a></li>
-											 		<!-- <li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/duvidas" title="Dúvidas Frequentes"  target="_self">Dúvidas Frequentes</a></li> -->
-									 		 	</ul>
-											</li> <!-- // -->
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online"  target="_self">Cursos Online</a></li>	
 
-											<li class="footer-primary__columns--item">
-												<ul class="footer-primary__list">
-													 <li class="footer-primary__title"> Contato</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" analytics-on analytics-event="callme"  >Ligamos para você</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
-												</ul>
-											</li>   
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais"  target="_self">Cursos Presenciais</a></li>	
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Área do Aluno" target="_self" href-portal >Área do Aluno</a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cadastro" title="Cadastro"  target="_self">Cadastro</a></li>
+									 		 	</ul>
+											</li> 
 
 										 	<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list"> 
@@ -603,7 +599,18 @@
 											</li>
 
 											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+													 <li class="footer-primary__title"> Contato</li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você" target="_self" ng-click="modal.call()" analytics-on analytics-event="callme" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" target="_self">Mensagem</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Mensagem" ng-click="modal.zopim()" zopim >Chat</a></li>
+												</ul>
+											</li> 
+
+											<li class="footer-primary__columns--item">
 												<img class="footer-primary__list__item--brand-qisat" src="images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+												<br><br><span class="footer-primary__title"> <i class="material-icons">call</i> (48) 3332-5000 </span> 
+               									<br><span class="footer-primary__title "> <div class="icon-whats"></div>(48) 99815-1222</span> 
 											</li> <!-- //  -->
 									</ul>
 							</div> <!-- ///row -->
@@ -695,6 +702,7 @@
 		<script defer src="/js/directive/lightbox.js"></script>
 		<script defer src="/js/directive/playDemoModal.js"></script>
 		<script defer src="/js/directive/hrefPortal.js"></script>
+		<script defer src="/js/directive/zopim.js"></script>
 
 		<script defer src="/js/controllers/infoController.js"></script>
 		<script defer src="/js/controllers/modalController.js"></script>
@@ -710,7 +718,7 @@
 			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			  })(window,document,'script','/js/libs/analytics.js','ga');
-			  ga('create', 'UA-98371985-1', 'none'); 
+  			  ga('create', 'UA-98371985-2', 'auto');
 		</script>   
 
 </body>

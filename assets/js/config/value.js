@@ -45,7 +45,7 @@
 															{ title: 'Estrutural', type : 3, pacotes : 18, name : 'estrutural' },
 															{ title: 'Elétrica', type : 4,  pacotes : 19,  name : 'eletrica' },
 															{ title: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
-															{ title: 'Agronômica', type : 34, name : 'agronomica' },
+															{ title: 'Agronômica e Ambiental', type : 34, name : 'agronomica' },
 															{ title: 'Arquitetônica', type : 35, name : 'arquitetonica' },
 															{ title: 'CAD', type : 5, name : 'cad' }
 														]},

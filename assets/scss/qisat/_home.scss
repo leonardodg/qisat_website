@@ -312,12 +312,6 @@
     }
 }
 
-.shortcut-courses__list-second {
-    li {
-        div {}
-    }
-}
-
 .shortcut-courses__list-third {
     li {
         div {padding: 5px 20px; }
@@ -328,12 +322,15 @@
     }
 }
 
-
-
-
-
-
-
+.shortcut-courses__list-second { 
+    li:nth-last-child(1) { 
+        div { 
+          padding: 22px 20px 0px 20px; 
+          line-height: 0.9; 
+        } 
+ 
+    } 
+} 
 
 
 /* 'HOME INSTRUCTORS

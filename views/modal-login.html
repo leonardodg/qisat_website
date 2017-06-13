@@ -61,9 +61,9 @@
       </div>
     </header>
 
-    <div class="row" >
+    <div class="row text-center" >
       <div class="large-12 columns">
-        <span class="section-call__done--icon row" ng-if="alert.success">
+        <span class="section-call__done--icon" ng-if="alert.success">
           <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
             <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="93.827px" height="92.593px" viewbox="0 0 93.827 92.593" enable-background="new 0 0 93.827 92.593" xml:space="preserve">
@@ -73,7 +73,7 @@
             </svg>
         </span>
 
-        <span class="section-call__done--icon row" ng-if="!alert.success">
+        <span class="section-call__done--icon" ng-if="!alert.success">
           <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
             <svg version="1.1" id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              width="120" height="120" viewbox="0 0 24 24">
@@ -81,11 +81,10 @@
                 <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffae00" />
             </svg>
         </span>
-
       </div>
     </div>
 
-    <div class="row" ng-if="alert.main">
+    <div class="row text-center" ng-if="alert.main">
       <div class="large-12 columns">
           <span class="section-call__done--title" ng-if="alert.main.title" > {{alert.main.title}} </span>
           <span class="section-call__done--subtitle" ng-if="alert.main.subtitle"> {{alert.main.subtitle}} </span>

@@ -83,6 +83,7 @@
 
 
 
+
 h1, h2, h3, h4, h5, h6 {
     color: #222;
     font-family: $font-family-sans-serif;
@@ -419,17 +420,35 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
   display: none !important;
 }
 
-.icon-AltoQi{
-	background-image: url("http://intranet.altoqi.com.br/sites/all/themes/altoqi/images-sf40fd0d584.png");
-    background-position: 0 -1654px;
-    width: 23px;
-    height: 25px;
-    margin: 5px 10px 0 2px;
-    content: "";
-    display: block;
-    float: left;
+.icon-AltoQi{ 
+  background-image: url("http://intranet.altoqi.com.br/sites/all/themes/altoqi/images-sf40fd0d584.png"); 
+    background-position: 0 -1654px; 
+    width: 23px; 
+    height: 25px; 
+    margin: 5px 10px 0 2px; 
+  background-image: url("/images/altoqi/simbol_logo_altoqi.svg"); 
+    width: 24px; 
+    height: 24px; 
+    margin-right: 10px; 
+    content: ""; 
+    display: block; 
+    display: inline; 
+    float: left; 
+    cursor: pointer;
+   &:hover{background-color: rgba(0, 0, 0, 0.08)} 
+      
+} 
+ 
+.icon-whats{ 
+  background-image: url("/images/icons/whatsapp.svg"); 
+    width: 24px; 
+    height: 24px; 
+    margin-right: 5px; 
+    content: ""; 
+    display: inline; 
+    float: left; 
+    cursor: pointer;
 }
-
 
 body.wait, body.wait *{
  cursor: wait !important;   
