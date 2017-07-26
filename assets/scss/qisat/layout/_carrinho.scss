@@ -68,6 +68,15 @@ body.cart-page {
 		}
 	}
 
+  div.cd-cart-items {
+      border-bottom: 1px solid #e0e6ef;
+      position: relative;
+      padding: 1em;
+      transition: all 0.5s;
+        text-align: center;
+      margin: 1em 0;
+    }
+
 	.cd-qty, 
     .cd-price { color: #a5aebc; }
     .cd-price { }

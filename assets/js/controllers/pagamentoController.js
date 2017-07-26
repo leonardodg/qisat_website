@@ -3,11 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$analytics', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
-					 function(scope, $location, authService, $modal, $timeout, $window, $analytics, carrinhoServive, formasPagamentos, Authenticated, Itens) {
+		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
+					 function(scope, $location, authService, $modal, $timeout, $window, carrinhoServive, formasPagamentos, Authenticated, Itens) {
 
 					 	moment.locale('pt-BR');
-					 	$analytics.pageTrack($location.path());
 
 					 	var vm = this, forma;
 				 		vm.pagamento = 1;

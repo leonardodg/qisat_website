@@ -3,14 +3,13 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('financeiroController', ['$rootScope', '$scope', '$location','$analytics', '$filter','authService','Authenticated',
-					 function($rootScope, scope, $location, $analytics, $filter, authService, Authenticated ) {
+		.controller('financeiroController', ['$rootScope', '$scope', '$location', '$filter','authService','Authenticated',
+					 function($rootScope, scope, $location, $filter, authService, Authenticated ) {
 
 					 	$rootScope.loading = true;
 				 		scope.currentPage = 1;
 				 		scope.startPage = 0;
 				 		scope.itemsPerPage = 10;
-				 		$analytics.pageTrack($location.path());
 
 					 	if(Authenticated){
 					 		scope.user = authService.getUser();

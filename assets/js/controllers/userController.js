@@ -3,11 +3,9 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('userController', ['$scope', '$location', 'QiSatAPI', 'authService','Authenticated', 'postmon',
-					 function(scope, $location, QiSatAPI, authService, Authenticated, postmon ) {
-
+		.controller('userController', ['$scope', 'QiSatAPI', 'authService','Authenticated', 
+					 function(scope, QiSatAPI, authService, Authenticated ) {
 					 	if(authService.isLogged() && Authenticated)
 					 		scope.user = authService.getUser();
-
 					 }]);
 })();

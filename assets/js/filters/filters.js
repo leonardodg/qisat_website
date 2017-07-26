@@ -48,7 +48,6 @@
 		
 	 	.filter("byTypes", function (){
 			return function (courses, types, operation) {
-				// console.log('byTypes:'+count++);
 				var filtered = [];
 				if(!types || ( Array.isArray(types) && types.length == 0)) return courses;
 

@@ -3,10 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('alunoCarrinhoController', ['$scope', '$filter','authService','Authenticated', '$routeParams', '$location', '$analytics',
-					 function(scope, $filter, authService, Authenticated, $routeParams, $location, $analytics ) {
-
-					 	$analytics.pageTrack($location.path());
+		.controller('alunoCarrinhoController', ['$scope', '$filter','authService','Authenticated', '$routeParams',
+					 function(scope, $filter, authService, Authenticated, $routeParams ) {
 
 					 	if(Authenticated){
 					 		scope.user = authService.getUser();

@@ -15,7 +15,7 @@
 				url : {
 					intranetQiSat : "http://intranet.qisat.com.br",
 					intranetAltoQi : "http://intranet.altoqi.com.br",
-					eCommerce : "http://local-ecommerce.qisat.com.br",
+					eCommerce : "https://local-ecommerce.qisat.com.br",
 					plataforma : "http://local-moodle.qisat.com.br"
 				},
 
@@ -32,8 +32,8 @@
 										   name : 'Combinacoes',
 										   title : 'Combinações', 
 												inputs : [
-															{ title: 'Séries de Capítulos', type : 32, name : 'series' },
-															{ title: 'Pacotes de Cursos', type : 17, name : 'pacotes' }
+															{ id : 1, title: 'Séries de Capítulos', type : 32, name : 'series', id : 1 },
+															{ id : 2, title: 'Pacotes de Cursos', type : 17, name : 'pacotes' }
 														]},
 
 										 { 
@@ -42,12 +42,12 @@
 										   name : 'Area', 
 										   title : 'Área de Atuação', 
 												inputs : [
-															{ title: 'Estrutural', type : 3, pacotes : 18, name : 'estrutural' },
-															{ title: 'Elétrica', type : 4,  pacotes : 19,  name : 'eletrica' },
-															{ title: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
-															{ title: 'Agronômica e Ambiental', type : 34, name : 'agronomica' },
-															{ title: 'Arquitetônica', type : 35, name : 'arquitetonica' },
-															{ title: 'CAD', type : 5, name : 'cad' }
+															{ id : 3, title: 'Estrutural', type : 3, pacotes : 18, name : 'estrutural' },
+															{ id : 4, title: 'Elétrica', type : 4,  pacotes : 19,  name : 'eletrica' },
+															{ id : 5, itle: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
+															{ id : 6, title: 'Agronômica e Ambiental', type : 34, name : 'agronomica' },
+															{ id : 7, title: 'Arquitetônica', type : 35, name : 'arquitetonica' },
+															{ id : 8, title: 'CAD', type : 5, name : 'cad' }
 														]},
 
 
@@ -57,9 +57,9 @@
 										   name : 'Area-Complementar',
 										   title : 'Área Complementar', 
 												inputs : [
-															{ title: 'Administração', type : 36, name : 'adm' },
-															{ title: 'Qualidade e Desempenho', type : 37, name : 'desempenho' },
-															{ title: 'Gestão de Projetos', type : 38, name : 'gestao' }
+															{ id : 9, title: 'Administração', type : 36, name : 'adm' },
+															{ id : 10, title: 'Qualidade e Desempenho', type : 37, name : 'desempenho' },
+															{ id : 11, title: 'Gestão de Projetos', type : 38, name : 'gestao' }
 														]},	
 
 										 { 
@@ -68,8 +68,8 @@
 										   name : 'Tipo',
 										   title : 'Tipo', 
 												inputs : [
-															{ title: 'Cursos Teóricos', type : 24, },
-															{ title: 'Cursos Software AltoQi', type : 23 }
+															{ id : 12, title: 'Cursos Teóricos', type : 24, },
+															{ id : 13, title: 'Cursos Software AltoQi', type : 23 }
 														]}
 
 								 ],
@@ -83,9 +83,9 @@
 										    name : 'Area',
 										    title : 'Área de Atuação', 
 												inputs : [
-															{ title: 'Estrutural', type : 25, name : 'estrutural' },
-															{ title: 'Elétrica', type : 26, name : 'eletrica' },
-															{ title: 'Hidráulica', type : 27, name : 'hidraulica' }
+															{ id : 14, title: 'Estrutural', type : 25, name : 'estrutural' },
+															{ id : 15, title: 'Elétrica', type : 26, name : 'eletrica' },
+															{ id : 16, title: 'Hidráulica', type : 27, name : 'hidraulica' }
 														]},
 
 										   { 
@@ -94,8 +94,8 @@
 										     name : 'Tipo',
 										     title : 'Tipo', 
 												inputs : [
-															{ title: 'Cursos Teóricos', type : 24, presencial : 13 },
-															{ title: 'Cursos Software AltoQi', type : 23, presencial : 11 },
+															{ id : 17, title: 'Cursos Teóricos', type : 24, presencial : 13 },
+															{ id : 18, title: 'Cursos Software AltoQi', type : 23, presencial : 11 },
 														]},
 
 											{ 
@@ -103,7 +103,7 @@
 										   	 type : 'checkbox', 
 										     name : 'Tipo',
 												inputs : [
-															{ title: 'Cursos Individuais', type : 12, name : '#Tipo2' }
+															{ id : 19, title: 'Cursos Individuais', type : 12, name : '#Tipo2' }
 														]}
 						]
 				},
@@ -361,6 +361,33 @@
 							{ sigla : 'WA', pais : 'País de Gales' },
 							{ sigla : 'ZR', pais : 'Zaire' } ],
 
-				states : [{"id":1,"nome":"Acre","uf":"AC","local":"AC - Acre"},{"id":2,"nome":"Alagoas","uf":"AL","local":"AL - Alagoas"},{"id":3,"nome":"Amazonas","uf":"AM","local":"AM - Amazonas"},{"id":4,"nome":"Amapá","uf":"AP","local":"AP - Amapá"},{"id":5,"nome":"Bahia","uf":"BA","local":"BA - Bahia"},{"id":6,"nome":"Ceará","uf":"CE","local":"CE - Ceará"},{"id":7,"nome":"Distrito Federal","uf":"DF","local":"DF - Distrito Federal"},{"id":8,"nome":"Espírito Santo","uf":"ES","local":"ES - Espírito Santo"},{"id":9,"nome":"Goiás","uf":"GO","local":"GO - Goiás"},{"id":10,"nome":"Maranhão","uf":"MA","local":"MA - Maranhão"},{"id":11,"nome":"Minas Gerais","uf":"MG","local":"MG - Minas Gerais"},{"id":12,"nome":"Mato Grosso do Sul","uf":"MS","local":"MS - Mato Grosso do Sul"},{"id":13,"nome":"Mato Grosso","uf":"MT","local":"MT - Mato Grosso"},{"id":14,"nome":"Pará","uf":"PA","local":"PA - Pará"},{"id":15,"nome":"Paraíba","uf":"PB","local":"PB - Paraíba"},{"id":16,"nome":"Pernambuco","uf":"PE","local":"PE - Pernambuco"},{"id":17,"nome":"Piauí","uf":"PI","local":"PI - Piauí"},{"id":18,"nome":"Paraná","uf":"PR","local":"PR - Paraná"},{"id":19,"nome":"Rio de Janeiro","uf":"RJ","local":"RJ - Rio de Janeiro"},{"id":20,"nome":"Rio Grande do Norte","uf":"RN","local":"RN - Rio Grande do Norte"},{"id":21,"nome":"Rondônia","uf":"RO","local":"RO - Rondônia"},{"id":22,"nome":"Roraima","uf":"RR","local":"RR - Roraima"},{"id":23,"nome":"Rio Grande do Sul","uf":"RS","local":"RS - Rio Grande do Sul"},{"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"},{"id":25,"nome":"Sergipe","uf":"SE","local":"SE - Sergipe"},{"id":26,"nome":"São Paulo","uf":"SP","local":"SP - São Paulo"},{"id":27,"nome":"Tocantins","uf":"TO","local":"TO - Tocantins"}]
+				states : [
+							{"id":5,"nome":"Bahia","uf":"BA","local":"BA - Bahia", host : 4, groupCrea : "CREAs Convêniados"},
+							{"id":1,"nome":"Acre","uf":"AC","local":"AC - Acre", host : 8, groupCrea : "Demais CREAs" },
+							{"id":2,"nome":"Alagoas","uf":"AL","local":"AL - Alagoas", host : 9, groupCrea : "Demais CREAs"},
+							{"id":3,"nome":"Amazonas","uf":"AM","local":"AM - Amazonas", host : 10, groupCrea : "Demais CREAs"},
+							{"id":4,"nome":"Amapá","uf":"AP","local":"AP - Amapá", host : 11, groupCrea : "Demais CREAs"},
+							{"id":6,"nome":"Ceará","uf":"CE","local":"CE - Ceará", host : 12, groupCrea : "Demais CREAs"},
+							{"id":7,"nome":"Distrito Federal","uf":"DF","local":"DF - Distrito Federal", host : 5, groupCrea : "CREAs Convêniados"},
+							{"id":8,"nome":"Espírito Santo","uf":"ES","local":"ES - Espírito Santo", host : 13, groupCrea : "Demais CREAs"},
+							{"id":9,"nome":"Goiás","uf":"GO","local":"GO - Goiás", host : 14, groupCrea : "Demais CREAs"},
+							{"id":10,"nome":"Maranhão","uf":"MA","local":"MA - Maranhão", host : 15, groupCrea : "Demais CREAs"},
+							{"id":11,"nome":"Minas Gerais","uf":"MG","local":"MG - Minas Gerais", host : 16, groupCrea : "Demais CREAs"},
+							{"id":12,"nome":"Mato Grosso do Sul","uf":"MS","local":"MS - Mato Grosso do Sul" , host : 7, groupCrea : "CREAs Convêniados"},
+							{"id":13,"nome":"Mato Grosso","uf":"MT","local":"MT - Mato Grosso" , host : 17, groupCrea : "Demais CREAs"},
+							{"id":14,"nome":"Pará","uf":"PA","local":"PA - Pará", host : 18, groupCrea : "Demais CREAs"},
+							{"id":15,"nome":"Paraíba","uf":"PB","local":"PB - Paraíba", host : 19, groupCrea : "Demais CREAs"},
+							{"id":16,"nome":"Pernambuco","uf":"PE","local":"PE - Pernambuco", host : 20, groupCrea : "Demais CREAs"},
+							{"id":17,"nome":"Piauí","uf":"PI","local":"PI - Piauí", host : 21, groupCrea : "Demais CREAs"},
+							{"id":18,"nome":"Paraná","uf":"PR","local":"PR - Paraná", host : 22, groupCrea : "Demais CREAs"},
+							{"id":19,"nome":"Rio de Janeiro","uf":"RJ","local":"RJ - Rio de Janeiro", host : 23, groupCrea : "Demais CREAs"},
+							{"id":20,"nome":"Rio Grande do Norte","uf":"RN","local":"RN - Rio Grande do Norte", host : 24, groupCrea : "Demais CREAs"},
+							{"id":21,"nome":"Rondônia","uf":"RO","local":"RO - Rondônia", host : 2, groupCrea : "CREAs Convêniados"},
+							{"id":22,"nome":"Roraima","uf":"RR","local":"RR - Roraima", host : 25, groupCrea : "Demais CREAs"},
+							{"id":23,"nome":"Rio Grande do Sul","uf":"RS","local":"RS - Rio Grande do Sul" , host : 26, groupCrea : "Demais CREAs"},
+							{"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina", host : 6, groupCrea : "CREAs Convêniados"},
+							{"id":25,"nome":"Sergipe","uf":"SE","local":"SE - Sergipe", host : 27, groupCrea : "Demais CREAs"},
+							{"id":26,"nome":"São Paulo","uf":"SP","local":"SP - São Paulo" , host : 28, groupCrea : "Demais CREAs"},
+							{"id":27,"nome":"Tocantins","uf":"TO","local":"TO - Tocantins", host : 3, groupCrea : "CREAs Convêniados"}]
 			});
 })();

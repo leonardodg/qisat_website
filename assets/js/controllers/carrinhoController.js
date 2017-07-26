@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('carrinhoController', [ '$filter', 'carrinhoServive',
-					 function( $filter, carrinhoServive ) {
+		.controller('carrinhoController', [ '$rootScope' ,'$filter', '$location', 'carrinhoServive',
+					 function( $rootScope, $filter, $location, carrinhoServive ) {
 
 					 	var vm = this;
 					 	vm.loading = true;
@@ -14,14 +14,12 @@
 					 		vm.loading = false;
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
 					 		if(vm.itens && vm.itens.length){
-		 						vm.showBuy = true;
 					 			vm.qtdItens = vm.itens.reduce(function(a, b){
 					 				return a + b.quantidade;
 					 			}, 0);
 		 						vm.valorTotal = carrinhoServive.getValorTotal();
 					 			vm.totalCarrinho = $filter('currency')(vm.valorTotal, 'R$');
 		 					}else{
-						 		vm.showBuy = false;
 						 		vm.qtdItens = 0;
 						 		vm.valorTotal = 0;
 						 		vm.totalCarrinho = $filter('currency')(0.0, 'R$');
@@ -53,6 +51,10 @@
 
 					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
 					 		vm.loading = true;
+						 	
+					 		if($location.path() != '/carrinho')
+						 		vm.showBuy = true;
+
 					 		var data = { produto: produtoid };
 					 		if(qtd && typeof qtd !== 'undefined' ) data.quantidade = qtd;
 					 		if(turma) data.presencial = turma;
@@ -78,6 +80,9 @@
 					 	vm.activeBuy = function(){
 					 		vm.showBuy = !vm.showBuy;
 					 	};
+
+					 	$rootScope.$watch( function(){ return carrinhoServive.checkCarrinho(); },
+					 					   function(val){ setValues(); }, true);
 				 		
 					 }]);
 })();

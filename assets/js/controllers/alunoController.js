@@ -9,7 +9,7 @@
 					 	$scope.logout = function() {
 							authService.logout()
 									   .then( function (res){
-												window.location = '/login';
+											   $location.path('/login'); 
 									   });
 						};
 

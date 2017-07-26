@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('matriculaController', [ '$scope', '$rootScope', '$location', '$analytics', 'authService','Authenticated', '$filter', 'Config',
-					 function( scope, $rootScope, $location, $analytics, authService, Authenticated, $filter, Config) {
+		.controller('matriculaController', [ '$scope', '$rootScope', 'authService','Authenticated', '$filter', 'Config',
+					 function( scope, $rootScope, authService, Authenticated, $filter, Config) {
 					 	var filterLimitName = $filter('limitName');
 
 						$rootScope.loading = true;
@@ -13,7 +13,6 @@
 						scope.outros = false;
 						scope.filterTab = 'liberado';
 						moment.locale('pt-BR');
-						$analytics.pageTrack($location.path());
 
 						scope.setFilterTab = function(val){
 							scope.filterTab = val;

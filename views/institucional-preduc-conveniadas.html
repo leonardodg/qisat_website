@@ -1,75 +1,124 @@
-<div class="small-12 medium-4 large-3 columns grid-sidebar-left">
-  <div class="page_content">
-    <h5 class="menu-filter-sidebars--title">Menu</h5>
 
-    <ul class="menu-partners">
-      <li class="active"><a href="/institucional/convenios/conselhos" analytics-on ><i class="material-icons right">expand_more</i>Convênios</a>
-        <ul>
-          <li><a href="/institucional/convenios/conselhos" analytics-on >Projeto Conselhos Regionais</a></li>
-          <li><a href="/institucional/convenios/preduc/conveniadas" analytics-on ><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+<main class="content-main">
+
+  <header class="hero-pages hero-pages__insitucional" ng-controller="institucionalController as vm">
+   <div class="row">
+       <div class="medium-8 columns">
+         <span class="hero-pages__label">Institucional</span>
+         <h1 class="hero-pages__title">Conheça o QiSat</h1>
+         <p class="hero-pages__tagline"> O maior portal de cursos para engenheiros e arquitetos</p>
+       </div> <!-- //large-12-->
+       <div class="medium-4 columns">
+          <div class="hero-course__play-container" >
+            <a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI?rel=0&arp;autoplay=1
+')" anchor-link analytics-event="Play" analytics-category="Videos Institucional" ><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
+          </div> <!--//hero-course__play-container -->
+        </div> <!-- //large-3-->
+   </div> <!-- ///row -->
+ </header><!-- //hero-home -->
+
+
+<div class="row">
+     <div class="medium-12 columns">
+       <nav class="menu-horizontal">
+          <ul class="menu-horizontal__list" data-equalizer>
+            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+                <a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" analytics-on >Sobre a empresa</a>
+            </li>
+            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+                <a class="menu-horizontal__link" href="/institucional/linha-do-tempo" analytics-on >Linha do tempo</a>
+            </li>
+            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current">
+                <a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" analytics-on >Convênios e Parceiros</a>
+            </li>
+            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+                <a class="menu-horizontal__link" href="/institucional/instrutores-e-professores" analytics-on >Instrutores e Professores</a>
+            </li>
+            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+                <a class="menu-horizontal__link" href="/institucional/contatos" analytics-on >Entre em Contato</a>
+            </li>        
+          </ul>
+       </nav>
+     </div> <!-- //large-12-->
+</div> <!-- ///row -->
+
+  <div class="row">
+
+
+    <div class="small-12 medium-4 large-3 columns grid-sidebar-left">
+      <div class="page_content">
+        <h5 class="menu-filter-sidebars--title">Menu</h5>
+
+        <ul class="menu-partners">
+          <li class="active"><a href="/institucional/convenios/conselhos" analytics-on ><i class="material-icons right">expand_more</i>Convênios</a>
             <ul>
-              <li class="active"><a href="/institucional/convenios/preduc/ensino" analytics-on >Instituição de Ensino</a></li>
-              <li class="active"><a href="/institucional/convenios/preduc/entidade" analytics-on >Entidade de Classe</a></li>
+              <li><a href="/institucional/convenios/conselhos" analytics-on >Projeto Conselhos Regionais</a></li>
+              <li><a href="/institucional/convenios/preduc/conveniadas" analytics-on ><i class="material-icons right">expand_more</i>Projeto Rede Educacional</a>
+                <ul>
+                  <li class="active"><a href="/institucional/convenios/preduc/ensino" analytics-on >Instituição de Ensino</a></li>
+                  <li class="active"><a href="/institucional/convenios/preduc/entidade" analytics-on >Entidade de Classe</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
+          <li><a href="/institucional/parceiros" analytics-on >Parceiros</a></li>
         </ul>
-      </li>
-      <li><a href="/institucional/parceiros" analytics-on >Parceiros</a></li>
-    </ul>
+      </div>
+      
+    </div>
+
+         <div class="large-9 medium-8 columns">
+              <div class="page_text">
+                
+
+                <div class="convenios">
+                  <div class="row entidades">
+                    <div class="column small-12 medium-6">
+                      <div>
+                        <a href="/institucional/convenios/preduc/conveniadas" class="active" analytics-on  ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
+                      </div>
+                    </div>
+                    <div class="column small-12 medium-6">
+                      <div>
+                        <a href="/institucional/convenios/preduc/descontos" analytics-on ><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                  <h1>Instituições Conveniadas</h1>
+
+                  <div class="inst_filter">
+                    <form>
+                    <div class="row">
+                      <div class="column small-3">
+                        <label>Filtrar por Estado</label>
+                        <select ng-options="estado as estado.nome for estado in states track by estado.id" ng-model="estado" >
+                          <option value="">Todo o Brasil</option>
+                        </select>
+                      </div>
+                      <div class="column small-9">
+                        <i class="material-icons left">search</i>
+                        <input type="text" placeholder="Procure por uma instituição de ensino" ng-model="search" >
+                      </div>
+                    </div>
+                    </form>
+                  </div>
+
+                  <div class="inst_list">
+                    <ul>
+                      <li ng-repeat="institution in institutions | filter:{ nome_instituicao : search, nome_estado : estado.nome } track by institution.id" >
+                        <span>
+                          <span class="xxx"></span>
+                          <img ng-src="{{institution.logo}}" width="50px" height="50px" >
+                          <strong>{{institution.nome_instituicao}}</strong>
+                          Enceramento do Convênio em {{institution.dataFim}}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+              </div> <!-- //page_content -->
+        </div> <!-- //large-8-->
   </div>
-  
-</div>
-
-     <div class="large-9 medium-8 columns">
-          <div class="page_text">
-            
-
-            <div class="convenios">
-              <div class="row entidades">
-                <div class="column small-12 medium-6">
-                  <div>
-                    <a href="/institucional/convenios/preduc/conveniadas" class="active" analytics-on  ><i class="material-icons">business</i> ENTIDADES CONVENIADAS</a>
-                  </div>
-                </div>
-                <div class="column small-12 medium-6">
-                  <div>
-                    <a href="/institucional/convenios/preduc/descontos" analytics-on ><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-              <h1>Instituições Conveniadas</h1>
-
-              <div class="inst_filter">
-                <form>
-                <div class="row">
-                  <div class="column small-3">
-                    <label>Filtrar por Estado</label>
-                    <select ng-options="estado as estado.nome for estado in states track by estado.id" ng-model="estado" >
-                      <option value="">Todo o Brasil</option>
-                    </select>
-                  </div>
-                  <div class="column small-9">
-                    <i class="material-icons left">search</i>
-                    <input type="text" placeholder="Procure por uma instituição de ensino" ng-model="search" >
-                  </div>
-                </div>
-                </form>
-              </div>
-
-              <div class="inst_list">
-                <ul>
-                  <li ng-repeat="institution in institutions | filter:{ nome_instituicao : search, nome_estado : estado.nome } track by institution.id" >
-                    <span>
-                      <span class="xxx"></span>
-                      <img ng-src="{{institution.logo}}" width="50px" height="50px" >
-                      <strong>{{institution.nome_instituicao}}</strong>
-                      Enceramento do Convênio em {{institution.dataFim}}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-          </div> <!-- //page_content -->
-    </div> <!-- //large-8-->
+</main> <!--// main-content -->

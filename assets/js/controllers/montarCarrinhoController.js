@@ -3,29 +3,16 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('montarCarrinhoController', ['$scope', '$controller', '$location', '$analytics' ,'$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService',
-					 function(scope, $controller, $location,$analytics, $window, $route, $filter, $modal, carrinhoServive, authService) {
+		.controller('montarCarrinhoController', ['$scope', '$controller', '$location','$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService',
+					 function(scope, $controller, $location, $window, $route, $filter, $modal, carrinhoServive, authService) {
 
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
 			 			 
 						vm.modallogin = modalController.login;
-						$analytics.pageTrack($location.path());
-
-						var authenticated = function(){
-		                      return authService.isAuth() || 
-		                              authService.verifyAuth()
-		                                         .then( function (res){ 
-		                                                  return (res) ? true : false;
-		                                                }, function (res){ 
-		                                                     return false;
-		                                                });
-
-	                  	};	
-	                  	authenticated();	
 
 					 	vm.nextCompra = function(){
-					 		var auth = authenticated();
+					 		var auth = authService.Authenticated();
 
 					 		function redirect(){
 					 			var user = authService.getUser();
@@ -33,7 +20,7 @@
 									modalController.update('/carrinho/pagamento');
 								else
 				 					$location.path('/carrinho/pagamento');
-					 		}
+					 		};
 
 							if(auth === true){
 								redirect();
@@ -41,7 +28,7 @@
 					 			modalController.login('/carrinho/pagamento', false, redirect );
 					 		}else{
 					 			auth.then(function(res){
-				 					if(auth === true){
+				 					if(res === true){
 						 				redirect();
 							 		}else{
 							 			modalController.login('/carrinho/pagamento', false, redirect );
@@ -54,7 +41,7 @@
 					 	vm.cancelTransacao = function(){
 					 		carrinhoServive.cancelarTransacao().then(function(res){
 					 			if(res.sucesso)
-					 				window.location = '/carrinho/pagamento';
+					 				$location.path('/carrinho/pagamento');
 					 		});
 					 	};
 

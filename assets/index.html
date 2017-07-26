@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt_BR" class="no-js" ng-app="QiSatApp">
+<head>
+	<base href="/">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title ng-bind="seo.title"> Cursos aplicados à engenharia e arquitetura | QiSat </title>
+	<meta name="description" content="{{seo.description}}">
+  	<meta name="keywords" content="{{sero.keys}}">
+	<meta name="robots" content="{{seo.robots}}">
+	<meta name=”fragment” content=”!”>
+	<meta property="og:title" content="{{seo.title}}" />
+	<meta property="og:url" content="{{seo.url}}" />
+	<meta property="og:description" content="{{seo.description}}" />
+	<meta property="og:image" content="/images/QiSat.jpg" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="QiSat" />
+	<meta name="twitter:card" content="1200" />
+	<meta name="twitter:site" content="QiSat" />
+	<meta name="twitter:title" content="{{seo.title}}" />
+	<meta name="twitter:url" content="{{seo.url}}" />
+	<meta name="twitter:image" content="QiSat" />
+	<meta name="twitter:image:src" content="/images/QiSat.jpg" />
+	<meta name="google-site-verification" content="" />
+	<meta name="msvalidate.01" content="" />
+	<meta name="twitter:description" content="{{seo.description}}">
+	<meta property="fb:app_id" content="1781801858766348" />
+	<link rel="publisher" href="https://plus.google.com/115163677173885846613" />
+	<link rel="canonical" href="{{seo.url}}" />
+	<link rel="alternate" href="https://www.qisat.com.br/"  hreflang=”x-default”/>
+	<link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="/stylesheets/app.css" >
+</head>
+
+<body page-buy ng-controller="carrinhoController as buy"> 
+	<div class="off-canvas-wrap" data-offcanvas>
+		<div class="inner-wrap" ng-controller="modalController as modal">
+
+			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
+			 <aside class="right-off-canvas-menu">
+			   <ul class="off-canvas-list">
+			     <li><label>Menu</label></li>
+			     <li><a href="/"  >Home</a></li>
+			     <li><a href="/cursos" >Cursos</a></li>
+				 <li><a href="/login" href-portal >Área do Aluno</a></li>
+				 <li><a href="/institucional"  >Institucional</a></li>
+			   </ul>
+			 </aside>
+			<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
+
+		 	<!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+			<header class="header-main">
+				<div class="header-main__brand"> <a href="/" class="header-main__logo"  > QiSat </a> </div>
+				<nav class="header-main__nav">
+					<ul class="header-main__ul" menu-active>
+						<li class="show-for-large-up header-main__list "> 
+							<a class="header-main__item" href="/" >Home</a>
+						</li>
+						<li class="show-for-large-up header-main__list ">
+							<a class="header-main__item" href="/cursos" >Cursos</a>
+						</li>
+			 			<li class="show-for-large-up header-main__list"> 
+			 				<a href="/login" class="header-main__item" href-portal >Área do Aluno</a>
+			 			</li>
+						<li class="show-for-large-up header-main__list"> 
+							<a class="header-main__item" href="/institucional" >Institucional</a>
+						</li>
+						<li class="hide-for-large-up header-main__list"> 
+			              <a class="right-off-canvas-toggle menu-icon header-main__item"> 
+			                <span><i class="material-icons">menu</i> Menu </span> </a>
+			            </li>
+			    		<li class="header-main__list header-main__list-cart" > 
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho Itens"  >
+			    				<i class="material-icons">shopping_cart</i> <span class="cart_number" ng-show="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span>
+			    			</a>
+			    		</li>
+					</ul>
+				</nav>
+			</header>
+		 <!-- |||||||||||||||||||| END MENU PRINCIPAL |||||||||||||||||||||||||||| -->
+
+		 <!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
+				<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close"></div>
+				<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
+					<h2>Itens no carrinho</h2>
+					<ul class="cd-cart-items">
+						<li ng-repeat="item in buy.itens track by item.id">
+							<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
+							<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+							<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)" ><i class="material-icons">close</i></a>
+						</li>
+					</ul>
+					 	
+				 	<div ng-show="!buy.qtdItens">
+						<span class="cd-text" >Nenhum item no carrinho.</span>
+					</div>
+
+					<div class="cd-cart-total" ng-show="buy.valorTotal">
+						<p><strong>Total <span>{{buy.totalCarrinho}} </span> </strong></p>
+					</div> <!-- cd-cart-total -->
+				 
+					<a href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()" >Finalizar compra</a>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close" ><a>Continuar comprando</a></p>
+				</div> <!-- cd-cart -->
+		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
+
+				<div ng-view></div>
+
+
+				<!-- ########################## FOOTER ########################## -->
+					<footer class="footer-main">
+
+						<div class="footer-primary">
+							<div class="row">
+
+										<ul class="footer-primary__columns small-block-grid-2 medium-block-grid-3 large-block-grid-6">
+
+											<li class="footer-primary__columns--item">
+											 		<ul class="footer-primary__list">
+														<li class="footer-primary__title">Sobre o QiSat</li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   > Institucional </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   > Linha do Tempo </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  >Convênios e Parceiros</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  >Instrutores e Professores</a></li>
+													</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+											 	<ul class="footer-primary__list">
+													<li class="footer-primary__title"> Páginas </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online"  >Cursos Online</a></li>	
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais"  >Cursos Presenciais</a></li>	
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Área do Aluno"  href-portal >Área do Aluno</a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cadastro" title="Cadastro"  >Cadastro</a></li>
+									 		 	</ul>
+											</li>
+
+										 	<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list"> 
+													<li class="footer-primary__title"> Blogs </li>
+													
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank" >Blog Mais Engenharia </a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank"> Blog Eberick </a></li>
+
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank" > Blog QiBuilder </a></li>
+
+											 		</ul>
+											</li> 
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+											 		<li class="footer-primary__title"> Redes Sociais </li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+
+											 	</ul>
+											</li>
+
+											<li class="footer-primary__columns--item">
+												<ul class="footer-primary__list">
+													 <li class="footer-primary__title"> Contatos</li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você"  ng-click="modal.call()" analytics-on analytics-event="callme" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" >Mensagem</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Mensagem" ng-click="modal.showZopim()" >Chat</a></li>
+												</ul>
+											</li>  
+
+											<li class="footer-primary__columns--item">
+												<img class="footer-primary__list__item--brand-qisat" src="/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
+						                        <br><br><span class="footer-primary__title"> <i class="material-icons">call</i> (48) 3332-5000 </span> 
+                       							<br><span class="footer-primary__title "> <i class="icon-whats"></i>(48) 99815-1222</span> 
+											</li> <!-- //  -->
+									</ul>
+
+							</div> <!-- ///row -->
+						</div> <!-- // footer-primary -->
+
+
+
+
+						<div class="footer-secondary">
+								<div class="row">
+										<ul class="footer-secundary__columns small-block-grid-1   large-block-grid-3">
+											<li>
+													<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<a class="footer-secondary__list__item--link" ng-click="modal.termo()"  >Termos de uso</a>
+														</li>
+														<li class="footer-secondary__list__item">
+															<a class="footer-secondary__list__item--link" ng-click="modal.politica()"  >Política de Privacidade</a>
+														</li>
+													</ul>
+										    </li>
+
+										    <li>
+													<ul class="footer-secondary__list footer-secondary__list--email ">
+														<li class="footer-secondary__list__item">QiSat | Cursos aplicados à engenharia e arquitetura 
+														<a href="mailto:inscricoes@qisat.com.br" class="footer-secondary__list__item--link"><strong>inscricoes@qisat.com.br</strong></a></li>
+													</ul>
+										   	</li>
+
+											<li>
+												<ul class="footer-secondary__list">
+														<li class="footer-secondary__list__item">
+															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
+															<a href="https://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" ><img class="footer-secondary__list__item--brand-image" src="/images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
+														</li>
+												 </ul>
+											</li>
+										</ul>
+						 		</div> <!-- ///row -->
+						</div> <!-- footer-secondary -->
+
+					</footer> <!-- footer-container -->
+					<!-- ########################## END FOOTER ########################## -->
+			<!-- exit-off-canvas -->
+			<a class="exit-off-canvas"></a>
+		</div> <!-- //inner-wrap -->
+	 </div><!-- //off-canvas-wrap -->
+
+    <!--[if IE 9]>
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+            <script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script>
+    <![endif]-->
+
+	<!-- GLOBAL -->
+		<script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
+		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
+		<script defer src="/js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
+		<script defer src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
+		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+    	<script defer src="/bower_components/slick/slick.min.js"></script>
+    	<script defer src="/bower_components/sticky-kit/jquery.sticky-kit.min.js"></script>
+    	<script defer src="/js/libs/simple-lightbox.js"></script>
+		<!-- // GLOBAL -->
+
+		<!-- EXECUTA SCRIPTS QISAT -->
+		<script defer src="/js/libs/moment.min.js"></script>
+		<script defer src="/js/libs/moment-with-locales.min.js"></script>
+		<script defer src="/js/libs/humanize-duration.js"></script>
+		<script defer src="/js/libs/extenso.js"></script>
+
+		<script defer src="/js/libs/angular-locale_pt-br.js"></script>
+		<script defer src="/js/libs/angular-cookies.min.js"></script>
+	    <script defer src="/js/libs/angular-route.min.js"></script>
+	    <script defer src="/js/libs/angular-resource.min.js"></script>
+	    <script defer src="/js/libs/ngMask.min.js"></script>
+	    <script defer src="/js/libs/ui-masks.js"></script>
+	    <script defer src="/js/libs/angular-timer.min.js"></script>
+    	<script defer src="/js/libs/ng-infinite-scroll.min.js"></script>	    
+	    <script defer src="/js/libs/angulartics.min.js"></script>
+    	<script defer src="/js/libs/angulartics-ga.min.js"></script>
+    	<script defer src="/js/libs/angular-loading-bar.js"></script>  
+    	<script defer src="/js/libs/angular-sanitize.js"></script>
+	    
+		<script defer src="/js/QiSatApp.js"></script>
+		<script defer src="/js/routes/all.js"></script>
+		<script defer src="/js/config/value.js"></script>
+		<script defer src="/js/config/interceptors.js"></script>
+		<script defer src="/js/filters/filters.js"></script>
+
+		<script defer src="/js/directive/anchorLink.js"></script>
+		<script defer src="/js/directive/backImg.js"></script>
+		<script defer src="/js/directive/bnLazySrc.js"></script>
+		<script defer src="/js/directive/cpfCheck.js"></script>
+		<script defer src="/js/directive/emailCheck.js"></script>
+		<script defer src="/js/directive/hrefPortal.js"></script>
+		<script defer src="/js/directive/lightbox.js"></script>
+		<script defer src="/js/directive/menuActive.js"></script>
+		<script defer src="/js/directive/menuAlunoCursos.js"></script>
+		<script defer src="/js/directive/menuCarrinhoActive.js"></script>
+		<script defer src="/js/directive/owlSync.js"></script>
+		<script defer src="/js/directive/playDemoModal.js"></script>
+		<script defer src="/js/directive/pwCheck.js"></script>
+		<script defer src="/js/directive/slick.js"></script>
+		<script defer src="/js/directive/stickyKit.js"></script>
+		<script defer src="/js/directive/pageBuy.js"></script>
+		
+
+		<script defer src="/js/services/QiSatAPI.js"></script>
+		<script defer src="/js/services/authService.js"></script>
+		<script defer src="/js/services/carrinho.js"></script>
+		<script defer src="/js/services/postmonService.js"></script>		
+		
+	    <script defer src="/js/controllers/TopCoursesController.js"></script>
+	    <script defer src="/js/controllers/alunoCarrinhoController.js"></script>
+	    <script defer src="/js/controllers/alunoController.js"></script>
+	    <script defer src="/js/controllers/carrinhoController.js"></script>
+	    <script defer src="/js/controllers/certificadoController.js"></script>
+	    <script defer src="/js/controllers/confirmacaoController.js"></script>
+	    <script defer src="/js/controllers/contactController.js"></script>
+	    <script defer src="/js/controllers/convenioController.js"></script>
+	    <script defer src="/js/controllers/coursesController.js"></script>
+	    <script defer src="/js/controllers/descontosConvenioController.js"></script>
+	    <script defer src="/js/controllers/financeiroController.js"></script>
+	    <script defer src="/js/controllers/infoController.js"></script>
+	    <script defer src="/js/controllers/institucionalController.js"></script>
+	    <script defer src="/js/controllers/instructorController.js"></script>
+	    <script defer src="/js/controllers/instructorsController.js"></script>
+	    <script defer src="/js/controllers/instructorsIndexController.js"></script>
+	    <script defer src="/js/controllers/loginController.js"></script>
+	    <script defer src="/js/controllers/matriculaController.js"></script>
+	    <script defer src="/js/controllers/modalController.js"></script>
+	    <script defer src="/js/controllers/montarCarrinhoController.js"></script>
+	    <script defer src="/js/controllers/pagamentoController.js"></script>
+	    <script defer src="/js/controllers/perfilController.js"></script>
+	    <script defer src="/js/controllers/rememberController.js"></script>
+	    <script defer src="/js/controllers/singupController.js"></script>
+	    <script defer src="/js/controllers/userController.js"></script>
+
+		<script defer src="/js/run/foundation.js"></script>
+		<script defer src="/js/app.js"></script>
+
+	    <script defer src="/js/app.js"></script>
+
+		<script > 
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','/js/libs/analytics.js','ga');
+		</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

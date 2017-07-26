@@ -5,23 +5,25 @@
 	 	.module('QiSatApp')
 	 	.provider('authService',  function(){
 
-					var authToken, authUser, persistent, checkAuth = false, redirect;
+					var authToken, authUser, persistent, checkAuth = false, redirect, reset;
 						
-		 			(function load(){
+		 			function load(){
 		 				var token, user;
-		 				if(!isLogged()){
-							user  = window.localStorage.getItem('user') || window.sessionStorage.getItem('user');
-							token = window.localStorage.getItem('token') || window.sessionStorage.getItem('token');
-	 						user = JSON.parse(user);
-	 						setToken(token);
-	 						setUser(user);
-						}
+
+						user  = window.localStorage.getItem('user') || window.sessionStorage.getItem('user');
+						token = window.localStorage.getItem('token') || window.sessionStorage.getItem('token');
+ 						user = JSON.parse(user);
+ 						setToken(token);
+ 						setUser(user);
+						
+						if((setUser(user) == false || setToken(token) == false) && isLogged())
+							reset();
 
 						redirect = window.localStorage.getItem('redirect');
-					})();
+					};
 
 					function isAuth() {
-						return checkAuth;
+						return checkAuth && isLogged();
 					};
 
 					function getRedirect(){
@@ -66,7 +68,20 @@
 	 						? true : false;
 					}
 
-					this.$get = function($rootScope, $http, $q, $cookies, Config) {
+					this.$get = function($rootScope, $http, $q, $cookies, $location, Config) {
+
+
+				            function Authenticated ( path ){
+				                      return isAuth() || verifyAuth()
+				                                         .then( function (res){ 
+			                                                  if(res) return true; 
+			                                                  else if(path) $location.path(path);
+			                                                  return false;
+			                                                }, function (res){ 
+			                                                     if(path) $location.path(path); 
+			                                                     return false;
+			                                                });
+				            };
 
 							function verifyAuth() {
 									var deferred = $q.defer(), promise;
@@ -89,27 +104,27 @@
 
 						                            	if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
 						                            		useCredentials(res.data.token, res.data.retorno.usuario);
-						                            		deferred.resolve(true);
+						                            		deferred.resolve(function(res){ return true; });
 						                            	}else{
 						                            		console.log('Error verifyAuth SEM SUCCESS');
 						                            		destroyUserCredentials();
-						                            		deferred.reject(false);
+						                            		deferred.reject( function(res){ return false; });
 						                            	}
 						                            		
 						                            }, function error(res) {
 
 						                            	console.log('Error verifyAuth FALHA!');
 						                            	destroyUserCredentials();
-						                            	deferred.reject(false);
+						                            	deferred.reject( function(res){ return false; });
 
 						                            });
 
 									}else{
-										deferred.reject(function(res){ return false });
+										deferred.reject( function(res){ return false; });
 									}
 
 						            return deferred.promise;
-		                		};
+		                	};
 							
 							function useCredentials(token, user, remember) {
 								persistent = typeof remember !== 'undefined' ?  remember : true;
@@ -125,7 +140,14 @@
 										window.sessionStorage.setItem('user', user);
 										window.sessionStorage.setItem('token', token);
 									}
-								}
+								}else reset();
+							};
+
+							reset = function() {
+								checkAuth = false;
+								authUser = undefined;
+								authToken = undefined;
+								$http.defaults.headers.common.Authorization = undefined;
 							};
 
 							function destroyUserCredentials() {
@@ -476,6 +498,8 @@
 			                };
 
 							return {
+									Authenticated : Authenticated,
+									load : load, 
 									login : login, 
 									logout: destroyUserCredentials,
 			    					isLogged : isLogged, 

@@ -3,11 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('loginController', [ '$scope', '$controller', '$location', '$analytics', 'authService',
-					 function(scope, $controller, $location, $analytics, authService ) {
+		.controller('loginController', [ '$scope', '$controller', '$location', 'authService',
+					 function(scope, $controller, $location, authService ) {
 
 					 		var modalController = $controller('modalController');
-					 		$analytics.pageTrack($location.path());
 
 						 	scope.remember_me = true;
 						 	scope.login = function(credentials) {
@@ -22,20 +21,21 @@
 					 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
 					 						if(url = authService.getRedirect()){
 					 							authService.setRedirect();
-					 							window.location = url;
+					 							$location.path(url);
 					 						}else
-					 							window.location = '/aluno/cursos';
+					 							$location.path('/aluno/cursos');
+
 					 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.mensagem)){
-					 						modalController.alert({ main : { title : "Falha na Autenticação!", subtitle : res.data.retorno.mensagem } });
+					 						modalController.alert({  error : true, main : { title : "Falha na Autenticação!", subtitle : res.data.retorno.mensagem } });
 					 						scope.loading = false;
 					 					}
 					 					else{
-					 						modalController.alert({ main : { title : "Falha na Autenticação!" } });
+					 						modalController.alert({ error : true, main : { title : "Falha na Autenticação!" } });
 					 						scope.loading = false;
 					 					}
 					 					
 					 					return res;
-						 			}, function(){ scope.loading = false; modalController.alert(); });
+						 			}, function(){ scope.loading = false; modalController.alert({error : true}); });
 								}
 			 					
 							};

@@ -2,7 +2,7 @@
    'use strict';
 
 	angular.module('QiSatApp')
-		.run(function($rootScope, $document, $timeout){
+		.run(function($rootScope, $document, $timeout, $window){
 
 			var config = {
 			    	accordion: {
@@ -26,6 +26,8 @@
 				  		offset_by_height: true // whether to offset the destination by the expedition height. Usually you want this to be true, unless your expedition is on the side.
 					}
 				};
+
+				$window.ga('create', 'UA-98371985-2', 'auto');
 
 		    	$rootScope.$on('$viewContentLoaded', function () {
 		    		$timeout(function() {

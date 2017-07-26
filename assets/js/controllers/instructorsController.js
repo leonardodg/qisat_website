@@ -4,10 +4,9 @@
 	angular
 		.module('QiSatApp')
 		.controller("instructorsController",
-				[ '$scope', '$location', '$analytics', 'Config', 'QiSatAPI', 'instrutores', '$filter',
-					function(scope, $location, $analytics, Config, QiSatAPI, instructors, $filter){
+				[ '$scope', 'Config', 'QiSatAPI', 'instrutores', '$filter',
+					function(scope, Config, QiSatAPI, instructors, $filter){
 						var filterLimitName = $filter('nameInstructor');
-				 		$analytics.pageTrack($location.path());
 				 		scope.currentPage = 1;
 				 		scope.startPage = 0;
 				 		scope.itemsPerPage = 10;

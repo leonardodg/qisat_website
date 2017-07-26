@@ -5,7 +5,12 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	htmlmin = require('gulp-htmlmin'),
 	cleanCSS = require('gulp-clean-css'),
-	rename = require("gulp-rename");
+	rename = require("gulp-rename"),
+	removeEmptyLines = require('gulp-remove-empty-lines');
+
+var htmlhint = require("gulp-htmlhint"),
+	watch = require('gulp-watch');
+
 
 // limpa pasta - deleta arquivos
 gulp.task('clean', function() {
@@ -32,9 +37,10 @@ gulp.task('uglify', ['clean'], function() {
 
 // html
 gulp.task('htmlmin', function() {
-  return gulp.src(['page/*.html', 'views/*.html'])
-		     .pipe(htmlmin({collapseWhitespace: true}))
-		     .pipe(gulp.dest('public/views'));
+  return gulp.src(['views/*.html', 'views/map.xml'])
+  			 .pipe(removeEmptyLines({ removeSpaces: true }))
+		     .pipe(htmlmin({ collapseWhitespace: true, removeComments : true, collapseInlineTagWhitespace: true }))
+		     .pipe(gulp.dest('assets/views'));
 });
 
 // styles
@@ -44,5 +50,24 @@ gulp.task('clean-css', function() {
 		     .pipe(gulp.dest('public/css'));
 });
 
+// styles
+gulp.task('htmlhint', function() {
+		  return gulp.src("views/*.html")
+				    .pipe(htmlhint({ "doctype-first": false}))
+				    .pipe(htmlhint.reporter());
+});
 
-gulp.task('default', ['uglify', 'htmlmin']);
+
+gulp.task('callback', function () {
+    // Callback mode, useful if any plugin in the pipeline depends on the `end`/`flush` event 
+    return watch('views/*.html', function () {
+        return gulp.src(['views/*.html', 'views/map.xml'])
+		  			 .pipe(removeEmptyLines({ removeSpaces: true }))
+				     .pipe(htmlmin({ collapseWhitespace: true, removeComments : true, collapseInlineTagWhitespace: true }))
+				     .pipe(gulp.dest('assets/views'));
+    });
+});
+
+
+
+gulp.task('default', ['callback']);

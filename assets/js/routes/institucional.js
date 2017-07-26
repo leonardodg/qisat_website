@@ -157,7 +157,7 @@
                                                   $scope.descontoForm.$setPristine();
                                                   modalController.alert({ success : true, main : { title : "Obrigado, por solicitar o Insteresse!", subtitle : " Em breve entraremos em contato." } });
                                                 }else
-                                                  modalController.alert({ main : { title : "Falha na Solicitação!" }});
+                                                  modalController.alert({ error : true, main : { title : "Falha na Solicitação!" }});
                                                 
                                               }, function ( response ){
                                                   modalController.alert();

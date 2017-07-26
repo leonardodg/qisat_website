@@ -1,10 +1,9 @@
 (function() {
-    'use strict';
 
 	angular
 		.module('QiSatApp')
-		.controller('modalController', [ '$modal', 'authService',
-					 function( $modal, authService ) {
+		.controller('modalController', [ '$modal', '$q', 'authService',
+					 function( $modal, $q, authService ) {
 					 	var vm = this;
 
 					 	vm.termo = function () {
@@ -80,6 +79,62 @@
 															}
 				 						});
 					 			  };
+
+
+					 	vm.showZopim = function(show) {
+                            var body = angular.element(document).find('body');
+                                body.addClass('wait');
+
+                             show = (show === false) ? false : true;
+
+                            function load(){
+                                var deferred = $q.defer();
+
+                                window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+                                d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+                                _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+                                $.src="https://v2.zopim.com/?2jhFplrC6wQCc6t1tRCcVV3LZTuli01D";z.t=+new Date;$.
+                                type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+
+                                $zopim(function(){
+                                    if (typeof($zopim.livechat) == 'object'){
+                                            $zopim.livechat.theme.setColor('#005285');
+                                            $zopim.livechat.theme.reload(); // apply new theme settings
+                                            $zopim.livechat.hideAll();
+                                            deferred.resolve();
+                                    }else{
+                                        result.reject();
+                                    }
+                                });
+
+                                return deferred.promise;
+                            };
+
+
+                            return load().then(function(){
+                                  var user = authService.getUser();
+                                  var chave;
+                                  $zopim.livechat
+                                        .setOnConnected(function (){
+                                            $zopim.livechat.departments.setVisitorDepartment(111831);
+
+                                            if(user){
+                                            	chave = user.idnumber ? ' - '+user.idnumber : '';
+
+                                                $zopim.livechat.set({
+                                                      language: 'pt-br',
+                                                      name: user.firstname+' '+user.lastname+chave,
+                                                      email: user.email,
+                                                      phone: user.phone1
+                                                    });
+                                            }
+
+                                            body.removeClass('wait');
+                                            if (show) $zopim.livechat.window.show();
+                                        });
+                            });
+
+                    }
 
 
 					 	/*
@@ -187,7 +242,7 @@
 					 						modalInstance = $modal.open({ 
 	                      						windowClass: 'interesse',
 					 							templateUrl: '/views/modal-update.html',
-					 							controller : function ($scope, $modalInstance, QiSatAPI) {
+					 							controller : function ($scope, $modalInstance, QiSatAPI, $location) {
 					 											  
 					 											  $scope.dados = {};
 					 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
@@ -205,22 +260,10 @@
 				 											  	  	$scope.getCpf = true;
 
 														          $scope.showZopim = function(){
-														          		 var chave;
-														            	 $zopim.livechat.setOnConnected (function (){
-											                            						$zopim.livechat.departments.setVisitorDepartment(111831);
-											                            						if(user){
-											                            							chave = user.idnumber ? ' - '+user.idnumber : '';
-												                            						$zopim.livechat.set({
-																									      language: 'pt-br',
-																									      name: user.firstname+' '+user.lastname+chave,
-																									      email: user.email,
-																									      phone: user.phone1
-																									    });
-											                            						}
-
-											                            						$zopim.livechat.say('Solicito ajuda para cadastra/atualizar CPF ou CNPJ: '+$scope.dados.cpfcnpj);
-											                            						$zopim.livechat.window.show();
-																                			});
+														          		vm.showZopim(false).then(function(){
+														          			$zopim.livechat.say('Solicito ajuda para cadastra/atualizar CPF ou CNPJ: '+$scope.dados.cpfcnpj);
+					                            							$zopim.livechat.window.show();
+														          		});
 														          };
 				 											  	  
 
@@ -276,7 +319,7 @@
 																	 							if(!res || !res.data || !res.data.retorno || !res.data.retorno.sucesso)
 																	 								vm.alert({ main : { title : "Falha ao atualizar dados!"}});
 																	 							else if(urlNext)
-																		 							window.location = urlNext;
+																		 							$location.path(urlNext);
 																		 						else if(typeof callback === "function")
 																		 							callback();
 
@@ -318,7 +361,7 @@
 						vm.login = function (urlBack, urlNext, callback) {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
-		 							controller : function ($scope, $modalInstance, QiSatAPI, authService) {
+		 							controller : function ($scope, $modalInstance, QiSatAPI, authService, $location) {
 
 		 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 
@@ -328,7 +371,8 @@
 
 													  $scope.redirectSignup = function () {
 														  	authService.setRedirect(urlBack);
-														  	window.location = '/cadastro'; 
+														  	$modalInstance.dismiss('cancel');
+														  	$location.path('/cadastro');
 													  };
 
 													  $scope.clickremember = function () {
@@ -345,9 +389,9 @@
 												 						$modalInstance.dismiss('cancel');
 												 						if(url = authService.getRedirect()){
 												 							authService.setRedirect();
-												 							window.location = url;
+												 							$location.path(url);
 												 						}else if(urlNext)
-												 							window.location = urlNext;
+												 							$location.path(urlNext);
 												 						else if(typeof callback === "function")
 												 							callback();
 

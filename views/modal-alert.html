@@ -28,7 +28,7 @@
 						</svg>
 				</span>
 
-				<span class="section-call__done--icon" ng-if="!msgs.success">
+				<span class="section-call__done--icon" ng-if="msgs.error">
 					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 						<svg version="1.1" id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="120" height="120" viewbox="0 0 24 24">
@@ -42,9 +42,50 @@
 
 		<div class="row text-center" ng-if="msgs.main">
 			<div class="large-12 columns">
-					<span class="section-call__done--title" ng-if="msgs.main.title" > {{msgs.main.title}} </span>
-					<span class="section-call__done--subtitle" ng-if="msgs.main.subtitle"> {{msgs.main.subtitle}} </span>
+					<div ng-if="msgs.main.html">
+						<span class="section-call__done--title" ng-if="msgs.main.title" ng-bind-html="msgs.main.title"></span>
+					
+					</div>
+
+					<div ng-if="!msgs.main.html">
+						<span class="section-call__done--title" ng-if="msgs.main.title" > {{msgs.main.title}} </span>
+						<span class="section-call__done--subtitle" ng-if="msgs.main.subtitle"> {{msgs.main.subtitle}} </span>
+					</div>
 			</div>
 		</div>
+
+
+		<div class="row text-center" ng-if="msgs.crea">
+			<div class="large-12 columns">
+					<span class="section-call__done--title" > BENEFÍCIOS DO CONVÊNIO  </span>
+					<span class="section-call__done--subtitle" > 
+
+						<div class="content_align">
+			            <p>O Projeto proporciona  &nbsp<strong>benefícios de descontos e participação sobre as vendas online &nbsp</strong> para os Conselhos:</p>
+			              <ul>
+			                <li>Desconto de  &nbsp<strong>30% &nbsp</strong> nas inscrições dos cursos a distância para todos os profissionais registrados, adimplentes.</li>
+			              </ul>
+			            </div>
+
+			            <div class="content_align">
+			              Atualmente, o QiSat possui convênio com os seguintes Conselhos:
+			            </div>
+			            <div class="content_align">
+	                          <div>CREA-RO</div>
+	                          <div>CREA-TO</div>
+	                          <div>CREA-BA</div>
+	                          <div>CREA-DF</div>
+	                          <div>CREA-SC</div>
+	                          <div>CREA-MS</div>
+			            </div>
+
+						<div class="content_align">
+			              <p>Para obter direito ao benefĩcio é necessário informar o número do CREA e selecionar o convênio.</p>
+			            </div>
+
+					</span>
+			</div>
+		</div>
+
 	</section>
 </div>

@@ -175,7 +175,6 @@
 		                                                        });
 
 		                            return promise.then( function(res){ 
-		                            						console.log(res);
 		                                                    if(res && res.status == 200 && res.data && res.data.retorno ){
 		                                                    	return res.data.retorno; 
 		                                                    }else{
@@ -292,7 +291,6 @@
 	                                                    	else
 	                                                    		return res;
 		                                                }, function(res){
-		                                                	console.log(res);
 		                                                    return res; 
 		                                                });
 		                        };

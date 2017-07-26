@@ -4,19 +4,33 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope', '$controller', '$filter' ,'$location','$analytics','QiSatAPI', 'Config', 
-						function($scope, $controller, $filter, $location, $analytics, QiSatAPI, Config ){
+					[ '$scope', '$controller', '$filter' ,'$location', 'QiSatAPI', 'Config', 
+						function($scope, $controller, $filter, $location, QiSatAPI, Config ){
 
 						var vm = this, modalController = $controller('modalController');
 							vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 
-						$analytics.pageTrack($location.path());
 
 						if($location.hash() == 'cadastro')
 							vm.openAdd = true;
 
+						if($location.path() == '/institucional/convenios/conselhos')
+							vm.type = 3;
+						else if($location.path() == '/institucional/convenios/preduc/entidade')
+							vm.type = 2;
+						else if($location.path() == '/institucional/convenios/preduc/ensino')
+							vm.type = 1;
+
 						vm.open = function (){
 							vm.openAdd = true;
+						};
+
+						vm.alert = function(){
+							if(!vm.linkDownload){
+								modalController.alert({ error : true, main : { title : "Preencha o termo de adesão." }});
+								vm.openAdd = true;
+								vm.openDownload = false;
+							}
 						};
 
 						vm.addInstitution = function(type){
@@ -67,10 +81,10 @@
 															modalController.alert({ success : true, main : { title : "Obrigado! Sua solicitação foi enviada.", subtitle : "A equipe QiSat entrará em contato em breve." } });
 
 													}else
-														modalController.alert({ main : { title : "Falha na Solicitação de Cadastro." }});
+														modalController.alert({ error : true, main : { title : "Falha na Solicitação de Cadastro." }});
 
 												}, function ( response ){
-													modalController.alert();
+													modalController.alert({error : true});
 												});
 							}
 						};

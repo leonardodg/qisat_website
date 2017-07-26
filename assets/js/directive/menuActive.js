@@ -3,43 +3,44 @@
 
 	angular
 		.module('QiSatApp')
-		.directive('menuActive', ['$location', function ($location) {
+		.directive('menuActive', ['$location', '$rootScope', function ($location, $rootScope) {
 	        return {
 	            restrict: 'A',
 	            link: function (scope, element) {
-	            	
-	                function setActive() {
-	                    var path = $location.path(), elem,
-	                    	active = element.find('.menu-horizontal__item--current'),
-	                    	elems = element.find('a.menu-horizontal__link');
 
-	                    	if(active.length)
-	                    		active.removeClass('menu-horizontal__item--current');
+	                function setActive() {
+	                    var path = $location.path(), pos, elem,
+	                    	elems = element.find('li.header-main__list'),
+	                    	active = elems.find('a.header-main__list-current');
+
+                    	if(active.length)
+                    		active.removeClass('header-main__list-current');
+
+                    	active = elems.find('a.header-main__list-item-current');
+                    	if(active.length)
+                    		active.removeClass('header-main__list-item-current');
 
 	                    if (path) {
+	                    	if(path == '/')
+	                    		pos = 0;
+	                    	else if(path.indexOf('/curso') == 0)
+	                    		pos = 1
+	                    	else if(path.indexOf('/institucional') == 0 )
+	                    		pos = 3;
+	                    	else if(path == '/login' || path == '/lembrete-de-senha' || path == '/cadastro' || path.indexOf('/aluno') == 0)
+	                    		pos = 2
 
-	                    	if(path == '/institucional/parceiros' || path == '/institucional/parceiros/' || path.indexOf('/institucional/convenios') >=0 )
-	                    		path = '/institucional/convenios-e-parceiros';
-	                    	else if( path.indexOf('/institucional/instrutor') >=0 )
-	                    		path = '/institucional/instrutores-e-professores';
-	                    	else if(path == '/institucional/' || path == '/institucional')
-	                    		path = '/institucional/sobre-a-empresa';
-
-	                         angular.forEach(elems, function (el){
-	                         		 el = angular.element(el);
-	                         		 var link = el.attr('link');
-	                        		 if(el && ((path == link) || (path.indexOf(link) >= 0)))
-	                        		 	elem = el;
-	                        });
+	                        if(pos >= 0) 
+	                        	elem = angular.element(elems[pos]);
 
 	                        if(elem){
-	                        	elem = angular.element(elem).parent();
-	                        	if(elem) elem.addClass('menu-horizontal__item--current');
+	                        	elem.find('a').addClass('header-main__list-current');
+	                        	elem.find('a').addClass('header-main__list-item-current');
 	                        }
 	                    }
-	                }
-
-	                scope.$on('$locationChangeSuccess', setActive);
+	                };
+	                
+	                $rootScope.$on('$viewContentLoaded', setActive);
 	            }
 	        }
 	    }]);

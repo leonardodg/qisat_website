@@ -4,11 +4,10 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope', '$location', '$analytics', 'QiSatAPI', '$modal', '$controller', 
-						function($scope, $location, $analytics, QiSatAPI, $modal, $controller){
+					[ '$scope', 'QiSatAPI', '$modal', '$controller', 
+						function($scope, QiSatAPI, $modal, $controller){
 						
 						var modalController = $controller('modalController');
-							$analytics.pageTrack($location.path());
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							$scope.modalcall = modalController.call;
 			                $scope.submitted = false;
@@ -26,8 +25,6 @@
 
 			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 			                            	modalController.alert({ success : true, main : { title : "Obrigado! Seu e-mail foi cadastrado.", subtitle : "A equipe QiSat manterá você informado sobre novidades." } });
-			                          	else
-			                          		modalController.alert();
 			                            
 			                        });
 			                      }
@@ -56,11 +53,11 @@
 													if(response.statusText=="OK")
 														modalController.alert({ success : true, main : { title : "Obrigado! Sua mensagem foi enviada.", subtitle : "Em breve a equipe QiSat entrará em contato." } });
 													else
-														modalController.alert({ main : { title : "Falha no envio do E-mail!" }});
+														modalController.alert({ error : true, main : { title : "Falha no envio do E-mail!" }});
 													
-												}, function ( response ){
-													modalController.alert();
-												});
+												}, function ( res ){
+    													modalController.alert({error : true});
+    											});
 							}
 						};
 				}]);

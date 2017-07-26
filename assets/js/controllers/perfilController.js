@@ -3,11 +3,10 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('perfilController', ['$scope', '$controller', '$location', '$analytics',  'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
-					 function(scope, $controller, $location, $analytics, QiSatAPI, authService, Authenticated, postmon, Config ) {
+		.controller('perfilController', ['$scope', '$controller', 'QiSatAPI', 'authService','Authenticated', 'postmon', 'Config',
+					 function(scope, $controller, QiSatAPI, authService, Authenticated, postmon, Config ) {
 
 						var modalController = $controller('modalController');
-						$analytics.pageTrack($location.path());
 
 						function validateCNPJ(c) {
 							var b = [6,5,4,3,2,9,8,7,6,5,4,3,2];
@@ -52,7 +51,6 @@
 							return validateDigit(9) && validateDigit(10);
 						};
 
-
 					 	function init() {
 						 		scope.confirm = false;
 							 	scope.checkPassword = false;
@@ -60,6 +58,7 @@
 							 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							 	scope.country = Config.country;
 							 	scope.states = Config.states;
+							 	scope.statesCREAs = angular.copy(Config.states);
 
 						 		if(Authenticated){
 							 		scope.user = angular.copy(authService.getUser());
@@ -111,12 +110,48 @@
 
 							 		if(!scope.user.picture)
 							 			scope.user.picture = Config.imgUserDefault;
+
+							 		if(scope.user.entidades && scope.user.entidades.length){
+							 			scope.user.entidades = scope.user.entidades.map(function(e){
+							 					e.selectCrea = scope.statesCREAs.find(function(o){ return o.host == e.id });
+							 					e.statusA =  (e.adimplente) ? 'Adimplente' : 'Inadimplente';
+							 					e.statusC =  (e.confirmado) ? 'Confirmado' : 'Não Confirmado';
+							 					return e;
+							 			});
+							 		}else
+						 				scope.user.entidades = [];
+
 						 		}
 					 	}
 
 					 	scope.clickEditPassword = function(){
 					 		scope.showEditPassword = !scope.showEditPassword;
 					 	};
+
+					 	
+					 	scope.saibamais = function(){
+					 		modalController.alert({ crea : true });
+					 	};
+
+					 	scope.addCrea = function(){
+					 		if(scope.user.entidades)
+					 			scope.user.entidades.push({});
+					 		else
+					 			scope.user.entidades = [{}];
+					 	};
+
+					 	scope.removeCrea = function(id){
+					 		var i;
+					 		if(scope.user.entidades && scope.user.entidades.length){
+					 			i = scope.user.entidades.findIndex(function(e){ return e.id == id; });
+					 			scope.user.entidades.splice(i, 1);
+
+					 			if(scope.editForm['crea'+i]){
+					 				delete(scope.editForm['crea'+i]);
+					 				delete(scope.editForm['selectCrea'+i]);
+					 			}
+					 		}
+					 	}
 
 					 	scope.buscaCEP = function(cep){
 					 		if(cep && !scope.editForm.cep.$invalid){
@@ -150,10 +185,10 @@
 							 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 							 								modalController.alert({ success : true, main : { title : "Dados Atualizados com Sucesso!"} });
 							 							else
-							 								modalController.alert({ main : { title : "Falha ao atualizar os dados!"} });
+							 								modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} });
 							 							
 							 							return res;
-							 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });	
+							 						}, function(res){ modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} }) });	
 						 	});
 
 					 	scope.fileClick = function(){
@@ -250,6 +285,17 @@
 								newdata.sms_informacoes = scope.user.sms_informacoes ? true : false;
 								newdata.sms_lancamentos = scope.user.sms_lancamentos ? true : false;
 
+								if(scope.user.entidades && scope.user.entidades.length){
+						 			newdata.entidades = [];
+
+						 			scope.user.entidades.map( function (e){
+						 				newdata.entidades.push({ 
+							 									entidade : e.selectCrea,
+							 									numero : e.numero
+						 									});
+						 			});
+						 		}
+
 						 		authService.update(newdata)
 						 					.then(function(res){
 						 							scope.confirm = false;
@@ -258,10 +304,10 @@
 						 								scope.getEmail = false;
 						 								modalController.alert({ success : true, main : { title : "Dados Atualizados com Sucesso!"} });
 						 							}else
-						 								modalController.alert({ main : { title : "Falha ao atualizar dados!"} });
+						 								modalController.alert({ error : true, main : { title : "Falha ao atualizar dados!"} });
 
 						 							return res;
-						 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });		
+						 						}, function(res){ modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} }) });		 
 
 					 	}
 
@@ -279,11 +325,11 @@
 						 							if(res.data.retorno.sucesso)
 						 								modalController.alert({ success : true, main : { title : "Senha Atualizada com Sucesso!"} });
 						 							else
-						 								modalController.alert({ main : { title : "Falha ao atualizar os dados!"} });
+						 								modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} });
 
 						 							scope.showEditPassword = false;
 						 							return res;
-						 						}, function(res){ modalController.alert({ main : { title : "Falha ao atualizar os dados!"} }) });	
+						 						}, function(res){ modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} }) });	
 
 					 	}
 
@@ -293,14 +339,14 @@
 						 					.then(function(res){
 
 						 							if(!res.data.retorno.sucesso)
-						 								modalController.alert({ main : { title : "Falha na Autenticação!"} });
+						 								modalController.alert({ error : true, main : { title : "Falha na Autenticação!"} });
 						 							else{
 						 								scope.checkPassword = false;
 						 								scope.confirm = true;
 						 							}
 
 						 							return res;
-						 						}, function(res){ modalController.alert({ main : { title : "Falha na Autenticação!"} }) });
+						 						}, function(res){ modalController.alert({ error : true, main : { title : "Falha na Autenticação!"} }) });
 					 	}
 
 					 	scope.cancel = init;

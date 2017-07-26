@@ -7,20 +7,9 @@
 			function($scope, $controller, QiSatAPI, Config, $filter, $timeout, authService){
 
 						var modalController = $controller('modalController');
-						var authenticated = function(){
-		                      return authService.isAuth() || 
-		                              authService.verifyAuth()
-		                                         .then( function (res){ 
-		                                                  return (res) ? true : false;
-		                                                }, function (res){ 
-		                                                     return false;
-		                                                });
-
-	                  	};	
-	                  	authenticated();
 
 						$scope.inscricao = function(produto){
-							var auth = authenticated();
+							var auth = authService.Authenticated();
 
 							function enrol(){
 								authService.inscricao(produto)
@@ -31,10 +20,10 @@
 											      	window.location = res.data.retorno.link;
 											      }, 10000);
 				 							}else
-				 								modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+				 								modalController.alert({ error : true, main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
 
 				 						}, function(){
-				 							modalController.alert({ main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
+				 							modalController.alert({ error : true, main : { title : "Falha para realizar Matricula!", subtitle : " Entre em contato com a central de Inscrições." } });
 				 						});
 							};
 

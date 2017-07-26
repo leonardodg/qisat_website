@@ -7,10 +7,12 @@
 
 	 angular
 	 	.module('QiSatApp')
-	 	.factory("QiSatAPI", [ '$http', '$filter', 'Config', 
-	 			function($http, $filter, Config){
+	 	.factory("QiSatAPI", [ '$http', '$q','$filter', '$location', 'Config', 
+	 			function($http, $q, $filter, $location, Config){
 
-					var sdo = {
+	 				var sdo, courses, coursesList = [], dataCoursesFilter = [], dataCoursesStates = [];
+
+					sdo = {
 
 		                        createUser : function (data) {
 
@@ -146,15 +148,51 @@
 							},
 
 							getCourseStates : function () {
-									var promise = $http({ 
-															cache: true, 
-															method: 'GET', 
-															url: Config.baseUrl+'/curso-presencial/wsc-curso-presencial/estados-edicoes'
-														});
+									var deferred = $q.defer(), promise,
+										inputStates, filter;
 
-										promise.then( handleSuccess, handleError );
+									
+									if( Array.isArray(dataCoursesStates) && dataCoursesStates.length ){
+											deferred.resolve( dataCoursesStates );
+											return deferred.promise;
+									}else{
 
-									return promise;
+										promise = $http({ 
+												cache: true, 
+												method: 'GET', 
+												url: Config.baseUrl+'/curso-presencial/wsc-curso-presencial/estados-edicoes'
+											});
+
+										return promise.then( function (response){
+													if(response && response.status == 200 && response.data && response.data.retorno){
+														dataCoursesStates = response.data.retorno;
+
+														if( Array.isArray(dataCoursesStates) && dataCoursesStates.length){
+
+															inputStates = Config.filters.presencial.find(function (el){ return el.name == 'estado' })
+															if(inputStates){
+																dataCoursesStates.map(function (el){
+																		var id = el.estado.toLowerCase();
+												     						id = '#'+id.split(' ').map(function(e){ return e.charAt(0).toUpperCase() + e.slice(1); }).join('_');	
+																		el.id = id;
+																		inputStates.inputs.push(el);
+																});
+															}
+
+															deferred.resolve( dataCoursesStates );
+														}else 
+															deferred.reject([]);
+													} else 
+														deferred.reject([]);
+
+													return deferred.promise;
+												}, function (response) {
+													deferred.reject( response );
+													return deferred.promise;
+												});
+
+									}
+
 							},
 
 							getCoursesTop : function () {
@@ -187,124 +225,407 @@
 
 
 							getCourses : function () {
-									var promise = $http({ 
+									var deferred = $q.defer(), promise,
+										filterLimitName = $filter('limitName');
+
+									if(Array.isArray(courses) && courses.length){
+										deferred.resolve( courses );
+										return deferred.promise;
+									}else{
+										
+										promise = $http({ 
 													cache: true, 
 													loading : true,
 													method: 'GET', 
 													url: Config.baseUrl+'/produto/wsc-produto/listar'
 												});
 
-										promise.then( function successCallback( response ){
-													var courses = [];
-													var filterTypes = $filter('byTypes'),
-														filterZpad = $filter('zpad'),
-														filterLimitName = $filter('limitName');
+										return promise.then( function ( response ){
 
-													if(response.status == 200) courses = response.data.retorno;
-													courses = courses.map( function (course, i) {
-																if(course && course.info){
-																	var imagemFile, tipo, produto, itens, valorItens = 0, videoDemo;
+														if(response && response.status == 200 && response.data && response.data.retorno){
+															courses = response.data.retorno;
 
-																	course.imgSrc = Config.imgCursoUrlDefault;
-																	course.nomeLimit = filterLimitName(course.info.titulo, 48);
+															if( Array.isArray(courses) && courses.length){
 
-																	//serie, pack, classroom, events, single, releases, free, online
-																	if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
-																		course.modalidade = tipo.nome;
-																		course.isSerie = true;
-																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
-																		course.modalidade = tipo.nome;
-																		course.isPack = true;
-																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
-																		course.modalidade = tipo.nome;
-																		course.isLecture = true;
-																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
-																		course.modalidade = tipo.nome;
-																		course.isIndividual = true;
-																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
-																		course.modalidade = tipo.nome;
-																		course.isClassroom = true;
-																	}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
-																		course.modalidade = tipo.nome;
-																		course.isOnline = true;
-																	}
+																courses = courses.map( function (course, i) {
+																	if(course && course.info){
+																		var imagemFile, tipo, produto, itens, valorItens = 0, videoDemo;
 
-																	if(course.imagens && course.imagens.length){
-																		imagemFile = course.imagens.find(function(img) { return img.type == 'Imagens - Capa' });
-																		if(imagemFile) course.imgSrc = imagemFile.src;
-																	}
+																		course.imgSrc = Config.imgCursoUrlDefault;
+																		course.nomeLimit = filterLimitName(course.info.titulo, 48);
 
-																	if(course.isSerie && course.produtos && course.produtos.length){
-																		
-																		course.id = [];
-																		course.conteudos = [];
-
-																		produto = course.produtos.find(function (prod){
-																			if(prod && prod.categorias)
-																				return prod.categorias.find(function(tipo){ return tipo.id == 41 });
-																		});
-
-																		itens = course.produtos.filter(function (prod){
-																										if(prod && prod.categorias)
-																											return prod.categorias
-																														.find(function(tipo){ return tipo.id == 33 });
-																									});
-
-																		if(itens && itens.length){
-																				itens.map( function (prod){
-																								valorItens += prod.preco; 
-																								course.id.push(prod.id);
-																								if(prod){
-																									prod.valor = $filter('currency')(prod.preco, 'R$');
-																									course.conteudos.push(prod);
-																								}
-																						 	});
+																		//serie, pack, classroom, events, single, releases, free, online
+																		if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
+																			course.modalidade = tipo.nome;
+																			course.isSerie = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																			course.modalidade = tipo.nome;
+																			course.isPack = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																			course.modalidade = tipo.nome;
+																			course.isLecture = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																			course.modalidade = tipo.nome;
+																			course.isIndividual = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																			course.modalidade = tipo.nome;
+																			course.isClassroom = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																			course.modalidade = tipo.nome;
+																			course.isOnline = true;
 																		}
 
-																		if(produto){
-		 																	course.id = produto.id;
-																			course.precoTotal =  $filter('currency')(produto.preco, 'R$');
-																			if(produto.promocao){
-																				course.preco = $filter('currency')(produto.valorTotal, 'R$');
-																				course.promocaoDateend = $filter('date')( produto.promocao.datafim*1000, 'dd/MM/yyyy' );
-																			}else
-																				course.preco = $filter('currency')(produto.preco, 'R$');
+																		if(course.imagens && course.imagens.length){
+																			imagemFile = course.imagens.find(function(img) { return img.type == 'Imagens - Capa' });
+																			if(imagemFile) course.imgSrc = imagemFile.src;
+																		}
+
+																		if(course.isSerie && course.produtos && course.produtos.length){
+																			
+																			course.id = [];
+																			course.conteudos = [];
+
+																			produto = course.produtos.find(function (prod){
+																				if(prod && prod.categorias)
+																					return prod.categorias.find(function(tipo){ return tipo.id == 41 });
+																			});
+
+																			itens = course.produtos.filter(function (prod){
+																											if(prod && prod.categorias)
+																												return prod.categorias
+																															.find(function(tipo){ return tipo.id == 33 });
+																										});
+
+																			if(itens && itens.length){
+																					itens.map( function (prod){
+																									valorItens += prod.preco; 
+																									course.id.push(prod.id);
+																									if(prod){
+																										prod.valor = $filter('currency')(prod.preco, 'R$');
+																										course.conteudos.push(prod);
+																									}
+																							 	});
+																			}
+
+																			if(produto){
+			 																	course.id = produto.id;
+																				course.precoTotal =  $filter('currency')(produto.preco, 'R$');
+																				if(produto.promocao){
+																					course.preco = $filter('currency')(produto.valorTotal, 'R$');
+																					course.promocaoDateend = $filter('date')( produto.promocao.datafim*1000, 'dd/MM/yyyy' );
+																				}else
+																					course.preco = $filter('currency')(produto.preco, 'R$');
+																			}else{
+																				course.precoTotal =  $filter('currency')(valorItens, 'R$');
+																				course.preco =  $filter('currency')(valorItens, 'R$');
+																			}
 																		}else{
-																			course.precoTotal =  $filter('currency')(valorItens, 'R$');
-																			course.preco =  $filter('currency')(valorItens, 'R$');
+																			course.precoTotal =  $filter('currency')(course.preco, 'R$');
+																			if(course.promocao){
+																				course.preco = $filter('currency')(course.valorTotal, 'R$');
+																				course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
+																			}else
+																				course.preco = $filter('currency')(course.preco, 'R$');
 																		}
-																	}else{
-																		course.precoTotal =  $filter('currency')(course.preco, 'R$');
-																		if(course.promocao){
-																			course.preco = $filter('currency')(course.valorTotal, 'R$');
-																			course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
-																		}else
-																			course.preco = $filter('currency')(course.preco, 'R$');
+
+																		return course;
 																	}
+																});
 
-																	return course;
-																}
-													});
+																deferred.resolve( courses );
+															}else 
+																deferred.reject([]);
+														} else 
+															deferred.reject([]);
 
-													return courses;
-												}, handleError );
-									return promise;
+														return deferred.promise;
+										}, function (response) {
+											 deferred.reject(response);
+											 return deferred.promise;
+										});
+
+									}
+								
 							},
 
-							
+							getCourseList : function(){
+								var  series, packages, classroom, events, single, releases, free, online, 
+									 list, listOnline, listSeries, listPacks, listSingle, listEvents, listClass, 
+									 filter, elemts, elem, inputs, selected, show, tipo, len, filterTypes = $filter('byTypes');
+
+								if(courses.length){
+
+									filter = coursesList.filter(function (list){ return list.show || list.selected });
+									filter.map( function (list){ list.show = false; list.selected = false; });
+
+									if($location.path() == '/cursos/lancamentos'){
+										list = coursesList.find(function (list){ return list.type == 39 });
+										if(!list) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 39 });
+											releases = filterTypes(courses, 39);
+											show = (releases && releases.length) ? true : false;
+											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 39, card: 'online', show: show };
+											coursesList.push(list);
+										}else list.show = true;
+									}else if($location.path() == '/cursos/online/gratuito') { 
+										list = coursesList.find(function (list){ return list.type == 8 });
+										if(!list) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 8 });
+											free = filterTypes(courses, 8);
+											show = (free && free.length) ? true : false;
+											list = { id: coursesList.length+1, title: tipo.nome, courses: free, type: 8, card: 'online', show: show };
+											coursesList.push(list);
+										}else list.show = true;
+									}else if($location.path().indexOf('/cursos/online')>=0){ 
+										listOnline = coursesList.find(function (list){ return list.type == 2 });
+										if(!listOnline) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 2 });
+											online = filterTypes(courses, 2);
+											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
+											show = (online && online.length) ? true : false;
+											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
+											coursesList.push(listOnline);
+										}else listOnline.show = true;
+
+										listSeries = coursesList.find(function (list){ return list.type == 32 });
+										if(!listSeries) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 32 });
+											series = filterTypes(courses, 32);
+											show = (series && series.length) ? true : false;
+											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
+											coursesList.push(listSeries);
+										}else listSeries.show = true;
+
+										listPacks = coursesList.find(function (list){ return list.type == 17 });
+										if(!listPacks) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 17 });
+											packages = filterTypes(courses, 17);
+											show = (packages && packages.length) ? true : false;
+											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
+											coursesList.push(listPacks);
+										}else listPacks.show = true;
+
+										if($location.path() == '/cursos/online/serie')
+											list = listSeries;
+										else if($location.path() == '/cursos/online/pacote')
+											list = listPacks;
+										else
+											list = listOnline;
+
+									}else if($location.path().indexOf('/cursos/presenciais')>=0){ 
+
+										if($location.path() == '/cursos/presenciais/individuais'){
+
+											listSingle = coursesList.find(function (list){ return list.type == 12 });
+											if(!listSingle) {
+												single = filterTypes(courses, 12);
+												show = (single && single.length) ? true : false;
+												listSingle = { id: coursesList.length+1, title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
+												coursesList.push(listSingle);
+											}else listSingle.show = true;
+
+											listEvents = coursesList.find(function (list){ return list.type == 'eventos' });
+											classroom = filterTypes(courses, 10);
+											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
+											if(!listEvents && events){
+												events.map( function (course){
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
+												});
+												show = (events && events.length) ? true : false;
+												listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
+												coursesList.push(listEvents);
+											}else if(listEvents) listEvents.show = true;
+
+
+										}else{
+
+											listEvents = coursesList.find(function (list){ return list.type == 'eventos' });
+											classroom = filterTypes(courses, 10);
+											events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
+											if(!listEvents && events){
+												events.map( function (course){
+													course.eventos.map( function (edicao){
+														if(edicao.cidade && edicao.cidade.estado) {
+															edicao.show = true;
+															edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+															edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+															edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+															edicao.uf = edicao.cidade.estado.uf;
+														}
+													});
+												});
+												show = (events && events.length) ? true : false;
+												listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
+												coursesList.push(listEvents);
+											}else if(listEvents) listEvents.show = true;
+
+											listSingle = coursesList.find(function (list){ return list.type == 12 });
+											if(!listSingle) {
+												single = filterTypes(courses, 12);
+												show = (single && single.length) ? true : false;
+												listSingle = { id: coursesList.length+1, title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
+												coursesList.push(listSingle);
+											}else listSingle.show = true;
+
+										}
+
+										listClass = coursesList.find(function (list){ return list.type == 10 });
+										if(!listClass) {
+											classroom = classroom.filter(function (course){ return !course.eventos });
+											classroom = classroom.filter( function (course){ if(!course.categorias.find(function(tipo){ return tipo.id == 12 })) return true; });
+											show = (classroom && classroom.length) ? true : false;
+											listClass = { id: coursesList.length+1, title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show}; 
+											coursesList.push(listClass);
+										}else listClass.show = true;
+
+
+									}else{
+
+										listOnline = coursesList.find(function (list){ return list.type == 2 });
+										if(!listOnline) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 2 });
+											online = filterTypes(courses, 2);
+											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
+											show = (online && online.length) ? true : false;
+											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
+											coursesList.push(listOnline);
+										}else listOnline.show = true;
+
+										listEvents = coursesList.find(function (list){ return list.type == 'eventos' });
+										classroom = filterTypes(courses, 10);
+										events = classroom.filter(function (course){ return course.eventos && course.eventos.length });
+										if(!listEvents && events){
+											events.map( function (course){
+												course.eventos.map( function (edicao){
+													if(edicao.cidade && edicao.cidade.estado) {
+														edicao.show = true;
+														edicao.timestart = $filter('date')( edicao.data_inicio*1000, 'dd/MM/yy' );
+														edicao.timeend   = $filter('date')( edicao.data_fim*1000, 'dd/MM/yy' );
+														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
+														edicao.uf = edicao.cidade.estado.uf;
+													}
+												});
+											});
+											show = (events.length) ? true : false;
+											listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
+											coursesList.push(listEvents);
+										}else if(listEvents) listEvents.show = true;
+
+										listSeries = coursesList.find(function (list){ return list.type == 32 });
+										if(!listSeries) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 32 });
+											series = filterTypes(courses, 32);
+											show = (series && series.length) ? true : false;
+											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, show: false, card: 'serie', name: 'Series', show: show };
+											coursesList.push(listSeries);
+										}else listSeries.show = true;
+
+										listPacks = coursesList.find(function (list){ return list.type == 17 });
+										if(!listPacks) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 17 });
+											packages = filterTypes(courses, 17);
+											show = (packages && packages.length) ? true : false;
+											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, show: false, card: 'pacotes', name: 'Pacotes', show: show };
+											coursesList.push(listPacks);
+										}else listPacks.show = true;
+
+										listSingle = coursesList.find(function (list){ return list.type == 12 });
+										if(!listSingle) {
+											single = filterTypes(courses, 12);
+											show = (single && single.length) ? true : false;
+											listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
+											coursesList.push(listSingle);
+										}else listSingle.show = true;
+
+										listClass = coursesList.find(function (list){ return list.type == 10 });
+										if(!listClass) {
+											classroom = classroom.filter(function (course){ return !course.eventos });
+											classroom = classroom.filter( function (course){ if(!course.categorias.find(function(tipo){ return tipo.id == 12 })) return true; });
+											show = (classroom && classroom.length) ? true : false;
+											listClass = { id: coursesList.length+1, title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show}; 
+											coursesList.push(listClass);
+										}else listClass.show = true;
+									}
+
+									if(coursesList.length){
+										coursesList.map(function(list, i){
+											if(list && list.courses && list.courses.length){
+												len = (i == 0 && list.card == 'online') ? 3 : 1;
+												while(len--) if(list.courses[len]) list.courses[len].show = true;
+											}
+										});
+									}
+								}
+								return coursesList;
+						}, 
 
 							getFilterData : function () {
-										var promise = $http({ 
+
+										var deferred = $q.defer(), promise,
+											filterZpad = $filter('zpad');
+
+										var setData = function (filtro){ 
+											var filter;
+											if( filtro && Array.isArray(filtro.inputs) && filtro.inputs.length){
+												filtro.inputs.map (function (el, i){ 
+													el.qtds = 0;
+													if(filtro.type == 'checkbox' && !el.name) { el.name = filtro.name+i; }
+													filter  = dataCoursesFilter.find(function (value){ return el.type == value.id })
+													if(filter) el.qtds += parseInt(filter.produtos);
+													if(el.presencial){
+														filter = dataCoursesFilter.find(function (value){ return el.presencial == value.id })
+														if(filter) el.qtds += parseInt(filter.produtos);
+													}
+													if(el.pacotes){
+														filter = dataCoursesFilter.find(function (value){ return el.pacotes == value.id })
+														if(filter) el.qtds += parseInt(filter.produtos);
+													}
+													el.qtds = filterZpad(el.qtds);
+												});
+											}
+										};
+
+
+										if( Array.isArray(dataCoursesFilter) && dataCoursesFilter.length ){
+											deferred.resolve( dataCoursesFilter );
+											return deferred.promise;
+										}else{
+
+											promise = $http({ 
 															cache: true, 
 															method: 'GET', 
 															url: Config.baseUrl+'/produto/wsc-produto/produtos-tipos-id'
 														});
 
-										promise.then( handleSuccess, handleError );
+											return promise.then( function (response){
+														if(response && response.status == 200 && response.data && response.data.retorno){
+															dataCoursesFilter = response.data.retorno;
 
-										return promise;
+															if( Array.isArray(dataCoursesFilter) && dataCoursesFilter.length){
+																Config.filters.online.map(setData);
+																Config.filters.presencial.map(setData);
+																deferred.resolve( dataCoursesFilter );
+															}else 
+																deferred.reject([]);
+														} else 
+															deferred.reject([]);
+
+														return deferred.promise;
+													}, function (response) {
+														deferred.reject( response );
+														return deferred.promise;
+													});
+
+										}
 							},
-
 
 							identidadeVisual : function (email) {
 										var promise = $http({ 

@@ -4,6 +4,7 @@
   "description": "* Ruby 1.9+   * [Node.js](http://nodejs.org)   * [compass](http://compass-style.org/): `gem install compass`   * [bower](http://bower.io): `npm install bower -g`",
   "main": "cors.js",
   "devDependencies": {
+    "core-util-is": "^1.0.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-clean": "^0.3.2",
@@ -16,12 +17,15 @@
     "gulp-jshint": "^2.0.4",
     "gulp-livereload": "^3.8.1",
     "gulp-minify-css": "^1.2.4",
+    "gulp-remove-empty-lines": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
     "gulp-sass": "^3.0.0",
     "gulp-uglify": "^2.1.2",
     "gulp-uglify-cli": "^0.1.7",
     "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "isarray": "^2.0.2",
     "jshint": "^2.9.4",
     "tiny-lr": "^1.0.4"
   },
@@ -32,13 +36,14 @@
     "type": "git",
     "url": "git+https://github.com/qisat/www.qisat.com.br.git"
   },
-  "author": "",
+  "author": "Leonardo Della Giustina",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/qisat/www.qisat.com.br/issues"
   },
   "homepage": "https://github.com/qisat/www.qisat.com.br#readme",
   "dependencies": {
+    "gulp-minify": "^1.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-minify": "^1.0.0",
     "gulp-rename": "^1.2.2",
