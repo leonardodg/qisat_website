@@ -70,6 +70,11 @@
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 41 })) { // Curso Série
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // A Dinstancia
+											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 44 }))
+												item.packCert = true;
+											else
+												item.testCert = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 											item.modalidade = tipo.nome;
 											item.isPack = true;

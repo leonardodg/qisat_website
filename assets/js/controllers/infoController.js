@@ -125,12 +125,22 @@
 					 		}
 
 							if(info.produto && info.produto.categorias){
+								
+
 								if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 8 })){ // Gratuito
 									info.modalidade = tipo.nome;
 									info.isFree = true;
 								}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 									info.modalidade = tipo.nome;
 									info.isSerie = true;
+								}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // Certificacao
+									info.modalidade = tipo.nome;
+									
+									if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 44 }))
+										info.packCert = true;
+									else
+										info.testCert = true;
+
 								}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 									info.modalidade = tipo.nome;
 									info.isPack = true;
@@ -210,7 +220,7 @@
 									info.preco = $filter('currency')(info.produto.preco, 'R$');
 
 
-								if(info.isPack && info.produto.produtos && info.produto.produtos.length){
+								if( (info.isPack || info.packCert) && info.produto.produtos && info.produto.produtos.length){
 									info.conteudos = [];
 
 									info.produto.produtos.map( function (prod){ 

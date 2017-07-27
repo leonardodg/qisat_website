@@ -16,7 +16,7 @@
 						<li class="hero-course__buttons-group--item"> <a href="#" class="button buttom-favorite has-tip tip-top" anchor-link data-tooltip aria-haspopup="true" data-options="show_on:large" title="Favoritar"><i class="material-icons" >favorite</i></a></li>
 
 
-			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.produto.id)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie||vm.info.packCert||vm.info.testCert" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.produto.id)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
 			                  <div class="price_popover__header">

@@ -441,8 +441,44 @@
               }
             });
 
+            $routeProvider.when('/certificacao/:nome', {
+              templateUrl : '/views/info.html',
+              controller : 'infoController as vm',
+              resolve : {
+                    Info : function ($rootScope, QiSatAPI, $route){
+                              return QiSatAPI.getInfo ('certificacao/'+$route.current.params.nome)
+                                             .then(function (info){
+                                                   if(info)
+                                                      $rootScope.seo = info.seo;
+
+                                                  return info;
+                                             });
+                        }
+              }
+            });
 
             $routeProvider.when('/cursos/:type?/:cat?', {
+              templateUrl : '/views/courses.html',
+              controller : 'CoursesController as vm',
+              resolve : {
+                        
+                        DataCoursesStates : function ( QiSatAPI ){
+                                              return QiSatAPI.getCourseStates()
+                                                             .then( function ( result ){
+                                                                    return result;                                            
+                                                              });
+                                             }, 
+
+                        DataCoursesFilter : function ( QiSatAPI ){
+                                                return QiSatAPI.getFilterData()
+                                                               .then( function ( result ){
+                                                                        return result;
+                                                                    });
+                                                  }
+              }
+            });
+
+            $routeProvider.when('/certificacoes', {
               templateUrl : '/views/courses.html',
               controller : 'CoursesController as vm',
               resolve : {

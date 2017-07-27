@@ -3,7 +3,7 @@
 
 	angular
 		.module('QiSatApp')
-		.directive('playDemoModal', [ '$modal','$sce', '$controller', '$windows' ,function ($modal, $sce, $controller, $windows) {
+		.directive('playDemoModal', [ '$modal','$sce', '$controller', '$window' ,function ($modal, $sce, $controller, $window) {
 	        return {
 	            restrict: 'A',
 	            scope: false,

@@ -42,10 +42,15 @@
 								elemts = angular.element('.menu-filter-sidebar-item--link');
 								if(elemts) elemts.removeClass('active');
 
-
-
 								vm.filters = [];
-								vm.navLinks = [{ title:"Todos os cursos", href : "/cursos"}];
+
+								if($location.path() && $location.path().indexOf("/cursos") == 0)
+									vm.navLinks = [{ title:"Todos os cursos", href : "/cursos"}];
+								else if($location.path() == "/certificacoes")
+									vm.navLinks = [{ title:"Todas as Certificações ", href : "/certificacoes"}];
+								else
+									vm.navLinks = [];
+
 								switch ($location.path()) {
 								  case "/cursos/online":
 								  case "/cursos/online/serie":

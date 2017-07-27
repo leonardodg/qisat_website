@@ -358,7 +358,27 @@
 									filter = coursesList.filter(function (list){ return list.show || list.selected });
 									filter.map( function (list){ list.show = false; list.selected = false; });
 
-									if($location.path() == '/cursos/lancamentos'){
+									
+									if($location.path() == '/certificacoes'){
+										list = coursesList.find(function (list){ return list.type == 43 });
+										if(!list) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 43 });
+											releases = filterTypes(courses, 43);
+											show = (releases && releases.length) ? true : false;
+											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 43, card: 'online', show: show };
+											coursesList.push(list);
+										}else list.show = true;
+
+										list = coursesList.find(function (list){ return list.type == 44 });
+										if(!list) {
+											tipo = dataCoursesFilter.find(function(el){ return el.id == 44 });
+											releases = filterTypes(courses, 44);
+											show = (releases && releases.length) ? true : false;
+											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 44, card: 'online', show: show };
+											coursesList.push(list);
+										}else list.show = true;
+
+									}else if($location.path() == '/cursos/lancamentos'){
 										list = coursesList.find(function (list){ return list.type == 39 });
 										if(!list) {
 											tipo = dataCoursesFilter.find(function(el){ return el.id == 39 });

@@ -30,7 +30,6 @@ ErrorDocument 404 /index.html
 
 
   RewriteRule ^(hub)/?$ hub.html [NC,L]
-  RewriteRule ^(ecommerce)/(produtos)/?([^/]+)?/?$ index.html [NC,L]
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
   RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
   RewriteRule ^ - [L]

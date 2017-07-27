@@ -87,7 +87,10 @@
 					<ul class="cd-cart-items">
 						<li ng-repeat="item in buy.itens track by item.id">
 							<span class="cd-qty">{{item.quantidade}}x</span> <span class="cd-price">{{item.precoFormat}}</span>
-							<span class="cd-text" title="{{item.nome}}">{{item.modalidade}}: {{item.nomeLimit}}</span>
+							<span class="cd-text" title="{{item.nome}}">
+								<span ng-show="item.modalidade"> {{item.modalidade}}: </span>
+								{{item.nomeLimit}}
+							</span>
 							<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)" ><i class="material-icons">close</i></a>
 						</li>
 					</ul>

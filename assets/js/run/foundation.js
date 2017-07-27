@@ -29,13 +29,12 @@
 
 				$window.ga('create', 'UA-98371985-2', 'auto');
 
-		    	$rootScope.$on('$viewContentLoaded', function () {
-		    		$timeout(function() {
-				   		$rootScope.$apply($document.foundation(config));
-				    	$rootScope.$apply($document.foundation());
-				    	$rootScope.$apply($document.foundation('equalizer', 'reflow'));
-				    	$rootScope.$apply($document.foundation('timeline__post', 'reflow'));
-				    });
+				$timeout(function() {
+			   		$rootScope.$apply($document.foundation(config));
+					$rootScope.$apply($document.foundation());
+			    	$rootScope.$apply($document.foundation('equalizer', 'reflow'));
+			    	$rootScope.$apply($document.foundation('timeline__post', 'reflow'));
+
 			    });
 		});
 		
