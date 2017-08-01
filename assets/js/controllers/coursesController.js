@@ -90,6 +90,7 @@
 								if(!elem) elemts.map( function (el){ var elm = angular.element(elemts[el]); if( elm.attr('href') == "/cursos" ) elem = elm });
 								if(elem)  elem.addClass('active');
 								vm.presencial = presencial;
+
 						};
 						setNavFilters();
 
@@ -242,7 +243,7 @@
 							var otherItem;
 								
 							selected = vm.coursesList.find( function (el){ return el.type == item.type });
-							if(checkbox.checked) {
+							if(checkbox && checkbox.checked) {
 								if(item.type == 12){
 									selected.selected = true;
  									selected.show = true;

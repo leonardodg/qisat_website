@@ -5,8 +5,6 @@
     .module('QiSatApp')
     .config([ '$httpProvider', '$locationProvider', '$routeProvider',
           function ( $httpProvider, $locationProvider, $routeProvider ) {
-            $locationProvider.html5Mode(true); 
-            $locationProvider.hashPrefix('!');
 
             function aboutController ($scope, QiSatAPI){
                   $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
@@ -61,7 +59,7 @@
             $routeProvider.when('/', {
                 templateUrl : '/views/index.html',
                 seo : {
-                        title : 'Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'Canal de cursos online focado em projetos prediais estruturais, elétricos, hidráulicos e agronômicos. Marca oficial de treinamento dos cursos AltoQi.',
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
@@ -72,7 +70,7 @@
             $routeProvider.when('/termos-de-uso', {
                 templateUrl : '/views/modal-termo-de-uso.html',
                 seo : {
-                        title : 'Termos de Uso e Condições de Navegação - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Termos de Uso e Condições de Navegação - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow,noindex',
                         description : 'A empresa apresenta aqui os Termos de Uso e Condições de Navegação de seu Portal, que deve ser respeitado pelos seus visitantes e usuários, sob pena de todas as implicações da legislação em vigor.',
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
@@ -83,7 +81,7 @@
             $routeProvider.when('/politica-de-privacidade', {
                 templateUrl : '/views/modal-politica.html',
                 seo : {
-                        title : 'Política de Privacidade - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Política de Privacidade - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow,noindex',
                         description : 'Como parte integrante dos Termos de Uso e Condições de Navegação do Portal da empresa, este documento denominado POLÍTICA DE PRIVACIDADE DA QISAT, tem por finalidade estabelecer as regras sobre obtenção, uso e armazenamento dos dados e informações coletadas dos visitantes e usuários, além do registro de suas atividades.',
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
@@ -95,7 +93,7 @@
               templateUrl : '/views/institucional-sobre-a-empresa.html',
               controller : aboutController,
               seo : {
-                        title : 'Sobre a Empresa - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Sobre a Empresa - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow,noindex',
                         description : 'O QiSat desenvolve e comercializa cursos online e presencial aplicados à engenharia e arquitetura. São 20 anos no mercado + de 60 cursos + de 51 mil matrículas.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
@@ -107,7 +105,7 @@
               templateUrl : '/views/institucional-sobre-a-empresa.html',
               controller : aboutController,
               seo : {
-                        title : 'Sobre a Empresa - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Sobre a Empresa - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat desenvolve e comercializa cursos online e presencial aplicados à engenharia e arquitetura. São 20 anos no mercado + de 60 cursos + de 51 mil matrículas.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
@@ -118,7 +116,7 @@
             $routeProvider.when('/institucional/linha-do-tempo', {
               templateUrl : '/views/institucional-linha-do-tempo.html',
               seo : {
-                        title : 'Linda do Tempo - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Linda do Tempo - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat atua na área da educação criando soluções inovadoras por meio de cursos online e presenciais promovendo capacitação continuada para engenheiros e arquitetos.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro, cursos para engenharia, cursos para projetos prediais, curso eberick presencial, curso online eberick, cursos altoqi, curso online',
@@ -129,7 +127,7 @@
             $routeProvider.when('/institucional/convenios-e-parceiros', {
                templateUrl : '/views/institucional-parceiros.html',
                seo : {
-                        title : 'Convênios e Parceiros - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Convênios e Parceiros - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -140,7 +138,7 @@
             $routeProvider.when('/institucional/parceiros', {
               templateUrl : '/views/institucional-parceiros.html',
               seo : {
-                        title : 'Parceiros - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Parceiros - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -152,7 +150,7 @@
               templateUrl : '/views/institucional-conselhos-cadastro.html',
               controller : 'convenioController as vm',
               seo : {
-                        title : 'Conselhos Regionais - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Conselhos Regionais - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -163,7 +161,7 @@
             $routeProvider.when('/institucional/convenios/conselhos/conveniados', {
               templateUrl : '/views/institucional-conselhos-conveniados.html',
               seo : {
-                        title : 'Conselhos Regionais Conveniados - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Conselhos Regionais Conveniados - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -176,7 +174,7 @@
                     controller : 'descontosConvenioController',
                     resolve : { descontosConvenio : descontosConvenio },
                     seo : {
-                        title : 'Conselhos Regionais Desconto - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Conselhos Regionais Desconto - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -188,7 +186,7 @@
               templateUrl : '/views/institucional-preduc-ensino.html',
               controller : 'convenioController as vm',
               seo : {
-                        title : 'Institucições de Ensino - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Institucições de Ensino - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -200,7 +198,7 @@
               templateUrl : '/views/institucional-preduc-entidade.html',
               controller : 'convenioController as vm',
               seo : {
-                        title : 'Entidades de Classe - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Entidades de Classe - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -213,7 +211,7 @@
                     controller : 'descontosConvenioController',
                     resolve : { descontosConvenio : descontosConvenio },
                     seo : {
-                        title : 'Desconto PREDUC - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Descontos PREDUC - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -229,7 +227,7 @@
                   },
                   resolve : { institutions : institutions },
                   seo : {
-                        title : 'Entidades de Classe e Universidades Conveniadas - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Entidades de Classe e Universidades Conveniadas - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -272,7 +270,7 @@
                                 },
                   resolve : { institutions : institutions },
                   seo : {
-                        title : 'Solicitar Desconto PREDUC - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Solicitar Desconto PREDUC - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat oferece benefícios para associados a Conselhos Regionais, Entidades de Classe e Universidades. Conheça os convênios. Solicite o convênio.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
@@ -293,7 +291,7 @@
                   }
               },
               seo : {
-                        title : 'Instrutores e Professores - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Instrutores e Professores - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'Conheça os instrutores e professores QiSat. Filtre por nome ou área de atuação. Conheça os cursos aplicados à engenharia e arquitetura. Entre em contato.',
                         keys : 'instrutor eberick, professor eberick, rodrigo koerich,  rodrigo koerich eberick, enio padilha, stephane vannier, francisco qieletrico, julian silva',
@@ -314,7 +312,7 @@
                   }
               },
               seo : {
-                        title : 'Página do Instrutor - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Página do Instrutor - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow,noindex',
                         description : 'Conheça os instrutores e professores QiSat. Filtre por nome ou área de atuação. Conheça os cursos aplicados à engenharia e arquitetura.',
                         keys : 'instrutor eberick, professor eberick, rodrigo koerich,  rodrigo koerich eberick, enio padilha, stephane vannier, francisco qieletrico, julian silva',
@@ -326,7 +324,7 @@
               templateUrl : '/views/institucional-contatos.html',
                controller : 'contactController',
                seo : {
-                        title : 'Entre em Contato - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Entre em Contato - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
                         description : 'Solicite contato por um dos canais de atendimento QiSat. Envie suas dúvidas sobre os cursos,  críticas, sugestões ou solicite auxílio para efetuar sua inscrição.',
                         keys : 'qisat, contato qisat, qi sat, telefone qisat, chat qisat, numero qisat, orçamento qisat, suporte qisat, inscrição curso eberick, preço curso eberick, cursos altoqi, atendimento qisat, endereço qisat, ligamos pra você qisat',
@@ -339,7 +337,7 @@
               templateUrl : '/views/carrinho-montar.html',
               controller : 'montarCarrinhoController as vm',
               seo : {
-                        title : 'Carrinho de Compras - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Carrinho de Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Seja bem vindo ao carrinho de compras da QiSat. Acesse e aproveite! Aqui você encontra os mais variados cursos online e presenciais para engenharia e arquitetura.',
                         keys : 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico',
@@ -371,7 +369,7 @@
                   }
               },
               seo : {
-                        title : 'Carrinho de Compras - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Carrinho de Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Seja bem vindo ao carrinho de compras da QiSat. Acesse e aproveite! Aqui você encontra os mais variados cursos online e presenciais para engenharia e arquitetura.',
                         keys : 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico',
@@ -398,7 +396,7 @@
                     }
               },
               seo : {
-                        title : 'Carrinho de Compras - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Carrinho de Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Seja bem vindo ao carrinho de compras da QiSat. Acesse e aproveite! Aqui você encontra os mais variados cursos online e presenciais para engenharia e arquitetura.',
                         keys : 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico',
@@ -496,7 +494,14 @@
                                                                         return result;
                                                                     });
                                                   }
-              }
+              },
+              seo : {
+                        title : 'Certificações AltoQi - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        robots : 'follow, index',
+                        description : 'Um serviço de preparação progressiva, para você alcançar maior performance com a metade do esforço.',
+                        keys : 'qisat, qi sat, certificação, proficiência, certificação software engenharia, certificação eberick, eberick, curso eberick, certificao para engenharia',
+                        url : 'https://www.qisat.com.br/certificacoes'
+                      }
             });
 
             $routeProvider.when('/cadastro', {
@@ -504,7 +509,7 @@
               controller : 'singupController',
               isAuth : false,
               seo : {
-                        title : 'Cadastre-se - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Cadastre-se - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -517,7 +522,7 @@
               controller : 'rememberController',
               isAuth : false,
               seo : {
-                        title : 'Lembrete de Senha - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Lembrete de Senha - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -530,7 +535,7 @@
               controller: 'loginController',
               isAuth : false,
               seo : {
-                        title : 'Acesso ao Portal do Aluno - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Acesso ao Portal do Aluno - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -548,7 +553,7 @@
                   }
               },
               seo : {
-                        title : 'Portal do Aluno - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Portal do Aluno - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -566,7 +571,7 @@
                   }
               },
               seo : {
-                        title : 'Editar Perfil - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Editar Perfil - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -584,7 +589,7 @@
                   }
               },
               seo : {
-                        title : 'Meus Certificados - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Meus Certificados - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -602,7 +607,7 @@
                   }
               },
               seo : {
-                        title : 'Meus Cursos - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Meus Cursos - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -620,7 +625,7 @@
                   }
               },
               seo : {
-                        title : 'Minhas Compras - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Minhas Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -638,7 +643,7 @@
                   }
               },
               seo : {
-                        title : 'Detalhamento da Compra - Cursos aplicados à engenharia e arquitetura | QiSat',
+                        title : 'Detalhamento da Compra - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'nofollow, noindex',
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
@@ -646,6 +651,8 @@
                       }
             });
 
+           $locationProvider.html5Mode(true); 
+           $locationProvider.hashPrefix('!');
            $routeProvider.otherwise('/');
 
 

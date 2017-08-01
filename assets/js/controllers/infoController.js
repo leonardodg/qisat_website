@@ -287,7 +287,7 @@
 										evento.timestart = moment.unix(evento.data_inicio);
 										evento.timeend   = moment.unix(evento.data_fim);
 										evento.cidadeuf  = evento.cidade.nome + ' - ' +evento.cidade.estado.uf;
-										evento.datauf  = evento.cidadeuf+ ' - ' +evento.timestart.format('DD/MM/YYYY' );
+										evento.datauf  = evento.cidadeuf+ ' - ' +evento.timestart.tz("America/Sao_Paulo").format('DD/MM/YYYY' );
 										evento.uf = evento.cidade.estado.uf;
 									}
 
@@ -309,7 +309,7 @@
 											edicao.timeexit = moment.unix(edicao.saida_intervalo);
 											edicao.timeback = moment.unix(edicao.volta_intervalo);
 
-											aux = edicao.timestart.format("dddd, D MMMM YYYY - [das] HH:mm [às] ")+ edicao.timeexit.format("HH:mm [e das] ")+edicao.timeback.format("HH:mm [às] ")+edicao.timeend.format("HH:mm");
+											aux = edicao.timestart.tz("America/Sao_Paulo").format("dddd, D MMMM YYYY - [das] HH:mm [às] ")+ edicao.timeexit.tz("America/Sao_Paulo").format("HH:mm [e das] ")+edicao.timeback.tz("America/Sao_Paulo").format("HH:mm [às] ")+edicao.timeend.tz("America/Sao_Paulo").format("HH:mm");
 											evento.datas.push(aux);
 
 											if(edicao.local){

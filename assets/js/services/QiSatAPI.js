@@ -362,67 +362,74 @@
 									if($location.path() == '/certificacoes'){
 										list = coursesList.find(function (list){ return list.type == 43 });
 										if(!list) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 43 });
-											releases = filterTypes(courses, 43);
-											show = (releases && releases.length) ? true : false;
-											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 43, card: 'online', show: show };
-											coursesList.push(list);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 43 })){
+												releases = filterTypes(courses, 43);
+												show = (releases && releases.length) ? true : false;
+												list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 43, card: 'online', show: show };
+												coursesList.push(list);
+											}
 										}else list.show = true;
 
 										list = coursesList.find(function (list){ return list.type == 44 });
 										if(!list) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 44 });
-											releases = filterTypes(courses, 44);
-											show = (releases && releases.length) ? true : false;
-											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 44, card: 'online', show: show };
-											coursesList.push(list);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 44 })){
+												releases = filterTypes(courses, 44);
+												show = (releases && releases.length) ? true : false;
+												list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 44, card: 'online', show: show };
+												coursesList.push(list);
+											}
 										}else list.show = true;
 
 									}else if($location.path() == '/cursos/lancamentos'){
 										list = coursesList.find(function (list){ return list.type == 39 });
 										if(!list) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 39 });
-											releases = filterTypes(courses, 39);
-											show = (releases && releases.length) ? true : false;
-											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 39, card: 'online', show: show };
-											coursesList.push(list);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 39 })){
+												releases = filterTypes(courses, 39);
+												show = (releases && releases.length) ? true : false;
+												list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 39, card: 'online', show: show };
+												coursesList.push(list);
+											}
 										}else list.show = true;
 									}else if($location.path() == '/cursos/online/gratuito') { 
 										list = coursesList.find(function (list){ return list.type == 8 });
 										if(!list) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 8 });
-											free = filterTypes(courses, 8);
-											show = (free && free.length) ? true : false;
-											list = { id: coursesList.length+1, title: tipo.nome, courses: free, type: 8, card: 'online', show: show };
-											coursesList.push(list);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 8 })){
+												free = filterTypes(courses, 8);
+												show = (free && free.length) ? true : false;
+												list = { id: coursesList.length+1, title: tipo.nome, courses: free, type: 8, card: 'online', show: show };
+												coursesList.push(list);
+											}
 										}else list.show = true;
 									}else if($location.path().indexOf('/cursos/online')>=0){ 
 										listOnline = coursesList.find(function (list){ return list.type == 2 });
 										if(!listOnline) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 2 });
-											online = filterTypes(courses, 2);
-											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
-											show = (online && online.length) ? true : false;
-											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
-											coursesList.push(listOnline);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 2 })){
+												online = filterTypes(courses, 2);
+												online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
+												show = (online && online.length) ? true : false;
+												listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
+												coursesList.push(listOnline);
+											}
 										}else listOnline.show = true;
 
 										listSeries = coursesList.find(function (list){ return list.type == 32 });
 										if(!listSeries) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 32 });
-											series = filterTypes(courses, 32);
-											show = (series && series.length) ? true : false;
-											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
-											coursesList.push(listSeries);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
+												series = filterTypes(courses, 32);
+												show = (series && series.length) ? true : false;
+												listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
+												coursesList.push(listSeries);
+											}
 										}else listSeries.show = true;
 
 										listPacks = coursesList.find(function (list){ return list.type == 17 });
 										if(!listPacks) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 17 });
-											packages = filterTypes(courses, 17);
-											show = (packages && packages.length) ? true : false;
-											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
-											coursesList.push(listPacks);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
+												packages = filterTypes(courses, 17);
+												show = (packages && packages.length) ? true : false;
+												listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
+												coursesList.push(listPacks);
+											}
 										}else listPacks.show = true;
 
 										if($location.path() == '/cursos/online/serie')
@@ -511,12 +518,13 @@
 
 										listOnline = coursesList.find(function (list){ return list.type == 2 });
 										if(!listOnline) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 2 });
-											online = filterTypes(courses, 2);
-											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
-											show = (online && online.length) ? true : false;
-											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
-											coursesList.push(listOnline);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 2 })){
+												online = filterTypes(courses, 2);
+												online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
+												show = (online && online.length) ? true : false;
+												listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
+												coursesList.push(listOnline);
+											}
 										}else listOnline.show = true;
 
 										listEvents = coursesList.find(function (list){ return list.type == 'eventos' });
@@ -541,20 +549,22 @@
 
 										listSeries = coursesList.find(function (list){ return list.type == 32 });
 										if(!listSeries) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 32 });
-											series = filterTypes(courses, 32);
-											show = (series && series.length) ? true : false;
-											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, show: false, card: 'serie', name: 'Series', show: show };
-											coursesList.push(listSeries);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
+												series = filterTypes(courses, 32);
+												show = (series && series.length) ? true : false;
+												listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, show: false, card: 'serie', name: 'Series', show: show };
+												coursesList.push(listSeries);
+											}
 										}else listSeries.show = true;
 
 										listPacks = coursesList.find(function (list){ return list.type == 17 });
 										if(!listPacks) {
-											tipo = dataCoursesFilter.find(function(el){ return el.id == 17 });
-											packages = filterTypes(courses, 17);
-											show = (packages && packages.length) ? true : false;
-											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, show: false, card: 'pacotes', name: 'Pacotes', show: show };
-											coursesList.push(listPacks);
+											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
+												packages = filterTypes(courses, 17);
+												show = (packages && packages.length) ? true : false;
+												listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, show: false, card: 'pacotes', name: 'Pacotes', show: show };
+												coursesList.push(listPacks);
+											}
 										}else listPacks.show = true;
 
 										listSingle = coursesList.find(function (list){ return list.type == 12 });

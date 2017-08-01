@@ -44,7 +44,7 @@
 												inputs : [
 															{ id : 3, title: 'Estrutural', type : 3, pacotes : 18, name : 'estrutural' },
 															{ id : 4, title: 'Elétrica', type : 4,  pacotes : 19,  name : 'eletrica' },
-															{ id : 5, itle: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
+															{ id : 5, title: 'Hidráulica', type : 6,pacotes : 20,  name : 'hidraulica' },
 															{ id : 6, title: 'Agronômica e Ambiental', type : 34, name : 'agronomica' },
 															{ id : 7, title: 'Arquitetônica', type : 35, name : 'arquitetonica' },
 															{ id : 8, title: 'CAD', type : 5, name : 'cad' }
