@@ -4,7 +4,7 @@
 	angular
 		.module('QiSatApp')
 		.controller("TopCoursesController",
-			function($scope, $controller, QiSatAPI, Config, $filter, $timeout, authService){
+			function($scope, $controller, $filter, $timeout, Config,  QiSatAPI,  authService){
 
 						var modalController = $controller('modalController');
 

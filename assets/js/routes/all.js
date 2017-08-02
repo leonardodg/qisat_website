@@ -65,9 +65,8 @@
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
                         url : 'https://www.qisat.com.br'
                       }
-            });
-
-            $routeProvider.when('/termos-de-uso', {
+            })
+            .when('/termos-de-uso', {
                 templateUrl : '/views/modal-termo-de-uso.html',
                 seo : {
                         title : 'Termos de Uso e Condições de Navegação - QiSat | Cursos aplicados à engenharia e arquitetura',
@@ -76,9 +75,8 @@
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
                         url : 'https://www.qisat.com.br/termos-de-uso'
                       }
-            });
-
-            $routeProvider.when('/politica-de-privacidade', {
+            })
+            .when('/politica-de-privacidade', {
                 templateUrl : '/views/modal-politica.html',
                 seo : {
                         title : 'Política de Privacidade - QiSat | Cursos aplicados à engenharia e arquitetura',
@@ -87,9 +85,8 @@
                         keys : 'qisat, qi sat, curso projeto estrutural, curso software altoqi, projetos prediais, curso eberick, curso projetista eletrico, curso incendio, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
                         url : 'https://www.qisat.com.br/politica-de-privacidade'
                       }
-            });
-
-            $routeProvider.when('/institucional', {
+            })
+            .when('/institucional', {
               templateUrl : '/views/institucional-sobre-a-empresa.html',
               controller : aboutController,
               seo : {
@@ -99,9 +96,8 @@
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
                         url : 'https://www.qisat.com.br/institucional/sobre-a-empresa'
                       }
-            });
-
-            $routeProvider.when('/institucional/sobre-a-empresa', {
+            })
+            .when('/institucional/sobre-a-empresa', {
               templateUrl : '/views/institucional-sobre-a-empresa.html',
               controller : aboutController,
               seo : {
@@ -111,9 +107,8 @@
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro',
                         url : 'https://www.qisat.com.br/institucional/sobre-a-empresa'
                       }
-            });
-
-            $routeProvider.when('/institucional/linha-do-tempo', {
+            })
+            .when('/institucional/linha-do-tempo', {
               templateUrl : '/views/institucional-linha-do-tempo.html',
               seo : {
                         title : 'Linda do Tempo - QiSat | Cursos aplicados à engenharia e arquitetura',

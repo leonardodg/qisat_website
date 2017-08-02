@@ -27,14 +27,19 @@
 
 
 						function resetFilterEvents(){
-								var filter, coursesList = vm.coursesList.filter(function (el) { return el.type == 'eventos' || el.parent == 'eventos' });
+								var filter, coursesList;
+								
+								if( coursesList = vm.coursesList.filter(function (el) { return el.type == 'eventos' || el.parent == 'eventos' })){
 									coursesList.map(function (list) {
-										list.courses.map( function (course) {
-											course.show = true;
-											filter = course.eventos.filter( function (edicao) { return !edicao.show });
-											filter.map( function (edicao) { edicao.show = true });
-										});
+										if(list && list.courses){
+											list.courses.map( function (course) {
+												course.show = true;
+												if( filter = course.eventos.filter( function (edicao) { return !edicao.show }))
+													filter.map( function (edicao) { edicao.show = true });
+											});
+										}
 									});
+								}
 						};
 
 						function setNavFilters(){ 
@@ -235,6 +240,13 @@
 									if(list.courses[pos]) list.courses[pos].show = true;
 
 							}
+						};
+
+						vm.myFilter = function (item) {
+							if(vm.search)
+								return ((item.nome && item.nome.indexOf(vm.search) >= 0) 
+										|| (item.info && item.info['metatag_key'].indexOf(vm.search)>= 0));
+							return true;
 						};
 
 						vm.filterTypes = function ( $event, item ) {

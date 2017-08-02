@@ -101,7 +101,10 @@
 									var promise = $http({ 
 														cache: true, 
 														method: 'GET', 
-														url: Config.baseUrl+'/instrutor/wsc-instrutor/top'
+														url: Config.baseUrl+'/instrutor/wsc-instrutor/top',
+														headers : {
+															      'Content-Type' : 'application/json; charset=utf-8'
+															      }
 													});
 
 										promise.then( handleSuccess, handleError );
@@ -199,7 +202,10 @@
 									var promise = $http({ 
 															cache: true, 
 															method: 'GET', 
-															url: Config.baseUrl+'/produto/wsc-produto/destaques'
+															url: Config.baseUrl+'/produto/wsc-produto/destaques',
+															headers : {
+															      'Content-Type' : 'application/json; charset=utf-8'
+															      }
 														});
 
 										promise.then( handleSuccess, handleError );
@@ -218,9 +224,12 @@
 														});
 
 										return promise.then( function successCallback( res ){
-											if(res.status == 200) 
+											console.log(typeof res.data.retorno);
+											if(res && res.status == 200 && res.data && res.data.retorno && !Array.isArray(res.data.retorno)) 
 												return res.data.retorno;
-										});
+											else
+												return false;
+										}, function(){ return false; });
 							},
 
 
@@ -552,7 +561,7 @@
 											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
 												series = filterTypes(courses, 32);
 												show = (series && series.length) ? true : false;
-												listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, show: false, card: 'serie', name: 'Series', show: show };
+												listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
 												coursesList.push(listSeries);
 											}
 										}else listSeries.show = true;
@@ -562,7 +571,7 @@
 											if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
 												packages = filterTypes(courses, 17);
 												show = (packages && packages.length) ? true : false;
-												listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, show: false, card: 'pacotes', name: 'Pacotes', show: show };
+												listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
 												coursesList.push(listPacks);
 											}
 										}else listPacks.show = true;

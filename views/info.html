@@ -1,5 +1,5 @@
 
-<main class="content-main">
+<main class="content-main" ng-if="::vm.info">
 
  	<header class="hero-course" back-img="{{::vm.info.imgtop.link}}">
 		<div class="row">
@@ -412,20 +412,21 @@
 				</li>
 			</ul>
 	</section>
-
-
-
 </div>  <!--//large-9 columns -->
-
-
-
-
-
 </div> <!-- // row -->
-
 </article>
-
-
-
 </main> <!--// main-content -->
 <!-- ########################## END MAIN ########################## -->
+
+
+<main ng-if="::!vm.info">
+		<div class="row">
+				<div class="columns large-12 text-center"> 
+					<div class="admin__heading admin__heading_login">
+						<span  class="title" > 404 - Não encontrado </span>
+						<br>
+						<span class="hero-course__title"  > Erro de cálculo! </span>
+				    </div>
+				</div>
+		</div>
+</main> 

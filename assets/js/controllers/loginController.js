@@ -7,7 +7,8 @@
 					 function(scope, $controller, $location, authService ) {
 
 					 		var modalController = $controller('modalController');
-
+							scope.loading = false;
+							
 						 	scope.remember_me = true;
 						 	scope.login = function(credentials) {
 						 		scope.loading = true;

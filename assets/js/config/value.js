@@ -32,7 +32,7 @@
 										   name : 'Combinacoes',
 										   title : 'Combinações', 
 												inputs : [
-															{ id : 1, title: 'Séries de Capítulos', type : 32, name : 'series', id : 1 },
+															{ id : 1, title: 'Séries de Capítulos', type : 32, name : 'series' },
 															{ id : 2, title: 'Pacotes de Cursos', type : 17, name : 'pacotes' }
 														]},
 
