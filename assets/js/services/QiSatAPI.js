@@ -224,8 +224,7 @@
 														});
 
 										return promise.then( function successCallback( res ){
-											console.log(typeof res.data.retorno);
-											if(res && res.status == 200 && res.data && res.data.retorno && !Array.isArray(res.data.retorno)) 
+											if(res && res.status == 200 && res.data && res.data.retorno && !Array.isArray(res.data.retorno) && res.data.retorno.sucesso !== false ) 
 												return res.data.retorno;
 											else
 												return false;
