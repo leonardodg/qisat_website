@@ -25,10 +25,8 @@
 								vm.loading = false;
 						});
 
-
 						function resetFilterEvents(){
 								var filter, coursesList;
-								
 								if( coursesList = vm.coursesList.filter(function (el) { return el.type == 'eventos' || el.parent == 'eventos' })){
 									coursesList.map(function (list) {
 										if(list && list.courses){
@@ -42,7 +40,7 @@
 								}
 						};
 
-						function setNavFilters(){ 
+						function setNavFilters(){
 							var elemts, elem, presencial = false;
 								elemts = angular.element('.menu-filter-sidebar-item--link');
 								if(elemts) elemts.removeClass('active');
@@ -121,6 +119,7 @@
 								}
 
 								function setFilterTipo(tipoName, tipoId, tipoSelector){
+
 									var elemts = vm.filters.find(function(el){ return el.name == tipoName }),
 										elem = angular.element(tipoSelector), inputs;
 
@@ -137,9 +136,8 @@
 											vm.addListFilter(elem, inputs, elemts);
 								};
 
-
 								vm.coursesList = QiSatAPI.getCourseList();
-								
+
 								switch($location.path()){
 										case '/cursos/online/serie':
 											setFilterTipo('Combinacoes', 32, '#series');
@@ -242,11 +240,115 @@
 							}
 						};
 
+						vm.busca = function () {
+							if(vm.coursesList == undefined)
+								return false;
+							var retorno = true;
+							for(var i=0;i<vm.coursesList.length;i++) {
+								if(vm.coursesList[i].filter && vm.coursesList[i].filter.length)
+									retorno = false;
+							}
+							return retorno;
+						};
+
+						vm.tituloVisivel = function (list) {
+							var retorno = true;
+							if(list.filter && list.filter.length==0)
+								retorno = false;
+							if(retorno && list.courses.length)
+								return true;
+							return false;
+						};
+
+						scope.$watch('vm.search', function(newValue, oldValue) {
+							if(newValue != oldValue)
+								if(vm.search == "")
+									vm.coursesList = QiSatAPI.getCourseList();
+								else
+									vm.coursesList = QiSatAPI.getCourseListAll();
+							console.log(vm.coursesList);
+						});
+
 						vm.myFilter = function (item) {
-							if(vm.search)
-								return ((item.nome && item.nome.indexOf(vm.search) >= 0) 
-										|| (item.info && item.info['metatag_key'].indexOf(vm.search)>= 0));
-							return true;
+							function retira_acentos(palavra) {
+								var com_acento = 'áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ';
+								var sem_acento = 'aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC';
+								var nova = '';
+								palavra = palavra.replace(/[\\\^\$\*\+\?\.\:\=\!\|\{\}\[\]\(\)]+/g,"");
+								for(var i=0;i<palavra.length;i++) {
+									if (com_acento.search(palavra.substr(i,1))>=0) {
+										nova += sem_acento.substr(com_acento.search(palavra.substr(i,1)),1);
+									} else {
+										nova += palavra.substr(i,1);
+									}
+								}
+								return nova;
+							};
+
+							var retorno = true;
+							if(vm.search){
+								var i, j, k, s, search = vm.search.split(" ");
+								if (item.info && item.info.conteudo){
+									for(i=0;i<item.info.conteudo.length;i++) {
+										j = item.info.conteudo[i];
+										retorno = true;
+										for(k=0;k<search.length;k++) {
+											s = search[k];
+											if (!((j.titulo && retira_acentos(j.titulo).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+													|| (j.descricao && retira_acentos(j.descricao).toLowerCase().indexOf(retira_acentos(s).toLowerCase())>= 0)
+												)){
+												retorno = false;
+												break;
+											}
+										}
+										if(retorno)
+											return retorno;
+									}
+								}
+								if (item.categorias){
+									for(i=0;i<item.categorias.length;i++) {
+										j = item.categorias[i];
+										retorno = true;
+										for(k=0;k<search.length;k++) {
+											s = search[k];
+											if (!(j.nome && retira_acentos(j.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)){
+												retorno = false;
+												break;
+											}
+										}
+										if(retorno)
+											return retorno;
+									}
+								}
+								if (item.eventos) {
+									for(i=0;i<item.eventos.length;i++) {
+										j = item.eventos[i];
+										retorno = true;
+										for (k = 0; k < search.length; k++) {
+											s = search[k];
+											if (!((j.cidade && j.cidade.nome && retira_acentos(j.cidade.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+													|| (j.cidade && j.cidade.estado && j.cidade.estado.nome && retira_acentos(j.cidade.estado.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+												)) {
+												retorno = false;
+												break;
+											}
+										}
+										if (retorno)
+											return retorno;
+									}
+								}
+								retorno = true;
+								for(k=0;k<search.length;k++) {
+									s = search[k];
+									if (!((item.nome && retira_acentos(item.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+											|| (item.info && item.info.metatag_key && retira_acentos(item.info.metatag_key).toLowerCase().indexOf(retira_acentos(s).toLowerCase())>= 0)
+										)){
+										retorno = false;
+										break;
+									}
+								}
+							}
+							return retorno;
 						};
 
 						vm.filterTypes = function ( $event, item ) {
@@ -264,7 +366,7 @@
 									});
 									filter.map(function(el){ el.show = false; el.selected = false; });
 
-									// REGRAS DE COMPORTAMENTE ELEMENTOS DA PÁGINA 
+									// REGRAS DE COMPORTAMENTE ELEMENTOS DA PÁGINA
 									elemts = angular.element('.filter-types-produts:checked, .filter-area:checked, #Tipo0, #Tipo1');
 									elemts.map( function (el) { elemts[el].checked = false });
 
@@ -299,15 +401,15 @@
 									 	selected = angular.element('#Tipo1')[0];
 									}
 
-  									filter = vm.coursesList.filter( function (el){ 
+  									filter = vm.coursesList.filter( function (el){
 										return (((el.type == 2 || el.type == 10 || el.type == 32 || el.type == 17 || el.type == 'eventos' ) && el.show ) || ((el.parent == 2 || el.parent == 32 || el.parent == 17  || el.parent == 10 || el.parent == 'eventos' ) && el.selected ))
 									});
 
-									filter.map(function (list){ 
+									filter.map(function (list){
 										var courses, type, outherType;
 
 										if(item.presencial && (list.type == 10 || list.type == 12 || list.type == 'eventos')){
-											type = item.presencial;	
+											type = item.presencial;
 											outherType = item.presencial;
 										}else{
 											type = item.type;
@@ -347,21 +449,21 @@
 									 	selected = angular.element('#Tipo1')[0];
 									}
 
-									filter = vm.coursesList.filter( function (el){ 
+									filter = vm.coursesList.filter( function (el){
 											return(((el.type == 2 || el.type == 10 || el.type == 32 || el.type == 17 || el.type == 'eventos' ) && el.show )||((el.parent == 2 || el.parent == 32 || el.parent == 17  || el.parent == 10 || el.parent == 'eventos' ) && el.selected ))
 										});
 
 									if(!selected.checked){
-										filter.map(function (list){ 
+										filter.map(function (list){
 											list.courses.map( function (course){ course.show = true });
 										 });
 									}else{
 
-										filter.map(function (list){ 
+										filter.map(function (list){
 											var coursesUnselected, coursesSelected, type, outherType;
 
 											if(item.presencial && (list.type == 10 || list.type == 12 || list.type == 'eventos')){
-												type = item.presencial;	
+												type = item.presencial;
 												outherType = (item.presencial == 11) ? 13 : 11;
 											}else{
 												type = item.type;
@@ -387,7 +489,7 @@
 						};
 
 						vm.filterStates = function ( item ) {
-							
+
 								var coursesList, filter, selected, elemts;
 									selected = vm.coursesList.find(function (el) { return el.type == 'eventos' });
 
@@ -443,7 +545,7 @@
 									elemts.map(function (el){ if (el && (elemts[el]) && elemts[el].selected ) angular.element(elemts[selected]).prop('selected', false); });
 
 
-									filter = vm.coursesList.filter( function (el){ return ( el.parent == 10 || el.parent == 12 || el.parent == 'eventos' ) && el.selected });	
+									filter = vm.coursesList.filter( function (el){ return ( el.parent == 10 || el.parent == 12 || el.parent == 'eventos' ) && el.selected });
 									if(!filter.length)
 										filter = vm.coursesList.filter( function (el){ return ( el.type == 10 || el.type == 12 || el.type == 'eventos' ) && !el.show });
 									filter.map(function(el){ if(el.courses.length) el.show = true });
@@ -461,7 +563,7 @@
 							var item = inputStates.inputs.find(function (el) {return el.id == id });
 							var elemts, selected = null;
 							if(item){
-									
+
 								elemts = angular.element('#selectStates option');
 								elemts.map(function (el){ if (el && (elemts[el]) && elemts[el].value == item.uf ) selected = el; });
 
@@ -488,7 +590,7 @@
 								if(!filter.length) selected.show = true;
 								else filter.map(function (el){ if(el.courses.length && !el.show ) el.show = true });
 
-								filter = vm.coursesList.filter( function (el){ 
+								filter = vm.coursesList.filter( function (el){
 									return ((el.type == 2 || el.type == 10 || el.parent == 2 || el.parent == 10 || el.type == 'eventos' || el.parent == 'eventos' || el.type == 12 || el.parent == 12 ) && el.show );
 								});
 								filter.map(function(el){ el.show = false });
@@ -507,7 +609,7 @@
 								if(selected){
 									angular.element(elemts[selected]).prop('selected', false);
 									angular.element(elemts[0]).prop('selected', true);
-									// elemts[selected].selected = false; 
+									// elemts[selected].selected = false;
 									// elemts[0].selected = true;
 									resetFilterEvents();
 								}
@@ -551,7 +653,7 @@
 										navLink.selected = true;
 									else
 										navParent.inputs.push({selected : true, name: name, hash : '#'+name, type: item.type });
-									
+
 									navParent.selected++;
 								}else{
 									navParent = { selected : 1, inputs : [{selected : true, name: name, hash : '#'+name, type: item.type }], name : parent.name, title : parent.title, type: item.type };
@@ -564,11 +666,11 @@
 								selected = vm.coursesList.filter( function (el){ return (el.type == 17 || el.type == 32 || el.type == 'eventos' ) && el.selected });
 								filter = vm.coursesList.filter(function(el){ return el.type == item.type });
 								if(filter.length){
-									
-									filter.map(function (el){ 
+
+									filter.map(function (el){
 												show = ( el.courses.length && (!(selected.length) || (selected.length && selected.find(function(i){ return i.type == el.parent })))) ? true : false;
-												el.show = show; 
-												el.selected = true; 
+												el.show = show;
+												el.selected = true;
 												if(show) addNavFilter(el.anchor);
 											});
 
@@ -580,7 +682,7 @@
 									filter.map( function (el, i){
 										show = (!selected.length || (selected.length && selected.find(function(i){ return i.type == el.type }))) ? true : false;
 										// inserir primeira posicao de cada lista
-										index = vm.coursesList.findIndex( function (list){ return list.parent == el.type && list.show }); 
+										index = vm.coursesList.findIndex( function (list){ return list.parent == el.type && list.show });
 										if(index < 0) index = vm.coursesList.findIndex( function (list){ return list.type == el.type });
 										if(index >= 0){
 
@@ -596,16 +698,16 @@
 												newList = { id: vm.coursesList.length+1, title : el.title+' - '+item.title, courses : courses , type: item.type, show : show , parent : el.type, selected : true, card : el.card, anchor : parent.name+'-'+item.title+'-'+el.name};
 												vm.coursesList.splice(index, 0, newList);
 											}
-											
+
 										}
 										el.show = false;
 									});
 									filter = vm.coursesList.find( function (el){ return el.type == 12 });
 									if(filter) filter.show = false;
 								}
-								
+
 							}else{
-								
+
 								selected = vm.coursesList.filter( function (el){ return  el.type == item.type });
 								selected.map( function (el){ el.show = false; el.selected = false; });
 								selected = vm.coursesList.filter( function (el){ return (el.type == 17 || el.type == 32 || el.type == "eventos" ) && el.selected });
