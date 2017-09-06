@@ -81,11 +81,13 @@
 					 			  };
 
 
-					 	vm.showZopim = function(show) {
+					 	vm.showZopim = function(show, wait) {
                             var body = angular.element(document).find('body');
-                                body.addClass('wait');
-
+                                
                              show = (show === false) ? false : true;
+                             wait = (wait === false) ? false : true;
+
+                             if (wait) body.addClass('wait');
 
                             function load(){
                                 var deferred = $q.defer();
@@ -129,7 +131,7 @@
                                                     });
                                             }
 
-                                            body.removeClass('wait');
+                                            if (wait) body.removeClass('wait');
                                             if (show) $zopim.livechat.window.show();
                                         });
                             });

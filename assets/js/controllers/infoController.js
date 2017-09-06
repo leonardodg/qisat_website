@@ -13,6 +13,7 @@
 
 					 		
 					 		moment.locale('pt-BR');
+					 		modalController.showZopim(true, false);
 
 							var parseQueryString = function() {
 

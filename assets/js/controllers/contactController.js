@@ -10,6 +10,7 @@
 						var modalController = $controller('modalController');
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 							$scope.modalcall = modalController.call;
+							$scope.showZopim = modalController.showZopim;
 			                $scope.submitted = false;
 			                $scope.isDisabled = true;
 
