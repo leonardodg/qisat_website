@@ -16,7 +16,8 @@
 					 			if(scope.loginForm && scope.loginForm.$valid){
 					 				credentials.username = credentials.username.replace(/^\s+|\s+$/g,"");
 					 				credentials.password = credentials.password.replace(/^\s+|\s+$/g,"");
-							 		credentials.remember = (scope.remember_me) ? true : false; 
+							 		credentials.remember = (scope.remember_me) ? true : false;
+									//credentials.altoqi = (scope.user_altoqi) ? true : false;
 									authService.login(credentials).then(function (res){
 										var url;
 					 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){

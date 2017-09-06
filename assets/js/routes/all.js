@@ -538,6 +538,19 @@
                       }
             });
 
+                  $routeProvider.when('/confirmar-cadastro/:token?', {
+                      templateUrl : '/views/confirmar-cadastro.html',
+                      controller: 'confirmarCadastroController',
+                      isAuth : false,
+                      seo : {
+                          title : 'Acesso ao Portal do Aluno - QiSat | Cursos aplicados à engenharia e arquitetura',
+                          robots : 'follow, index',
+                          description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
+                          keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
+                          url : 'https://www.qisat.com.br/confirmar-cadastro'
+                      }
+                  });
+
             $routeProvider.when('/aluno', {
               templateUrl : '/views/aluno-cursos.html', 
               isAuth : true,

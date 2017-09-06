@@ -192,7 +192,9 @@
 						 							var credentials = { password : scope.cadastro.password };
 
 						 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
-						 								
+
+														window.localStorage.setItem('email', scope.cadastro.email);
+
 												 		scope.cadastro = {};
 												 		scope.password = '';
 												 		scope.endereco = {};
@@ -201,7 +203,9 @@
 												 		scope.createForm.$setPristine();
 												 		scope.submitted = false;
 												 		
-												 		$location.path('/login');
+												 		//$location.path('/login');
+														$location.path('/confirmar-cadastro');
+
 												 		modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Orientação de acesso enviado para o email." } });
 
 						 							}else{
