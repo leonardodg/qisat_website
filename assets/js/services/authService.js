@@ -196,6 +196,44 @@
 	                            		});
 			                };
 
+						function solicitarEmail(credentials) {
+							var promise = $http({
+								method: 'POST',
+								loading : true,
+								url: Config.baseUrl+'/wsc-user/enviar-token-confirmacao',
+								data: credentials,
+								dataType: 'jsonp',
+								headers : { 'Content-Type' : 'application/json' },
+								withCredentials : true
+							});
+
+							return  promise.then( function (res){
+
+								return res;
+							}, function(res){
+								return res;
+							});
+						};
+
+						function confirmarCadastro(credentials) {
+							var promise = $http({
+								method: 'POST',
+								loading : true,
+								url: Config.baseUrl+'/wsc-user/confirmar-cadastro',
+								data: credentials,
+								dataType: 'jsonp',
+								headers : { 'Content-Type' : 'application/json' },
+								withCredentials : true
+							});
+
+							return  promise.then( function (res){
+
+								return res;
+							}, function(res){
+								return res;
+							});
+						};
+
 			                function verifyPassword(password) {
 		                		var deferred = $q.defer(), promise;
 								
@@ -518,7 +556,9 @@
 			    					carrinho : carrinho,
 			    					certificados : certificados,
 			    					getRedirect : getRedirect,
-			    					setRedirect : setRedirect
+			    					setRedirect : setRedirect,
+									confirmarCadastro : confirmarCadastro,
+									solicitarEmail : solicitarEmail
 								};
 					};
 				});
