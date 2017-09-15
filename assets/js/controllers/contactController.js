@@ -25,7 +25,8 @@
 
 			                            if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 			                            	modalController.alert({ success : true, main : { title : "Obrigado! Seu e-mail foi cadastrado.", subtitle : "A equipe QiSat manterá você informado sobre novidades." } });
-			                            
+										else
+											modalController.alert({ error : true, main : { title : res.data.retorno.mensagem, subtitle : "Favor, tente novamente ou entre em contato conosco pelo telefone (48) 3332-5000." } });
 			                        });
 			                      }
 			            };

@@ -119,15 +119,19 @@
                         </div>
                     </div>
                 </section>
+
+                <header class="page-course__header-group" ng-show="vm.busca()"><span
+                        class="page-course__header-group--cattitle">Sua busca não obteve resultados</span></header>
+
                 <div ng-repeat="list in vm.coursesList track by list.id" ng-show="list.show" class="ng-cloak"
                      ng-attr-id="{{list.anchor}}">
-                    <header class="page-course__header-group" ng-show="list.courses.length"><span
+                    <header class="page-course__header-group" ng-show="vm.tituloVisivel(list)"><span
                             class="page-course__header-group--cattitle">{{::list.title}}</span></header>
                     <div ng-if="::list.card=='online'">
                         <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3"
                             infinite-scroll="vm.loadMore(list)" infinite-scroll-disabled="list.noscroll">
                             <li class="block-grid__courses__item"
-                                ng-repeat="course in list.courses | filter: vm.myFilter | orderBy:vm.order track by vm.trackCourse(course)"
+                                ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)"
                                 >
                                 <div class="list-filter__inner">
                                     <div class="card-course card-format-block">
@@ -171,7 +175,7 @@
                     </div>
                     <div ng-if="::list.card!='online'" id="::list.anchor" infinite-scroll="vm.loadMore(list)"
                          infinite-scroll-disabled="list.noscroll">
-                        <div ng-repeat="course in list.courses | filter: vm.myFilter | orderBy:vm.order track by vm.trackCourse(course)"
+                        <div ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)"
                              >
                             <div class="card-format-ever-block">
                                 <div class="row collapse">

@@ -25,10 +25,8 @@
 								vm.loading = false;
 						});
 
-
 						function resetFilterEvents(){
 								var filter, coursesList;
-								
 								if( coursesList = vm.coursesList.filter(function (el) { return el.type == 'eventos' || el.parent == 'eventos' })){
 									coursesList.map(function (list) {
 										if(list && list.courses){
@@ -42,7 +40,7 @@
 								}
 						};
 
-						function setNavFilters(){ 
+						function setNavFilters(){
 							var elemts, elem, presencial = false;
 								elemts = angular.element('.menu-filter-sidebar-item--link');
 								if(elemts) elemts.removeClass('active');
@@ -121,6 +119,7 @@
 								}
 
 								function setFilterTipo(tipoName, tipoId, tipoSelector){
+
 									var elemts = vm.filters.find(function(el){ return el.name == tipoName }),
 										elem = angular.element(tipoSelector), inputs;
 
@@ -136,7 +135,6 @@
 										else if(tipoName == 'Area')
 											vm.addListFilter(elem, inputs, elemts);
 								};
-
 
 								vm.coursesList = QiSatAPI.getCourseList();
 
@@ -242,11 +240,41 @@
 							}
 						};
 
+						vm.busca = function () {
+							if(vm.coursesList == undefined)
+								return false;
+							var retorno = true;
+							for(var i=0;i<vm.coursesList.length;i++) {
+								if(vm.coursesList[i].filter && vm.coursesList[i].filter.length)
+									retorno = false;
+							}
+							return retorno;
+						};
+
+						vm.tituloVisivel = function (list) {
+							var retorno = true;
+							if(list.filter && list.filter.length==0)
+								retorno = false;
+							if(retorno && list.courses.length)
+								return true;
+							return false;
+						};
+
+						scope.$watch('vm.search', function(newValue, oldValue) {
+							if(newValue != oldValue)
+								if(vm.search == "")
+									vm.coursesList = QiSatAPI.getCourseList();
+								else
+									vm.coursesList = QiSatAPI.getCourseListAll();
+							console.log(vm.coursesList);
+						});
+
 						vm.myFilter = function (item) {
 							function retira_acentos(palavra) {
 								var com_acento = 'áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ';
 								var sem_acento = 'aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC';
 								var nova = '';
+								palavra = palavra.replace(/[\\\^\$\*\+\?\.\:\=\!\|\{\}\[\]\(\)]+/g,"");
 								for(var i=0;i<palavra.length;i++) {
 									if (com_acento.search(palavra.substr(i,1))>=0) {
 										nova += sem_acento.substr(com_acento.search(palavra.substr(i,1)),1);
@@ -256,10 +284,71 @@
 								}
 								return nova;
 							};
-							if(vm.search)
-								return ((item.nome && retira_acentos(item.nome).toLowerCase().indexOf(retira_acentos(vm.search).toLowerCase()) >= 0)
-									 || (item.info && retira_acentos(item.info['metatag_key']).toLowerCase().indexOf(retira_acentos(vm.search).toLowerCase())>= 0));
-							return true;
+
+							var retorno = true;
+							if(vm.search){
+								var i, j, k, s, search = vm.search.split(" ");
+								if (item.info && item.info.conteudo){
+									for(i=0;i<item.info.conteudo.length;i++) {
+										j = item.info.conteudo[i];
+										retorno = true;
+										for(k=0;k<search.length;k++) {
+											s = search[k];
+											if (!((j.titulo && retira_acentos(j.titulo).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+													|| (j.descricao && retira_acentos(j.descricao).toLowerCase().indexOf(retira_acentos(s).toLowerCase())>= 0)
+												)){
+												retorno = false;
+												break;
+											}
+										}
+										if(retorno)
+											return retorno;
+									}
+								}
+								if (item.categorias){
+									for(i=0;i<item.categorias.length;i++) {
+										j = item.categorias[i];
+										retorno = true;
+										for(k=0;k<search.length;k++) {
+											s = search[k];
+											if (!(j.nome && retira_acentos(j.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)){
+												retorno = false;
+												break;
+											}
+										}
+										if(retorno)
+											return retorno;
+									}
+								}
+								if (item.eventos) {
+									for(i=0;i<item.eventos.length;i++) {
+										j = item.eventos[i];
+										retorno = true;
+										for (k = 0; k < search.length; k++) {
+											s = search[k];
+											if (!((j.cidade && j.cidade.nome && retira_acentos(j.cidade.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+													|| (j.cidade && j.cidade.estado && j.cidade.estado.nome && retira_acentos(j.cidade.estado.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+												)) {
+												retorno = false;
+												break;
+											}
+										}
+										if (retorno)
+											return retorno;
+									}
+								}
+								retorno = true;
+								for(k=0;k<search.length;k++) {
+									s = search[k];
+									if (!((item.nome && retira_acentos(item.nome).toLowerCase().indexOf(retira_acentos(s).toLowerCase()) >= 0)
+											|| (item.info && item.info.metatag_key && retira_acentos(item.info.metatag_key).toLowerCase().indexOf(retira_acentos(s).toLowerCase())>= 0)
+										)){
+										retorno = false;
+										break;
+									}
+								}
+							}
+							return retorno;
 						};
 
 						vm.filterTypes = function ( $event, item ) {
