@@ -1,26 +1,45 @@
 <div class="signup">
     <div class="signup__content login">
       <div class="admin__heading admin__heading_login">
-        <h1 class="title">Recuperar senha</h1>
+        <h1 class="title">Solicitar Senha</h1>
       </div>
 
       <section id="dashboard">
             <form name="rememberForm" id="rememberForm" novalidate ng-show="!loading" >
 
-                      <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
+                        
+                  <div class="row">
+                    <div class="column small-12">
 
-                        <div ng-show="rememberForm.email.$dirty && rememberForm.email.$invalid">
-                          <span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="email" ng-required="true" ng-pattern="emailFormat" >
+
+                        <div ng-show="(rememberForm.email.$dirty||submit) && rememberForm.email.$invalid">
+                          <span class="error" ng-show="rememberForm.email.$error.required">Email é Obrigatório!</span>
                         </div>
 
                         <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                           <span class="error" >Formato de Email incorreto!</span>
                         </div>
+                     
+                  </div>
+                 </div>
 
-                  <button id="remember" ng-click="sendMail()" class="right" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="remember" > Solicitar Senha »</button>
-              <br class="clearfix">
-              <br class="clearfix">
+
+                   <div class="row">
+                    <div class="small-12 columns">
+                      <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
+
+                      <span class="error" ng-show="rememberForm.$error.recaptcha&&submit">Verificarção Obrigatória!</span><br>
+                    </div>
+                  </div>       
+
+                  <div class="row">
+                    <div class="column small-12">
+                       <button id="remember" ng-click="sendMail()" class="right" analytics-on analytics-event="remember" > Enviar Senha »</button>
+                    </div>
+                  </div>
+
             </form>
 
           <div class="custom-loading" ng-if="loading">

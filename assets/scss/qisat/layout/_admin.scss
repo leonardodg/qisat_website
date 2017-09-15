@@ -160,6 +160,7 @@ margin-top: 10px;
     background-color: #FFF;
     margin: 0 auto;
     border: 1px solid #ccc;
+    border-bottom: none;
     padding: 15px;
 
     @media only screen and (min-width: 40em) {
@@ -169,6 +170,14 @@ margin-top: 10px;
     p.title {
       font-size: 25px;
     }
+
+    label {
+        padding-bottom: 5px;
+
+        strong {
+          color: #c00;
+        }
+      }
 
     .form-group {
       margin: 15px 0;
@@ -190,11 +199,6 @@ margin-top: 10px;
       }
 
     }
-
-    // Login
-    // &.login {
-    //   max-width: 30%;
-    // }
   }
 }
 

@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
  .footer-main {  width: 100%; display: block; float: left;}
 
 main{  min-height: 100vh;  margin-top: 60px; 
-		@media only screen and (min-width: 64.063em) { 
+		@media only screen and (max-width: 64.063em) { 
 			 min-height: 400px;
 		}
 }
@@ -452,4 +452,8 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 
 body.wait, body.wait *{
  cursor: wait !important;   
+}
+
+input.error {
+  border: 1px solid red;
 }

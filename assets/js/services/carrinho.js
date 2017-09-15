@@ -205,7 +205,7 @@
 		                                                        });
 
 		                            return promise.then( function(res){ 
-		                            						var formas;
+		                            						var formas = false;
 		                                                    if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.formas ){
 
 		                                                    	formas = Object.keys(res.data.retorno.formas).map(function (key) { 
@@ -245,7 +245,7 @@
 
 		                                                    	return formas; 
 		                                                    }else{
-		                                                    	return res;
+		                                                    	return false;
 		                                                    }
 		                                                });
 		                        };

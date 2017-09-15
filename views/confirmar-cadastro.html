@@ -1,0 +1,46 @@
+<div class="signup" >
+
+    <div class="signup__content login">
+
+        <div class="admin__heading admin__heading_login">
+            <h1 class="title" align="center">Confirmar Cadastro</h1>
+        </div>
+
+        <section id="dashboard" >
+            <form id="confirmarCadastroForm" name="confirmarCadastroForm" ng-show="!loading">
+                <div class="row">
+                    <div class="column small-12">
+                        <div class="form-group">
+                            <label for="username">Email do cadastro</label>
+                            <input id="username" name="username" type="text" ng-model="credentials.username" placeholder="Digite Seu Email válido" ng-required="true" ng-pattern="emailFormat" >
+
+                             <div ng-show="(confirmarCadastroForm.username.$dirty||submit) && confirmarCadastroForm.username.$invalid">
+                              <span class="error" ng-show="confirmarCadastroForm.username.$error.required">Email é Obrigatório!</span>
+                            </div>
+
+                            <div ng-show="confirmarCadastroForm.username.$dirty && confirmarCadastroForm.username.$error.pattern">
+                              <span class="error" >Formato de Email incorreto!</span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                          <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
+
+                          <span class="error" ng-show="confirmarCadastroForm.$error.recaptcha&&submit">Verificarção Obrigatória!</span><br>
+                        </div>
+
+                        <div class="form-group">
+                            <button ng-click="solicitarEmail(credentials)" class="expand primary" analytics-on analytics-event="solicitarEmail" >Solicitar Confirmação por Email  »</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="custom-loading" ng-if="loading">
+                <i class="material-icons">hdr_weak</i>
+                <span class="text" >Confirmando...</span>
+            </div>
+        </section>
+    </div>
+</div>

@@ -16,7 +16,22 @@
 					 	scope.cadastro = { email_oferta : true };
 				 		scope.endereco = {};
 				 		scope.endereco.selectCountry = { sigla : 'BR', pais : 'Brasil' };
-				 		scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};						 			
+				 		scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};	
+
+					 	// Codigo Recaptcha
+		   				scope.responseRecaptcha = null;
+		                scope.widgetId = null;
+		                scope.setResponse = function (responseRecaptcha) {
+		                    scope.responseRecaptcha = responseRecaptcha;
+		                };
+		                scope.setWidgetId = function (widgetId) {
+		                    scope.widgetId = widgetId;
+		                };
+		                scope.reloadRecaptcha = function() {
+		                    vcRecaptchaService.reload(scope.widgetId);
+		                    scope.responseRecaptcha = null;
+		                };
+
 
 					 	scope.buscaCEP = function(cep){
 					 		if(cep && !scope.createForm.cep.$invalid){
@@ -65,7 +80,7 @@
 
 					 		}else if(scope.etapa == 3){
 					 			
-				 				if(scope.createForm.crea.$valid ){
+				 				if(scope.createForm.crea.$valid && !scope.createForm.$error.recaptcha ){
 						 			scope.submitted = false;
 						 			scope.create();
 						 			return;
@@ -104,6 +119,8 @@
 						 		var newdata = {}, aux;
 
 						 		if(!Object.keys(scope.createForm.$error).length ) {
+
+						 			newdata.recaptcha = scope.gRecaptchaResponse;
 
 							 		if(scope.cadastro.firstname){
 							 			aux = scope.cadastro.firstname.split(' ');
@@ -193,8 +210,6 @@
 
 						 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
 
-														window.localStorage.setItem('email', scope.cadastro.email);
-
 												 		scope.cadastro = {};
 												 		scope.password = '';
 												 		scope.endereco = {};
@@ -203,9 +218,7 @@
 												 		scope.createForm.$setPristine();
 												 		scope.submitted = false;
 												 		
-												 		//$location.path('/login');
-														$location.path('/confirmar-cadastro');
-
+												 		$location.path('/login');
 												 		modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Orientação de acesso enviado para o email." } });
 
 						 							}else{
@@ -214,7 +227,7 @@
 									 					scope.etapa = 1;
 											 			$location.path('/cadastro');
 						 							}
-						 							return res;
+						 							
 						 						}, function(){ modalController.alert({ error : true, main : { title : "Falha para realizar o Cadastro." } }); });	
 
 						 		}else{

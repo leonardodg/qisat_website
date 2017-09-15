@@ -3,13 +3,14 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
-					 function(scope, $location, authService, $modal, $timeout, $window, carrinhoServive, formasPagamentos, Authenticated, Itens) {
+		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$controller', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
+					 function(scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated, Itens) {
 
-					 	moment.locale('pt-BR');
-
+					 	var modalController = $controller('modalController');
 					 	var vm = this, forma;
 				 		vm.pagamento = 1;
+					 	moment.locale('pt-BR');
+
 		 				if(formasPagamentos){
 		 					forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
 		 					formasPagamentos.map(function(forma){ 
@@ -25,6 +26,11 @@
 
 					 	if(Authenticated && Itens){
 					 		vm.user = authService.getUser();
+					 		if(vm.user && (!vm.user.email || !vm.user.numero)){
+					 			modalController.update('/carrinho/pagamento');
+			 					$location.path('/carrinho/');
+					 		}
+
 			 				if(forma) {
 			 					vm.parcelas = forma.parcelas;
 			 					if(vm.parcelas && vm.parcelas.length){

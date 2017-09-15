@@ -81,11 +81,13 @@
 					 			  };
 
 
-					 	vm.showZopim = function(show) {
+					 	vm.showZopim = function(show, wait) {
                             var body = angular.element(document).find('body');
-                                body.addClass('wait');
-
+                                
                              show = (show === false) ? false : true;
+                             wait = (wait === false) ? false : true;
+
+                             if (wait) body.addClass('wait');
 
                             function load(){
                                 var deferred = $q.defer();
@@ -129,7 +131,7 @@
                                                     });
                                             }
 
-                                            body.removeClass('wait');
+                                            if (wait) body.removeClass('wait');
                                             if (show) $zopim.livechat.window.show();
                                         });
                             });
@@ -316,6 +318,9 @@
 																	 		authService.update(newdata)
 																	 					.then(function(res){
 																	 							$modalInstance.dismiss('cancel');
+																	 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
+																	 								authService.verifyAuth();
+
 																	 							if(!res || !res.data || !res.data.retorno || !res.data.retorno.sucesso)
 																	 								vm.alert({ main : { title : "Falha ao atualizar dados!"}});
 																	 							else if(urlNext)
@@ -421,9 +426,10 @@
 																					delete($scope.email);
 																					$scope.remember = false;
 																			    }else{
-																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem){
-																				 		$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} }
-																				 	}
+																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem && response.data.retorno.mensagem == 'Usuário não encontrado'){
+																				 		$scope.alert = {  main : { title : "Email não cadastrado!"} };
+																				 	}else
+																				 		$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} };
 																			    }
 																			}, function ( response ){
 																				$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} };

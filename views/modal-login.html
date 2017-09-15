@@ -6,24 +6,26 @@
 
     <div ng-if="!remember && !loading">
 
-        <h2 >Identifique-se</h2>
+        <h2 >Realizar Login</h2>
         <form name="loginForm" id="loginForm" novalidate >
-          <input type="text" id="username" name="username" placeholder="Nome do usuário" ng-model="user.username">
-          <input type="password" id="password" name="password" placeholder="Senha de acesso" ng-model="user.password" >
-          <button type="button" ng-click="login(user)" class="expand primary" analytics-on analytics-event="carrinho login">Entrar</button>
+          <input type="text" id="username" name="username" placeholder="Usuário ou Email" ng-model="user.username">
+          <input type="password" id="password" name="password" placeholder="Senha" ng-model="user.password" >
+          <button type="button" ng-click="login(user)" class="expand primary" analytics-on analytics-event="login">Entrar</button>
+          <p class="text-center" ><a ng-click="clickremember()" >Esqueci meus dados de Acesso</a></p>
+
         </form>
-        <p class="text-center" ><a ng-click="clickremember()" >Esqueci minha senha</a></p>
     </div>
 
     <div ng-if="remember">
-        <h2 >Recuperar senha</h2>
+        <br>
+        <h4 class="text-center" >Solicitar dados de Acesso</h4>
         <form name="rememberForm" id="rememberForm" novalidate>
                   <input type="text" name="email" id="email" placeholder="Digite Seu Email" ng-model="email" ng-required="true" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
 
                   <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                     <span class="error" >Formato de Email incorreto!</span>
                   </div>
-            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="carrinho remember" > Solicitar Senha »</button>
+            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="carrinho remember" > Enviar Senha »</button>
       </form>
       <br class="clearfix">
       <br class="clearfix">

@@ -259,7 +259,13 @@
                         </div>
                        </div>
   
+                      <div class="row">
+                        <div class="column small-6 small-centered">
+                           <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
 
+                          <span class="error" ng-show="createForm.$error.recaptcha&&submitted">Verificarção Obrigatória!</span> <br>
+                        </div>
+                      </div>
 
                       <div class="row">
                         <div class="column small-6 small-centered">
