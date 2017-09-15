@@ -318,6 +318,9 @@
 																	 		authService.update(newdata)
 																	 					.then(function(res){
 																	 							$modalInstance.dismiss('cancel');
+																	 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
+																	 								authService.verifyAuth();
+
 																	 							if(!res || !res.data || !res.data.retorno || !res.data.retorno.sucesso)
 																	 								vm.alert({ main : { title : "Falha ao atualizar dados!"}});
 																	 							else if(urlNext)
@@ -423,9 +426,10 @@
 																					delete($scope.email);
 																					$scope.remember = false;
 																			    }else{
-																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem){
-																				 		$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} }
-																				 	}
+																				 	if(response && response.data && response.data.retorno && response && response.data && response.data.retorno.mensagem && response.data.retorno.mensagem == 'Usuário não encontrado'){
+																				 		$scope.alert = {  main : { title : "Email não cadastrado!"} };
+																				 	}else
+																				 		$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} };
 																			    }
 																			}, function ( response ){
 																				$scope.alert = {  main : { title : "Falha no Envio da Mensagem."} };

@@ -261,19 +261,25 @@
 						};
 
 						scope.$watch('vm.search', function(newValue, oldValue) {
-							if(newValue != oldValue)
-								if(vm.search == "")
+							if(newValue != oldValue){
+								if(vm.search == ""){
+									setNavFilters();
 									vm.coursesList = QiSatAPI.getCourseList();
-								else
+								}else{
+									//$location.path('/cursos');
+									vm.presencial = false;
+									vm.filters = [];
+									vm.navLinks = [{ title:"Todos os cursos", href : "/cursos"}];
 									vm.coursesList = QiSatAPI.getCourseListAll();
-							console.log(vm.coursesList);
+								}
+							}
 						});
 
 						vm.myFilter = function (item) {
 							function retira_acentos(palavra) {
 								var com_acento = 'áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ';
 								var sem_acento = 'aaaaaeeeeiiiiooooouuuucAAAAAEEEEIIIIOOOOOUUUUC';
-								var nova = '';
+								var nova = ''; 
 								palavra = palavra.replace(/[\\\^\$\*\+\?\.\:\=\!\|\{\}\[\]\(\)]+/g,"");
 								for(var i=0;i<palavra.length;i++) {
 									if (com_acento.search(palavra.substr(i,1))>=0) {
@@ -355,7 +361,7 @@
 							var checkbox = $event.target||$event[0];
 							var selected, filter, elemts;
 							var otherItem;
-								
+
 							selected = vm.coursesList.find( function (el){ return el.type == item.type });
 							if(checkbox && checkbox.checked) {
 								if(item.type == 12){
@@ -530,8 +536,6 @@
 									elemts = angular.element(item.id);
 									selected = elemts.find('.map__state');
 									selected.addClass('active');
-
-									console.log(item);
 
 									vm.states = item.local;
 

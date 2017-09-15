@@ -127,25 +127,25 @@
 							
 			  			    	<p class="title">Dados Pessoais </p>
 
-								<label for="name">Seu Nome:</label>
+								<label for="name">Seu Nome <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="name" id="name" placeholder="Seu Nome" ng-model="user.firstname" ng-required="true" ng-disabled="user.firstname" >
 
-								<div ng-show="editForm.name.$dirty && editForm.name.$invalid">
+								<div ng-show="(editForm.name.$dirty||submited) && editForm.name.$invalid">
 									<span class="error" ng-show="editForm.name.$error.required">Nome é Obrigatório!</span>
 								</div>
 
 
-								<label for="lastname">Sobrenome:</label>
+								<label for="lastname">Sobrenome <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="lastname" id="lastname" placeholder="Seu Sobrenome" ng-model="user.lastname" ng-required="true" ng-disabled="user.lastname" >
 
-								<div ng-show="editForm.lastname.$dirty && editForm.lastname.$invalid">
+								<div ng-show="(editForm.lastname.$dirty||submited) && editForm.lastname.$invalid">
 									<span class="error" ng-show="editForm.lastname.$error.required">Sobrenome é Obrigatório!</span>
 								</div>
 
-								<label for="email">Email:</label>
+								<label for="email">Email <strong title="Campo Obrigatório">*</strong> </label>
 								<input type="text" name="email" id="email" placeholder="Digite Email válido" ng-model="user.email" ng-required="true" ng-disabled="(!confirm) || (confirm && !getEmail)" ng-pattern="emailFormat" ng-model-options="{ debounce: 1000 }" >
 
-								<div ng-show="editForm.email.$dirty && editForm.email.$invalid">
+								<div ng-show="(editForm.email.$dirty||submited) && editForm.email.$invalid">
 									<span class="error" ng-show="editForm.email.$error.required">Email é Obrigatório!</span>
 								</div>
 
@@ -153,10 +153,10 @@
 									<span class="error" >Formato de Email incorreto!</span>
 								</div>
 
-								<label for="phone">Telefone:</label>
+								<label for="phone">Telefone <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="phone" id="phone" placeholder="Digite Telefone" ng-model="user.phone1" ng-required="true" ng-disabled="!confirm" ui-br-phone-number >
 
-								<div ng-show="editForm.phone.$dirty && editForm.phone.$invalid">
+								<div ng-show="(editForm.phone.$dirty||submited) && editForm.phone.$invalid">
 									<span class="error" ng-show="editForm.phone.$error.required">Telefone é Obrigatório!</span>
 
 									<div ng-show="editForm.phone.$invalid">
@@ -164,10 +164,10 @@
 									</div>
 								</div>
 
-								<label for="cpfcnpj">CPF ou CNPJ:</label>
+								<label for="cpfcnpj">CPF ou CNPJ <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ" ng-model="user.cpfcnpj"  ui-br-cpfcnpj-mask ng-required="true" ng-disabled="(!confirm) || (confirm && !getCPF)" model-view-value="true" cpf-check>
 
-								<div ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$invalid">
+								<div ng-show="(editForm.cpfcnpj.$dirty||submited) && editForm.cpfcnpj.$invalid">
 									<span class="error" ng-show="editForm.cpfcnpj.$error.required">CPF/CNPJ é Obrigatório!</span>
 								</div>
 
@@ -246,11 +246,11 @@
 	                          <label for="crea">CREA <strong title="Campo Obrigatório" ng-show="crea.selectCrea" >*</strong></label> 
 	                           <input type="text" name="{{'crea'+$index}}" id="{{'crea'+$index}}" placeholder="Digite o CREA" ng-model="crea.numero" ng-required="crea.selectCrea" ng-disabled="!confirm" >
 
-	                           <div ng-show="(editForm.crea0.$dirty) && editForm.crea0.$invalid">
+	                           <div ng-show="(editForm.crea0.$dirty||submited) && editForm.crea0.$invalid">
 	                              <span class="error" ng-show="editForm.crea.$error.required">Número do CREA é obrigatório para obter desconto do convênio</span>
 	                           </div>
 
-	                           <div ng-show="(editForm.crea1.$dirty) && editForm.crea1.$invalid">
+	                           <div ng-show="(editForm.crea1.$dirty||submited) && editForm.crea1.$invalid">
 	                              <span class="error" ng-show="editForm.crea.$error.required">Número do CREA é obrigatório para obter desconto do convênio</span>
 	                           </div>
 
@@ -284,10 +284,10 @@
 						<div class="columns small-12">
 				    		<p class="title">Endereço</p>
 										   
-		                    <label for="cep">CEP:</label>
+		                    <label for="cep">CEP <strong title="Campo Obrigatório">*</strong> </label>
 									      <input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep" ng-required="true" ng-disabled="!confirm" ng-blur="buscaCEP(endereco.cep)"  ui-br-cep-mask >
 
-										    <div ng-show="editForm.cep.$dirty && editForm.cep.$invalid">
+										    <div ng-show="(editForm.cep.$dirty||submited) && editForm.cep.$invalid">
 										      <span class="error" ng-show="editForm.cep.$error.required">Informe o CEP</span>
 										    </div>
 
@@ -308,38 +308,37 @@
 										        </select>
 									      </label>
 				
-		                    <label for="cidade">Cidade:</label>
+		                    <label for="cidade">Cidade <strong title="Campo Obrigatório">*</strong></label>
 										    <input type="text" name="cidade" id="cidade" placeholder="Digite a Cidade" ng-model="endereco.cidade" ng-required="true" ng-disabled="!confirm" >
 
-										    <div ng-show="editForm.cidade.$dirty && editForm.cidade.$invalid">
+										    <div ng-show="(editForm.cidade.$dirty||submited) && editForm.cidade.$invalid">
 										      <span class="error" ng-show="editForm.cidade.$error.required">Informe a Cidade!</span>
 										    </div>
 
-		                    <label for="bairro">Bairro:</label>
+		                    <label for="bairro">Bairro <strong title="Campo Obrigatório">*</strong></label>
 										     <input type="text" name="bairro" id="bairro" placeholder="Digite o Bairro" ng-model="endereco.bairro" ng-required="true" ng-disabled="!confirm" >
 
-										    <div ng-show="editForm.bairro.$dirty && editForm.bairro.$invalid">
+										    <div ng-show="(editForm.bairro.$dirty||submited) && editForm.bairro.$invalid">
 										      <span class="error" ng-show="editForm.bairro.$error.required">Informe o Bairro!</span>
 										    </div>
 
-		                    <label for="logradouro">Endereço:</label>
+		                    <label for="logradouro">Endereço <strong title="Campo Obrigatório">*</strong></label>
 										    <input type="text" name="logradouro" id="logradouro" placeholder="Digite o Endereço" ng-model="endereco.logradouro" ng-required="true" ng-disabled="!confirm" >
 
-										    <div ng-show="editForm.logradouro.$dirty && editForm.logradouro.$invalid">
+										    <div ng-show="(editForm.logradouro.$dirty||submited) && editForm.logradouro.$invalid">
 										      <span class="error" ng-show="editForm.logradouro.$error.required">Informe o Logradouro!</span>
 										    </div>
 
-		                    <label for="numero">Número:</label>
+		                    <label for="numero">Número</label>
 										      <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero" ng-disabled="!confirm" >
 
-		                    <label for="complemento">Complemento:</label>
+		                    <label for="complemento">Complemento</label>
 									      	<input type="text" name="complemento" id="complemento" placeholder="Complemento" ng-model="endereco.complemento" ng-disabled="!confirm" >
 
 									<button id="edit" type="button" ng-click="enableInputs()" ng-show="!confirm" > Alterar Dados »</button>
 									<button id="cancel" type="button" ng-click="cancel()" ng-hide="!confirm"> Cancelar </button>
 									&nbsp
-									<button id="salve" type="button" ng-disabled="editForm.$invalid" ng-hide="!confirm" ng-click="update()"> Salvar »</button>
-
+									<button id="salve" type="button" ng-hide="!confirm" ng-click="update()"> Salvar »</button>
 							<br>
 								<div class="row" ng-show="checkPassword" >
 									 <div class="large-12 columns">

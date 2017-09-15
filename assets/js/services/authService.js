@@ -269,7 +269,7 @@
 		                            promise = $http({ 
 		                                              method: 'POST', 
 		                                              loading : true,
-		                                              url: Config.baseUrl+'/wsc-user/create-user',
+		                                              url: Config.baseUrl+'/wsc-user/update',
 		                                              data: data,
 		                                              dataType: 'jsonp',
 								                      headers : {

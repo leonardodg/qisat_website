@@ -453,3 +453,7 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 body.wait, body.wait *{
  cursor: wait !important;   
 }
+
+input.error {
+  border: 1px solid red;
+}

@@ -53,6 +53,7 @@
 
 					 	function init() {
 						 		scope.confirm = false;
+						 		scope.submited = false;
 							 	scope.checkPassword = false;
 							 	scope.showEditPassword = false;
 							 	scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
@@ -199,6 +200,12 @@
 						 		var user = authService.getUser();
 						 		var newdata = {}, aux;
 
+						 		scope.submited = true;
+
+						 		if(scope.editForm.$valid){
+
+
+
 						 		if(scope.user.firstname && scope.user.firstname !== user.firstname)
 						 			newdata.firstname = scope.user.firstname;
 
@@ -299,6 +306,7 @@
 						 		authService.update(newdata)
 						 					.then(function(res){
 						 							scope.confirm = false;
+						 							scope.submited = false;
 						 							if(res.data.retorno.sucesso){
 						 								scope.getCPF = false;
 						 								scope.getEmail = false;
@@ -306,8 +314,10 @@
 						 							}else
 						 								modalController.alert({ error : true, main : { title : "Falha ao atualizar dados!"} });
 
-						 							return res;
 						 						}, function(res){ modalController.alert({ error : true, main : { title : "Falha ao atualizar os dados!"} }) });		 
+					 		}else
+								modalController.alert({  error : true, main : { title : "Verifique os dados Solicitados!"} });
+
 
 					 	}
 

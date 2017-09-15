@@ -237,31 +237,48 @@
                                     $scope.states = Config.states;
                                     $scope.selectInstitution = institutions;
                                     $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+                                    $scope.submit = false;
 
-                                  $scope.institutionDiscount = function(){
-                                    var data = angular.copy($scope.desconto)
+                                     // Codigo Recaptcha
+                                    $scope.responseRecaptcha = null;
+                                    $scope.widgetId = null;
+                                    $scope.setResponse = function (responseRecaptcha) {
+                                        $scope.responseRecaptcha = responseRecaptcha;
+                                    };
+                                    $scope.setWidgetId = function (widgetId) {
+                                        $scope.widgetId = widgetId;
+                                    };
+                                    $scope.reloadRecaptcha = function() {
+                                        vcRecaptchaService.reload($scope.widgetId);
+                                        $scope.responseRecaptcha = null;
+                                    };
 
-                                    if($scope.descontoForm && $scope.descontoForm.$valid){
-                                      $scope.send = true;
-                                      data.ecm_convenio_id = data.institution.id;
-                                      delete(data.institution);
+                                    $scope.institutionDiscount = function(){
+                                      var data = angular.copy($scope.desconto);
+                                      $scope.submit = true;
+                                      $scope.reloadRecaptcha();
 
-                                      QiSatAPI.addInteresse(data)
-                                            .then( function ( response ){
-                                                  $scope.send = false;
+                                      if($scope.descontoForm && $scope.descontoForm.$valid){
+                                        data.ecm_convenio_id = data.institution.id;
+                                        delete(data.institution);
+                                        data.recaptcha = $scope.gRecaptchaResponse;
 
-                                                if(response.data.retorno.sucesso){
-                                                  $scope.desconto = {};
-                                                  $scope.descontoForm.$setPristine();
-                                                  modalController.alert({ success : true, main : { title : "Obrigado, por solicitar o Insteresse!", subtitle : " Em breve entraremos em contato." } });
-                                                }else
-                                                  modalController.alert({ error : true, main : { title : "Falha na Solicitação!" }});
-                                                
-                                              }, function ( response ){
-                                                  modalController.alert({error : true});
-                                              });
-                                    }
-                                  };
+                                        QiSatAPI.addInteresse(data)
+                                              .then( function ( response ){
+                                                  if(response.data.retorno.sucesso){
+                                                    $scope.submit = false;
+                                                    $scope.desconto = {};
+                                                    $scope.descontoForm.$setPristine();
+                                                    modalController.alert({ success : true, main : { title : "Obrigado, por solicitar o Insteresse!", subtitle : " Em breve entraremos em contato." } });
+                                                  }else
+                                                    modalController.alert({ error : true, main : { title : "Falha na Solicitação!" }});
+                                                  
+                                                }, function ( response ){
+                                                    modalController.alert({error : true});
+                                                });
+                                      }else
+                                        modalController.alert({  error : true, main : { title : "Verifique os dados Solicitados!"} });
+                                    };
                                 },
                   resolve : { institutions : institutions },
                   seo : {

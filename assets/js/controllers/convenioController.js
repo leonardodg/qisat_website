@@ -9,7 +9,21 @@
 
 						var vm = this, modalController = $controller('modalController');
 							vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+							vm.submit = false;
 
+					 	// Codigo Recaptcha
+		   				vm.responseRecaptcha = null;
+		                vm.widgetId = null;
+		                vm.setResponse = function (responseRecaptcha) {
+		                    vm.responseRecaptcha = responseRecaptcha;
+		                };
+		                vm.setWidgetId = function (widgetId) {
+		                    vm.widgetId = widgetId;
+		                };
+		                vm.reloadRecaptcha = function() {
+		                    vcRecaptchaService.reload(vm.widgetId);
+		                    vm.responseRecaptcha = null;
+		                };
 
 						if($location.hash() == 'cadastro')
 							vm.openAdd = true;
@@ -35,12 +49,11 @@
 
 						vm.addInstitution = function(type){
 							var data = { };
+							vm.submit = true;
 
 							if( (vm.cadastroConselhoForm && vm.cadastroConselhoForm.$valid) ||
 								(vm.cadastroInstituicaoForm && vm.cadastroInstituicaoForm.$valid) ||
 								(vm.cadastroEntidadeForm && vm.cadastroEntidadeForm.$valid)){
-
-								vm.send = true;
 
 								if(type == 1)
 									data = vm.institution;
@@ -51,13 +64,15 @@
 									data = vm.conselho;
 								else return;
 
+								data.recaptcha = vm.gRecaptchaResponse;
 								data.ecm_convenio_tipo_instituicao_id = type;
 
 								QiSatAPI.addInstitution(data)
 											.then( function ( response ){
-													vm.send = false;
-													if(response.data.retorno.sucesso){
-
+													
+													if(response && response.data && response.data.retorno && response.data.retorno.sucesso){
+															vm.submit = false;
+															vm.reloadRecaptcha();
 														if(vm.cadastroConselhoForm){
 															vm.cadastroConselhoForm.$setPristine();
 															vm.conselho = {};
@@ -80,13 +95,16 @@
 														else
 															modalController.alert({ success : true, main : { title : "Obrigado! Sua solicitação foi enviada.", subtitle : "A equipe QiSat entrará em contato em breve." } });
 
-													}else
+													}else if ( response && response.data && response.data.erro == "captcha-invalido")
+														modalController.alert({  error : true, main : { title : "Verifique os dados Solicitados!"} });
+													else
 														modalController.alert({ error : true, main : { title : "Falha na Solicitação de Cadastro." }});
 
 												}, function ( response ){
 													modalController.alert({error : true});
 												});
-							}
+							}else
+								modalController.alert({  error : true, main : { title : "Verifique os dados Solicitados!"} });
 						};
 
 			}]);

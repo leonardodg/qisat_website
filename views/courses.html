@@ -132,7 +132,7 @@
                         <ul class="list-filter block-grid__courses small-block-grid-1 medium-block-grid-2 large-block-grid-3"
                             infinite-scroll="vm.loadMore(list)" infinite-scroll-disabled="list.noscroll">
                             <li class="block-grid__courses__item"
-                                ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)"
+                                ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)" ng-show="course.show"
                                 >
                                 <div class="list-filter__inner">
                                     <div class="card-course card-format-block">
@@ -176,7 +176,7 @@
                     </div>
                     <div ng-if="::list.card!='online'" id="::list.anchor" infinite-scroll="vm.loadMore(list)"
                          infinite-scroll-disabled="list.noscroll">
-                        <div ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)"
+                        <div ng-repeat="course in list.filter=(list.courses | filter: vm.myFilter) | orderBy:vm.order track by vm.trackCourse(course)" ng-show="course.show"
                              >
                             <div class="card-format-ever-block">
                                 <div class="row collapse">

@@ -31,6 +31,7 @@
 	<link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="/stylesheets/app.css" >
+
 </head>
 
 <body page-buy ng-controller="carrinhoController as buy"> 
@@ -268,10 +269,13 @@
     	<script defer src="/js/libs/angulartics-ga.min.js"></script>
     	<script defer src="/js/libs/angular-loading-bar.js"></script>  
     	<script defer src="/js/libs/angular-sanitize.js"></script>
+    	<script defer src="/js/libs/angular-recaptcha.min.js"></script>
+
 	    
 		<script defer src="/js/QiSatApp.js"></script>
 		<script defer src="/js/routes/all.js"></script>
 		<script defer src="/js/config/value.js"></script>
+		<script defer src="/js/config/recaptcha.js"></script>
 		<script defer src="/js/config/interceptors.js"></script>
 		<script defer src="/js/filters/filters.js"></script>
 
@@ -291,6 +295,7 @@
 		<script defer src="/js/directive/slick.js"></script>
 		<script defer src="/js/directive/stickyKit.js"></script>
 		<script defer src="/js/directive/pageBuy.js"></script>
+		<script defer src="/js/directive/chaveAltoqi.js"></script>
 		
 
 		<script defer src="/js/services/QiSatAPI.js"></script>
@@ -315,7 +320,7 @@
 	    <script defer src="/js/controllers/instructorsController.js"></script>
 	    <script defer src="/js/controllers/instructorsIndexController.js"></script>
 	    <script defer src="/js/controllers/loginController.js"></script>
-	<script defer src="/js/controllers/confirmarCadastroController.js"></script>
+		<script defer src="/js/controllers/confirmarCadastroController.js"></script>
 	    <script defer src="/js/controllers/matriculaController.js"></script>
 	    <script defer src="/js/controllers/modalController.js"></script>
 	    <script defer src="/js/controllers/montarCarrinhoController.js"></script>
@@ -334,6 +339,7 @@
 			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			  })(window,document,'script','/js/libs/analytics.js','ga');
 		</script>
+
 
 </body>
 </html>

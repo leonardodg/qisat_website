@@ -160,7 +160,7 @@
                         </div>
                         <div class="small-12 medium-9 columns">
                           <input type="text" name="nameInstituicao" id="nameInstituicao" placeholder="Nome Completo" ng-model="vm.institution.nome_instituicao" ng-required="true">
-                          <div ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$dirty && vm.cadastroInstituicaoForm.nameInstituicao.$invalid">
+                          <div ng-show="(vm.cadastroInstituicaoForm.nameInstituicao.$dirty||vm.submit) && vm.cadastroInstituicaoForm.nameInstituicao.$invalid">
                               <span class="error" ng-show="vm.cadastroInstituicaoForm.nameInstituicao.$error.required">Nome é obrigatório.</span>
                           </div>
                         </div>
@@ -172,7 +172,7 @@
                         </div>
                         <div class="small-12 medium-9 columns">
                           <input type="text" name="nameResponsavelInstituicao" id="nameResponsavelInstituicao" placeholder="Nome Completo"  ng-model="vm.institution.nome_responsavel" ng-required="true">
-                          <div ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$dirty && vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$invalid">
+                          <div ng-show="(vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$dirty||vm.submit) && vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$invalid">
                               <span class="error" ng-show="vm.cadastroInstituicaoForm.nameResponsavelInstituicao.$error.required">Responsável é obrigatório.</span>
                           </div>
                         </div>
@@ -184,7 +184,7 @@
                         </div>
                         <div class="small-12 medium-9 columns">
                           <input type="text" name="nameCordenador" id="nameCordenador" placeholder="Nome Completo"  ng-model="vm.institution.nome_coordenador" ng-required="true">
-                          <div ng-show="vm.cadastroInstituicaoForm.nameCordenador.$dirty && vm.cadastroInstituicaoForm.nameCordenador.$invalid">
+                          <div ng-show="(vm.cadastroInstituicaoForm.nameCordenador.$dirty||vm.submit) && vm.cadastroInstituicaoForm.nameCordenador.$invalid">
                               <span class="error" ng-show="vm.cadastroInstituicaoForm.nameCordenador.$error.required">Coordenador é obrigatório.</span>
                           </div>
                         </div>
@@ -197,7 +197,7 @@
                         <div class="small-12 medium-9 columns">
                           <input type="email" name="emailInstituicao" id="emailInstituicao" placeholder="Digite seu E-mail"  ng-model="vm.institution.email" ng-pattern="vm.emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
 
-                           <div ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$dirty && vm.cadastroInstituicaoForm.emailInstituicao.$invalid">
+                           <div ng-show="(vm.cadastroInstituicaoForm.emailInstituicao.$dirty||vm.submit) && vm.cadastroInstituicaoForm.emailInstituicao.$invalid">
                                 <span class="error" ng-show="vm.cadastroInstituicaoForm.emailInstituicao.$error.required">E-mail é obrigatório.</span>
                           </div>
 
@@ -214,15 +214,22 @@
                         </div>
                         <div class="small-12 medium-9 columns">
                           <input type="text" name="phoneInstituicao" id="phoneInstituicao" placeholder="Telefone com DDD" ng-model="vm.institution.telefone" mask="(99) 9?9999-9999" ng-required="true">
-                          <div ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$dirty && vm.cadastroInstituicaoForm.phoneInstituicao.$invalid">
+                          <div ng-show="(vm.cadastroInstituicaoForm.phoneInstituicao.$dirty||vm.submit) && vm.cadastroInstituicaoForm.phoneInstituicao.$invalid">
                              <span class="error" ng-show="vm.cadastroInstituicaoForm.phoneInstituicao.$error.required">Telefone é obrigatório.</span>
                           </div>
+                        </div>
+                      </div>
+              
+                      <div class="row">
+                        <div class="column small-6 small-centered">
+                           <div vc-recaptcha ng-model="vm.gRecaptchaResponse" on-create="vm.setWidgetId(vm.widgetId)" on-success="vm.setResponse(vm.responseRecaptcha)" on-expire="vm.reloadRecaptcha()"> </div>
+                          <span class="error" ng-show="vm.cadastroInstituicaoForm.$error.recaptcha&&vm.submit">Verificarção Obrigatória!</span> <br>
                         </div>
                       </div>
                       
                       <div class="row">
                        <div class="small-12 medium-3 large-12 columns">
-                          <button class="button right" type="submit" ng-disabled="vm.cadastroInstituicaoForm.$invalid||vm.send" ng-click="vm.addInstitution(1)" analytics-on analytics-event="Cadastro ensino" > Enviar </button>
+                          <button class="button right" type="submit" ng-click="vm.addInstitution(1)" analytics-on analytics-event="Cadastro ensino" > Enviar </button>
                         </div>
                       </div>
                       

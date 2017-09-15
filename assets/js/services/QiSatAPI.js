@@ -65,6 +65,24 @@
 		                        },
 
 
+		                        contact : function(data){
+
+		                        	var promise = $http({ 
+		                                                    method: 'POST', 
+		                                                    loading : true,
+		                                                    url: Config.baseUrl+'/repasse/contato',
+		                                                    data: data
+		                                                        });
+
+		                            return promise.then( function(res){ 
+		                                                    return res; 
+		                                                }, function(res){ 
+		                                                    return res; 
+		                                                });
+
+		                        },
+
+
 		                        checkByEmail : function (email) {
 
 		                            var promise = $http({ 
@@ -359,7 +377,9 @@
 						getCourseList : function(){
 							var  series, packages, classroom, events, single, releases, free, online,
 								list, listOnline, listSeries, listPacks, listSingle, listEvents, listClass,
-								filter, elemts, elem, inputs, selected, show, tipo, len, filterTypes = $filter('byTypes');
+								filter, elemts, elem, inputs, selected, show, tipo, len, filterTypes = $filter('byTypes'),
+								ordem = ['Online','Eventos','Series','Pacotes','Individual','Presencial'], auxiliar = [];
+
 
 							if(courses.length){
 
@@ -593,29 +613,36 @@
 									}else listClass.show = true;
 								}
 
-								if(coursesList.length){
-									coursesList.map(function(list, i){
-										if(list && list.courses && list.courses.length){
-											len = (i == 0 && list.card == 'online') ? 3 : 1;
-											while(len--) if(list.courses[len]) list.courses[len].show = true;
-										}
+							}
+
+							coursesList.map(function(list, i){
+								if(list && list.courses && list.courses.length){
+									len = (i == 0 && list.card == 'online') ? 3 : 1;
+									while(len--) if(list.courses[len]) list.courses[len].show = true;
+								}
+							});
+
+							if(($location.path().indexOf('/cursos/presenciais') >= 0) || ($location.path().indexOf('/cursos/online') >= 0 && $location.path() !== '/cursos/online/gratuito') ){
+								ordem.map(function(name){
+									coursesList.map(function(curso){
+										if (name == curso.name)
+											auxiliar.push(curso);
 									});
-								}
-							}
-							var ordem = ['Online','Eventos','Series','Pacotes','Individual','Presencial'],auxiliar = [];
-							for(var i=0;i<ordem.length;i++) {
-								for (var j = 0; j < coursesList.length; j++) {
-									if (ordem[i] == coursesList[j].name)
-										auxiliar.push(coursesList[j]);
-								}
-							}
-							return coursesList = auxiliar;
+								});
+								return coursesList = auxiliar;
+							}else
+								return coursesList;
+
 						},
 
 						getCourseListAll : function(){
 							var series, packages, classroom, events, single, online,
 								listOnline, listSeries, listPacks, listSingle, listEvents, listClass,
-								show, tipo, len, filterTypes = $filter('byTypes');
+								show, tipo, len, filterTypes = $filter('byTypes'),
+								ordem = ['Online','Series','Pacotes','Eventos','Individual','Presencial'], auxiliar = [];
+								
+							if($location.path().indexOf('/cursos/presenciais')>=0)
+								ordem = ['Eventos','Individual','Presencial','Online','Series','Pacotes'];
 
 							if(courses){
 								listOnline = coursesList.find(function (list){ return list.type == 2 });
@@ -686,22 +713,12 @@
 									coursesList.push(listClass);
 								}else listClass.show = true;
 
-								if(coursesList.length){
-									coursesList.map(function(list, i){
-										if(list && list.courses && list.courses.length){
-											len = (i == 0 && list.card == 'online') ? 3 : 1;
-											while(len--) if(list.courses[len]) list.courses[len].show = true;
-										}
-									});
-								}
-
-								var ordem = ['Online','Series','Pacotes','Eventos','Individual','Presencial'], auxiliar = [];
-								if($location.path().indexOf('/cursos/presenciais')>=0)
-									ordem = ['Eventos','Individual','Presencial','Online','Series','Pacotes'];
-								for(var i=0;i<coursesList.length;i++) {
-									auxiliar[ordem.indexOf(coursesList[i].name)] = coursesList[i];
-									auxiliar[ordem.indexOf(coursesList[i].name)].show = true;
-								}
+								coursesList.map(function(list){
+									list.show = true;
+									list.courses.map(function(curso){ curso.show = true });
+									auxiliar[ordem.indexOf(list.name)] = list;
+								});
+								
 								return auxiliar;
 							}
 						},

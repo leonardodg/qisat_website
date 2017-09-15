@@ -109,7 +109,7 @@
                 </div>
                 <div class="small-12 medium-9 columns">
                   <input type="text" name="name" id="name" placeholder="Nome Completo"  ng-model="desconto.nome" ng-required="true">
-                  <div ng-show="descontoForm.name.$dirty && descontoForm.name.$invalid">
+                  <div ng-show="(descontoForm.name.$dirty||submit) && descontoForm.name.$invalid">
                       <span class="error" ng-show="descontoForm.name.$error.required">Nome é obrigatório.</span>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="small-12 medium-9 columns">
                   <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="desconto.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
-                    <div ng-show="descontoForm.email.$dirty && descontoForm.email.$invalid">
+                    <div ng-show="(descontoForm.email.$dirty||submit) && descontoForm.email.$invalid">
                           <span class="error" ng-show="cadastroEntidadeForm.email.$error.required">Email é obrigatório.</span>
                     </div>
 
@@ -137,15 +137,23 @@
                 </div>
                 <div class="small-12 medium-9 columns">
                   <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.telefone" mask="(99) 9?9999-9999" ng-required="true">
-                  <div ng-show="descontoForm.phone.$dirty && descontoForm.phone.$invalid">
+                  <div ng-show="(descontoForm.phone.$dirty||submit) && descontoForm.phone.$invalid">
                        <span class="error" ng-show="descontoForm.phone.$error.required">Telefone é obrigatório.</span>
                   </div>
                 </div>
               </div>
+
+          <div class="row">
+            <div class="column small-6 small-centered">
+               <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
+              <span class="error" ng-show="descontoForm.$error.recaptcha&&submit">Verificarção Obrigatória!</span> <br>
+            </div>
+          </div>
+
               
               <div class="row">
                 <div class="small-12 medium-3 large-12 columns">
-                  <button class="button right" type="submit" ng-disabled="descontoForm.$invalid" ng-click="institutionDiscount()" analytics-on analytics-event="solitar desconto"  > Enviar </button>
+                  <button class="button right" type="submit" ng-click="institutionDiscount()" analytics-on analytics-event="solitar desconto"  > Enviar </button>
                 </div>
               </div>
 

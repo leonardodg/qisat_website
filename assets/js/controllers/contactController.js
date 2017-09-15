@@ -14,6 +14,21 @@
 			                $scope.submitted = false;
 			                $scope.isDisabled = true;
 
+						 	// Codigo Recaptcha
+			   				$scope.responseRecaptcha = null;
+			                $scope.widgetId = null;
+			                $scope.setResponse = function (responseRecaptcha) {
+			                    $scope.responseRecaptcha = responseRecaptcha;
+			                };
+			                $scope.setWidgetId = function (widgetId) {
+			                    $scope.widgetId = widgetId;
+			                };
+			                $scope.reloadRecaptcha = function() {
+			                    vcRecaptchaService.reload($scope.widgetId);
+			                    $scope.responseRecaptcha = null;
+			                };
+
+
 			            $scope.addNew = function(){
 			                      $scope.submitted = true;
 			                      if($scope.emailNew){
@@ -35,8 +50,8 @@
 						$scope.sendMail = function(){
 							var dados = {};
 							
+							$scope.submitted = true;
 							if($scope.contatoForm.$valid){
-								$scope.send = true;
 								dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
 								dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
 								dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
@@ -46,10 +61,13 @@
 								dados.corpo_email += ' <b>Mensagem:</b><br />';
 								dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
 
-								QiSatAPI.repasse(dados)
+								dados.recaptcha = $scope.gRecaptchaResponse;
+
+								QiSatAPI.contact(dados)
 											.then( function ( response ){
 													$scope.contato = {};
-													$scope.send = false;
+													$scope.submitted = false;
+													$scope.reloadRecaptcha();
 													$scope.contatoForm.$setPristine();
 
 													if(response.statusText=="OK")
@@ -58,9 +76,10 @@
 														modalController.alert({ error : true, main : { title : "Falha no envio do E-mail!" }});
 													
 												}, function ( res ){
-    													modalController.alert({error : true});
+    													modalController.alert({ error : true });
     											});
-							}
+							}else
+								modalController.alert({  error : true, main : { title : "Verifique os dados Solicitados!"} });
 						};
 				}]);
 })();
