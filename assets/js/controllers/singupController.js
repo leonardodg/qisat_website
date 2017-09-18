@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('singupController', ['$scope', '$controller', '$location' ,'QiSatAPI', 'postmon', 'Config', 'authService',
-					 function(scope, $controller, $location, QiSatAPI, postmon, Config, authService) {
+		.controller('singupController', ['$scope', '$controller', '$location' ,'QiSatAPI', 'postmon', 'Config', 'authService', 'vcRecaptchaService',
+					 function(scope, $controller, $location, QiSatAPI, postmon, Config, authService, vcRecaptchaService) {
 
 					 	var modalController = $controller('modalController');
 					 	scope.etapa=1;

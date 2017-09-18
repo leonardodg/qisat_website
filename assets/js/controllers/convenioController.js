@@ -4,8 +4,8 @@
 	angular
 		.module('QiSatApp')
 		.controller("convenioController", 
-					[ '$scope', '$controller', '$filter' ,'$location', 'QiSatAPI', 'Config', 
-						function($scope, $controller, $filter, $location, QiSatAPI, Config ){
+					[ '$scope', '$controller', '$filter' ,'$location', 'QiSatAPI', 'Config', 'vcRecaptchaService',
+						function($scope, $controller, $filter, $location, QiSatAPI, Config, vcRecaptchaService ){
 
 						var vm = this, modalController = $controller('modalController');
 							vm.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;

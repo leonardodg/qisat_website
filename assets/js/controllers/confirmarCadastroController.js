@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('confirmarCadastroController', [ '$scope', '$controller', '$location', '$analytics', 'authService','$route',
-			function(scope, $controller, $location, $analytics, authService, $route) {
+		.controller('confirmarCadastroController', [ '$scope', '$controller', '$location', '$analytics', 'authService','$route', 'vcRecaptchaService',
+			function(scope, $controller, $location, $analytics, authService, $route, vcRecaptchaService) {
 
 				var modalController = $controller('modalController');
 				var token = $route.current.params.token;
