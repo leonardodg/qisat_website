@@ -232,7 +232,7 @@
 
             $routeProvider.when('/institucional/convenios/preduc/inscricao', {
                   templateUrl : '/views/institucional-preduc-inscricao.html',
-                  controller :  function($scope, $controller, Config, QiSatAPI, institutions){
+                  controller :  function($scope, $controller, Config, QiSatAPI, institutions, vcRecaptchaService){
                                   var modalController = $controller('modalController');
                                     $scope.states = Config.states;
                                     $scope.selectInstitution = institutions;
