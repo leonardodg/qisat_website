@@ -27,8 +27,6 @@
 					}
 				};
 
-				$window.ga('create', 'UA-98371985-2', 'auto');
-
 				$timeout(function() {
 			   		$rootScope.$apply($document.foundation(config));
 					$rootScope.$apply($document.foundation());

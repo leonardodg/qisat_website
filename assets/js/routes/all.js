@@ -685,7 +685,6 @@
           $rootScope.$on('$locationChangeSuccess', function (event, newUrl) {
               authService.load();
               $analytics.pageTrack($location.path());
-              $window.ga('send', 'pageview', { page: $location.path() });
 
               if($route && $route.current && $route.current.$$route)
                 $rootScope.seo = $route.current.$$route.seo;

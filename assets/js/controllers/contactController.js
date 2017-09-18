@@ -4,8 +4,8 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope', 'QiSatAPI', '$modal', '$controller', 
-						function($scope, QiSatAPI, $modal, $controller){
+					[ '$scope', 'QiSatAPI', '$modal', '$controller', 'vcRecaptchaService',
+						function($scope, QiSatAPI, $modal, $controller, vcRecaptchaService){
 						
 						var modalController = $controller('modalController');
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;

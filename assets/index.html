@@ -30,11 +30,11 @@
 	<link rel="alternate" href="https://www.qisat.com.br/"  hreflang="x-default"/>
 	<link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="/stylesheets/app.css" >
+	<link rel="stylesheet" href="/stylesheets/app.css?vs=v123456" >
 
 </head>
 
-<body page-buy ng-controller="carrinhoController as buy"> 
+<body page-buy ng-controller="carrinhoController as buy">
 	<div class="off-canvas-wrap">
 		<div class="inner-wrap" ng-controller="modalController as modal">
 
@@ -55,23 +55,23 @@
 				<div class="header-main__brand"> <a href="/" class="header-main__logo"  > QiSat </a> </div>
 				<nav class="header-main__nav">
 					<ul class="header-main__ul" menu-active>
-						<li class="show-for-large-up header-main__list "> 
+						<li class="show-for-large-up header-main__list ">
 							<a class="header-main__item" href="/" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list ">
 							<a class="header-main__item" href="/cursos" >Cursos</a>
 						</li>
-			 			<li class="show-for-large-up header-main__list"> 
+			 			<li class="show-for-large-up header-main__list">
 			 				<a class="header-main__item" href="/aluno" >Área do Aluno</a>
 			 			</li>
-						<li class="show-for-large-up header-main__list"> 
+						<li class="show-for-large-up header-main__list">
 							<a class="header-main__item" href="/institucional" >Institucional</a>
 						</li>
-						<li class="hide-for-large-up header-main__list"> 
-			              <a class="right-off-canvas-toggle menu-icon header-main__item"> 
+						<li class="hide-for-large-up header-main__list">
+			              <a class="right-off-canvas-toggle menu-icon header-main__item">
 			                <span><i class="material-icons">menu</i> Menu </span> </a>
 			            </li>
-			    		<li class="header-main__list header-main__list-cart" > 
+			    		<li class="header-main__list header-main__list-cart" >
 			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho Itens"  >
 			    				<i class="material-icons">shopping_cart</i> <span class="cart_number" ng-show="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span>
 			    			</a>
@@ -95,7 +95,7 @@
 							<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)" ><i class="material-icons">close</i></a>
 						</li>
 					</ul>
-					 	
+
 				 	<div ng-show="!buy.qtdItens">
 						<span class="cd-text" >Nenhum item no carrinho.</span>
 					</div>
@@ -103,7 +103,7 @@
 					<div class="cd-cart-total" ng-show="buy.valorTotal">
 						<p><strong>Total <span>{{buy.totalCarrinho}} </span> </strong></p>
 					</div> <!-- cd-cart-total -->
-				 
+
 					<a href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()" >Finalizar compra</a>
 					<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close" ><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
@@ -133,9 +133,9 @@
 											<li class="footer-primary__columns--item">
 											 	<ul class="footer-primary__list">
 													<li class="footer-primary__title"> Páginas </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online"  >Cursos Online</a></li>	
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online"  >Cursos Online</a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais"  >Cursos Presenciais</a></li>	
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais"  >Cursos Presenciais</a></li>
 
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Área do Aluno"  href-portal >Área do Aluno</a></li>
 
@@ -144,9 +144,9 @@
 											</li>
 
 										 	<li class="footer-primary__columns--item">
-												<ul class="footer-primary__list"> 
+												<ul class="footer-primary__list">
 													<li class="footer-primary__title"> Blogs </li>
-													
+
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank" >Blog Mais Engenharia </a></li>
 
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank"> Blog Eberick </a></li>
@@ -154,7 +154,7 @@
 											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank" > Blog QiBuilder </a></li>
 
 											 		</ul>
-											</li> 
+											</li>
 
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
@@ -175,12 +175,12 @@
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" >Mensagem</a></li>
 													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Mensagem" ng-click="modal.showZopim()" >Chat</a></li>
 												</ul>
-											</li>  
+											</li>
 
 											<li class="footer-primary__columns--item">
 												<img class="footer-primary__list__item--brand-qisat" src="/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
-						                        <br><br><span class="footer-primary__title"> <i class="material-icons">call</i> (48) 3332-5000 </span> 
-                       							<br><span class="footer-primary__title "> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5548998151222"> <i class="icon-whats"></i>(48) 99815-1222 </a></span> 
+						                        <br><br><span class="footer-primary__title"> <i class="material-icons">call</i> (48) 3332-5000 </span>
+                       							<br><span class="footer-primary__title "> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5548998151222"> <i class="icon-whats"></i>(48) 99815-1222 </a></span>
 											</li> <!-- //  -->
 									</ul>
 
@@ -206,7 +206,7 @@
 
 										    <li>
 													<ul class="footer-secondary__list footer-secondary__list--email ">
-														<li class="footer-secondary__list__item">QiSat | Cursos aplicados à engenharia e arquitetura 
+														<li class="footer-secondary__list__item">QiSat | Cursos aplicados à engenharia e arquitetura
 														<a href="mailto:inscricoes@qisat.com.br" class="footer-secondary__list__item--link"><strong>inscricoes@qisat.com.br</strong></a></li>
 													</ul>
 										   	</li>
@@ -238,108 +238,100 @@
        <script src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script>
 
 	<!-- GLOBAL -->
-		<script async defer src="/bower_components/modernizr/modernizr.js"></script> <!-- Modernizr -->
-		<script src="/bower_components/jquery/dist/jquery.min.js"></script>  <!-- Resource jQuery -->
-		<script defer src="/bower_components/foundation/js/foundation.min.js"></script> <!-- script foundation -->
-		<script defer src="/js/libs/angular.js"></script>  <!-- defern erro chrome unmindecode -->
-		<script defer src="/bower_components/angular-foundation/mm-foundation-tpls.js"></script>
-		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-    	<script defer src="/bower_components/slick/slick.min.js"></script>
-    	<script defer src="/bower_components/sticky-kit/jquery.sticky-kit.min.js"></script>
-    	<script defer src="/js/libs/simple-lightbox.js"></script>
+		<script async defer src="/bower_components/modernizr/modernizr.js?vs=v123456"></script> <!-- Modernizr -->
+		<script src="/bower_components/jquery/dist/jquery.min.js?vs=v123456"></script>  <!-- Resource jQuery -->
+		<script defer src="/bower_components/foundation/js/foundation.min.js?vs=v123456"></script> <!-- script foundation -->
+		<script defer src="/js/libs/angular.js?vs=v123456"></script>  <!-- defern erro chrome unmindecode -->
+		<script defer src="/bower_components/angular-foundation/mm-foundation-tpls.js?vs=v123456"></script>
+		<script defer src="/bower_components/owl.carousel/dist/owl.carousel.min.js?vs=v123456"></script>
+    	<script defer src="/bower_components/slick/slick.min.js?vs=v123456"></script>
+    	<script defer src="/bower_components/sticky-kit/jquery.sticky-kit.min.js?vs=v123456"></script>
+    	<script defer src="/js/libs/simple-lightbox.js?vs=v123456"></script>
 		<!-- // GLOBAL -->
 
 		<!-- EXECUTA SCRIPTS QISAT -->
-		<script defer src="/js/libs/moment.min.js"></script>
-		<script defer src="/js/libs/moment-with-locales.min.js"></script>
-		<script defer src="/js/libs/moment-timezone-with-data.min.js"></script>
+		<script defer src="/js/libs/moment.min.js?vs=v123456"></script>
+		<script defer src="/js/libs/moment-with-locales.min.js?vs=v123456"></script>
+		<script defer src="/js/libs/moment-timezone-with-data.min.js?vs=v123456"></script>
 
-		<script defer src="/js/libs/humanize-duration.js"></script>
-		<script defer src="/js/libs/extenso.js"></script>
+		<script defer src="/js/libs/humanize-duration.js?vs=v123456"></script>
+		<script defer src="/js/libs/extenso.js?vs=v123456"></script>
 
-		<script defer src="/js/libs/angular-locale_pt-br.js"></script>
-		<script defer src="/js/libs/angular-cookies.min.js"></script>
-	    <script defer src="/js/libs/angular-route.min.js"></script>
-	    <script defer src="/js/libs/angular-resource.min.js"></script>
-	    <script defer src="/js/libs/ngMask.min.js"></script>
-	    <script defer src="/js/libs/ui-masks.js"></script>
-	    <script defer src="/js/libs/angular-timer.min.js"></script>
-    	<script defer src="/js/libs/ng-infinite-scroll.min.js"></script>	    
-	    <script defer src="/js/libs/angulartics.min.js"></script>
-    	<script defer src="/js/libs/angulartics-ga.min.js"></script>
-    	<script defer src="/js/libs/angular-loading-bar.js"></script>  
-    	<script defer src="/js/libs/angular-sanitize.js"></script>
-    	<script defer src="/js/libs/angular-recaptcha.min.js"></script>
+		<script defer src="/js/libs/angular-locale_pt-br.js?vs=v123456"></script>
+		<script defer src="/js/libs/angular-cookies.min.js?vs=v123456"></script>
+	    <script defer src="/js/libs/angular-route.min.js?vs=v123456"></script>
+	    <script defer src="/js/libs/angular-resource.min.js?vs=v123456"></script>
+	    <script defer src="/js/libs/ngMask.min.js?vs=v123456"></script>
+	    <script defer src="/js/libs/ui-masks.js?vs=v123456"></script>
+	    <script defer src="/js/libs/angular-timer.min.js?vs=v123456"></script>
+    	<script defer src="/js/libs/ng-infinite-scroll.min.js?vs=v123456"></script>
+	    <script defer src="/js/libs/angulartics.min.js?vs=v123456"></script>
+    	<script defer src="/js/libs/angulartics-ga.min.js?vs=v123456"></script>
+    	<script defer src="/js/libs/angular-loading-bar.js?vs=v123456"></script>
+    	<script defer src="/js/libs/angular-sanitize.js?vs=v123456"></script>
+    	<script defer src="/js/libs/angular-recaptcha.min.js?vs=v123456"></script>
 
-	    
-		<script defer src="/js/QiSatApp.js"></script>
-		<script defer src="/js/routes/all.js"></script>
-		<script defer src="/js/config/value.js"></script>
-		<script defer src="/js/config/recaptcha.js"></script>
-		<script defer src="/js/config/interceptors.js"></script>
-		<script defer src="/js/filters/filters.js"></script>
 
-		<script defer src="/js/directive/anchorLink.js"></script>
-		<script defer src="/js/directive/backImg.js"></script>
-		<script defer src="/js/directive/bnLazySrc.js"></script>
-		<script defer src="/js/directive/cpfCheck.js"></script>
-		<script defer src="/js/directive/emailCheck.js"></script>
-		<script defer src="/js/directive/hrefPortal.js"></script>
-		<script defer src="/js/directive/lightbox.js"></script>
-		<script defer src="/js/directive/menuActive.js"></script>
-		<script defer src="/js/directive/menuAlunoCursos.js"></script>
-		<script defer src="/js/directive/menuCarrinhoActive.js"></script>
-		<script defer src="/js/directive/owlSync.js"></script>
-		<script defer src="/js/directive/playDemoModal.js"></script>
-		<script defer src="/js/directive/pwCheck.js"></script>
-		<script defer src="/js/directive/slick.js"></script>
-		<script defer src="/js/directive/stickyKit.js"></script>
-		<script defer src="/js/directive/pageBuy.js"></script>
-		<script defer src="/js/directive/chaveAltoqi.js"></script>
-		
+		<script defer src="/js/QiSatApp.js?vs=v123456"></script>
+		<script defer src="/js/routes/all.js?vs=v123456"></script>
+		<script defer src="/js/config/value.js?vs=v123456"></script>
+		<script defer src="/js/config/recaptcha.js?vs=v123456"></script>
+		<script defer src="/js/config/interceptors.js?vs=v123456"></script>
+		<script defer src="/js/filters/filters.js?vs=v123456"></script>
 
-		<script defer src="/js/services/QiSatAPI.js"></script>
-		<script defer src="/js/services/authService.js"></script>
-		<script defer src="/js/services/carrinho.js"></script>
-		<script defer src="/js/services/postmonService.js"></script>		
-		
-	    <script defer src="/js/controllers/TopCoursesController.js"></script>
-	    <script defer src="/js/controllers/alunoCarrinhoController.js"></script>
-	    <script defer src="/js/controllers/alunoController.js"></script>
-	    <script defer src="/js/controllers/carrinhoController.js"></script>
-	    <script defer src="/js/controllers/certificadoController.js"></script>
-	    <script defer src="/js/controllers/confirmacaoController.js"></script>
-	    <script defer src="/js/controllers/contactController.js"></script>
-	    <script defer src="/js/controllers/convenioController.js"></script>
-	    <script defer src="/js/controllers/coursesController.js"></script>
+		<script defer src="/js/directive/anchorLink.js?vs=v123456"></script>
+		<script defer src="/js/directive/backImg.js?vs=v123456"></script>
+		<script defer src="/js/directive/bnLazySrc.js?vs=v123456"></script>
+		<script defer src="/js/directive/cpfCheck.js?vs=v123456"></script>
+		<script defer src="/js/directive/emailCheck.js?vs=v123456"></script>
+		<script defer src="/js/directive/hrefPortal.js?vs=v123456"></script>
+		<script defer src="/js/directive/lightbox.js?vs=v123456"></script>
+		<script defer src="/js/directive/menuActive.js?vs=v123456"></script>
+		<script defer src="/js/directive/menuAlunoCursos.js?vs=v123456"></script>
+		<script defer src="/js/directive/menuCarrinhoActive.js?vs=v123456"></script>
+		<script defer src="/js/directive/owlSync.js?vs=v123456"></script>
+		<script defer src="/js/directive/playDemoModal.js?vs=v123456"></script>
+		<script defer src="/js/directive/pwCheck.js?vs=v123456"></script>
+		<script defer src="/js/directive/slick.js?vs=v123456"></script>
+		<script defer src="/js/directive/stickyKit.js?vs=v123456"></script>
+		<script defer src="/js/directive/pageBuy.js?vs=v123456"></script>
+		<script defer src="/js/directive/chaveAltoqi.js?vs=v123456"></script>
+
+
+		<script defer src="/js/services/QiSatAPI.js?vs=v123456"></script>
+		<script defer src="/js/services/authService.js?vs=v123456"></script>
+		<script defer src="/js/services/carrinho.js?vs=v123456"></script>
+		<script defer src="/js/services/postmonService.js?vs=v123456"></script>
+
+	    <script defer src="/js/controllers/TopCoursesController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/alunoCarrinhoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/alunoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/carrinhoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/certificadoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/confirmacaoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/contactController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/convenioController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/coursesController.js?vs=v123456"></script>
 	    <script defer src="/js/controllers/descontosConvenioController.js"></script>
-	    <script defer src="/js/controllers/financeiroController.js"></script>
-	    <script defer src="/js/controllers/infoController.js"></script>
+	    <script defer src="/js/controllers/financeiroController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/infoController.js?vs=v123456"></script>
 	    <script defer src="/js/controllers/institucionalController.js"></script>
-	    <script defer src="/js/controllers/instructorController.js"></script>
-	    <script defer src="/js/controllers/instructorsController.js"></script>
-	    <script defer src="/js/controllers/instructorsIndexController.js"></script>
-	    <script defer src="/js/controllers/loginController.js"></script>
-		<script defer src="/js/controllers/confirmarCadastroController.js"></script>
-	    <script defer src="/js/controllers/matriculaController.js"></script>
-	    <script defer src="/js/controllers/modalController.js"></script>
-	    <script defer src="/js/controllers/montarCarrinhoController.js"></script>
-	    <script defer src="/js/controllers/pagamentoController.js"></script>
-	    <script defer src="/js/controllers/perfilController.js"></script>
-	    <script defer src="/js/controllers/rememberController.js"></script>
-	    <script defer src="/js/controllers/singupController.js"></script>
-	    <script defer src="/js/controllers/userController.js"></script>
+	    <script defer src="/js/controllers/instructorController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/instructorsController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/instructorsIndexController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/loginController.js?vs=v123456"></script>
+		<script defer src="/js/controllers/confirmarCadastroController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/matriculaController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/modalController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/montarCarrinhoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/pagamentoController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/perfilController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/rememberController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/singupController.js?vs=v123456"></script>
+	    <script defer src="/js/controllers/userController.js?vs=v123456"></script>
 
-		<script defer src="/js/run/foundation.js"></script>
-		<script defer src="/js/app.js"></script>
-
-		<script > 
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','/js/libs/analytics.js','ga');
-		</script>
-
+		<script defer src="/js/run/foundation.js?vs=v123456"></script>
+		<script defer src="/js/app.js?vs=v123456"></script>
 
 </body>
 </html>
