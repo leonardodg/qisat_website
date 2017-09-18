@@ -256,7 +256,6 @@
                                     $scope.institutionDiscount = function(){
                                       var data = angular.copy($scope.desconto);
                                       $scope.submit = true;
-                                      $scope.reloadRecaptcha();
 
                                       if($scope.descontoForm && $scope.descontoForm.$valid){
                                         data.ecm_convenio_id = data.institution.id;
@@ -269,6 +268,7 @@
                                                     $scope.submit = false;
                                                     $scope.desconto = {};
                                                     $scope.descontoForm.$setPristine();
+                                                    $scope.reloadRecaptcha();
                                                     modalController.alert({ success : true, main : { title : "Obrigado, por solicitar o Insteresse!", subtitle : " Em breve entraremos em contato." } });
                                                   }else
                                                     modalController.alert({ error : true, main : { title : "Falha na Solicitação!" }});

@@ -88,7 +88,6 @@
                       </div>
                     </div>
                   </div>
-
                   
                     <h1>Solicitar Desconto</h1>
                 
@@ -98,7 +97,12 @@
                   <div class="small-12 large-9 large-offset-3 column">
                        <select name="selectInstitution" id="selectInstitution" class="selectInstitution" ng-options="institution.nome_instituicao for institution in selectInstitution track by institution.id" ng-model="desconto.institution" ng-required="true" >
                           <option value="">  Selecione Instituição  </option>
-                   </select>
+                        </select>
+
+                      <div ng-show="(descontoForm.selectInstitution.$dirty||submit) && descontoForm.selectInstitution.$invalid">
+                        <span class="error" ng-show="descontoForm.selectInstitution.$error.required">Instituição obrigatória.</span>
+                      </div>
+
                   </div>
                 </div>
                 <br>  
@@ -122,7 +126,7 @@
                 <div class="small-12 medium-9 columns">
                   <input type="email" name="email" id="email" placeholder="Digite seu E-mail"  ng-model="desconto.email" ng-pattern="emailFormat" ng-required="true" ng-model-options="{ debounce: 1000 }" >
                     <div ng-show="(descontoForm.email.$dirty||submit) && descontoForm.email.$invalid">
-                          <span class="error" ng-show="cadastroEntidadeForm.email.$error.required">Email é obrigatório.</span>
+                          <span class="error" ng-show="descontoForm.email.$error.required">Email é obrigatório.</span>
                     </div>
 
                     <div ng-show="descontoForm.email.$dirty && descontoForm.email.$error.pattern">
@@ -136,9 +140,13 @@
                   <label for="phone" class="middle">Telefone <strong title="Campo Obrigatório">*</strong></label>
                 </div>
                 <div class="small-12 medium-9 columns">
-                  <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.telefone" mask="(99) 9?9999-9999" ng-required="true">
+                  <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.telefone" ui-br-phone-number ng-required="true">
                   <div ng-show="(descontoForm.phone.$dirty||submit) && descontoForm.phone.$invalid">
                        <span class="error" ng-show="descontoForm.phone.$error.required">Telefone é obrigatório.</span>
+                  </div>
+
+                  <div ng-show="descontoForm.phone.$dirty && descontoForm.phone.$error['br-phone-number']">
+                       <span class="error" >Formato inválido!</span>
                   </div>
                 </div>
               </div>

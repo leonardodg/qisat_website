@@ -217,10 +217,14 @@
                     <label for="phoneEntidade" class="middle">Telefone para contato <strong title="Campo Obrigatório">* &nbsp</strong></label>
                   </div>
                   <div class="small-12 medium-9 columns">
-                    <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD" ng-model="vm.entidade.telefone" mask="(99) 9?9999-9999" ng-required="true">
+                    <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD" ng-model="vm.entidade.telefone" ui-br-phone-number ng-required="true">
                     <div ng-show="(vm.cadastroEntidadeForm.phoneEntidade.$dirty||vm.submit) && vm.cadastroEntidadeForm.phoneEntidade.$invalid">
                        <span class="error" ng-show="vm.cadastroEntidadeForm.phoneEntidade.$error.required">Telefone é obrigatório.</span>
                     </div>
+
+                     <div ng-show="vm.cadastroEntidadeForm.phoneEntidade.$dirty && vm.cadastroEntidadeForm.phoneEntidade.$error['br-phone-number']">
+                        <span class="error" >Formato inválido!</span>
+                     </div>
                   </div>
                 </div>
 
