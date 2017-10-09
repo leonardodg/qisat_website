@@ -3,22 +3,46 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('carrinhoController', [ '$rootScope' ,'$filter', '$location', 'carrinhoServive',
-					 function( $rootScope, $filter, $location, carrinhoServive ) {
+		.controller('carrinhoController', [ '$rootScope', '$controller' ,'$filter', '$location', 'carrinhoServive',
+					 function( $rootScope, $controller, $filter, $location, carrinhoServive ) {
 
 					 	var vm = this;
+					 	var modalController = $controller('modalController');
+
 					 	vm.loading = true;
 
 					 	function setValues(){
 					 		vm.itens = carrinhoServive.getItens();
 					 		vm.loading = false;
+					 		vm.hasTrilha = carrinhoServive.hasTrilha();
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
 					 		if(vm.itens && vm.itens.length){
+
+					 			
+					 			if(vm.hasTrilha){
+					 				vm.trilhas = [];
+						 			vm.itens = vm.itens.map(function(item){
+						 				if(item.isSetup)
+						 					vm.trilhas.push(item);
+						 				else
+						 					return item;
+						 			});
+
+						 			vm.itens = vm.itens.filter(function(item){ return item });
+
+						 			vm.valorTotal = vm.itens.reduce(function(a, b){
+						 				return a + b.total;
+						 			}, 0);
+
+					 			}else
+		 							vm.valorTotal = carrinhoServive.getValorTotal();
+
+
 					 			vm.qtdItens = vm.itens.reduce(function(a, b){
 					 				return a + b.quantidade;
 					 			}, 0);
-		 						vm.valorTotal = carrinhoServive.getValorTotal();
 					 			vm.totalCarrinho = $filter('currency')(vm.valorTotal, 'R$');
+
 		 					}else{
 						 		vm.qtdItens = 0;
 						 		vm.valorTotal = 0;
@@ -64,6 +88,17 @@
 					 						setValues();
 					 					});
 					 	};
+
+					 	vm.trilha = function(produto) {
+					 		var data = { produto: produto.id };
+					 		carrinhoServive.addItem(data)
+					 				.then(function(itens){
+					 						setValues();
+					 						modalController.trilha(produto);
+					 					});
+					 	};
+
+
 
 					 	vm.removeItemCarrinho = function(produtoid, all, turma) {
 					 		vm.loading = true;

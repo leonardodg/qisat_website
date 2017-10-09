@@ -14,11 +14,13 @@
 		 				if(formasPagamentos){
 		 					forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
 		 					formasPagamentos.map(function(forma){ 
-		 						forma.operadoras = forma.operadoras.map(function(op){
-		 							if(op.img && op.img.nome)
-		 								op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
-		 							return op;
-		 						}); 
+		 						if(forma && forma.operadoras){
+			 						forma.operadoras = forma.operadoras.map(function(op){
+			 							if(op.img && op.img.nome)
+			 								op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
+			 							return op;
+			 						}); 
+		 						}
 		 					});
 				 			vm.formasPagamentos = formasPagamentos.reverse(); 
 		 				}
@@ -138,9 +140,11 @@
 																else{
 																	vm.loading = false;
 																	vm.redirect = res.url;
-																	$timeout(function() {
-																      	$window.location.href = res.url;
-																      }, 10000);
+																	if(res && res.url){
+																		// $timeout(function() {
+																	 //      	$window.location.href = res.url;
+																	 //      }, 10000);
+																	}
 																}
 														});
 					 								}

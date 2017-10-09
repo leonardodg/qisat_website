@@ -111,7 +111,7 @@
             .when('/institucional/linha-do-tempo', {
               templateUrl : '/views/institucional-linha-do-tempo.html',
               seo : {
-                        title : 'Linda do Tempo - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        title : 'Linha do Tempo - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow,index',
                         description : 'O QiSat atua na área da educação criando soluções inovadoras por meio de cursos online e presenciais promovendo capacitação continuada para engenheiros e arquitetos.',
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, curso de projetista eletrico, curso de alvenaria estrutural, curso hydros, altoqi cursos, curso projeto estrutural, treinamento AltoQi, cursos AltoQi, cursos para Engenharia, curso Engenheiro, cursos para engenharia, cursos para projetos prediais, curso eberick presencial, curso online eberick, cursos altoqi, curso online',
@@ -357,6 +357,18 @@
                       }
             });
 
+            $routeProvider.when('/carrinho/add/:produto', {
+              templateUrl : '/views/carrinho-montar.html',
+              controller : 'montarCarrinhoController as vm',
+              seo : {
+                        title : 'Carrinho de Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        robots : 'nofollow, noindex',
+                        description : 'Seja bem vindo ao carrinho de compras da QiSat. Acesse e aproveite! Aqui você encontra os mais variados cursos online e presenciais para engenharia e arquitetura.',
+                        keys : 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico',
+                        url : 'https://www.qisat.com.br/carrinho'
+                      }
+            });
+
             $routeProvider.when('/carrinho/pagamento', {
               templateUrl : '/views/carrinho-pagamento.html',
               controller : 'pagamentoController as vm',
@@ -451,21 +463,6 @@
               }
             });
 
-            $routeProvider.when('/certificacao/:nome', {
-              templateUrl : '/views/info.html',
-              controller : 'infoController as vm',
-              resolve : {
-                    Info : function ($rootScope, QiSatAPI, $route){
-                              return QiSatAPI.getInfo ('certificacao/'+$route.current.params.nome)
-                                             .then(function (info){
-                                                   if(info)
-                                                      $rootScope.seo = info.seo;
-
-                                                  return info;
-                                             });
-                        }
-              }
-            });
 
             $routeProvider.when('/cursos/:type?/:cat?', {
               templateUrl : '/views/courses.html',
@@ -488,7 +485,7 @@
               }
             });
 
-            $routeProvider.when('/certificacoes', {
+            $routeProvider.when('/altoqi-lab', {
               templateUrl : '/views/courses.html',
               controller : 'CoursesController as vm',
               resolve : {
@@ -508,12 +505,28 @@
                                                   }
               },
               seo : {
-                        title : 'Certificações AltoQi - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        title : 'AltoQi Lab - QiSat | Cursos aplicados à engenharia e arquitetura',
                         robots : 'follow, index',
-                        description : 'Um serviço de preparação progressiva, para você alcançar maior performance com a metade do esforço.',
-                        keys : 'qisat, qi sat, certificação, proficiência, certificação software engenharia, certificação eberick, eberick, curso eberick, certificao para engenharia',
-                        url : 'https://www.qisat.com.br/certificacoes'
+                        description : ' Experiência e conhecimento técnico aplicado ao desenvolvimento de projetos naturalmente integrados, contando com assessoramento profissional e uso consciente das plataformas AltoQi.',
+                        keys : 'qisat, qi sat, altoqi-lab, proficiência, certificação software engenharia, certificação eberick, eberick, curso eberick, certificao para engenharia',
+                        url : 'https://www.qisat.com.br/altoqi-lab'
                       }
+            });
+
+            $routeProvider.when('/altoqi-lab/:nome', {
+              templateUrl : '/views/info.html',
+              controller : 'infoController as vm',
+              resolve : {
+                    Info : function ($rootScope, QiSatAPI, $route){
+                              return QiSatAPI.getInfo ('altoqi-lab/'+$route.current.params.nome)
+                                             .then(function (info){
+                                                   if(info)
+                                                      $rootScope.seo = info.seo;
+
+                                                  return info;
+                                             });
+                        }
+              }
             });
 
             $routeProvider.when('/cadastro', {

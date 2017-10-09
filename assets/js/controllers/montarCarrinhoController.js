@@ -11,6 +11,11 @@
 			 			 
 						vm.modallogin = modalController.login;
 
+						if($route && $route.current && $route.current.params && $route.current.params.produto){
+								var nome = $route.current.params.produto;
+								carrinhoServive.addItem({ produto: nome });
+						}
+
 					 	vm.nextCompra = function(){
 					 		var auth = authService.Authenticated();
 

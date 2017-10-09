@@ -51,11 +51,12 @@
 							 	</a>
 							  </li>
 
+
 							  <li>
-							  	 <a href="/cursos/online/gratuito">
-							  		<div  data-equalizer-watch  class="shortcut-courses__solutions-free">
-							 			<h4> <span>Cursos</span> gratuitos</h4>
-							 			<span class="action">Saiba mais. <i class="material-icons">&#xE315;</i> </span>
+							  	 <a href="/altoqi-lab">
+							 		<div data-equalizer-watch class="shortcut-courses__altoqi-lab">
+							 				<h4><span>AltoQi</span>Lab</h4>
+								 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
 							        </div> <!-- // shortcut-courses__cards -->
 							 	</a>
 							  </li>
@@ -70,13 +71,14 @@
 							  </li>
 
 							  <li>
-							  	 <a href="/cursos/online/serie">
-							 		<div data-equalizer-watch class="shortcut-courses__serie-conteudos">
-							 				<h4><span>Séries de</span>Capítulos</h4>
-								 			<span class="action">Conheça <i class="material-icons">&#xE315;</i> </span>
+							  	 <a href="/cursos/online/gratuito">
+							  		<div  data-equalizer-watch  class="shortcut-courses__solutions-free">
+							 			<h4> <span>Cursos</span> gratuitos</h4>
+							 			<span class="action">Saiba mais. <i class="material-icons">&#xE315;</i> </span>
 							        </div> <!-- // shortcut-courses__cards -->
 							 	</a>
 							  </li>
+
 							</ul>
 
 							<ul class="shortcut-courses__list-second small-block-grid-2 medium-block-grid-2 large-block-grid-5">
@@ -237,6 +239,19 @@
 														            <span class="card-course__icon-cart">
 														                <div class="price_popover" >
 														                  <div class="price_popover__footer" > Registro de Interesse </div>
+														                </div>
+														            </span>
+													            </a>
+
+													            <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="course.isSetup" analytics-on analytics-event="buyFase" >	{{::course.preco}}
+													             	
+												             		<span class="cart">
+												             			<i class="material-icons">playlist_add_check</i>
+												             		 </span>
+													             	
+														            <span class="card-course__icon-cart">
+														                <div class="price_popover" >
+														                  <div class="price_popover__footer" > Adquirir </div>
 														                </div>
 														            </span>
 													            </a>

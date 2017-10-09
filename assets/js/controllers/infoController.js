@@ -131,6 +131,9 @@
 								if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 8 })){ // Gratuito
 									info.modalidade = tipo.nome;
 									info.isFree = true;
+								}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
+									info.modalidade = tipo.nome;
+									info.isSetup = true;
 								}else if(tipo = info.produto.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 									info.modalidade = tipo.nome;
 									info.isSerie = true;

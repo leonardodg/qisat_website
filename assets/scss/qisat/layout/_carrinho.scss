@@ -268,6 +268,7 @@ body.cart-page {
       padding: 15px;
       background-color: #eee;
     }
+ 
 
 .table-cart {
   border: 0;
@@ -287,11 +288,6 @@ body.cart-page {
 
   .qtd {
     min-width: 150px;
-  }
-
-
-  .material-icons {
-    margin-top: 5px;
   }
 
   .oldPrice {
@@ -664,4 +660,171 @@ body.cart-page {
     .material-icons {
     margin-top: 5px;
   }
+}
+
+$progress-indicator-complete: #003350;
+$progress-indicator-current: lighten(#003350, 20%);
+$progress-indicator-incomplete: #e6e6e6;
+$progress-indicator-step-size: 1.5em;
+$progress-indicator-width: 100%;
+
+.progress-indicator {
+  list-style: none;
+  width: $progress-indicator-width;
+  margin: 0 auto;
+  padding: 0;
+  display: table;
+  table-layout: fixed;
+
+  > li {
+
+    position: relative;
+    display: table-cell;
+    text-align: center;
+    font-size: 1.5em;
+      color: $white;
+
+    span {
+      position: absolute;
+      color: #777;
+      transform: translateX(-50%);
+      font-weight: 600;
+      font-size: rem-calc(14);
+      letter-spacing: 0.05px;
+      text-transform: uppercase;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      background: $progress-indicator-incomplete;
+      width: $progress-indicator-step-size;
+      height: $progress-indicator-step-size;
+      text-align: center;
+      margin-bottom: 0.25em;
+      line-height: $progress-indicator-step-size;
+      border-radius: 100%;
+      position: relative;
+      z-index: 1000;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      background: $progress-indicator-incomplete;
+      width: 100%;
+      height: $progress-indicator-step-size/10;
+      top: 50%; // height of bar
+      transform: translateY(-100%);
+      left: 50%;
+      margin-left: 1.5em\9;
+      z-index: 0;
+    }
+
+    &.step1::before {
+      font-family: 'Material Icons';
+      content: 'account_box';
+    }
+
+    &.step2::before {
+      font-family: 'Material Icons';
+      content: 'credit_card';
+    }
+
+    &.step3::before {
+      font-family: 'Material Icons';
+      content: 'check_box'; 
+    }
+
+    &:last-child:after {
+      display: none;
+    }
+
+    &.is-complete {
+      color: $progress-indicator-complete;
+
+      &::before,
+      &::after {
+        color: $white;
+        background: $progress-indicator-complete;
+      }
+
+      span {
+        color: $progress-indicator-complete;
+      }
+    }
+
+    &.is-current {
+      color: $progress-indicator-current;
+
+      &::before {
+        color: $white;
+        background: $progress-indicator-current;
+      }
+
+      span {
+        color: $progress-indicator-current;
+      }
+    }
+
+  }
+}
+
+
+#trilhaForm{
+    #card-number {
+
+        input, select{
+                background-color: #fff;
+                border: 1px solid #e5e5e5;
+                color: #333;
+        }
+        
+        padding-left: 65px;
+        background-image: url('../images/cart/credir-cards.png');
+        background-size: 60px 395px;
+        background-position: 0 -2px;
+        background-repeat: no-repeat;
+
+        &.visa {
+           background-position: 0 -70px;
+        }
+
+        &.visa-eletron {
+           background-position: 0 -134px;
+        }
+
+
+        &.master-card {
+           background-position: 0 -202px;
+        }
+
+        &.maestro {
+           background-position: 0 -268px;
+        }
+
+        &.card-notvalid {
+           background-position: 0 -350px;
+        }
+    }
+
+    .card-cod {
+        position: absolute;
+        display: inline-block;
+        top: 27px;
+        right: 10px;
+        width: 44px;
+        height: 27px;
+        padding: 5px 0 25px 50px;
+        background-image: url('../images/cart/credir-cards.png');
+        background-repeat: no-repeat;
+        background-position: 0 -400px;
+    }
+}
+
+
+.del {
+  color: #999!important;
 }

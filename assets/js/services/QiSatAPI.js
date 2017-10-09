@@ -284,6 +284,9 @@
 																		if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 																			course.modalidade = tipo.nome;
 																			course.isSerie = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
+																			course.modalidade = tipo.nome;
+																			course.isSetup = true;
 																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 																			course.modalidade = tipo.nome;
 																			course.isPack = true;
@@ -408,6 +411,16 @@
 										}
 									}else list.show = true;
 
+								}else if($location.path() == '/altoqi-lab'){
+									list = coursesList.find(function (list){ return list.type == 47 });
+									if(!list) {
+										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 47 })){
+											releases = filterTypes(courses, 47);
+											show = (releases && releases.length) ? true : false;
+											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 47, card: 'pacotes', show: show };
+											coursesList.push(list);
+										}
+									}else list.show = true;
 								}else if($location.path() == '/cursos/lancamentos'){
 									list = coursesList.find(function (list){ return list.type == 39 });
 									if(!list) {
