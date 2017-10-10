@@ -101,13 +101,15 @@
 /* 'HERO HOME
 ========================================= */
 .hero-home {
+
+    color: #0d0d0d; 
+    text-align: left;
     height: 620px;
     background: #333;
     padding-top: 170px;
-    color: #fff;
     z-index: -1;
     text-align: center;
-    background-image: url("../images/hero/hero-home-background.jpg");
+    background-image: url("../images/hero/hero-home-background-novo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -121,6 +123,8 @@
     text-transform: uppercase;
     opacity: 0.7;
     letter-spacing: 1px;
+    margin-left: 450px;
+
 }
 
 .hero-home__title {
@@ -131,18 +135,21 @@
     text-transform: uppercase;
     font-weight: 800;
     display: block;
-    color: #fff;
-    margin-bottom: 20px;
+    color: #090a0a;
+    margin-bottom: 60px;
+    margin-left: 450px;
+    display: block;
 }
 
 .hero-home__subtitle {
     line-height: 1.3;
     font-size: 25px;
     opacity: 0.7;
-    font-weight: 300;
-    margin-bottom: 20px;
+    font-weight: 500;
     display: block;
-    color: #fff;
+     margin-bottom: 60px;
+     color: #090a0a;
+     margin-left: 450px;
 }
 
 .hero-home__button {

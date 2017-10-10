@@ -2,8 +2,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('modalController', [ '$modal', '$q', 'authService',
-					 function( $modal, $q, authService ) {
+		.controller('modalController', [ '$modal', '$q', '$controller' , 'authService', 
+					 function( $modal, $q, $controller, authService ) {
 					 	var vm = this;
 
 					 	vm.termo = function () {
@@ -27,6 +27,52 @@
 															}
 				 						});
 					 			  };
+
+					 	vm.trilha = function (produto) {
+
+									var auth = authService.Authenticated();
+
+							 		function checkCPF(){
+							 			var modalInstance;
+
+							 			function callbackTrilha(){
+					 						modalInstance = $modal.open({ 
+					 							templateUrl: '/views/compra-trilha.html',
+					 							windowClass: 'modalTrilha large',
+												controller : 'trilhaController as trilhaCtr',
+												resolve : {
+															produto : function () { 
+														 					return produto;
+															 			}
+												}
+					 						});
+				 						};
+
+
+							 			var user = authService.getUser();
+							 			if(user && (!user.email || !user.numero))
+											vm.update(false, callbackTrilha );
+										else
+						 					callbackTrilha();
+							 		};
+					 				
+
+									if(auth === true){
+										checkCPF();
+							 		}else if (auth === false){
+							 			vm.login('/carrinho/', false, checkCPF );
+							 		}else{
+							 			auth.then(function(res){
+						 					if(res === true){
+								 				checkCPF();
+									 		}else{
+									 			vm.login('/carrinho/', false, checkCPF );
+									 		}
+							 			});
+							 		}
+
+				 			};
+
 
 					 	vm.call = function () {
 				 					var modalInstance = $modal.open({ 

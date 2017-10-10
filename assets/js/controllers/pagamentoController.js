@@ -14,11 +14,13 @@
 		 				if(formasPagamentos){
 		 					forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
 		 					formasPagamentos.map(function(forma){ 
-		 						forma.operadoras = forma.operadoras.map(function(op){
-		 							if(op.img && op.img.nome)
-		 								op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
-		 							return op;
-		 						}); 
+		 						if(forma && forma.operadoras){
+			 						forma.operadoras = forma.operadoras.map(function(op){
+			 							if(op.img && op.img.nome)
+			 								op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
+			 							return op;
+			 						}); 
+		 						}
 		 					});
 				 			vm.formasPagamentos = formasPagamentos.reverse(); 
 		 				}
@@ -132,16 +134,13 @@
 					 									});
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
-						 										
-																if(vm.pagamento==4)
+						 										if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
 																	$location.path('/carrinho/confirmacao/'+res.venda);
-																else{
-																	vm.loading = false;
-																	vm.redirect = res.url;
-																	$timeout(function() {
-																      	$window.location.href = res.url;
-																      }, 10000);
-																}
+				 									   			}else if(res.url){
+			 									   					$timeout(function() {
+																	      	$window.location.href = res.url;
+																	      }, 10000);
+				 									   			}
 														});
 					 								}
 					 							}

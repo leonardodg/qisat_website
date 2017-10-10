@@ -65,6 +65,9 @@
 												if(tipo = course.categorias.find(function(tipo){ return tipo.id == 8 })){ // Gratuito
 													course.modalidade = tipo.nome;
 													course.isFree = true;
+												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
+													course.modalidade = tipo.nome;
+													course.isSetup = true;
 												}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 													course.modalidade = tipo.nome;
 													course.isSerie = true;

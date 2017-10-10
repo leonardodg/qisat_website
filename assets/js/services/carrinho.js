@@ -6,7 +6,7 @@
 	 	.factory("carrinhoServive", [ '$http',"$q",'Config', '$filter', 'authService',
 	 			function($http, $q, Config, $filter, authService){
 
-	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [],
+	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
 	 					filterLimitName = $filter('limitName');
 
 		 			(function load(){
@@ -31,6 +31,10 @@
 						return promoTheend;
 					};
 
+					function getTrilha(){
+						return hasTrilha;
+					};
+
 					function getItens(){
 						return itens;
 					};
@@ -43,6 +47,7 @@
 							itens = value;
 							valorTotal = 0;
 							promoTheend = [];
+							hasTrilha = false;
 							var datenow = moment(), datapromo, promocao, tipo;
 
 							if(value){
@@ -70,11 +75,15 @@
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 41 })) { // Curso Série
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
-										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // A Dinstancia
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // A Certificado
 											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 44 }))
 												item.packCert = true;
 											else
 												item.testCert = true;
+										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
+											item.modalidade = tipo.nome;
+											item.isSetup = true;
+											hasTrilha = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 											item.modalidade = tipo.nome;
 											item.isPack = true;
@@ -140,7 +149,7 @@
 		                            							setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
 		                            							return itens;
 		                            						}else
-		                                                    	return res; 
+		                                                    	return false; 
 		                                                }, function(res){ 
 		                                                    return res; 
 		                                                });
@@ -191,12 +200,13 @@
 		                        };
 
 
-					function getFormas() {
+					function getFormas(data) {
 
 		                            var promise = $http({ 
-		                                                    method: 'GET', 
+		                                                    method: 'POST', 
 		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/forma-pagamento/wsc-forma-pagamento/formas',
+		                                                    data: data,
 		                                                    headers : {
 															      'Content-Type' : 'application/json',
 															      'Authorization': Config.Authorization+" "+authService.getToken()
@@ -338,7 +348,8 @@
 		                        setFormasPagamentos : setFormasPagamentos, 
 		                        getValorTotal : getValorTotal,
 		                        checkPromocaoTheend : checkPromocaoTheend,
-		                        getPromocaoTheend : getPromocaoTheend
+		                        getPromocaoTheend : getPromocaoTheend,
+		                        hasTrilha : getTrilha
 						};
 
 				return sdo;
