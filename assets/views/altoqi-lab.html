@@ -1,0 +1,257 @@
+ <main class="admin_main" >   
+   <div class="admin_sidebar" ng-controller="alunoController" >
+    <ul class="metismenu admin__menu">
+
+         <li class="item"> <a href="/aluno/perfil" class="link" analytics-on > <i class="material-icons">person</i> Perfil </a>  </li>
+              <li class="item"> <a href="/aluno/cursos" class="link" analytics-on > <i class="material-icons">school</i> Meus Cursos  </a>  </li>
+              <li class="item"> <a href="/aluno/certificados" class="link" analytics-on > <i class="material-icons">stars</i> Certificados </a>  </li>
+              <li class="item"> <a href="/aluno/financeiro" class="link" analytics-on > <i class="material-icons">attach_money</i> Financeiro </a>  </li>
+
+
+        <div ng-if="showliks" >
+          <li class="item"> <a ng-href="{{showliks.plataforma}}" class="link"> <i class="material-icons">school</i> Plataforma </a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.eCommerce}}"  class="link"> <i class="material-icons">settings</i> E-commerce </a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.intranetQiSat}}" class="link"> <i class="material-icons">home</i> Intranet QiSat</a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link"> <div class="icon-AltoQi"></div>Intranet AltoQi </a>  </li>
+        </div>
+
+
+              <li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on>  <i class="material-icons">remove_circle_outline</i> Sair </a>  
+              </li>
+        </ul>
+
+  </div> 
+   <div class="admin_content">
+
+    		<section id="dashboard" class="page-courses">
+
+
+
+            <div class="row lab-main-menu_container">
+                <div class="medium-10 columns">
+                    <h1 class="lab-title">Áreas de qualificação</h1>
+                    <nav class="menu-horizontal">
+                        <ul class="menu-horizontal__list main-menu_lab" data-equalizer>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3 menu-horizontal__item--current">
+                                <a class="menu-horizontal__link" ng-click="vm.setProjeto('estrutural')" >Projetos estruturais</a>
+                            </li>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
+                                <a class="menu-horizontal__link" ng-click="vm.setProjeto('eletrico')" >Projetos elétricos</a>
+                            </li>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
+                                <a class="menu-horizontal__link" ng-click="vm.setProjeto('hidro')" >Projetos hidrossanitários</a>
+                            </li>      
+                        </ul>
+                    </nav>
+                </div>
+                <div class="small-12 medium-2 columns green-bg">
+                    <img class="lab-logo_light" src="">
+                </div>
+           </div>
+
+
+            <div class="row lab-submenu_container">
+              <div class="medium-12 columns">
+                <nav class="menu-horizontal">
+                    <ul class="menu-horizontal__list" menu-aluno-cursos data-equalizer  >
+                        <li class="menu-horizontal__item menu-horizontal__item--3 menu-horizontal__item--current" data-equalizer-watch ng-click="vm.setConteudo('sobre')"><a class="menu-horizontal__link" href="#">Sobre</a></li>
+                        <li class="menu-horizontal__item menu-horizontal__item--3" data-equalizer-watch ng-click="vm.setConteudo('estudo')" ><a class="menu-horizontal__link" href="#">Programa de estudo</a></li>
+                        <li class="menu-horizontal__item menu-horizontal__item--3" data-equalizer-watch ng-click="vm.setConteudo('desempenho')" ><a class="menu-horizontal__link" href="#" >Meu desempenho</a></li>
+                    </ul>
+                </nav>
+            </div>
+            </div>
+
+            <div ng-if="vm.abaProjeto=='estrutural'" class="lab-content_container"> 
+                <div ng-if="vm.abaConteudo=='sobre'"> 
+                    <h2>Lorem ipsum Estrutural</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div ng-if="vm.abaConteudo=='estudo'">
+
+
+          <accordion class="accordion-component accordion">
+          <accordion-group  heading="1 Teoria das estruturas aplicadas aos projetos estruturais"  class="accordion-navigation tab-title lab-etapa" >
+              <div class="textexpand" >
+                  <ul class="lab-curso_lista">
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 01</span> - Lorem ipsum
+                                            <div class="progress success">
+                                                <span class="meter" style="width: 100%;"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 02</span> - Lorem ipsum
+                                            <div class="progress">
+                                                <span class="meter" style="width: 60%;"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 03</span> - Lorem ipsum
+                                            <div class="progress">
+                                                <span class="meter" style="width: 15%;"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item lab-curso_item--bloqueado">
+                                            <span class="lab-curso_icon lab-curso_icon--bloqueado"><i class="material-icons left">&#xE88D;</i></span><span class="lab-curso_numero">Curso 04</span> - Lorem ipsum
+                                        </li>
+                                      </a>
+                                  </ul>
+              </div>
+              <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+            </accordion-group>
+            <accordion-group  heading="2 Aplicação do método dos elementos finitos em projetos estruturais"  class="accordion-navigation tab-title lab-etapa" >
+              <div class="textexpand" >
+                  <ul class="lab-curso_lista">
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 01</span> - Lorem ipsum
+                                            <div class="progress success">
+                                                <span class="meter"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 02</span> - Lorem ipsum
+                                            <div class="progress">
+                                                <span class="meter"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--disponivel"><i class="material-icons left">&#xE038;</i></span><span class="lab-curso_numero">Curso 03</span> - Lorem ipsum
+                                            <div class="progress">
+                                                <span class="meter"></span>
+                                            </div>
+                                        </li>
+                                      </a>
+                                      <a href="">
+                                        <li class="lab-curso_item">
+                                            <span class="lab-curso_icon lab-curso_icon--bloqueado"><i class="material-icons left">&#xE88D;</i></span><span class="lab-curso_numero">Curso 04</span> - Lorem ipsum
+                                        </li>
+                                      </a>
+                                  </ul>
+              </div>
+              <i class="right" ng-class="{'fa fa-chevron-down': isopen, 'fa fa-chevron-right': !isopen}"></i>
+            </accordion-group>
+         </accordion>
+
+                </div>
+                <div ng-if="vm.abaConteudo=='desempenho'"> 
+                    <div class="row">
+                        <div class="small-12 medium-12 large-4 columns">
+                            <div class="container-desempenho">
+                                <p>Tempo para conclusão do curso</p>
+                                <span id="tempo-conclusao_count" class="desempenho_count">120/300 dias</span>
+                            </div>
+                        </div>
+                        <div class="small-12 medium-12 large-4 columns">
+                            <div class="container-desempenho">
+                                <p>Já concluido da linha estrutural</p>
+                                <span id="porcentagem-conclusao_count" class="desempenho_count">44%</span>    
+                            </div>                        
+                        </div>
+                        <div class="small-12 medium-12 large-4 columns">
+                            <div class="container-desempenho">
+                                <p>Cursos já feitos</p>
+                                <span id="cursos-conclusao_count" class="desempenho_count">01/50</span>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-12 medium-12 large-4 columns">
+                            <div class="container-desempenho">
+                                <p>Ranking</p>
+                                <ul class="ranking_list">
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome" style="font-weight: bold;">Nome</span>
+                                        <span id="ranking-numero" style="color: #222;">Já concluido</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Alice</span>
+                                        <span id="ranking-numero">70%</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Miguel</span>
+                                        <span id="ranking-numero">40%</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Davi</span>
+                                        <span id="ranking-numero">40%</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Pedro</span>
+                                        <span id="ranking-numero">35%</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Julia</span>
+                                        <span id="ranking-numero">20%</span>
+                                    </li>
+                                    <li class="ranking_item">
+                                        <span id="ranking-nome">Monica</span>
+                                        <span id="ranking-numero">15%</span>
+                                    </li>
+                                </ul>
+                            </div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="vm.abaProjeto=='eletrico'" class="lab-content_container"> 
+                <div ng-if="vm.abaConteudo=='sobre'"> 
+                    <h2>Lorem ipsum Elétrico</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div ng-if="vm.abaConteudo=='estudo'"> 
+                conteudo eletri
+                </div>
+                <div ng-if="vm.abaConteudo=='desempenho'"> 
+                desempe eletri
+                </div>  
+            </div>
+
+            <div ng-if="vm.abaProjeto=='hidro'" class="lab-content_container"> 
+                <div ng-if="vm.abaConteudo=='sobre'"> 
+                    <h2>Lorem ipsum Hidrossanitário</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div ng-if="vm.abaConteudo=='estudo'"> 
+                conteudo hidro
+                </div>
+                <div ng-if="vm.abaConteudo=='desempenho'"> 
+                desempe hidro
+                </div>  
+            </div>
+
+    		</section>
+
+  </div>
+</main>  <!--// main-content -->

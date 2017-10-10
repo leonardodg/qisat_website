@@ -232,3 +232,199 @@ margin-top: 10px;
   }
 
 }
+
+.container_card-escolha {
+    padding: 3rem;
+}
+@media only screen and (max-width: 890px) {
+    .container_card-escolha {
+        padding: 1rem;
+    }
+}
+.card-escolha {
+    width: 100% !important;
+}
+.card-escolha img {}.card-escolha h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2.3rem;
+}
+img.opcao-cursos {
+    background: url(/images/aluno/opcao-cursos.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 125px !important;
+    margin-top: 45px;
+    display: block !important;
+}
+img.opcao-lab {
+    background: url(/images/aluno/opcao-lab.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    min-height: 125px !important;
+    margin-top: 45px;
+    display: block !important;
+}
+@media only screen and (max-width: 760px) {
+    img.opcao-lab {
+        margin-top: 0;
+    }
+    img.opcao-cursos {
+        margin-top: 0;
+    }
+}
+.lab-main-menu_container {
+    background: #FFF;
+}
+.lab-main-menu_container div.medium-10.columns {
+    padding: 0 !important;
+}
+.lab-title {
+    text-transform: uppercase;
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2.3rem;
+    margin-top: 25px;
+    padding: 0 2rem;
+}
+@media only screen and (max-width: 460px) {
+    .lab-title {
+        font-size: 2rem !important;
+    }
+}
+.green-bg {
+    background: #35AE7B;
+}
+img.lab-logo_light {
+    background: url(/images/aluno/lab-logo_light.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    min-height: 143px !important;
+}
+.lab-submenu_container {
+    background: #4D4D4D;
+}
+.lab-submenu_container div.medium-12.columns {
+    padding: 0 !important;
+}
+.lab-submenu_container .menu-horizontal__list {
+    background-color: transparent;
+    box-shadow: none !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    display: block !important;
+
+    &.main-menu_lab {
+        margin-bottom: 0;
+    }
+}
+.lab-submenu_container li.menu-horizontal__item:hover {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+.lab-submenu_container li.menu-horizontal__item--current {
+    border-color: transparent !important;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.lab-submenu_container li.menu-horizontal__item--current a {
+    color: #FFF !important;
+}
+.lab-submenu_container a.menu-horizontal__link {
+    color: #FFF;
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    padding: 20px;
+}
+.lab-content_container {
+    background: #FFF;
+    padding: 2rem;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+@media only screen and (max-width: 480px) {
+    .lab-content_container {
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+}
+.lab-etapa {
+    background: #FFF !important;
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+    font-size: 1.25rem !important;
+    font-weight: bold;
+    transition: .3s;
+}
+.lab-etapa:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+@media only screen and (max-width: 480px) {
+    .accordion-component .accordion-navigation> .content.active,
+    .accordion dd>.content.active {
+        padding: 0 !important;
+    }
+}
+.lab-curso_lista {
+    list-style: none;
+}
+.lab-curso_item {
+    padding: 0.5rem;
+    transition: .3s;
+}
+.lab-curso_item:hover {
+    background: rgba(0, 0, 0, 0.05)
+}
+.lab-curso_lista a {
+    color: #222;
+}
+.lab-curso_icon {
+    margin-right: 1rem;
+}
+.lab-curso_numero {
+    font-weight: bold;
+}
+.lab-etapa span {
+    margin-right: 2rem;
+}
+.container-desempenho {
+    background: #FFF;
+    padding: 2rem 1rem;
+    border: 1px solid #8d8d8d;
+    margin: 0 0 1rem 0;
+}
+.container-desempenho p {
+    font-family: 'Titillium Web';
+    , Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 0.7rem;
+}
+.desempenho_count {
+    font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2.3rem;
+    line-height: 1;
+    color: #2DAC70;
+}
+.ranking_list {
+    list-style: none;
+    margin: 0;
+    text-align: left;
+}
+.ranking_item {
+    display: block;
+    margin: 10px 0;
+}
+span#ranking-numero {
+    float: right;
+    color: #2DAC70;
+    font-weight: bold;
+}
+span#cursos-conclusao_count {
+    color: #005b94;
+}

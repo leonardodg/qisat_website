@@ -569,9 +569,39 @@
                   });
 
             $routeProvider.when('/aluno', {
+              templateUrl : '/views/aluno-index.html', 
+
+              seo : {
+                        title : 'Portal do Aluno - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        robots : 'follow, index',
+                        description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
+                        keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
+                        url : 'https://www.qisat.com.br/aluno'
+                      }
+            });
+
+            $routeProvider.when('/aluno/cursos', {
               templateUrl : '/views/aluno-cursos.html', 
               isAuth : true,
               controller: 'matriculaController',
+              resolve : {
+                Authenticated : function(authService, $location){
+                      return authService.Authenticated('/login');
+                  }
+              },
+              seo : {
+                        title : 'Portal do Aluno - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        robots : 'follow, index',
+                        description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
+                        keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
+                        url : 'https://www.qisat.com.br/aluno'
+                      }
+            });
+
+            $routeProvider.when('/aluno/altoqi-lab', {
+              templateUrl : '/views/altoqi-lab.html', 
+              isAuth : true,
+              controller: 'alunoTrilhaController as vm',
               resolve : {
                 Authenticated : function(authService, $location){
                       return authService.Authenticated('/login');
@@ -619,24 +649,6 @@
                         description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
                         keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
                         url : 'https://www.qisat.com.br/aluno/certificados'
-                      }
-            });
-
-            $routeProvider.when('/aluno/cursos', {
-              templateUrl : '/views/aluno-cursos.html', 
-              isAuth : true,
-              controller: 'matriculaController',
-              resolve : {
-                 Authenticated : function(authService, $location){
-                      return authService.Authenticated('/login');
-                  }
-              },
-              seo : {
-                        title : 'Meus Cursos - QiSat | Cursos aplicados à engenharia e arquitetura',
-                        robots : 'nofollow, noindex',
-                        description : 'Na Área do Aluno QiSat você terá acesso as inscrições efetuadas, biblioteca, fórum, certificados e tira dúvidas. Solicite lembrete de senha ou cadastre-se.',
-                        keys : 'qisat, qi sat, curso online qisat, cursos qisat, cursos altoqi, biblioteca, fórum, certificados, tira dúvidas, lembrete de senha qisat, cadastro qisat',
-                        url : 'https://www.qisat.com.br/aluno/cursos'
                       }
             });
 
