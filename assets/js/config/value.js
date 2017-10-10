@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
     'use strict';
 
 	angular
@@ -6,17 +6,17 @@
 		.value("Config", {
 				
 				Authorization : "Digest",
-       			baseUrl : "http://local-ecommerce.qisat.com.br",
+       			baseUrl : "http://ecommerce.mntec.com.br",
 				imagensUrlDefault : "/images/instructors/instrutor.png",
 				imgCursoUrlDefault : "/images/courses/curso-online.jpg",
 				imgUserDefault : "/images/aluno/home-user-icon.png",
-				boletoUrl : "http://local-ecommerce.qisat.com.br/forma-pagamento-boleto-php/boleto",
+				boletoUrl : "http://ecommerce.mntec.com.br/forma-pagamento-boleto-php/boleto",
 
 				url : {
 					intranetQiSat : "http://intranet.qisat.com.br",
 					intranetAltoQi : "http://intranet.altoqi.com.br",
-					eCommerce : "https://local-ecommerce.qisat.com.br",
-					plataforma : "http://local-moodle.qisat.com.br"
+					eCommerce : "https://ecommerce.mntec.com.br",
+					plataforma : "http://moodle.mntec.com.br"
 				},
 
 				convenio : { "descontoAluno" : 30, "descontoAssociado" : 20, "descontoProfessor" : 50, "descontoCREAS" : 30},
