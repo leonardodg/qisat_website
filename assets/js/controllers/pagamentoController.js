@@ -134,18 +134,13 @@
 					 									});
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
-						 										
-																if(vm.pagamento==4)
+						 										if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
 																	$location.path('/carrinho/confirmacao/'+res.venda);
-																else{
-																	vm.loading = false;
-																	vm.redirect = res.url;
-																	if(res && res.url){
-																		// $timeout(function() {
-																	 //      	$window.location.href = res.url;
-																	 //      }, 10000);
-																	}
-																}
+				 									   			}else if(res.url){
+			 									   					$timeout(function() {
+																	      	$window.location.href = res.url;
+																	      }, 10000);
+				 									   			}
 														});
 					 								}
 					 							}

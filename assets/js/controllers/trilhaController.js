@@ -82,12 +82,12 @@
 			 									   .then(function (res){
 			 									   		vm.loading = false;
 			 									   		if(res && res.sucesso){
-			 									   			if(res.url)
-			 									   				$window.location.href = res.url;
-			 									   			else if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
+			 									   			if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
 																$location.path('/carrinho/confirmacao/'+res.venda);
 																$modalInstance.dismiss('cancel');
-			 									   			}else
+			 									   			}else if(res.url)
+			 									   				$window.location.href = res.url;
+			 									   			else
 																vm.error = true;
 			 									   		}else
 			 									   			vm.error = true;

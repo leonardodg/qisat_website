@@ -51,6 +51,8 @@
 									vm.navLinks = [{ title:"Todos os cursos", href : "/cursos"}];
 								else if($location.path() == "/certificacoes")
 									vm.navLinks = [{ title:"Todas as Certificações ", href : "/certificacoes"}];
+								else if($location.path() == "/altoqi-lab")
+									vm.navLinks = [{ title:"AltoQi LAB – Programa de capacitação profissional", href : "/altoqi-lab"}];
 								else
 									vm.navLinks = [];
 

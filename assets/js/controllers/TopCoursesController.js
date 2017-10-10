@@ -128,6 +128,12 @@
 													course.promocaoDateend = $filter('date')( course.promocao.datafim*1000, 'dd/MM/yyyy' );
 												}else
 													course.preco = $filter('currency')(course.preco, 'R$');
+
+												if(course.isSetup){
+													course.precoParcelado = $filter('currency')(course.valor_parcelado, 'R$');
+													if(course.promocao)
+														course.precoTotal = $filter('currency')( (course.valorTotal / course.parcelas), 'R$');
+												}	
 											}
 										}
 									});

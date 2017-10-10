@@ -27,6 +27,18 @@
 			              </span>
 			            </a></li>
 
+
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isSetup" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.trilha(vm.info.produto)" title="Adquirir este Produto" >{{::vm.info.parcelas}} x {{::vm.info.precoParcelado}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+			              <span class="card-course__icon-cart">
+			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
+			                  <div class="price_popover__header">
+			                    <p class="price_popover__header__info"> <s>de {{::vm.info.parcelas}} x  {{::vm.info.precoTotal}}</s> <strong>para {{::vm.info.parcelas}} x {{::vm.info.precoParcelado}}</strong> Até {{::vm.info.promocaoDateend}} </p>
+			                  </div> <!-- //price_popover__header -->
+			                  <div class="price_popover__footer"> Adquirir este produto </div>
+			                </div> <!-- //price_popover -->
+			              </span>
+			            </a></li>
+
 			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual||(vm.info.isClassroom&&!vm.turma)" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="modal.interesse(vm.info)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" >

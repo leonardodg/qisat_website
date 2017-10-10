@@ -220,7 +220,7 @@
 
 																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie" analytics-on analytics-event="addItem" >{{::course.preco}}
 										   						<span class="card-course__icon-cart">
-										   							<!-- <i class="material-icons">add_shopping_cart</i> -->
+										   							<i class="material-icons">add_shopping_cart</i>
 										   							<div class="price_popover" ng-show="::course.promocaoDateend">
 										   								<div class="price_popover__header">
 										   									<p class="price_popover__header__info"> <s>de {{::course.precoTotal}}</s> <strong>para {{::course.preco}}</strong> Até {{::course.promocaoDateend}} </p>
@@ -243,15 +243,17 @@
 														            </span>
 													            </a>
 
-													            <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="course.isSetup" analytics-on analytics-event="buyFase" >	{{::course.preco}}
+													            <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="course.isSetup" analytics-on analytics-event="buyFase" >
+
+													            	{{::course.parcelas}} x {{::course.precoParcelado}}
 													             	
 												             		<span class="cart">
-												             			<i class="material-icons">playlist_add_check</i>
+												             			<i class="material-icons">add_shopping_cart</i>
 												             		 </span>
 													             	
 														            <span class="card-course__icon-cart">
 														                <div class="price_popover" >
-														                  <div class="price_popover__footer" > Adquirir </div>
+														                  <div class="price_popover__footer" > Adquirir este produto </div>
 														                </div>
 														            </span>
 													            </a>

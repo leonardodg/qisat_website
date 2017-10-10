@@ -224,6 +224,13 @@
 									info.preco = $filter('currency')(info.produto.preco, 'R$');
 
 
+								if(info.isSetup){
+									info.precoParcelado = $filter('currency')(info.valorParcelado, 'R$');
+									if(info.promocao)
+										info.precoTotal = $filter('currency')( (info.valorTotal / info.parcelas), 'R$');
+								}
+								
+
 								if( (info.isPack || info.packCert) && info.produto.produtos && info.produto.produtos.length){
 									info.conteudos = [];
 

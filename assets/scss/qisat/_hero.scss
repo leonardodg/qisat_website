@@ -113,6 +113,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center bottom;
+
+    @media only screen and (max-width: 40em) { 
+       padding-top: 70px;
+    }
 }
 
 .hero-home__intro {
@@ -124,6 +128,10 @@
     opacity: 0.7;
     letter-spacing: 1px;
     margin-left: 450px;
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
 
 }
 
@@ -139,6 +147,11 @@
     margin-bottom: 60px;
     margin-left: 450px;
     display: block;
+
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
 }
 
 .hero-home__subtitle {
@@ -150,6 +163,11 @@
      margin-bottom: 60px;
      color: #090a0a;
      margin-left: 450px;
+
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
 }
 
 .hero-home__button {
