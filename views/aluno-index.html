@@ -1,0 +1,117 @@
+ <main class="admin_main" >   
+   <div class="admin_sidebar" ng-controller="alunoController" >
+    <ul class="metismenu admin__menu">
+
+         <li class="item"> <a href="/aluno/perfil" class="link" analytics-on > <i class="material-icons">person</i> Perfil </a>  </li>
+              <li class="item"> <a href="/aluno/cursos" class="link" analytics-on > <i class="material-icons">school</i> Meus Cursos  </a>  </li>
+              <li class="item"> <a href="/aluno/certificados" class="link" analytics-on > <i class="material-icons">stars</i> Certificados </a>  </li>
+              <li class="item"> <a href="/aluno/financeiro" class="link" analytics-on > <i class="material-icons">attach_money</i> Financeiro </a>  </li>
+
+
+        <div ng-if="showliks" >
+          <li class="item"> <a ng-href="{{showliks.plataforma}}" class="link"> <i class="material-icons">school</i> Plataforma </a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.eCommerce}}"  class="link"> <i class="material-icons">settings</i> E-commerce </a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.intranetQiSat}}" class="link"> <i class="material-icons">home</i> Intranet QiSat</a>  </li>
+
+          <li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link"> <div class="icon-AltoQi"></div>Intranet AltoQi </a>  </li>
+        </div>
+
+
+              <li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on>  <i class="material-icons">remove_circle_outline</i> Sair </a>  
+              </li>
+        </ul>
+
+  </div> 
+   <div class="admin_content">
+
+        <section id="dashboard" class="page-courses">
+
+              <div class="admin__heading">
+                <h1 class="title">Cursos em Andamento </h1>
+              </div>
+
+                <ul class="nav-resp" menu-aluno-cursos data-equalizer ng-init="filterTab ='liberado'" >
+                    <li data-equalizer-watch class="current" ng-click="setFilterTab('liberado')"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
+                    <li data-equalizer-watch ng-click="setFilterTab('finalizado')"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
+                    <li data-equalizer-watch ng-click="setFilterTab('encerrado')" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
+                    <li data-equalizer-watch ng-click="setFilterTab('agendado')" ng-show="agendados" ><a class="menu-horizontal__link" href="#" >Agendados</a></li>
+                    <li data-equalizer-watch ng-click="setFilterTab('outros')" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
+                </ul>
+
+                  <div ng-if="!filtered.length&&courses">
+                      <br>
+                      <h2 ng-if="filterTab=='liberado'"> Nenhum curso liberado.</h2>
+                      <h2 ng-if="filterTab=='finalizado'"> Nenhum curso finalizado.</h2>
+                      <h2 ng-if="filterTab=='encerrado'"> Nenhum curso encerrado.</h2>
+                      <h2 ng-if="filterTab=='agendado'"> Nenhum curso agendado.</h2>
+                      <h2 ng-if="filterTab=='outros'"> Nenhum curso.</h2>
+                  </div>
+                
+                  <div class="cards">
+
+                      <div ng-repeat="course in courses | filter : { filter : filterTab } as filtered track by course.id" class="card">
+
+                        <div ng-if="course.enable">
+                          <a ng-href="{{::course.view}}"><img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>
+                        </div>
+                        <div ng-if="!course.enable">
+                          <img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" >
+                        </div>
+                        
+                        <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
+
+                          <p class="modalidade"> &nbsp {{::course.modalidade}}</p>
+
+                          <div ng-if="course.enable"> 
+                            <p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.view}}" title="{{::course.nome}}" >{{::course.nomeLimit}} </a></p>
+                          </div>
+
+                          <div ng-if="!course.enable"> 
+                            <p class="name">{{::course.nomeLimit}}</p>
+                          </div>
+
+                          <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >
+                              <div class="green" ng-if="course.enable">
+                                {{::course.status}}
+                              </div>
+                              <div class="red" ng-if="!course.enable">
+                                {{::course.status}}
+                              </div> 
+                          </div>
+
+                          <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" ><span class="msg"> {{::course.msg}}&nbsp;</span></div>
+                          
+                        </div>
+
+                        <div class="footer">
+                          <ul class="inline-list">
+
+                           <li ng-if="::course.enable">
+                                <a ng-href="{{::course.view}}">
+                                  <i class="material-icons" alt="Acessar Curso" title="Acessar Curso" >school</i> 
+                                </a>
+                            </li>
+
+
+                            <li ng-if="::course.tira_duvidas"><a ng-href="{{::course.tira_duvidas}}"><i class="material-icons" alt="Tira Dúvidas" title="Tira Dúvidas">live_help</i></a></li>
+                            <li ng-if="::course.biblioteca"><a ng-href="{{::course.biblioteca}}"><i class="material-icons" alt="Biblioteca" title="Biblioteca">folder</i></a></li>
+                            <li ng-if="::course.forum"><a ng-href="{{::course.forum}}"><i class="material-icons" alt="Fórum" title="Fórum">forum</i></a></li>
+                            <li ng-if="::course.contrato"><a ng-href="{{::course.contrato}}"><i class="material-icons" alt="Contrato" title="Contrato">insert_drive_file</i></a></li>
+                          </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="clearfix">
+
+        </section>
+
+      <div class="custom-loading" ng-if="loading">
+        <i class="material-icons">hdr_weak</i>
+        <span class="text" >Carregando informações...</span>
+      </div>
+
+  </div>
+</main>  <!--// main-content -->

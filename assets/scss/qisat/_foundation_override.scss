@@ -89,3 +89,13 @@ ul.pagination li.current a, ul.pagination li.current button {
     background-color: transparent;
   }
 }
+
+.progress {
+    border: 1px solid #FFF;
+    margin-top: .5rem;
+    padding: .125rem;
+    max-width: 500px;
+}
+.progress .meter {
+    background: #005B94;
+}
