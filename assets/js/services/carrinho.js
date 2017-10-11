@@ -103,13 +103,18 @@
 
 									}
 
+									if(item.isSetup && item.ecm_produto ){
+										item.precoParcelado = $filter('currency')(item.ecm_produto.valor_parcelado, 'R$');
+										item.parcelas = item.ecm_produto.parcelas;
+									}
+
 									if(item.ecm_promocao){
+										item.precoParcelado = $filter('currency')( (item.valorTotal / item.parcelas), 'R$');
 										datapromo = moment.unix(item.ecm_promocao.datafim);
 										if(datapromo.diff(datenow, 'hours')<3){
 											promocao = promoTheend.find(function (promo){ return promo.id == item.ecm_promocao.id });
 											item.ecm_promocao.dataTheend = datapromo.diff(datenow, 'seconds'); 
 											if(!promocao) promoTheend.push(item.ecm_promocao);
-
 										}
 									}
 
