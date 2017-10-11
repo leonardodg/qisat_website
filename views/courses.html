@@ -47,7 +47,7 @@
                                                                             ng-href="/cursos/presenciais">Cursos
                                         Presenciais<i class="material-icons">chevron_right</i></a></li>
                                     <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/altoqi-lab">AltoQi-Lab<i
+                                                                            ng-href="/altoqi-lab">AltoQi LAB<i
                                             class="material-icons">chevron_right</i></a></li>
                                 </ul>
                                 <hr>
@@ -136,38 +136,66 @@
                                 >
                                 <div class="list-filter__inner">
                                     <div class="card-course card-format-block">
-                                        <div class="card-course-inner"><a ng-href="{{::course.info.url}}"><span
-                                                class="card-course--litle-play"></span><img
-                                                bn-lazy-src="{{::course.imgSrc}}" width="100%" height="180px"
-                                                class="card-course-header"></a>
-                                            <div class="card-course--content"><a ng-href="{{::course.info.url}}"><span
-                                                    data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true"
-                                                    title="Assista o trailer" data-options="disable_for_touch:true"
-                                                    class="has-tip tip-top card-course__play"></span><span
-                                                    class="card-course__modality">{{::course.modalidade}}</span><span
-                                                    class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span></a><a
-                                                    class="card-course__button has-price_popover"
-                                                    ng-click="buy.addItemCarrinho(course.id)"
-                                                    ng-if="list.type!=12&&list.type!=10&&list.type!=8">{{::course.preco}}<span
-                                                    class="card-course__icon-cart"><i class="material-icons">add_shopping_cart</i><div
-                                                    class="price_popover" ng-show="::course.promocaoDateend">
-                                                <div class="price_popover__header"><p
-                                                        class="price_popover__header__info"><s>de
-                                                    {{::course.precoTotal}}</s><strong>para {{::course.preco}}</strong>Até
-                                                    {{::course.promocaoDateend}}</p></div>
-                                                <div class="price_popover__footer">Adicionar ao carrinho</div>
-                                            </div></span></a><a class="card-course__button has-price_popover"
-                                                                ng-click="modal.interesse(course)"
-                                                                ng-if="list.type==12||list.type==10">{{::course.preco}}<span
-                                                    class="cart"><i class="material-icons">playlist_add_check</i></span><span
-                                                    class="card-course__icon-cart"><div class="price_popover">
-                                                <div class="price_popover__footer">Registro de Interesse</div>
-                                            </div></span></a><a class="card-course__button has-price_popover"
-                                                                ng-click="vm.inscricao(course.id)" ng-if="list.type==8"><span
-                                                    class="cart"><i class="material-icons">school</i></span><span
-                                                    class="card-course__icon-cart"><div class="price_popover">
-                                                <div class="price_popover__footer">Inscrever-se</div>
-                                            </div></span></a></div>
+                                        <div class="card-course-inner">
+                                            <a ng-href="{{::course.info.url}}">
+                                                <span class="card-course--litle-play"></span>
+                                                <img bn-lazy-src="{{::course.imgSrc}}" width="100%" height="180px" class="card-course-header">
+                                            </a>
+                                            <div class="card-course--content">
+                                                <a ng-href="{{::course.info.url}}">
+                                                    <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
+                                                    <span class="card-course__modality" ng-hide="list.type==47">{{::course.modalidade}}</span>
+                                                    <span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
+                                                </a>
+                                                <a class="card-course__button has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="list.type!=12&&list.type!=10&&list.type!=8&&list.type!=47" title="Adicionar ao carrinho">{{::course.preco}}
+                                                    <span class="card-course__icon-cart">
+                                                        <i class="material-icons">add_shopping_cart</i>
+                                                        <div class="price_popover" ng-show="::course.promocaoDateend">
+                                                            <div class="price_popover__header">
+                                                                <p class="price_popover__header__info">
+                                                                    <s>de {{::course.precoTotal}}</s>
+                                                                    <strong>para {{::course.preco}}</strong>
+                                                                    Até {{::course.promocaoDateend}}
+                                                                </p>
+                                                            </div>
+                                                            <div class="price_popover__footer">Adicionar ao carrinho</div>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                                
+                                                <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="list.type==47" title="Adquirir este produto" >{{::course.parcelas}} x {{::course.precoParcelado}}
+                                                    <span class="card-course__icon-cart">
+                                                        <i class="material-icons">add_shopping_cart</i>
+                                                        <div class="price_popover" ng-show="::course.promocaoDateend">
+                                                            <div class="price_popover__header">
+                                                                <p class="price_popover__header__info">
+                                                                    <s>de {{::course.precoTotal}}</s>
+                                                                    <strong>para {{::course.preco}}</strong>
+                                                                    Até {{::course.promocaoDateend}}
+                                                                </p>
+                                                            </div>
+                                                            <div class="price_popover__footer">Adquirir este produto</div>
+                                                        </div>
+                                                    </span>
+                                                </a>
+
+                                                <a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="list.type==12||list.type==10">{{::course.preco}}
+                                                    <span class="cart"><i class="material-icons">playlist_add_check</i></span>
+                                                    <span class="card-course__icon-cart">
+                                                        <div class="price_popover"> 
+                                                            <div class="price_popover__footer">Registro de Interesse</div>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                                <a class="card-course__button has-price_popover" ng-click="vm.inscricao(course.id)" ng-if="list.type==8">
+                                                    <span class="cart"><i class="material-icons">school</i></span>
+                                                    <span class="card-course__icon-cart">
+                                                        <div class="price_popover">
+                                                            <div class="price_popover__footer">Inscrever-se</div>
+                                                        </div>
+                                                    </span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

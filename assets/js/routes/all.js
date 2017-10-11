@@ -505,10 +505,10 @@
                                                   }
               },
               seo : {
-                        title : 'AltoQi Lab - QiSat | Cursos aplicados à engenharia e arquitetura',
+                        title : 'AltoQi LAB – Programa de capacitação profissional em projetos de edificações | QiSat ',
                         robots : 'follow, index',
-                        description : ' Experiência e conhecimento técnico aplicado ao desenvolvimento de projetos naturalmente integrados, contando com assessoramento profissional e uso consciente das plataformas AltoQi.',
-                        keys : 'qisat, qi sat, altoqi-lab, proficiência, certificação software engenharia, certificação eberick, eberick, curso eberick, certificao para engenharia',
+                        description : 'Experiência e conhecimento técnico aplicado ao desenvolvimento de projetos naturalmente integrados, contando com assessoramento profissional e uso consciente das plataformas AltoQi.',
+                        keys : 'qisat, qi sat, altoqi-lab, proficiência, certificação software engenharia, certificação eberick, eberick, curso eberick, curso de projetos, projetos de edificações, experiência em projetos, conhecimento técnico em projetos, desenvolvimento de projetos, projetos integrados',
                         url : 'https://www.qisat.com.br/altoqi-lab'
                       }
             });

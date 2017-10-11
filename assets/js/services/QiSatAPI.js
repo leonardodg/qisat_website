@@ -423,7 +423,7 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 47 })){
 											releases = filterTypes(courses, 47);
 											show = (releases && releases.length) ? true : false;
-											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 47, card: 'pacotes', show: show };
+											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 47, card: 'online', show: show };
 											coursesList.push(list);
 										}
 									}else list.show = true;
