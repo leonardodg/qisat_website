@@ -134,7 +134,7 @@
 					 									});
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
-						 										if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
+						 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto') ){
 																	$location.path('/carrinho/confirmacao/'+res.venda);
 				 									   			}else if(res.url){
 			 									   					$timeout(function() {
