@@ -56,6 +56,7 @@
 							vm.pagamento = pagamento;
 							vm.forma = forma;
 							vm.nparcelas = null;
+							vm.error = false;
 						}
 
 

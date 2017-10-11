@@ -331,12 +331,17 @@
 	 		<li class="formato-do-curso__item" ng-if="vm.info.formato.forum">
 	 				<span class="formato-do-curso__item--top">Fórum</span>
 	 				<span class="formato-do-curso__item--icon"> <img src="/images/courses/ic_forum_black_24px.svg" alt=""></span>
-	  	</li>
+	  		</li>
 
 			<li class="formato-do-curso__item" ng-if="vm.info.formato.tira_duvidas">
 	 				<span class="formato-do-curso__item--top">Tira Dúvidas</span>
 	 				<span class="formato-do-curso__item--icon"><img src="/images/courses/ic_live_help_black_24px.svg" alt=""></span>
-	  	</li>
+  			</li>
+
+			<li class="formato-do-curso__item" ng-if="vm.info.isSetup">
+ 				<span class="formato-do-curso__item--top">Assessoramento</span>
+ 				<span ><i class="material-icons icon-monitor">supervisor_account</i></span>
+  			</li>
 
  		</ul>
 	</section>
