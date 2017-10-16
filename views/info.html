@@ -229,24 +229,48 @@
 <!-- //////////////// FIM BLOCO GARANTA SUA VAGA ////////////////////////// -->
 
 
-	<section class="course-page__sections" id="publico-alvo" data-magellan-destination="publico-alvo" ng-if="::vm.info.persona">
-		<h2 class="course-page__sections--title">Público Alvo</h2>
-		<div ng-bind-html="vm.info.persona"></div>
- 	</section>
+	<div ng-if="::!vm.info.isSetup" >
+		<section class="course-page__sections" id="publico-alvo" data-magellan-destination="publico-alvo" ng-if="::vm.info.persona">
+			<h2 class="course-page__sections--title">Público Alvo</h2>
+			<div ng-bind-html="vm.info.persona"></div>
+	 	</section>
 
-	<section class="course-page__sections" id="sobre-o-curso" data-magellan-destination="sobre-o-curso">
-		<h2 class="course-page__sections--title">Sobre o Conteúdo</h2>
+		<section class="course-page__sections" id="sobre-o-curso" data-magellan-destination="sobre-o-curso">
+			<h2 class="course-page__sections--title">Sobre o Conteúdo</h2>
 
- 		<div ng-bind-html="::vm.info.descricao"></div>
+	 		<div ng-bind-html="::vm.info.descricao"></div>
 
- 		<div class="section__course-gallery" ng-if="::vm.info.imgdemo.length">
- 			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
+	 		<div class="section__course-gallery" ng-if="::vm.info.imgdemo.length">
+	 			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
 
-			<ul class="lightbox small-block-grid-6" lightbox>
-			  <li ng-repeat="imgdemo in ::vm.info.imgdemo track by imgdemo.id"><a ng-href="{{::imgdemo.link}}" alt="{{::vm.info.seo.url}}" title="{{::vm.info.seo.url}}"><img data-caption="{{::vm.info.seo.title}}" title="{{::vm.info.seo.title}}" alt="{{::vm.info.seo.url}}" ng-src="{{::imgdemo.link}}"></a></li>
-			</ul>
- 		</div> <!-- //section__course-gallery -->
- 	</section>
+				<ul class="lightbox small-block-grid-6" lightbox>
+				  <li ng-repeat="imgdemo in ::vm.info.imgdemo track by imgdemo.id"><a ng-href="{{::imgdemo.link}}" alt="{{::vm.info.seo.url}}" title="{{::vm.info.seo.url}}"><img data-caption="{{::vm.info.seo.title}}" title="{{::vm.info.seo.title}}" alt="{{::vm.info.seo.url}}" ng-src="{{::imgdemo.link}}"></a></li>
+				</ul>
+	 		</div> <!-- //section__course-gallery -->
+	 	</section>
+ 	</div>
+
+	<div ng-if="::vm.info.isSetup" >
+		<section class="course-page__sections" id="sobre-o-curso" data-magellan-destination="sobre-o-curso">
+			<h2 class="course-page__sections--title">Sobre o Conteúdo</h2>
+
+	 		<div ng-bind-html="::vm.info.descricao"></div>
+
+	 		<div class="section__course-gallery" ng-if="::vm.info.imgdemo.length">
+	 			<h3 class="section__course-gallery--subtitle"> Imagens do curso</h3>
+
+				<ul class="lightbox small-block-grid-6" lightbox>
+				  <li ng-repeat="imgdemo in ::vm.info.imgdemo track by imgdemo.id"><a ng-href="{{::imgdemo.link}}" alt="{{::vm.info.seo.url}}" title="{{::vm.info.seo.url}}"><img data-caption="{{::vm.info.seo.title}}" title="{{::vm.info.seo.title}}" alt="{{::vm.info.seo.url}}" ng-src="{{::imgdemo.link}}"></a></li>
+				</ul>
+	 		</div> <!-- //section__course-gallery -->
+	 	</section>
+
+		<section class="course-page__sections" id="publico-alvo" data-magellan-destination="publico-alvo" ng-if="::vm.info.persona">
+			<h2 class="course-page__sections--title">Público Alvo</h2>
+			<div ng-bind-html="vm.info.persona"></div>
+	 	</section>
+ 	</div>
+
 
 	<section data-magellan-destination="conteudo-programatico" class="course-page__sections course-page__sections--slim" id="conteudo-programatico" ng-if="vm.info.conteudos.length">
 		<h2 class="course-page__sections--title">Conteúdo Programático</h2>

@@ -83,8 +83,8 @@
 														  	 		if(item.isOnline || item.isLecture ){
 														  	 			dados.isOnline = true;
 														  	 			online.push(dados);
-														  	 		}else if(item.isSerie || item.isPack ){
-														  	 			dados.isOnline = true;
+														  	 		}else if(item.isSerie || item.isPack || item.isSetup ){
+														  	 			dados.isPack = true;
 														  	 			online.push(dados);
 														  	 		}else if( item.isClassroom ){
 														  	 			item.isClassroom = true;

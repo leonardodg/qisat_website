@@ -119,16 +119,22 @@
   }
 
 
-table.table_contrato{
-  background: #FFF;
-    border: 1px solid #DDD;
-    margin-bottom: 1.25rem;
-    table-layout: auto;
-  line-height:107%;
-  font-size:11.5pt;
-  font-family:"Calibri",sans-serif;
-  color: #333333;
+.tabela_contrato{
+
+  background: $table-bg;
+  border: $table-border-style $table-border-size $table-border-color;
+  margin-bottom: $table-margin-bottom;
+  table-layout: $table-layout;
   
+  div.row{
+        color: $table-row-font-color;
+        font-size: $table-row-font-size;
+        padding: $table-row-padding;
+        text-align: $default-float;
+        line-height: $table-line-height; 
+        border-bottom: $table-border-style $table-border-size $table-border-color;
+   }
+
 }
 
 span.topico{

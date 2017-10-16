@@ -213,7 +213,7 @@
 															<div class="card-course--content">
 																<a ng-href="{{::course.info.url}}" >  
 																	<span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
-																	<span class="card-course__modality">{{::course.modalidade}}</span>
+																	<span class="card-course__modality" ng-if="!course.isSetup" >{{::course.modalidade}}</span>
 																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 																</a>
 
