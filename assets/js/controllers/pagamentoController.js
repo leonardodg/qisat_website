@@ -134,16 +134,24 @@
 					 									});
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
-						 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto') ){
-																	$location.path('/carrinho/confirmacao/'+res.venda);
-				 									   			}else if(res.url){
-			 									   					$timeout(function() {
-																	      	$window.location.href = res.url;
-																	      }, 10000);
+						 										if(res.sucesso){
+							 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto') ){
+																		$location.path('/carrinho/confirmacao/'+res.venda);
+					 									   			}else if(res.url){
+				 									   					$timeout(function() {
+																		      	$window.location.href = res.url;
+																		      }, 10000);
+					 									   			}
+					 									   		}else{
+						 											vm.loading = false;
+				 									   				modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Tente novamente!" } });
 				 									   			}
 														});
 					 								}
 					 							}
+			 								}, function() {
+			 									vm.loading = false;
+			 									modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Tente novamente!" } });
 			 								});
 						 		}
 						 	}

@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('trilhaController', [ '$controller', '$location', '$window', '$modalInstance', 'authService', 'carrinhoServive', 'QiSatAPI', 'vcRecaptchaService', 'produto',
-					 function( $controller, $location, $window, $modalInstance, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
+		.controller('trilhaController', [ '$controller', '$location', '$window', '$modal', '$modalInstance', 'authService', 'carrinhoServive', 'QiSatAPI', 'vcRecaptchaService', 'produto',
+					 function( $controller, $location, $window, $modal, $modalInstance, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
 					 		vm.showZopim = modalController.showZopim;
@@ -57,8 +57,54 @@
 							vm.forma = forma;
 							vm.nparcelas = null;
 							vm.error = false;
-						}
+						};
 
+				 		vm.modalcontrato = function () {
+	 						var modalInstance = $modal.open({
+	 							templateUrl: '/views/modal-contrato.html',
+	 							controller : function ($scope, $modalInstance) {
+												  $scope.cancel = function () {
+												    $modalInstance.dismiss('cancel');
+												  };
+												  var itens = carrinhoServive.getItens(), online = [], presencial = [];
+
+												  if(vm.user) $scope.nome = vm.user.nome;
+
+												  if(itens && itens.length){
+												  	itens.map(function (item){
+												  			var dados = { id: item.id };
+													  	 	if(item.ecm_produto && item.isSetup){
+
+													  	 		if(item.ecm_produto.enrolperiod){
+														  	 		dados.enrolperiod = item.ecm_produto.enrolperiod.toString();
+														  	 		dados.enrolperiod = dados.enrolperiod +' ('+dados.enrolperiod.extenso()+') '+' Dias';
+													  	 		}
+
+													  	 		dados.modalidade = item.modalidade;
+													  	 		dados.nome = item.ecm_produto.nome;
+
+													  	 		if(item.ecm_produto.mdl_course){
+													  	 			dados.courses = [];
+													  	 			item.ecm_produto.mdl_course.map(function(course){
+													  	 				var aux = { id: course.id };
+													  	 				if(course.fullname) aux.nome = course.fullname;
+													  	 				if(course.timeaccesssection ){
+													  	 					aux.time = course.timeaccesssection.toString();
+													  	 					aux.time = aux.time +' ('+aux.time.extenso()+') '+' Horas';
+													  	 				}
+													  	 				dados.courses.push(aux);
+													  	 			});
+													  	 		}
+
+													  	 		online.push(dados);
+													  	 	}
+													  });
+
+													  $scope.online = online;
+												  }
+												}
+	 						});
+		 			    };
 
 					 	vm.nextPagamento = function(){
 					 		var data = {},tipoPagamento;
@@ -66,7 +112,7 @@
 
 								if(vm.pagamento){
 									if(vm.forma.tipo =='cartao_recorrencia')
-										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect )
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
 											return;
 									
 						 			vm.loading = true;
