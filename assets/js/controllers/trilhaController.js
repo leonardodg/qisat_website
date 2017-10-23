@@ -4,7 +4,7 @@
 	angular
 		.module('QiSatApp')
 		.controller('trilhaController', [ '$controller', '$location', '$window', '$modal', '$modalInstance', 'authService', 'carrinhoServive', 'QiSatAPI', 'vcRecaptchaService', 'produto',
-					 function( $controller, $location, $window, $modal, $modalInstance, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
+					 function( $controller, $location, $window, $modal, $modalTrilha, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
 					 		vm.showZopim = modalController.showZopim;
@@ -48,7 +48,7 @@
 						vm.mesVencimento = [ '01','02','03','04','05','06','07','08','09','10','11','12' ];
 
 						vm.cancel = function () {
-							$modalInstance.dismiss('cancel');
+							$modalTrilha.dismiss('cancel');
 							$location.path('/carrinho');
 						};
 
@@ -60,12 +60,13 @@
 						};
 
 				 		vm.modalcontrato = function () {
-	 						var modalInstance = $modal.open({
+	 						var modalContrato = $modal.open({
 	 							templateUrl: '/views/modal-contrato.html',
 	 							controller : function ($scope, $modalInstance) {
 												  $scope.cancel = function () {
-												    $modalInstance.dismiss('cancel');
+												    $modalInstance.close();
 												  };
+												  
 												  var itens = carrinhoServive.getItens(), online = [], presencial = [];
 
 												  if(vm.user) $scope.nome = vm.user.nome;

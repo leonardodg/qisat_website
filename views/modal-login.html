@@ -25,11 +25,24 @@
                   <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                     <span class="error" >Formato de Email incorreto!</span>
                   </div>
-            <button id="remember" ng-click="sendMail(email)" class="expand primary" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="carrinho remember" > Enviar Senha »</button>
-      </form>
-      <br class="clearfix">
-      <br class="clearfix">
-    </div> 
+
+
+
+                   <div class="row">
+                    <div class="small-8 small-centered columns">
+                      <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()" size="compact"> </div>
+
+                      <span class="error" ng-show="rememberForm.$error.recaptcha&&submit">Verificarção Obrigatória!</span><br>
+                    </div>
+                  </div>   
+
+                <button  class="button secondary" ng-click="clickvoltar()"><i class="material-icons">keyboard_arrow_left</i> Voltar </button>
+
+                <button id="remember" ng-click="sendMail(email, gRecaptchaResponse)" class="button primary right" ng-disabled="rememberForm.$invalid" analytics-on analytics-event="carrinho remember" > Enviar <i class="material-icons">keyboard_arrow_right</i> </button>
+
+
+        </form>
+    </div>
 
     <div class="custom-loading" ng-if="loading">
       <i class="material-icons">hdr_weak</i>
@@ -92,5 +105,12 @@
           <span class="section-call__done--subtitle" ng-if="alert.main.subtitle"> {{alert.main.subtitle}} </span>
       </div>
     </div>
+
+    <div class="row" >
+      <div class="small-6 small-centered columns">
+        <a  class="button secondary" ng-click="clickvoltar()"><i class="material-icons">keyboard_arrow_left</i> Voltar </a>
+      </div>
+    </div>
+
   </section>
 </div>

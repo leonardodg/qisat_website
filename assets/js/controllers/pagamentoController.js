@@ -83,7 +83,7 @@
 														  	 		if(item.isOnline || item.isLecture ){
 														  	 			dados.isOnline = true;
 														  	 			online.push(dados);
-														  	 		}else if(item.isSerie || item.isPack || item.isSetup ){
+														  	 		}else if((item.isSerie || item.isPack) && !item.isSetup ){
 														  	 			dados.isPack = true;
 														  	 			online.push(dados);
 														  	 		}else if( item.isClassroom ){
@@ -126,11 +126,12 @@
 
 									carrinhoServive.getCarrinho()
 				 						.then(function (res){
-				 								if(res.sucesso && res.carrinho){
+				 								if(res && res.carrinho && res.carrinho['ecm_carrinho_item']){
 					 								var produtos = [], itens = res.carrinho['ecm_carrinho_item'];
 					 								if(itens && itens.length){
 					 									itens.map(function (item){
-						 									produtos.push({ produto : item.ecm_produto_id, quantidade:item.quantidade, valor : item.valor_produto_desconto });			 										
+					 										if(!item.isSetup)
+						 										produtos.push({ produto : item.ecm_produto_id, quantidade:item.quantidade, valor : item.valor_produto_desconto });			 										
 					 									});
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 

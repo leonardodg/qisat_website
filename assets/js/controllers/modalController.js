@@ -412,7 +412,7 @@
 						vm.login = function (urlBack, urlNext, callback) {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
-		 							controller : function ($scope, $modalInstance, QiSatAPI, authService, $location) {
+		 							controller : function ($scope, $modalInstance, QiSatAPI, authService, $location, vcRecaptchaService) {
 
 		 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
 
@@ -429,6 +429,29 @@
 													  $scope.clickremember = function () {
 													  	 $scope.remember = !$scope.remember;
 													  };
+
+
+													  $scope.clickvoltar = function () {
+													  		$scope.alert = false;
+								 							$scope.loading = false;
+								 							$scope.remember = false;
+								 							$scope.user = {};
+													  };
+
+
+												 	// Codigo Recaptcha
+									   				$scope.responseRecaptcha = null;
+									                $scope.widgetId = null;
+									                $scope.setResponse = function (responseRecaptcha) {
+									                    $scope.responseRecaptcha = responseRecaptcha;
+									                };
+									                $scope.setWidgetId = function (widgetId) {
+									                    $scope.widgetId = widgetId;
+									                };
+									                $scope.reloadRecaptcha = function() {
+									                    vcRecaptchaService.reload($scope.widgetId);
+									                    $scope.responseRecaptcha = null;
+									                };
 
 													  $scope.login = function(credentials) {
 														 		credentials.remember =  true; 
@@ -461,8 +484,8 @@
 													 			});
 														};
 
-														$scope.sendMail = function(email){
-															var data = { email : email };
+														$scope.sendMail = function(email, recaptcha){
+															var data = { email : email, recaptcha : recaptcha };
 										 						$scope.alert = false;
 
 															QiSatAPI.remember(data)
