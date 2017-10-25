@@ -3,6 +3,19 @@
 .accordion .accordion-navigation>a, .accordion dd>a, .button, body, button {
   font-family: $font-family-sans-serif;
 }
+
+.accordion-component.moreAccordionTrilha .accordion-navigation > a:before{
+   @extend .material-icons;
+        content: 'keyboard_arrow_down';
+        color: #555;
+}
+
+.accordion-component.moreAccordionTrilha .accordion-navigation > a.active:before{
+   @extend .material-icons;
+        content: 'keyboard_arrow_up';
+        color: #555;
+}
+
 .button, button {
   padding: 0.5rem 1.5rem;
   background-color: $primary-color;

@@ -39,7 +39,7 @@
 					 							authService.setRedirect();
 					 							$location.path(url);
 					 						}else
-					 							$location.path('/aluno/cursos');
+					 							$location.path('/aluno');
 
 					 					}else if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.erro == "nao-confirmado" )){
 					 						modalController.alert({  error : true, main : { title : "Cadastro não confirmado!", subtitle : "Favor validar seu Email" } });

@@ -330,7 +330,6 @@
 	                                            	});
 
 		                            return  promise.then( function (res){
-		                            			console.log(res);
 		                            			if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.user)
 		                            				return res.data.retorno.user;
 		                            			return false;
@@ -389,6 +388,192 @@
 		                            						}else
 		                            							return res;
 		                            		}, function (res){return res});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
+
+			                function trilhas(tipo) {
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  loading : true,
+                                                  url: Config.baseUrl+'/web-service/wsc-altoqi-lab/andamentoCursos',
+                                                  data: { id : tipo },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.trilha){
+		                            							res.data.retorno.trilha.map(function (fase){
+			                            							fase.matriculas.map(function (curso){
+			                            								var tipo;
+			                            								if(curso && curso.produto && curso.produto.categorias){
+				                            								if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 32 || tipo.id == 33 || tipo.id == 41 })) { // Séries
+																				curso.modalidade = tipo.nome;
+																				curso.isSerie = true;
+																			}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
+																				curso.modalidade = tipo.nome;
+																				curso.isPack = true;
+																			}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
+																				curso.modalidade = tipo.nome;
+																				curso.isLecture = true;
+																			}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
+																				curso.modalidade = tipo.nome;
+																				curso.isIndividual = true;
+																			}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
+																				curso.modalidade = tipo.nome;
+																				curso.isClassroom = true;
+																			}else if(tipo = curso.produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
+																				curso.modalidade = tipo.nome;
+																				curso.isOnline = true;
+																			}
+			                            								}
+			                            							});
+		                            							});
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res;});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
+			                function ranking(tipo) {
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  loading : true,
+                                                  url: Config.baseUrl+'/web-service/wsc-altoqi-lab/ranking',
+                                                  data: { id : tipo },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res;});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
+			                function concluidoTrilha(tipo) { 
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  loading : true,
+                                                  url: Config.baseUrl+'/web-service/wsc-altoqi-lab/concluidoTrilha',
+                                                  data: { id : tipo },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res;});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
+			                function cursosFeitos(tipo) { 
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  loading : true,
+                                                  url: Config.baseUrl+'/web-service/wsc-altoqi-lab/cursosFeitos',
+                                                  data: { id : tipo },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res;});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+			                function tempoConclusao(tipo) {
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+                                                  method: 'POST', 
+                                                  loading : true,
+                                                  url: Config.baseUrl+'/web-service/wsc-altoqi-lab/tempoConclusao',
+                                                  data: { id : tipo },
+                                                  dataType: 'jsonp',
+							                      headers : {
+														      'Content-Type' : 'application/json',    
+														      'Authorization': Config.Authorization+" "+authToken
+														      },
+												   withCredentials : true
+
+                                                        });
+
+		                            return  promise.then( function (res){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+																return res.data.retorno;
+		                            						}else
+		                            							return res;
+		                            		}, function (res){return res;});
                     				
 								}else{
 									deferred.reject(function(res){ return false });
@@ -558,7 +743,12 @@
 			    					getRedirect : getRedirect,
 			    					setRedirect : setRedirect,
 									confirmarCadastro : confirmarCadastro,
-									solicitarEmail : solicitarEmail
+									solicitarEmail : solicitarEmail,
+									trilhas : trilhas,
+									ranking : ranking,
+									concluidoTrilha : concluidoTrilha,
+									cursosFeitos :  cursosFeitos,
+									tempoConclusao :  tempoConclusao
 								};
 					};
 				});

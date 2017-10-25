@@ -132,7 +132,7 @@
 			 									   		if(res && res.sucesso){
 			 									   			if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
 																$location.path('/carrinho/confirmacao/'+res.venda);
-																$modalInstance.dismiss('cancel');
+																$modalTrilha.dismiss('cancel');
 			 									   			}else if(res.url)
 			 									   				$window.location.href = res.url;
 			 									   			else

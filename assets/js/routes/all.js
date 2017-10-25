@@ -582,9 +582,8 @@
             });
 
             $routeProvider.when('/aluno', {
-              templateUrl : '/views/aluno-cursos.html', 
+              templateUrl : '/views/aluno-index.html', 
               isAuth : true,
-              controller: 'matriculaController',
               resolve : {
                 Authenticated : function(authService, $location){
                       return authService.Authenticated('/login');
