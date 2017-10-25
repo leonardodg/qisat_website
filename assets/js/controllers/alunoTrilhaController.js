@@ -30,6 +30,7 @@
 						 		authService.ranking(3)
 							 			   .then(function (res){
 							 			   				vm.loading1 = false;
+							 			   				vm.sucesso1 = res.sucesso;
 							 			   				if(res.ranking && res.ranking.length){
 							 			   					vm.ranking = [];
 							 			   					res.ranking.map(function(item){
@@ -41,12 +42,14 @@
 						 		authService.concluidoTrilha(3)
 							 			   .then(function (res){
 							 			   				vm.loading2 = false;
+							 			   				vm.sucesso2 = res.sucesso;
 							 			   				vm.concluidoTrilha = parseInt(res.concluidoTrilha);
 							 			   			});
 
 						 		authService.cursosFeitos(3)
 							 			   .then(function (res){
 							 			   				vm.loading3 = false;
+							 			   				vm.sucesso3 = res.sucesso;
 							 			   				vm.cursosConcluidos = res.cursos_concluidos;
 							 			   				vm.totalCursos = res.total_cursos; 
 							 			   				vm.cursosText = zpad(vm.cursosConcluidos, 2)+"/"+zpad(vm.totalCursos, 2);
@@ -55,6 +58,7 @@
 						 		authService.tempoConclusao(3)
 							 			   .then(function (res){
 							 			   				vm.loading4 = false;
+							 			   				vm.sucesso4 = res.sucesso;
 							 			   				vm.diasPercorridos = res.dias_percorridos;
 							 			   				vm.totalDias = res.total_dias;
 							 			   				vm.diasText = vm.diasPercorridos +"/"+vm.totalDias+ " Dias";

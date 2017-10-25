@@ -20,10 +20,7 @@
 
           <li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link"> <div class="icon-AltoQi"></div>Intranet AltoQi </a>  </li>
         </div>
-
-
-              <li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on>  <i class="material-icons">remove_circle_outline</i> Sair </a>  
-              </li>
+          <li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on>  <i class="material-icons">remove_circle_outline</i> Sair </a> </li>
         </ul>
 
   </div> 
@@ -119,8 +116,20 @@
                 </div>
                 <div ng-if="vm.abaConteudo=='desempenho'"> 
                     <div class="row text-center">
+
+                  <div ng-show="vm.sucesso1==false && vm.sucesso2==false && vm.sucesso3==false && vm.sucesso4==false"> 
+                         <h4 class="text-center" > Sem matriculas no Programa de capacitação profissional em projetos </h4>  
+
+                            <div class="row">
+                              <div class="large-6 large-centered columns">
+                                <a class="button success" ng-href="/altoqi-lab/desenvolvimento-de-projeto-estrutural-de-pequeno-porte" >Mais informações<i class="material-icons">keyboard_arrow_right</i></a>
+                              </div>
+                            </div>
+                  </div>
+
+
                         <div class="small-12 medium-12 large-4 columns">
-                            <div class="container-desempenho">
+                            <div class="container-desempenho" ng-hide="vm.sucesso1==false" >
                                  <div ng-show="vm.loading1==false" >
                                    <p>Tempo para conclusão do curso</p>
                                    <span id="tempo-conclusao_count" class="desempenho_count">{{vm.diasText}}</span>
@@ -130,15 +139,13 @@
                                   <i class="material-icons">hdr_weak</i>
                                   <span class="text" >Carregando...</span>
                                 </div>
-
                             </div>
-
-
                         </div>
+
                         <div class="small-12 medium-12 large-4 columns">
-                            <div class="container-desempenho">
+                            <div class="container-desempenho" ng-hide="vm.sucesso2==false" >
                                   <div  ng-show="vm.loading2==false" >
-                                    <p>Já concluido da linha estrutural</p>
+                                    <p>Já concluido da linha estrutural {{(vm.sucesso2==false)}} - {{vm.sucesso2}}</p>
                                     <span id="porcentagem-conclusao_count" class="desempenho_count">{{vm.concluidoTrilha}}%</span>    
                                   </div>
 
@@ -147,12 +154,10 @@
                                     <span class="text" >Carregando...</span>
                                   </div>
                             </div>  
-
-
-
                         </div>
+
                         <div class="small-12 medium-12 large-4 columns">
-                            <div class="container-desempenho">
+                            <div class="container-desempenho"  ng-hide="vm.sucesso3==false" >
                                 
                                 <div ng-show="vm.loading3==false" >
                                     <p>Cursos já feitos</p>
@@ -168,7 +173,7 @@
                     </div>
                     <div class="row">
                         <div class="small-12 medium-12 large-4 columns">
-                            <div class="container-desempenho">
+                            <div class="container-desempenho"  ng-hide="vm.sucesso4==false" >
                                 <p>Ranking</p>
                                 <ul class="ranking_list" ng-show="vm.loading4==false" >
                                     <li class="ranking_item">
@@ -186,9 +191,6 @@
                                   <span class="text" >Carregando...</span>
                                 </div>
                             </div>   
-
-
-
                         </div>
                     </div>
                 </div>

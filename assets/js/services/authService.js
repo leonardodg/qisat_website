@@ -444,7 +444,9 @@
 			                            							});
 		                            							});
 																return res.data.retorno;
-		                            						}else
+		                            						}else if(res && res.data && res.data.retorno)
+		                            							return res.data.retorno;
+		                            						else 
 		                            							return res;
 		                            		}, function (res){return res;});
                     				
@@ -474,9 +476,11 @@
                                                         });
 
 		                            return  promise.then( function (res){
-		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 																return res.data.retorno;
-		                            						}else
+		                            						else if(res && res.data && res.data.retorno)
+		                            							return res.data.retorno;
+		                            						else 
 		                            							return res;
 		                            		}, function (res){return res;});
                     				
@@ -506,9 +510,11 @@
                                                         });
 
 		                            return  promise.then( function (res){
-		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 																return res.data.retorno;
-		                            						}else
+		                            						else if(res && res.data && res.data.retorno)
+		                            							return res.data.retorno;
+		                            						else 
 		                            							return res;
 		                            		}, function (res){return res;});
                     				
@@ -538,9 +544,11 @@
                                                         });
 
 		                            return  promise.then( function (res){
-		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 																return res.data.retorno;
-		                            						}else
+		                            						else if(res && res.data && res.data.retorno)
+		                            							return res.data.retorno;
+		                            						else 
 		                            							return res;
 		                            		}, function (res){return res;});
                     				
@@ -569,9 +577,11 @@
                                                         });
 
 		                            return  promise.then( function (res){
-		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
+		                            						if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 																return res.data.retorno;
-		                            						}else
+		                            						else if(res && res.data && res.data.retorno)
+		                            							return res.data.retorno;
+		                            						else 
 		                            							return res;
 		                            		}, function (res){return res;});
                     				
