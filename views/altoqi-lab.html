@@ -74,15 +74,18 @@
                 <div ng-if="vm.abaConteudo=='estudo'">
                   
                    <div ng-show="!vm.fases.length && vm.loading"> 
-                         <h4 class="text-center" > Sem matriculas no Programa de capacitação profissional em projetos </h4>  
+                         <p class="text-center" >Este espaço é direcionado a alunos matriculados em fases do AltoQi LAB. <br>
+                              Conheça os programas de capacitação disponíveis e fazer sua inscrição.</p>  
 
-                            <div class="row">
-                              <div class="large-6 large-centered columns">
-                                <a class="button success" ng-href="/altoqi-lab/desenvolvimento-de-projeto-estrutural-de-pequeno-porte" >Mais informações<i class="material-icons">keyboard_arrow_right</i></a>
-                              </div>
+                          <div class="row">
+                            <div class="column small-6">
+                              <a class="button secondary right" ng-href="/altoqi-lab/desenvolvimento-de-projeto-estrutural-de-pequeno-porte" ><i class="material-icons"></i>Mais informações</a>
                             </div>
+                            <div class="column small-6">
+                              <a class="button success" ng-click="buy.trilha({id:309})" >Matricule-se Já</a>
+                            </div>
+                          </div>
                   </div>
-
 
                   <accordion class="accordion-component accordion moreAccordionTrilha" ng-if="vm.fases.length">
                   <accordion-group  ng-repeat="course in vm.fases" heading="{{course.nome}}" class="accordion-navigation tab-title lab-etapa" >
@@ -118,13 +121,17 @@
                     <div class="row text-center">
 
                   <div ng-show="vm.sucesso1==false && vm.sucesso2==false && vm.sucesso3==false && vm.sucesso4==false"> 
-                         <h4 class="text-center" > Sem matriculas no Programa de capacitação profissional em projetos </h4>  
+                         <p class="text-center" >Este espaço é direcionado a alunos matriculados em fases do AltoQi LAB. <br>
+                              Conheça os programas de capacitação disponíveis e fazer sua inscrição.</p>  
 
-                            <div class="row">
-                              <div class="large-6 large-centered columns">
-                                <a class="button success" ng-href="/altoqi-lab/desenvolvimento-de-projeto-estrutural-de-pequeno-porte" >Mais informações<i class="material-icons">keyboard_arrow_right</i></a>
-                              </div>
+                          <div class="row">
+                            <div class="column small-6">
+                              <a class="button secondary right" ng-href="/altoqi-lab/desenvolvimento-de-projeto-estrutural-de-pequeno-porte" ><i class="material-icons"></i>Mais informações</a>
                             </div>
+                            <div class="column small-6">
+                              <a class="button success" ng-click="buy.trilha({id:309})" >Matricule-se Já</a>
+                            </div>
+                          </div>
                   </div>
 
 
