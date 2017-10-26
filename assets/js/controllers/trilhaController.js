@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('trilhaController', [ '$controller', '$location', '$window', '$modal', '$modalInstance', 'authService', 'carrinhoServive', 'QiSatAPI', 'vcRecaptchaService', 'produto',
-					 function( $controller, $location, $window, $modal, $modalTrilha, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
+		.controller('trilhaController', [ '$controller', '$location', '$window', '$modal', '$modalInstance', '$filter' ,'authService', 'carrinhoServive', 'QiSatAPI', 'vcRecaptchaService', 'produto',
+					 function( $controller, $location, $window, $modal, $modalTrilha, $filter, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
 					 		vm.showZopim = modalController.showZopim;
@@ -41,7 +41,17 @@
 							 				vm.formasPagamentos = formas;
                                       });
 
-
+                        var itens = carrinhoServive.getItens();
+						if(itens && itens.length){
+							  	vm.item = itens.find(function (item){
+											  	 	return item.isSetup;
+											 });
+							  	if(vm.item){
+								  	vm.item.modalidade = vm.item.modalidade;
+					  	 			vm.item.nome = vm.item.ecm_produto.nome;
+					  	 			vm.item.valor =  $filter('currency')(vm.item.ecm_produto.valor_parcelado, 'R$') + ' x '+ vm.item.ecm_produto.parcelas;
+					  	 		}
+						}
 
 
 						vm.anoVencimento = [ '2017','2018','2019','2020','2021','2022','2023','2024', '2025','2026','2027','2028','2029', '2030'];

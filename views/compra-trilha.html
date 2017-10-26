@@ -10,8 +10,14 @@
       <div class="large-10 large-centered columns">
             <br>
             <div class="widget_content" >
-              <p class="title">Pagamento  Teste</p>
+              <p class="title">Pagamento</p>
               <table width="100%" class="table-cart tablePagamento">
+
+                <tr ng-show="trilhaCtr.item">
+                  <th>Produto <br> Valor</th>
+                  <td> {{trilhaCtr.item.modalidade}}: {{trilhaCtr.item.nome}} <br> <strong>{{trilhaCtr.item.valor}}</strong> </td>
+                </tr>
+
                 <tr>
                   <th>Termos de contrato</th>
                   <td>
