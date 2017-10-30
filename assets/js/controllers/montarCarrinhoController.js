@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('montarCarrinhoController', ['$scope', '$controller', '$location','$window', '$route', '$filter', '$modal', 'carrinhoServive', 'authService',
-					 function(scope, $controller, $location, $window, $route, $filter, $modal, carrinhoServive, authService) {
+		.controller('montarCarrinhoController', ['$scope', '$controller', '$location','$window', '$route', '$filter', '$modal', '$timeout', 'carrinhoServive', 'authService',
+					 function(scope, $controller, $location, $window, $route, $filter, $modal, $timeout, carrinhoServive, authService) {
 
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
@@ -45,8 +45,7 @@
 
 					 	vm.cancelTransacao = function(){
 					 		carrinhoServive.cancelarTransacao().then(function(res){
-					 			if(res.sucesso)
-					 				$location.path('/carrinho/pagamento');
+				 				$window.location.reload();
 					 		});
 					 	};
 

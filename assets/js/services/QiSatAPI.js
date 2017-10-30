@@ -383,6 +383,23 @@
 								
 							},
 
+
+						getSearch : function () {
+								var result = [] 
+								if(Array.isArray(courses) && courses.length){
+									courses.map(function(curso){
+										var title;
+										if(curso && curso.info && curso.info.titulo) 
+											title = (curso.modalidade) ? curso.modalidade +': '+curso.info.titulo : curso.info.titulo;
+
+										if(curso && curso.info && curso.info.url) 
+											result.push({ title : title, url : curso.info.url });
+									});
+								}
+								return result;
+						},
+
+
 						getCourseList : function(){
 							var  series, packages, classroom, events, single, releases, free, online,
 								list, listOnline, listSeries, listPacks, listSingle, listEvents, listClass,

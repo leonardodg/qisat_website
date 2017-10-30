@@ -19,9 +19,14 @@
 							vm.loading = true;
 							vm.tipos = dataCoursesFilter;
 
+							vm.searchOnSelect = function(search){
+								$location.path(vm.search.url);
+							};
+
 
 						QiSatAPI.getCourses().then( function(courses){
 								startCourseList();
+								vm.searchIn = QiSatAPI.getSearch();
 								vm.loading = false;
 						});
 
@@ -268,7 +273,6 @@
 									setNavFilters();
 									vm.coursesList = QiSatAPI.getCourseList();
 								}else{
-									//$location.path('/cursos');
 									vm.presencial = false;
 									vm.filters = [];
 									vm.navLinks = [{ title:"Todos os cursos", href : "/cursos"}];
@@ -295,7 +299,13 @@
 
 							var retorno = true;
 							if(vm.search){
-								var i, j, k, s, search = vm.search.split(" ");
+								var i, j, k, s, search;
+
+								if(typeof vm.search == "object")
+									search = vm.search.title.split(" ");
+								else
+									search = vm.search.split(" ");
+
 								if (item.info && item.info.conteudo){
 									for(i=0;i<item.info.conteudo.length;i++) {
 										j = item.info.conteudo[i];
@@ -355,6 +365,9 @@
 										break;
 									}
 								}
+
+								if(item.sigla && item.sigla.toLowerCase().indexOf(search[0])>=0)
+									retorno = true;
 							}
 							return retorno;
 						};

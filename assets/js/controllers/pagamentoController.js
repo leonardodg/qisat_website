@@ -159,8 +159,7 @@
 
  						 	vm.cancelTransacao = function(){
 						 		carrinhoServive.cancelarTransacao().then(function(res){
-						 			if(res.sucesso)
-						 				$window.location.reload();
+					 				$window.location.reload();
 						 		});
 						 	};
 

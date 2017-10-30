@@ -51,22 +51,31 @@
 					 	};
 
 					 	(function init(){
+					 		console.log('init');
 					 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){ 
 				 				carrinhoServive.getCarrinho()
 				 						.then(function (res){
-				 							  var valor;
+				 							  	var valor, transacao;
 				 								if(res.sucesso && res.carrinho)
 				 									setValues();
 				 								else if(!res.sucesso && res.transacao){
 				 									setValues();
-				 									vm.transacao = res.transacao;
-				 									vm.transacao.data_envio = $filter('date')( vm.transacao.data_envio*1000, 'dd/MM/yyyy' );
-				 									if(vm.transacao.numero_parcelas	 > 1){
-				 										valor = vm.transacao.valor / vm.transacao.numero_parcelas;
-				 										valor = $filter('currency')(valor, 'R$');
-				 									}else
-				 										valor = $filter('currency')(vm.transacao.valor, 'R$');
-				 									vm.transacao.parcelas = vm.transacao.numero_parcelas+'x de '+valor;
+			 										transacao = res.transacao;
+				 									
+				 									if( transacao.status == 'erro'){
+				 										vm.transacaoErro = transacao;
+				 										modalController.alert({ error : true, main : { title : "Ocorreu uma Falha no pagamento!", subtitle : "Tente novamente!" } });
+				 									}else if( transacao.status == 'aguardando_pagamento'){
+					 									transacao.data_envio = $filter('date')( transacao.data_envio*1000, 'dd/MM/yyyy' );
+					 									if(transacao.numero_parcelas	 > 1){
+					 										valor = transacao.valor / ransacao.numero_parcelas;
+					 										valor = $filter('currency')(valor, 'R$');
+					 									}else
+					 										valor = $filter('currency')(transacao.valor, 'R$');
+					 									transacao.parcelas = transacao.numero_parcelas+'x de '+valor;
+
+		 												vm.transacaoOpen = transacao;
+				 									}
 				 								}
 			 								});
 					 		}else			 		

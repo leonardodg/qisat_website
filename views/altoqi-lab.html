@@ -35,13 +35,13 @@
                     <nav class="menu-horizontal">
                         <ul class="menu-horizontal__list main-menu_lab" tab-main-lab data-equalizer>
                             <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3 menu-horizontal__item--current">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('estrutural')" >Projetos estruturais</span>
+                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('estrutural')" >Projeto Estrutural</span>
                             </li>
                             <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('eletrico')" >Projetos elétricos</span>
+                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('eletrico')" >Projeto Elétrico</span>
                             </li>
                             <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('hidro')" >Projetos hidrossanitários</span>
+                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('hidro')" >Projeto Hidrossanitário</span>
                             </li>      
                         </ul>
                     </nav>
@@ -152,7 +152,7 @@
                         <div class="small-12 medium-12 large-4 columns">
                             <div class="container-desempenho" ng-hide="vm.sucesso2==false" >
                                   <div  ng-show="vm.loading2==false" >
-                                    <p>Já concluido da linha estrutural {{(vm.sucesso2==false)}} - {{vm.sucesso2}}</p>
+                                    <p> Estrutural Fase 1 - % Concluído </p>
                                     <span id="porcentagem-conclusao_count" class="desempenho_count">{{vm.concluidoTrilha}}%</span>    
                                   </div>
 
@@ -167,7 +167,7 @@
                             <div class="container-desempenho"  ng-hide="vm.sucesso3==false" >
                                 
                                 <div ng-show="vm.loading3==false" >
-                                    <p>Cursos já feitos</p>
+                                    <p>Cursos já Concluídos</p>
                                     <span id="cursos-conclusao_count" class="desempenho_count">{{vm.cursosText}}</span>
                                 </div>
 
@@ -185,7 +185,7 @@
                                 <ul class="ranking_list" ng-show="vm.loading4==false" >
                                     <li class="ranking_item">
                                         <span id="ranking-nome" >Nome</span>
-                                        <span id="ranking-numero" title="Índice de dedicação mensal. Métrica para avaliar o conteúdo assistido no mês versos a meta mensal." >IDM</span>
+                                        <span id="ranking-numero" title="Índice de dedicação mensal. Métrica para avaliar o conteúdo assistido no mês em relação a meta mensal." >IDM</span>
                                     </li>
                                     <li class="ranking_item" ng-repeat="item in vm.ranking">
                                         <span id="ranking-nome">{{item.nome}}</span>

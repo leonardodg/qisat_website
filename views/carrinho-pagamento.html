@@ -28,12 +28,9 @@
 
     <div class="large-9 columns">
 
-
-
-
       <form name="pagamentoForm" id="pagamentoForm" novalidate>
 
-          <div class="widget_content" ng-if="!buy.transacao" >
+          <div class="widget_content" ng-if="!buy.transacaoOpen" >
             <p class="title">Forma de pagamento</p>
             <table width="100%" class="table-cart tablePagamento">
               <tr>
@@ -75,7 +72,7 @@
                 <td colspan="5" class="text-center"> 
                   <div class="custom-loading" >
                     <i class="material-icons">hdr_weak</i>
-                    <span class="text" >Atualizando</span>
+                    <span class="text" >Processando</span>
                   </div>
                 </td>
             </tr>
@@ -163,7 +160,7 @@
 
       </div>
 
-      <div class="row" ng-if="!vm.redirect && !buy.transacao">
+      <div class="row" ng-if="!vm.redirect && !buy.transacaoOpen">
         <div class="small-6 medium-6 large-6 columns">
           <a href="/carrinho" class="button secondary" ng-hide="vm.loading"><i class="material-icons">keyboard_arrow_left</i> Voltar</a>
         </div>
@@ -174,7 +171,7 @@
 
 
       <!-- HTML COPY PAGE CARRINHO-PAGAMENTO.HTML AND CARRINHO-MONTAR.HTML -->
-      <div class="widget_content text-center" ng-if="buy.transacao">
+      <div class="widget_content text-center" ng-if="buy.transacaoOpen">
               <p class="title">Pagamento não Finalizado!</p>
 
               <div class="row">
@@ -185,9 +182,9 @@
 
               <div class="row">
                   <div class="small-12 large-6 large-centered columns text-center">  
-                      <p> Forma de Pagamento: <strong> {{buy.transacao.forma_pagamento}} </strong> <br>
-                          Operadora: <strong>{{buy.transacao.operadora}}</strong> <br>
-                          Parcelas : <strong>{{buy.transacao.parcelas}}</strong>
+                      <p> Forma de Pagamento: <strong> {{buy.transacaoOpen.forma_pagamento}} </strong> <br>
+                          Operadora: <strong>{{buy.transacaoOpen.operadora}}</strong> <br>
+                          Parcelas : <strong>{{buy.transacaoOpen.parcelas}}</strong>
                       </p>
                   </div>
               </div>
@@ -195,7 +192,8 @@
               <div class="row">
                   <div class="small-11 large-4 large-centered small-centered  columns texte-center">  
                         <button class="button" ng-click="vm.cancelTransacao()" analytics-on analytics-event="carrinho cancel" >Alterar</button>
-                        <a ng-href="{{buy.transacao.url}}" class="button success" analytics-on analytics-event="carrinho pagar transacao">Finalizar</a>
+                          &nbsp
+                        <a ng-href="{{buy.transacaoOpen.url}}" class="button success" analytics-on analytics-event="carrinho pagar transacao">Finalizar</a>
                   </div>
               </div>
       </div>

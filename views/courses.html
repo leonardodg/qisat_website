@@ -8,7 +8,10 @@
                     <form name="formSearch" id="formSearch">
                         <div class="row collapse">
                             <div class="small-10 columns"><input class="courses-input-search" type="search"
-                                                                 placeholder="Procure um curso" ng-model="vm.search">
+                                                                 placeholder="Procure um curso" ng-model="vm.search"
+                                                                 typeahead="searchOn as searchOn.title for searchOn in vm.searchIn | filter: { title : $viewValue } | limitTo:8"
+                                                                 typeahead-on-select="vm.searchOnSelect()"
+                                                                 >
                             </div>
                         </div>
                     </form>
