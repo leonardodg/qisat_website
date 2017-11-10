@@ -84,7 +84,7 @@
 								if(edicao){
 									edicao.hide = true;
 									vm.turma = edicao;
-									// $location.search('turma', turmaid);
+									$location.search('turma', turmaid);
 
 									if(edicao.instrutor)
 										vm.info.produto.instrutor = edicao.instrutor;
@@ -93,6 +93,9 @@
 										return evento.id == id;
 									});
 									edicao.hide = false;
+
+									if(edicao.valor_produto == 'false') 
+										info.preco = edicao.preco;
 								}
 							}
 					 	};
@@ -288,11 +291,7 @@
 									evento.qtd = 1;
 									evento.isClass = true;
 									evento.curso = info.titulo;
-
-									if(turma && turma == evento.id)
-										evento.hide = true;
-									else
-										evento.hide = false;
+									evento.hide = (turma && turma == evento.id) ? true : false;
 
 									if(evento.cidade && evento.cidade.estado) {
 										evento.timestart = moment.unix(evento.data_inicio);
@@ -302,11 +301,11 @@
 										evento.uf = evento.cidade.estado.uf;
 									}
 
-									if(evento.valor_produto == "true"){
-										evento.valor = $filter('currency')(info.produto.preco, '', 2); 
+ 									if(evento.valor_produto == "true"){
+ 										evento.valor = $filter('currency')(info.produto.preco, '', 2); 
 										evento.preco = info.preco;
 									}else
-										evento.preco = $filter('currency')(evento.valor, 'R$');
+ 										evento.preco = $filter('currency')(evento.valor, 'R$');
 
 									evento.vagas = evento.vagas_total -  evento.vagas_preenchidas;
 
@@ -350,15 +349,16 @@
 									vm.turma = info.produto.eventos.find(function(evento){ return evento.id == turma });
 									if(!vm.turma){
 										vm.turma = info.produto.eventos[0];
-										vm.turma.hide = true;
 										info.produto.instrutor = info.produto.eventos[0].instrutor;
 									}else
 										info.produto.instrutor = vm.turma.instrutor;
 								}else{
 									vm.turma = info.produto.eventos[0];
-									vm.turma.hide = true;
 									info.produto.instrutor = info.produto.eventos[0].instrutor;
 								}
+
+								if(vm.turma.valor_produto == 'false') 
+									info.preco = vm.turma.preco;
 							}
 	                   		vm.info = info;
 	                   	}

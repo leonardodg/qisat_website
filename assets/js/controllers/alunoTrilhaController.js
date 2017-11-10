@@ -34,7 +34,7 @@
 							 			   				if(res.ranking && res.ranking.length){
 							 			   					vm.ranking = [];
 							 			   					res.ranking.map(function(item){
-							 			   						vm.ranking.push({ value : item.ranking+"%", nome : item.mdl_user.firstname });
+							 			   						vm.ranking.push({ value : item.ranking.toFixed(2) +"%", nome : item.mdl_user.firstname });
 							 			   					});
 							 			   				}
 							 			   			});
