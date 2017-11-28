@@ -80,6 +80,10 @@
 												item.packCert = true;
 											else
 												item.testCert = true;
+										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 48 })) { // Produto AltoQi
+											item.modalidade = tipo.nome;
+											item.isAltoQi = true;
+											hasTrilha = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
 											item.modalidade = tipo.nome;
 											item.isSetup = true;
@@ -103,7 +107,7 @@
 
 									}
 
-									if(item.isSetup && item.ecm_produto ){
+									if( (item.isSetup || item.isAltoQi) && item.ecm_produto ){
 										item.precoParcelado = $filter('currency')(item.ecm_produto.valor_parcelado, 'R$');
 										item.parcelas = item.ecm_produto.parcelas;
 									}

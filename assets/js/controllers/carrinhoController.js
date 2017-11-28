@@ -22,7 +22,7 @@
 					 			if(vm.hasTrilha){
 					 				vm.trilhas = [];
 						 			vm.itens = vm.itens.map(function(item){
-						 				if(item.isSetup)
+						 				if(item.isSetup||item.isAltoQi)
 						 					vm.trilhas.push(item);
 						 				else
 						 					return item;
