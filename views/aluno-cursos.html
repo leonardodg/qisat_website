@@ -67,14 +67,15 @@
                         
                         <div class="content" ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }">
 
-                          <p class="modalidade"> &nbsp {{::course.modalidade}}</p>
+                          <p class="modalidade" ng-hide="course.capNome" > &nbsp {{::course.modalidade}}</p>
+                          <p class="modalidade" ng-show="course.capNome" title="{{::course.capNome}}"> &nbsp {{::course.capNomeLimit}}</p>
 
     						      		<div ng-if="course.enable"> 
-    						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.view}}" title="{{::course.nome}}" >{{::course.nomeLimit}} </a></p>
+    						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.view}}" title="{{::course.nome}}" ><strong ng-show="course.capitulo" style="font-size: 15px">  {{course.capitulo}} </strong>{{::course.nomeLimit}} </a></p>
     						      		</div>
 
     						      		<div ng-if="!course.enable"> 
-    						      			<p class="name">{{::course.nomeLimit}}</p>
+                            <p class="name"> <strong ng-show="course.capitulo" style="font-size: 15px">  {{course.capitulo}} </strong>{{::course.nomeLimit}}</p>
     						      		</div>
 
                           <div ng-class="{ 'classLiberado': course.filter == 'liberado', 'classFinalizado':  course.filter == 'finalizado', 'classEncerrado':  course.filter ==  'encerrado' , 'classAgendado':  course.filter == 'agendado', 'classOutros':  course.filter == 'outros' }" >

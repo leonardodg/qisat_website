@@ -27,7 +27,7 @@
 										 		if(res.matriculas){
 											 		scope.courses = res.matriculas;
 											 		scope.courses.map(function (matricula){
-											 			var timestart,timeend, day, month, year, imagemFile;
+											 			var timestart,timeend, day, month, year, imagemFile, nomes;
 
 											 			if(!matricula.imagem)
 															matricula.imagem = Config.imgCursoUrlDefault;
@@ -35,6 +35,13 @@
 											 			if(matricula.produto){
 											 				matricula.nome = matricula.produto.nome;
 											 				matricula.nomeLimit = filterLimitName(matricula.produto.nome, 100);
+
+											 				if(matricula.produto.capitulo){
+											 					nomes = matricula.curso.split(':');
+											 					matricula.capNome = nomes[0];
+											 					matricula.capNomeLimit = filterLimitName(matricula.capNome, 50);
+											 					matricula.capitulo = "Capítulo " + matricula.produto.capitulo+ ": ";
+											 				}
 											 			}else if(matricula.info){
 											 				matricula.nome = matricula.info.titulo;
 											 				matricula.nomeLimit = filterLimitName(matricula.info.titulo, 100);
@@ -83,6 +90,7 @@
 											 				matricula.filter = 'outros';
 											 				if(!scope.outros) scope.outros = true;
 											 			}
+											 			
 							 						});
 										 		}
 												$rootScope.loading = false;
