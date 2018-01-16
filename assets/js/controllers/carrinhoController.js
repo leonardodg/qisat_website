@@ -84,8 +84,10 @@
 
 					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
 					 		vm.loading = true;
-						 	
-					 		if($location.path() != '/carrinho')
+
+							var patt = new RegExp("\/carrinho\/\d*");
+
+							if(path != '/carrinho' && !patt.test(path))
 						 		vm.showBuy = true;
 
 					 		var data = { produto: produtoid };

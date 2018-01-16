@@ -12,7 +12,8 @@
 	                    var path = $location.path(), elem = element.find('.step');
 	                	if(elem) elem.removeClass('active');
 
-                    	if(path == '/carrinho')
+						var patt = new RegExp("\/carrinho\/\d*");
+						if(path == '/carrinho' || patt.test(path))
                     		elem = element.find('.step1');
                     	else if(path == '/carrinho/pagamento')
                     		elem = element.find('.step1,.step2');

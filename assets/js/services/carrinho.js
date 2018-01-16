@@ -164,6 +164,30 @@
 		                                                });
 		                        };
 
+					function getProposta(id) {
+
+						var promise = $http({
+							method: 'post',
+							url: Config.baseUrl+'/carrinho/wsc-carrinho/get-proposta',
+							data: {'proposta':id},
+							withCredentials : true
+						});
+
+						return promise.then( function(res){
+							if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
+								setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
+								saveCarrinho();
+
+								return res.data.retorno;
+							}else{
+								destroyCarrinho();
+								return res;
+							}
+						}, function(res){
+							destroyCarrinho();
+							return res;
+						});
+					};
 
 					function getCarrinho() {
 
@@ -358,7 +382,8 @@
 		                        getValorTotal : getValorTotal,
 		                        checkPromocaoTheend : checkPromocaoTheend,
 		                        getPromocaoTheend : getPromocaoTheend,
-		                        hasTrilha : getTrilha
+		                        hasTrilha : getTrilha,
+								getProposta : getProposta
 						};
 
 				return sdo;
