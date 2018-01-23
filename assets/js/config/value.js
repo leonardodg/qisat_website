@@ -362,13 +362,13 @@
 							{ sigla : 'ZR', pais : 'Zaire' } ],
 
 				states : [
-							{"id":5,"nome":"Bahia","uf":"BA","local":"BA - Bahia", host : 4, groupCrea : "CREAs Convêniados"},
+							{"id":7,"nome":"Distrito Federal","uf":"DF","local":"DF - Distrito Federal", host : 5, groupCrea : "CREAs Convêniados"},
+							{"id":5,"nome":"Bahia","uf":"BA","local":"BA - Bahia", host : 4, groupCrea : "Demais CREAs"},
 							{"id":1,"nome":"Acre","uf":"AC","local":"AC - Acre", host : 8, groupCrea : "Demais CREAs" },
 							{"id":2,"nome":"Alagoas","uf":"AL","local":"AL - Alagoas", host : 9, groupCrea : "Demais CREAs"},
 							{"id":3,"nome":"Amazonas","uf":"AM","local":"AM - Amazonas", host : 10, groupCrea : "Demais CREAs"},
 							{"id":4,"nome":"Amapá","uf":"AP","local":"AP - Amapá", host : 11, groupCrea : "Demais CREAs"},
 							{"id":6,"nome":"Ceará","uf":"CE","local":"CE - Ceará", host : 12, groupCrea : "Demais CREAs"},
-							{"id":7,"nome":"Distrito Federal","uf":"DF","local":"DF - Distrito Federal", host : 5, groupCrea : "CREAs Convêniados"},
 							{"id":8,"nome":"Espírito Santo","uf":"ES","local":"ES - Espírito Santo", host : 13, groupCrea : "Demais CREAs"},
 							{"id":9,"nome":"Goiás","uf":"GO","local":"GO - Goiás", host : 14, groupCrea : "Demais CREAs"},
 							{"id":10,"nome":"Maranhão","uf":"MA","local":"MA - Maranhão", host : 15, groupCrea : "Demais CREAs"},
