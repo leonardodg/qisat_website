@@ -164,7 +164,7 @@
                       }
             });
 
-            $routeProvider.when('/institucional/convenios/conselhos/desconto', {
+            /*$routeProvider.when('/institucional/convenios/conselhos/desconto', {
                     templateUrl : '/views/institucional-conselhos-desconto.html',
                     controller : 'descontosConvenioController',
                     resolve : { descontosConvenio : descontosConvenio },
@@ -175,7 +175,7 @@
                         keys : 'qisat, qi sat, curso eberick, altoqi, eberick, treinamento AltoQi, cursos AltoQi, benefícios para associados, Conselhos Regionais, Entidades de Classe, Universidades, CREA, CREARO, CREADF, CREABA, CREATO, CREASC, CREAMS, CREA-RO, CREA-DF, CREA-BA, CREA-TO, CREA-SC, CREA-MS, CREA RO, CREA DF, CREA BA, CREA TO, CREA SC, CREA MS',
                         url : 'https://www.qisat.com.br/institucional/convenios/conselhos/desconto'
                       }
-            });
+            });*/
 
             $routeProvider.when('/institucional/convenios/preduc/ensino', {
               templateUrl : '/views/institucional-preduc-ensino.html',
@@ -200,7 +200,7 @@
                         url : 'https://www.qisat.com.br/institucional/convenios/preduc/entidade'
                       }
             });
-
+/*
             $routeProvider.when('/institucional/convenios/preduc/descontos', {
                     templateUrl : '/views/institucional-preduc-descontos.html',
                     controller : 'descontosConvenioController',
@@ -213,7 +213,7 @@
                         url : 'https://www.qisat.com.br/institucional/convenios/preduc/descontos'
                       }
             });
-
+*/
             $routeProvider.when('/institucional/convenios/preduc/conveniadas', {
                   templateUrl : '/views/institucional-preduc-conveniadas.html',
                   controller :  function($scope, Config, institutions){
