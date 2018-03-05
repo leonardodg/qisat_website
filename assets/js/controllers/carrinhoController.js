@@ -10,6 +10,10 @@
 					 	var modalController = $controller('modalController');
 
 					 	vm.loading = true;
+					 	if($location.path().indexOf('/proposta') >=0)
+					 		vm.editCarrinho = false;
+					 	else
+					 		vm.editCarrinho = true;
 
 					 	function setValues(){
 					 		vm.itens = carrinhoServive.getItens();
@@ -51,7 +55,6 @@
 					 	};
 
 					 	(function init(){
-					 		console.log('init');
 					 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){ 
 				 				carrinhoServive.getCarrinho()
 				 						.then(function (res){
@@ -59,6 +62,7 @@
 				 								if(res.sucesso && res.carrinho)
 				 									setValues();
 				 								else if(!res.sucesso && res.transacao){
+				 									vm.editCarrinho = false;
 				 									setValues();
 			 										transacao = res.transacao;
 				 									
@@ -85,7 +89,7 @@
 					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
 					 		vm.loading = true;
 						 	
-					 		if($location.path() != '/carrinho')
+					 		if(($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >=0))
 						 		vm.showBuy = true;
 
 					 		var data = { produto: produtoid };

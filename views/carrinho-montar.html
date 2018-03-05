@@ -95,14 +95,14 @@
 
               <tr ng-repeat="item in buy.itens track by item.id">
                 <td >
-                  <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> {{item.nome}} 
+                  <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> {{item.nome}}
                 </td>
                 <td class="muted qtd">
 
-                  <div ng-show="!item.isSetup">
-                    <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacaoOpen" class="item-action"><i class="material-icons left">remove_circle</i></a>
+                  <div>
+                    <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-show="buy.editCarrinho&&!buy.loading" class="item-action"><i class="material-icons left">remove_circle</i></a>
                     <input type="text" name="" class="quantity" placeholder="{{item.quantidade}}" value="{{item.quantidade}}">
-                    <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ng-if="!buy.transacaoOpen" class="item-action"><i class="material-icons left">add_circle</i></a>
+                    <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-show="buy.editCarrinho&&!buy.loading"  class="item-action"><i class="material-icons left">add_circle</i></a>
                   </div>
 
                 </td>
@@ -118,12 +118,11 @@
                 </td>
                 <td class="muted" >{{item.totalFormat}}</td>
                 <td width="5%" class="muted text-center">
-                   <div ng-if="!buy.transacaoOpen" >
+                   <div ng-show="buy.editCarrinho">
                       <a class="cinza" ng-click="buy.removeItemCarrinho(item.ecm_produto_id,true, item.ecm_curso_presencial_turma_id)" ng-hide="buy.loading" ><i class="material-icons del">delete_forever</i></a>
                     </div>
                 </td>
               </tr>
-             
               <tr ng-if="buy.qtdItens" class="rowTotal">
                   <td class="text-right"> <strong> Total da Compra:</strong></td>
                   <td class="text-center"><strong>{{buy.totalCarrinho}}</strong></td>

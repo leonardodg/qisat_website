@@ -12,7 +12,7 @@
 	                    var path = $location.path(), elem = element.find('.step');
 	                	if(elem) elem.removeClass('active');
 
-                    	if(path == '/carrinho')
+                    	if(path == '/carrinho' || path.indexOf('/proposta') >=0 )
                     		elem = element.find('.step1');
                     	else if(path == '/carrinho/pagamento')
                     		elem = element.find('.step1,.step2');

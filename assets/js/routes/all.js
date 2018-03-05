@@ -401,6 +401,34 @@
                       }
             });
 
+		        $routeProvider.when('/proposta/:id', {
+                  templateUrl : '/views/carrinho-montar.html',
+                  controller : 'montarCarrinhoController as vm',
+                  resolve : {
+                      carrinho : function (carrinhoServive, $route, $controller, $location){
+                          var modalController = $controller('modalController');
+                          if(!isNaN($route.current.params.id))
+                              return carrinhoServive.getProposta($route.current.params.id)
+                                  .then(function (res){
+                                      if(res.sucesso)
+                                          return res.carrinho;
+                                      else if(res.mensagem){
+                                          modalController.alert({ main : { title : res.mensagem }, error : true });
+                                          $location.path('/carrinho');
+                                      }
+                                  });
+                      }
+                  },
+                  seo : {
+                      title : 'Carrinho de Compras - QiSat | Cursos aplicados à engenharia e arquitetura',
+                      robots : 'nofollow, noindex',
+                      description : 'Seja bem vindo ao carrinho de compras da QiSat. Acesse e aproveite! Aqui você encontra os mais variados cursos online e presenciais para engenharia e arquitetura.',
+                      keys : 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico',
+                      url : 'https://www.qisat.com.br/carrinho'
+                  }
+
+            });
+
             $routeProvider.when('/carrinho/confirmacao/:id', {
               templateUrl : '/views/carrinho-confirmacao.html',
               controller : 'confirmacaoController as vm',
