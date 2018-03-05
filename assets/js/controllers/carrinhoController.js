@@ -88,7 +88,7 @@
 
 					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
 					 		vm.loading = true;
-						 	
+
 					 		if(($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >=0))
 						 		vm.showBuy = true;
 
