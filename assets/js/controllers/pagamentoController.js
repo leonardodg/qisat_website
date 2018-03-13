@@ -7,13 +7,18 @@
 					 function(scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated, Itens) {
 
 					 	var modalController = $controller('modalController');
-					 	var vm = this, forma;
-				 		vm.pagamento = 1;
-					 	moment.locale('pt-BR');
+					 	var vm = this;
+					 		moment.locale('pt-BR');
+
+						vm.anoVencimento = [ '2018','2019','2020','2021','2022','2023','2024', '2025','2026','2027','2028','2029', '2030'];
+						vm.mesVencimento = [ '01','02','03','04','05','06','07','08','09','10','11','12' ];
 
 		 				if(formasPagamentos){
-		 					forma = formasPagamentos.find(function(forma){ return forma.pagamento == 'Cartão de Crédito'});
-		 					formasPagamentos.map(function(forma){ 
+		 					formasPagamentos.map(function(forma){
+
+		 						if(forma.tipo && forma.tipo.indexOf('cartao') >= 0 )
+		 							forma.isCard = true;
+		 						
 		 						if(forma && forma.operadoras){
 			 						forma.operadoras = forma.operadoras.map(function(op){
 			 							if(op.img && op.img.nome)
@@ -21,10 +26,26 @@
 			 							return op;
 			 						}); 
 		 						}
+
+			 					if(forma.parcelas && forma.parcelas.length){
+				 					forma.parcelas.map(function(parcela){
+				 						parcela.label = parcela.qtd+'x de '+parcela.valor;
+				 					});
+			 					}
 		 					});
-				 			vm.formasPagamentos = formasPagamentos.reverse(); 
+
+				 			vm.formasPagamentos = formasPagamentos.reverse();
 		 				}
 
+						vm.selectForma = function(forma, pagamento){
+							vm.pagamento = pagamento;
+							vm.forma = forma;
+							if(vm.forma && vm.forma.parcelas && vm.forma.parcelas.length){
+								vm.parcelas = vm.forma.parcelas;
+								vm.nparcelas = vm.forma.parcelas[0];
+							}
+							vm.error = false;
+						};
 
 					 	if(Authenticated && Itens){
 					 		vm.user = authService.getUser();
@@ -32,16 +53,6 @@
 					 			modalController.update('/carrinho/pagamento');
 			 					$location.path('/carrinho/');
 					 		}
-
-			 				if(forma) {
-			 					vm.parcelas = forma.parcelas;
-			 					if(vm.parcelas && vm.parcelas.length){
-				 					vm.parcelas.map(function(parcela){
-				 						parcela.label = parcela.qtd+'x de '+parcela.valor;
-				 					});
-				 					vm.nparcelas = vm.parcelas[0];
-			 					}
-			 				}
 
 					 		vm.modalcontrato = function () {
 		 						var modalInstance = $modal.open({
@@ -114,15 +125,23 @@
 						 	vm.nextPagamento = function(form){
 						 		vm.submitted = true;
 						 		var data = {},tipoPagamento;
-						 		if(!form.$error.required){
+
+								if(vm.pagamento && vm.nparcelas && vm.contrato){
+									if(vm.forma.tipo =='cartao_recorrencia')
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
+											return;
+										else
+											data.cartao = vm.cartao;
+
 						 			vm.loading = true;
+						 			vm.error = false;
 						 			data.contrato = 1;
 						 			data.operadora = parseInt(vm.pagamento);
 									tipoPagamento = vm.formasPagamentos.find(function (forma){ return forma.operadoras.find(function (op){ return op.index == vm.pagamento })});
 									// melhorar solução para quando forma de pogamento possuir mais de um tipo ativo
 									if(tipoPagamento && tipoPagamento.tipos) 
 										data.tipoPagamento = parseInt(tipoPagamento.tipos[0].index);
-									data.valorParcelas = parseInt(vm.nparcelas.qtd);
+									data.valorParcelas = (vm.nparcelas) ? parseInt(vm.nparcelas.qtd) : 1;
 
 									carrinhoServive.getCarrinho()
 				 						.then(function (res){

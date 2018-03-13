@@ -83,7 +83,6 @@
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 48 })) { // Produto AltoQi
 											item.modalidade = tipo.nome;
 											item.isAltoQi = true;
-											hasTrilha = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
 											item.modalidade = tipo.nome;
 											item.isSetup = true;

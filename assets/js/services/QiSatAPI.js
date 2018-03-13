@@ -284,6 +284,9 @@
 																		if(tipo = course.categorias.find(function(tipo){ return tipo.id == 32 })) { // Séries
 																			course.modalidade = tipo.nome;
 																			course.isSerie = true;
+																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 48 })) { // Produto AltoQi
+																			course.modalidade = tipo.nome;
+																			course.isAltoQi = true;
 																		}else if(tipo = course.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
 																			course.modalidade = tipo.nome;
 																			course.isSetup = true;

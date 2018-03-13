@@ -26,7 +26,7 @@
 					 			if(vm.hasTrilha){
 					 				vm.trilhas = [];
 						 			vm.itens = vm.itens.map(function(item){
-						 				if(item.isSetup||item.isAltoQi)
+						 				if(item.isSetup)
 						 					vm.trilhas.push(item);
 						 				else
 						 					return item;
@@ -45,6 +45,7 @@
 					 			vm.qtdItens = vm.itens.reduce(function(a, b){
 					 				return a + b.quantidade;
 					 			}, 0);
+
 					 			vm.totalCarrinho = $filter('currency')(vm.valorTotal, 'R$');
 
 		 					}else{

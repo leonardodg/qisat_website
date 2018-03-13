@@ -104,11 +104,20 @@ ul.pagination li.current a, ul.pagination li.current button {
 }
 
 .progress {
-    border: 1px solid #FFF;
+    border: 1px solid $success-color; 
     margin-top: .5rem;
     padding: .125rem;
     max-width: 500px;
 }
 .progress .meter {
     background: #005B94;
+}
+
+
+/* line 248, ../scss/libs/foundation/components/_grid.scss */
+#pagamentoForm .column + .column:last-child,
+#pagamentoForm .columns + .column:last-child, 
+#pagamentoForm .column + .columns:last-child,
+#pagamentoForm .columns + .columns:last-child {
+   float: left; 
 }
