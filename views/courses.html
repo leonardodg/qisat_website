@@ -30,27 +30,27 @@
                         <form name="formFilters" id="formFilters">
                             <div>
                                 <ul class="menu-filter-sidebar-option-set">
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/cursos">Todos os Cursos<i
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/cursos" analytics-on analytics-category="menu-cursos" analytics-label="todos"  >Todos os Cursos<i
                                             class="material-icons">chevron_right</i></a></li>
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/cursos/lancamentos">Lançamentos<i
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/cursos/lancamentos" analytics-on analytics-category="menu-cursos" analytics-label="lançamentos" >Lançamentos<i
                                             class="material-icons">chevron_right</i></a></li>
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/cursos/online/gratuito">Cursos
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/cursos/online/gratuito" analytics-on analytics-category="menu-cursos" analytics-label="gratuitos" >Cursos
                                         Gratuitos<i class="material-icons">chevron_right</i></a></li>
                                 </ul>
                                 <hr>
                                 <h5 class="menu-filter-sidebars--title">Modalidades</h5>
                                 <ul class="menu-filter-sidebar-option-set">
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/cursos/online">Cursos Online<i
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/cursos/online" analytics-on analytics-category="menu-cursos" analytics-label="online" >Cursos Online<i
                                             class="material-icons">chevron_right</i></a></li>
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/cursos/presenciais">Cursos
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/cursos/presenciais" analytics-on analytics-category="menu-cursos" analytics-label="presenciais" >Cursos
                                         Presenciais<i class="material-icons">chevron_right</i></a></li>
-                                    <li class="menu-filter-sidebar-item"><a class="menu-filter-sidebar-item--link"
-                                                                            ng-href="/altoqi-lab">AltoQi LAB<i
+                                    <li class="menu-filter-sidebar-item">
+                                        <a class="menu-filter-sidebar-item--link" ng-href="/altoqi-lab" analytics-on analytics-category="menu-cursos" analytics-label="altoqi-lab">AltoQi LAB<i
                                             class="material-icons">chevron_right</i></a></li>
                                 </ul>
                                 <hr>
@@ -62,7 +62,7 @@
                                                                                              class="selectStates"
                                                                                              ng-options="option.local for option in filter.inputs track by option.uf"
                                                                                              ng-model="filter.selectStates"
-                                                                                             ng-change="vm.filterStates(filter.selectStates)">
+                                                                                             ng-change="vm.filterStates(filter.selectStates)" analytics-on analytics-category="menu-cursos-filtro" analytics-event="filter-selectStates" analytics-value="{{option.uf}}" >
                                     <option value="">Selecione o Estado</option>
                                 </select></label></div>
                                 <div ng-if="::filter.type=='checkbox'"><h5 class="menu-filter-sidebars--title">
@@ -77,11 +77,11 @@
                                                                                       type="checkbox"
                                                                                       class="with-font filter-checkbox filter-types-produts"
                                                                                       ng-click="vm.filterTypesProduts($event, item, filter)"
-                                                                                      ng-if="::filter.name=='Combinacoes'">
+                                                                                      ng-if="::filter.name=='Combinacoes'" analytics-on analytics-category="menu-filter-combinacao" analytics-label="{{::item.name}}" >
                                             <input id="{{::item.name}}" type="checkbox"
                                                    class="with-font filter-checkbox filter-area"
                                                    ng-click="vm.addListFilter($event, item, filter)"
-                                                   ng-if="::(filter.name=='Area' || filter.name=='Area-Complementar')"><label
+                                                   ng-if="::(filter.name=='Area' || filter.name=='Area-Complementar')" analytics-on analytics-category="menu-filter-area" analytics-label="{{::item.name}}" ><label
                                                     for="{{::item.name}}">{{::item.title}}<span
                                                     class="menu-filter-sidebar-item--quantity">{{::item.qtds}}</span></label>
                                         </li>
@@ -140,17 +140,17 @@
                                 <div class="list-filter__inner">
                                     <div class="card-course card-format-block">
                                         <div class="card-course-inner">
-                                            <a ng-href="{{::course.info.url}}">
+                                            <a ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info">
                                                 <span class="card-course--litle-play"></span>
                                                 <img bn-lazy-src="{{::course.imgSrc}}" width="100%" height="180px" class="card-course-header">
                                             </a>
                                             <div class="card-course--content">
-                                                <a ng-href="{{::course.info.url}}">
+                                                <a ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info" >
                                                     <span data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true" title="Assista o trailer" data-options="disable_for_touch:true" class="has-tip tip-top card-course__play"></span>
                                                     <span class="card-course__modality" ng-hide="list.type==47">{{::course.modalidade}}</span>
                                                     <span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
                                                 </a>
-                                                <a class="card-course__button has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="list.type!=12&&list.type!=10&&list.type!=8&&list.type!=47" title="Adicionar ao carrinho">{{::course.preco}}
+                                                <a class="card-course__button has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="list.type!=12&&list.type!=10&&list.type!=8&&list.type!=47" title="Adicionar ao carrinho" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="addItem" >{{::course.preco}}
                                                     <span class="card-course__icon-cart">
                                                         <i class="material-icons">add_shopping_cart</i>
                                                         <div class="price_popover" ng-show="::course.promocaoDateend">
@@ -166,7 +166,7 @@
                                                     </span>
                                                 </a>
                                                 
-                                                <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="list.type==47" title="Adquirir este produto" >{{::course.parcelas}} x {{::course.precoParcelado}}
+                                                <a class="card-course__button has-price_popover" ng-click="buy.trilha(course)" ng-if="list.type==47" title="Adquirir este produto" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="compra-trilha" >{{::course.parcelas}} x {{::course.precoParcelado}}
                                                     <span class="card-course__icon-cart">
                                                         <i class="material-icons">add_shopping_cart</i>
                                                         <div class="price_popover" ng-show="::course.promocaoDateend">
@@ -182,7 +182,7 @@
                                                     </span>
                                                 </a>
 
-                                                <a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="list.type==12||list.type==10">{{::course.preco}}
+                                                <a class="card-course__button has-price_popover" ng-click="modal.interesse(course)" ng-if="list.type==12||list.type==10" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="add-interesse" >{{::course.preco}}
                                                     <span class="cart"><i class="material-icons">playlist_add_check</i></span>
                                                     <span class="card-course__icon-cart">
                                                         <div class="price_popover"> 
@@ -190,7 +190,7 @@
                                                         </div>
                                                     </span>
                                                 </a>
-                                                <a class="card-course__button has-price_popover" ng-click="vm.inscricao(course.id)" ng-if="list.type==8">
+                                                <a class="card-course__button has-price_popover" ng-click="vm.inscricao(course.id)" ng-if="list.type==8" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="add-inscrever" >
                                                     <span class="cart"><i class="material-icons">school</i></span>
                                                     <span class="card-course__icon-cart">
                                                         <div class="price_popover">
@@ -227,33 +227,33 @@
                                                     class="material-icons">add_shopping_cart</i></span></div>
                                         </div>
                                         <div class="card-course-inner" ng-if="::list.card=='serie'"><a
-                                                ng-href="{{::course.info.url}}"><span
+                                                ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info" ><span
                                                 class="card-course--litle-play"></span><img
                                                 bn-lazy-src="{{::course.imgSrc}}" width="100%" height="180px"
                                                 class="card-course-header"></a>
-                                            <div class="card-course--content"><a ng-href="{{::course.info.url}}"><span
+                                            <div class="card-course--content"><a ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info"><span
                                                     data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true"
                                                     title="Assista o trailer" data-options="disable_for_touch:true"
                                                     class="has-tip tip-top card-course__play"></span><span
                                                     class="card-course__modality">{{::course.modalidade}}</span><span
                                                     class="card-course__name">{{::course.nome}}</span></a><a
                                                     class="card-course__button"
-                                                    ng-click="buy.addItemCarrinho(course.id)">{{::course.preco}}<i
+                                                    ng-click="buy.addItemCarrinho(course.id)" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="addItem" >{{::course.preco}}<i
                                                     class="material-icons">add_shopping_cart</i></a></div>
                                         </div>
                                         <div class="card-course-inner" ng-if="::list.card=='pacotes'"><a
-                                                ng-href="{{::course.info.url}}"><span
+                                                ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info"><span
                                                 class="card-course--litle-play"></span><img
                                                 bn-lazy-src="{{::course.imgSrc}}" width="100%" height="180px"
                                                 class="card-course-header"></a>
-                                            <div class="card-course--content"><a ng-href="{{::course.info.url}}"><span
+                                            <div class="card-course--content"><a ng-href="{{::course.info.url}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info"><span
                                                     data-reveal-id="modal__trailer" data-tooltip="" aria-haspopup="true"
                                                     title="Assista o trailer" data-options="disable_for_touch:true"
                                                     class="has-tip tip-top card-course__play"></span><span
                                                     class="card-course__modality">{{::course.modalidade}}</span><span
                                                     class="card-course__name">{{::course.nome}}</span></a><a
                                                     class="card-course__button has-price_popover"
-                                                    ng-click="buy.addItemCarrinho(course.id)">{{::course.preco}}<i
+                                                    ng-click="buy.addItemCarrinho(course.id)" analytics-on analytics-category="buy-cursos" analytics-label="{{::course.sigla}}" analytics-event="addItem" >{{::course.preco}}<i
                                                     class="material-icons">add_shopping_cart</i><span
                                                     class="card-course__icon-cart"><div class="price_popover"
                                                                                         ng-show="::course.promocaoDateend">
@@ -271,7 +271,7 @@
                                                 <li class="card-course-presencial__item"
                                                     ng-repeat="edicao in course.eventos track by edicao.id "
                                                     ng-show="edicao.show"><a
-                                                        ng-href="{{course.info.url+'?turma='+edicao.id}}"><strong
+                                                        ng-href="{{course.info.url+'?turma='+edicao.id}}" analytics-on analytics-category="cursos" analytics-label="{{::course.sigla}}" analytics-event="view-info" ><strong
                                                         class="chapter"><span class="name">{{::edicao.cidadeuf}}</span>-
                                                     {{::edicao.timestart}} até {{::edicao.timeend}}</strong></a></li>
                                             </ul>

@@ -42,10 +42,10 @@
 			 <aside class="right-off-canvas-menu">
 			   <ul class="off-canvas-list">
 			     <li><label>Menu</label></li>
-			     <li><a href="/"  >Home</a></li>
-			     <li><a href="/cursos" >Cursos</a></li>
-				 <li><a href="/aluno" >Área do Aluno</a></li>
-				 <li><a href="/institucional"  >Institucional</a></li>
+			     <li><a href="/"  analytics-on analytics-event="Home" analytics-category="menu-topo-mobile" >Home</a></li>
+			     <li><a href="/cursos" analytics-on analytics-event="Cursos" analytics-category="menu-topo-mobile" >Cursos</a></li>
+				 <li><a href="/aluno" analytics-on analytics-event="Aluno" analytics-category="menu-topo-mobile" >Área do Aluno</a></li>
+				 <li><a href="/institucional" analytics-on analytics-event="Institucional" analytics-category="menu-topo-mobile" >Institucional</a></li>
 			   </ul>
 			 </aside>
 			<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
@@ -56,23 +56,23 @@
 				<nav class="header-main__nav">
 					<ul class="header-main__ul" menu-active>
 						<li class="show-for-large-up header-main__list ">
-							<a class="header-main__item" href="/" >Home</a>
+							<a class="header-main__item" href="/" analytics-on analytics-event="Home" analytics-category="menu-topo" >Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list ">
-							<a class="header-main__item" href="/cursos" >Cursos</a>
+							<a class="header-main__item" href="/cursos" analytics-on analytics-event="Cursos" analytics-category="menu-topo" >Cursos</a>
 						</li>
 			 			<li class="show-for-large-up header-main__list">
-			 				<a class="header-main__item" href="/aluno" >Área do Aluno</a>
+			 				<a class="header-main__item" href="/aluno" analytics-on analytics-event="Aluno" analytics-category="menu-topo" >Área do Aluno</a>
 			 			</li>
 						<li class="show-for-large-up header-main__list">
-							<a class="header-main__item" href="/institucional" >Institucional</a>
+							<a class="header-main__item" href="/institucional" analytics-on analytics-event="Institucional" analytics-category="menu-topo" >Institucional</a>
 						</li>
 						<li class="hide-for-large-up header-main__list">
-			              <a class="right-off-canvas-toggle menu-icon header-main__item">
+			              <a class="right-off-canvas-toggle menu-icon header-main__item" analytics-on analytics-event="Menu-Mobile" analytics-category="menu-topo-mobile" >
 			                <span><i class="material-icons">menu</i> Menu </span> </a>
 			            </li>
 			    		<li class="header-main__list header-main__list-cart" >
-			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho Itens"  >
+			    			<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="icon-carrinho" analytics-category="menu-topo" >
 			    				<i class="material-icons">shopping_cart</i> <span class="cart_number" ng-show="buy.qtdItens" ng-cloak>{{buy.qtdItens}}</span>
 			    			</a>
 			    		</li>
@@ -92,7 +92,7 @@
 								<span ng-show="item.modalidade"> {{item.modalidade}}: </span>
 								{{item.nomeLimit}}
 							</span>
-							<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)" ><i class="material-icons">close</i></a>
+							<a class="cd-item-remove cd-img-replace" ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)" analytics-on analytics-event="remover" analytics-category="bloco-carrinho" analytics-value="{{item.ecm_produto.sigla}}" ><i class="material-icons">close</i></a>
 						</li>
 					</ul>
 
@@ -104,8 +104,8 @@
 						<p><strong>Total <span>{{buy.totalCarrinho}} </span> </strong></p>
 					</div> <!-- cd-cart-total -->
 
-					<a href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()" >Finalizar compra</a>
-					<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="Carrinho close" ><a>Continuar comprando</a></p>
+					<a href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()" analytics-on analytics-event="finalizar" analytics-category="bloco-carrinho" >Finalizar compra</a>
+					<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="continuar" analytics-category="bloco-carrinho" ><a>Continuar comprando</a></p>
 				</div> <!-- cd-cart -->
 		 <!-- |||||||||||||||||||||||| END CARRINHO |||||||||||||||||||||||||||| -->
 
@@ -115,7 +115,7 @@
 				<!-- ########################## FOOTER ########################## -->
 					<footer class="footer-main">
 
-						<div class="footer-primary">
+						<div class="footer-primary">   
 							<div class="row">
 
 										<ul class="footer-primary__columns small-block-grid-2 medium-block-grid-3 large-block-grid-6">
@@ -123,49 +123,49 @@
 											<li class="footer-primary__columns--item">
 											 		<ul class="footer-primary__list">
 														<li class="footer-primary__title">Sobre o QiSat</li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional"   > Institucional </a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo"   > Linha do Tempo </a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"  >Convênios e Parceiros</a></li>
-														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores"  >Instrutores e Professores</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/sobre-a-empresa" title="Institucional" analytics-on analytics-event="sobreqisat" analytics-category="rodape" analytics-label="institucional" > Institucional </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/linha-do-tempo" title="Linha do Tempo" analytics-on analytics-event="sobreqisat" analytics-category="rodape"  analytics-label="linhadotempo" > Linha do Tempo </a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros" analytics-on analytics-event="sobreqisat" analytics-category="rodape" analytics-label="convenios" >Convênios e Parceiros</a></li>
+														<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/instrutores-e-professores" title="Instrutores e Professores" analytics-on analytics-event="sobreqisat" analytics-category="rodape" analytics-label="instrutores" >Instrutores e Professores</a></li>
 													</ul>
 											</li>
 
 											<li class="footer-primary__columns--item">
 											 	<ul class="footer-primary__list">
 													<li class="footer-primary__title"> Páginas </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online"  >Cursos Online</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/online" title="Cursos Online" analytics-on analytics-event="paginas" analytics-category="rodape" analytics-label="Cursos Online" >Cursos Online</a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais"  >Cursos Presenciais</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cursos/presenciais" title="Cursos Presenciais" analytics-on analytics-event="paginas" analytics-category="rodape" analytics-label="Cursos Presenciais" >Cursos Presenciais</a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Área do Aluno"  href-portal >Área do Aluno</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/aluno" title="Área do Aluno" analytics-on analytics-event="paginas" analytics-category="rodape" analytics-label="aluno" href-portal >Área do Aluno</a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cadastro" title="Cadastro"  >Cadastro</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/cadastro" title="Cadastro" analytics-on analytics-event="paginas" analytics-category="rodape" analytics-label="Cadastro" >Cadastro</a></li>
 									 		 	</ul>
 											</li>
 
 
-<!-- 										 	<li class="footer-primary__columns--item">
+ 										 	<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													<li class="footer-primary__title"> Blogs </li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank" >Blog Mais Engenharia </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia" target="_blank"  analytics-on analytics-event="blogs" analytics-category="rodape" analytics-label="+ Engenharia" >Blog Mais Engenharia </a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank"> Blog Eberick </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://eberick.com.br/" title="Blog Eberick" target="_blank" analytics-on analytics-event="blogs" analytics-category="rodape" analytics-label="Blog Eberick" > Blog Eberick </a></li>
 
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank" > Blog QiBuilder </a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank"  analytics-on analytics-event="blogs" analytics-category="rodape" analytics-label="Blog QiBuilder" > Blog QiBuilder </a></li>
 
 											 		</ul>
-											</li> -->
+											</li> 
 
 
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 											 		<li class="footer-primary__title"> Redes Sociais </li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" >Facebook</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" >Linkedin</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" >Instagram</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" >YouTube</a></li>
-											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" >Twitter</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.facebook.com/qisat" title="Facebook" target="_blank" analytics-on analytics-event="RedesSociais" analytics-category="rodape" analytics-label="Facebook" >Facebook</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.linkedin.com/in/qisat" title="Linkedin" target="_blank" analytics-on analytics-event="RedesSociais" analytics-category="rodape" analytics-label="Linkedin" >Linkedin</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.instagram.com/qisat/" title="Instagram" target="_blank" analytics-on analytics-event="RedesSociais" analytics-category="rodape" analytics-label="Instagram" >Instagram</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://www.youtube.com/user/qisat" title="YouTube" target="_blank" analytics-on analytics-event="RedesSociais" analytics-category="rodape" analytics-label="YouTube" >YouTube</a></li>
+											 		<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="https://twitter.com/QiSat" title="Twitter" target="_blank" analytics-on analytics-event="RedesSociais" analytics-category="rodape" analytics-label="Twitter" >Twitter</a></li>
 
 											 	</ul>
 											</li>
@@ -173,16 +173,16 @@
 											<li class="footer-primary__columns--item">
 												<ul class="footer-primary__list">
 													 <li class="footer-primary__title"> Contatos</li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você"  ng-click="modal.call()" analytics-on analytics-event="callme" >Ligamos para você</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" >Mensagem</a></li>
-													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Mensagem" ng-click="modal.showZopim()" >Chat</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Ligamos para você"  ng-click="modal.call()" analytics-on analytics-event="Contatos" analytics-category="rodape" analytics-label="callme" >Ligamos para você</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" href="/institucional/contatos" title="Mensagem" analytics-on analytics-event="Contatos" analytics-category="rodape" analytics-label="Mensagem"  >Mensagem</a></li>
+													<li class="footer-primary__list__item"><a class="footer-primary__list__item--link" title="Mensagem" ng-click="modal.showZopim()" analytics-on analytics-event="Contatos" analytics-category="rodape" analytics-label="Chat"  >Chat</a></li>
 												</ul>
 											</li>
 
 											<li class="footer-primary__columns--item">
 												<img class="footer-primary__list__item--brand-qisat" src="/images/brand/brand_small-light.svg" alt="Brand QiSat Light">
 						                        <br><br><span class="footer-primary__title"> <i class="material-icons">call</i> (48) 3332-5000 </span>
-                       							<br><span class="footer-primary__title "> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5548998151222"> <i class="icon-whats"></i>(48) 99815-1222 </a></span>
+                       							<br><span class="footer-primary__title "> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5548998151222" analytics-on analytics-event="Contatos" analytics-category="rodape" analytics-label="whatsapp"> <i class="icon-whats"></i>(48) 99815-1222 </a></span>
 											</li> <!-- //  -->
 									</ul>
 
@@ -198,10 +198,10 @@
 											<li>
 													<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="modal.termo()"  >Termos de uso</a>
+															<a class="footer-secondary__list__item--link" ng-click="modal.termo()" analytics-on analytics-event="termos" analytics-category="rodape-secondary" >Termos de uso</a>
 														</li>
 														<li class="footer-secondary__list__item">
-															<a class="footer-secondary__list__item--link" ng-click="modal.politica()"  >Política de Privacidade</a>
+															<a class="footer-secondary__list__item--link" ng-click="modal.politica()" analytics-on analytics-event="privacidade" analytics-category="rodape-secondary" >Política de Privacidade</a>
 														</li>
 													</ul>
 										    </li>
@@ -209,7 +209,7 @@
 										    <li>
 													<ul class="footer-secondary__list footer-secondary__list--email ">
 														<li class="footer-secondary__list__item">QiSat | Cursos aplicados à engenharia e arquitetura
-														<a href="mailto:inscricoes@qisat.com.br" class="footer-secondary__list__item--link"><strong>inscricoes@qisat.com.br</strong></a></li>
+														<a href="mailto:inscricoes@qisat.com.br" class="footer-secondary__list__item--link" analytics-on analytics-event="email" analytics-category="rodape-secondary"><strong>inscricoes@qisat.com.br</strong></a></li>
 													</ul>
 										   	</li>
 
@@ -217,7 +217,7 @@
 												<ul class="footer-secondary__list">
 														<li class="footer-secondary__list__item">
 															<span class="footer-secondary__list__item--brand-text">Uma empresa</span>
-															<a href="https://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" ><img class="footer-secondary__list__item--brand-image" src="/images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
+															<a href="https://www.altoqi.com.br" class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi" title="AltoQi" analytics-on analytics-event="logo-altoqi" analytics-category="rodape-secondary" ><img class="footer-secondary__list__item--brand-image" src="/images/brand/brand_altoqi-small-light.svg" alt="AltoQi" title="AltoQi" ></a>
 														</li>
 												 </ul>
 											</li>

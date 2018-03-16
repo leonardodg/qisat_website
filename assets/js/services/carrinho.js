@@ -165,10 +165,13 @@
 
 					function getProposta(id) {
 
+						var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+
 						var promise = $http({
 							method: 'post',
 							url: Config.baseUrl+'/carrinho/wsc-carrinho/get-proposta',
-							data: {'proposta':id},
+							data: {'proposta': id },
+							headers : headers,
 							withCredentials : true
 						});
 
@@ -188,9 +191,12 @@
 
 					function getCarrinho() {
 
+									var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+
 		                            var promise = $http({ 
 		                                                    method: 'post', 
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/listar',
+		                                                    headers : headers,
 		                                                    withCredentials : true
 		                                                        });
 
@@ -210,11 +216,13 @@
 
 					function cancelarTransacao() {
 
+									var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+									
 		                            var promise = $http({ 
 		                                                    method: 'get', 
 		                                                    loading : true,
 		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/cancelar-transacao',
-		                                                    headers : { 'Authorization': Config.Authorization+" "+authService.getToken() },
+		                                                    headers : headers,
 		                                                    withCredentials : true
 		                                                        });
 

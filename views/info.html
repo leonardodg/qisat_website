@@ -10,13 +10,13 @@
 					<ul class="button-group radius hero-course__buttons-group" ng-cloak>
 
 
-						<li class="hero-course__buttons-group--item"> <a class="button buttom-call has-tip tip-top" anchor-link data-tooltip aria-haspopup="true" data-options="show_on:large" title="Ligamos para você" ng-click="modal.call()" > <i class="material-icons">call</i></a> </li>
+						<li class="hero-course__buttons-group--item"> <a class="button buttom-call has-tip tip-top" anchor-link data-tooltip aria-haspopup="true" data-options="show_on:large" title="Ligamos para você" ng-click="modal.call()" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="callme"> <i class="material-icons">call</i></a> </li>
 
 
-						<li class="hero-course__buttons-group--item"> <a href="#" class="button buttom-favorite has-tip tip-top" anchor-link data-tooltip aria-haspopup="true" data-options="show_on:large" title="Favoritar"><i class="material-icons" >favorite</i></a></li>
+						<li class="hero-course__buttons-group--item"> <a href="#" class="button buttom-favorite has-tip tip-top" anchor-link data-tooltip aria-haspopup="true" data-options="show_on:large" title="Favoritar" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="favorite"><i class="material-icons" >favorite</i></a></li>
 
 
-			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie||vm.info.packCert||vm.info.testCert" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.produto.id)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie||vm.info.packCert||vm.info.testCert" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.produto.id)" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
 			                  <div class="price_popover__header">
@@ -27,7 +27,7 @@
 			              </span>
 			            </a></li>
 
-			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isSetup" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.trilha(vm.info.produto)" title="Adquirir este Produto" >{{::vm.info.parcelas}} x {{::vm.info.precoParcelado}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isSetup" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.trilha(vm.info.produto)" title="Adquirir este Produto" nalytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="compra-trilha">{{::vm.info.parcelas}} x {{::vm.info.precoParcelado}} <span class="cart"><i class="material-icons">shopping_cart</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" ng-if="::vm.info.promocaoDateend" >
 			                  <div class="price_popover__header">
@@ -38,7 +38,7 @@
 			              </span>
 			            </a></li>
 
-			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual||(vm.info.isClassroom&&!vm.turma)" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="modal.interesse(vm.info)" >{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
+			            <li class="hero-course__buttons-group--item" ng-if="vm.info.isIndividual||(vm.info.isClassroom&&!vm.turma)" ><a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="modal.interesse(vm.info)" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-interesse">{{::vm.info.preco}} <span class="cart"><i class="material-icons">playlist_add_check</i></span>
 			              <span class="card-course__icon-cart">
 			                <div class="price_popover" >
 			                  <div class="price_popover__footer">  Registro de Interesse </div>
@@ -54,7 +54,7 @@
 
 			             <li class="hero-course__buttons-group--item" ng-if="vm.turma">
 
-			             	<a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="modal.interesse(vm.turma)" ng-if="!vm.turma.vagas" >{{::vm.info.preco}} 
+			             	<a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="modal.interesse(vm.turma)" ng-if="!vm.turma.vagas" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-interesse" >{{::vm.info.preco}} 
 				             	<span class="cart">
 				             		<i class="material-icons">playlist_add_check</i>
 				             	</span>
@@ -65,7 +65,7 @@
 					            </span>
 				            </a>
 
-							<a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)" ng-if="vm.turma.vagas" > {{::vm.info.preco}} 
+							<a class="button buttom-price has-price_popover card-course__button" anchor-link ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)" ng-if="vm.turma.vagas" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item" analytics-value="{{vm.turma.id}}" > {{::vm.info.preco}} 
 
 			             	<span class="cart">
 			             		<i class="material-icons">add_shopping_cart</i>
@@ -83,7 +83,7 @@
 				</div> <!-- //large-8-->
 				<div class="medium-4 columns">
 					<div class="hero-course__play-container" ng-if="vm.info.videodemo" >
-						<a class="hero-course__play" ng-click="vm.openPopupWindow(vm.info.videodemo.link)" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" ></a>
+						<a class="hero-course__play" ng-click="vm.openPopupWindow(vm.info.videodemo.link)" anchor-link><img class="hero-course__play--image"  src="images/courses/card-thumb-play.png" alt="" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="video-demo" ></a>
 					</div> <!--//hero-course__play-container -->
 					
 				</div> <!-- //large-3-->
@@ -102,39 +102,39 @@
 													
  								<ul class="navigation_courses__list" data-magellan-expedition >
 									<li data-magellan-arrival="garanta-sua-vaga" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
-										<a class="navigation_courses__list-item--link"  href="#garanta-sua-vaga" anchor-link >Garanta sua Vaga</a>
+										<a class="navigation_courses__list-item--link"  href="#garanta-sua-vaga" anchor-link analytics-on analytics-category="menu-info"  analytics-label="vaga" >Garanta sua Vaga</a>
 									</li>
 									
 									<li data-magellan-arrival="publico-alvo" class="navigation_courses__list-item" ng-if="::vm.info.persona">
-										<a class="navigation_courses__list-item--link" href="#publico-alvo" anchor-link>Público Alvo</a>
+										<a class="navigation_courses__list-item--link" href="#publico-alvo" anchor-link analytics-on analytics-category="menu-info"  analytics-label="publico" >Público Alvo</a>
 									</li>
 
 									<li data-magellan-arrival="sobre-o-curso" class="navigation_courses__list-item">
-										<a class="navigation_courses__list-item--link" href="#sobre-o-curso" anchor-link>Sobre o Conteúdo</a>
+										<a class="navigation_courses__list-item--link" href="#sobre-o-curso" anchor-link analytics-on analytics-category="menu-info"  analytics-label="sobre-conteudo">Sobre o Conteúdo</a>
 									</li>
 									<li data-magellan-arrival="conteudo-programatico" class="navigation_courses__list-item" ng-if="::vm.info.conteudos.length">
-										<a class="navigation_courses__list-item--link" href="#conteudo-programatico" anchor-link>Conteúdo Programático</a>
+										<a class="navigation_courses__list-item--link" href="#conteudo-programatico" anchor-link analytics-on analytics-category="menu-info"  analytics-label="conteudo-programatico" >Conteúdo Programático</a>
 									</li>
 
 									<li data-magellan-arrival="formato-do-curso" class="navigation_courses__list-item">
-										<a class="navigation_courses__list-item--link" href="#formato-do-curso" anchor-link>Formato</a>
+										<a class="navigation_courses__list-item--link" href="#formato-do-curso" anchor-link analytics-on analytics-category="menu-info"  analytics-label="formato">Formato</a>
 									</li>
 
-									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-if="vm.info.produto.instrutor.length"><a class="navigation_courses__list-item--link" href="#ministrante" anchor-link>
+									<li data-magellan-arrival="ministrante" class="navigation_courses__list-item" ng-if="vm.info.produto.instrutor.length"><a class="navigation_courses__list-item--link" href="#ministrante" anchor-link analytics-on analytics-category="menu-info"  analytics-label="professor" >
 										<div ng-if="!vm.turma">Professor</div>
 										<div ng-if="vm.turma" >Instrutor</div>
 										</a>
 									</li>
 
 									<li data-magellan-arrival="proximas-turmas" class="navigation_courses__list-item" ng-if="::vm.info.isClassroom">
-										<a class="navigation_courses__list-item--link" href="#proximas-turmas" anchor-link>Próximas Turmas</a>
+										<a class="navigation_courses__list-item--link" href="#proximas-turmas" anchor-link analytics-on analytics-category="menu-info"  analytics-label="turmas" >Próximas Turmas</a>
 									</li>
 
 									<li data-magellan-arrival="perguntas-frequentes" class="navigation_courses__list-item" ng-if="::vm.info.faqs.length">
-										<a class="navigation_courses__list-item--link" href="#perguntas-frequentes" anchor-link >Perguntas Frequentes</a>
+										<a class="navigation_courses__list-item--link" href="#perguntas-frequentes" anchor-link analytics-on analytics-category="menu-info"  analytics-label="perguntas" >Perguntas Frequentes</a>
 									</li>
 
-									<li data-magellan-arrival="cursos-relacionados" class="navigation_courses__list-item" ng-if="::vm.info.produtos.length"><a class="navigation_courses__list-item--link" href="#cursos-relacionados" anchor-link>Cursos Relacionados</a></li>
+									<li data-magellan-arrival="cursos-relacionados" class="navigation_courses__list-item" ng-if="::vm.info.produtos.length"><a class="navigation_courses__list-item--link" href="#cursos-relacionados" anchor-link analytics-on analytics-category="menu-info" analytics-label="+cursos">Cursos Relacionados</a></li>
 								</ul>
 
 												</nav>
@@ -192,12 +192,12 @@
 	 			 			<span class="course__price-group__price"> <small>R$</small> <strong>{{vm.turma.valor}}</strong> </span>
 	 	 			 		
 	 	 			 		<div ng-if="vm.turma.vagas">
-	 	 			 			<a class="course__price-group__button button small" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)"> <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
+	 	 			 			<a class="course__price-group__button button small" ng-click="buy.addItemCarrinho(vm.info.ecm_produto_id, vm.turma.qtd, vm.turma.id)" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item" analytics-value="{{::vm.turma.id}}" > <i class="material-icons">add_shopping_cart</i> Adicionar ao carrinho</a>
 	 	 			 		</div>
 
 					
 	 	 			 		<div ng-if="!vm.turma.vagas" >
-	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse(vm.turma)"> <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
+	 	 			 			<a class="course__price-group__button button small" ng-click="modal.interesse(vm.turma)" analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-interesse" analytics-value="{{::vm.turma.id}}" > <i class="material-icons">playlist_add_check</i> Registro de Interesse </a>
 	 	 			 		</div>
 
 	 	 			 		<span class="course__price-group__remaining">Restam ainda {{vm.turma.vagas}} vagas</span>
@@ -441,7 +441,7 @@
 					<div class="card-format-ever-line">
 						<div class="card-course-inner">
 							<div class="card-course--content">
-								<a href="#garanta-sua-vaga" class="anchor" ng-click="vm.viewTurma(edicao.id)" anchor-link> 
+								<a href="#garanta-sua-vaga" class="anchor" ng-click="vm.viewTurma(edicao.id)" anchor-link analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}" analytics-event="view-turma" analytics-value="{{::edicao.id}}" > 
 									<span class="card-course__modality">{{vm.info.modalidade}}</span> 
 									<span class="card-course__name">{{vm.info.titulo}}</span>
 									<span class="card-course__modality">{{edicao.datauf}}</span>
