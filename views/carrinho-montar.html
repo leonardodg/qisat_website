@@ -102,7 +102,7 @@
                   <div>
                     <a ng-click="buy.removeItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-show="buy.editCarrinho&&!buy.loading" class="item-action"><i class="material-icons left">remove_circle</i></a>
                     <input type="text" name="" class="quantity" placeholder="{{item.quantidade}}" value="{{item.quantidade}}">
-                    <a ng-click="buy.addItemCarrinho(item.ecm_produto_id, false, item.ecm_curso_presencial_turma_id)" ng-show="buy.editCarrinho&&!buy.loading"  class="item-action"><i class="material-icons left">add_circle</i></a>
+                    <a ng-click="buy.addItemCarrinho({ id : item.ecm_produto_id, sigla: item.sigla }, false, item.ecm_curso_presencial_turma_id)" ng-show="buy.editCarrinho&&!buy.loading"  class="item-action"><i class="material-icons left">add_circle</i></a>
                   </div>
 
                 </td>

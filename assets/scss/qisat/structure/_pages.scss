@@ -590,16 +590,6 @@ button.close-button, .close-button {
 
       }
 
-      .green {
-        color: green;
-      }
-      .red {
-        color: #990000;
-      }
-      .blue {
-        color: #005285;
-      }
-
       .msg {
         font-size: 14px;
         color: #bebebe;
@@ -947,7 +937,7 @@ button.close-button, .close-button {
     background-color: #FFF;
 
     &.current {
-      border-top: 5px solid #005285;
+      border-bottom: 5px solid $primary-color-dark;
     }
     > a {
       display: block;

@@ -207,6 +207,17 @@
 						 			QiSatAPI.createUser(newdata)
 						 					.then(function(res){
 						 							var credentials = { password : scope.cadastro.password };
+						 							var url = authService.getRedirect();
+													var data_rd = [
+																      { name: 'email', value: newdata.email },
+																      { name: 'nome', value: newdata.firstname+' '+newdata.lastname },
+																      { name: 'phone', value: newdata.phone1 },
+																      { name: 'cpf', value: newdata.cpf || newdata.cnpj },
+																      { name: 'token_rdstation', value: Config.tokenRD },
+																      { name: 'identificador', value: 'Cadastro - QiSat' }
+																    ];
+
+													if(RdIntegration) RdIntegration.post(data_rd);
 
 						 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
 
@@ -217,9 +228,24 @@
 												 		scope.endereco.selectStates = {"id":24,"nome":"Santa Catarina","uf":"SC","local":"SC - Santa Catarina"};
 												 		scope.createForm.$setPristine();
 												 		scope.submitted = false;
-												 		
-												 		$location.path('/login');
-												 		modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Orientação de acesso enviado para o email." } });
+
+												 		if(res.data.retorno.usuario && url){
+												 			credentials.username = res.data.retorno.usuario.username;
+													 		authService.login(credentials).then(function (res){
+																
+											 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
+										 							authService.setRedirect();
+										 							$location.path(url);
+											 					}else{
+										 							modalController.alert({ error : true, main : { title : "Falha na Autenticação!" } });
+											 						scope.loading = false;
+											 					}
+
+											 				}, function(){ scope.loading = false; modalController.alert({ error : true }); });
+										 				}else{
+												 			modalController.alert({ success : true, main : { title : "Obrigado, por realizar o Cadastro!", subtitle : " Orientação de acesso enviado para o email." } });
+										 					$location.path('/login');
+										 				}
 
 						 							}else{
 						 								modalController.alert({ error : true, main : { title : "Falha para realizar o Cadastro!" } });

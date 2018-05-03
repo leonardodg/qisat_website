@@ -7,7 +7,7 @@
 					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService, Config, info) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
-						 		path, search = absUrl.indexOf('?'), params, turma,
+						 		path, search = absUrl.indexOf('?'), params, turma, gratuito, aux,
 						 		modalController = $controller('modalController'),
 	                			tipo, produto, itens, valorItens = 0, videoDemo, aux;
 
@@ -33,6 +33,7 @@
 					 			path = absUrl.substring(absUrl.indexOf('curso/'), search);
 					 			params = parseQueryString();
 								turma = params["turma"]; 
+								gratuito = params["inscricao"]; 
 					 		}else
 					 			path = absUrl.substr(absUrl.indexOf('curso/'));	
 
@@ -44,7 +45,22 @@
 								var auth = authService.Authenticated();
 
 								function enrol(){
-									authService.inscricao(produto)
+
+									var user = authService.getUser();
+									var data_rd = [
+												      { name: 'email', value: user.email },
+												      { name: 'nome', value: user.firstname+' '+user.lastname },
+												      { name: 'phone', value: user.phone1 },
+												      { name: 'cpf', value: user.numero },
+												      { name: 'curso', value: produto.sigla },
+												      { name: 'token_rdstation', value: Config.tokenRD },
+												      { name: 'identificador', value: 'Inscrição Curso Gratuito' }
+												    ];
+
+									if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+									if(RdIntegration) RdIntegration.post(data_rd);
+
+									authService.inscricao(produto.id)
 					 					   .then(function (res) {
 					 							if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.link){
 					 								modalController.alert({ success : true, main : { title : "Matricula no curso realizada!", subtitle : " Você será redirecionado para página do curso." } });
@@ -65,7 +81,7 @@
 						 			modalController.login('/', false, enrol);
 						 		}else{
 						 			auth.then(function(res){
-					 					if(auth === true){
+					 					if(res === true){
 							 				enrol();
 								 		}else{
 								 			modalController.login('/', false, enrol);
@@ -73,6 +89,37 @@
 						 			});
 						 		}
 						 	};
+
+							vm.inscricaoGratuito = function(produto){
+								var auth = authService.Authenticated();
+
+								function inscricaoInterno(){
+									vm.inscricao(produto)
+								}
+
+						 		if(auth === true){
+					 				vm.inscricao(produto);
+						 		}else if (auth === false){
+						 			modalController.login($location.url(), $location.url(), inscricaoInterno, true);
+						 		}else{
+						 			auth.then(function(res){
+					 					if(res === true)
+							 				vm.inscricao(produto);
+					 					else
+								 			modalController.login($location.url(), $location.url(), inscricaoInterno, true);
+						 			});
+						 		}
+						 	};
+
+						 	if(gratuito){
+						 		if(info.produto && info.produto.produtos && info.produto.produtos.length)
+						 			aux = info.produto.produtos.find(function(p){ return p.id == gratuito });
+
+						 		if(aux)
+						 			vm.inscricaoGratuito({ id: gratuito, sigla : aux.sigla });
+						 		else
+						 			vm.inscricaoGratuito({ id: gratuito, sigla : gratuito });
+						 	}
 
 					 	vm.viewTurma = function(turmaid){
 					 		if(vm.info && vm.info.produto && vm.info.produto.eventos && vm.info.produto.eventos.length){
@@ -192,6 +239,7 @@
 																descricao : prod.info.descricao,
 																dataValor : {
 																	produto : prod.id,
+																	sigla : prod.sigla,
 																	valor : $filter('currency')(prod.preco, 'R$')
 																},
 																info : prod.info

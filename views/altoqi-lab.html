@@ -28,27 +28,31 @@
 
     		<section id="dashboard" class="page-courses">
 
+          
             <div class="row lab-main-menu_container">
-                <div class="medium-10 columns">
-                    <h5 class="title" >AltoQi LAB - Programa de capacitação profissional em projetos de edificações</h5>
+              <!-- <div class="row">
+               <div class="small-12 medium-12 columns">
+                    <div class="lab-logo_light"></div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="medium-12 columns">
                     <h2 class="lab-title">Áreas de qualificação</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="medium-12 columns">
                     <nav class="menu-horizontal">
                         <ul class="menu-horizontal__list main-menu_lab" tab-main-lab data-equalizer>
-                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3 menu-horizontal__item--current">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('estrutural')" >Projeto Estrutural</span>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3 menu-horizontal__item--current"><span class="menu-horizontal__link" ng-click="vm.setProjeto('estrutural')">Projeto Estrutural</span></li>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3"><span class="menu-horizontal__link" ng-click="vm.setProjeto('eletrico')">Projeto Elétrico</span></li>
+                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3"><span
+                                    class="menu-horizontal__link" ng-click="vm.setProjeto('hidro')">Projeto Hidrossanitário</span>
                             </li>
-                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('eletrico')" >Projeto Elétrico</span>
-                            </li>
-                            <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--3">
-                                <span class="menu-horizontal__link" ng-click="vm.setProjeto('hidro')" >Projeto Hidrossanitário</span>
-                            </li>      
                         </ul>
                     </nav>
                 </div>
-                <div class="small-12 medium-2 columns green-bg">
-                    <div class="lab-logo_light" > </div>
-                </div>
+              </div>
            </div>
 
 
@@ -66,7 +70,7 @@
 
             <div ng-if="vm.abaProjeto=='estrutural'" class="lab-content_container"> 
                 <div ng-if="vm.abaConteudo=='sobre'"> 
-                    <h4>ESTRUTURAL FASE 1 – DESENVOLVIMENTO DE PROJETO ESTRUTURAL DE PEQUENO PORTE</h4>
+                    <h4 class="title" >ESTRUTURAL FASE 1 – DESENVOLVIMENTO DE PROJETO ESTRUTURAL DE PEQUENO PORTE</h4>
                     <p>Nesta fase você aprenderá as ferramentas essenciais do Eberick para lançar corretamente estruturas de pequeno porte, exercitando de forma sistematizada os procedimentos necessários para conceber soluções estruturais eficientes, avaliando a estabilidade global, e adquirindo sensibilidade estrutural mínima necessária para avaliar projetos. Além disso, serão abordados aspectos de contratação e precificação de projetos.</p>
                     
  
@@ -97,7 +101,9 @@
                                                     
 
                                                     <div ng-if="!matricula.blocked">
-                                                      <i class="material-icons left">&#xE038;</i>
+                                                      <i class="material-icons left">
+                                                        <img src="/images/altoqi/cadeado_aberto.svg" alt="">
+                                                      </i>
                                                     </div>
 
                                                    <div ng-if="matricula.blocked">

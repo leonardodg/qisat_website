@@ -33,17 +33,31 @@
 
     		<section id="dashboard" class="page-courses">
 
-    					<div class="admin__heading">
-    						<h1 class="title">Cursos em Andamento </h1>
-    					</div>
+              <div class="row lab-main-menu_container">
+<!--               <div class="row">
+               <div class="small-12 medium-12 columns">
+                    <div class="cursos-logo_light"></div>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="medium-12 columns">
+                    <h2 class="lab-title">Cursos em Andamento</h2>
+                </div>
+              </div>
+           </div>
 
-                <ul class="nav-resp" menu-aluno-cursos data-equalizer ng-init="filterTab ='liberado'" >
-                    <li data-equalizer-watch class="current" ng-click="setFilterTab('liberado')"><a class="menu-horizontal__link" href="#">Cursos em andamento</a></li>
-                    <li data-equalizer-watch ng-click="setFilterTab('finalizado')"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
-                    <li data-equalizer-watch ng-click="setFilterTab('encerrado')" ><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
-                    <li data-equalizer-watch ng-click="setFilterTab('agendado')" ng-show="agendados" ><a class="menu-horizontal__link" href="#" >Agendados</a></li>
-                    <li data-equalizer-watch ng-click="setFilterTab('outros')" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
-                </ul>
+              <div class="row lab-submenu_container">
+              <div class="medium-12 columns">
+                <nav class="menu-horizontal">
+                    <ul class="menu-horizontal__list" tab-sub-menu-lab data-equalizer >
+                        <li class="menu-horizontal__item menu-horizontal__item--4 menu-horizontal__item--current" data-equalizer-watch ng-click="setFilterTab('liberado')"><a class="menu-horizontal__link" href="#">Cursos em andamento</a>
+                        <li class="menu-horizontal__item menu-horizontal__item--4" data-equalizer-watch ng-click="setFilterTab('finalizado')"><a class="menu-horizontal__link" href="#">Cursos finalizados</a></li>
+                        <li class="menu-horizontal__item menu-horizontal__item--4" data-equalizer-watch ng-click="setFilterTab('encerrado')"><a class="menu-horizontal__link" href="#">Prazo encerrado</a></li>
+                        <li class="menu-horizontal__item menu-horizontal__item--4" data-equalizer-watch ng-click="setFilterTab('outros')" ng-show="outros" ><a class="menu-horizontal__link" href="#" >Outros</a></li>
+                    </ul>
+                </nav>
+             </div>
+             </div>
 
                   <div ng-if="!filtered.length&&courses">
                       <br>

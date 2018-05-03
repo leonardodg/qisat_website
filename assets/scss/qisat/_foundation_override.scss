@@ -104,13 +104,12 @@ ul.pagination li.current a, ul.pagination li.current button {
 }
 
 .progress {
-    border: 1px solid $success-color; 
     margin-top: .5rem;
     padding: .125rem;
     max-width: 500px;
 }
 .progress .meter {
-    background: #005B94;
+    background: $primary-color;
 }
 
 

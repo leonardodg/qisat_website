@@ -3,11 +3,30 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('confirmacaoController', [ 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
-					 function( authService,  carrinhoServive, venda, Authenticated) {
+		.controller('confirmacaoController', ['Config', 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
+					 function(Config, authService, carrinhoServive, venda, Authenticated) {
 					 	var vm = this;
+		 				var user = authService.getUser();
+						var data_rd;
+						var siglas = [];
 
 					 	if(venda && (authService.isLogged() && Authenticated)){
+
+					 		venda.products.map(function(prod){ siglas.push(prod.sigla); });
+
+					 		data_rd = [
+									      { name: 'email', value: user.email },
+									      { name: 'nome', value: user.firstname+' '+user.lastname },
+									      { name: 'phone', value: user.phone1 },
+									      { name: 'cpf', value: user.numero },
+									      { name: 'token_rdstation', value: Config.tokenRD },
+									      { name: 'cursos', value: siglas.join(' - ') },
+									      { name: 'identificador', value: 'Compra Finalizada - QiSat' }
+									    ];
+
+							if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+							if(RdIntegration) RdIntegration.post(data_rd);
+
 					 		if(venda.forma_pagamento == 'Boleto'){
 					 			vm.pagamento = 'boleto';
 					 			vm.linkBoleto = venda.boleto;

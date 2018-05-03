@@ -146,7 +146,7 @@
 
                                 $zopim(function(){
                                     if (typeof($zopim.livechat) == 'object'){
-                                            $zopim.livechat.theme.setColor('#005285');
+                                            $zopim.livechat.theme.setColor('#1B5485');
                                             $zopim.livechat.theme.reload(); // apply new theme settings
                                             $zopim.livechat.hideAll();
                                             deferred.resolve();
@@ -409,7 +409,7 @@
 				 						});
 					 			  };
 
-						vm.login = function (urlBack, urlNext, callback) {
+						vm.login = function (urlBack, urlNext, callback, inscricao) {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
 		 							controller : function ($scope, $modalInstance, QiSatAPI, authService, $location, vcRecaptchaService) {
@@ -426,6 +426,10 @@
 														  	$location.path('/cadastro');
 													  };
 
+													  $scope.signin = function () {
+													  	$scope.inscricao = false;
+													  };
+
 													  $scope.clickremember = function () {
 													  	 $scope.remember = !$scope.remember;
 													  };
@@ -438,6 +442,9 @@
 								 							$scope.user = {};
 													  };
 
+													  if(inscricao)
+													  	$scope.inscricao = true;
+													  
 
 												 	// Codigo Recaptcha
 									   				$scope.responseRecaptcha = null;

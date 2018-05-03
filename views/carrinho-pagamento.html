@@ -42,7 +42,6 @@
               </thead>
               <tbody>
 
-
                 <tr ng-repeat="item in buy.itens track by item.id">
                   <td >
                     <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> {{item.nome}} 
@@ -72,7 +71,6 @@
               </tbody>
             </table>
           </div>
-
 
           <div class="widget_content" ng-if="!buy.transacaoOpen" >
             <p class="title">Forma de pagamento</p>
@@ -105,11 +103,17 @@
                   </div>
                 </td>
               </tr>
+              
               <tr ng-show="vm.forma.isCard">
                 <th>Selecione o valor das parcelas</th>
                 <td>
-                 <select ng-options="parcela as parcela.label for parcela in vm.parcelas track by parcela.qtd"  ng-model="vm.nparcelas">
-                  </select>
+                     <select name="parcelas" id="parcelas" ng-required="(vm.forma.tipo!='boleto')" ng-options="parcela as parcela.label for parcela in vm.parcelas track by parcela.qtd" ng-model="vm.nparcelas" >
+                        <option value="">Número de Parcelas</option> 
+                      </select>
+
+                      <div ng-show="( pagamentoForm.parcelas.$dirty || vm.submitted) && pagamentoForm.parcelas.$invalid">
+                          <span class="error" >Numero de Parcelas é obrigatório!</span>
+                      </div>
                 </td>
               </tr>
 
@@ -128,7 +132,6 @@
 
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="large-12 columns"> 
                           <input type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card" placeholder="Número do cartão" maxlength="16"  cc-number cc-type="cardType" name="ccNumber" ng-model="vm.cartao.numero" ng-required="true" 
@@ -141,19 +144,18 @@
                           <div ng-show="(pagamentoForm.ccNumber.$dirty || vm.submitted) && pagamentoForm.ccNumber.$invalid">
                             <span class="error" >Numero do cartão obrigatório! </span>
                            </div>
-
-                          <br>
                         </div>
                     </div>
 
                     <div class="row">
 
                         <div class="large-4 columns">
-                            <label for="mesSelect">Vencimento 
-                            <select name="mesSelect" id="mesSelect" ng-model="vm.cartao.mesSelect" ng-required="true" >
-                                  <option value="">Mês</option>
-                                  <option ng-repeat="option2 in vm.mesVencimento" value="{{option2}}">{{option2}}</option>
-                              </select>
+                              <label for="mesSelect">Vencimento
+                                  <select name="mesSelect" id="mesSelect" ng-model="vm.cartao.mesSelect" ng-required="true" >
+                                        <option value="">Mês</option>
+                                        <option ng-repeat="option2 in vm.mesVencimento" value="{{option2}}">{{option2}}</option>
+                                  </select>
+                              </label>
 
                                <div ng-show="(pagamentoForm.mesSelect.$dirty || vm.submitted) && pagamentoForm.mesSelect.$invalid">
                                 <span class="error" > Selecione o MÊS de Vencimento do Cartão </span>
@@ -161,7 +163,7 @@
                         </div>
 
                         <div class="large-4 columns">
-                              <label for="anoSelect">&nbsp 
+                              <label for="anoSelect">&nbsp
                                 <select name="anoSelect" id="anoSelect" ng-model="vm.cartao.anoSelect" ng-required="true" > 
                                     <option value="">Ano</option>
                                     <option ng-repeat="option1 in vm.anoVencimento" value="{{option1}}">{{option1}}</option>
@@ -175,10 +177,9 @@
 
                         <div class="large-3 columns">
                               <label for="cod">Código Seguraça
-                              <input type="tel" inputmode="numeric" pattern="[0-9]*" id="cod" name="cod" placeholder="3 Dígitos" maxlength="4" ng-model="vm.cartao.codigo" ng-required="true" >
+                                <input type="tel" inputmode="numeric" pattern="[0-9]*" id="cod" name="cod" placeholder="3 Dígitos" maxlength="4" ng-model="vm.cartao.codigo" ng-required="true" >
                               </label>
                               <span class="card-cod"></span>
-
                                <div ng-show="(pagamentoForm.cod.$dirty || vm.submitted) && pagamentoForm.cod.$invalid">
                                 <span class="error" > Informe o Código de Segurança do Cartão </span>
                               </div>
@@ -229,8 +230,6 @@
                   <a ng-href="{{vm.redirect}}" class="button success text-center" analytics-on analytics-event="carrinho finalizar cartao" >Finalizar Pagamento</a>
               </div>
             </div>
-
-
           </div>
 
         <div class="row" ng-if="!vm.redirect && !buy.transacaoOpen">
@@ -241,7 +240,6 @@
               <button id="salve" type="submit" class="button success right" ng-click="vm.nextPagamento(pagamentoForm)" ng-hide="vm.loading" analytics-on analytics-event="carrinho comprar">Realizar Compra <i class="material-icons">keyboard_arrow_right</i></button>
           </div>
         </div>
-
 
       <!-- HTML COPY PAGE CARRINHO-PAGAMENTO.HTML AND CARRINHO-MONTAR.HTML -->
       <div class="widget_content text-center" ng-if="buy.transacaoOpen">

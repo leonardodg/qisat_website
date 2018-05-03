@@ -199,7 +199,7 @@
   background-color: #0F0F0F;
 
   .item {
-    background-color: #005285;
+    background-color: $primary-color;
     padding: 0px;
     margin: 0px;
     color: #FFF;
@@ -213,7 +213,7 @@
     img{  background-blend-mode: multiply;}
   }
   .current .item{
-    background-color: #0c83e7;
+    background-color:  $primary-color-dark;
     opacity: 1;
   }
 }

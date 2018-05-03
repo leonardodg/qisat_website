@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('carrinhoController', [ '$rootScope', '$controller' ,'$filter', '$location', 'carrinhoServive',
-					 function( $rootScope, $controller, $filter, $location, carrinhoServive ) {
+		.controller('carrinhoController', [ '$rootScope', '$controller' ,'$filter', '$location', 'Config', 'carrinhoServive', 'authService',
+					 function( $rootScope, $controller, $filter, $location, Config, carrinhoServive, authService) {
 
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
@@ -87,13 +87,33 @@
 					 			setValues();
 					 	})();
 
-					 	vm.addItemCarrinho = function(produtoid, qtd, turma) {
+					 	vm.addItemCarrinho = function(produto, qtd, turma) {
+
+					 			var user = authService.getUser();
+								var auth = authService.Authenticated();
+								var data_rd;
+
+								if(auth === true){
+									data_rd = [
+											      { name: 'email', value: user.email },
+											      { name: 'nome', value: user.firstname+' '+user.lastname },
+											      { name: 'phone', value: user.phone1 },
+											      { name: 'cpf', value: user.numero },
+											      { name: 'curso', value: produto.sigla },
+											      { name: 'token_rdstation', value: Config.tokenRD },
+											      { name: 'identificador', value: 'Adicionou Curso - QiSat' }
+											    ];
+
+									if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+									if(RdIntegration) RdIntegration.post(data_rd);
+								}
+
 					 		vm.loading = true;
 
 					 		if(($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >=0))
 						 		vm.showBuy = true;
 
-					 		var data = { produto: produtoid };
+					 		var data = { produto: produto.id };
 					 		if(qtd && typeof qtd !== 'undefined' ) data.quantidade = qtd;
 					 		if(turma) data.presencial = turma;
 
@@ -111,8 +131,6 @@
 					 						modalController.trilha(produto);
 					 					});
 					 	};
-
-
 
 					 	vm.removeItemCarrinho = function(produtoid, all, turma) {
 					 		vm.loading = true;

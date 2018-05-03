@@ -208,7 +208,7 @@
 																	<span class="card-course__name" title="{{::course.nome}}">{{::course.nomeLimit}}</span>
 																</a>
 
-																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho(course.id)" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie||course.isAltoQi" analytics-on analytics-event="addItem" analytics-on analytics-category="topcursos" analytics-label="{{::course.sigla}}" analytics-event="add-item" >{{::course.preco}}
+																<a class="card-course__button  has-price_popover" ng-click="buy.addItemCarrinho({ id: course.id, sigla: course.sigla })" ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie||course.isAltoQi" analytics-on analytics-event="addItem" analytics-on analytics-category="topcursos" analytics-label="{{::course.sigla}}" analytics-event="add-item" >{{::course.preco}}
 										   						<span class="card-course__icon-cart">
 										   							<i class="material-icons">add_shopping_cart</i>
 										   							<div class="price_popover" ng-show="::course.promocaoDateend">
@@ -249,7 +249,7 @@
 													            </a>
 
 
-													            <a class="card-course__button has-price_popover" ng-click="inscricao(course.id)" ng-if="course.isFree" analytics-on analytics-event="addInscricao" analytics-category="topcursos" >	
+													            <a class="card-course__button has-price_popover" ng-click="inscricao(course)" ng-if="course.isFree" analytics-on analytics-event="addInscricao" analytics-category="topcursos" >	
 													             	
 												             		<span class="cart">
 												             			<i class="material-icons">school</i>

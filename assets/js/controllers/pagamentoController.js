@@ -42,8 +42,9 @@
 							vm.forma = forma;
 							if(vm.forma && vm.forma.parcelas && vm.forma.parcelas.length){
 								vm.parcelas = vm.forma.parcelas;
-								vm.nparcelas = vm.forma.parcelas[0];
+								vm.nparcelas = null;
 							}
+
 							vm.error = false;
 						};
 
@@ -126,7 +127,7 @@
 						 		vm.submitted = true;
 						 		var data = {},tipoPagamento;
 
-								if(vm.pagamento && vm.nparcelas && vm.contrato){
+								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && vm.contrato){
 									if(vm.forma.tipo =='cartao_recorrencia')
 										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
 											return;

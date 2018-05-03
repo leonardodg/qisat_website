@@ -7,13 +7,6 @@
 	http://sassme.arc90.com/
 	Funções cores sass: http://sass-lang.com/documentation/Sass/Script/Functions.html
 */
-	// $text-color: #333; // main text
-	// $background-color: #dfdfdf; // body background color
-	// $primary-color: #005B94; // Links botões
-	// $primary-color-hover: darken($primary-color, 3); // Links botões hover
-	// $secondary-color: #28B67C; // anchor tags
-	// $secondary-color-hover: darken($secondary-color, 8); // Links botões secundários hover
-	// $accent-color: blue; // Cor de destaque
 
 // fonts
    $font-family-sans-serif: "Lato", Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
@@ -41,23 +34,23 @@
 	$black       : #000000;
 
 
-    $body-bg: #dfdfdf;
+  $body-bg: #f1f1f1;
 
-    $primary-color: #1B5485;
-    $primary-color-dark: darken($primary-color, 3);
+  $primary-color: #1B5485;
+  $primary-color-dark: #1E7AC9;
 	$secondary-color: #28B67C;
 
-	$alert-color: #f04124;
-	$success-color: #43AC6A;
-	$warning-color: #f08a24;
-	$info-color: #a0d3e8;
+  $alert-color: #f04124;
+  $success-color: #43AC6A;
+  $warning-color: #f08a24;
+  $info-color: #a0d3e8;
 
 
 	//category colors
-    $category-estrutural-color: orange !important;
-    $category-eletrica-color: blue !important;
-    $category-hidrossanitaria-color: yellow !important;
-    $category-agronomica-color: green !important;
+  $category-estrutural-color: orange !important;
+  $category-eletrica-color: blue !important;
+  $category-hidrossanitaria-color: yellow !important;
+  $category-agronomica-color: green !important;
 
 	$category-pos-graduation-color: coral !important;
 	$category-software-courses-color: orange !important;
@@ -65,13 +58,11 @@
 	$category-solutions-business-color: yellow !important;
 
 	//software colors
-    $software-eberick-color: maroon !important;
-    $software-qibuilder-color: green !important;
-    $software-qieletrico-color: yellow !important;
-    $software-qihidrossanitario-color: blueviolet !important;
-    $software-qiincendio-color: darkorange !important;
-
-
+  $software-eberick-color: maroon !important;
+  $software-qibuilder-color: green !important;
+  $software-qieletrico-color: yellow !important;
+  $software-qihidrossanitario-color: blueviolet !important;
+  $software-qiincendio-color: darkorange !important;
 
 
  body{
@@ -244,7 +235,8 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
      &__item{
        border-left:5px solid transparent; display: inline-block; float: left; text-align: center; transition: all 0.5s;
        &:hover{background-color: rgba(0, 0, 0, 0.06)}
-       &--current{ border-color: $primary-color-dark !important; background-color: rgba(0, 0, 0, 0.08);
+       &--current{
+         background-color: rgba(0, 0, 0, 0.08);
          a{ color: $primary-color-dark !important; }
          &:hover{background-color: rgba(0, 0, 0, 0.08)}
        }

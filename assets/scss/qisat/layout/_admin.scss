@@ -14,7 +14,19 @@
 // 	h2{}
 // }
 
+.scholl {
+    color: $primary-color;
+    margin: 4px 0 3px 25px;
+    font-size: 6.5rem !important;
+}
 
+.scholl-big {
+    color: #777 !important;
+    text-align: center;
+    width: 94%;
+    margin-top: 49px;
+    font-size: 7.2rem !important;
+}
 
 
 /* grid ---------------------------------------- */
@@ -27,9 +39,6 @@ position: absolute;
 width: 250px;
 margin-top: 10px;
 
-
-
-
 }
 
 .admin_content {
@@ -38,18 +47,18 @@ margin-top: 10px;
 	padding: 20px 30px;
 	border-left: 1px solid #e7e7e7;
 	min-height:  calc(100vh - 100px);
-	background-color: #dfdfdf;
+	background-color: $body-bg;
 	box-shadow: -4px 0px 6px 0 rgba(0, 0, 0, 0.2) !important;
 	z-index: 1;
   transition: all 0.5s;
+  overflow: auto;
 
   @media only screen and (max-width: 40em) {
     margin: 0 0 0 45px;
-    padding: 20px;
+    padding: 10px 10px 120px 10px;
     // &:hover{margin: 0 0 0 190px;}
    } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
-
-
+  
 }
 
 /* grid ---------------------------------------- */
@@ -76,20 +85,28 @@ margin-top: 10px;
 		&:hover{ background: rgba(0, 0, 0, 0.16);  color: rgba(255, 255, 255, 1);}
 		i{ margin-right: 10px;  vertical-align: bottom;}
 
-
-
 	}
 }
 
 .admin__heading{
   margin-bottom: 10px;
   padding: 15px 0;
-
+  
 	.title{
     font-size: 36px;
     font-weight: 900;
     margin: 0;
     color: #494949;
+   }
+
+  .title_cursos{
+    font-family:  'Titillium Web', Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 5px;
+    padding:  0 2rem;
+    color: #1E7AC9;
+    text-transform: uppercase;
   }
 
 	.subtitle{
@@ -281,7 +298,6 @@ div.opcao-lab {
 
 
 .lab-main-menu_container {
-    background: #FFF;
 
      div.medium-10.columns {
           padding: 0;
@@ -294,6 +310,7 @@ div.opcao-lab {
         font-size: 2rem;
         margin-top: 5px;
         padding: 0 2rem;
+        color: $primary-color-dark;
     }
 
     .title {
@@ -310,12 +327,46 @@ div.opcao-lab {
     }
 
     div.lab-logo_light {
-        background: url(/images/aluno/lab-logo_light.svg);
+        background: url(/images/aluno/lab-logo_brand_large.svg);
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: bottom;
         background-size: contain;
-        width: 100%;
-        min-height: 143px !important;
+        width: 446px;
+        height: 32px;
+        margin-left: 32px;
+        margin-top: 20px;
+                
+            @media only screen and (max-width: 40em) {
+                    width: 117px;
+                    font-size: 0;
+                    height: 22px;
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    float: left;
+                    background: url(/images/aluno/lab-logo_brand.svg);
+            }
+    }
+
+    div.cursos-logo_light {
+        background: url(/images/aluno/cursos_logo_large.svg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: contain;
+        width: 427px;
+        height: 40px;
+        padding:0px;
+        margin-left: 20px;
+        margin-top: 20px;
+                
+            @media only screen and (max-width: 40em) {
+                    width: 130px;
+                    font-size: 0;
+                    height: 44px;
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    float: left;
+                    background: url(/images/aluno/cursos_logo.svg);
+            }
     }
 
     .main-menu_lab {
@@ -325,28 +376,28 @@ div.opcao-lab {
     }
 
     .menu-horizontal__item{
-       border: none;
-       padding: 0;
+      border: none;
+      border-left: 1px solid white;
+      padding: 0;
       cursor: pointer;
+      background: $primary-color;
+      font-weight: bold;
+      color: $body-bg;
     }
 
     .menu-horizontal__item--current {
-        font-weight: bold;
-        background-color: #FFF;
-
+        color: #fff !important;
+        background-color: $primary-color-dark;        
     }
 
     .menu-horizontal__item:hover {
       font-weight: bold;
     }
-
-    .menu-horizontal__item span{
-      color: #222;
-    }
 }
 
 .lab-submenu_container{
-    background: #4D4D4D;
+    background: transparent;
+    padding-bottom: 18px;
 
     div.medium-12.columns {
         padding: 0;
@@ -365,21 +416,29 @@ div.opcao-lab {
         }
     }
 
-    li.menu-horizontal__item:hover {
-        background-color: rgba(0, 0, 0, 0.2);
+    li.menu-horizontal__item {
+        border-bottom: 5px solid #fff !important;
+        background: #fff;
     }
 
      li.menu-horizontal__item--current {
-        border-color: transparent !important;
-        background-color: rgba(0, 0, 0, 0.4);
+        padding-top: 5px;
+        border-top: none;
+        border-bottom: 5px solid #1E7AC9 !important;
+        padding-left: 0 !important;
+
+        @media only screen and (max-width: 40em) {
+           background:#f1f1f1;
+            }
 
         a {
-            color: #FFF !important;
+          color: $primary-color !important;
+          font-weight: bold;
         }
     }
 
     a.menu-horizontal__link {
-        color: #FFF;
+        color: #222;
         font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
         font-size: 1rem;
         padding: 20px;
@@ -392,6 +451,11 @@ div.opcao-lab {
     padding: 2rem;
     max-width: 75rem;
     margin: 0 auto;
+
+    h4.title{
+      font-size: 20px;
+      font-weight: 700;
+    }
 
     @media only screen and (max-width: 480px) {
         padding: 2rem 1rem;
@@ -454,7 +518,7 @@ div.opcao-lab {
     font-weight: bold;
     font-size: 2.3rem;
     line-height: 1;
-    color: #2DAC70;
+    color: $primary-color;
 }
 .ranking_list {
     list-style: none;
@@ -467,11 +531,11 @@ div.opcao-lab {
 
       span#ranking-numero {
           float: right;
-          color: #2DAC70;
+          color: $primary-color;
           font-weight: bold;
       }
       span#cursos-conclusao_count {
-          color: #005b94;
+          color: $primary-color;
       }
   }
 

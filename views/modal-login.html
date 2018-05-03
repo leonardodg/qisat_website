@@ -4,7 +4,15 @@
           <span class="brand-qisat-small brand-qisat-small-light"></span>
    </header>
 
-    <div ng-if="!remember && !loading">
+    <div ng-if="inscricao">
+      <h2 >Realizar Inscrição Curso Gratuito</h2>
+      <div class="text-center">
+        <p  > Para Concluir sua inscrição é necessário realizar login.</a></p>
+        <button type="button" ng-click="signin()" class="primary" >Fazer Login</button>
+      </div>
+    </div>
+
+    <div ng-if="!remember && !loading && !inscricao">
 
         <h2 >Realizar Login</h2>
         <form name="loginForm" id="loginForm" novalidate >
@@ -25,8 +33,6 @@
                   <div ng-show="rememberForm.email.$dirty && rememberForm.email.$error.pattern">
                     <span class="error" >Formato de Email incorreto!</span>
                   </div>
-
-
 
                    <div class="row">
                     <div class="small-8 small-centered columns">

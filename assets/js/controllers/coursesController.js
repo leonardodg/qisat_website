@@ -200,8 +200,23 @@
 							var auth = authService.Authenticated();
 
 							function enrol(){
-								authService.inscricao(produto)
+								var user = authService.getUser();
+								var data_rd = [
+											      { name: 'email', value: user.email },
+											      { name: 'nome', value: user.firstname+' '+user.lastname },
+											      { name: 'phone', value: user.phone1 },
+											      { name: 'cpf', value: user.numero },
+											      { name: 'curso', value: produto.sigla },
+											      { name: 'token_rdstation', value: Config.tokenRD },
+											      { name: 'identificador', value: 'Inscrição Curso Gratuito' }
+											    ];
+
+								if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+								if(RdIntegration) RdIntegration.post(data_rd);
+
+								authService.inscricao(produto.id)
 				 					   .then(function (res) {
+
 				 							if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso && res.data.retorno.link){
 				 								modalController.alert({ success : true, main : { title : "Matricula no curso realizada!", subtitle : " Você será redirecionado para página do curso." } });
 				 								$timeout(function() {
