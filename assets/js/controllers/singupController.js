@@ -235,7 +235,15 @@
 																
 											 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
 										 							authService.setRedirect();
-										 							$location.path(url);
+										 							
+										 							if(typeof url == "object"){
+										 								if("path" in url) 
+										 									$location.path(url.path);
+										 								if("search" in url) 
+										 									$location.search(url.search);
+										 							}else 
+										 								$location.path(url);
+										 								
 											 					}else{
 										 							modalController.alert({ error : true, main : { title : "Falha na Autenticação!" } });
 											 						scope.loading = false;

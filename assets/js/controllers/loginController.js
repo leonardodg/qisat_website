@@ -36,8 +36,13 @@
 										var url;
 					 					if((res.status == 200)&&(res && res.data && res.data.retorno && res.data.retorno.sucesso)){
 					 						if(url = authService.getRedirect()){
-					 							authService.setRedirect();
-					 							$location.path(url);
+					 							if(typeof url == "object"){
+					 								if("path" in url) 
+					 									$location.path(url.path);
+					 								if("search" in url) 
+					 									$location.search(url.search);
+					 							}else 
+					 								$location.path(url);
 					 						}else
 					 							$location.path('/aluno');
 

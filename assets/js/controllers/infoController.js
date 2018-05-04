@@ -7,7 +7,7 @@
 					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService, Config, info) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
-						 		path, search = absUrl.indexOf('?'), params, turma, gratuito, aux,
+						 		path, search = absUrl.indexOf('?'), params, turma, gratuito,
 						 		modalController = $controller('modalController'),
 	                			tipo, produto, itens, valorItens = 0, videoDemo, aux;
 
@@ -78,35 +78,40 @@
 						 		if(auth === true){
 					 				enrol();
 						 		}else if (auth === false){
-						 			modalController.login('/', false, enrol);
+						 			modalController.login($location.path(), false, enrol);
 						 		}else{
 						 			auth.then(function(res){
 					 					if(res === true){
 							 				enrol();
 								 		}else{
-								 			modalController.login('/', false, enrol);
+								 			modalController.login($location.path(), false, enrol);
 								 		}
 						 			});
 						 		}
 						 	};
 
+
 							vm.inscricaoGratuito = function(produto){
 								var auth = authService.Authenticated();
+								var insc = produto.nome || true;
+								var p = $location.path();
+								var search = $location.search();
+						 		$location.search({});
 
 								function inscricaoInterno(){
-									vm.inscricao(produto)
+									vm.inscricao(produto);
 								}
 
 						 		if(auth === true){
 					 				vm.inscricao(produto);
 						 		}else if (auth === false){
-						 			modalController.login($location.url(), $location.url(), inscricaoInterno, true);
+						 			modalController.login({search : search, path : p}, false, inscricaoInterno, insc);
 						 		}else{
 						 			auth.then(function(res){
 					 					if(res === true)
 							 				vm.inscricao(produto);
 					 					else
-								 			modalController.login($location.url(), $location.url(), inscricaoInterno, true);
+								 			modalController.login({search : search, path : p}, false, inscricaoInterno, insc);
 						 			});
 						 		}
 						 	};
@@ -116,9 +121,7 @@
 						 			aux = info.produto.produtos.find(function(p){ return p.id == gratuito });
 
 						 		if(aux)
-						 			vm.inscricaoGratuito({ id: gratuito, sigla : aux.sigla });
-						 		else
-						 			vm.inscricaoGratuito({ id: gratuito, sigla : gratuito });
+						 			vm.inscricaoGratuito({ id: gratuito, sigla : aux.sigla, nome : aux.nome });
 						 	}
 
 					 	vm.viewTurma = function(turmaid){

@@ -4,11 +4,21 @@
           <span class="brand-qisat-small brand-qisat-small-light"></span>
    </header>
 
-    <div ng-if="inscricao">
-      <h2 >Realizar Inscrição Curso Gratuito</h2>
-      <div class="text-center">
-        <p  > Para Concluir sua inscrição é necessário realizar login.</a></p>
-        <button type="button" ng-click="signin()" class="primary" >Fazer Login</button>
+    <header class="section-call__form--header text-center" ng-if="inscricao" >
+      <div class="row">
+        <div class="large-12 columns"><br>
+            <p ng-if="inscricao!=true"> <strong>Capítulo:&nbsp</strong>{{inscricao}}</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="text-center" ng-if="inscricao" >
+       <div class="row">
+          <div class="large-12 columns">
+            <h4>Realizar Inscrição Gratuita</h4>
+            <p> Para concluir sua inscrição é necessário possuir cadastro.</p>
+            <button type="button" ng-click="signin()" class="primary primary-dark" >Fazer Login</button>
+          </div>
       </div>
     </div>
 

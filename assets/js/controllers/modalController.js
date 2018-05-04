@@ -409,6 +409,18 @@
 				 						});
 					 			  };
 
+
+					 	/*
+						
+							urlBack = retornar a página especifica após se cadastrar ou login OK
+									  String or Object
+
+							urlNext = proxima página apos realizar login OK
+							callback = chamar function após login OK	
+
+							inscricao = layout espeficico do modal inscricao	  
+
+					 	*/
 						vm.login = function (urlBack, urlNext, callback, inscricao) {
 		 					var modalInstance = $modal.open({
 		 							templateUrl: '/views/modal-login.html',
@@ -443,7 +455,7 @@
 													  };
 
 													  if(inscricao)
-													  	$scope.inscricao = true;
+													  	$scope.inscricao = inscricao;
 													  
 
 												 	// Codigo Recaptcha
@@ -470,7 +482,15 @@
 												 						$modalInstance.dismiss('cancel');
 												 						if(url = authService.getRedirect()){
 												 							authService.setRedirect();
-												 							$location.path(url);
+
+												 							if(typeof url == "object"){
+												 								if("path" in url) 
+												 									$location.path(url.path);
+												 								if("search" in url) 
+												 									$location.search(url.search);
+												 							}else 
+												 								$location.path(url);
+
 												 						}else if(urlNext)
 												 							$location.path(urlNext);
 												 						else if(typeof callback === "function")

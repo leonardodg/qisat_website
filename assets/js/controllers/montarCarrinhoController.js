@@ -19,7 +19,7 @@
 					 	vm.nextCompra = function(){
 					 		var auth = authService.Authenticated();
 
-					 		function redirect(){
+					 		function callback(){
 					 			var user = authService.getUser();
 					 			if(user && (!user.email || !user.numero))
 									modalController.update('/carrinho/pagamento');
@@ -28,15 +28,15 @@
 					 		};
 
 							if(auth === true){
-								redirect();
+								callback();
 					 		}else if (auth === false){
-					 			modalController.login('/carrinho/pagamento', false, redirect );
+					 			modalController.login('/carrinho/pagamento', false, callback );
 					 		}else{
 					 			auth.then(function(res){
 				 					if(res === true){
-						 				redirect();
+						 				callback();
 							 		}else{
-							 			modalController.login('/carrinho/pagamento', false, redirect );
+							 			modalController.login('/carrinho/pagamento', false, callback );
 							 		}
 					 			});
 					 		}

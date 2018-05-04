@@ -31,6 +31,10 @@
     background-color: $secondary-color;
   }
 
+  &.primary-dark {
+    background-color: $primary-color-dark;
+  }
+
   &.expand {
     padding: 0.5rem 1.5rem;
   }

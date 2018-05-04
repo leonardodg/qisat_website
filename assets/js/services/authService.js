@@ -28,12 +28,12 @@
 
 					function getRedirect(){
 						if (redirect && typeof redirect !== "undefined" && redirect !== "undefined" )
-							return redirect;
+							return JSON.parse(atob(redirect));
 					};
 
 					function setRedirect(url){
 						if (url && typeof url !== "undefined" && url !== "undefined" )
-							window.localStorage.setItem('redirect', url);
+							window.localStorage.setItem('redirect', btoa(JSON.stringify(url)));
 						else
 							window.localStorage.removeItem('redirect');
 					};
