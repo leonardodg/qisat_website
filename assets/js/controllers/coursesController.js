@@ -212,7 +212,7 @@
 											    ];
 
 								if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-								if(RdIntegration) RdIntegration.post(data_rd);
+								if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 
 								authService.inscricao(produto.id)
 				 					   .then(function (res) {

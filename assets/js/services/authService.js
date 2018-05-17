@@ -5,10 +5,10 @@
 	 	.module('QiSatApp')
 	 	.provider('authService',  function(){
 
-					var authToken, authUser, persistent, checkAuth = false, redirect, reset;
+					var authToken, authUser, persistent, checkAuth = false, redirect, reset, load;
 						
-		 			function load(){
-		 				var token, user;
+					(load = function(){
+						var token, user;
 
 						user  = window.localStorage.getItem('user') || window.sessionStorage.getItem('user');
 						token = window.localStorage.getItem('token') || window.sessionStorage.getItem('token');
@@ -20,7 +20,8 @@
 							reset();
 
 						redirect = window.localStorage.getItem('redirect');
-					};
+					})();
+
 
 					function isAuth() {
 						return checkAuth && isLogged();

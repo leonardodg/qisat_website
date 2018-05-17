@@ -3,16 +3,18 @@
 
 	 angular
 	 	.module('QiSatApp')
-	 	.factory("carrinhoServive", [ '$http',"$q",'Config', '$filter', 'authService',
-	 			function($http, $q, Config, $filter, authService){
+	 	.factory("carrinhoServive", [ '$http',"$q",'Config', '$location','$filter', 'authService',
+	 			function($http, $q, Config, $location, $filter, authService){
 
 	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
-	 					filterLimitName = $filter('limitName');
+	 					filterLimitName = $filter('limitName'), transacao = null;
 
 		 			(function load(){
-		 				if(!carrinho){
+		 				if(!carrinho)
 							carrinho = window.localStorage.getItem('carrinho');
-		 				}
+
+						if(!carrinho && ($location.path() && ($location.path().indexOf('/carrinho') == 0)))
+							carrinho = true;
 					})();
 
 					function checkCarrinho(){
@@ -43,11 +45,31 @@
 						return valorTotal;
 					};
 
+					function getTransacao(){
+						return transacao;
+					};
+
+					function setTransacao(value){
+						var valor;
+						if( value.status == 'aguardando_pagamento'){
+							value.data_envio = $filter('date')( value.data_envio*1000, 'dd/MM/yyyy' );
+							if(value.numero_parcelas > 1){
+								valor = value.valor / value.numero_parcelas;
+								valor = $filter('currency')(valor, 'R$');
+							}else
+								valor = $filter('currency')(value.valor, 'R$');
+							value.parcelas = value.numero_parcelas+'x de '+valor;
+						}
+
+						transacao = value;
+					};
+
 					function setItens(value){
 							itens = value;
 							valorTotal = 0;
 							promoTheend = [];
 							hasTrilha = false;
+							transacao = null;
 							var datenow = moment(), datapromo, promocao, tipo;
 
 							if(value){
@@ -164,55 +186,65 @@
 		                        };
 
 					function getProposta(id) {
+							var promise;
+							var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
 
-						var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+							promise = $http({
+								method: 'post',
+								url: Config.baseUrl+'/carrinho/wsc-carrinho/get-proposta',
+								data: {'proposta': id },
+								headers : headers,
+								withCredentials : true
+							});
 
-						var promise = $http({
-							method: 'post',
-							url: Config.baseUrl+'/carrinho/wsc-carrinho/get-proposta',
-							data: {'proposta': id },
-							headers : headers,
-							withCredentials : true
-						});
+							return promise.then( function(res){
+								if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
+									setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
+									saveCarrinho();
+									if(!res.data.retorno.sucesso && res.data.retorno.transacao)
+										setTransacao(res.data.retorno.transacao);
 
-						return promise.then( function(res){
-							if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
-								setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
-								saveCarrinho();
-							}else{
+									return res.data.retorno;
+								}else
+									destroyCarrinho();
+
+								return false;
+							}, function(res){
 								destroyCarrinho();
-							}
-							return res.data.retorno;
-						}, function(res){
-							destroyCarrinho();
-							return res;
-						});
+								return false;
+							});
 					};
 
 					function getCarrinho() {
 
-									var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
+							var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken() } : {};
 
-		                            var promise = $http({ 
-		                                                    method: 'post', 
-		                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/listar',
-		                                                    headers : headers,
-		                                                    withCredentials : true
-		                                                        });
+	                        var promise = $http({ 
+	                                                    method: 'post', 
+	                                                    url: Config.baseUrl+'/carrinho/wsc-carrinho/listar',
+	                                                    headers : headers,
+	                                                    withCredentials : true
+	                                                        });
 
-		                            return promise.then( function(res){ 
-		                                                    if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
-		                            							setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
-		                                                    	return res.data.retorno; 
-		                                                    }else{
-		                                                    	destroyCarrinho();
-		                                                    	return res;
-		                                                    }
-		                                                }, function(res){ 
-		                                                	destroyCarrinho();
-		                                                    return res; 
-		                                                });
-		                        };
+                        	return promise.then( function(res){ 
+                                                    if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
+                            							setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
+                            							saveCarrinho();
+                            							if(!res.data.retorno.sucesso && res.data.retorno.transacao)
+															setTransacao(res.data.retorno.transacao);
+
+                                                    	return res.data.retorno; 
+                                                    }else
+                                                    	destroyCarrinho();
+                                                    
+                                                    return false;
+                                                }, function(res){ 
+                                                	destroyCarrinho();
+                                                    return res; 
+                                                });
+
+                    };
+
 
 					function cancelarTransacao() {
 
@@ -227,11 +259,9 @@
 		                                                        });
 
 		                            return promise.then( function(res){ 
-		                                                    if(res && res.status == 200 && res.data && res.data.retorno ){
+		                                                    if(res && res.status == 200 && res.data && res.data.retorno )
 		                                                    	return res.data.retorno; 
-		                                                    }else{
-		                                                    	return res;
-		                                                    }
+		                                                    return false; 
 		                                                }, function(res){ 
 		                                                    return res; 
 		                                                });
@@ -388,7 +418,8 @@
 		                        checkPromocaoTheend : checkPromocaoTheend,
 		                        getPromocaoTheend : getPromocaoTheend,
 		                        hasTrilha : getTrilha,
-		                        getProposta : getProposta
+		                        getProposta : getProposta,
+		                        getTransacao : getTransacao
 						};
 
 				return sdo;

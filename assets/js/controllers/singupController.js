@@ -217,7 +217,7 @@
 																      { name: 'identificador', value: 'Cadastro - QiSat' }
 																    ];
 
-													if(RdIntegration) RdIntegration.post(data_rd);
+													if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 
 						 							if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
 

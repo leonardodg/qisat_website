@@ -25,7 +25,7 @@
 									    ];
 
 							if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-							if(RdIntegration) RdIntegration.post(data_rd);
+							if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 
 					 		if(venda.forma_pagamento == 'Boleto'){
 					 			vm.pagamento = 'boleto';

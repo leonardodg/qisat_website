@@ -377,15 +377,6 @@
                   Authenticated : function(authService){
                       return authService.Authenticated('/carrinho');
                   },
-                  Itens : function(carrinhoServive){
-                          if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){
-                              return carrinhoServive.getCarrinho()
-                                             .then(function (res){
-                                                    return carrinhoServive.getItens();
-                                              });
-                          }else         
-                              return carrinhoServive.getItens();
-                  },
                   formasPagamentos : function (carrinhoServive){
                          return carrinhoServive.getFormas()
                                          .then(function (formas){ 

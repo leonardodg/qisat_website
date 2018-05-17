@@ -45,7 +45,10 @@
 
 					 	vm.cancelTransacao = function(){
 					 		carrinhoServive.cancelarTransacao().then(function(res){
-				 				$window.location.reload();
+				 					if(res && res.sucesso)
+				 						$window.location.reload();
+				 					else
+				 						console.log('Falha Cancelamento!');
 					 		});
 					 	};
 

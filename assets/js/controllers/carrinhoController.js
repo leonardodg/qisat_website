@@ -20,8 +20,9 @@
 					 		vm.loading = false;
 					 		vm.hasTrilha = carrinhoServive.hasTrilha();
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
-					 		if(vm.itens && vm.itens.length){
+					 		vm.transacao = carrinhoServive.getTransacao();
 
+					 		if(vm.itens && vm.itens.length){
 					 			
 					 			if(vm.hasTrilha){
 					 				vm.trilhas = [];
@@ -53,38 +54,32 @@
 						 		vm.valorTotal = 0;
 						 		vm.totalCarrinho = $filter('currency')(0.0, 'R$');
 		 					}
+
+		 					if(vm.transacao){
+		 						vm.editCarrinho = false;
+		 						if( vm.transacao.status == 'aguardando_pagamento'){
+									vm.transacaoOpen = vm.transacao;
+								}else if( vm.transacao.status == 'negada' ){
+									modalController.alert({ error : true, main : { title : "Pagamento Negado!", subtitle : vm.transacao.mensagem } });
+								}else if( vm.transacao.status == 'erro' ){
+									modalController.alert({ error : true, main : { title : "Pagamento não Realizado!", subtitle : vm.transacao.erro || vm.transacao.mensagem } });
+								}else if( vm.transacao.status == 'cancelada'){
+									modalController.alert({ error : true, main : { title : "Pagamento não Realizado!", subtitle : "Operação foi cancelada!" } });
+								}
+		 					}
 					 	};
 
 					 	(function init(){
-					 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){ 
-				 				carrinhoServive.getCarrinho()
-				 						.then(function (res){
-				 							  	var valor, transacao;
-				 								if(res.sucesso && res.carrinho)
-				 									setValues();
-				 								else if(!res.sucesso && res.transacao){
-				 									vm.editCarrinho = false;
-				 									setValues();
-			 										transacao = res.transacao;
-				 									
-				 									if( transacao.status == 'erro'){
-				 										vm.transacaoErro = transacao;
-				 										modalController.alert({ error : true, main : { title : "Ocorreu uma Falha no pagamento!", subtitle : "Tente novamente!" } });
-				 									}else if( transacao.status == 'aguardando_pagamento'){
-					 									transacao.data_envio = $filter('date')( transacao.data_envio*1000, 'dd/MM/yyyy' );
-					 									if(transacao.numero_parcelas	 > 1){
-					 										valor = transacao.valor / ransacao.numero_parcelas;
-					 										valor = $filter('currency')(valor, 'R$');
-					 									}else
-					 										valor = $filter('currency')(transacao.valor, 'R$');
-					 									transacao.parcelas = transacao.numero_parcelas+'x de '+valor;
-
-		 												vm.transacaoOpen = transacao;
-				 									}
-				 								}
-			 								});
-					 		}else			 		
-					 			setValues();
+					 		authService.Authenticated().then(function(res){
+						 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){
+					 				carrinhoServive.getCarrinho()
+					 						.then(function (res){
+					 								if((res.sucesso && res.carrinho) || (!res.sucesso && res.carrinho))
+					 									setValues();
+				 								});
+						 		}else			 		
+						 			setValues();
+					 		});
 					 	})();
 
 					 	vm.addItemCarrinho = function(produto, qtd, turma) {
@@ -105,7 +100,7 @@
 											    ];
 
 									if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-									if(RdIntegration) RdIntegration.post(data_rd);
+									if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 								}
 
 					 		vm.loading = true;

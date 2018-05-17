@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$controller', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 'Itens',
-					 function(scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated, Itens) {
+		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$controller', 'carrinhoServive', 'formasPagamentos', 'Authenticated', 
+					 function(scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated) {
 
 					 	var modalController = $controller('modalController');
 					 	var vm = this;
@@ -48,7 +48,7 @@
 							vm.error = false;
 						};
 
-					 	if(Authenticated && Itens){
+					 	if(Authenticated){
 					 		vm.user = authService.getUser();
 					 		if(vm.user && (!vm.user.email || !vm.user.numero)){
 					 			modalController.update('/carrinho/pagamento');
