@@ -73,7 +73,8 @@
     					   			<div ng-repeat="course in courses | filter : { filter : filterTab } as filtered track by course.id" class="card">
 
                         <div ng-if="course.enable">
-                          <a ng-href="{{::course.view}}"><img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>
+                          <!-- ng-href="{{::course.view}}" -->
+                          <a ng-click="courseQuestion(course)" ><img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" ></a>
                         </div>
                         <div ng-if="!course.enable">
                           <img ng-src="{{::course.imagem}}" alt="{{::course.nome}}" title="{{::course.nome}}" >
@@ -85,7 +86,9 @@
                           <p class="modalidade" ng-show="course.capNome" title="{{::course.capNome}}"> &nbsp {{::course.capNomeLimit}}</p>
 
     						      		<div ng-if="course.enable"> 
-    						      			<p class="name"><i class="icon material-icons">play_circle_outline</i><a href="{{::course.view}}" title="{{::course.nome}}" ><strong ng-show="course.capitulo" style="font-size: 15px">  {{course.capitulo}} </strong>{{::course.nomeLimit}} </a></p>
+    						      			<p class="name"><i class="icon material-icons">play_circle_outline</i>
+                              <!-- href="{{::course.view}}" -->
+                              <a  title="{{::course.nome}}" ng-click="courseQuestion(course)"  ><strong ng-show="course.capitulo" style="font-size: 15px">  {{course.capitulo}} </strong>{{::course.nomeLimit}} </a></p>
     						      		</div>
 
     						      		<div ng-if="!course.enable"> 
@@ -109,7 +112,8 @@
                           <ul class="inline-list">
 
                            <li ng-if="::course.enable">
-                                <a ng-href="{{::course.view}}">
+                                <a ng-click="courseQuestion(course)" > 
+                                  <!-- ng-href="{{::course.view}}" -->
                                   <i class="material-icons" alt="Acessar Curso" title="Acessar Curso" >school</i> 
                                 </a>
                             </li>
