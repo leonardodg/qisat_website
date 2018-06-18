@@ -6,7 +6,7 @@
 	 	.factory("carrinhoServive", [ '$http',"$q",'Config', '$location','$filter', 'authService',
 	 			function($http, $q, Config, $location, $filter, authService){
 
-	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
+	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false, showContract = false,
 	 					filterLimitName = $filter('limitName'), transacao = null;
 
 		 			(function load(){
@@ -35,6 +35,10 @@
 
 					function getTrilha(){
 						return hasTrilha;
+					};
+
+					function getShowContract(){
+						return showContract;
 					};
 
 					function getItens(){
@@ -69,6 +73,7 @@
 							valorTotal = 0;
 							promoTheend = [];
 							hasTrilha = false;
+							showContract = false;
 							transacao = null;
 							var datenow = moment(), datapromo, promocao, tipo;
 
@@ -94,9 +99,11 @@
 										if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 33 })) { // Item Séries
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
+											showContract = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 41 })) { // Curso Série
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // A Certificado
 											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 44 }))
 												item.packCert = true;
@@ -109,21 +116,27 @@
 											item.modalidade = tipo.nome;
 											item.isSetup = true;
 											hasTrilha = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 											item.modalidade = tipo.nome;
 											item.isPack = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
 											item.modalidade = tipo.nome;
 											item.isLecture = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
 											item.modalidade = tipo.nome;
 											item.isIndividual = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
 											item.modalidade = tipo.nome;
 											item.isClassroom = true;
+											showContract = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
 											item.modalidade = tipo.nome;
 											item.isOnline = true;
+											showContract = true;
 										}
 
 									}
@@ -418,6 +431,7 @@
 		                        checkPromocaoTheend : checkPromocaoTheend,
 		                        getPromocaoTheend : getPromocaoTheend,
 		                        hasTrilha : getTrilha,
+		                        showContract : getShowContract,
 		                        getProposta : getProposta,
 		                        getTransacao : getTransacao
 						};

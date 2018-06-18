@@ -3,11 +3,13 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('matriculaController', [ '$scope', '$rootScope', 'authService','Authenticated', '$filter', 'Config',
-					 function( scope, $rootScope, authService, Authenticated, $filter, Config) {
+		.controller('matriculaController', [ '$scope', '$rootScope','$window' , 'authService','Authenticated','$controller', '$filter', 'Config',
+					 function( scope, $rootScope, $window,authService, Authenticated, $controller, $filter, Config) {
 					 	var filterLimitName = $filter('limitName');
+					 	var modalController = $controller('modalController');
 
 						$rootScope.loading = true;
+						scope.user = authService.getUser();
 					 	scope.title = "Cursos em Andamento"; 
 					 	scope.agendados = false;
 						scope.outros = false;
@@ -18,8 +20,37 @@
 							scope.filterTab = val;
 						}
 
+						scope.courseQuestion = function(curso){
+
+							authService.courseQuestion({ 
+														 wstoken : Config.tokenMoodleQuestion,
+														 moodlewsrestformat : "json",
+														 wsfunction: "web_service_questionnaire",
+														 courseid : curso.cursoid,
+														 type: "aula_favorita",
+														 userid : scope.user.id
+														}).then( function (res){
+
+															var questionnaire;
+															if(res && res.data && res.data.sucesso){
+																if(res.data.questionnaire){
+																	questionnaire = JSON.parse(res.data.questionnaire);
+																	questionnaire.curso = curso.cursoid;
+																	questionnaire.url = curso.view;
+																	questionnaire.user = scope.user.id;
+			                            							modalController.questionnaire(questionnaire);
+		                            							}else{
+																	$window.location.href = curso.view;
+																}
+															}else{
+																$window.location.href = curso.view;
+															}
+					                            		}, function (res){ 
+					                            			$window.location.href = curso.view;
+			                                            });
+												};
+
 					 	if(Authenticated){
-					 		scope.user = authService.getUser();
 
 						 	authService.courses()
 						 			   .then(function (res){

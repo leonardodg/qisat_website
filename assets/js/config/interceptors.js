@@ -47,7 +47,21 @@
 							        };
 							};
 
+							function moodle() {
+							        return {
+							            request: function (config) {
+							            	
+											var regex = /(moodle.local.com|cursos.qisat.com.br)/i;
+											   if(regex.test(config.url))
+											    delete config.headers.Authorization;
+											
+							                return config;
+							            }
+							        };
+							};
+
 							$httpProvider.interceptors.push(postmon);
+							$httpProvider.interceptors.push(moodle);
    							$httpProvider.interceptors.push(loading);
 
 					}]);

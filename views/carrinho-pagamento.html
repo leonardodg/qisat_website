@@ -72,35 +72,44 @@
             </table>
           </div>
 
+
           <div class="widget_content" ng-if="!buy.transacaoOpen" >
             <p class="title">Forma de pagamento</p>
             <table width="100%" class="table-cart tablePagamento">
-              <tr>
+              <tr ng-show="buy.showContract">
                 <th>Termos de contrato</th>
                 <td>
                   <label>
-                    <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="vm.contrato" > <a ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
+                    <input id="contrato" name="contrato" type="checkbox" ng-required="buy.showContract" ng-model="vm.contrato" > <a ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
 
                     <div ng-show="vm.submitted && pagamentoForm.contrato.$invalid">
                         <span class="error" ng-show="pagamentoForm.contrato.$error.required">Favor ler e aceitar o Contrato.</span>
                     </div>
-
                   </label>
                 </td>
               </tr>
               <tr>
-                <th>Selecione a Forma de Pagamento  </th>
+                <th>Selecione a Forma de Pagamento </th>
                 <td>
                   <div class="row">
                     <div ng-repeat="forma in ::vm.formasPagamentos" ng-class="{'medium-3 small-12 columns end' : !forma.isCard, 'medium-7 small-12 columns' : forma.isCard }">
                       <p>{{forma.pagamento}}</p>
                       <ul class="inline-list">
                         <li ng-repeat="operadora in forma.operadoras">
-                          <label><input id="pagamento" name="pagamento" type="radio" ng-required="true" ng-click="vm.selectForma(forma,operadora.index)" > <img ng-src="{{operadora.img.src}}" alt="{{operadora.img.nome}}" ></label>
+                          <label>
+                              <input id="pagamento" name="pagamento" type="radio" ng-required="true" ng-click="vm.selectForma(forma,operadora.index)" > <img ng-src="{{operadora.img.src}}" alt="{{operadora.img.nome}}" >
+                          </label>
                         </li>
                       </ul>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <div ng-show="vm.submitted && !vm.pagamento" class="medium-12 small-12 columns">
+                          <span class="error" >Selecione a Forma de Pagamento!</span>
+                    </div>
+                  </div>
+
                 </td>
               </tr>
               

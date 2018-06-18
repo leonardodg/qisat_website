@@ -19,6 +19,7 @@
 					 		vm.itens = carrinhoServive.getItens();
 					 		vm.loading = false;
 					 		vm.hasTrilha = carrinhoServive.hasTrilha();
+					 		vm.showContract = carrinhoServive.showContract();
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
 					 		vm.transacao = carrinhoServive.getTransacao();
 

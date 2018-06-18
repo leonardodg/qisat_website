@@ -22,6 +22,15 @@
 						redirect = window.localStorage.getItem('redirect');
 					})();
 
+					function objectToQuerystring (obj) {
+					  return Object.keys(obj).reduce(function (str, key, i) {
+					    var delimiter, val;
+					    delimiter = (i === 0) ? '' : '&';
+					    key = encodeURIComponent(key);
+					    val = encodeURIComponent(obj[key]);
+					    return [str, delimiter, key, '=', val].join('');
+					  }, '');
+					}
 
 					function isAuth() {
 						return checkAuth && isLogged();
@@ -341,6 +350,8 @@
 								}
 			                };
 
+
+
 			                function courses() {
 			                	var deferred = $q.defer(), promise;
 
@@ -389,6 +400,28 @@
 		                            						}else
 		                            							return res;
 		                            		}, function (res){return res});
+                    				
+								}else{
+									deferred.reject(function(res){ return false });
+									return deferred.promise;
+								}
+			                };
+
+
+			                function courseQuestion(data) {
+			                	var deferred = $q.defer(), promise;
+
+								if(isAuth()){
+		                           	promise = $http({ 
+	                                                  method: 'POST', 
+	                                                  headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+	                                                  url: Config.url.plataforma+'/webservice/rest/server.php',
+	                                                  data: objectToQuerystring(data)
+                                                     });
+
+		                            return  promise.then( function (res){
+		                            						return res;
+					                            		}, function (res){ return false });
                     				
 								}else{
 									deferred.reject(function(res){ return false });
@@ -747,6 +780,7 @@
 			    					update : update,
 			    					updateFile : updateFile,
 			    					courses : courses,
+			    					courseQuestion: courseQuestion,
 			    					inscricao : inscricao,
 			    					compras :  compras,
 			    					carrinho : carrinho,

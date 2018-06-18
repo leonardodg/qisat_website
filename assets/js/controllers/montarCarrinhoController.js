@@ -13,7 +13,11 @@
 
 						if($route && $route.current && $route.current.params && $route.current.params.produto){
 								var nome = $route.current.params.produto;
-								carrinhoServive.addItem({ produto: nome });
+
+								if('turma' in $route.current.params)
+									carrinhoServive.addItem({ produto: nome, quantidade : 1, presencial : $route.current.params.turma });
+								else
+									carrinhoServive.addItem({ produto: nome });
 						}
 
 					 	vm.nextCompra = function(){

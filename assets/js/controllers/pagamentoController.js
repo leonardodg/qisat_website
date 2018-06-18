@@ -127,9 +127,9 @@
 						 		vm.submitted = true;
 						 		var data = {},tipoPagamento;
 
-								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && vm.contrato){
+								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && (vm.contrato || (!vm.contrato && !carrinhoServive.showContract()))){
 									if(vm.forma.tipo =='cartao_recorrencia')
-										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || (!vm.contrato && carrinhoServive.showContract()))
 											return;
 										else
 											data.cartao = vm.cartao;

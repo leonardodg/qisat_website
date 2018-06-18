@@ -12,7 +12,8 @@
 
 					 	if(venda && (authService.isLogged() && Authenticated)){
 
-					 		venda.products.map(function(prod){ siglas.push(prod.sigla); });
+					 		if(venda.products && venda.products.length)
+					 			venda.products.map(function(prod){ siglas.push(prod.sigla); });
 
 					 		data_rd = [
 									      { name: 'email', value: user.email },

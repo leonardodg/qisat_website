@@ -126,6 +126,48 @@
 				 						});
 					 			  };
 
+					 	vm.questionnaire = function (question) {
+				 					var modalInstance = $modal.open({
+                      						windowClass: 'call',
+				 							templateUrl: '/views/modal-question.html',
+				 							controller : function ($window, $scope, $modalInstance, Config, authService) {
+			 								 				  	var respostas;
+			 								 				  	$scope.submitted = false;
+			 								 				  	$scope.resp = [];
+								   							    $scope.question = question.perguntas;
+
+																$scope.cancel = function () {
+																	$modalInstance.dismiss('cancel');
+																};
+
+								   							    $scope.send = function (resp, form) {
+																	$scope.submitted = true;
+																	respostas = {};
+
+																	if(resp && resp.length){
+																		resp.map(function(val, i){ respostas[i] = val.id });
+
+																		authService.courseQuestion({ 
+																								 wstoken : Config.tokenMoodlerespond,
+																								 moodlewsrestformat : "json",
+																								 wsfunction: "web_service_responder",
+																								 courseid : question.curso,
+																								 userid : question.user,
+																								 questionnaire : question.id,
+																								 respostas : JSON.stringify(respostas)
+																					}).then( function (res){
+																								$modalInstance.dismiss('cancel');
+																								if(res && res.data && res.data.sucesso){
+																									vm.alert({ success : true, main : {subtitle: "Agradecemos sua participação", title: 'Bons estudos!'}});
+																								}
+																								$window.location.href = question.url;
+												                            		});
+
+																	}
+																};
+															}
+				 						});
+					 			  };
 
 					 	vm.showZopim = function(show, wait) {
                             var body = angular.element(document).find('body');
