@@ -106,12 +106,18 @@
 															  }
 
 															  $scope.solicitarContato = function(data,callForm){
-															  		var dados = angular.copy(data);
-															  			$scope.submitted = true;
+																  
+																  	var dados = { empresa: "QiSat", origem : "Site QiSat", categoria : "Ligamos Para Voce" };
+																  		dados.user_dados = angular.copy(data);
+																  
+																	if(user) 
+																		dados.userid = user.id;
+
 															  		if(callForm && callForm.$valid){
 															  			$scope.loading = true;
-															  			dados.telefone = '('+data.operadora+") "+data.telefone;
-															  			QiSatAPI.callMe(dados)
+															  			dados.user_dados.telefone = '('+data.operadora+") "+data.telefone;
+
+															  			QiSatAPI.newRepasse(dados)
 					                       									    .then(function (res){
 															  						$scope.enviado = true;
 															  						$scope.loading = false;
@@ -264,13 +270,20 @@
 				 					var modalInstance = $modal.open({ 
                       						windowClass: 'interesse',
 				 							templateUrl: '/views/modal-interesse.html',
-				 							controller : function ($scope, $modalInstance, QiSatAPI) {
-				 											  $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
-															  $scope.submitted = false;
+				 							controller : function ($scope, $modalInstance, QiSatAPI, authService) {
 
-															  $scope.cancel = function () {
-															    $modalInstance.dismiss('cancel');
-															  };
+															var user = authService.getUser();
+															var dados = { empresa: "QiSat", origem : "Site QiSat", categoria : "Interesse Curso Presencial" };
+
+															if(user) 
+																dados.userid = user.id;
+
+				 											$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+															$scope.submitted = false;
+
+															$scope.cancel = function () {
+																$modalInstance.dismiss('cancel');
+															};
 
 										  					if(course.isClassroom)
 										  						$scope.tipo = 'presencial';
@@ -278,36 +291,27 @@
 													  			$scope.tipo = 'individual';
 													  		else if(course.isClass)
 													  			$scope.tipo = 'turma';
-													  		
-															  $scope.submit = function(data,form){
-															  		var dados = {};
-														  			$scope.submitted = true;
-														  			var nome = course.nome || course.titulo || course.curso;
-
+															  
+															$scope.submit = function(data,form){
+																	$scope.submitted = true;
+																	  
 															  		if(form && form.$valid){
 
-																  		dados.corpo_email = 'Prezados,<br /><br />';
-																  		dados.corpo_email += '	<strong>Nome: </strong>'+data.nome+'<br />';
-																  		dados.corpo_email += '	<strong>E-mail: </strong>'+data.email+'<br />';
-																  		dados.corpo_email += '	<strong>Telefone: </strong>('+data.operadora+') '+data.telefone+'<br />';
-																  		dados.corpo_email += '	Cliente resgistrou interesse no curso ';
-																  		dados.corpo_email += ' <strong> '+nome+'</strong>';
+																		dados.user_dados = { 
+																			email : data.email, 
+																			nome : data.nome,
+																			telefone : '('+data.operadora+') '+data.telefone,
+																			curso : course.nome || course.titulo || course.curso,
+																			categoria : course.modalidade,
+																			curso_tipo : $scope.tipo
+																		};
 
-																  		if(course.isClassroom){
-															  				dados.assunto_email = '[QiSat] Registro de Interesse - Curso Presencial';
-															  				dados.corpo_email += ', categoria: '+course.modalidade+'<br />';
-																  		}else if(course.isIndividual){
-															  				dados.assunto_email = '[QiSat] Registro de Interesse - Curso Presencial Individual';
-															  				dados.corpo_email += ', categoria: '+course.modalidade+'<br />';
-																  		}else if(course.isClass){
-															  				dados.assunto_email = '[QiSat] Registro de Interesse - Turma Curso Presencial';
-															  				dados.corpo_email += ' Turma de '+course.datauf;
-																  		}else
-															  				dados.assunto_email = '[QiSat] Registro de Interesse';
+																		if(course.datauf)
+																			dados.user_dados.turma = course.datauf;
 
 															  			$scope.loading = true;
 															  			
-															  			QiSatAPI.repasse(dados)
+															  			QiSatAPI.newRepasse(dados)
 					                       									    .then(function (res){
 															  						$scope.enviado = true;
 															  						$scope.loading = false;
@@ -317,9 +321,9 @@
 					                       									    });
 
 															  		}
-															  }
-
 															}
+
+														}
 				 						});
 					 			  };
 

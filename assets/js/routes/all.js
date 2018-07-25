@@ -6,22 +6,37 @@
     .config([ '$httpProvider', '$locationProvider', '$routeProvider',
           function ( $httpProvider, $locationProvider, $routeProvider ) {
 
-            function aboutController ($scope, QiSatAPI){
+            function aboutController ($scope, $controller, QiSatAPI, authService){
+                  var modalController = $controller('modalController');
+                  var data = { empresa: "QiSat", origem : "Site QiSat", categoria : "Download Identidade" };
+
                   $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
                   $scope.submitted = false;
                   $scope.isDisabled = true;
                   $scope.solicitarIdentidade = function(){
+                      var user = authService.getUser();
+
                       $scope.submitted = true;
                       if($scope.email){
                         $scope.isDisabled = false;
-                        QiSatAPI.identidadeVisual($scope.email).then(function (res){
+                        data.user_dados = { email : $scope.email };
+                        if(user) 
+                          data.userid = user.id;
+                        QiSatAPI.newRepasse(data).then(function (res){
+                            $scope.submitted = false;
+                            $scope.isDisabled = true;
                             if(res && res.data && res.data.retorno && res.data.retorno.sucesso){
-                              $scope.submitted = false;
-                              $scope.isDisabled = true;
                               delete($scope.email);
                               $scope.visualForm.$setPristine();
+                              modalController.alert({ success : true, main : { html : true, title : 'Download Realizado!', subtitle : '<p> Caso tenha problema, segue o link do arquivo </p> <a href="/files/Manual da Marca QiSat.pdf" download="Manual QiSat.pdf" title="Click para Iniciar o Donwload" target="_self" >Visualizar</a>' } });
+                            }else{
+                              modalController.alert({ error : true, main : {  html : true, subtitle : '<p> Caso tenha problema, segue o link do arquivo </p> <a href="/files/Manual da Marca QiSat.pdf" download="Manual QiSat.pdf" title="Click para Iniciar o Donwload" target="_self" >Visualizar</a>' }});
                             }
-                        });
+                          }, function ( res ){
+                            $scope.submitted = false;
+                            $scope.isDisabled = true;
+                            modalController.alert({ error : true, main : {  html : true, subtitle : '<p> Caso tenha problema, segue o link do arquivo </p> <a href="/files/Manual da Marca QiSat.pdf" download="Manual QiSat.pdf" title="Click para Iniciar o Donwload" target="_self" >Visualizar</a>' }});
+                          });
                       }
                   }
               };

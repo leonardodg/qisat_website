@@ -30,23 +30,6 @@
 		                                                });
 		                        },
 
-		                        callMe : function(data){
-
-		                        	var promise = $http({ 
-		                                                    method: 'POST',
-		                                                    loading : true,
-		                                                    url: Config.baseUrl+'/repasse/wsc-ligamos-para-voce/salvar',
-		                                                    data: data
-		                                                        });
-
-		                            return promise.then( function(res){ 
-		                                                    return res; 
-		                                                }, function(res){ 
-		                                                    return res; 
-		                                                });
-
-		                        },
-
 		                        repasse : function(data){
 
 		                        	var promise = $http({ 
@@ -62,15 +45,14 @@
 		                                                    return res; 
 		                                                });
 
-		                        },
-
-
-		                        contact : function(data){
+								},
+								
+		                        newRepasse : function(data){
 
 		                        	var promise = $http({ 
 		                                                    method: 'POST', 
 		                                                    loading : true,
-		                                                    url: Config.baseUrl+'/repasse/contato',
+		                                                    url: Config.baseUrl+'/repasse/wsc-repasse/novo',
 		                                                    data: data
 		                                                        });
 
@@ -822,18 +804,6 @@
 										}
 							},
 
-							identidadeVisual : function (email) {
-										var promise = $http({ 
-															method: 'GET', 
-															loading : true,
-															url: Config.baseUrl+'/identidade-visual/'+email
-														});
-
-										promise.then( handleSuccess, handleError );
-
-										return promise;
-							},
-
 							newsletter : function (email) {
 										var promise = $http({ 
 															method: 'GET', 
@@ -846,11 +816,12 @@
 										return promise;
 							},
 
-							remember : function (data) {
+							remember : function (data, recaptcha) {
+									var url = (recaptcha===false) ? '/wsc-user/remember-me': '/wsc-user/lembrete-senha' ;
 									var promise = $http({ 
 															method: 'POST', 
 															loading : true,
-															url: Config.baseUrl+'/wsc-user/lembrete-senha',
+															url: Config.baseUrl+url,
 															data: data
 														});
 

@@ -102,7 +102,7 @@
 					 	scope.remember = function(){
 							var data = { email : scope.cadastro.email };
 								scope.msgRemember = '';
-								QiSatAPI.remember(data)
+								QiSatAPI.remember(data, false)
 											.then( function ( response ){
 													if(response && response.data && response.data.retorno && response.data.retorno.sucesso)
 														scope.msgRemember = "Lembrete de senha enviado com Sucesso!";

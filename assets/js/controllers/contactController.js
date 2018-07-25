@@ -4,8 +4,8 @@
 	angular
 		.module('QiSatApp')
 		.controller("contactController", 
-					[ '$scope', 'QiSatAPI', '$modal', '$controller', 'vcRecaptchaService',
-						function($scope, QiSatAPI, $modal, $controller, vcRecaptchaService){
+					[ '$scope', 'QiSatAPI', '$modal', '$controller', 'vcRecaptchaService', 'authService',
+						function($scope, QiSatAPI, $modal, $controller, vcRecaptchaService, authService){
 						
 						var modalController = $controller('modalController');
 							$scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
@@ -30,6 +30,8 @@
 
 
 			            $scope.addNew = function(){
+								 var user = authService.getUser();
+
 			                      $scope.submitted = true;
 			                      if($scope.emailNew){
 			                        $scope.isDisabled = false;
@@ -48,29 +50,34 @@
 			            };
 
 						$scope.sendMail = function(){
-							var dados = {};
+							var user = authService.getUser();
+							var dados = { empresa: "QiSat", origem : "Site QiSat", categoria : "Mensagem Contato" };
 							
+							if(user) 
+								dados.userid = user.id;
+
 							$scope.submitted = true;
 							if($scope.contatoForm.$valid){
-								dados.assunto_email = '[QiSat] Mensagem enviada através da página de contato';
-								dados.corpo_email = '<b>Nome:</b> '+$scope.contato.name+' <br/>';
-								dados.corpo_email += '<b>E-mail:</b> '+$scope.contato.email+' <br/>';
-								dados.corpo_email += '<b>telefone:</b> '+$scope.contato.phone+' <br/>';
-								dados.corpo_email += '<b>Origem:</b> QiSat <br/><br/>';
-								dados.corpo_email += ' <b>Assunto:</b> '+$scope.contato.subject+' <br />';
-								dados.corpo_email += ' <b>Mensagem:</b><br />';
-								dados.corpo_email += ' <p>'+$scope.contato.msg+' </p>';
+
+								dados.user_dados = { 
+									email : $scope.email, 
+									nome : $scope.contato.name,
+									email : $scope.contato.email,
+									telefone : $scope.contato.phone,
+									subject : $scope.contato.subject,
+									msg : $scope.contato.msg
+								};
 
 								dados.recaptcha = $scope.gRecaptchaResponse;
 
-								QiSatAPI.contact(dados)
-											.then( function ( response ){
+								QiSatAPI.newRepasse(dados)
+											.then( function ( res ){
 													$scope.contato = {};
 													$scope.submitted = false;
 													$scope.reloadRecaptcha();
 													$scope.contatoForm.$setPristine();
 
-													if(response.statusText=="OK")
+													if(res && res.data && res.data.retorno && res.data.retorno.sucesso)
 														modalController.alert({ success : true, main : { title : "Obrigado! Sua mensagem foi enviada.", subtitle : "Em breve a equipe QiSat entrará em contato." } });
 													else
 														modalController.alert({ error : true, main : { title : "Falha no envio do E-mail!" }});

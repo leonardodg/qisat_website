@@ -137,8 +137,8 @@
 						 			vm.loading = true;
 						 			vm.error = false;
 						 			data.contrato = 1;
-						 			data.operadora = parseInt(vm.pagamento);
-									tipoPagamento = vm.formasPagamentos.find(function (forma){ return forma.operadoras.find(function (op){ return op.index == vm.pagamento })});
+									data.operadora = parseInt(vm.pagamento);
+									tipoPagamento = vm.formasPagamentos.find(function (forma){ return forma.operadoras && forma.operadoras.find(function (op){ return op.index == vm.pagamento })});
 									// melhorar solução para quando forma de pogamento possuir mais de um tipo ativo
 									if(tipoPagamento && tipoPagamento.tipos) 
 										data.tipoPagamento = parseInt(tipoPagamento.tipos[0].index);

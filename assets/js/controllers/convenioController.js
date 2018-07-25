@@ -101,6 +101,8 @@
 														modalController.alert({ error : true, main : { title : "Falha na Solicitação de Cadastro." }});
 
 												}, function ( response ){
+													vm.submit = false;
+													vm.reloadRecaptcha();
 													modalController.alert({error : true});
 												});
 							}else

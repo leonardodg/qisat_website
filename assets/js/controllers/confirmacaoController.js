@@ -25,7 +25,7 @@
 									      { name: 'identificador', value: 'Compra Finalizada - QiSat' }
 									    ];
 
-							if(user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+							if(typeof user != 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
 							if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 
 					 		if(venda.forma_pagamento == 'Boleto'){
