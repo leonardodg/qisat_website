@@ -178,7 +178,6 @@
                         <input type="text" name="cupom" size="15" ng-model="cupom" cupom-debounce cupom-valid="buy.validCupom" /> 
                       </div>
                       <div class="large-4 columns text-left">
-                        {{cupom}}
                         <span class="success label" ng-show="buy.cupom && buy.cupom==cupom" ><i class="material-icons not-cursor" title="Cupom Válido">check_circle</i></span> 
                         <i class="material-icons not-cursor color-warning" title="Cupom Inválido" ng-show="(cupom!='' && !buy.cupom)"  >warning</i></span>
                       </div>
