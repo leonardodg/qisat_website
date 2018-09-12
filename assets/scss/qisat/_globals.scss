@@ -164,10 +164,8 @@ article{ padding: 30px 0; display: inline-block; width: 100%;}
 }
 .home_panel_titles--testimonials{@extend .home_panel_titles; padding: 120px 0;}
 
-
-
-
-
+.not-cursor { cursor: default; }
+.color-warning { color: $alert-color }
 
 
 .has-price_popover{ position: relative;
