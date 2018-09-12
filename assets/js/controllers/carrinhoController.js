@@ -3,13 +3,13 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('carrinhoController', [ '$rootScope', '$controller' ,'$filter', '$location', 'Config', 'carrinhoServive', 'authService',
-					 function( $rootScope, $controller, $filter, $location, Config, carrinhoServive, authService) {
+		.controller('carrinhoController', [ '$rootScope', '$scope', '$controller' ,'$filter', '$location', 'Config', 'carrinhoServive', 'authService',
+					 function( $rootScope, scope, $controller, $filter, $location, Config, carrinhoServive, authService) {
 
 					 	var vm = this;
-					 	var modalController = $controller('modalController');
+						var modalController = $controller('modalController');
 
-					 	vm.loading = true;
+						vm.loading = true;
 					 	if($location.path().indexOf('/proposta') >=0)
 					 		vm.editCarrinho = false;
 					 	else
@@ -21,7 +21,10 @@
 					 		vm.hasTrilha = carrinhoServive.hasTrilha();
 					 		vm.showContract = carrinhoServive.showContract();
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
-					 		vm.transacao = carrinhoServive.getTransacao();
+							vm.transacao = carrinhoServive.getTransacao();
+							carrinhoServive.getCupom().then(function(cupom){
+								scope.cupom = vm.cupom = cupom;
+							});
 
 					 		if(vm.itens && vm.itens.length){
 					 			
@@ -72,7 +75,7 @@
 
 					 	(function init(){
 					 		authService.Authenticated().then(function(res){
-						 		if(carrinhoServive.checkCarrinho() && !carrinhoServive.checkItens()){
+						 		if(carrinhoServive.checkCarrinho()){
 					 				carrinhoServive.getCarrinho()
 					 						.then(function (res){
 					 								if((res.sucesso && res.carrinho) || (!res.sucesso && res.carrinho))
@@ -144,8 +147,20 @@
 					 		vm.showBuy = !vm.showBuy;
 					 	};
 
-					 	$rootScope.$watch( function(){ return carrinhoServive.checkCarrinho(); },
-					 					   function(val){ setValues(); }, true);
-				 		
+						vm.validCupom = function(cupom){
+							if( (((cupom && cupom != '')&& (cupom != vm.cupom)) || (cupom=='' && vm.cupom) ) ) {
+								carrinhoServive.validCupom(cupom).then(function(res){
+									carrinhoServive.getCarrinho()
+					 						.then(function (res){
+					 								if((res && res.sucesso && res.carrinho) || (res && !res.sucesso && res.carrinho) || (res === false))
+					 									setValues();
+				 								});
+								})
+							}
+						};
+
+					 	$rootScope.$watch( function(){ return carrinhoServive.getItens(); },
+											function(val){ setValues(); }, true);
+				 								
 					 }]);
 })();

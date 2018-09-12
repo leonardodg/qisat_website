@@ -3,11 +3,11 @@
 
 	 angular
 	 	.module('QiSatApp')
-	 	.factory("carrinhoServive", [ '$http',"$q",'Config', '$location','$filter', 'authService',
-	 			function($http, $q, Config, $location, $filter, authService){
+	 	.factory("carrinhoServive", [ '$http',"$q",'$timeout', 'Config', '$location','$filter', 'authService',
+	 			function($http, $q, $timeout, Config, $location, $filter, authService){
 
 	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false, showContract = false,
-	 					filterLimitName = $filter('limitName'), transacao = null;
+	 					filterLimitName = $filter('limitName'), transacao = null, cupom;
 
 		 			(function load(){
 		 				if(!carrinho)
@@ -75,9 +75,13 @@
 							hasTrilha = false;
 							showContract = false;
 							transacao = null;
+							cupom = null;
 							var datenow = moment(), datapromo, promocao, tipo;
 
 							if(value){
+								cupom = itens.find(function(val){ return val.ecm_cupom });
+								cupom = (cupom && cupom.ecm_cupom) ? cupom.ecm_cupom : false;
+
 								itens.map(function (item){
 									datapromo = null;
 									promocao = null;
@@ -85,9 +89,32 @@
 									item.precoFormat = $filter('currency')(item.valor_produto_desconto, 'R$');
 									item.valorFormat = $filter('currency')(item.valor_produto, 'R$');
 									if(item.ecm_promocao){
-										item.valorPromocaoFormat = $filter('currency')(item.valor_produto_desconto, 'R$');
+
+										if(item.ecm_promocao.descontovalor)
+											item.valorPromocao = item.ecm_promocao.descontovalor;
+										else if(item.ecm_promocao.descontoporcentagem)
+											item.valorPromocao = (item.ecm_promocao.arredondamento == 'true') ? Math.round(item.valor_produto * (item.ecm_promocao.descontoporcentagem/100)) : (item.valor_produto * (item.ecm_promocao.descontoporcentagem/100));
+
+										item.valorPromocaoFormat = $filter('currency')(item.valorPromocao, 'R$');
 										item.promocaoDateend = $filter('date')( item.ecm_promocao.datafim*1000, 'dd/MM/yyyy' );
 									}
+
+									if(item.ecm_cupom){
+										if(item.ecm_cupom.descontovalor)
+											item.valorCupom = item.ecm_cupom.descontovalor;
+										else if(item.ecm_cupom.descontoporcentagem){
+											if((item.ecm_cupom.descontosobretabela == 'true'))
+												item.valorCupom = item.valor_produto * (item.ecm_cupom.descontoporcentagem/100);
+											else
+												item.valorCupom = item.valorPromocao ? (item.valor_produto-item.valorPromocao) * (item.ecm_cupom.descontoporcentagem/100) : (item.valor_produto) * (item.ecm_cupom.descontoporcentagem/100);
+
+										 	if(item.ecm_cupom.arredondamento == 'true')
+												item.valorCupom = Math.round(item.valorCupom);
+										}
+
+										item.valorCupomFormat = $filter('currency')(item.valorCupom, 'R$');
+									}
+
 									item.total = item.quantidade*item.valor_produto_desconto;
 									valorTotal = valorTotal + item.total;
 									item.totalFormat = $filter('currency')(item.total, 'R$');
@@ -155,7 +182,6 @@
 											if(!promocao) promoTheend.push(item.ecm_promocao);
 										}
 									}
-
 								});
 
 							}
@@ -170,7 +196,45 @@
 						valorTotal = 0;
 						carrinho = false;
 						itens = null;
+						transacao = null; 
+						cupom = null;
 						window.localStorage.removeItem('carrinho');
+					};
+
+					function validCupom(cupom) {
+						var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization+" "+authService.getToken(), 'Content-Type' : 'application/json' } : {'Content-Type' : 'application/json'};
+						var deferred = $q.defer(), promise;
+
+							promise = $http({ 
+										  method: 'GET', 
+										  loading : true,
+										  url: Config.baseUrl+'/cupom/validar/'+cupom,
+										  dataType: 'jsonp',
+										  headers : headers,
+										  withCredentials : true
+
+												});
+
+							return  promise.then( function (res){
+										return (res && res.data && res.data.retorno) ? res.data.retorno : false;
+									}, function (res){
+										deferred.resolve(function(res){ return false });
+										deferred.reject(function(res){ return false });
+										return deferred.promise;
+									});
+
+					};
+
+					function getCupom(){
+						var deferred = $q.defer();
+
+						return $timeout(function(){
+							if(cupom)
+								return cupom.chave;
+							else
+								 return '';
+						});
+
 					};
 
 					function addItem(data) {
@@ -433,7 +497,9 @@
 		                        hasTrilha : getTrilha,
 		                        showContract : getShowContract,
 		                        getProposta : getProposta,
-		                        getTransacao : getTransacao
+		                        getTransacao : getTransacao,
+		                        validCupom : validCupom,
+		                        getCupom : getCupom
 						};
 
 				return sdo;

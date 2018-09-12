@@ -50,16 +50,17 @@
                       <span class="newPrice">{{item.quantidade}}</span>
                   </td>
                   <td class="muted text-center">
-                    <div ng-if="!item.ecm_promocao">
+                    <div ng-if="!item.ecm_promocao && !item.ecm_cupom">
                       <span class="muted">{{item.valorFormat}}</span>
                     </div>
-                    <div ng-if="item.ecm_promocao">
+                    <div ng-if="item.ecm_promocao || item.ecm_cupom">
                       <span class="oldPrice">{{item.valorFormat}}</span>
-                      <span class="discount">Desconto promocional: -{{item.valorPromocaoFormat}}</span>
+                      <span class="discount" ng-show="item.valorPromocao" >Desconto promocional: -{{item.valorPromocaoFormat}}</span>
+                      <span class="discount" ng-show="item.valorCupom">Desconto Cupom -{{item.valorCupomFormat}}</span>
                       <span class="newPrice">por {{item.precoFormat}}</span>
                     </div>
                   </td>
-                  <td class="muted" >{{item.totalFormat}}</td>
+                  <td class="muted" >{{item.precoFormat}}</td>
 
                 </tr>
                
@@ -224,7 +225,7 @@
 
                           <span>Clique em Finalizar Pagamento ou Aguarde!</span> <br>
                      
-                          <timer countdown="1000" interval="1000" >
+                          <timer countdown="10" interval="1000" >
                             <span ng-show="seconds"> Redirecionamento Automático em: {{sseconds}} Segundo{{secondsS}}. </span>
                           </timer>
               

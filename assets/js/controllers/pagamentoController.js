@@ -49,6 +49,9 @@
 						};
 
 					 	if(Authenticated){
+
+							carrinhoServive.getCarrinho();
+												 
 					 		vm.user = authService.getUser();
 					 		if(vm.user && (!vm.user.email || !vm.user.numero)){
 					 			modalController.update('/carrinho/pagamento');
@@ -122,7 +125,6 @@
 		 						});
 			 			    };
 
-
 						 	vm.nextPagamento = function(form){
 						 		vm.submitted = true;
 						 		var data = {},tipoPagamento;
@@ -156,17 +158,23 @@
 					 									data.itens = produtos;
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
 						 										if(res.sucesso){
+																	vm.loading = false;
 							 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto') ){
 																		$location.path('/carrinho/confirmacao/'+res.venda);
 					 									   			}else if(res.url){
+																		vm.redirect = res.url;
+
 				 									   					$timeout(function() {
 																		      	$window.location.href = res.url;
 																		      }, 10000);
 					 									   			}
 					 									   		}else{
 						 											vm.loading = false;
-				 									   				modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Tente novamente!" } });
+				 									   				modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Entre em contato com a nossa Central de Inscrições - (48) 3332-5000" } });
 				 									   			}
+														}, function() {
+															vm.loading = false;
+															modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Entre em contato com a nossa Central de Inscrições - (48) 3332-5000" } });
 														});
 					 								}
 					 							}
