@@ -19,7 +19,9 @@
 					 		vm.itens = carrinhoServive.getItens();
 					 		vm.loading = false;
 					 		vm.hasTrilha = carrinhoServive.hasTrilha();
-					 		vm.showContract = carrinhoServive.showContract();
+							vm.showContractOnline = carrinhoServive.showContract();
+							vm.showContractEberick = carrinhoServive.showContract(56);
+							vm.showContractQiBuilder = carrinhoServive.showContract(57);
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();
 							vm.transacao = carrinhoServive.getTransacao();
 							carrinhoServive.getCupom().then(function(cupom){

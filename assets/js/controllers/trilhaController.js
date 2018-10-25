@@ -7,7 +7,8 @@
 					 function( $controller, $location, $window, $modal, $modalTrilha, $filter, authService,  carrinhoServive, QiSatAPI, vcRecaptchaService, produto ) {
 					 	var vm = this;
 					 	var modalController = $controller('modalController');
-					 		vm.showZopim = modalController.showZopim;
+							vm.showZopim = modalController.showZopim;
+							moment.locale('pt-BR');
 
 		 				carrinhoServive.getFormas({ produto : produto.id })
                                        .then(function (formas){
@@ -44,7 +45,7 @@
                         var itens = carrinhoServive.getItens();
 						if(itens && itens.length){
 							  	vm.item = itens.find(function (item){
-											  	 	return item.isSetup;
+											  	 	return item.ecm_produto_id == produto.id;
 											 });
 							  	if(vm.item){
 								  	vm.item.modalidade = vm.item.modalidade;
@@ -69,50 +70,19 @@
 							vm.error = false;
 						};
 
-				 		vm.modalcontrato = function () {
+				 		vm.modalContratoLab = function (fase) {
+							vm.user = authService.getUser();
+							var contactLab = (fase == 2) ? 55 : 54 ; // id tipo produto do LAB I e LAB II;
 	 						var modalContrato = $modal.open({
-	 							templateUrl: '/views/modal-contrato.html',
+	 							templateUrl: (fase == 2) ? '/views/modal-contrato-altoqilab2.html' : '/views/modal-contrato-altoqilab.html',
 	 							controller : function ($scope, $modalInstance) {
 												  $scope.cancel = function () {
 												    $modalInstance.close();
 												  };
-												  
-												  var itens = carrinhoServive.getItens(), online = [], presencial = [];
 
-												  if(vm.user) $scope.nome = vm.user.nome;
+												  $scope.datanow = moment().format('D [de] MMMM [de] YYYY');
 
-												  if(itens && itens.length){
-												  	itens.map(function (item){
-												  			var dados = { id: item.id };
-													  	 	if(item.ecm_produto && item.isSetup){
-
-													  	 		if(item.ecm_produto.enrolperiod){
-														  	 		dados.enrolperiod = item.ecm_produto.enrolperiod.toString();
-														  	 		dados.enrolperiod = dados.enrolperiod +' ('+dados.enrolperiod.extenso()+') '+' Dias';
-													  	 		}
-
-													  	 		dados.modalidade = item.modalidade;
-													  	 		dados.nome = item.ecm_produto.nome;
-
-													  	 		if(item.ecm_produto.mdl_course){
-													  	 			dados.courses = [];
-													  	 			item.ecm_produto.mdl_course.map(function(course){
-													  	 				var aux = { id: course.id };
-													  	 				if(course.fullname) aux.nome = course.fullname;
-													  	 				if(course.timeaccesssection ){
-													  	 					aux.time = course.timeaccesssection.toString();
-													  	 					aux.time = aux.time +' ('+aux.time.extenso()+') '+' Horas';
-													  	 				}
-													  	 				dados.courses.push(aux);
-													  	 			});
-													  	 		}
-
-													  	 		online.push(dados);
-													  	 	}
-													  });
-
-													  $scope.online = online;
-												  }
+												  if(vm.user) $scope.nome = vm.user.firstname+' '+vm.user.lastname;
 												}
 	 						});
 		 			    };
@@ -121,7 +91,7 @@
 					 		var data = {},tipoPagamento;
 					 			vm.submitted = true;
 
-								if(vm.pagamento){
+								 if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && (vm.contrato || (!vm.contrato && !carrinhoServive.showContract(contactLab)))){
 									if(vm.forma.tipo =='cartao_recorrencia')
 										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
 											return;
@@ -138,7 +108,7 @@
 
 									carrinhoServive.setFormasPagamentos(data)
 			 									   .then(function (res){
-			 									   		vm.loading = false;
+														vm.loading = false;
 			 									   		if(res && res.sucesso){
 			 									   			if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
 																$location.path('/carrinho/confirmacao/'+res.venda);
@@ -147,8 +117,12 @@
 			 									   				$window.location.href = res.url;
 			 									   			else
 																vm.error = true;
-			 									   		}else
-			 									   			vm.error = true;
+			 									   		}else{
+															vm.error = true;
+															if(res && res.mensagem)
+																vm.mensagem = res.mensagem;
+														}
+
 													}, function (res){
 														vm.loading = false;
 														vm.error = true;

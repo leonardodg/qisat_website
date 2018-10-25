@@ -73,21 +73,46 @@
             </table>
           </div>
 
-
-          <div class="widget_content" ng-if="!buy.transacaoOpen" >
+          <div class="widget_content" ng-if="!buy.transacaoOpen && !vm.redirect" >
             <p class="title">Forma de pagamento</p>
             <table width="100%" class="table-cart tablePagamento">
-              <tr ng-show="buy.showContract">
+              <tr ng-show="buy.showContractOnline">
                 <th>Termos de contrato</th>
                 <td>
                   <label>
-                    <input id="contrato" name="contrato" type="checkbox" ng-required="buy.showContract" ng-model="vm.contrato" > <a ng-click="vm.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
+                    <input id="contratoOnline" name="contratoOnline" type="checkbox" ng-required="buy.showContractOnline" ng-model="vm.contratoOnline" > <a ng-click="vm.modalContrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
 
-                    <div ng-show="vm.submitted && pagamentoForm.contrato.$invalid">
-                        <span class="error" ng-show="pagamentoForm.contrato.$error.required">Favor ler e aceitar o Contrato.</span>
+                    <div ng-show="vm.submitted && pagamentoForm.contratoOnline.$invalid">
+                        <span class="error" ng-show="pagamentoForm.contratoOnline.$error.required">Favor ler e aceitar o Contrato Online.</span>
                     </div>
                   </label>
                 </td>
+              </tr>
+
+              <tr ng-show="buy.showContractEberick">
+                <th>Termos de contrato</th>
+                <td>
+                  <label>
+                    <input id="contratoEberick" name="contratoEberick" type="checkbox" ng-required="buy.showContractEberick" ng-model="vm.contratoEberick" > <a ng-click="vm.modalContrato(56)">Eu aceito termos do CONTRATO DOS PRODUTO EBERICK</a>
+
+                    <div ng-show="vm.submitted && pagamentoForm.contratoEberick.$invalid">
+                        <span class="error" ng-show="pagamentoForm.contratoEberick.$error.required">Favor ler e aceitar o Contrato AltoQi.</span>
+                    </div>
+                  </label>
+                </td>
+              </tr>
+
+              <tr ng-show="buy.showContractQiBuilder">
+                  <th>Termos de contrato</th>
+                  <td>
+                    <label>
+                      <input id="contratoQiBuilder" name="contratoQiBuilder" type="checkbox" ng-required="buy.showContractQiBuilder" ng-model="vm.contratoQiBuilder" > <a ng-click="vm.modalContrato(57)">Eu aceito termos do CONTRATO DOS PRODUTO QIBUILDER</a>
+  
+                      <div ng-show="vm.submitted && pagamentoForm.contratoQiBuilder.$invalid">
+                          <span class="error" ng-show="pagamentoForm.contratoQiBuilder.$error.required">Favor ler e aceitar o Contrato AltoQi.</span>
+                      </div>
+                    </label>
+                  </td>
               </tr>
               <tr>
                 <th>Selecione a Forma de Pagamento </th>

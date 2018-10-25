@@ -22,7 +22,7 @@
                   <th>Termos de contrato</th>
                   <td>
                     <label>
-                      <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="trilhaCtr.contrato" > <a ng-click="trilhaCtr.modalcontrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
+                      <input id="contrato" name="contrato" type="checkbox" ng-required="true" ng-model="trilhaCtr.contrato" > <a ng-click="trilhaCtr.modalContratoLab( ((trilhaCtr.item.isLab1) ? 1 : 2) )">Eu aceito termos do CONTRATO PARA PRESTAÇÃO DE SERVIÇO </a>
 
                       <div ng-show="(!trilhaCtr.contrato && trilhaCtr.submitted)">
                           <span class="error">Favor ler e aceitar o Contrato.</span>
@@ -155,7 +155,8 @@
 
                     <div ng-show="trilhaCtr.error" >
 
-                        <span class="section-call__done--title" > Falha ao processar pagamento, tente novamento! </span>
+                        <span class="section-call__done--title" > Falha ao processar pagamento! </span>
+                        <span class="section-call__done--title" ng-if="trilhaCtr.mensagem"> {{trilhaCtr.mensagem}}</span>
                         <span class="section-call__done--subtitle" > Caso o problemas persista entre em contato com nossa Central de Inscrições.
                             <p class="text-center" > 
                               <br> <strong> Fone:&nbsp </strong> (48) 3332-5000 

@@ -27,7 +27,7 @@
         <h2 >Realizar Login</h2>
         <form name="loginForm" id="loginForm" novalidate >
           <input type="text" id="username" name="username" placeholder="Usuário ou Email" ng-model="user.username">
-          <input type="password" id="password" name="password" placeholder="Senha" ng-model="user.password" >
+          <input type="password" id="password" name="password" placeholder="Senha" ng-model="user.password" ng-keypress="checkIfEnterKeyWasPressed($event, user)" >
           <button type="button" ng-click="login(user)" class="expand primary" analytics-on analytics-event="login">Entrar</button>
           <p class="text-center" ><a ng-click="clickremember()" >Esqueci meus dados de Acesso</a></p>
 

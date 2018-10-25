@@ -478,6 +478,13 @@
 													    $modalInstance.dismiss('cancel');
 													  };
 
+													  $scope.checkIfEnterKeyWasPressed = function($event, user){
+														var keyCode = $event.which || $event.keyCode;
+														if (keyCode === 13) {
+															$scope.login(user);
+														}
+													  };
+
 													  $scope.redirectSignup = function () {
 														  	authService.setRedirect(urlBack);
 														  	$modalInstance.dismiss('cancel');

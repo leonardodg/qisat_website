@@ -6,8 +6,9 @@
 	 	.factory("carrinhoServive", [ '$http',"$q",'$timeout', 'Config', '$location','$filter', 'authService',
 	 			function($http, $q, $timeout, Config, $location, $filter, authService){
 
-	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false, showContract = false,
-	 					filterLimitName = $filter('limitName'), transacao = null, cupom;
+	 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
+						filterLimitName = $filter('limitName'), transacao = null, cupom, 
+						contractOnline = false, contractEberick = false, contractQibuilder = false, contractLab1 = false, contractLab2 = false;
 
 		 			(function load(){
 		 				if(!carrinho)
@@ -37,8 +38,17 @@
 						return hasTrilha;
 					};
 
-					function getShowContract(){
-						return showContract;
+					function showContract(tipo){
+						if(tipo == 54)
+							return contractLab1;
+						else if(tipo == 55) 
+							return contractLab2;
+						else if(tipo == 56)
+							return contractEberick;
+						else if(tipo == 57)
+							return contractQibuilder;
+						else
+							return contractOnline;
 					};
 
 					function getItens(){
@@ -73,7 +83,11 @@
 							valorTotal = 0;
 							promoTheend = [];
 							hasTrilha = false;
-							showContract = false;
+							contractOnline = false;
+							contractEberick = false;
+							contractQibuilder = false;
+							contractLab1 = false;
+							contractLab2 = false;
 							transacao = null;
 							cupom = null;
 							var datenow = moment(), datapromo, promocao, tipo;
@@ -126,46 +140,61 @@
 										if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 33 })) { // Item Séries
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
-											showContract = true;
+											contractOnline = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 41 })) { // Curso Série
 											item.modalidade = tipo.nome;
 											item.isSerie = true;
-											showContract = true;
+											contractOnline = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 42 })){ // A Certificado
 											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 44 }))
 												item.packCert = true;
 											else
 												item.testCert = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 48 })) { // Produto AltoQi
+											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 56 })){ // FASE I
+												contractEberick  = true;
+												item.isEberick = true;
+											}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 57 })){ // FASE II 
+												contractQibuilder = true;
+												item.isQibuilder = true;
+											}
+
 											item.modalidade = tipo.nome;
 											item.isAltoQi = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
 											item.modalidade = tipo.nome;
 											item.isSetup = true;
 											hasTrilha = true;
-											showContract = true;
+
+											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 54 })){ // FASE I
+												contractLab1  = true;
+												item.isLab1 = true;
+											}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 55 })){ // FASE II 
+												contractLab2 = true;
+												item.isLab2 = true;
+											}
+
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 17 })){ // Pacotes
 											item.modalidade = tipo.nome;
 											item.isPack = true;
-											showContract = true;
+											contractOnline = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 40 })){ // PALESTRAS
 											item.modalidade = tipo.nome;
 											item.isLecture = true;
-											showContract = true;
+											contractOnline = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 12 })){ // Presenciais Individuais
 											item.modalidade = tipo.nome;
 											item.isIndividual = true;
-											showContract = true;
+											contractOnline = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 10 })){ // Presencial
 											item.modalidade = tipo.nome;
 											item.isClassroom = true;
-											showContract = true;
+											contractOnline = true;
 										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 2 })){ // A Dinstancia
 											item.modalidade = tipo.nome;
 											item.isOnline = true;
-											showContract = true;
+											contractOnline = true;
 										}
-
 									}
 
 									if( (item.isSetup || item.isAltoQi) && item.ecm_produto ){
@@ -424,8 +453,10 @@
 		                            return promise.then( function(res){ 
 		                            						if(res.status == 200 && res.data && res.data.retorno && res.data.retorno.sucesso)
 	                                                    		return res.data.retorno;
-	                                                    	else
-	                                                    		return res;
+	                                                    	else if(res && res.data && res.data.retorno)
+																return res.data.retorno;
+															else
+																return res;
 		                                                }, function(res){
 		                                                    return res; 
 		                                                });
@@ -495,7 +526,7 @@
 		                        checkPromocaoTheend : checkPromocaoTheend,
 		                        getPromocaoTheend : getPromocaoTheend,
 		                        hasTrilha : getTrilha,
-		                        showContract : getShowContract,
+		                        showContract : showContract,
 		                        getProposta : getProposta,
 		                        getTransacao : getTransacao,
 		                        validCupom : validCupom,

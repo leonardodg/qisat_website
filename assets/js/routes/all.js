@@ -392,11 +392,17 @@
                   Authenticated : function(authService){
                       return authService.Authenticated('/carrinho');
                   },
-                  formasPagamentos : function (carrinhoServive){
-                         return carrinhoServive.getFormas()
-                                         .then(function (formas){ 
-                                            return formas;
-                                          });
+                  formasPagamentos : function (carrinhoServive,  $location){
+                          return carrinhoServive.getCarrinho().then(function (){
+                                  
+                                  if(carrinhoServive.hasTrilha() == false){
+                                    return carrinhoServive.getFormas()
+                                                          .then(function (formas){ 
+                                                              return formas;
+                                                            });
+                                  }else
+                                    $location.path('/carrinho');
+                          });
                   }
               },
               seo : {
@@ -521,22 +527,8 @@
 
             $routeProvider.when('/altoqi-lab', {
               templateUrl : '/views/courses.html',
-              controller : 'CoursesController as vm',
-              resolve : {
-                        
-                        DataCoursesStates : function ( QiSatAPI ){
-                                              return QiSatAPI.getCourseStates()
-                                                             .then( function ( result ){
-                                                                    return result;                                            
-                                                              });
-                                             }, 
-
-                        DataCoursesFilter : function ( QiSatAPI ){
-                                                return QiSatAPI.getFilterData()
-                                                               .then( function ( result ){
-                                                                        return result;
-                                                                    });
-                                                  }
+              controller :  function($window){
+                  $window.location.href = 'https://altoqilab.qisat.com.br';
               },
               seo : {
                         title : 'AltoQi LAB – Programa de capacitação profissional em projetos de edificações | QiSat ',

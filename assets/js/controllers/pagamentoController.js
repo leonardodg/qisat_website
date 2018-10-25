@@ -50,24 +50,31 @@
 
 					 	if(Authenticated){
 
-							carrinhoServive.getCarrinho();
-												 
 					 		vm.user = authService.getUser();
 					 		if(vm.user && (!vm.user.email || !vm.user.numero)){
 					 			modalController.update('/carrinho/pagamento');
 			 					$location.path('/carrinho/');
 					 		}
 
-					 		vm.modalcontrato = function () {
+					 		vm.modalContrato = function (tipo) {
+								var template = '/views/modal-contrato.html';
+
+								if(tipo == 56)
+									template = '/views/modal-contrato-eberick-2019.html';
+								else if(tipo == 57)
+									template = '/views/modal-contrato-qibuilder-2019.html';
+
 		 						var modalInstance = $modal.open({
-		 							templateUrl: '/views/modal-contrato.html',
+		 							templateUrl: template,
 		 							controller : function ($scope, $modalInstance) {
 													  $scope.cancel = function () {
 													    $modalInstance.dismiss('cancel');
 													  };
 													  var itens = carrinhoServive.getItens(), online = [], presencial = [];
 
-													  if(vm.user) $scope.nome = vm.user.nome;
+													  if(vm.user) $scope.nome = vm.user.firstname+' '+vm.user.lastname;
+
+													  $scope.datanow = moment().format('D [de] MMMM [de] YYYY');
 
 													  if(itens && itens.length){
 													  	itens.map(function (item){
@@ -123,15 +130,15 @@
 													  }
 													}
 		 						});
-			 			    };
-
+							};
+							
 						 	vm.nextPagamento = function(form){
 						 		vm.submitted = true;
-						 		var data = {},tipoPagamento;
-
-								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && (vm.contrato || (!vm.contrato && !carrinhoServive.showContract()))){
+								var data = {},tipoPagamento;
+								
+								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && ( ( vm.contratoOnline || vm.contratoEberick || vm.contratoQiBuilder ) && ((!vm.contratoOnline && !carrinhoServive.showContract()) || (!vm.contratoEberick && !carrinhoServive.showContract(56) || !vm.contratoQiBuilder && !carrinhoServive.showContract(57)) ))){
 									if(vm.forma.tipo =='cartao_recorrencia')
-										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || (!vm.contrato && carrinhoServive.showContract()))
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnlnine && carrinhoServive.showContract()) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)) ))
 											return;
 										else
 											data.cartao = vm.cartao;
