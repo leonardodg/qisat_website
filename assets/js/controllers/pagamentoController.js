@@ -138,7 +138,7 @@
 								
 								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && ( ( vm.contratoOnline || vm.contratoEberick || vm.contratoQiBuilder ) && ((!vm.contratoOnline && !carrinhoServive.showContract()) || (!vm.contratoEberick && !carrinhoServive.showContract(56) || !vm.contratoQiBuilder && !carrinhoServive.showContract(57)) ))){
 									if(vm.forma.tipo =='cartao_recorrencia')
-										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnlnine && carrinhoServive.showContract()) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)) ))
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnline && carrinhoServive.showContract()) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)) ))									
 											return;
 										else
 											data.cartao = vm.cartao;
