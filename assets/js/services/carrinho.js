@@ -194,6 +194,10 @@
 											item.modalidade = tipo.nome;
 											item.isOnline = true;
 											contractOnline = true;
+										}else if( tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 16 })){ // Prazo Extra
+											item.modalidade = tipo.nome;
+											contractOnline = true;
+											item.isExtra = true;
 										}
 									}
 

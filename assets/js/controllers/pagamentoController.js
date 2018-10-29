@@ -102,7 +102,7 @@
 														  	 			});
 														  	 		}
 
-														  	 		if(item.isOnline || item.isLecture ){
+														  	 		if(item.isOnline || item.isLecture || item.isExtra ){
 														  	 			dados.isOnline = true;
 														  	 			online.push(dados);
 														  	 		}else if((item.isSerie || item.isPack) && !item.isSetup ){
