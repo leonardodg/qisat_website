@@ -176,8 +176,13 @@
 																		      }, 10000);
 					 									   			}
 					 									   		}else{
-						 											vm.loading = false;
-				 									   				modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Entre em contato com a nossa Central de Inscrições - (48) 3332-5000" } });
+																	 vm.loading = false;
+																	 
+																	 if(res.mensagem)
+																	 	modalController.alert({ error : true, main : { title : "Falha no Pagamento!", subtitle : res.mensagem } });
+																	 else 
+																	 	modalController.alert({ error : true, main : { title : "Falha no Pagamento!", subtitle : "Entre em contato com a nossa Central de Inscrições - (48) 3332-5000" } });
+
 				 									   			}
 														}, function() {
 															vm.loading = false;

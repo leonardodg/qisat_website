@@ -308,9 +308,12 @@
 							});
 
 							return promise.then( function(res){
-								if(res && res.status == 200 && res.data && res.data.retorno && res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
-									setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
-									saveCarrinho();
+								if(res && res.status == 200 && res.data && res.data.retorno){
+
+									if(res.data.retorno.carrinho && res.data.retorno.carrinho['ecm_carrinho_item'] && res.data.retorno.carrinho.status != "Finalizado"){
+										setItens(res.data.retorno.carrinho['ecm_carrinho_item']);
+										saveCarrinho();
+									}
 									if(!res.data.retorno.sucesso && res.data.retorno.transacao)
 										setTransacao(res.data.retorno.transacao);
 
