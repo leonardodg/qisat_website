@@ -435,6 +435,13 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 39 })){
 											releases = filterTypes(courses, 39);
 											show = (releases && releases.length) ? true : false;
+
+											releases.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 39 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 39 });
+												return catA.ordem - catB.ordem;
+											});
+										
 											list = { id: coursesList.length+1, title: tipo.nome, courses: releases, type: 39, card: 'online', show: show };
 											coursesList.push(list);
 										}
@@ -445,6 +452,11 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 8 })){
 											free = filterTypes(courses, 8);
 											show = (free && free.length) ? true : false;
+											free.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 8 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 8 });
+												return catA.ordem - catB.ordem;
+											});
 											list = { id: coursesList.length+1, title: tipo.nome, courses: free, type: 8, card: 'online', show: show };
 											coursesList.push(list);
 										}
@@ -456,6 +468,11 @@
 											online = filterTypes(courses, 2);
 											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
 											show = (online && online.length) ? true : false;
+											online.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 2 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 2 });
+												return catA.ordem - catB.ordem;
+											});
 											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
 											coursesList.push(listOnline);
 										}
@@ -466,6 +483,11 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
 											series = filterTypes(courses, 32);
 											show = (series && series.length) ? true : false;
+											series.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 32 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 32 });
+												return catA.ordem - catB.ordem;
+											});
 											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
 											coursesList.push(listSeries);
 										}
@@ -476,6 +498,11 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
 											packages = filterTypes(courses, 17);
 											show = (packages && packages.length) ? true : false;
+											packages.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 17 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 17 });
+												return catA.ordem - catB.ordem;
+											});
 											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
 											coursesList.push(listPacks);
 										}
@@ -496,6 +523,11 @@
 										if(!listSingle) {
 											single = filterTypes(courses, 12);
 											show = (single && single.length) ? true : false;
+											single.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 12 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 12 });
+												return catA.ordem - catB.ordem;
+											});
 											listSingle = { id: coursesList.length+1, title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
 											coursesList.push(listSingle);
 										}else listSingle.show = true;
@@ -516,6 +548,11 @@
 												});
 											});
 											show = (events && events.length) ? true : false;
+											events.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+												return catA.ordem - catB.ordem;
+											});
 											listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
 											coursesList.push(listEvents);
 										}else if(listEvents) listEvents.show = true;
@@ -539,6 +576,11 @@
 												});
 											});
 											show = (events && events.length) ? true : false;
+											events.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+												return catA.ordem - catB.ordem;
+											});
 											listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
 											coursesList.push(listEvents);
 										}else if(listEvents) listEvents.show = true;
@@ -547,6 +589,11 @@
 										if(!listSingle) {
 											single = filterTypes(courses, 12);
 											show = (single && single.length) ? true : false;
+											single.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 12 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 12 });
+												return catA.ordem - catB.ordem;
+											});
 											listSingle = { id: coursesList.length+1, title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
 											coursesList.push(listSingle);
 										}else listSingle.show = true;
@@ -558,6 +605,11 @@
 										classroom = classroom.filter(function (course){ return !course.eventos });
 										classroom = classroom.filter( function (course){ if(!course.categorias.find(function(tipo){ return tipo.id == 12 })) return true; });
 										show = (classroom && classroom.length) ? true : false;
+										classroom.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+											return catA.ordem - catB.ordem;
+										});
 										listClass = { id: coursesList.length+1, title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show};
 										coursesList.push(listClass);
 									}else listClass.show = true;
@@ -570,6 +622,14 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 2 })){
 											online = filterTypes(courses, 2);
 											online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
+
+											online.sort(function(a, b) {
+															var catA = a.categorias.find(function(tipo){ return tipo.id == 2 });
+															var catB = b.categorias.find(function(tipo){ return tipo.id == 2 });
+
+															return catA.ordem - catB.ordem;
+														});
+
 											show = (online && online.length) ? true : false;
 											listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
 											coursesList.push(listOnline);
@@ -592,6 +652,12 @@
 											});
 										});
 										show = (events.length) ? true : false;
+										events.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+
+											return catA.ordem - catB.ordem;
+										});
 										listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
 										coursesList.push(listEvents);
 									}else if(listEvents) listEvents.show = true;
@@ -601,6 +667,11 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
 											series = filterTypes(courses, 32);
 											show = (series && series.length) ? true : false;
+											series.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 32 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 32 });
+												return catA.ordem - catB.ordem;
+											});
 											listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
 											coursesList.push(listSeries);
 										}
@@ -611,6 +682,11 @@
 										if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
 											packages = filterTypes(courses, 17);
 											show = (packages && packages.length) ? true : false;
+											packages.sort(function(a, b) {
+												var catA = a.categorias.find(function(tipo){ return tipo.id == 17 });
+												var catB = b.categorias.find(function(tipo){ return tipo.id == 17 });
+												return catA.ordem - catB.ordem;
+											});
 											listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
 											coursesList.push(listPacks);
 										}
@@ -620,6 +696,11 @@
 									if(!listSingle) {
 										single = filterTypes(courses, 12);
 										show = (single && single.length) ? true : false;
+										single.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 12 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 12 });
+											return catA.ordem - catB.ordem;
+										});
 										listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
 										coursesList.push(listSingle);
 									}else listSingle.show = true;
@@ -629,6 +710,11 @@
 										classroom = classroom.filter(function (course){ return !course.eventos });
 										classroom = classroom.filter( function (course){ if(!course.categorias.find(function(tipo){ return tipo.id == 12 })) return true; });
 										show = (classroom && classroom.length) ? true : false;
+										classroom.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+											return catA.ordem - catB.ordem;
+										});
 										listClass = { id: coursesList.length+1, title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show};
 										coursesList.push(listClass);
 									}else listClass.show = true;
@@ -672,6 +758,11 @@
 										online = filterTypes(courses, 2);
 										online = online.filter(function (course){ if(!course.categorias.find(function (tipo){ return (tipo.id == 32 || tipo.id == 33 || tipo.id == 17 || tipo.id == 22  || tipo.id == 9 || tipo.id == 8) })) return true; });
 										show = (online && online.length) ? true : false;
+										online.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 2 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 2 });
+											return catA.ordem - catB.ordem;
+										});
 										listOnline = { id: coursesList.length+1, title: tipo.nome, courses: online, type: 2, card: 'online', name: 'Online', show: show };
 										coursesList.push(listOnline);
 									}
@@ -693,6 +784,11 @@
 										});
 									});
 									show = (events.length) ? true : false;
+									events.sort(function(a, b) {
+										var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+										var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+										return catA.ordem - catB.ordem;
+									});
 									listEvents = { id: coursesList.length+1, title: 'Cursos Presencial - Eventos', courses: events, type: 'eventos', card: 'eventos', name: 'Eventos', show: show };
 									coursesList.push(listEvents);
 								}else if(listEvents) listEvents.show = true;
@@ -702,6 +798,11 @@
 									if(tipo = dataCoursesFilter.find(function(el){ return el.id == 32 })){
 										series = filterTypes(courses, 32);
 										show = (series && series.length) ? true : false;
+										series.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 32 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 32 });
+											return catA.ordem - catB.ordem;
+										});
 										listSeries = { id: coursesList.length+1, title: tipo.nome, courses: series, type: 32, card: 'serie', name: 'Series', show: show };
 										coursesList.push(listSeries);
 									}
@@ -712,6 +813,11 @@
 									if(tipo = dataCoursesFilter.find(function(el){ return el.id == 17 })){
 										packages = filterTypes(courses, 17);
 										show = (packages && packages.length) ? true : false;
+										packages.sort(function(a, b) {
+											var catA = a.categorias.find(function(tipo){ return tipo.id == 17 });
+											var catB = b.categorias.find(function(tipo){ return tipo.id == 17 });
+											return catA.ordem - catB.ordem;
+										});
 										listPacks = { id: coursesList.length+1, title: tipo.nome, courses: packages, type: 17, card: 'pacotes', name: 'Pacotes', show: show };
 										coursesList.push(listPacks);
 									}
@@ -721,6 +827,11 @@
 								if(!listSingle) {
 									single = filterTypes(courses, 12);
 									show = (single && single.length) ? true : false;
+									single.sort(function(a, b) {
+										var catA = a.categorias.find(function(tipo){ return tipo.id == 12 });
+										var catB = b.categorias.find(function(tipo){ return tipo.id == 12 });
+										return catA.ordem - catB.ordem;
+									});
 									listSingle = { title: 'Cursos Presencial - Individual ', courses: single, type: 12, card: 'online', name: 'Individual', show: show };
 									coursesList.push(listSingle);
 								}else listSingle.show = true;
@@ -730,6 +841,11 @@
 									classroom = classroom.filter(function (course){ return !course.eventos });
 									classroom = classroom.filter( function (course){ if(!course.categorias.find(function(tipo){ return tipo.id == 12 })) return true; });
 									show = (classroom && classroom.length) ? true : false;
+									classroom.sort(function(a, b) {
+										var catA = a.categorias.find(function(tipo){ return tipo.id == 10 });
+										var catB = b.categorias.find(function(tipo){ return tipo.id == 10 });
+										return catA.ordem - catB.ordem;
+									});
 									listClass = { id: coursesList.length+1, title: 'Cursos Presencial', courses: classroom, type: 10, card: 'online', name: 'Presencial', show: show};
 									coursesList.push(listClass);
 								}else listClass.show = true;
