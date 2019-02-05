@@ -20,7 +20,7 @@
 							 							dadosCarrinho.total = $filter('currency')(dadosCarrinho.total, 'R$ ');
 							 							dadosCarrinho.valor_parcelas = $filter('currency')(dadosCarrinho.valor_parcelas, 'R$ ');
 
-							 							if(dadosCarrinho.forma_pagamento == 'Boleto')
+							 							if(dadosCarrinho.forma_pagamento.toLocaleLowerCase().indexOf('boleto'))
 							 								dadosCarrinho.dadosPagamento = "À vista no Boleto";
 							 							else 
 							 								dadosCarrinho.dadosPagamento = dadosCarrinho.numero_parcelas+"x de "+dadosCarrinho.valor_parcelas+" em "+dadosCarrinho.operadora;

@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('infoController', ['$scope', '$controller', '$sce', '$location','$filter', '$timeout','QiSatAPI', 'authService', 'Config', 'Info',
-					 function(scope, $controller, $sce, $location, $filter, $timeout, QiSatAPI, authService, Config, info) {
+		.controller('infoController', ['$scope', '$controller', '$sce', '$location', '$window', '$filter', '$timeout','QiSatAPI', 'authService', 'Config', 'Info',
+					 function(scope, $controller, $sce, $location, $window, $filter, $timeout, QiSatAPI, authService, Config, info) {
 						 	var vm = this, filterLimitName = $filter('limitName'),
 						 		absUrl = $location.absUrl(),
 						 		path, search = absUrl.indexOf('?'), params, turma, gratuito,
@@ -394,6 +394,10 @@
 											instrutor.descricao = $sce.trustAsHtml(filterLimitName(instrutor.descricao,500));
 										});
 									}
+								});
+
+								info.produto.eventos.sort(function(a, b) {
+									return a.data_inicio - b.data_inicio;
 								});
 
 								if(turma){

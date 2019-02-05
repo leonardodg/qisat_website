@@ -19,7 +19,7 @@
 					 		vm.itens = carrinhoServive.getItens();
 					 		vm.loading = false;
 					 		vm.hasTrilha = carrinhoServive.hasTrilha();
-							vm.showContractOnline = carrinhoServive.showContract();
+							vm.showContractOnline = carrinhoServive.showContract(2);
 							vm.showContractEberick = carrinhoServive.showContract(56);
 							vm.showContractQiBuilder = carrinhoServive.showContract(57);
 					 		vm.promocaoTheend = carrinhoServive.getPromocaoTheend();

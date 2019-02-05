@@ -28,7 +28,7 @@
 							if(typeof user != 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
 							if(typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
 
-					 		if(venda.forma_pagamento == 'Boleto'){
+					 		if(venda.forma_pagamento && venda.forma_pagamento.toLocaleLowerCase().indexOf('boleto')>=0){
 					 			vm.pagamento = 'boleto';
 					 			vm.linkBoleto = venda.boleto;
 					 		}else

@@ -35,7 +35,7 @@
                   <th>Selecione a Forma de Pagamento</th>
                   <td>
                     <div class="row">
-                      <div ng-repeat="forma in trilhaCtr.formasPagamentos" ng-class="{ 'medium-3 small-12 columns end' : !forma.isCard, 'medium-7 small-12 columns' : forma.isCard }">
+                      <div ng-repeat="forma in trilhaCtr.formasPagamentos" ng-class="{ 'medium-3 small-12 columns end' : !forma.isCard, 'medium-7 small-12 columns' : forma.isCard  || forma.tipo == 'checkout' }">
                         <p>{{forma.pagamento}}</p>
                         <ul class="inline-list">
                           <li ng-repeat="operadora in forma.operadoras">
@@ -71,7 +71,7 @@
                   </td>
                 </tr>
 
-                <tr ng-show="trilhaCtr.forma.tipo=='cartao_recorrencia'">
+                <tr ng-show="trilhaCtr.forma.tipo=='cartao_recorrencia' || trilhaCtr.forma.dataname=='api'">
                   <th>Dados do Cartão</th>
                   <td>
 

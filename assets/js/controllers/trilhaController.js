@@ -88,10 +88,12 @@
 		 			    };
 
 					 	vm.nextPagamento = function(){
-					 		var data = {},tipoPagamento;
-					 			vm.submitted = true;
+							 var data = {},tipoPagamento;
+							 var contactLab = (vm.item.isLab1) ? 54 : 55 ; // id tipo produto do LAB I e LAB II;
 
-								 if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && (vm.contrato || (!vm.contrato && !carrinhoServive.showContract(contactLab)))){
+								 vm.submitted = true;
+
+								 if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas) || (vm.forma.tipo =='checkout' && !vm.nparcelas)) && vm.contrato){
 									if(vm.forma.tipo =='cartao_recorrencia')
 										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || !vm.contrato)
 											return;
@@ -110,7 +112,7 @@
 			 									   .then(function (res){
 														vm.loading = false;
 			 									   		if(res && res.sucesso){
-			 									   			if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto') ){
+			 									   			if(res.venda && (vm.forma.tipo =='cartao_recorrencia' || vm.forma.tipo =='boleto' || vm.forma.dataname =='api' ) ){
 																$location.path('/carrinho/confirmacao/'+res.venda);
 																$modalTrilha.dismiss('cancel');
 			 									   			}else if(res.url)

@@ -131,14 +131,22 @@
 													}
 		 						});
 							};
-							
+
 						 	vm.nextPagamento = function(form){
 						 		vm.submitted = true;
 								var data = {},tipoPagamento;
-								
-								if(vm.pagamento && (vm.nparcelas || (vm.forma.tipo =='boleto' && !vm.nparcelas)) && ( ( vm.contratoOnline || vm.contratoEberick || vm.contratoQiBuilder ) && ((!vm.contratoOnline && !carrinhoServive.showContract()) || (!vm.contratoEberick && !carrinhoServive.showContract(56) || !vm.contratoQiBuilder && !carrinhoServive.showContract(57)) ))){
-									if(vm.forma.tipo =='cartao_recorrencia')
-										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnline && carrinhoServive.showContract()) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)) ))									
+
+								if(vm.pagamento 
+										&& (vm.nparcelas || ((vm.forma.tipo =='boleto' && !vm.nparcelas) || (vm.forma.tipo =='checkout' && !vm.nparcelas))) 
+										&& ( ((vm.contratoOnline===true && carrinhoServive.showContract(2)) || ((vm.contratoOnline===false || typeof vm.contratoOnline=='undefined') && carrinhoServive.showContract(2)===false)) 
+											  && 
+											  ((vm.contratoEberick===true && carrinhoServive.showContract(56)) || ((vm.contratoEberick===false || typeof vm.contratoEberick=='undefined') && carrinhoServive.showContract(56)===false)) 
+											  && 
+											  ((vm.contratoQiBuilder===true && carrinhoServive.showContract(57)) || ((vm.contratoQiBuilder===false || typeof vm.contratoQiBuilder=='undefined') && carrinhoServive.showContract(57)===false))
+											)
+										 ){
+									if(vm.forma.tipo =='cartao_recorrencia' || vm.forma.dataname=='api')
+										if(!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnline && carrinhoServive.showContract(2)) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)) ))									
 											return;
 										else
 											data.cartao = vm.cartao;
@@ -166,7 +174,7 @@
 						 								carrinhoServive.setFormasPagamentos(data).then(function (res){ 
 						 										if(res.sucesso){
 																	vm.loading = false;
-							 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto') ){
+							 										if(res.venda && (tipoPagamento.tipo =='cartao_recorrencia' || tipoPagamento.tipo =='boleto' || tipoPagamento.dataname =='api') ){
 																		$location.path('/carrinho/confirmacao/'+res.venda);
 					 									   			}else if(res.url){
 																		vm.redirect = res.url;
@@ -194,7 +202,7 @@
 			 									vm.loading = false;
 			 									modalController.alert({ error : true, main : { title : "Falha no sistema de Pagamento!", subtitle : "Tente novamente!" } });
 			 								});
-						 		}
+								 }							 
 						 	}
 
  						 	vm.cancelTransacao = function(){

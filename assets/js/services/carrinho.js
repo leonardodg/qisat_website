@@ -47,8 +47,10 @@
 							return contractEberick;
 						else if(tipo == 57)
 							return contractQibuilder;
-						else
+						else if(tipo == 2)
 							return contractOnline;
+						else 
+							return false;
 					};
 
 					function getItens(){
@@ -151,6 +153,9 @@
 											else
 												item.testCert = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 48 })) { // Produto AltoQi
+											item.modalidade = tipo.nome;
+											item.isAltoQi = true;
+											
 											if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 56 })){ // FASE I
 												contractEberick  = true;
 												item.isEberick = true;
@@ -159,8 +164,6 @@
 												item.isQibuilder = true;
 											}
 
-											item.modalidade = tipo.nome;
-											item.isAltoQi = true;
 										}else if(tipo = item.ecm_produto.categorias.find(function(tipo){ return tipo.id == 47 })) { // Fase Trilha
 											item.modalidade = tipo.nome;
 											item.isSetup = true;

@@ -546,6 +546,11 @@
 														edicao.uf = edicao.cidade.estado.uf;
 													}
 												});
+
+												course.eventos.sort(function(a, b) {
+													return a.data_inicio - b.data_inicio;
+												});
+
 											});
 											show = (events && events.length) ? true : false;
 											events.sort(function(a, b) {
@@ -573,6 +578,10 @@
 														edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
 														edicao.uf = edicao.cidade.estado.uf;
 													}
+												});
+
+												course.eventos.sort(function(a, b) {
+													return a.data_inicio - b.data_inicio;
 												});
 											});
 											show = (events && events.length) ? true : false;
@@ -649,6 +658,10 @@
 													edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
 													edicao.uf = edicao.cidade.estado.uf;
 												}
+											});
+
+											course.eventos.sort(function(a, b) {
+												return a.data_inicio - b.data_inicio;
 											});
 										});
 										show = (events.length) ? true : false;
@@ -781,6 +794,10 @@
 												edicao.cidadeuf  = edicao.cidade.nome + ' - ' +edicao.cidade.estado.uf;
 												edicao.uf = edicao.cidade.estado.uf;
 											}
+										});
+
+										course.eventos.sort(function(a, b) {
+											return a.data_inicio - b.data_inicio;
 										});
 									});
 									show = (events.length) ? true : false;
