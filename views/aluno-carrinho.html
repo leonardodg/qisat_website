@@ -1,149 +1,167 @@
- <main class="admin_main" >   
-	 <div class="admin_sidebar" ng-controller="alunoController" >
+<main class="admin_main">
+	<div class="admin_sidebar" ng-controller="alunoController">
 
- 		<ul class="metismenu admin__menu" >
+		<ul class="metismenu admin__menu">
 
- 				 <li class="item"> <a href="/aluno/perfil" class="link" analytics-on > <i class="material-icons">person</i> Perfil </a>  </li>
+			<li class="item"> <a href="/aluno/perfil" class="link" analytics-on> <i class="material-icons">person</i>
+					Perfil
+				</a> </li>
 
-            <li class="item"> 
-            	<a href="/aluno/altoqi-lab" class="link" analytics-on > <div class="icon-AltoQi-lab"> </div> AltoQi Lab</a> 
-            </li>
-
-            
-	            <li class="item"> <a href="/aluno/cursos" class="link" analytics-on > <i class="material-icons">school</i> Meus Cursos  </a>  </li>
-	            <li class="item"> <a href="/aluno/certificados" class="link" analytics-on > <i class="material-icons">stars</i> Certificados </a>  </li>
-	            <li class="item"> <a href="/aluno/financeiro" class="link" analytics-on > <i class="material-icons">attach_money</i> Financeiro </a>  </li>
-
-
-				<div ng-if="showliks" >
-	 				<li class="item"> <a ng-href="{{showliks.plataforma}}" class="link"> <i class="material-icons">school</i> Plataforma </a>  </li>
-
-	 				<li class="item"> <a ng-href="{{showliks.eCommerce}}"  class="link"> <i class="material-icons">settings</i> E-commerce </a>  </li>
-
-	 				<li class="item"> <a ng-href="{{showliks.intranetQiSat}}" class="link"> <i class="material-icons">home</i> Intranet QiSat</a>  </li>
-
-	 				<li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link"> <div class="icon-AltoQi"></div>Intranet AltoQi </a>  </li>
-	 			</div>
+			<li class="item">
+				<a href="/aluno/altoqi-lab" class="link" analytics-on>
+					<div class="icon-AltoQi-lab"> </div> AltoQi Lab
+				</a>
+			</li>
 
 
-	            <li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on>  <i class="material-icons">remove_circle_outline</i> Sair </a>  
-	            </li>
-        </ul>
+			<li class="item"> <a href="/aluno/cursos" class="link" analytics-on> <i class="material-icons">school</i>
+					Meus
+					Cursos </a> </li>
+			<li class="item"> <a href="/aluno/certificados" class="link" analytics-on> <i
+						class="material-icons">stars</i>
+					Certificados </a> </li>
+			<li class="item"> <a href="/aluno/financeiro" class="link" analytics-on> <i
+						class="material-icons">attach_money</i> Financeiro </a> </li>
 
- 	</div> 
-	 <div class="admin_content ng-cloak">
-		<div class="financeiro">
-			<div class="breadcrumb">
-			  <a href="/aluno/financeiro" >Financeiro</a> / Descrição da compra
+
+			<div ng-if="showliks">
+				<li class="item"> <a ng-href="{{showliks.plataforma}}" class="link"> <i
+							class="material-icons">school</i>
+						Plataforma </a> </li>
+
+				<li class="item"> <a ng-href="{{showliks.eCommerce}}" class="link"> <i
+							class="material-icons">settings</i>
+						E-commerce </a> </li>
+
+				<li class="item"> <a ng-href="{{showliks.intranetQiSat}}" class="link"> <i
+							class="material-icons">home</i>
+						Intranet QiSat</a> </li>
+
+				<li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link">
+						<div class="icon-AltoQi"></div>Intranet AltoQi
+					</a> </li>
 			</div>
 
-		  	<div class="admin__heading">
+
+			<li class="item"> <a href="/login" class="link" ng-click="logout()" analytics-on> <i
+						class="material-icons">remove_circle_outline</i> Sair </a>
+			</li>
+		</ul>
+
+	</div>
+	<div class="admin_content ng-cloak">
+		<div class="financeiro">
+			<div class="breadcrumb">
+				<a href="/aluno/financeiro">Financeiro</a> / Descrição da compra
+			</div>
+
+			<div class="admin__heading">
 				<h1 class="title">Descrição da compra</h1>
 			</div>
 
 
 			<section id="dashboard" class="box">
 				<div class="row">
-			        <div class="small-12 medium-6 large-3 columns">
-			          <p><strong>Data de criação</strong></p>
-			          {{::dadosCarrinho.dataFormat}}
-			        </div>
-
-			        <div class="small-12 medium-6 large-3 columns">
-			          <p><strong>Status do Carrinho</strong></p>
-			          {{::dadosCarrinho.status_carrinho}}
-			        </div>
-
-			        <div class="small-12 medium-6 large-3 columns">
-			          <p><strong>Status da venda</strong></p>
-			          --
-			        </div>
+					<div class="small-12 medium-6 large-3 columns">
+						<p><strong>Data de criação</strong></p>
+						{{::dadosCarrinho.dataFormat}}
+					</div>
 
 					<div class="small-12 medium-6 large-3 columns">
-			          <p><strong>Número do Pedido</strong></p>
-			          {{::dadosCarrinho.pedido}}
-			        </div>
-		    	</div>
+						<p><strong>Status do Carrinho</strong></p>
+						{{::dadosCarrinho.status_carrinho}}
+					</div>
 
-		  		<hr>
+					<div class="small-12 medium-6 large-3 columns">
+						<p><strong>Status da venda</strong></p>
+						--
+					</div>
 
-				<div class="row">
-			        <div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.products.length">
+					<div class="small-12 medium-6 large-3 columns">
+						<p><strong>Número do Pedido</strong></p>
+						{{::dadosCarrinho.pedido}}
+					</div>
+				</div>
 
-							<table width="100%" class="product tableResp tableProduto">
-							  <thead>
-							    <tr>
-							      <th width="50%" class="text-center">Produto</th>
-							      <th width="10%">Quantidade</th>
-							      <th width="15%">Status</th>
-							      <th width="12%">Valor Unitário</th>
-							      <th width="12%">Valor</th>
-							    </tr>
-							  </thead>
-							  <tbody>
-							    <tr ng-repeat="products in dadosCarrinho.products track by products.id">
-							      <td>{{::products.nome}}</td>
-							      <td>{{::products.quantidade}}</td>
-							      <td>{{::products.status}}</td>
-							      <td>{{::products.preco}}</td>
-							      <td>{{::products.total}}</td>
-							    </tr>
-							  </tbody>
-							</table>
-
-			        </div>
-			 	</div>
-
-		      	<hr>
-
-		     	 <div class="row">
-			        <div class="small-12 medium-12 large-4 columns">
-			          <p><strong>Valor da Compra</strong></p>
-			          <p>{{::dadosCarrinho.total}}</p>
-			        </div>
-
-			        <div class="small-12 medium-12 large-4  columns">
-			          <p><strong>Quatidades de Produtos</strong></p>
-			          <p>{{::dadosCarrinho.quantidade}}</p>
-			        </div>
-
-			        <div class="small-12 medium-12 large-4 columns">
-			          <p><strong>Forma de pagamento</strong></p>
-			          <p>{{::dadosCarrinho.dadosPagamento}} </p>
-			        </div>
-		      	</div>
-
-		     	<hr>
+				<hr>
 
 				<div class="row">
-			        <div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.promotions.length">
-		        		<table width="100%" class="product tableResp tablePromo">
-						  <thead>
-						    <tr>
-						      <th width="50%" class="text-center">Promoção</th>
-						      <th width="17%" class="text-center">Início</th>
-						      <th width="17%" class="text-center">Fim</th>
-						      <th width="16%" class="text-center">Desconto</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-						    <tr ng-repeat="promotions in dadosCarrinho.promotions track by promotions.id">
-						      <td>{{::promotions.descricao}}</td>
-						      <td>{{::promotions.datainicioFormat}}</td>
-						      <td>{{::promotions.datafimFormat}}</td>
-						       <td>{{::promotions.desconto}}</td>
-						    </tr>
-						  </tbody>
+					<div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.products.length">
+
+						<table width="100%" class="product tableResp tableProduto">
+							<thead>
+								<tr>
+									<th width="50%" class="text-center">Produto</th>
+									<th width="10%">Quantidade</th>
+									<th width="15%">Status</th>
+									<th width="12%">Valor Unitário</th>
+									<th width="12%">Valor</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="products in dadosCarrinho.products track by products.id">
+									<td>{{::products.nome}}</td>
+									<td>{{::products.quantidade}}</td>
+									<td>{{::products.status}}</td>
+									<td>{{::products.preco}}</td>
+									<td>{{::products.total}}</td>
+								</tr>
+							</tbody>
 						</table>
-			        </div>
+
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="small-12 medium-12 large-4 columns">
+						<p><strong>Valor da Compra</strong></p>
+						<p>{{::dadosCarrinho.total}}</p>
+					</div>
+
+					<div class="small-12 medium-12 large-4  columns">
+						<p><strong>Quatidades de Produtos</strong></p>
+						<p>{{::dadosCarrinho.quantidade}}</p>
+					</div>
+
+					<div class="small-12 medium-12 large-4 columns">
+						<p><strong>Forma de pagamento</strong></p>
+						<p>{{::dadosCarrinho.dadosPagamento}} </p>
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="small-12 medium-12 large-12 columns" ng-if="::dadosCarrinho.promotions.length">
+						<table width="100%" class="product tableResp tablePromo">
+							<thead>
+								<tr>
+									<th width="50%" class="text-center">Promoção</th>
+									<th width="17%" class="text-center">Início</th>
+									<th width="17%" class="text-center">Fim</th>
+									<th width="16%" class="text-center">Desconto</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="promotions in dadosCarrinho.promotions track by promotions.id">
+									<td>{{::promotions.descricao}}</td>
+									<td>{{::promotions.datainicioFormat}}</td>
+									<td>{{::promotions.datafimFormat}}</td>
+									<td>{{::promotions.desconto}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 
 			</section>
 		</div>
-		
-	    <div class="custom-loading" ng-if="loading">
-	      <i class="material-icons">hdr_weak</i>
-	      <span class="text" >Carregando informações...</span>
-	    </div>
- 	</div>
-</main> 
+
+		<div class="custom-loading" ng-if="loading">
+			<i class="material-icons">hdr_weak</i>
+			<span class="text">Carregando informações...</span>
+		</div>
+	</div>
+</main>

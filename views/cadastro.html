@@ -2,292 +2,322 @@
   <div class="signup__content cadastro">
 
     <div class="admin__heading text-center">
-			<h1 class="title">Criar nova conta</h1>
-		</div>
+      <h1 class="title">Criar nova conta</h1>
+    </div>
 
     <section id="dashboard">
       <form name="createForm" id="createForm" novalidate>
-          
-          <div class="row">
-            <div class="column small-12 text-center">
 
-               <div class="etapas">
-                <div class="etapa">
-                  <i class="material-icons" ng-show="etapa==1">check_box</i>
-                  <i class="material-icons" ng-show="etapa!=1">check_box_outline_blank</i>
-                   Dados pessoais
-                </div>
-                <div class="etapa">
-                  <i class="material-icons" ng-show="etapa==2">check_box</i>
-                  <i class="material-icons" ng-show="etapa!=2">check_box_outline_blank</i>
-                  Endereço
-                </div>
-                <div class="etapa">
-                   <i class="material-icons" ng-show="etapa==3">check_box</i>
-                   <i class="material-icons" ng-show="etapa!=3">check_box_outline_blank</i>
-                  Concluir cadastro
+        <div class="row">
+          <div class="column small-12 text-center">
+
+            <div class="etapas">
+              <div class="etapa">
+                <i class="material-icons" ng-show="etapa==1">check_box</i>
+                <i class="material-icons" ng-show="etapa!=1">check_box_outline_blank</i>
+                Dados pessoais
+              </div>
+              <div class="etapa">
+                <i class="material-icons" ng-show="etapa==2">check_box</i>
+                <i class="material-icons" ng-show="etapa!=2">check_box_outline_blank</i>
+                Endereço
+              </div>
+              <div class="etapa">
+                <i class="material-icons" ng-show="etapa==3">check_box</i>
+                <i class="material-icons" ng-show="etapa!=3">check_box_outline_blank</i>
+                Concluir cadastro
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column small-12">
+            <div ng-show="etapa==1">
+              <div class="form-group">
+                <label for="name">Nome Completo<strong title="Campo Obrigatório">*</strong> </label>
+                <input type="text" name="name" id="name" placeholder="Digite o nome" ng-model="cadastro.firstname"
+                  ng-required="true">
+
+                <div ng-show="(createForm.name.$dirty || submitted) && createForm.name.$invalid">
+                  <span class="error" ng-show="createForm.name.$error.required">Nome é obrigatório</span>
                 </div>
               </div>
-           </div>
-         </div>
 
-          <div class="row">
-            <div class="column small-12">
-                 <div ng-show="etapa==1">
-                     <div class="form-group">
-                       <label for="name">Nome Completo<strong title="Campo Obrigatório">*</strong> </label>
-                       <input type="text" name="name" id="name" placeholder="Digite o nome" ng-model="cadastro.firstname" ng-required="true" >
+              <div class="form-group">
+                <label for="email">E-mail <strong title="Campo Obrigatório">*</strong> </label>
+                <input type="text" name="email" id="email" placeholder="Digite e-mail válido" ng-model="cadastro.email"
+                  ng-required="true" ng-pattern="emailFormat" email-check>
 
-                       <div ng-show="(createForm.name.$dirty || submitted) && createForm.name.$invalid">
-                        <span class="error" ng-show="createForm.name.$error.required">Nome é obrigatório</span>
-                       </div>
-                     </div>
+                <div ng-show="(createForm.email.$dirty || submitted) && createForm.email.$invalid">
+                  <span class="error" ng-show="createForm.email.$error.required">E-mail é obrigatório</span>
 
-                    <div class="form-group">
-                         <label for="email">E-mail <strong title="Campo Obrigatório">*</strong> </label>
-                        <input type="text" name="email" id="email" placeholder="Digite e-mail válido" ng-model="cadastro.email" ng-required="true" ng-pattern="emailFormat" email-check >
+                  <span class="error" ng-show="createForm.email.$dirty && createForm.email.$error.pattern">Formato de
+                    e-mail incorreto</span>
+                </div>
 
-                        <div ng-show="(createForm.email.$dirty || submitted) && createForm.email.$invalid">
-                          <span class="error" ng-show="createForm.email.$error.required">E-mail é obrigatório</span>
+                <div ng-show="!createForm.email.$error.pattern && createForm.email.$error.emailCheck">
+                  <span class="error">Email já cadastrado
+                    <p class="label info"><a ng-click="remember()">Solicite Recuperar senha</a></p>
+                    <p class="label info" ng-if="msgRemember"> {{msgRemember}}</p>
+                  </span>
+                </div>
+              </div>
 
-                          <span class="error" ng-show="createForm.email.$dirty && createForm.email.$error.pattern">Formato de e-mail incorreto</span>
-                        </div>
+              <div class="form-group">
+                <label for="phone">Telefone <strong title="Campo Obrigatório">*</strong> </label>
+                <input type="text" name="phone" id="phone" placeholder="Digite o telefone" ng-model="cadastro.phone1"
+                  ng-required="true" ui-br-phone-number>
 
-                        <div ng-show="!createForm.email.$error.pattern && createForm.email.$error.emailCheck">
-                          <span class="error" >Email já cadastrado 
-                                 <p class="label info" ><a ng-click="remember()">Solicite Recuperar senha</a></p>
-                                 <p class="label info" ng-if="msgRemember"> {{msgRemember}}</p>
-                          </span>
-                        </div>
+                <div ng-show="(createForm.phone.$dirty || submitted) && createForm.phone.$invalid">
+                  <span class="error" ng-show="createForm.phone.$error.required">Telefone é obrigatório</span>
+                </div>
+
+                <div ng-show="createForm.phone.$dirty && createForm.phone.$error['br-phone-number']">
+                  <span class="error">Formato inválido!</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cpfcnpj">CPF/CNPJ <strong title="Campo Obrigatório">*</strong> </label>
+                <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ"
+                  ng-model="cadastro.cpfcnpj" ui-br-cpfcnpj-mask cpf-check ng-required="true">
+
+                <div ng-show="(createForm.cpfcnpj.$dirty || submitted) && createForm.cpfcnpj.$invalid">
+                  <span class="error" ng-show="createForm.cpfcnpj.$error.required">CPF/CNPJ obrigatório</span>
+                </div>
+
+                <div
+                  ng-show="createForm.cpfcnpj.$dirty && (createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
+                  <span class="error">CPF/CNPJ inválido!</span>
+                </div>
+
+                <div
+                  ng-show="!(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj) && createForm.cpfcnpj.$error.cpfCheck && !(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
+                  <span class="error" ng-show="errocpf">{{errocpf}} </span>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="column small-6">
+
+                  <div class="form-group">
+
+                    <label for="newpassword" data-tooltip aria-haspopup="true" class="has-tip tip-top"
+                      title="O campos password deverá possuir no mínimo 6 e no máximo 10 caracteres.">Senha <strong
+                        title="Campo Obrigatório">*</strong> </label>
+                    <input type="password" name="password" id="password" placeholder="Digite a senha"
+                      ng-model="password" ng-required="true" autocomplete="off" ng-minlength="6" ng-maxlength="10">
+
+                    <div ng-show="(createForm.password.$dirty || submitted) && createForm.password.$invalid">
+                      <span class="error" ng-show="createForm.password.$error.required">Informe a senha</span>
                     </div>
 
-                      <div class="form-group">
-                          <label for="phone">Telefone <strong title="Campo Obrigatório">*</strong> </label>
-          						    <input type="text" name="phone" id="phone" placeholder="Digite o telefone" ng-model="cadastro.phone1" ng-required="true"  ui-br-phone-number >
+                    <div ng-show="(createForm.password.$dirty) && createForm.password.$invalid">
+                      <span class="error" ng-show="createForm.password.$error.minlength">No mínimo 6 caracteres.</span>
+                      <span class="error" ng-show="createForm.password.$error.maxlength">No máximo 10 caracteres.</span>
+                    </div>
 
-          						    <div ng-show="(createForm.phone.$dirty || submitted) && createForm.phone.$invalid">
-          						      <span class="error" ng-show="createForm.phone.$error.required">Telefone é obrigatório</span>
-          						    </div>
-
-                          <div ng-show="createForm.phone.$dirty && createForm.phone.$error['br-phone-number']">
-                               <span class="error" >Formato inválido!</span>
-                          </div>
-          		    		</div>
-
-                      <div class="form-group">
-                          <label for="cpfcnpj">CPF/CNPJ <strong title="Campo Obrigatório">*</strong> </label>
-                           <input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ" ng-model="cadastro.cpfcnpj" ui-br-cpfcnpj-mask cpf-check ng-required="true" >
-
-                           <div ng-show="(createForm.cpfcnpj.$dirty || submitted) && createForm.cpfcnpj.$invalid">
-                            <span class="error" ng-show="createForm.cpfcnpj.$error.required">CPF/CNPJ obrigatório</span>
-                          </div>
-
-                          <div ng-show="createForm.cpfcnpj.$dirty && (createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
-                            <span class="error" >CPF/CNPJ inválido!</span>
-                          </div>
-                          
-                          <div ng-show="!(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj) && createForm.cpfcnpj.$error.cpfCheck && !(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
-                            <span class="error" ng-show="errocpf" >{{errocpf}} </span>
-                          </div>
-                        
-                      </div>
-                      
-                    <div class="row">
-                      <div class="column small-6">
-                        
-                        <div class="form-group">
-                        
-                        <label for="newpassword" data-tooltip aria-haspopup="true" class="has-tip tip-top" title="O campos password deverá possuir no mínimo 6 e no máximo 10 caracteres." >Senha <strong title="Campo Obrigatório">*</strong> </label>
-                        <input type="password" name="password" id="password" placeholder="Digite a senha" ng-model="password" ng-required="true" autocomplete="off" ng-minlength="6" ng-maxlength="10">
-
-                         <div ng-show="(createForm.password.$dirty || submitted) && createForm.password.$invalid">
-                          <span class="error" ng-show="createForm.password.$error.required">Informe a senha</span>
-                         </div>
-
-                         <div ng-show="(createForm.password.$dirty) && createForm.password.$invalid">
-                          <span class="error" ng-show="createForm.password.$error.minlength">No mínimo 6 caracteres.</span>
-                          <span class="error" ng-show="createForm.password.$error.maxlength">No máximo 10 caracteres.</span>
-                         </div>
-
-                        </div>
-
-                      </div>
-                      <div class="column small-6">
-                        <div class="form-group">
-                              <label for="repassword">Confirme a Senha <strong title="Campo Obrigatório">*</strong> </label>
-                              <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha" ng-model="cadastro.password" ng-required="true" pw-check="password" autocomplete="off">
-
-                               <div ng-show="(createForm.password.$dirty|| submitted) && createForm.repassword.$invalid">
-                                <span class="error" ng-show="createForm.repassword.$error.required">Repetir a senha</span>
-                                <span class="error" ng-show="createForm.repassword.$error.pwmatch">Senhas não correspondem</span>
-                              </div>
-                        </div>
-                      </div>
-                    </div>                
-
-              
-                      <div class="row">
-                        <div class="column small-12">
-
-                          <div class="form-group">
-                            <button id="next" type="submit" ng-click="next()" class="primary right" analytics-on analytics-event="cadastro1" > Próximo »</button>
-                          </div>
-                        </div>
-                      </div>
                   </div>
 
-                  <div ng-show="etapa==2">
-                      <div class="form-group">
+                </div>
+                <div class="column small-6">
+                  <div class="form-group">
+                    <label for="repassword">Confirme a Senha <strong title="Campo Obrigatório">*</strong> </label>
+                    <input type="password" name="repassword" id="repassword" placeholder="Confirme a senha"
+                      ng-model="cadastro.password" ng-required="true" pw-check="password" autocomplete="off">
 
-                          <label for="cep">CEP <strong title="Campo Obrigatório">*</strong></label>
-          					      <input type="text" name="cep" id="cep" placeholder="Digite o CEP" ng-model="endereco.cep" ng-required="true"  ng-blur="buscaCEP(endereco.cep)" ui-br-cep-mask >
+                    <div ng-show="(createForm.password.$dirty|| submitted) && createForm.repassword.$invalid">
+                      <span class="error" ng-show="createForm.repassword.$error.required">Repetir a senha</span>
+                      <span class="error" ng-show="createForm.repassword.$error.pwmatch">Senhas não correspondem</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-          						    <div ng-show="(createForm.cep.$dirty || submitted) && createForm.cep.$invalid">
-          						      <span class="error" ng-show="createForm.cep.$error.required">CEP é obrigatório</span>
-          						    </div>
 
-          						</div>
+              <div class="row">
+                <div class="column small-12">
 
-        							<div class="form-group">
-                          <label for="selectCountry">País</label>
-        					         <select name="selectCountry" id="selectCountry" class="selectCountry" ng-options="option.pais for option in country track by option.sigla" ng-model="endereco.selectCountry" >
-        										<option value=""> Selecione o País </option>
-        						        </select>
-        			    		</div>
-      	
-                      <div class="row">
-                        <div class="column small-12 medium-8">
-                          <div class="form-group">
-                              <label for="cidade">Cidade <strong title="Campo Obrigatório">*</strong> </label>
-                              <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade" ng-model="endereco.cidade" ng-required="true"  >
+                  <div class="form-group">
+                    <button id="next" type="submit" ng-click="next()" class="primary right" analytics-on
+                      analytics-event="cadastro1"> Próximo »</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                              <div ng-show="(createForm.cidade.$dirty || submitted) && createForm.cidade.$invalid">
-                                <span class="error" ng-show="createForm.cidade.$error.required">Cidade é obrigatório</span>
-                              </div>
-                          </div>
+            <div ng-show="etapa==2">
+              <div class="form-group">
 
-                        </div>
-                        <div class="column small-12 medium-4">
-        		
-                          <div class="form-group">
-                            <label for="selectStates">Selecione o Estado</label>
-                            <select name="selectStates" id="selectStates" class="selectStates" ng-options="option.local for option in states track by option.uf" ng-model="endereco.selectStates" >
-                            <option value=""> Selecione o Estado </option>
-                            </select>
-                          </div>
-                        </div>
-        							</div>
+                <label for="cep">CEP <strong title="Campo Obrigatório">*</strong></label>
+                <input type="text" name="cep" id="cep" placeholder="Digite o CEP" ng-model="endereco.cep"
+                  ng-required="true" ng-blur="buscaCEP(endereco.cep)" ui-br-cep-mask>
 
-                      <div class="row">
-                        <div class="column small-12">
-                          <div class="form-group">
-                          <label for="bairro">Bairro <strong title="Campo Obrigatório">*</strong></label>
-                           <input type="text" name="bairro" id="bairro" placeholder="Digite o bairro" ng-model="endereco.bairro" ng-required="true"  >
+                <div ng-show="(createForm.cep.$dirty || submitted) && createForm.cep.$invalid">
+                  <span class="error" ng-show="createForm.cep.$error.required">CEP é obrigatório</span>
+                </div>
 
-                            <div ng-show="(createForm.bairro.$dirty || submitted) && createForm.bairro.$invalid">
-                              <span class="error" ng-show="createForm.bairro.$error.required">Bairro é obrigatório</span>
-                            </div>
-                        </div>
-                        </div>
-                      </div>
+              </div>
 
-                      <div class="row">
-                        <div class="column small-8">
-                          
-                          <div class="form-group">
-                          <label for="logradouro">Endereço <strong title="Campo Obrigatório">*</strong></label>
-                            <input type="text" name="logradouro" id="logradouro" placeholder="Digite o endereço" ng-model="endereco.logradouro" ng-required="true"  >
+              <div class="form-group">
+                <label for="selectCountry">País</label>
+                <select name="selectCountry" id="selectCountry" class="selectCountry"
+                  ng-options="option.pais for option in country track by option.sigla"
+                  ng-model="endereco.selectCountry">
+                  <option value=""> Selecione o País </option>
+                </select>
+              </div>
 
-                            <div ng-show="(createForm.logradouro.$dirty || submitted) && createForm.logradouro.$invalid">
-                              <span class="error" ng-show="createForm.logradouro.$error.required">Endereço é origatório</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="column small-4">
-                          <div class="form-group">
-                            <label for="numero">Número</label>
-                            <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero"  >
-                          </div>
-                        </div>
-                      </div>
-              
-                      <div class="row">
-                        <div class="column small-12">
+              <div class="row">
+                <div class="column small-12 medium-8">
+                  <div class="form-group">
+                    <label for="cidade">Cidade <strong title="Campo Obrigatório">*</strong> </label>
+                    <input type="text" name="cidade" id="cidade" placeholder="Digite a cidade"
+                      ng-model="endereco.cidade" ng-required="true">
 
-                          <div class="form-group">
-                              <label for="complemento">Complemento</label>
-            					      	<input type="text" name="complemento" id="complemento" placeholder="Complemento" ng-model="endereco.complemento"  >
-            							</div>
-
-                          <div class="form-group">
-                            <button id="volta1" type="button" ng-click="back()" class="secondary left">voltar</button>
-                            <button id="next2" type="button" ng-click="next()" class="primary right" analytics-on analytics-event="cadastro2" >Próximo »</button>
-
-                          </div>
-                        </div>
-                      </div>
-
+                    <div ng-show="(createForm.cidade.$dirty || submitted) && createForm.cidade.$invalid">
+                      <span class="error" ng-show="createForm.cidade.$error.required">Cidade é obrigatório</span>
                     </div>
                   </div>
 
-                  <div ng-show="etapa==3">
+                </div>
+                <div class="column small-12 medium-4">
 
-                      <div class="row">
-                        <div class="column small-12">
-                           <span for="creas"> Profissionais registrados em Conselhos Regionais parceiros QiSat possuem benefícios.&nbsp</span>
-                          <a ng-click="saibamais()">Saiba mais.</a>  
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="column small-6">
-                           <div class="form-group">
-                              <label for="crea">Número do CREA<strong title="Campo Obrigatório" ng-show="cadastro.selectCrea" >*</strong></label>
-                               <input type="text" name="crea" id="crea" placeholder="Digite o CREA" ng-model="cadastro.numero_crea" ng-required="cadastro.selectCrea" >
-
-                               <div ng-show="(createForm.crea.$dirty || submitted) && createForm.crea.$invalid">
-                                  <span class="error" ng-show="createForm.crea.$error.required">Número do CREA é obrigatório para obter desconto do convênio</span>
-                                </div>
-                          </div>
-                        </div>
-
-                        <div class="column small-6">
-                                <div class="form-group">
-                                     <label for="complemento"> CREA Registrado </label>
-                                     <select name="selectCrea" id="selectCrea" ng-model="cadastro.selectCrea" 
-                                          ng-options="option.host as option.local group by option.groupCrea for option in statesCREAs track by option.host">
-                                        <option value="">  Selecione o CREA Associado </option>
-                                      </select>
-                                </div>
-                        </div>
-                       </div>
-  
-                      <div class="row">
-                        <div class="column small-6 small-centered">
-                           <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)" on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
-
-                          <span class="error" ng-show="createForm.$error.recaptcha&&submitted">Verificarção Obrigatória!</span> <br>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="column small-6 small-centered">
-                           <label for="emailoferta">
-                           <input id="emailoferta" type="checkbox" ng-model="cadastro.email_oferta" ng-checked="true" >  Desejo receber ofertas e notícias por email. </label>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="column small-12">
-                          <div class="form-group">
-                            <button id="volta2" type="button" ng-click="back()" class="secondary left">voltar</button>
-                            <button id="salve" type="submit" ng-click="next()" class="primary right" analytics-on analytics-event="cadastro" >Cadastrar »</button>
-                          </div>
-                        </div>
-                      </div>
+                  <div class="form-group">
+                    <label for="selectStates">Selecione o Estado</label>
+                    <select name="selectStates" id="selectStates" class="selectStates"
+                      ng-options="option.local for option in states track by option.uf"
+                      ng-model="endereco.selectStates">
+                      <option value=""> Selecione o Estado </option>
+                    </select>
                   </div>
-			  	  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column small-12">
+                  <div class="form-group">
+                    <label for="bairro">Bairro <strong title="Campo Obrigatório">*</strong></label>
+                    <input type="text" name="bairro" id="bairro" placeholder="Digite o bairro"
+                      ng-model="endereco.bairro" ng-required="true">
+
+                    <div ng-show="(createForm.bairro.$dirty || submitted) && createForm.bairro.$invalid">
+                      <span class="error" ng-show="createForm.bairro.$error.required">Bairro é obrigatório</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column small-8">
+
+                  <div class="form-group">
+                    <label for="logradouro">Endereço <strong title="Campo Obrigatório">*</strong></label>
+                    <input type="text" name="logradouro" id="logradouro" placeholder="Digite o endereço"
+                      ng-model="endereco.logradouro" ng-required="true">
+
+                    <div ng-show="(createForm.logradouro.$dirty || submitted) && createForm.logradouro.$invalid">
+                      <span class="error" ng-show="createForm.logradouro.$error.required">Endereço é origatório</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="column small-4">
+                  <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" name="numero" id="numero" placeholder="Número" ng-model="endereco.numero">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column small-12">
+
+                  <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" name="complemento" id="complemento" placeholder="Complemento"
+                      ng-model="endereco.complemento">
+                  </div>
+
+                  <div class="form-group">
+                    <button id="volta1" type="button" ng-click="back()" class="secondary left">voltar</button>
+                    <button id="next2" type="button" ng-click="next()" class="primary right" analytics-on
+                      analytics-event="cadastro2">Próximo »</button>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div ng-show="etapa==3">
+
+            <div class="row">
+              <div class="column small-12">
+                <span for="creas"> Profissionais registrados em Conselhos Regionais parceiros QiSat possuem
+                  benefícios.&nbsp</span>
+                <a ng-click="saibamais()">Saiba mais.</a>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="column small-6">
+                <div class="form-group">
+                  <label for="crea">Número do CREA<strong title="Campo Obrigatório"
+                      ng-show="cadastro.selectCrea">*</strong></label>
+                  <input type="text" name="crea" id="crea" placeholder="Digite o CREA" ng-model="cadastro.numero_crea"
+                    ng-required="cadastro.selectCrea">
+
+                  <div ng-show="(createForm.crea.$dirty || submitted) && createForm.crea.$invalid">
+                    <span class="error" ng-show="createForm.crea.$error.required">Número do CREA é obrigatório para
+                      obter desconto do convênio</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="column small-6">
+                <div class="form-group">
+                  <label for="complemento"> CREA Registrado </label>
+                  <select name="selectCrea" id="selectCrea" ng-model="cadastro.selectCrea"
+                    ng-options="option.host as option.local group by option.groupCrea for option in statesCREAs track by option.host">
+                    <option value=""> Selecione o CREA Associado </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="column small-6 small-centered">
+                <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)"
+                  on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
+
+                <span class="error" ng-show="createForm.$error.recaptcha&&submitted">Verificarção Obrigatória!</span>
+                <br>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="column small-6 small-centered">
+                <label for="emailoferta">
+                  <input id="emailoferta" type="checkbox" ng-model="cadastro.email_oferta" ng-checked="true"> Desejo
+                  receber ofertas e notícias por email. </label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="column small-12">
+                <div class="form-group">
+                  <button id="volta2" type="button" ng-click="back()" class="secondary left">voltar</button>
+                  <button id="salve" type="submit" ng-click="next()" class="primary right" analytics-on
+                    analytics-event="cadastro">Cadastrar »</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
-		</section>
+    </section>
   </div>
 </div>
