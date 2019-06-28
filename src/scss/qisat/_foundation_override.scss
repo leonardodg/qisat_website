@@ -1,0 +1,126 @@
+// Override foundation button style
+
+.accordion .accordion-navigation>a, .accordion dd>a, .button, body, button {
+  font-family: $font-family-sans-serif;
+}
+
+.accordion-component.moreAccordionTrilha .accordion-navigation > a:before{
+   @extend .material-icons;
+        content: 'keyboard_arrow_down';
+        color: #555;
+}
+
+.accordion-component.moreAccordionTrilha .accordion-navigation > a.active:before{
+   @extend .material-icons;
+        content: 'keyboard_arrow_up';
+        color: #555;
+}
+
+.button, button {
+  padding: 0.5rem 1.5rem;
+  background-color: $primary-color;
+  color: $white;
+  // min-width: 100px;
+
+  &:hover {
+    background-color: #494949;
+    color: $white;
+  }
+
+  &.success {
+    background-color: $secondary-color;
+  }
+
+  &.primary-dark {
+    background-color: $primary-color-dark;
+  }
+
+  &.expand {
+    padding: 0.5rem 1.5rem;
+  }
+
+  &.buyCarrinho{
+    margin: 0;
+  }
+}
+
+.inline-list>li>* {
+  margin: 0;
+  display: inline;
+}
+
+.error small.error, small.error, span.error {
+  background-color: transparent;
+  color: #f04124;
+  padding: 0;
+  font-size: 14px;
+}
+
+
+
+.reveal-modal {
+  padding: 0 !important;
+  top:50px;
+
+  &.call, &.interesse {
+    width: 380px;
+  }
+
+  &.videoDemo {
+
+      height: 720px;
+      width: 1014px; 
+      min-width: 1014px;
+      min-height: 720px;
+      overflow: none;
+  }
+
+}
+
+.alert-box {
+  width: 100%;
+}
+
+ul.pagination {
+  text-align: right !important;
+  float: right;
+  clear: both;
+  margin-top: 10px;
+}
+ul.pagination li {
+  margin: 0 !important;
+}
+ul.pagination li a, ul.pagination li button {
+  color: #0078a0;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+ul.pagination li.current a, ul.pagination li.current button {
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+/* line 248, ../scss/libs/foundation/components/_grid.scss */
+#pagamentoForm .column + .column:last-child,
+#pagamentoForm .columns + .column:last-child, 
+#pagamentoForm .column + .columns:last-child,
+#pagamentoForm .columns + .columns:last-child {
+   float: left; 
+}
+
+/* Tooltips */
+.has-tip {
+
+  color: $oil;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $oil;
+  }
+}

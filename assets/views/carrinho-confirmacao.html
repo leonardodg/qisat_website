@@ -1,1 +1,104 @@
-<main class="content-main"><header class="hero-pages hero-pages__cart"><div class="row"><div class="medium-12 columns"><h1 class="hero-pages__title">Checkout</h1></div></div></header><div class="row"><div class="large-3 columns"><div class="widget_content" menu-carrinho-active><div class="wizard"><div class="v-line"></div><div class="step step1"><span>Carrinho</span></div><div class="step step2"><span>Pagamento</span></div><div class="step step3"><span>Confirmação de compra</span></div></div></div></div><div class="large-9 columns"><div class="widget_content"><p class="title">Confirmação de compra</p><div class="row pag-confirm"><div class="large-1 columns"><i class="material-icons">launch</i></div><div class="small-12 large-11 columns"><div ng-if="vm.venda"><span ng-if="vm.pagamento=='boleto'"><strong>Compra Efetuada com Sucesso!</strong></span><br><span ng-if="vm.pagamento=='cartao'"><strong>Pagamento de sua compra foi efetuado com SUCESSO!</strong></span><br><span>Numero da Venda:<strong>{{vm.venda}}</strong></span><br><br><span>Instruções para Cursos:<br>A equipe QiSat entrará em contato com você por telefone e/ou e-mail em até 48 horas para confirmar seus dados de compra e garantir que a sua escolha foi a melhor solução.<br>Durante o contato você poderá tirar possíveis dúvidas e agendar a data de início do curso.<br>Para acessar o curso faça login em www.qisat.com.br e acesse a área do aluno. No ambiente pessoal clique na opção “Meus Cursos”.<br><br>Para compras através de boleto bancário deve-se considerar:<br>1) Nos Cursos a distância a contagem dos prazos inicia após a confirmação de pagamento. Se desejar falar diretamente com a empresa, poderá fazê-lo através da Central de Inscrições.<br><br><strong>Telefone:</strong>(48) 3332-5000 / Fax: (48) 3332-5010<br><strong>E-mail:</strong>inscricoes@qisat.com.br<br></span><br></div><div ng-if="!vm.venda"><span><strong>Sua venda não foi localizada!</strong><br>Provavelmente, sua compra já foi finalizada. Para visualizar detalhamento de sua compra acessar o Portal do Aluno no menu financeiro ou entre em contato com nossa Central de Inscrições através dos contatos:<br><br></span><span><strong>Telefone:</strong>(48) 3332-5000 / Fax: (48) 3332-5010<br><strong>E-mail:</strong>qisat@qisat.com.br<br></span><div class="row"><div class="small-12 large-3 small-centered large-centered columns"><a ng-href="/aluno/financeiro" class="expand button primary text-center" analytics-on analytics-event="carrinho viewCompras">Minhas Compras</a></div></div></div></div><div class="row" ng-if="::vm.linkBoleto"><div class="small-12 large-11 large-offset-1 small-centered large-centered columns text-center"><span>Para imprimir/visualizar seu boleto bancário clique no botão.</span></div><div class="small-3 large-3 small-centered large-centered columns"><a ng-href="{{vm.linkBoleto}}" class="button primary text-center" target="_blank" analytics-on analytics-event="carrinho viewBoleto">Visualizar Boleto</a></div></div></div></div></div></div></main>
+<main class="content-main">
+
+	<header class="hero-pages hero-pages__cart">
+		<div class="row">
+			<div class="medium-12 columns">
+				<h1 class="hero-pages__title">Checkout</h1>
+			</div> 
+		</div> 
+	</header>
+
+	<div class="row">
+		<div class="large-3 columns">
+			<div class="widget_content" menu-carrinho-active>
+				<div class="wizard">
+					<div class="v-line"></div>
+					<div class="step step1">
+						<span>Carrinho</span>
+					</div>
+					<div class="step step2">
+						<span>Pagamento</span>
+					</div>
+					<div class="step step3">
+						<span>Confirmação de compra</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="large-9 columns">
+			<div class="widget_content">
+				<p class="title">Confirmação de compra</p>
+
+				<div class="row pag-confirm">
+					<div class="large-1 columns">
+						<i class="material-icons">launch</i>
+					</div>
+
+					<div class="small-12 large-11 columns">
+
+						<div ng-if="vm.venda">
+							<span ng-if="vm.pagamento=='boleto'"> <strong>Compra Efetuada com Sucesso!</strong></span>
+							<br>
+							<span ng-if="vm.pagamento=='cartao'"> <strong>Pagamento de sua compra foi efetuado com
+									SUCESSO!</strong></span><br>
+
+							<span> Numero da Venda: <strong>{{vm.venda}}</strong> </span><br><br>
+
+							<span>
+								Instruções para Cursos:<br> A equipe QiSat entrará em contato com você por telefone
+								e/ou e-mail em até
+								48 horas para confirmar seus dados de compra e garantir que a sua escolha foi a melhor
+								solução.<br>
+								Durante o contato você poderá tirar possíveis dúvidas e agendar a data de início do
+								curso.<br>
+								Para acessar o curso faça login em www.qisat.com.br e acesse a área do aluno. No
+								ambiente pessoal clique
+								na opção “Meus Cursos”.<br><br>
+
+								Para compras através de boleto bancário deve-se considerar:<br>
+								1) Nos Cursos a distância a contagem dos prazos inicia após a confirmação de pagamento.
+								Se desejar falar
+								diretamente com a empresa, poderá fazê-lo através da Central de Inscrições. <br><br>
+
+								<strong>Telefone:</strong> (48) 3332-5000 / Fax: (48) 3332-5010 <br>
+								<strong>E-mail:</strong> inscricoes@qisat.com.br <br>
+							</span><br>
+
+						</div>
+
+						<div ng-if="!vm.venda">
+							<span> <strong> Sua venda não foi localizada!</strong> <br>
+								Provavelmente, sua compra já foi finalizada. Para visualizar detalhamento de sua compra
+								acessar o Portal
+								do Aluno no menu financeiro ou entre em contato com nossa Central de Inscrições através
+								dos
+								contatos:<br><br></span>
+							<span> <strong>Telefone:</strong> (48) 3332-5000 / Fax: (48) 3332-5010 <br>
+								<strong>E-mail:</strong> qisat@qisat.com.br <br>
+							</span>
+
+							<div class="row">
+								<div class="small-12 large-3 small-centered large-centered columns">
+									<a ng-href="/aluno/financeiro" class="expand button primary text-center" analytics-on analytics-event="carrinho viewCompras">Minhas Compras</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="row" ng-if="::vm.linkBoleto">
+						<div class="small-12 large-11 large-offset-1 small-centered large-centered columns text-center">
+							<span> Para imprimir/visualizar seu boleto bancário clique no botão.</span>
+						</div>
+
+						<div class="small-3 large-3 small-centered large-centered columns">
+							<a ng-href="{{vm.linkBoleto}}" class="button primary text-center" target="_blank" analytics-on analytics-event="carrinho viewBoleto">Visualizar Boleto</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

@@ -2,7 +2,7 @@
 // script to update local version of Google analytics script
 
 $seach = ["http://www.google-analytics.com/analytics.js", "https://www.google.com/recaptcha/api.js"];
-$save = ["/var/www/html/site/assets/js/libs/analytics.js", "/var/www/html/site/assets/js/libs/recaptcha.js"];
+$save = ["/var/www/html/site/src/js/libs/analytics.js", "/var/www/html/site/src/js/libs/recaptcha.js"];
 $connTimeout = 10;
 
 foreach ($seach as $key => $value) {

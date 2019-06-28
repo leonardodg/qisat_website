@@ -1,0 +1,70 @@
+/*Footer main*/
+.footer-primary{ background-color: #4e4e4e; padding: 50px 0;}
+.footer-primary__columns{     margin: 0; padding: 0 20px;}
+.footer-primary__columns--item{
+ display: inline-block;
+ vertical-align: top;
+ text-align: left;
+ padding-right: 10px;
+
+ }
+.footer-primary__list__item--brand-qisat{margin-top: 30px;}
+.footer-primary__title{ font-size: 18px; color: #fff; margin: 20px 0 10px 0; a { color: #fff; }}
+.footer-primary__ul{ list-style: none}
+.footer-primary__list{padding-bottom: 10px; list-style: none;     margin-left: 0;}
+.footer-primary__list__item{ margin-bottom: 5px; text-align: left;  color: #fff; }
+.footer-primary__list__item--link{
+transition: all 0.5s ease;
+ color: #979797; font-size: 13px;
+ &:hover{ color: #ffffff; }
+}
+
+
+/*Footer bottom*/
+.footer-secundary__columns {    margin: 0;     text-align: center;}
+.footer-secondary{  padding: 10px 0;
+	background-color: #424141; 
+
+	//background: #232526; /* fallback for old browsers */
+	//background: -webkit-linear-gradient(to left, #232526 , #414345); /* Chrome 10-25, Safari 5.1-6 */
+	//background: linear-gradient(to left, #232526 , #414345); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+}
+.footer-secondary__list{list-style: none;     margin: 0;}
+
+//detalhes
+.footer-secondary__list--email {   }
+.footer-secundary__columns > li { padding: 10px 0;}
+//end detalhes
+
+.footer-secondary__list__item,
+.footer-secondary__list__item--link{ font-size: 13px; color: #979797;  opacity: 0.8; transition: all 0.5s ease;}
+
+.footer-secondary__list__item:hover,
+.footer-secondary__list__item--link:hover{  color: #fff;  opacity: 1;}
+
+
+.footer-secondary__list__item{margin: 0;    padding: 0 5px;    display: inline-block;}
+.footer-secondary__list__item--link{  }
+
+.footer-secondary__list__item--brand-text{
+  padding-top: 0;
+      display: inline-block;
+      padding-right: 6px;
+
+      .fa-band_altoqi{
+        font-size: 24px;
+      }
+
+      a {
+         color: #979797;  opacity: 0.8; transition: all 0.5s ease;
+         &:hover{  color: #fff;  opacity: 1;}
+      }
+  }
+.footer-secondary__list__item--brand{
+  display: inline-block;
+  width: 80px;
+  float: right;
+  margin-top: -6px;
+  }
+.footer-secondary__list__item--brand-image{}

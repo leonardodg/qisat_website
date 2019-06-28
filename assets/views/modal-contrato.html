@@ -1,1 +1,248 @@
-<div class="wordsection1"><p class="msonormal" align="center" style="text-align:center; font-size:26px;"><b>Contrato On-Line de Prestação de Serviço</b></p><p class="msonormal">Que, entre si fazem, de um lado &nbsp<b>MN TECNOLOGIA E TREINAMENTO LTDA</b>&nbsp com sede à Av. Osmar Cunha, 183, Edifí Ceisa Center, Sala 301, Bloco C, Centro na cidade de Florianópolis, Estado de Santa Catarina, inscrita no CNPJ sob o nº 03.984.954/0001-74, doravante chamada pelo nome fantasia &nbsp<b>QISAT</b>, e, de outro, portador(a) dos documentos informados e devidamente cadastrados em nosso banco de dados e identificados pelo seu nome de identificação, doravante chamado de &nbsp<b>{{nome}},</b>conforme as cláusulas e condições a seguir ajustadas.</p><p class="msonormal"><b>CLÁUSULA PRIMEIRA - DO OBJETO</b></p><p><span class="topico"><b>1.1</b>&nbsp O objeto deste contrato é prestação ao ALUNO pelo QISAT dos cursos listados a seguir:</span><br><span class="subtopico"><b>1.1.1</b>&nbsp Conteúdo do(s) Curso(s) online:</span></p><div class="tabela_contrato"><div class="row"><div class="small-6 large-6 columns"><b>Curso</b></div><div class="small-3 large-3 columns text-center"><b>Prazo de Acesso</b></div><div class="small-3 large-3 columns text-center"><b>Tempo por aula</b></div></div><div ng-repeat="produto in online track by produto.id" ng-show="online.length"><div class="row" ng-repeat="curso in produto.courses"><div class="small-6 large-6 columns"><b>{{curso.nome}}</b></div><div class="small-3 large-3 columns text-center">{{::produto.enrolperiod}}</div><div class="small-3 large-3 columns text-center">{{curso.time}}</div></div></div><div class="row text-center" ng-show="!online.length"><div class="small-12 large-12 columns"><b>Nenhum curso online.</b></div></div></div><p><span class="subtopico"><b>1.1.2</b>&nbsp Emissão eletrônica de certificado de participação, caso o ALUNO atinja 95% (noventa e cinco por cento) de participação no(s) curso(s), a validação dos acessos é verificada através do controle de acesso do QISAT.</span><br><span class="topico"><b>Parágrafo único:</b>&nbsp O acesso ao treinamento - objeto deste contrato - pode dar-se a qualquer dia e a qualquer horário (24 horas por dia, inclusive finais de semanas e feriados), respeitando os limites máximos de acessos por aula (em horas) e no treinamento (contados automaticamente a partir da data da aquisição).</span><br><span class="subtopico"><b>1.1.3</b>&nbsp Realização do(s) Curso(s) presencial(is):</span></p><table width="100%" cellpadding="3" cellspacing="0" class="table_cursos"><tr><td width="50%" class="titulo_dados_tabela"><div align="left" class="titulo_dados_tabela"><strong>Curso</strong></div></td><td width="25%" class="titulo_dados_tabela"><div align="center" class="titulo_dados_tabela"><strong>Data</strong></div></td><td width="25%" class="titulo_dados_tabela"><div align="center" class="titulo_dados_tabela"><strong>Cidade/UF</strong></div></td></tr><tr ng-repeat="curso in presencial" ng-if="presencial.length"><td>{{curso.nome}}</td><td><div align="center" ng-repeat="data in curso.datas">{{data}}<br></div></td><td><div align="center">{{curso.local}}</div></td></tr><tr ng-if="!presencial.length"><td colspan="3">Nenhum curso presencial.</td></tr></table><p class="msonormal"><b>CLÁUSULA SEGUNDA - DO PAGAMENTO E ACESSO DO CURSO</b></p><p><span class="topico"><b>2.1</b>&nbsp O acesso ao(s) curso(s) fica(m) condicionado(s) o reconhecimento do pagamento e aprovação financeira do pedido de inscrição.</span><br><span class="topico"><b>2.2</b>&nbsp O prazo de acesso ao curso começará a contar a partir do dia agendado para início, mediante identificação do pagamento. Será encaminhado um e-mail informando a habilitação no curso, usuário e senha de acesso. A data de início do curso pode ser alterada até 24 horas de antecedência a data agendada. Após o serviço habilitado para acesso, o prazo não será interrompido.</span><br><span class="subtopico"><b>2.3</b>&nbsp Transferência de inscrição em curso para outro CPF só é permitido no ato da compra, ou anterior a data agendada para início do curso.</span><br><span class="topico"><b>Parágrafo único:</b>&nbsp No caso extraordinário de parcelamento do valor em boleto bancário ou mensalidade recorrente, havendo atraso de até quatro dias ou cancelamento no pagamento de qualquer parcela, o(s) acesso(s) ao(s) serviço(s) e plataforma(s) do ALUNO será(ão) bloqueado(s) até que a(s) pendência(s) seja(am) quitada(s).</span></p><p class="msonormal"><b>CLÁUSULA TERCEIRA - DEVERES E DIREITOS DO QISAT</b></p><p><span class="topico"><b>3.1</b>&nbsp São deveres do QISAT.:</span><br><span class="subtopico"><b>3.1.1</b>&nbsp Curso(s) online:</span><br><span class="subitem"><b>I.</b>&nbsp O QISAT permitirá acesso 24 (vinte e quatro) horas por dia, 7(sete) dias por semana, com o número limitado de horas conforme prazos estabelecidos no website www.qisat.com.br, salvo caso fortuito ou motivo de força maior;</span><br><span class="subitem"><b>II.</b>&nbsp O QISAT se exime de qualquer responsabilidade quanto à indisponibilidade gerada por problemas do responsável pela conexão do site à rede de internet, não cabendo ressarcimento ao ALUNO por qualquer problema de conexão com a internet, oriundo do acesso do ALUNO ou do QISAT;</span><br><span class="subitem"><b>III.</b>&nbsp O QISAT se reserva ao direito de efetuar eventuais manutenções em seus sistemas, visando melhoria na qualidade do serviço prestado;</span><br><span class="subitem"><b>IV.</b>&nbsp O QISAT deverá disponibilizar o conteúdo do(s) treinamento(s) contratado(s) para uso do ALUNO, através de um nome de usuário e de uma senha específica de acesso aos módulos (aulas) estabelecidos pelo QISAT, que estarão hospedados no site do QISAT, ou em outros sites por ela autorizados;</span><br><span class="subitem"><b>V.</b>&nbsp O QISAT deverá disponibilizar um professor monitor para esclarecimento de: Dúvidas referentes aos recursos do programa abordados no projeto exemplo; Procedimentos de download, instalação e configuração das versões livres dos softwares da AltoQi necessárias ao acompanhamento do curso; As dúvidas deverão ser enviadas através do sistema Tira-dúvidas, disponibilizado na plataforma de ensino do QiSat, e terão prazo de resolução de até 2 (dois) dias úteis;</span><br><span class="subitem"><b>VI.</b>&nbsp Cabe ao QISAT coordenar administrativa e academicamente o(s) treinamento(s), zelando pela sua qualidade e pelo cumprimento do regimento da instituição mantenedora de treinamentos e metodologias de ensino a distância;</span><br><span class="subitem"><b>VII.</b>&nbsp O QISAT deverá informar ao ALUNO as atividades programadas para o(s) treinamentos(s);</span><br><span class="subitem"><b>VIII.</b>&nbsp O QISAT deverá disponibilizar certificado digital na plataforma do curso, caso o ALUNO tenha solicitado, após a realização das avaliações, e atingindo determinado aproveitamento, ou segundo os critérios de avaliação estabelecidos pelo QISAT.</span></p><p class="msonormal"><b>CLÁUSULA QUARTA - DEVERES E DIREITOS DO ALUNO</b></p><p><span class="topico"><b>4.1</b>&nbsp Curso(s) online:</span><br><span class="subtopico"><b>4.1.1</b>&nbsp O ALUNO será responsável pela correta utilização de seu nome de usuário e senha, que são de uso pessoal e intransferível.</span><br><span class="subtopico"><b>4.1.2</b>&nbsp O ALUNO deverá providenciar, por conta própria, os equipamentos e softwares, seguindo os requisitos mínimos mencionados no website do QISAT, com acesso à Internet e ter um endereço eletrônico permanente para contato;</span><br><span class="subtopico"><b>4.1.3</b>&nbsp Responder, no prazo estabelecido pela Coordenação do QISAT, a todas as mensagens recebidas;</span><br><span class="subtopico"><b>4.1.4</b>&nbsp Participar das avaliações propostas, quando houver o interesse da certificação, segundo normas e calendário estabelecidos pela Coordenação do(s) treinamentos(s) e pelo QISAT.<br><span class="subtopico"><b>4.1.5</b>&nbsp Constituem abuso de uso da internet e para a inscrição deste</span>treinamento:</span><br><span class="subitem"><b>I.</b>&nbsp Violar a privacidade de outros ALUNOS;</span><br><span class="subitem"><b>II.</b>&nbsp Utilizar indevidamente códigos de acesso e/ou senha de outros ALUNOS;</span><br><span class="subitem"><b>III.</b>&nbsp Ceder o seu nome de usuário e senha de uso pessoal e intransferível a terceiros;</span><br><span class="subitem"><b>IV.</b>&nbsp Reproduzir, sob qualquer forma, o material, cujo uso deve ser feito exclusivamente em âmbito privado pelo ALUNO, sob pena de responder, civil e criminalmente, perante o QISAT e terceiros, nos termos da Lei n° 9.609, de 19 de fevereiro de 1998, por violação da propriedade intelectual;</span><br><span class="subitem"><b>V.</b>&nbsp Propagar vírus de computador, programas invasivos (worms), ou outras formas de programas computacionais, auto-replicantes ou não, que prejudiquem a operação das redes e de computadores individuais;</span><br><span class="subitem"><b>VI.</b>&nbsp Tentar burlar o sistema de segurança de computadores para os quais não possua autorização para acesso;</span><br><span class="subitem"><b>VII.</b>&nbsp Corromper ou destruir dados, arquivos ou programas;</span><br><span class="subitem"><b>VIII.</b>&nbsp Divulgar por meio de correio eletrônico sua promoção pessoal com fins profissionais, comerciais ou eleitorais;</span><br><span class="subitem"><b>IX.</b>&nbsp Veicular mensagens que possam vir a ser consideradas ofensivas e subversivas ou que firam princípios éticos.</span><br><span class="subitem"><b>X.</b>&nbsp Transmitir ou exibir o(s) conteúdo(s) do(s) treinamento(s) em locais de acesso coletivo, salas de projeção ou auditórios, para fins pessoais, comerciais ou acadêmicos, sem a autorização expressa do QISAT;</span><br><span class="topico"><b>Parágrafo único:</b>&nbsp O QISAT reserva-se no direito de bloquear o acesso ao sistema, sem prévio aviso, de qualquer ALUNO, que esteja enquadrado nessas condições de abuso, previstas na cláusula quarta deste instrumento, ou na legislação de uso da internet.</span></p><p class="msonormal"><b>CLÁUSULA QUINTA - DA VIGÊNCIA E EXTINÇÃO</b></p><p><span class="topico"><b>5.1</b>&nbsp Curso(s) online:</span><br><span class="subtopico"><b>5.1.1</b>&nbsp A vigência do presente contrato inicia-se a partir da aceitação, conforme orientação do QISAT, e seu término se dará na conclusão do(s) treinamentos(s), no caso de pagamento à vista ou término de pagamento anterior à realização do(s) treinamentos(s). Para pagamentos parcelados, o contrato terá vigência até que seja quitada última parcela pelo ALUNO.</span><br><span class="subtopico"><b>5.1.2</b>&nbsp O QISAT poderá rescindir, imediatamente, o presente contrato, independentemente de aviso ou notificação, em caso de descumprimento de qualquer das cláusulas constantes do presente contrato, pelo ALUNO.</span><br><span class="subtopico"><b>5.1.3</b>&nbsp As cláusulas relacionadas a abuso de uso e de direitos autorais permanecerão vigentes após o enceramento do contrato.</span><br><span class="subtopico"><b>5.1.4</b>&nbsp O presente contrato poderá também ser rescindido, por qualquer das partes, em caso de descumprimento, pela outra, das suas obrigações.</span><br><span class="topico"><b>Parágrafo único:</b>&nbsp Não cabe ressarcimento ao ALUNO em caso de desistência do(s) treinamento(s).</span></p><p class="msonormal"><b>CLÁUSULA SEXTA - DA CLÁUSULA PENAL</b></p><p><span class="topico"><b>6.1</b>&nbsp Em havendo quaisquer impedimentos ao não cumprimento do presente contrato por motivo de responsabilidade do ALUNO, o QISAT reserva-se ao direito de suspender os serviços previstos neste contrato e obriga-se a avisar o ALUNO para que o mesmo proceda à regularização da pendência.</span></p><p class="msonormal"><b>CLÁUSULA SÉTIMA - CONDIÇÕES GERAIS</b></p><p><span class="topico"><b>7.1</b>&nbsp Curso(s) online:</span><br><span class="subtopico"><b>7.1.1</b>&nbsp As cláusulas apresentadas no presente contrato serão aceitas a partir do momento que o ALUNO der sua concordância, assinalando a opção "Aceito os termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS".</span><br><span class="subtopico"><b>7.1.2</b>&nbsp As formas de pagamento são apresentadas no site e as informações dadas pelo ALUNO no formulário de cobrança são de total responsabilidade do ALUNO.</span><br><span class="subtopico"><b>7.1.3</b>&nbsp O ALUNO autorizará o QISAT a efetuar a cobrança na forma e meio escolhidos por ele, dentre os oferecidos pelo QISAT, ficando o QISAT e a empresa autorizada de débito (banco ou administradora de cartões de crédito), isentas de qualquer responsabilidade ou obrigatoriedade.</span></p><p class="msonormal"><b>CLÁUSULA OITAVA - DO FORO</b></p><p><span class="topico"><b>8.1</b>&nbsp Fica eleito o Foro da cidade de Florianópolis - SC, para dirimir quaisquer dúvidas oriundas do presente contrato, com renúncia expressa de qualquer outro, por mais privilegiado que seja.</span></p><br><br><p>Florianópolis, {{datanow}}.</p><p><b>MN Tecnologia e Treinamento LTDA</b></p><p style="text-align:right; font-size:12px;">Última alteração realizada em 16/10/2017.</p><a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a></div>
+<div class="wordsection1">
+
+	<p class="msonormal" align="center" style="text-align:center; font-size:26px;"><b>Contrato On-Line de Prestação de
+			Serviço</b></p>
+
+	<p class="msonormal">Que, entre si fazem, de um lado &nbsp <b>MN TECNOLOGIA E TREINAMENTO LTDA</b>&nbsp com sede à
+		Av.
+		Osmar Cunha, 183, Edifí Ceisa Center, Sala 301, Bloco C, Centro na cidade de Florianópolis, Estado de Santa
+		Catarina, inscrita no CNPJ sob o nº 03.984.954/0001-74, doravante chamada pelo nome fantasia &nbsp <b>QISAT</b>,
+		e,
+		de outro, portador(a) dos documentos informados e devidamente cadastrados em nosso banco de dados e
+		identificados
+		pelo seu nome de identificação, doravante chamado de &nbsp<b>{{nome}},</b> conforme as cláusulas e condições a
+		seguir ajustadas.</p>
+
+	<p class="msonormal"><b>CLÁUSULA PRIMEIRA - DO OBJETO</b></p>
+	<p><span class="topico"><b>1.1</b>&nbsp O objeto deste contrato é prestação ao ALUNO pelo QISAT dos cursos listados
+			a
+			seguir:</span><br>
+		<span class="subtopico"><b>1.1.1</b>&nbsp Conteúdo do(s) Curso(s) online:</span></p>
+
+	<div class="tabela_contrato">
+		<div class="row">
+			<div class="small-6 large-6 columns"><b>Curso</b></div>
+			<div class="small-3 large-3 columns text-center"><b>Prazo de Acesso</b></div>
+			<div class="small-3 large-3 columns text-center"><b>Tempo por aula</b></div>
+		</div>
+
+		<div ng-repeat="produto in online track by produto.id" ng-show="online.length">
+			<div class="row" ng-repeat="curso in produto.courses">
+				<div class="small-6 large-6 columns"><b>{{curso.nome}}</b></div>
+				<div class="small-3 large-3 columns text-center">{{::produto.enrolperiod}}</div>
+				<div class="small-3 large-3 columns text-center">{{curso.time}}</div>
+			</div>
+		</div>
+
+		<div class="row text-center" ng-show="!online.length">
+			<div class="small-12 large-12 columns"><b>Nenhum curso online.</b></div>
+		</div>
+	</div>
+
+	<p><span class="subtopico"><b>1.1.2</b>&nbsp Emissão eletrônica de certificado de participação, caso o ALUNO atinja
+			95% (noventa e cinco por cento) de participação no(s) curso(s), a validação dos acessos é verificada através
+			do
+			controle de acesso do QISAT. </span><br>
+		<span class="topico"><b>Parágrafo único:</b>&nbsp O acesso ao treinamento - objeto deste contrato - pode dar-se
+			a
+			qualquer dia e a qualquer horário (24 horas por dia, inclusive finais de semanas e feriados), respeitando os
+			limites máximos de acessos por aula (em horas) e no treinamento (contados automaticamente a partir da data
+			da
+			aquisição).</span> <br>
+		<span class="subtopico"><b>1.1.3</b>&nbsp Realização do(s) Curso(s) presencial(is):</span></p>
+
+	<table width="100%" cellpadding="3" cellspacing="0" class="table_cursos">
+		<tr>
+			<td width="50%" class="titulo_dados_tabela">
+				<div align="left" class="titulo_dados_tabela"><strong>Curso</strong></div>
+			</td>
+			<td width="25%" class="titulo_dados_tabela">
+				<div align="center" class="titulo_dados_tabela"><strong>Data</strong></div>
+			</td>
+			<td width="25%" class="titulo_dados_tabela">
+				<div align="center" class="titulo_dados_tabela"><strong>Cidade/UF</strong></div>
+			</td>
+		</tr>
+		<tr ng-repeat="curso in presencial" ng-if="presencial.length">
+			<td>{{curso.nome}}</td>
+			<td>
+				<div align="center" ng-repeat="data in curso.datas">{{data}} <br></div>
+			</td>
+			<td>
+				<div align="center"> {{curso.local}}</div>
+			</td>
+		</tr>
+
+		<tr ng-if="!presencial.length">
+			<td colspan="3"> Nenhum curso presencial. </td>
+		</tr>
+
+	</table>
+
+	<p class="msonormal"><b>CLÁUSULA SEGUNDA - DO PAGAMENTO E ACESSO DO CURSO</b></p>
+
+	<p><span class="topico"><b>2.1</b>&nbsp O acesso ao(s) curso(s) fica(m) condicionado(s) o reconhecimento do
+			pagamento
+			e aprovação financeira do pedido de inscrição.</span><br>
+
+		<span class="topico"><b>2.2</b>&nbsp O prazo de acesso ao curso começará a contar a partir do dia agendado para
+			início, mediante identificação do pagamento. Será encaminhado um e-mail informando a habilitação no curso,
+			usuário
+			e senha de acesso. A data de início do curso pode ser alterada até 24 horas de antecedência a data agendada.
+			Após
+			o serviço habilitado para acesso, o prazo não será interrompido.</span><br>
+
+		<span class="subtopico"><b>2.3</b>&nbsp Transferência de inscrição em curso para outro CPF só é permitido no ato
+			da
+			compra, ou anterior a data agendada para início do curso. </span><br>
+		<span class="topico"><b>Parágrafo único:</b>&nbsp No caso extraordinário de parcelamento do valor em boleto
+			bancário
+			ou mensalidade recorrente, havendo atraso de até quatro dias ou cancelamento no pagamento de qualquer
+			parcela,
+			o(s) acesso(s) ao(s) serviço(s) e plataforma(s) do ALUNO será(ão) bloqueado(s) até que a(s) pendência(s)
+			seja(am)
+			quitada(s).</span></p>
+
+	<p class="msonormal"><b>CLÁUSULA TERCEIRA - DEVERES E DIREITOS DO QISAT</b></p>
+
+	<p><span class="topico"><b>3.1</b>&nbsp São deveres do QISAT.:</span><br>
+		<span class="subtopico"><b>3.1.1</b>&nbsp Curso(s) online:</span><br>
+		<span class="subitem"><b>I.</b>&nbsp O QISAT permitirá acesso 24 (vinte e quatro) horas por dia, 7(sete) dias
+			por
+			semana, com o número limitado de horas conforme prazos estabelecidos no website www.qisat.com.br, salvo caso
+			fortuito ou motivo de força maior;</span><br>
+		<span class="subitem"><b>II.</b> &nbsp O QISAT se exime de qualquer responsabilidade quanto à indisponibilidade
+			gerada por problemas do responsável pela conexão do site à rede de internet, não cabendo ressarcimento ao
+			ALUNO
+			por qualquer problema de conexão com a internet, oriundo do acesso do ALUNO ou do QISAT;</span><br>
+		<span class="subitem"><b>III.</b>&nbsp O QISAT se reserva ao direito de efetuar eventuais manutenções em seus
+			sistemas, visando melhoria na qualidade do serviço prestado;</span><br>
+		<span class="subitem"><b>IV.</b> &nbsp O QISAT deverá disponibilizar o conteúdo do(s) treinamento(s)
+			contratado(s)
+			para uso do ALUNO, através de um nome de usuário e de uma senha específica de acesso aos módulos (aulas)
+			estabelecidos pelo QISAT, que estarão hospedados no site do QISAT, ou em outros sites por ela
+			autorizados;</span><br>
+		<span class="subitem"><b>V.</b>&nbsp O QISAT deverá disponibilizar um professor monitor para esclarecimento de:
+			Dúvidas referentes aos recursos do programa abordados no projeto exemplo; Procedimentos de download,
+			instalação e
+			configuração das versões livres dos softwares da AltoQi necessárias ao acompanhamento do curso; As dúvidas
+			deverão
+			ser enviadas através do sistema Tira-dúvidas, disponibilizado na plataforma de ensino do QiSat, e terão
+			prazo de
+			resolução de até 2 (dois) dias úteis;</span><br>
+		<span class="subitem"><b>VI.</b>&nbsp Cabe ao QISAT coordenar administrativa e academicamente o(s)
+			treinamento(s),
+			zelando pela sua qualidade e pelo cumprimento do regimento da instituição mantenedora de treinamentos e
+			metodologias de ensino a distância;</span><br>
+		<span class="subitem"><b>VII.</b> &nbsp O QISAT deverá informar ao ALUNO as atividades programadas para o(s)
+			treinamentos(s);</span><br>
+		<span class="subitem"><b>VIII.</b> &nbsp O QISAT deverá disponibilizar certificado digital na plataforma do
+			curso,
+			caso o ALUNO tenha solicitado, após a realização das avaliações, e atingindo determinado aproveitamento, ou
+			segundo os critérios de avaliação estabelecidos pelo QISAT.</span></p>
+
+	<p class="msonormal"><b>CLÁUSULA QUARTA - DEVERES E DIREITOS DO ALUNO</b></p>
+
+	<p><span class="topico"><b>4.1</b> &nbsp Curso(s) online:</span><br>
+		<span class="subtopico"><b>4.1.1</b>&nbsp O ALUNO será responsável pela correta utilização de seu nome de
+			usuário e
+			senha, que são de uso pessoal e intransferível.</span><br>
+		<span class="subtopico"><b>4.1.2</b> &nbsp O ALUNO deverá providenciar, por conta própria, os equipamentos e
+			softwares, seguindo os requisitos mínimos mencionados no website do QISAT, com acesso à Internet e ter um
+			endereço
+			eletrônico permanente para contato;</span><br>
+		<span class="subtopico"><b>4.1.3</b> &nbsp Responder, no prazo estabelecido pela Coordenação do QISAT, a todas
+			as
+			mensagens recebidas;</span><br>
+		<span class="subtopico"><b>4.1.4</b> &nbsp Participar das avaliações propostas, quando houver o interesse da
+			certificação, segundo normas e calendário estabelecidos pela Coordenação do(s) treinamentos(s) e pelo
+			QISAT.<br>
+			<span class="subtopico"><b> 4.1.5 </b>&nbsp Constituem abuso de uso da internet e para a inscrição
+				deste</span>
+			treinamento:</span><br>
+		<span class="subitem"><b>I.</b> &nbsp Violar a privacidade de outros ALUNOS;</span><br>
+		<span class="subitem"><b>II.</b> &nbsp Utilizar indevidamente códigos de acesso e/ou senha de outros
+			ALUNOS;</span><br>
+		<span class="subitem"><b>III.</b> &nbsp Ceder o seu nome de usuário e senha de uso pessoal e intransferível a
+			terceiros;</span><br>
+		<span class="subitem"><b>IV.</b> &nbsp Reproduzir, sob qualquer forma, o material, cujo uso deve ser feito
+			exclusivamente em âmbito privado pelo ALUNO, sob pena de responder, civil e criminalmente, perante o QISAT e
+			terceiros, nos termos da Lei n° 9.609, de 19 de fevereiro de 1998, por violação da propriedade
+			intelectual;</span><br>
+		<span class="subitem"><b>V.</b> &nbsp Propagar vírus de computador, programas invasivos (worms), ou outras
+			formas
+			de programas computacionais, auto-replicantes ou não, que prejudiquem a operação das redes e de computadores
+			individuais;</span><br>
+		<span class="subitem"><b>VI.</b> &nbsp Tentar burlar o sistema de segurança de computadores para os quais não
+			possua autorização para acesso;</span><br>
+		<span class="subitem"><b>VII.</b> &nbsp Corromper ou destruir dados, arquivos ou programas;</span><br>
+		<span class="subitem"><b>VIII.</b> &nbsp Divulgar por meio de correio eletrônico sua promoção pessoal com fins
+			profissionais, comerciais ou eleitorais;</span><br>
+		<span class="subitem"><b>IX.</b> &nbsp Veicular mensagens que possam vir a ser consideradas ofensivas e
+			subversivas ou que firam princípios éticos.</span><br>
+		<span class="subitem"><b>X.</b> &nbsp Transmitir ou exibir o(s) conteúdo(s) do(s) treinamento(s) em locais de
+			acesso coletivo, salas de projeção ou auditórios, para fins pessoais, comerciais ou acadêmicos, sem a
+			autorização expressa do QISAT;</span><br>
+		<span class="topico"><b>Parágrafo único:</b> &nbsp O QISAT reserva-se no direito de bloquear o acesso ao
+			sistema,
+			sem prévio aviso, de qualquer ALUNO, que esteja enquadrado nessas condições de abuso, previstas na cláusula
+			quarta deste instrumento, ou na legislação de uso da internet.</span>
+	</p>
+
+	<p class="msonormal"><b>CLÁUSULA QUINTA - DA VIGÊNCIA E EXTINÇÃO</b></p>
+
+	<p><span class="topico"><b>5.1</b> &nbsp Curso(s) online:</span><br>
+		<span class="subtopico"><b>5.1.1</b> &nbsp A vigência do presente contrato inicia-se a partir da aceitação,
+			conforme
+			orientação do QISAT, e seu término se dará na conclusão do(s) treinamentos(s), no caso de pagamento à vista
+			ou
+			término de pagamento anterior à realização do(s) treinamentos(s). Para pagamentos parcelados, o contrato
+			terá
+			vigência até que seja quitada última parcela pelo ALUNO.</span><br>
+		<span class="subtopico"><b>5.1.2</b> &nbsp O QISAT poderá rescindir, imediatamente, o presente contrato,
+			independentemente de aviso ou notificação, em caso de descumprimento de qualquer das cláusulas constantes do
+			presente contrato, pelo ALUNO.</span><br>
+		<span class="subtopico"><b>5.1.3</b> &nbsp As cláusulas relacionadas a abuso de uso e de direitos autorais
+			permanecerão vigentes após o enceramento do contrato.</span><br>
+		<span class="subtopico"><b>5.1.4</b> &nbsp O presente contrato poderá também ser rescindido, por qualquer das
+			partes, em caso de descumprimento, pela outra, das suas obrigações.</span><br>
+		<span class="topico"><b>Parágrafo único:</b>&nbsp Não cabe ressarcimento ao ALUNO em caso de desistência do(s)
+			treinamento(s).</span></p>
+
+	<p class="msonormal"><b>CLÁUSULA SEXTA - DA CLÁUSULA PENAL</b></p>
+
+	<p><span class="topico"><b>6.1</b>&nbsp Em havendo quaisquer impedimentos ao não cumprimento do presente contrato
+			por
+			motivo de responsabilidade do ALUNO, o QISAT reserva-se ao direito de suspender os serviços previstos neste
+			contrato e obriga-se a avisar o ALUNO para que o mesmo proceda à regularização da pendência.</span></p>
+
+	<p class="msonormal"><b>CLÁUSULA SÉTIMA - CONDIÇÕES GERAIS</b></p>
+
+	<p><span class="topico"><b>7.1</b>&nbsp Curso(s) online:</span><br>
+		<span class="subtopico"><b>7.1.1</b> &nbsp As cláusulas apresentadas no presente contrato serão aceitas a partir
+			do
+			momento que o ALUNO der sua concordância, assinalando a opção "Aceito os termos do CONTRATO ON-LINE DE
+			PRESTAÇÃO
+			DE SERVIÇOS".</span><br>
+		<span class="subtopico"><b>7.1.2</b>&nbsp As formas de pagamento são apresentadas no site e as informações dadas
+			pelo ALUNO no formulário de cobrança são de total responsabilidade do ALUNO.</span><br>
+		<span class="subtopico"><b>7.1.3</b>&nbsp O ALUNO autorizará o QISAT a efetuar a cobrança na forma e meio
+			escolhidos
+			por ele, dentre os oferecidos pelo QISAT, ficando o QISAT e a empresa autorizada de débito (banco ou
+			administradora de cartões de crédito), isentas de qualquer responsabilidade ou obrigatoriedade.</span></p>
+
+	<p class="msonormal"><b>CLÁUSULA OITAVA - DO FORO</b></p>
+
+	<p><span class="topico"><b>8.1</b>&nbsp Fica eleito o Foro da cidade de Florianópolis - SC, para dirimir quaisquer
+			dúvidas oriundas do presente contrato, com renúncia expressa de qualquer outro, por mais privilegiado que
+			seja.
+		</span></p><br><br>
+
+	<p>Florianópolis, {{datanow}}.</p>
+
+	<p><b>MN Tecnologia e Treinamento LTDA</b></p>
+
+	<p style="text-align:right; font-size:12px;">Última alteração realizada em 16/10/2017.</p>
+	<a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">&#215;</a>
+
+</div>

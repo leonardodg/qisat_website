@@ -1,0 +1,485 @@
+<main class="admin_main">
+	<div class="admin_sidebar" ng-controller="alunoController">
+		<ul class="metismenu admin__menu">
+
+			<li class="item">
+				<a href="/aluno/perfil" class="link" analytics-on> <i class="material-icons">person</i> Perfil </a>
+			</li>
+
+			<li class="item">
+				<a href="/aluno/altoqi-lab" class="link" analytics-on>
+					<div class="fa fa-ic_altoqi_lab" style="font-size:24px"> </div> AltoQi Lab
+				</a>
+			</li>
+
+			<li class="item">
+				<a href="/aluno/cursos" class="link" analytics-on> <i class="material-icons">school</i> Meus Cursos </a>
+			</li>
+			<li class="item">
+				<a href="/aluno/certificados" class="link" analytics-on> <i class="material-icons">stars</i>
+					Certificados </a>
+			</li>
+			<li class="item">
+				<a href="/aluno/financeiro" class="link" analytics-on> <i class="material-icons">attach_money</i>
+					Financeiro
+				</a>
+			</li>
+
+			<div ng-if="showliks">
+				<li class="item">
+					<a ng-href="{{showliks.plataforma}}" class="link">
+						<i class="material-icons">school</i> Plataforma </a>
+				</li>
+
+				<li class="item">
+					<a ng-href="{{showliks.eCommerce}}" class="link">
+						<i class="material-icons">settings</i> E-commerce </a>
+				</li>
+
+				<li class="item">
+					<a ng-href="{{showliks.intranetQiSat}}" class="link">
+						<i class="material-icons">home</i> Intranet QiSat</a>
+				</li>
+
+				<li class="item"> <a ng-href="{{showliks.intranetAltoQi}}" class="link">
+						<div class="fa fa-ic_altoqi"></div>Intranet AltoQi
+					</a>
+				</li>
+			</div>
+
+
+			<li class="item">
+				<a href="/login" class="link" ng-click="logout()" analytics-on> <i
+						class="material-icons">remove_circle_outline</i> Sair </a>
+			</li>
+		</ul>
+	</div>
+
+
+	<div class="admin_content ng-cloak">
+		<div class="signup">
+			<div class="signup__content edit">
+
+				<div class="admin__heading">
+					<h1 class="title">Editar meus dados</h1>
+				</div>
+
+				<section id="dashboard">
+
+					<div class="row">
+						<div class="large-6 columns">
+
+							<label>Imagem</label>
+							<div>
+								<form name="fileForm" id="fileForm" novalidate>
+									<input type="file" id="picture" name="picture" ng-hide="true"
+										ng-change="fileChanged()" ng-model="files" />
+									<img ng-src="{{user.picture}}" alt="user" class="left thumb" width="110">
+									<button type="button" ng-click="fileClick()"> Alterar Imagem »</button>
+								</form>
+
+								<p><small>(Tamanho máximo: 32mb)</small></p>
+							</div>
+
+						</div>
+
+						<div class="large-6 columns">
+
+							<button type="button" class="btn-password right" ng-click="clickEditPassword()"
+								ng-if="!showEditPassword"><i class="material-icons">lock</i> Alterar senha</button>
+
+							<div class="showPassword" style="clear:both;" ng-show="showEditPassword">
+								<form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
+
+									<label for="currentPassword"> Senha Atual </label>
+									<input type="password" name="currentPassword" id="currentPassword"
+										placeholder="Digite a sua senha Atual" ng-model="currentPassword"
+										ng-required="true" autocomplete="off">
+
+									<div
+										ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
+										<span class="error"
+											ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual
+											Senha!</span>
+									</div>
+
+
+									<label for="newpassword" data-tooltip aria-haspopup="true" class="has-tip tip-top"
+										title="O campos password deverá possuir no mínimo 6 e no máximo 10 caracteres.">
+										Nova Senha </label>
+									<input type="password" name="newpassword" id="newpassword"
+										placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true"
+										autocomplete="off" ng-minlength="6" ng-maxlength="10">
+
+									<div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
+										<span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a
+											nova Senha!</span>
+
+										<span class="error" ng-show="passwordForm.newpassword.$error.minlength">No
+											mínimo 6
+											caracteres.</span>
+										<span class="error" ng-show="passwordForm.newpassword.$error.maxlength">No
+											máximo 10
+											caracteres.</span>
+
+									</div>
+
+
+									<label for="repassword"> Confirme a Senha </label>
+									<input type="password" name="repassword" id="repassword"
+										placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true"
+										pw-check="newpassword" autocomplete="off">
+
+									<div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
+										<span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a
+											nova Senha!</span>
+
+										<span class="error" ng-show="passwordForm.repassword.$error.pwmatch">
+											Senhas não correspondem.
+										</span>
+									</div>
+
+									<button type="cancel" id="showEditPassword" ng-click="clickEditPassword()"> Cancela
+									</button>
+									&nbsp
+									<button type="button" id="editPassword" ng-click="editPassword()"> Alterar Senha
+										»</button>
+									&nbsp
+									<a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
+
+								</form>
+							</div>
+						</div>
+
+					</div>
+					<hr>
+
+					<form name="editForm" id="editForm" novalidate>
+						<div class="row">
+							<div class="large-12 columns">
+
+								<p class="title">Dados Pessoais </p>
+
+								<label for="name">Seu Nome <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="name" id="name" placeholder="Seu Nome"
+									ng-model="user.firstname" ng-required="true" ng-disabled="user.firstname">
+
+								<div ng-show="(editForm.name.$dirty||submited) && editForm.name.$invalid">
+									<span class="error" ng-show="editForm.name.$error.required">Nome é
+										Obrigatório!</span>
+								</div>
+
+
+								<label for="lastname">Sobrenome <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="lastname" id="lastname" placeholder="Seu Sobrenome"
+									ng-model="user.lastname" ng-required="true" ng-disabled="user.lastname">
+
+								<div ng-show="(editForm.lastname.$dirty||submited) && editForm.lastname.$invalid">
+									<span class="error" ng-show="editForm.lastname.$error.required">Sobrenome é
+										Obrigatório!</span>
+								</div>
+
+								<label for="email">Email <strong title="Campo Obrigatório">*</strong> </label>
+								<input type="text" name="email" id="email" placeholder="Digite Email válido"
+									ng-model="user.email" ng-required="true"
+									ng-disabled="(!confirm) || (confirm && !getEmail)" ng-pattern="emailFormat"
+									ng-model-options="{ debounce: 1000 }">
+
+								<div ng-show="(editForm.email.$dirty||submited) && editForm.email.$invalid">
+									<span class="error" ng-show="editForm.email.$error.required">Email é
+										Obrigatório!</span>
+								</div>
+
+								<div ng-show="editForm.email.$dirty && editForm.email.$error.pattern">
+									<span class="error">Formato de Email incorreto!</span>
+								</div>
+
+								<label for="phone">Telefone <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="phone" id="phone" placeholder="Digite Telefone"
+									ng-model="user.phone1" ng-required="true" ng-disabled="!confirm" ui-br-phone-number>
+
+								<div ng-show="(editForm.phone.$dirty||submited) && editForm.phone.$invalid">
+									<span class="error" ng-show="editForm.phone.$error.required">Telefone é
+										Obrigatório!</span>
+
+									<div ng-show="editForm.phone.$invalid">
+										<span class="error">Formato inválido!</span>
+									</div>
+								</div>
+
+								<label for="cpfcnpj">CPF ou CNPJ <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ"
+									ng-model="user.cpfcnpj" ui-br-cpfcnpj-mask ng-required="true"
+									ng-disabled="(!confirm) || (confirm && !getCPF)" model-view-value="true" cpf-check>
+
+								<div ng-show="(editForm.cpfcnpj.$dirty||submited) && editForm.cpfcnpj.$invalid">
+									<span class="error" ng-show="editForm.cpfcnpj.$error.required">CPF/CNPJ é
+										Obrigatório!</span>
+								</div>
+
+								<div ng-show="(editForm.cpfcnpj.$error.cpf || editForm.cpfcnpj.$error.cnpj)">
+									<span class="error">CPF/CNPJ inválido!</span>
+								</div>
+
+								<div
+									ng-show="editForm.cpfcnpj.$dirty && editForm.cpfcnpj.$error.cpfCheck && !(createForm.cpfcnpj.$error.cpf || createForm.cpfcnpj.$error.cnpj)">
+									<span class="error" ng-show="errocpf">{{errocpf}} </span>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="row privacy">
+							<div class="columns small-12 medium-6">
+
+								<p class="title"> Privacidade </p>
+								<p><strong>Autorizo receber e-mails, quando:</strong></p>
+
+								<label for="checkbox1"><input id="checkbox1" type="checkbox"
+										ng-model="user.email_oferta" ng-disabled="!confirm"> Houver ofertas e
+									lançamentos do QiSat.</label>
+
+								<label for="checkbox2"><input id="checkbox2" type="checkbox"
+										ng-model="user.email_andamento" ng-disabled="!confirm"> Forem relacionados ao
+									andamento de meus cursos</label>
+
+								<label for="checkbox3"><input id="checkbox3" type="checkbox"
+										ng-model="user.email_mensagem_privada" ng-disabled="!confirm"> Receber uma
+									mensagem privada em minha conta</label>
+
+								<label for="checkbox4"><input id="checkbox4" type="checkbox"
+										ng-model="user.email_ausente" ng-disabled="!confirm"> Eu ficar muito tempo sem
+									acessar meu curso</label>
+
+								<label for="checkbox5"><input id="checkbox5" type="checkbox"
+										ng-model="user.email_suporte" ng-disabled="!confirm"> Quando o instrutor me
+									responder no suporte</label>
+
+							</div>
+							<div class="columns small-12 medium-6">
+
+								<p class="title"> &nbsp </p>
+
+								<p><strong>Autorizo receber ligações, quando:</strong></p>
+
+								<label for="checkbox6"><input id="checkbox6" type="checkbox"
+										ng-model="user.ligacao_lancamentos" ng-disabled="!confirm"> Houver lançamentos
+									relacionados a cursos que já fiz</label>
+
+
+								<label for="checkbox7"><input id="checkbox7" type="checkbox"
+										ng-model="user.ligacao_pagamento" ng-disabled="!confirm"> Tiver algum pagamento
+									em aberto</label>
+
+								<p><strong>Autorizo receber SMS, quando:</strong></p>
+
+								<label for="checkbox8"><input id="checkbox8" type="checkbox"
+										ng-model="user.sms_informacoes" ng-disabled="!confirm"> Houver informações
+									importantes relacionadas ao meu curso</label>
+
+								<label for="checkbox9"><input id="checkbox9" type="checkbox"
+										ng-model="user.sms_lancamentos" ng-disabled="!confirm"> Houver lançamentos
+									relacionados a cursos que já fiz</label>
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="large-12 columns">
+								<p class="title">Conselhos Regionais parceiros</p>
+							</div>
+							<div class="large-4 columns">
+								<label>&nbsp</label>
+								<button type="button" ng-show="user.entidades.length<=1&&confirm" ng-click="addCrea()">
+									Sou Associado +1
+									CREA »</button>
+							</div>
+						</div>
+
+
+						<div class="row privacy">
+							<div class="columns small-12">
+								<span for="creas"> Profissionais registrados em Conselhos Regionais parceiros QiSat
+									possuem
+									benefícios.&nbsp</span>
+								<a ng-click="saibamais()">Saiba mais.</a>
+
+							</div>
+						</div>
+
+
+						<div class="row" ng-repeat="crea in user.entidades | limitTo:2">
+							<div class="large-4 columns">
+								<div class="form-group">
+									<label for="crea">CREA <strong title="Campo Obrigatório"
+											ng-show="crea.selectCrea">*</strong></label>
+									<input type="text" name="{{'crea'+$index}}" id="{{'crea'+$index}}"
+										placeholder="Digite o CREA" ng-model="crea.numero" ng-required="crea.selectCrea"
+										ng-disabled="!confirm">
+
+									<div ng-show="(editForm.crea0.$dirty||submited) && editForm.crea0.$invalid">
+										<span class="error" ng-show="editForm.crea.$error.required">Número do CREA é
+											obrigatório para obter
+											desconto do convênio</span>
+									</div>
+
+									<div ng-show="(editForm.crea1.$dirty||submited) && editForm.crea1.$invalid">
+										<span class="error" ng-show="editForm.crea.$error.required">Número do CREA é
+											obrigatório para obter
+											desconto do convênio</span>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="large-4 columns">
+								<div class="form-group">
+									<label for="complemento"> CREA convêniado </label>
+									<select name="{{'selectCrea'+$index}}" id="{{'selectCrea'+$index}}"
+										ng-model="crea.selectCrea" ng-disabled="!confirm"
+										ng-options="option.host as option.local group by option.groupCrea disable when option.notAnOption for option in statesCREAs track by option.host">
+										<option value=""> Selecione o CREA Associado </option>
+
+									</select>
+								</div>
+							</div>
+
+							<div class="large-4 columns">
+								<div class="form-group"> <label for="crea">Situação: </label>
+									<span ng-class="{ 'success' : crea.adimplente,  'Warning' : !crea.adimplente }"
+										class="label" ng-bind="crea.statusA" ng-show="crea.statusA"></span>
+									&nbsp
+									<span ng-class="{ 'success' : crea.confirmado ,  'Warning' : !crea.confirmado }"
+										class="label" ng-bind="crea.statusC" ng-show="crea.statusC"></span>
+									&nbsp
+									<button type="button" ng-click="removeCrea(crea.id)" ng-show="confirm"
+										title="Remove"> <i class="material-icons">close</i> </button>
+								</div>
+							</div>
+						</div>
+
+						<br>
+
+						<div class="row privacy">
+							<div class="columns small-12">
+								<p class="title">Endereço</p>
+
+								<label for="cep">CEP <strong title="Campo Obrigatório">*</strong> </label>
+								<input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep"
+									ng-required="true" ng-disabled="!confirm" ng-blur="buscaCEP(endereco.cep)"
+									ui-br-cep-mask>
+
+								<div ng-show="(editForm.cep.$dirty||submited) && editForm.cep.$invalid">
+									<span class="error" ng-show="editForm.cep.$error.required">Informe o CEP</span>
+								</div>
+
+								<div ng-show="errorcep">
+									<span class="error">{{errorcep}} </span>
+								</div>
+
+								<label for="selectCountry">País
+									<select name="selectCountry" id="selectCountry" class="selectCountry"
+										ng-options="option.pais for option in country track by option.sigla"
+										ng-model="endereco.selectCountry" ng-disabled="!confirm">
+										<option value=""> Selecione o País </option>
+									</select>
+
+								</label>
+
+								<label for="selectStates">Selecione o Estado
+									<select name="selectStates" id="selectStates" class="selectStates"
+										ng-options="option.local for option in states track by option.uf"
+										ng-model="endereco.selectStates" ng-disabled="!confirm">
+										<option value=""> Selecione o Estado </option>
+									</select>
+								</label>
+
+								<label for="cidade">Cidade <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="cidade" id="cidade" placeholder="Digite a Cidade"
+									ng-model="endereco.cidade" ng-required="true" ng-disabled="!confirm">
+
+								<div ng-show="(editForm.cidade.$dirty||submited) && editForm.cidade.$invalid">
+									<span class="error" ng-show="editForm.cidade.$error.required">Informe a
+										Cidade!</span>
+								</div>
+
+								<label for="bairro">Bairro <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="bairro" id="bairro" placeholder="Digite o Bairro"
+									ng-model="endereco.bairro" ng-required="true" ng-disabled="!confirm">
+
+								<div ng-show="(editForm.bairro.$dirty||submited) && editForm.bairro.$invalid">
+									<span class="error" ng-show="editForm.bairro.$error.required">Informe o
+										Bairro!</span>
+								</div>
+
+								<label for="logradouro">Endereço <strong title="Campo Obrigatório">*</strong></label>
+								<input type="text" name="logradouro" id="logradouro" placeholder="Digite o Endereço"
+									ng-model="endereco.logradouro" ng-required="true" ng-disabled="!confirm">
+
+								<div ng-show="(editForm.logradouro.$dirty||submited) && editForm.logradouro.$invalid">
+									<span class="error" ng-show="editForm.logradouro.$error.required">Informe o
+										Logradouro!</span>
+								</div>
+
+								<label for="numero">Número</label>
+								<input type="text" name="numero" id="numero" placeholder="Número"
+									ng-model="endereco.numero" ng-disabled="!confirm">
+
+								<label for="complemento">Complemento</label>
+								<input type="text" name="complemento" id="complemento" placeholder="Complemento"
+									ng-model="endereco.complemento" ng-disabled="!confirm">
+
+								<button id="edit" type="button" ng-click="enableInputs()" ng-show="!confirm"> Alterar
+									Dados »</button>
+								<button id="cancel" type="button" ng-click="cancel()" ng-hide="!confirm"> Cancelar
+								</button>
+								&nbsp
+								<button id="salve" type="button" ng-hide="!confirm" ng-click="update()"> Salvar
+									»</button>
+								<br>
+								<div class="row" ng-show="checkPassword">
+									<div class="large-12 columns">
+										<fieldset>
+											<legend> Confirmar Senha de Acesso </legend>
+											<div class="row">
+												<div class="large-6 columns">
+
+													<label for="checkPassword"> Informe sua Senha Atual </label>
+													<input type="password" name="checkPassword" id="checkPassword"
+														placeholder="Digite a sua senha Atual" ng-model="checkPassword"
+														ng-required="true" autocomplete="off">
+
+													<div
+														ng-show="passwordForm.checkPassword.$dirty && passwordForm.checkPassword.$invalid">
+														<span class="error"
+															ng-show="passwordForm.checkPassword.$error.required">Informe
+															sua Atual
+															Senha!</span>
+													</div>
+												</div>
+
+												<div class="large-6 columns">
+													<label>&nbsp</label>
+													<button type="button" id="confirmPassword"
+														ng-click="verifyPassword(checkPassword)"> Confirmar
+														Senha »</button>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+				</section>
+			</div>
+		</div>
+
+		<div class="custom-loading" ng-if="loading">
+			<i class="material-icons">hdr_weak</i>
+			<span class="text">Carregando informações...</span>
+		</div>
+	</div>
+</main>

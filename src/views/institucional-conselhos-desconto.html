@@ -1,0 +1,139 @@
+<main class="content-main">
+
+  <header class="hero-pages hero-pages__insitucional" ng-controller="institucionalController as vm">
+    <div class="row">
+      <div class="medium-8 columns">
+        <span class="hero-pages__label">Institucional</span>
+        <h1 class="hero-pages__title">Conheça o QiSat</h1>
+        <p class="hero-pages__tagline"> O maior portal de cursos para engenheiros e arquitetos</p>
+      </div> <!-- //large-12-->
+      <div class="medium-4 columns">
+        <div class="hero-course__play-container">
+          <a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI?rel=0&arp;autoplay=1
+')" anchor-link analytics-event="Play" analytics-category="Videos Institucional">
+            <i class="fa fa-ic_play fa-10x" title="Assistir Vídeo" style="font-size:52px;"></i>
+          </a>
+        </div>
+        <!--//hero-course__play-container -->
+      </div> <!-- //large-3-->
+    </div> <!-- ///row -->
+  </header><!-- //hero-home -->
+
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <nav class="menu-horizontal">
+        <ul class="menu-horizontal__list" data-equalizer>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" analytics-on>Sobre a empresa</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/linha-do-tempo" analytics-on>Linha do tempo</a>
+          </li>
+          <li data-equalizer-watch
+            class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current">
+            <a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" analytics-on>Convênios e
+              Parceiros</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/instrutores-e-professores" analytics-on>Instrutores e
+              Professores</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/contatos" analytics-on>Entre em Contato</a>
+          </li>
+        </ul>
+      </nav>
+    </div> <!-- //large-12-->
+  </div> <!-- ///row -->
+
+  <div class="row">
+
+    <div class="small-12 medium-4 large-3 columns grid-sidebar-left">
+      <div class="page_content">
+        <h5 class="menu-filter-sidebars--title">Menu</h5>
+
+        <ul class="menu-partners">
+          <li class="active"><a href="/institucional/convenios/conselhos"><i
+                class="material-icons right">expand_more</i>Convênios</a>
+            <ul>
+              <li class="active"><a href="/institucional/convenios/conselhos">Projeto Conselhos Regionais</a></li>
+              <li><a href="/institucional/convenios/preduc/conveniadas"><i
+                    class="material-icons right">chevron_right</i>Projeto Rede Educacional</a></li>
+            </ul>
+          </li>
+          <li><a href="/institucional/parceiros">Parceiros</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="large-9 medium-8 columns">
+      <div class="page_text">
+
+        <div class="convenios">
+          <div class="row entidades">
+            <div class="column small-12 medium-4">
+              <div>
+                <a href="/institucional/convenios/conselhos/conveniados"><i class="material-icons">business</i>
+                  ENTIDADES CONVENIADAS</a>
+              </div>
+            </div>
+            <div class="column small-12 medium-4">
+              <div>
+                <a class="active"><i class="material-icons">format_list_bulleted</i> TABELA DE DESCONTO</a>
+              </div>
+            </div>
+            <div class="column small-12 medium-4">
+              <div>
+                <a href="/institucional/convenios/conselhos#cadastro"><i class="material-icons">insert_drive_file</i>
+                  CADASTRAR ENTIDADE</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1>Tabela de Desconto dos Conselho - CREAS</h1>
+        <h4>CURSOS DE SOFTWARE</h4>
+        <table width="100%" class="tableCreasResponsive">
+          <thead>
+            <tr>
+              <th nowrap><strong>CURSO</strong></th>
+              <th width="14%"><strong>VALOR</strong></th>
+              <th width="18%"><strong>VALOR PROMOCIONAL</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="curso in cursosSoftware track by curso.id">
+              <td> {{::curso.nome}} </td>
+              <td> {{::curso.preco}} </td>
+              <td> {{::curso.valorCREAs}} </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>CURSOS TEÓRICOS</h4>
+        <table width="100%" class="tableCreasResponsive">
+          <thead>
+            <tr>
+              <th><strong>CURSO</strong></th>
+              <th width="14%"><strong>VALOR</strong></th>
+              <th width="18%"><strong>VALOR PROMOCIONAL</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="curso in cursosTeoricos track by curso.id">
+              <td> {{::curso.nome}} </td>
+              <td> {{::curso.preco}} </td>
+              <td> {{::curso.valorCREAs}} </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div> <!-- //page_content -->
+
+    </div> <!-- //large-8-->
+  </div>
+</main>
+<!--// main-content -->

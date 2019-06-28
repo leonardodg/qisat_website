@@ -1,0 +1,347 @@
+/*
+  1. Hero hero
+  2. Hero Courses
+  3. Hero Pages e institucional
+*/
+
+
+
+/*======================================== */
+
+/* 'HERO PAGINA INSTITUCIONAL
+========================================= */
+
+.hero-pages{
+  float: left;
+  width: 100%;
+  min-height: 250px;
+  padding: 70px 0;
+  @media only screen and (min-width: 64.063em) {   padding: 100px 0; } /* min-width 1025px, large screens */
+
+  background-color: #333; /* fallback for old browsers */
+  background-image: #333; /* Chrome 10-25, Safari 5.1-6 */
+  background-image: #333; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  
+  &.hero-pages__insitucional {
+    background-image: url("../images/hero/hero-institucional.jpg");
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  &.hero-pages__cart {
+    background-color: #003350;
+    background-image: none;
+    min-height: 50px;
+    text-align: center;
+    padding: 40px 0 30px 0;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 40.063em) {
+      // min-height: 200px;
+      padding: 70px 0 40px 0;
+    }
+  }
+       .hero-pages__label{color: #fff; font-weight: 300; font-size:24px;}
+       .hero-pages__title {
+           padding: 0;
+           margin: 0;
+           color: #fff;
+           line-height: 1.2;
+           font-weight: 700;
+           font-size: 2em;
+           @media only screen and (min-width: 40.063em) {
+             font-size: 2.7em;
+           }
+       }
+      .hero-pages__tagline {
+        color: rgba(255, 255, 255, 0.5);
+        font-style: italic;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+        display: inline-block;
+        font-weight: 300;
+      }
+ }
+
+
+
+
+
+
+
+.hero-page-simple{
+    float: left;
+    width: 100%;
+    padding: 20px 0;
+    background: #1e3c72; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1e3c72 , #2a5298); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1e3c72 , #2a5298); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    .hero-page-simple__title{ text-align: center; font-weight: 100; color: #fff;}
+}
+
+/*======================================== */
+
+/* 'HERO PAGINA COURSES
+========================================= */
+.hero-page-course {
+    /* background: #232526; */
+    background: #333;
+    /* background: linear-gradient(to left, #232526, #414345); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    /* border-bottom: 1px solid #555; */
+    background-color: #333;
+    background-image: url("../images/hero/hero-course-background.jpg");
+    width: 100%;
+    float: left;
+}
+
+.hero-page-course__title {
+    margin-top: 140px;
+    color: #fff;
+    font-weight: 300;
+}
+
+/* 'HERO HOME
+========================================= */
+.hero-home {
+
+    color: #ffffff; 
+    height: 620px;
+    background: #333;
+    padding-top: 170px;
+    z-index: -1;
+    text-align: center;
+    background-image: url("../images/hero/hero-home-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+
+    @media only screen and (max-width: 40em) { 
+       padding-top: 70px;
+    }
+}
+
+.hero-home__intro {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 0px;
+    display: block;
+    text-transform: uppercase;
+    opacity: 0.7;
+    letter-spacing: 1px;
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
+
+}
+
+.hero-home__title {
+    line-height: 1.1;
+    margin-top: 10px;
+    letter-spacing: -1px;
+    font-size: 48px;
+    text-transform: uppercase;
+    font-weight: 800;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    display: block;
+
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
+}
+
+.hero-home__subtitle {
+    line-height: 1.3;
+    font-size: 25px;
+    opacity: 0.7;
+    font-weight: 500;
+    display: block;
+     margin-bottom: 60px;
+     color: #ffffff;
+
+
+    @media only screen and (max-width: 40em) { 
+          margin-left:0;
+    }
+}
+
+.hero-home__button {
+    transition: all 0.5s ease;
+    border: 1px solid;
+    color: #fff !important;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: transparent !important;
+
+    &:hover {
+        color: #000 !important;
+        background-color: #fff !important;
+    }
+}
+
+
+
+
+/*======================================== */
+
+/* 'HERO COURSES - HERO PAGINA INFO
+========================================= */
+.hero-course {
+    float: left;
+    width: 100%;
+    display: inline-block;
+    width: 100%;
+    // padding: 140px 0 40px 0;
+    background-color: $charcoal;
+
+    //background-image: url("../images/courses/courses-banner-presencial.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &::before {
+        content: "";
+    }
+
+    padding: 40px 0 30px 0;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 40.063em) {
+      padding: 140px 0 40px 0;
+    }
+
+
+}
+
+    .hero-course:hover .hero-course__play--image {  opacity: 1;}
+    .hero-course__modality { color: #fff; font-size: 17px; font-weight: 300; opacity: .4; text-transform: uppercase; }
+    .hero-course__title {
+      color: #fff; font-size: 30px; font-weight: 900; line-height: 1; margin: 5px 0; letter-spacing: -1px; text-transform: uppercase;
+      @media only screen and (min-width: 40.063em) {
+        font-size: 41px;
+      }
+
+      span {
+        font-size: 24px;
+        color: #fff;
+        opacity: 0.6;
+        display: block;
+        padding-bottom: 10px;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+    } 
+    .hero-course__resume {
+      color: #fff; opacity: .6; margin-bottom: 30px; font-size: 18px; font-weight: 500; letter-spacing: 1px;
+      @media only screen and (min-width: 40.063em) {
+        margin-bottom: 10px;
+      }
+    }
+    .hero-course__locale{color: #fff; font-weight: 300; letter-spacing: 1px; font-size: 16px;}
+
+
+
+.hero-course__buttons-group--item a {
+    padding: 10px 20px !important;
+    margin: 0;
+    border-color: rgba(0,0,0,.1) !important;
+    background-color: $primary-color;
+}
+
+
+
+.hero-course__play-container {
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 200px;
+    padding: 65px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.hero-course__play {  display: inline-block; }
+
+.hero-course__play--image {
+    transition: all 0.5s ease;
+    display: inline-block;
+    width: 70%;
+    opacity: .6;
+}
+
+.hero-course__buttons-group {
+    list-style: none;
+    margin: 0;
+}
+
+.hero-course__buttons-group--item {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.hero-course__buttons-group {
+  a {
+    background-color: #FFF !important;
+    color: #222;
+    border-radius: 4px;
+    padding: 5px;
+
+    &:hover {
+      color: #000;
+    }
+  }
+  i {
+    font-size: 18px !important;
+  }
+}
+
+.hero-course__buttons-group--item .buttom-price {
+    // opacity: 0.95;
+    background-color: #0099f3 !important;
+    color: #fff !important;
+    // padding: 5px 30px;
+    // border-radius: 4px;
+  margin: 10px 0 !important;
+  position: relative;
+  height: 40px;
+  padding-right: 60px !important;
+
+  @media only screen and (min-width: 40.063em) {
+    margin: 0 !important;
+  }
+
+  .cart {
+    background-color: #008ddc;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    text-align: center;
+    padding-top: 8px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  .price_popover {
+    // right: 30px;
+  }
+}
+
+.buttom-price:hover,
+.buttom-price:focus {
+    color: #fff;
+    opacity: 1;
+}
+
+.hero-course__controllers {}

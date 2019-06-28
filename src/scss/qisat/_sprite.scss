@@ -1,0 +1,66 @@
+// @import "compass/utilities/sprites";
+@import "compass/utilities/sprites/base";
+
+$qi-sprite-sprite-base-class: ".qi-sprite";
+$qi-sprite-sprite-dimensions: true;
+$qi-sprite: sprite-map("qi-sprite/**/*.png", $layout: smart);
+
+// $qi-sprite-layout: smart;
+// $qi-sprite-sprite-dimensions:true;
+// @import "qi-sprite/**/*.png";
+// @include all-qi-sprite-sprites;
+
+#{$qi-sprite-sprite-base-class} {
+    background: $qi-sprite no-repeat;
+}
+
+.qi-sprite-altoqi{
+    margin: auto;
+}
+
+// Use this to set the dimensions of an element
+// based on the size of the original image.
+@mixin qi-sprite-sprite-dimensions($name) {
+    @include sprite-dimensions($qi-sprite, $name)
+}
+  
+// Move the background position to display the sprite.
+@mixin qi-sprite-sprite-position($name, $offset-x: 0, $offset-y: 0) {
+    @include sprite-position($qi-sprite, $name, $offset-x, $offset-y)
+}
+  
+// Extends the sprite base class and set the background position for the desired sprite.
+// It will also apply the image dimensions if $dimensions is true.
+@mixin qi-sprite-sprite($name, $dimensions: $qi-sprite-sprite-dimensions, $offset-x: 0, $offset-y: 0) {
+    @extend #{$qi-sprite-sprite-base-class};
+    @include sprite($qi-sprite, $name, $dimensions, $offset-x, $offset-y)
+}
+  
+@mixin qi-sprite-sprites($sprite-names, $dimensions: $qi-sprite-sprite-dimensions, $prefix: sprite-map-name($emblem-sprites)) {
+    @include sprites($qi-sprite, $sprite-names, $qi-sprite-sprite-base-class, $dimensions, $prefix)
+}
+  
+  // Generates a class for each sprited image.
+@mixin all-qi-sprite-sprites($dimensions: $qi-sprite-sprite-dimensions, $prefix: sprite-map-name($qi-sprite)) {
+    @include qi-sprite(favorite important photos readonly symbolic-link system unreadable, $dimensions, $prefix);
+}
+
+@each $file in sprite-names($qi-sprite) {
+	.qi-sprite-#{$file} {
+		@include qi-sprite-sprite($file);
+	}
+}
+
+.header-main__logo{
+    @include qi-sprite-sprite-dimensions(brand_qisat_small);
+    background: sprite($qi-sprite, brand_qisat_small);
+
+    @media only screen and (min-width: 64.063em) {
+        @include qi-sprite-sprite-dimensions(brand_qisat_large);
+        background: sprite($qi-sprite, brand_qisat_large);
+    }
+}
+
+.home__instructors__linkedin {
+    @include qi-sprite-sprite(linkedin-color);
+}

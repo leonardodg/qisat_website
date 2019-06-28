@@ -1,1 +1,96 @@
-<div id="modalPageCourseCall" name="modalPageCourseCall" class="modalPageCourseCall reveal-modal-qisat"><section class="section-call__form"><header class="reveal-modal-header"><a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">×</a><span class="brand-qisat-small brand-qisat-small-light"></span></header><header class="section-call__form--header" ng-if="msgs.header"><div class="row"><div class="large-12 columns"><h4 class="section-call__form--header-title" ng-if="msgs.header.title">{{ng-if="msgs.header.title"}}</h4><p ng-if="msgs.header.subtitle">{{msgs.header.subtitle}}</p></div></div></header><div class="row text-center"><div class="large-12 columns"><span class="section-call__done--icon" ng-if="msgs.success"><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="93.827px" height="92.593px" viewbox="0 0 93.827 92.593" enable-background="new 0 0 93.827 92.593" xml:space="preserve"><path fill="#2196F3" d="M46.129,1.041c-24.88,0-45.073,20.192-45.073,45.073c0,24.878,20.192,45.074,45.073,45.074 c24.879,0,45.073-20.196,45.073-45.074C91.202,21.233,71.008,1.041,46.129,1.041z M37.114,68.649L14.578,46.113l6.356-6.356 l16.18,16.136l34.21-34.209l6.356,6.399L37.114,68.649z"/></svg></span><span class="section-call__done--icon" ng-if="msgs.error"><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120" height="120" viewbox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffae00"/></svg></span></div></div><div class="row text-center" ng-if="msgs.main"><div class="large-12 columns"><div ng-if="msgs.main.html"><span class="section-call__done--title" ng-if="msgs.main.title" ng-bind-html="msgs.main.title"></span><span class="section-call__done--subtitle" ng-if="msgs.main.subtitle" ng-bind-html="msgs.main.subtitle"></span></div><div ng-if="!msgs.main.html"><span class="section-call__done--title" ng-if="msgs.main.title">{{msgs.main.title}}</span><span class="section-call__done--subtitle" ng-if="msgs.main.subtitle">{{msgs.main.subtitle}}</span></div></div></div><div class="row text-center" ng-if="msgs.crea"><div class="large-12 columns"><span class="section-call__done--title">BENEFÍCIOS DO CONVÊNIO</span><span class="section-call__done--subtitle"><div class="content_align"><p>O Projeto proporciona &nbsp<strong>benefícios de descontos e participação sobre as vendas online &nbsp</strong>para os Conselhos:</p><ul><li>Desconto de &nbsp<strong>30% &nbsp</strong>nas inscrições dos cursos a distância para todos os profissionais registrados, adimplentes.</li></ul></div><div class="content_align">Atualmente, o QiSat possui convênio com os seguintes Conselhos:</div><div class="content_align"><div>CREA-RO</div><div>CREA-TO</div><div>CREA-BA</div><div>CREA-DF</div><div>CREA-SC</div><div>CREA-MS</div></div><div class="content_align"><p>Para obter direito ao benefĩcio é necessário informar o número do CREA e selecionar o convênio.</p></div></span></div></div></section></div>
+<div id="modalPageCourseCall" name="modalPageCourseCall" class="modalPageCourseCall reveal-modal-qisat">
+	<section class="section-call__form">
+		<header class="reveal-modal-header">
+			<a class="close-reveal-modal" aria-label="Close" ng-click="cancel()">×</a>
+			<span class="brand-qisat-small brand-qisat-small-light">
+				<i class="fa fa-band_qisat fa-10x" style="font-size: 32px;"></i>
+			</span>
+		</header>
+
+		<header class="section-call__form--header" ng-if="msgs.header">
+			<div class="row">
+				<div class="large-12 columns">
+					<h4 class="section-call__form--header-title" ng-if="msgs.header.title">
+						{{ng-if="msgs.header.title"}}
+					</h4>
+					<p ng-if="msgs.header.subtitle"> {{msgs.header.subtitle}} </p>
+				</div>
+			</div>
+		</header>
+
+		<div class="row text-center">
+			<div class="large-12 columns">
+				<span class="section-call__done--icon" ng-if="msgs.success">
+					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+					<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="93.827px" height="92.593px" viewbox="0 0 93.827 92.593" enable-background="new 0 0 93.827 92.593" xml:space="preserve">
+						<path fill="#2196F3" d="M46.129,1.041c-24.88,0-45.073,20.192-45.073,45.073c0,24.878,20.192,45.074,45.073,45.074
+						c24.879,0,45.073-20.196,45.073-45.074C91.202,21.233,71.008,1.041,46.129,1.041z M37.114,68.649L14.578,46.113l6.356-6.356
+						l16.18,16.136l34.21-34.209l6.356,6.399L37.114,68.649z"/>
+					</svg>
+				</span>
+
+				<span class="section-call__done--icon" ng-if="msgs.error">
+					<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+					<svg version="1.1" id="Camada_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120" height="120" viewbox="0 0 24 24">
+						<path d="M0 0h24v24H0z" fill="none"/>
+						<path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffae00"/>
+					</svg>
+				</span>
+
+			</div>
+		</div>
+
+		<div class="row text-center" ng-if="msgs.main">
+			<div class="large-12 columns">
+				<div ng-if="msgs.main.html">
+					<span class="section-call__done--title" ng-if="msgs.main.title" ng-bind-html="msgs.main.title"></span>
+					<span class="section-call__done--subtitle" ng-if="msgs.main.subtitle" ng-bind-html="msgs.main.subtitle">
+					</span>
+				</div>
+
+				<div ng-if="!msgs.main.html">
+					<span class="section-call__done--title" ng-if="msgs.main.title"> {{msgs.main.title}} </span>
+					<span class="section-call__done--subtitle" ng-if="msgs.main.subtitle"> {{msgs.main.subtitle}}
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row text-center" ng-if="msgs.crea">
+			<div class="large-12 columns">
+				<span class="section-call__done--title"> BENEFÍCIOS DO CONVÊNIO </span>
+				<span class="section-call__done--subtitle">
+
+					<div class="content_align">
+						<p>O Projeto proporciona &nbsp<strong>benefícios de descontos e participação sobre as vendas
+								online
+								&nbsp</strong> para os Conselhos:</p>
+						<ul>
+							<li>Desconto de &nbsp<strong>30% &nbsp</strong> nas inscrições dos cursos a distância para
+								todos os
+								profissionais registrados, adimplentes.</li>
+						</ul>
+					</div>
+
+					<div class="content_align">
+						Atualmente, o QiSat possui convênio com os seguintes Conselhos:
+					</div>
+					<div class="content_align">
+						<div>CREA-RO</div>
+						<div>CREA-TO</div>
+						<div>CREA-BA</div>
+						<div>CREA-DF</div>
+						<div>CREA-SC</div>
+						<div>CREA-MS</div>
+					</div>
+
+					<div class="content_align">
+						<p>Para obter direito ao benefĩcio é necessário informar o número do CREA e selecionar o
+							convênio.</p>
+					</div>
+				</span>
+			</div>
+		</div>
+
+	</section>
+</div>

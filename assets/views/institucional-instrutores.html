@@ -1,2 +1,154 @@
-<main class="content-main"><header class="hero-pages hero-pages__insitucional" ng-controller="institucionalController as vm"><div class="row"><div class="medium-8 columns"><span class="hero-pages__label">Institucional</span><h1 class="hero-pages__title">Conheça o QiSat</h1><p class="hero-pages__tagline">O maior portal de cursos para engenheiros e arquitetos</p></div><div class="medium-4 columns"><div class="hero-course__play-container"><a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI?rel=0&arp;autoplay=1
-')" anchor-link analytics-event="Play" analytics-category="Videos Institucional"><img class="hero-course__play--image" src="images/courses/card-thumb-play.png" alt=""></a></div></div></div></header><div class="row"><div class="medium-12 columns"><nav class="menu-horizontal"><ul class="menu-horizontal__list" data-equalizer><li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" analytics-on>Sobre a empresa</a></li><li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/linha-do-tempo" analytics-on>Linha do tempo</a></li><li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" analytics-on>Convênios e Parceiros</a></li><li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current"><a class="menu-horizontal__link" href="/institucional/instrutores-e-professores" analytics-on>Instrutores e Professores</a></li><li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5"><a class="menu-horizontal__link" href="/institucional/contatos" analytics-on>Entre em Contato</a></li></ul></nav></div></div><div class="row"><div class="large-3 columns grid-sidebar-left"><div class="page_content"><div class="show-for-small-down text-center show-filters"><a href="#" style="display: block;"><i class="material-icons">filter_list</i><span>Mostrar filtros</span></a></div><div class="menu-filter-sidebars" id="sidebar-styker" sticky><form name="formFilters" id="formFilters"><div><div><h5 class="menu-filter-sidebars--title">Buscar por nome</h5><form name="formSearch" id="formSearch"><input class="instructor-input-search" type="text" placeholder="Busca por nome" ng-model="searchName"></form></div><hr><div><h5 class="menu-filter-sidebars--title">Formação</h5><ul class="menu-filter-sidebar-option-set"><li class="menu-filter-sidebar-item"><input id="Arquiteto" name="Arquiteto" type="checkbox" value="Arquiteto" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Arquiteto'"><label for="Arquiteto">Arquiteto</label></li><li class="menu-filter-sidebar-item"><input id="Agronomo" name="Agronomo" type="checkbox" value="Eng. Agronomo" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Agronomo'"><label for="Agronomo">Eng. Agrônomo</label></li><li class="menu-filter-sidebar-item"><input id="Civil" name="Civil" type="checkbox" value="Eng. Civil" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Civil'"><label for="Civil">Eng. Civil</label></li><li class="menu-filter-sidebar-item"><input id="Eletricista" name="Eletricista" type="checkbox" value="Eng. Eletricista" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Eletricista'"><label for="Eletricista">Eng. Eletricista</label></li><li class="menu-filter-sidebar-item"><input id="Sanitarista" name="Sanitarista" type="checkbox" value="Eng. Sanitarista" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Sanitarista'"><label for="Sanitarista">Eng. Sanitarista</label></li><li class="menu-filter-sidebar-item"><input id="Outros" name="Outros" type="checkbox" value="" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Outros'"><label for="Outros">Outros</label></li></ul></div><div><hr><h5 class="menu-filter-sidebars--title">Área de atuação</h5><ul class="menu-filter-sidebar-option-set"><li class="menu-filter-sidebar-item"><input name="estrutural" id="estrutural" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.estrutural" ng-true-value="1" ng-change="changeCheckbox()"><label for="estrutural">Estrutural</label></li><li class="menu-filter-sidebar-item"><input name="hidrossanitaria" id="hidrossanitaria" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.hidrossanitaria" ng-true-value="1" ng-change="changeCheckbox()"><label for="hidrossanitaria">Hidrossanitária</label></li><li class="menu-filter-sidebar-item"><input name="eletrica" id="eletrica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.eletrica" ng-true-value="1" ng-change="changeCheckbox()"><label for="eletrica">Elétrica</label></li><li class="menu-filter-sidebar-item"><input name="arquitetonica" id="arquitetonica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.arquitetonica" ng-true-value="1" ng-change="changeCheckbox()"><label for="arquitetonica">Arquitetônica</label></li><li class="menu-filter-sidebar-item"><input name="agronomia" id="agronomia" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.agronomia" ng-true-value="1" ng-change="changeCheckbox()"><label for="agronomia">Agronômica e Ambiental</label></li></ul></div><hr></div></form></div></div></div><div class="large-9 columns page-professores"><div class="cards"><div class="card" ng-repeat="instructor in instructors | filter:filterInstructor | filter:{nome:searchName} | orderBy:'nome':reverse as filtered track by instructor.id" ng-if="$index>=startPage&&$index<startPage+itemsPerPage"><a href="/institucional/instrutor/{{::instructor.id}}"><img back-img="{{::instructor.imagem}}" ng-src="{{::instructor.imagem}}"><div><strong>{{::instructor.nome}}</strong><p>{{::instructor.formacao}}</p></div></a></div></div><pagination boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-click="onSelectPage(currentPage)"></pagination></div></div></main>
+<main class="content-main">
+
+  <header class="hero-pages hero-pages__insitucional" ng-controller="institucionalController as vm">
+    <div class="row">
+      <div class="medium-8 columns">
+        <span class="hero-pages__label">Institucional</span>
+        <h1 class="hero-pages__title">Conheça o QiSat</h1>
+        <p class="hero-pages__tagline"> O maior portal de cursos para engenheiros e arquitetos</p>
+      </div> 
+      <div class="medium-4 columns">
+        <div class="hero-course__play-container">
+          <a class="hero-course__play" ng-click="modal.trailer('https://www.youtube.com/embed/9eet_OEY6PI?rel=0&arp;autoplay=1
+')" anchor-link analytics-event="Play" analytics-category="Videos Institucional">
+            <i class="fa fa-ic_play fa-10x" title="Assistir Vídeo" style="font-size:52px;"></i></a>
+        </div>
+        
+      </div> 
+    </div> 
+  </header>
+
+
+  <div class="row">
+    <div class="medium-12 columns">
+      <nav class="menu-horizontal">
+        <ul class="menu-horizontal__list" data-equalizer>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/sobre-a-empresa" analytics-on>Sobre a empresa</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/linha-do-tempo" analytics-on>Linha do tempo</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/convenios-e-parceiros" analytics-on>Convênios e
+              Parceiros</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5 menu-horizontal__item--current">
+            <a class="menu-horizontal__link" href="/institucional/instrutores-e-professores" analytics-on>Instrutores e
+              Professores</a>
+          </li>
+          <li data-equalizer-watch class="menu-horizontal__item menu-horizontal__item--5">
+            <a class="menu-horizontal__link" href="/institucional/contatos" analytics-on>Entre em Contato</a>
+          </li>
+        </ul>
+      </nav>
+    </div> 
+  </div> 
+
+  <div class="row">
+
+
+    <div class="large-3 columns grid-sidebar-left">
+      <div class="page_content">
+        <div class="show-for-small-down text-center show-filters">
+          <a href="#" style="display: block;"><i class="material-icons">filter_list</i> <span>Mostrar filtros</span></a>
+        </div>
+        <div class="menu-filter-sidebars" id="sidebar-styker" sticky>
+          <form name="formFilters" id="formFilters">
+
+            <div>
+
+              <div>
+                <h5 class="menu-filter-sidebars--title">Buscar por nome</h5>
+
+                <form name="formSearch" id="formSearch">
+                  <input class="instructor-input-search" type="text" placeholder="Busca por nome" ng-model="searchName">
+                </form>
+
+              </div>
+              <hr>
+              <div>
+                <h5 class="menu-filter-sidebars--title">Formação </h5>
+                <ul class="menu-filter-sidebar-option-set">
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Arquiteto" name="Arquiteto" type="checkbox" value="Arquiteto" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Arquiteto'">
+                    <label for="Arquiteto">Arquiteto</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Agronomo" name="Agronomo" type="checkbox" value="Eng. Agronomo" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Agronomo'">
+                    <label for="Agronomo">Eng. Agrônomo</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Civil" name="Civil" type="checkbox" value="Eng. Civil" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Civil'">
+                    <label for="Civil">Eng. Civil</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Eletricista" name="Eletricista" type="checkbox" value="Eng. Eletricista" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Eletricista'">
+                    <label for="Eletricista">Eng. Eletricista</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Sanitarista" name="Sanitarista" type="checkbox" value="Eng. Sanitarista" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Eng. Sanitarista'">
+                    <label for="Sanitarista">Eng. Sanitarista</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input id="Outros" name="Outros" type="checkbox" value="" class="with-font" ng-model="formacao" ng-change="changeFormacao()" ng-true-value="'Outros'">
+                    <label for="Outros">Outros</label>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <hr>
+                <h5 class="menu-filter-sidebars--title">Área de atuação </h5>
+                <ul class="menu-filter-sidebar-option-set">
+
+                  <li class="menu-filter-sidebar-item">
+                    <input name="estrutural" id="estrutural" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.estrutural" ng-true-value="1" ng-change="changeCheckbox()">
+                    <label for="estrutural">Estrutural</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input name="hidrossanitaria" id="hidrossanitaria" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.hidrossanitaria" ng-true-value="1" ng-change="changeCheckbox()">
+                    <label for="hidrossanitaria"> Hidrossanitária </label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input name="eletrica" id="eletrica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.eletrica" ng-true-value="1" ng-change="changeCheckbox()">
+                    <label for="eletrica">Elétrica</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input name="arquitetonica" id="arquitetonica" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.arquitetonica" ng-true-value="1" ng-change="changeCheckbox()">
+                    <label for="arquitetonica">Arquitetônica</label>
+                  </li>
+                  <li class="menu-filter-sidebar-item">
+                    <input name="agronomia" id="agronomia" type="checkbox" class="with-font filter-checkbox filter-types" ng-model="areas.agronomia" ng-true-value="1" ng-change="changeCheckbox()">
+                    <label for="agronomia"> Agronômica e Ambiental </label>
+                  </li>
+                </ul>
+              </div>
+              <hr>
+            </div>
+          </form>
+        </div> 
+      </div>
+    </div> 
+    <div class="large-9 columns page-professores">
+      
+      <div class="cards">
+        <ul class="small-block-grid-1 medium-block-grid-2">
+          <li class="card" ng-repeat="instructor in instructors | filter:filterInstructor | filter:{nome:searchName} | orderBy:'nome':reverse as filtered track by instructor.id" ng-if="$index>=startPage&&$index<startPage+itemsPerPage">
+
+            <a href="/institucional/instrutor/{{::instructor.id}}">
+              <span class="back-img-instructors" back-img-instructor="{{::instructor.imagem}}"> </span>
+              <div class="instructors__card-footer">
+                <strong class="name-text">{{::instructor.nome}}</strong>
+                <span>&nbsp{{::instructor.formacao}}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <pagination boundary-links="true" total-items="totalItems" page="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-click="onSelectPage(currentPage)"></pagination>
+      
+    </div> 
+  </div>
+</main>
