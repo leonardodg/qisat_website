@@ -2,7 +2,7 @@
   "name": "www.qisat.com.br",
   "version": "1.0.0",
   "description": "FontEnd Site QiSat - By Equipe Desenvolvimento QiSat",
-  "main": "cors.js",
+  "main": "src/js/index.js",
   "browser": {
     "modernizr": "./node_modules/npm-modernizr/modernizr.js",
     "jquery": "./node_modules/jquery/dist/jquery.js"
@@ -56,7 +56,7 @@
     ]
   },
   "scripts": {
-    "build": "gulp build"
+    "start": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -103,6 +103,7 @@
     "browserify-shim": "^3.8.14",
     "core-util-is": "^1.0.2",
     "cross-storage": "^1.0.0",
+    "del": "^4.1.1",
     "extenso": "^2.0.1",
     "fastclick": "1.0.6",
     "foundation-sites": "5.5.3",
@@ -116,6 +117,8 @@
     "gulp-image": "^5.1.0",
     "gulp-image-resize": "^0.13.0",
     "gulp-jshint": "^2.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^2.1.2",
     "gulp-watch": "^5.0.1",

@@ -13,7 +13,7 @@
 	<meta property="og:title" content="{{ngMeta.title}}" />
 	<meta property="og:url" content="{{ngMeta.url}}" />
 	<meta property="og:description" content="{{ngMeta.description}}" />
-	<meta property="og:image" content="/images/QiSat.jpg" />
+	<meta property="og:image" content="images/QiSat.jpg" />
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="QiSat" />
 	<meta name="twitter:card" content="1200" />
@@ -21,16 +21,16 @@
 	<meta name="twitter:title" content="{{ngMeta.title}}" />
 	<meta name="twitter:url" content="{{ngMeta.url}}" />
 	<meta name="twitter:image" content="QiSat" />
-	<meta name="twitter:image:src" content="/images/QiSat.jpg" />
+	<meta name="twitter:image:src" content="images/QiSat.jpg" />
 	<meta name="google-site-verification" content="" />
 	<meta name="msvalidate.01" content="" />
 	<meta name="twitter:description" content="{{ngMeta.description}}">
 	<meta property="fb:app_id" content="1781801858766348" />
 	<link rel="publisher" href="https://plus.google.com/115163677173885846613" />
 	<link rel="alternate" href="https://www.qisat.com.br/" hreflang="x-default" />
-	<link rel="shortcut icon" href="/images/favicon/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="/stylesheets/app.css?vs=v654321">
+	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="stylesheets/app.css?vs=v654321">
 
 </head>
 
@@ -42,45 +42,52 @@
 			<aside class="right-off-canvas-menu">
 				<ul class="off-canvas-list">
 					<li><label>Menu</label></li>
-					<li><a href="/" analytics-on analytics-event="Home" analytics-category="menu-topo-mobile">Home</a>
+					<li>
+						<a ng-href="/" analytics-on analytics-event="Home"
+							analytics-category="menu-topo-mobile">Home</a>
 					</li>
-					<li><a href="/cursos" analytics-on analytics-event="Cursos"
+					<li>
+						<a ng-href="/cursos" analytics-on analytics-event="Cursos"
 							analytics-category="menu-topo-mobile">Cursos</a>
 					</li>
-					<li><a href="/aluno" analytics-on analytics-event="Aluno" analytics-category="menu-topo-mobile">Área
-							do
-							Aluno</a></li>
-					<li><a href="/institucional" analytics-on analytics-event="Institucional"
-							analytics-category="menu-topo-mobile">Institucional</a></li>
+					<li>
+						<a ng-href="/aluno" analytics-on analytics-event="Aluno"
+							analytics-category="menu-topo-mobile">Área do Aluno</a>
+					</li>
+					<li>
+						<a ng-href="/institucional" analytics-on analytics-event="Institucional"
+							analytics-category="menu-topo-mobile">Institucional</a>
+					</li>
 				</ul>
 			</aside>
 			<!-- |||||||||||||||||||| END MENU LATERAL |||||||||||||||||||||||||||| -->
 
 			<!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 			<header class="header-main">
-				<div class="header-main__brand"> <a href="/" class="header-main__logo"> QiSat </a> </div>
+				<div class="header-main__brand"> <a ng-href="/" class="header-main__logo"> QiSat </a> </div>
 				<nav class="header-main__nav">
 					<ul class="header-main__ul" menu-active>
 						<li class="show-for-large-up header-main__list ">
-							<a class="header-main__item" href="/" analytics-on analytics-event="Home"
+							<a class="header-main__item" ng-href="/" analytics-on analytics-event="Home"
 								analytics-category="menu-topo">Home</a>
 						</li>
 						<li class="show-for-large-up header-main__list ">
-							<a class="header-main__item" href="/cursos" analytics-on analytics-event="Cursos"
+							<a class="header-main__item" ng-href="/cursos" analytics-on analytics-event="Cursos"
 								analytics-category="menu-topo">Cursos</a>
 						</li>
 						<li class="show-for-large-up header-main__list">
-							<a class="header-main__item" href="/aluno" analytics-on analytics-event="Aluno"
+							<a class="header-main__item" ng-href="/aluno" analytics-on analytics-event="Aluno"
 								analytics-category="menu-topo">Área do Aluno</a>
 						</li>
 						<li class="show-for-large-up header-main__list">
-							<a class="header-main__item" href="/institucional" analytics-on
+							<a class="header-main__item" ng-href="/institucional" analytics-on
 								analytics-event="Institucional" analytics-category="menu-topo">Institucional</a>
 						</li>
 						<li class="hide-for-large-up header-main__list">
 							<a class="right-off-canvas-toggle menu-icon header-main__item" analytics-on
 								analytics-event="Menu-Mobile" analytics-category="menu-topo-mobile">
-								<span><i class="material-icons">menu</i> Menu </span> </a>
+								<span><i class="material-icons">menu</i> Menu </span>
+							</a>
 						</li>
 						<li class="header-main__list header-main__list-cart">
 							<a class="header-main__item header-main__item-cart" ng-click="buy.activeBuy()" analytics-on
@@ -121,7 +128,7 @@
 					<p><strong>Total <span>{{buy.totalCarrinho}} </span> </strong></p>
 				</div> <!-- cd-cart-total -->
 
-				<a href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()"
+				<a ng-href="/carrinho" class="checkout-btn" ng-show="buy.valorTotal" ng-click="buy.activeBuy()"
 					analytics-on analytics-event="finalizar" analytics-category="bloco-carrinho">Finalizar compra</a>
 				<p class="cd-go-to-cart" ng-click="buy.activeBuy()" analytics-on analytics-event="continuar"
 					analytics-category="bloco-carrinho"><a>Continuar comprando</a></p>
@@ -141,50 +148,66 @@
 							<li class="footer-primary__columns--item">
 								<ul class="footer-primary__list">
 									<li class="footer-primary__title">Sobre o QiSat</li>
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/institucional/sobre-a-empresa" title="Institucional" analytics-on
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link"
+											ng-href="/institucional/sobre-a-empresa" title="Institucional" analytics-on
 											analytics-event="sobreqisat" analytics-category="rodape"
 											analytics-label="institucional">
-											Institucional </a></li>
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/institucional/linha-do-tempo" title="Linha do Tempo" analytics-on
+											Institucional </a>
+									</li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link"
+											ng-href="/institucional/linha-do-tempo" title="Linha do Tempo" analytics-on
 											analytics-event="sobreqisat" analytics-category="rodape"
 											analytics-label="linhadotempo"> Linha do
-											Tempo </a></li>
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"
+											Tempo </a>
+									</li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link"
+											ng-href="/institucional/convenios-e-parceiros" title="Convênios e Parceiros"
 											analytics-on analytics-event="sobreqisat" analytics-category="rodape"
 											analytics-label="convenios">Convênios e
-											Parceiros</a></li>
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/institucional/instrutores-e-professores"
+											Parceiros</a>
+									</li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link"
+											ng-href="/institucional/instrutores-e-professores"
 											title="Instrutores e Professores" analytics-on analytics-event="sobreqisat"
 											analytics-category="rodape" analytics-label="instrutores">Instrutores
-											e Professores</a></li>
+											e Professores</a>
+									</li>
 								</ul>
 							</li>
 
 							<li class="footer-primary__columns--item">
 								<ul class="footer-primary__list">
 									<li class="footer-primary__title"> Páginas </li>
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/cursos/online" title="Cursos Online" analytics-on
-											analytics-event="paginas" analytics-category="rodape"
-											analytics-label="Cursos Online">Cursos Online</a></li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" ng-href="/cursos/online"
+											title="Cursos Online" analytics-on analytics-event="paginas"
+											analytics-category="rodape" analytics-label="Cursos Online">Cursos
+											Online</a>
+									</li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/cursos/presenciais" title="Cursos Presenciais" analytics-on
-											analytics-event="paginas" analytics-category="rodape"
-											analytics-label="Cursos Presenciais">Cursos Presenciais</a></li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" ng-href="/cursos/presenciais"
+											title="Cursos Presenciais" analytics-on analytics-event="paginas"
+											analytics-category="rodape" analytics-label="Cursos Presenciais">Cursos
+											Presenciais</a>
+									</li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/aluno" title="Área do Aluno" analytics-on analytics-event="paginas"
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" ng-href="/aluno"
+											title="Área do Aluno" analytics-on analytics-event="paginas"
 											analytics-category="rodape" analytics-label="aluno" href-portal>Área do
-											Aluno</a></li>
+											Aluno</a>
+									</li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/cadastro" title="Cadastro" analytics-on analytics-event="paginas"
-											analytics-category="rodape" analytics-label="Cadastro">Cadastro</a></li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" ng-href="/cadastro" title="Cadastro"
+											analytics-on analytics-event="paginas" analytics-category="rodape"
+											analytics-label="Cadastro">Cadastro</a>
+									</li>
 								</ul>
 							</li>
 
@@ -192,24 +215,27 @@
 								<ul class="footer-primary__list">
 									<li class="footer-primary__title"> Blogs </li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link"
 											href="http://maisengenharia.altoqi.com.br/" title="Blog Mais Engenharia"
 											target="_blank" analytics-on analytics-event="blogs"
 											analytics-category="rodape" analytics-label="+ Engenharia">Blog Mais
-											Engenharia </a></li>
+											Engenharia </a>
+									</li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="http://eberick.com.br/" title="Blog Eberick" target="_blank"
-											analytics-on analytics-event="blogs" analytics-category="rodape"
-											analytics-label="Blog Eberick"> Blog Eberick
-										</a></li>
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" href="http://eberick.com.br/"
+											title="Blog Eberick" target="_blank" analytics-on analytics-event="blogs"
+											analytics-category="rodape" analytics-label="Blog Eberick"> Blog Eberick
+										</a>
+									</li>
 
-									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="http://www.qibuilder.com.br/" title="Blog QiBuilder" target="_blank"
-											analytics-on analytics-event="blogs" analytics-category="rodape"
-											analytics-label="Blog QiBuilder"> Blog
-											QiBuilder </a></li>
-
+									<li class="footer-primary__list__item">
+										<a class="footer-primary__list__item--link" href="http://www.qibuilder.com.br/"
+											title="Blog QiBuilder" target="_blank" analytics-on analytics-event="blogs"
+											analytics-category="rodape" analytics-label="Blog QiBuilder"> Blog
+											QiBuilder </a>
+									</li>
 								</ul>
 							</li>
 
@@ -252,7 +278,7 @@
 											analytics-event="Contatos" analytics-category="rodape"
 											analytics-label="callme">Ligamos para você</a></li>
 									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
-											href="/institucional/contatos" title="Mensagem" analytics-on
+											ng-href="/institucional/contatos" title="Mensagem" analytics-on
 											analytics-event="Contatos" analytics-category="rodape"
 											analytics-label="Mensagem">Mensagem</a></li>
 									<li class="footer-primary__list__item"><a class="footer-primary__list__item--link"
@@ -325,14 +351,11 @@
 									<li class="footer-secondary__list__item">
 										<span class="footer-secondary__list__item--brand-text">Uma empresa
 
-
 											<a href="https://www.altoqi.com.br"
 												class="footer-secondary__list__item--brand" target="_blank" alt="AltoQi"
 												title="AltoQi" analytics-on analytics-event="logo-altoqi"
 												analytics-category="rodape-secondary">
-
 												<i class="fa fa-band_altoqi"></i>
-
 											</a>
 										</span>
 
@@ -350,7 +373,10 @@
 		</div> <!-- //inner-wrap -->
 	</div><!-- //off-canvas-wrap -->
 
-	<script src="/js/build.js?vs=v123456"></script>
+	<!--BEGIN:SCRPIT-->
+	<!--END:SCRPIT:-->
+
+	<script defer async src="js/build.js?version=2019-07-01T18:29:21.103Z"></script>
 
 </body>
 

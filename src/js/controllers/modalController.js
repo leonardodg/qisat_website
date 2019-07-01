@@ -2,8 +2,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('modalController', ['$modal', '$q', '$controller', 'authService',
-			function ($modal, $q, $controller, authService) {
+		.controller('modalController', ['$modal', '$q', '$controller', '$document', 'authService',
+			function ($modal, $q, $controller, $document, authService) {
 				var vm = this;
 
 				vm.termo = function () {
@@ -185,7 +185,8 @@
 					function load() {
 						var deferred = $q.defer();
 
-						window.$zopim || (function (d, s) {
+						window.$zopim || (function (d, s, undefined) {
+
 							var z = window.$zopim = function (c) { z._.push(c) }, $ = z.s =
 								d.createElement(s), e = d.getElementsByTagName(s)[0];
 							z.set = function (o) {
@@ -200,7 +201,7 @@
 							z.t = (function () { return Number(new Date); }).call();
 							$.type = "text/javascript";
 							e.parentNode.insertBefore($, e);
-						}).call(document, "script");
+						}).call(window, typeof window !== "undefined" ? window.document : $document, "script");
 
 						window.$zopim(function () {
 							if (typeof (window.$zopim.livechat) == 'object') {

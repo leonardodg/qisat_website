@@ -3,4 +3,6 @@
 .vscode
 /node_modules
 public/.htaccess
+config.json
+config.rb
 package-lock.json

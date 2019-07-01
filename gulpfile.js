@@ -17,6 +17,9 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var image = require('gulp-image');
 var imageResize = require('gulp-image-resize');
+var del = require('del');
+var replace = require('gulp-replace');
+var rename = require("gulp-rename");
 
 var config = require('./config.json');
 var gulpif = require('gulp-if');
@@ -88,7 +91,7 @@ gulp.task('htmlmin', function () {
 });
 
 gulp.task('htmlhint', function () {
-	return gulp.src("views/*.html")
+	return gulp.src("src/views/*.html")
 		.pipe(htmlhint({ "doctype-first": false }))
 		.pipe(htmlhint.reporter());
 });
@@ -126,6 +129,10 @@ gulp.task('watch-html', function () {
 	return watch(['src/views/**/*.html'], gulp.parallel('htmlhint', 'htmlmin'));
 });
 
+gulp.task('watch-files', function () {
+	return watch(['src/files/**/*', 'src/fonts/**/*', 'src/favicon/**/*'], gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon'));
+});
+
 gulp.task('watch-sass', function () {
 	return watch(['src/scss/**/*.scss',
 		'src/images/**/*',
@@ -139,31 +146,75 @@ gulp.task('watch-sass', function () {
 		'!src/images/qi-sprite/**/*'], gulp.parallel('build-sass'));
 });
 
+gulp.task('build-index', function (call) {
+	var data = new Date();
+
+	if (is_production() == true) {
+		return gulp.src('src/index.html')
+			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT:-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
+			.pipe(replace(/version=(.+)">/gi, 'version=' + data.toISOString() + '">'))
+			.pipe(htmlmin({ collapseWhitespace: true }))
+			.pipe(gulp.dest('assets/'));
+	} else {
+		return gulp.src('src/index.html')
+			.pipe(htmlhint({ "doctype-first": false }))
+			.pipe(htmlhint.reporter())
+			.pipe(replace(/version=(.+)">/gi, 'version=' + data.toISOString() + '">'))
+			.pipe(gulp.dest('assets/'));
+	}
+});
+
+gulp.task('build-htaccess', function () {
+	var file = (is_production() == true) ? 'src/prod.htaccess' : 'src/dev.htaccess';
+
+	return gulp.src(file)
+		.pipe(rename('.htaccess'))
+		.pipe(gulp.dest('assets/'));
+});
+
+gulp.task('build-del', function (call) {
+	del.sync(['assets/files/**', 'assets/fonts/**', 'assets/images/**', 'assets/js/**', 'assets/stylesheets/**', 'assets/views/**']);
+	return call();
+});
+
+gulp.task('copy-files', function () {
+	return gulp.src(['src/files/**/*'])
+		.pipe(gulp.dest('assets/files/'));
+});
+
+gulp.task('copy-fonts', function () {
+	return gulp.src(['src/fonts/**/*'])
+		.pipe(gulp.dest('assets/fonts/'));
+});
+
+gulp.task('copy-favicon', function () {
+	return gulp.src(['src/images/favicon/**/*'])
+		.pipe(gulp.dest('assets/images/favicon/'));
+});
+
+gulp.task('copy-script-inject', function () {
+	return gulp.src(['src/js/injectScripts.js'])
+		.pipe(gulp.dest('assets/js/'));
+});
+
+gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject'));
 gulp.task('build-js', gulp.parallel('jshint', 'bundle-js'));
 gulp.task('build-html', gulp.parallel('htmlhint', 'htmlmin'));
-gulp.task('build', gulp.parallel('build-js', 'build-sass', 'build-img', 'build-html'));
-gulp.task('default', gulp.parallel('build', 'watch-js', 'watch-html', 'watch-sass', 'watch-img'));
-
+gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-html'));
+gulp.task('default', gulp.parallel('build', 'watch-js', 'watch-files', 'watch-html', 'watch-sass', 'watch-img'));
 
 /*
-
 #### EXTRA ####
-
-// limpa pasta - deleta arquivos
-gulp.task('clean-css', function () {
-	return gulp.src(['assets/stylesheets/*', 'assets/views/*', 'assets/images/**\/*'])
-		.pipe(clean());
-});
-
-gulp.task('image-resize', function () {
-	return gulp.src('src/images/instrutors/**\/*')
-	.pipe(imageResize({
-		width: 174,
-		height: 174,
-		crop: true,
-		upscale: true
-	}))
-	.pipe(image())
-	.pipe(gulp.dest('assets/images/'));
-});
+	gulp.task('image-resize', function () {
+		return gulp.src('src/images/instrutors/**\/*')
+		.pipe(imageResize({
+			width: 174,
+			height: 174,
+			crop: true,
+			upscale: true
+		}))
+		.pipe(image())
+		.pipe(gulp.dest('assets/images/'));
+	});
+#### EXTRA ####
 */

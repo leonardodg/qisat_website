@@ -36,15 +36,15 @@
             "altoqilab": "https://altoqilab.qisat.com.br"
         },
         "tokens": {
-            "rdstation": "",
-            "moodleQuestion": "",
-            "moodleRespond": ""
+            "rdstation": "f0710cc7a0645abc09e85a7d53c04668",
+            "moodleQuestion": "00169ecf8579a9a8a60cf156eed9a1eb",
+            "moodleRespond": "6582a1fc26785d709337735df4298af5"
         },
         "google": {
             "ga": [
-                ""
+                "UA-98371985-2"
             ],
-            "recaptcha_v2": ""
+            "recaptcha_v2": "6Ld8bgcUAAAAAFeHx_7T3Vb_cBZTGDH_CZ_T_uhA"
         },
         "metatag": {
             "title": "QiSat | Cursos aplicados à engenharia e arquitetura",
