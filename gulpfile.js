@@ -85,7 +85,7 @@ gulp.task('jshint', function () {
 gulp.task('htmlmin', function () {
 	return gulp.src(['src/views/*.html', 'src/views/map.xml'])
 		// .pipe(gulpif(is_production == false, gulp.series('htmlhint')))
-		// .pipe(removeEmptyLines({ removeSpaces: true }))
+		.pipe(removeEmptyLines({ removeSpaces: true }))
 		.pipe(htmlmin({ removeComments: true, collapseInlineTagWhitespace: true }))
 		.pipe(gulp.dest('assets/views'));
 });
@@ -149,9 +149,12 @@ gulp.task('watch-sass', function () {
 gulp.task('build-index', function (call) {
 	var data = new Date();
 
-	if (is_production() == true) {
+	var script = '<!--[if IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script><![endif]--><script defer src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script><script defer src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script><script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/94236ac1-9fff-43fd-a2f0-329a83ce47a7-loader.js"></script>';
+
+	if (is_production() == false) {
 		return gulp.src('src/index.html')
-			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT:-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
+			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-->)/gi, '$1\n\t ' + script + ' \n\t$5'))
+			.pipe(replace(/(<!--BEGIN:SCRPIT-INJECT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-INJECT-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
 			.pipe(replace(/version=(.+)">/gi, 'version=' + data.toISOString() + '">'))
 			.pipe(htmlmin({ collapseWhitespace: true }))
 			.pipe(gulp.dest('assets/'));
