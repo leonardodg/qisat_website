@@ -15,8 +15,10 @@ var source = require("vinyl-source-stream");
 var buffer = require("vinyl-buffer");
 var sourcemaps = require('gulp-sourcemaps');
 
-var image = require('gulp-image');
-var imageResize = require('gulp-image-resize');
+// gulp-image - corrigir problema npm install gulp-image para windows
+// var image = require('gulp-image');
+// var imageResize = require('gulp-image-resize');
+
 var del = require('del');
 var replace = require('gulp-replace');
 var rename = require("gulp-rename");
@@ -37,7 +39,7 @@ gulp.task('bundle-js', function () {
 		extensions: ['.js', '.jsx'],
 		entries: 'src/js/index.js',
 		insertGlobals: true,
-		debug: (is_production === false),
+		debug: (is_production() == false),
 		souremapComment: true,
 		standalone: 'interact',
 		transform: [['babelify', {}]]
@@ -51,7 +53,7 @@ gulp.task('bundle-js', function () {
 		.on("error", function (err) { console.log("Error : " + err.message); })
 		.pipe(source('build.js'))
 		.pipe(buffer())
-		.pipe(gulpif(is_production, uglify()))
+		.pipe(gulpif(is_production(), uglify()))
 		.pipe(sourcemaps.init({ loadMaps: true }))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('assets/js'));
@@ -69,7 +71,7 @@ gulp.task('build-img', function () {
 		'!src/images/svg/*',
 		'!src/images/qi-sprite/**/*'
 	])
-		.pipe(gulpif(is_production, image()))
+		// .pipe(gulpif(is_production(), image()))
 		.pipe(gulp.dest('assets/images/'));
 });
 
@@ -84,8 +86,8 @@ gulp.task('jshint', function () {
 // html
 gulp.task('htmlmin', function () {
 	return gulp.src(['src/views/*.html', 'src/views/map.xml'])
-		// .pipe(gulpif(is_production == false, gulp.series('htmlhint')))
-		.pipe(removeEmptyLines({ removeSpaces: true }))
+		// .pipe(gulpif(is_production()), gulp.series('htmlhint')))
+		// .pipe(removeEmptyLines({ removeSpaces: true }))
 		.pipe(htmlmin({ removeComments: true, collapseInlineTagWhitespace: true }))
 		.pipe(gulp.dest('assets/views'));
 });
@@ -151,7 +153,7 @@ gulp.task('build-index', function (call) {
 
 	var script = '<!--[if IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script><![endif]--><script defer src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script><script defer src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script><script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/94236ac1-9fff-43fd-a2f0-329a83ce47a7-loader.js"></script>';
 
-	if (is_production() == false) {
+	if (is_production()) {
 		return gulp.src('src/index.html')
 			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-->)/gi, '$1\n\t ' + script + ' \n\t$5'))
 			.pipe(replace(/(<!--BEGIN:SCRPIT-INJECT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-INJECT-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
@@ -168,7 +170,7 @@ gulp.task('build-index', function (call) {
 });
 
 gulp.task('build-htaccess', function () {
-	var file = (is_production() == true) ? 'src/prod.htaccess' : 'src/dev.htaccess';
+	var file = (is_production()) ? 'src/prod.htaccess' : 'src/dev.htaccess';
 
 	return gulp.src(file)
 		.pipe(rename('.htaccess'))
@@ -206,18 +208,28 @@ gulp.task('build-html', gulp.parallel('htmlhint', 'htmlmin'));
 gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-html'));
 gulp.task('default', gulp.parallel('build', 'watch-js', 'watch-files', 'watch-html', 'watch-sass', 'watch-img'));
 
+
 /*
 #### EXTRA ####
-	gulp.task('image-resize', function () {
-		return gulp.src('src/images/instrutors/**\/*')
-		.pipe(imageResize({
-			width: 174,
-			height: 174,
-			crop: true,
-			upscale: true
-		}))
-		.pipe(image())
-		.pipe(gulp.dest('assets/images/'));
-	});
+
+gulp.task('prod-img', function () {
+	return gulp.src('src/images/upload/**//*')
+.pipe(image())
+.pipe(gulp.dest('assets/images/upload/'));
+});
+
+gulp.task('instrutors-resize', function () {
+return gulp.src('assets/images/upload/instrutor/**//*')
+	.pipe(imageResize({
+		width: 174,
+		height: 174,
+		crop: true,
+		upscale: true
+	}))
+	.pipe(gulp.dest('assets/images/upload/instrutors/'));
+});
+
+gulp.task('build-img-prod', gulp.series('prod-img', 'instrutors-resize'));
+
 #### EXTRA ####
 */
