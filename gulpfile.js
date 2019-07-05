@@ -17,6 +17,7 @@ var sourcemaps = require('gulp-sourcemaps');
 
 // gulp-image - corrigir problema npm install gulp-image para windows
 // var image = require('gulp-image');
+var imagemin = require('gulp-imagemin');
 // var imageResize = require('gulp-image-resize');
 
 var del = require('del');
@@ -33,8 +34,54 @@ var is_production = function () {
 // environment variables
 process.env.NODE_ENV = config.environment;
 
+/**
+ * CLEAR FILES PUBLIC
+ * Limpar arquivos gerados pela tarefas buiding do gulp
+ */
+gulp.task('build-del', function (call) {
+	del.sync(['assets/index.html', 'assets/.htaccess', 'assets/files/**', 'assets/fonts/**', 'assets/images/**', 'assets/js/**', 'assets/stylesheets/**', 'assets/views/**']);
+	return call();
+});
+
+/**
+ * Gerar arquivos INDEX Principal 
+ * 	- Em ambiente development verifica e compia arquivo
+ * 	- Em ambiente production replace e minifica arquivos
+ * 
+ * 	Origem ./src/index.html
+ *  destino ./assets/index.html
+ */
+gulp.task('build-index', function () {
+	var data = new Date();
+	var script = '<!--[if IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script><![endif]--><script defer src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script><script defer src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script><script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/94236ac1-9fff-43fd-a2f0-329a83ce47a7-loader.js"></script>';
+
+	if (is_production()) {
+		return gulp.src('src/index.html')
+			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-->)/gi, '$1\n\t ' + script + ' \n\t$5'))
+			.pipe(replace(/(<!--BEGIN:SCRPIT-INJECT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-INJECT-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
+			.pipe(replace(/version-qi-build=(.+)">/gi, 'version-qi-build=' + data.toISOString() + '">'))
+			.pipe(htmlmin({ collapseWhitespace: true }))
+			.pipe(gulp.dest('assets/'));
+	} else {
+		return gulp.src('src/index.html')
+			.pipe(htmlhint({ "doctype-first": false }))
+			.pipe(htmlhint.reporter())
+			.pipe(replace(/version-qi-build=(.+)">/gi, 'version-qi-build=' + data.toISOString() + '">'))
+			.pipe(gulp.dest('assets/'));
+	}
+});
+
+/**
+ * Compilar arquivos JS
+ * 	- Em ambiente development compila e copia arquivos
+ * 	- Em ambiente production compila, copia e minifica arquivos
+ * 
+ * 	Origem ./src/js/index.js
+ *  destino ./assets/js/build.js
+ */
 gulp.task('bundle-js', function () {
-	console.log('build js');
+	var presets = (is_production()) ? ['@babel/preset-env'] : ['env'];
+
 	return browserify({
 		extensions: ['.js', '.jsx'],
 		entries: 'src/js/index.js',
@@ -46,7 +93,7 @@ gulp.task('bundle-js', function () {
 
 	})
 		.transform(babelify.configure({
-			presets: ['env'],
+			presets: presets,
 			ignore: [/(bower_components)|(node_modules)/]
 		}))
 		.bundle()
@@ -59,6 +106,14 @@ gulp.task('bundle-js', function () {
 		.pipe(gulp.dest('assets/js'));
 });
 
+/**
+ * Copiar arquivos IMAGENS
+ * 	- Em ambiente development copia arquivos
+ * 	- Em ambiente production compila, reduz os arquivos
+ * 
+ * 	Origem ./src/images
+ *  destino ./assets/images
+ */
 gulp.task('build-img', function () {
 	return gulp.src([
 		'src/images/**/*',
@@ -71,48 +126,67 @@ gulp.task('build-img', function () {
 		'!src/images/svg/*',
 		'!src/images/qi-sprite/**/*'
 	])
-		// .pipe(gulpif(is_production(), image()))
+		.pipe(gulpif(is_production(), imagemin({ verbose: true })))
 		.pipe(gulp.dest('assets/images/'));
 });
 
-// teste de código com o jshint
-gulp.task('jshint', function () {
-	// obs.: return para assíncrona
-	return gulp.src(['src/js/**/*', '!src/js/libs', '!src/js/libs/*', '!src/js/libs/**/*', '!src/js/injectScripts.js'])
-		.pipe(jshint({ esversion: 6, "asi": true }))
-		.pipe(jshint.reporter('default', { verbose: true }));
+/**
+ * Função para otimizar imagem gerada pelo compass - qi-sprite
+ * 
+ * 	Origem .assets/images/qi-sprite*.png
+ *  Destino ./assets/images
+ */
+gulp.task('build-sprite', function () {
+	return gulp.src('assets/images/qi-sprite*.png')
+		.pipe(gulpif(is_production(), imagemin({ verbose: true })))
+		.pipe(gulp.dest('assets/images/'));
 });
 
-// html
-gulp.task('htmlmin', function () {
-	return gulp.src(['src/views/*.html', 'src/views/map.xml'])
-		// .pipe(gulpif(is_production()), gulp.series('htmlhint')))
-		// .pipe(removeEmptyLines({ removeSpaces: true }))
-		.pipe(htmlmin({ removeComments: true, collapseInlineTagWhitespace: true }))
-		.pipe(gulp.dest('assets/views'));
-});
-
-gulp.task('htmlhint', function () {
-	return gulp.src("src/views/*.html")
-		.pipe(htmlhint({ "doctype-first": false }))
-		.pipe(htmlhint.reporter());
-});
-
+/**
+ * Compilar arquivo Estilo
+ * 	- Em ambiente development compila e debuga arquivos
+ * 	- Em ambiente production compila e minifica os arquivos
+ * 
+ * 	Origem ./src/scss
+ *  destino ./assets/stylesheets
+ */
 gulp.task('build-sass', function () {
 	return gulp.src(['src/scss/**/*.scss'])
 		.pipe(compass({
 			config_file: 'config.rb',
 			css: 'assets/stylesheets',
 			sass: 'src/scss',
-			debug: true
+			debug: (is_production() == false)
 		}))
 		.pipe(gulp.dest('assets/stylesheets'));
 });
 
-gulp.task('watch-js', function () {
-	return watch(['src/js/**/*'], gulp.parallel('jshint', 'bundle-js'));
+/**
+ * Copiar arquivo config .htaccess do apache
+ * 	- Em ambiente development copia arquivo src/dev.htaccess e renomeia
+ * 	- Em ambiente production copia arquivo src/prod.htaccess e renomeia
+ * 
+ * 	Origem ./src/dev.htaccess or src/prod.htaccess
+ *  Destino ./assets/.htaccess
+ */
+gulp.task('build-htaccess', function () {
+	var file = (is_production()) ? 'src/prod.htaccess' : 'src/dev.htaccess';
+
+	return gulp.src(file)
+		.pipe(rename('.htaccess'))
+		.pipe(gulp.dest('assets/'));
 });
 
+/**
+ * Observar pasta dos arquivos Javascript
+ */
+gulp.task('watch-js', function () {
+	return watch(['src/js/**/*'], gulp.parallel('jshint', 'bundle-js', 'build-index'));
+});
+
+/**
+ * Observar pasta dos arquivos Imagens
+ */
 gulp.task('watch-img', function () {
 	return watch([
 		'src/images/**/*',
@@ -124,17 +198,40 @@ gulp.task('watch-img', function () {
 		'!src/images/favicon/*',
 		'!src/images/svg/*',
 		'!src/images/qi-sprite/**/*'
-	], gulp.parallel('build-img', 'build-sass'));
+	], gulp.parallel('build-img', 'build-sass', 'build-sprite', 'build-index'));
 });
 
+/**
+ * Observar pasta dos arquivos HTML
+ */
 gulp.task('watch-html', function () {
-	return watch(['src/views/**/*.html'], gulp.parallel('htmlhint', 'htmlmin'));
+	return watch(['src/views/**/*.html'], gulp.series('build-html'));
 });
 
+/**
+ * Observar pasta dos arquivos para downloads do site
+ */
 gulp.task('watch-files', function () {
-	return watch(['src/files/**/*', 'src/fonts/**/*', 'src/favicon/**/*'], gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon'));
+	return watch(['src/files/**/*'], gulp.series('copy-files'));
 });
 
+/**
+ * Observar pasta dos arquivos Favicon
+ */
+gulp.task('watch-favicon', function () {
+	return watch(['src/images/favicon/**/*'], gulp.series('copy-favicon'));
+});
+
+/**
+ * Observar pasta dos arquivos Fonts
+ */
+gulp.task('watch-fonts', function () {
+	return watch(['src/fonts/**/*'], gulp.series('copy-fonts'));
+});
+
+/**
+ * Observar pasta dos arquivos de Estilos
+ */
 gulp.task('watch-sass', function () {
 	return watch(['src/scss/**/*.scss',
 		'src/images/**/*',
@@ -145,69 +242,126 @@ gulp.task('watch-sass', function () {
 		'!src/images/edited/*',
 		'!src/images/favicon/*',
 		'!src/images/svg/*',
-		'!src/images/qi-sprite/**/*'], gulp.parallel('build-sass'));
+		'!src/images/qi-sprite/**/*'], gulp.parallel('build-sass', 'build-sprite', 'build-index'));
 });
 
-gulp.task('build-index', function (call) {
-	var data = new Date();
-
-	var script = '<!--[if IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script><![endif]--><script defer src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script><script defer src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script><script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/94236ac1-9fff-43fd-a2f0-329a83ce47a7-loader.js"></script>';
-
-	if (is_production()) {
-		return gulp.src('src/index.html')
-			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-->)/gi, '$1\n\t ' + script + ' \n\t$5'))
-			.pipe(replace(/(<!--BEGIN:SCRPIT-INJECT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-INJECT-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
-			.pipe(replace(/version=(.+)">/gi, 'version=' + data.toISOString() + '">'))
-			.pipe(htmlmin({ collapseWhitespace: true }))
-			.pipe(gulp.dest('assets/'));
-	} else {
-		return gulp.src('src/index.html')
-			.pipe(htmlhint({ "doctype-first": false }))
-			.pipe(htmlhint.reporter())
-			.pipe(replace(/version=(.+)">/gi, 'version=' + data.toISOString() + '">'))
-			.pipe(gulp.dest('assets/'));
-	}
-});
-
-gulp.task('build-htaccess', function () {
-	var file = (is_production()) ? 'src/prod.htaccess' : 'src/dev.htaccess';
-
-	return gulp.src(file)
-		.pipe(rename('.htaccess'))
-		.pipe(gulp.dest('assets/'));
-});
-
-gulp.task('build-del', function (call) {
-	del.sync(['assets/files/**', 'assets/fonts/**', 'assets/images/**', 'assets/js/**', 'assets/stylesheets/**', 'assets/views/**']);
-	return call();
-});
-
+/**
+ * Função para copiar arquivos 
+ *  
+ * 	Origem ./src/files
+ *  Destino ./assets/files
+ */
 gulp.task('copy-files', function () {
 	return gulp.src(['src/files/**/*'])
 		.pipe(gulp.dest('assets/files/'));
 });
 
+/**
+ * Função para copiar Fontes 
+ *  
+ * 	Origem ./src/fonts
+ *  Destino ./assets/fonts
+ */
 gulp.task('copy-fonts', function () {
 	return gulp.src(['src/fonts/**/*'])
 		.pipe(gulp.dest('assets/fonts/'));
 });
 
+/**
+ * Função para copiar favicon 
+ *  
+ * 	Origem ./src/images/favicon
+ *  Destino ./assets/images/favicon
+ */
 gulp.task('copy-favicon', function () {
 	return gulp.src(['src/images/favicon/**/*'])
 		.pipe(gulp.dest('assets/images/favicon/'));
 });
 
+/**
+ * Função para copiar Javascript - Script será injectado no asses/index.html de production
+ *  
+ * 	Origem ./src/js
+ *  Destino ./assets/js
+ */
 gulp.task('copy-script-inject', function () {
 	return gulp.src(['src/js/injectScripts.js'])
 		.pipe(gulp.dest('assets/js/'));
 });
 
-gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject'));
-gulp.task('build-js', gulp.parallel('jshint', 'bundle-js'));
-gulp.task('build-html', gulp.parallel('htmlhint', 'htmlmin'));
-gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-html'));
-gulp.task('default', gulp.parallel('build', 'watch-js', 'watch-files', 'watch-html', 'watch-sass', 'watch-img'));
+/**
+ * Função para validar arquivos Javascript
+ */
+gulp.task('jshint', function () {
+	return gulp.src(['src/js/**/*', '!src/js/libs', '!src/js/libs/*', '!src/js/libs/**/*', '!src/js/injectScripts.js'])
+		.pipe(jshint({ esversion: 6, "asi": true }))
+		.pipe(jshint.reporter('default', { verbose: true }));
+});
 
+/**
+ * Função para minificar arquivos HTML
+ * 
+ * 	Origem ./src/views
+ *  Destino ./assets/views
+ */
+gulp.task('htmlmin', function () {
+	return gulp.src(['src/views/*.html', 'src/views/map.xml'])
+		.pipe(htmlmin({ removeComments: true, collapseInlineTagWhitespace: true }))
+		.pipe(gulp.dest('assets/views/'));
+});
+
+/**
+ * Função para validar arquivos HTML
+ * 
+ * 	Origem ./src/views
+ *  Destino ./assets/views
+ */
+gulp.task('htmlhint', function () {
+	return gulp.src('src/views/*.html', 'src/views/map.xml')
+		.pipe(htmlhint({ "doctype-first": false }))
+		.pipe(htmlhint.reporter())
+		.pipe(gulp.dest('assets/views/'));
+});
+
+/**
+ * Gerar arquivos HTML 
+ * 	- Em ambiente development verificar arquivos
+ * 	- Em ambiente production minifica arquivos
+ * 
+ * 	Origem ./src/views
+ *  destino ./assets/views
+ */
+function buildHtml() {
+	if (is_production()) {
+		return gulp.series('htmlmin');
+	} else {
+		return gulp.series('htmlhint');
+	}
+}
+
+/**
+ * Gerar arquivos Javascript 
+ * 	- Em ambiente development verifica e compila arquivos
+ * 	- Em ambiente production compila e minifica arquivos
+ * 
+ * 	Origem ./src/js
+ *  destino ./assets/js
+ */
+
+function buildJS() {
+	if (is_production()) {
+		return gulp.series(['bundle-js']);
+	} else {
+		return gulp.parallel(['jshint', 'bundle-js']);
+	}
+}
+
+gulp.task('build-js', buildJS());
+gulp.task('build-html', buildHtml());
+gulp.task('watch-files-all', gulp.parallel('watch-files', 'watch-fonts', 'watch-favicon'));
+gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject', 'build-htaccess'));
+gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-sprite', 'build-html', 'build-index'));
+gulp.task('default', gulp.parallel('build', 'watch-files-all', 'watch-js', 'watch-html', 'watch-sass', 'watch-img'));
 
 /*
 #### EXTRA ####

@@ -2,7 +2,23 @@
     "use strict";
 
     angular
-        .module('QiSatApp')
+        .module('QiSatApp').directive('typeaheadMatch', ['$http', '$templateCache', '$compile', '$parse', function ($http, $templateCache, $compile, $parse) {
+            return {
+                restrict: 'EA',
+                scope: {
+                    index: '=',
+                    match: '=',
+                    query: '='
+                },
+                qisat: true,
+                link: function (scope, element, attrs) {
+                    var tplUrl = $parse(attrs.templateUrl)(scope.$parent) || 'template/typeahead/typeahead-match.html';
+                    $http.get(tplUrl, { cache: $templateCache }).then(function (tplContent) {
+                        element.replaceWith($compile(tplContent.data.trim())(scope));
+                    });
+                }
+            };
+        }])
         .directive('accordionGroup', ['$parse', function ($parse) {
             return {
                 require: '^accordion',         // We need this directive to be inside an accordion
@@ -44,7 +60,7 @@
                     });
                 }
             };
-        }])
+        }]);
 
     angular
         .module("template/accordion/accordion-group.html", []).run(["$templateCache", function ($templateCache) {
@@ -64,10 +80,18 @@
 
     angular.module("QiSatApp").decorator(
         "accordionGroupDirective",
-        function accordionGroupDirectiveDecorator($delegate) {
+        ['$delegate', function accordionGroupDirectiveDecorator($delegate) {
             var getDirective = $delegate.find(function (el) { return el.qisat });
             return ([getDirective]);
-        }
+        }]
+    );
+
+    angular.module("QiSatApp").decorator(
+        "typeaheadMatchDirective",
+        ['$delegate', function typeaheadMatchDirectiveDecorator($delegate) {
+            var getDirective = $delegate.find(function (el) { return el.qisat });
+            return ([getDirective]);
+        }]
     );
 
 }());

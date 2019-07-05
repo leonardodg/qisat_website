@@ -57,14 +57,12 @@ function exibeLog() {
 <!doctype html>
 <html lang="pt_BR">
     <head>
-
         <meta charset="UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width">
         <title>Deploy Automático PHP  - QiSat | Cursos aplicados à engenharia e arquitetura</title>
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://public.qisat.com.br/css/app.css">
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-        <script src="/js/app.js" type="text/javascript" charset="utf-8" defer></script>
 
         <style>
             
@@ -122,7 +120,7 @@ function exibeLog() {
                             <tr>
                             <th class="small-6 large-6 columns">
                                 <a href="https://www.qisat.com.br" target="_blank">
-                                <img src="/images/logos-altoqi-qisat-branco.png" class="float-center mobile-logo logo-topo">
+                                <img src="https://public.qisat.com.br/images/logos-altoqi-qisat-branco.png" class="float-center mobile-logo logo-topo">
                                 </a>
                             </th>
                             </tr>
@@ -133,7 +131,7 @@ function exibeLog() {
                             <tr>
                             <th class="small-6 large-6 columns">
                                 <h2 class="subtitle text-center">Deploy com GIT</h2>
-                                <h4 class="subtitle text-center"> Email-Marketing </h4>
+                                <h4 class="subtitle text-center"> Site QiSat </h4>
                             </th>
                             </tr>
                         </tbody>
@@ -143,7 +141,7 @@ function exibeLog() {
                         <tbody>
                             <tr>
                             <th class="small-6 large-6 columns">
-                                <img src="/images/doc/deploy.png" class="float-center" alt="Deploy" title="Deploy" >
+                                <img src="https://public.qisat.com.br/images/doc/deploy.png" class="float-center" alt="Deploy" title="Deploy" >
                             </th>
                             </tr>
                         </tbody>
@@ -155,68 +153,6 @@ function exibeLog() {
                 </table>
             </td>
             </tr>
-        </table>
-
-        <table class="sidenav">
-          <tr>
-            <th>
-              <table class="spacer">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div href="#menu-list" id="toggle"><span></span></div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </th>
-          </tr>
-          <tr>
-            <th>
-            <div id="menu-list">
-
-                <button class="accordion"> <a href="/index.html#inicio">Início</a> </button>
-                <ul class="panel">
-                    <li><a href="/index.html#pre-requisitos">Pre-requisitos e Instalções</a></li>
-                    <li><a href="/index.html#install-git">Instalação Git</a></li>
-                    <li><a href="/index.html#install-node">Instalação NodeJS</a></li>
-                    <li><a href="/index.html#install-gulp">Instalação Gulp</a></li>
-                    <li><a href="/index.html#install-ruby">Instalação Ruby</a></li>
-                    <li><a href="/index.html#install-compass">Instalação Compass</a></li>
-                    <li><a href="/index.html#install-server">Instalação Servidor</a></li>
-                </ul>
-
-                <button class="accordion"><a href="#config">Configurar</a></button>
-                <ul class="panel">
-                    <li><a href="/index.html#clone">Clone Github</a></li>
-                    <li><a href="/index.html#config-server">Configurar Servidor</a></li>
-                    <li><a href="/index.html#Config-host">Configgurar Hosts</a></li>
-                    <li><a href="/index.html#start">Start Projeto</a></li>
-                </ul>
-
-                <a href="/index.html#gulp">Gulp</a>
-                <a href="/index.html#sass">Sass</a>
-                <button class="accordion"><a>Componentes</a></button>
-                <ul class="panel">
-                    <li><a href="/index.html#alinhamentos">Alinhamentos</a></li>
-                    <li><a href="/index.html#botões">Botões</a></li>
-                    <li><a href="/index.html#listas">Listas</a></li>
-                    <li><a href="/index.html#cards">Cards</a></li>
-                    <li><a href="/index.html#ícones">Ícones</a></li>
-                </ul>
-                <a href="/index.html#foundation">Foundation Doc</a>
-                <a href="/index.html#cabeçalhos">Cabeçalho</a>
-                <a href="/index.html#rodapé">Rodapé</a>
-                <a href="/index.html#grid">Grid</a>
-                <button class="accordion"><a>Templates</a></button>
-                <ul class="panel">
-                    <li><a href="/index.html#template-basico">Template Básico</a></li>
-                    <li><a href="/index.html#templates-qisat">Templates Qisat</a></li>
-                </ul>
-
-                </div>
-            </th>
-          </tr>
         </table>
 
         <table class="spacer">
@@ -337,7 +273,7 @@ function exibeLog() {
         <tr>
             <td valign="top">
                 <a href="https://www.qisat.com.br" target="_blank" >
-                <img alt="Logo" class="float-center mobile-logo" src="/images/logo_topo.png">
+                <img alt="Logo" class="float-center mobile-logo" src="https://public.qisat.com.br/images/logo_topo.png">
                 </a>
             </td>
         </tr>

@@ -68,7 +68,7 @@ require('./directive/chaveAltoqi.js');
 require('./directive/cupomDebounce.js');
 require('./directive/tabMainLab.js');
 require('./directive/tabSubMenuLab.js');
-require('./directive/overDirectiveAccordionGroup.js');
+require('./directive/overrideDirective.js');
 require('./services/QiSatAPI.js');
 require('./services/authService.js');
 require('./services/carrinho.js');
