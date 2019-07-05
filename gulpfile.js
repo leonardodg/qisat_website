@@ -43,6 +43,21 @@ gulp.task('build-del', function (call) {
 	return call();
 });
 
+
+/**
+ * Função para copiar hub biblioteca cross-storage
+ * Neceária para realizar integração dos  sistemas
+ */
+gulp.task('copy-hub', function (call) {
+
+	if (is_production()) {
+		return gulp.src('node_modules/cross-storage/dist/hub*.js')
+			.pipe(gulp.dest('assets/js/'));
+	}
+
+	return call();
+});
+
 /**
  * Gerar arquivos INDEX Principal 
  * 	- Em ambiente development verifica e compia arquivo
@@ -359,7 +374,7 @@ function buildJS() {
 gulp.task('build-js', buildJS());
 gulp.task('build-html', buildHtml());
 gulp.task('watch-files-all', gulp.parallel('watch-files', 'watch-fonts', 'watch-favicon'));
-gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject', 'build-htaccess'));
+gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject', 'copy-hub', 'build-htaccess'));
 gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-sprite', 'build-html', 'build-index'));
 gulp.task('default', gulp.parallel('build', 'watch-files-all', 'watch-js', 'watch-html', 'watch-sass', 'watch-img'));
 

@@ -1,7 +1,0 @@
-User-Agent: *
-Allow : /
-Disallow: /convenio
-Disallow: /ecommerce
-Disallow: /files
-Disallow: /scss
-Disallow: /hub
