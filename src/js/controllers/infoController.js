@@ -3,8 +3,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('infoController', ['$controller', '$sce', '$location', '$window', '$filter', '$timeout', 'authService', 'Config', 'Info',
-			function ($controller, $sce, $location, $window, $filter, $timeout, authService, Config, info) {
+		.controller('infoController', ['$controller', '$sce', '$location', '$window', '$filter', '$timeout', 'ngMeta', 'authService', 'Config', 'Info',
+			function ($controller, $sce, $location, $window, $filter, $timeout, ngMeta, authService, Config, info) {
 				var vm = this, filterLimitName = $filter('limitName'),
 					absUrl = $location.absUrl(),
 					path, search = absUrl.indexOf('?'), params, turma, gratuito,
@@ -14,6 +14,14 @@
 				if (Config.environment == 'production') {
 					$window.fbq('track', 'ViewContent');
 					modalController.showZopim(true, false);
+				}
+
+				if (info && info.seo) {
+					ngMeta.setTitle(info.seo.title);
+					ngMeta.setTag('robots', 'follow,index');
+					ngMeta.setTag('description', info.seo.description);
+					ngMeta.setTag('keys', info.seo.keywords);
+					ngMeta.setTag('url', absUrl);
 				}
 
 				var parseQueryString = function () {

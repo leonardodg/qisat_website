@@ -214,7 +214,7 @@
                     </div>
                     <div class="small-12 medium-9 columns">
                       <input type="text" name="phoneResponsavel" id="phoneResponsavel" placeholder="Telefone com DDD"
-                        ng-model="vm.conselho.telefone" ui-br-phone-number ng-required="true">
+                        ng-model="vm.conselho.telefone" ui-br-phone-number-mask ng-required="true">
                       <div
                         ng-show="(vm.cadastroConselhoForm.phoneResponsavel.$dirty||vm.submit) && vm.cadastroConselhoForm.phoneResponsavel.$invalid">
                         <span class="error" ng-show="vm.cadastroConselhoForm.phoneResponsavel.$error.required">Telefone

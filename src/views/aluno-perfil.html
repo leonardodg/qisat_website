@@ -196,7 +196,8 @@
 
 								<label for="phone">Telefone <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="phone" id="phone" placeholder="Digite Telefone"
-									ng-model="user.phone1" ng-required="true" ng-disabled="!confirm" ui-br-phone-number>
+									ng-model="user.phone1" ng-required="true" ng-disabled="!confirm"
+									ui-br-phone-number-mask>
 
 								<div ng-show="(editForm.phone.$dirty||submited) && editForm.phone.$invalid">
 									<span class="error" ng-show="editForm.phone.$error.required">Telefone é

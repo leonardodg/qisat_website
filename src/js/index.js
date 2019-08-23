@@ -37,6 +37,7 @@ require('ng-meta');
 require('angular-ui-mask');
 require('ng-infinite-scroll');
 require('angular-input-masks');
+require('angular-input-masks/br');
 
 // ## BEGIN DEV QISAT ##
 require('./QiSatApp.js');

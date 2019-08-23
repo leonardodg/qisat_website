@@ -270,7 +270,7 @@
                     </div>
                     <div class="small-12 medium-9 columns">
                       <input type="text" name="phoneEntidade" id="phoneEntidade" placeholder="Telefone com DDD"
-                        ng-model="vm.entidade.telefone" ui-br-phone-number ng-required="true">
+                        ng-model="vm.entidade.telefone" ui-br-phone-number-mask ng-required="true">
                       <div
                         ng-show="(vm.cadastroEntidadeForm.phoneEntidade.$dirty||vm.submit) && vm.cadastroEntidadeForm.phoneEntidade.$invalid">
                         <span class="error" ng-show="vm.cadastroEntidadeForm.phoneEntidade.$error.required">Telefone é

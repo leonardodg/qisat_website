@@ -155,7 +155,7 @@
             </div>
             <div class="small-12 medium-9 columns">
               <input type="text" name="phone" id="phone" placeholder="Telefone com DDD" ng-model="desconto.telefone"
-                ui-br-phone-number ng-required="true">
+                ui-br-phone-number-mask ng-required="true">
               <div ng-show="(descontoForm.phone.$dirty||submit) && descontoForm.phone.$invalid">
                 <span class="error" ng-show="descontoForm.phone.$error.required">Telefone é obrigatório.</span>
               </div>

@@ -43,7 +43,6 @@ gulp.task('build-del', function (call) {
 	return call();
 });
 
-
 /**
  * Função para copiar hub biblioteca cross-storage
  * Neceária para realizar integração dos  sistemas
@@ -104,11 +103,22 @@ gulp.task('bundle-js', function () {
 		debug: (is_production() == false),
 		souremapComment: true,
 		standalone: 'interact',
-		transform: [['babelify', {}]]
+		transform: [['babelify', { global: true }]]
 
 	})
 		.transform(babelify.configure({
-			presets: presets,
+			presets: [
+				[
+					'@babel/preset-env',
+					{
+						"targets": {
+							"browsers": [
+								"last 2 versions"
+							]
+						}
+					}
+				]
+			],
 			ignore: [/(bower_components)|(node_modules)/]
 		}))
 		.bundle()
@@ -245,6 +255,14 @@ gulp.task('watch-fonts', function () {
 });
 
 /**
+ * Observar file src/views/map.xml
+ */
+gulp.task('watch-map', function () {
+	return watch(['src/views/map.xml'], gulp.series('copy-map'));
+});
+
+
+/**
  * Observar pasta dos arquivos de Estilos
  */
 gulp.task('watch-sass', function () {
@@ -283,6 +301,17 @@ gulp.task('copy-fonts', function () {
 });
 
 /**
+ * Função para copiar File map.xml
+ *  
+ * 	Origem ./src/views/map.xml
+ *  Destino ./assets/views
+ */
+gulp.task('copy-map', function () {
+	return gulp.src(['src/views/map.xml'])
+		.pipe(gulp.dest('assets/views/'));
+});
+
+/**
  * Função para copiar favicon 
  *  
  * 	Origem ./src/images/favicon
@@ -301,6 +330,7 @@ gulp.task('copy-favicon', function () {
  */
 gulp.task('copy-script-inject', function () {
 	return gulp.src(['src/js/injectScripts.js'])
+		.pipe(gulpif(is_production(), uglify()))
 		.pipe(gulp.dest('assets/js/'));
 });
 
@@ -309,7 +339,11 @@ gulp.task('copy-script-inject', function () {
  */
 gulp.task('jshint', function () {
 	return gulp.src(['src/js/**/*', '!src/js/libs', '!src/js/libs/*', '!src/js/libs/**/*', '!src/js/injectScripts.js'])
-		.pipe(jshint({ esversion: 6, "asi": true }))
+		.pipe(jshint({
+			esversion: 6,
+			asi: true,
+			browser: true,
+		}))
 		.pipe(jshint.reporter('default', { verbose: true }));
 });
 
@@ -320,7 +354,7 @@ gulp.task('jshint', function () {
  *  Destino ./assets/views
  */
 gulp.task('htmlmin', function () {
-	return gulp.src(['src/views/*.html', 'src/views/map.xml'])
+	return gulp.src(['src/views/*.html'])
 		.pipe(htmlmin({ removeComments: true, collapseInlineTagWhitespace: true }))
 		.pipe(gulp.dest('assets/views/'));
 });
@@ -332,7 +366,7 @@ gulp.task('htmlmin', function () {
  *  Destino ./assets/views
  */
 gulp.task('htmlhint', function () {
-	return gulp.src('src/views/*.html', 'src/views/map.xml')
+	return gulp.src('src/views/*.html')
 		.pipe(htmlhint({ "doctype-first": false }))
 		.pipe(htmlhint.reporter())
 		.pipe(gulp.dest('assets/views/'));
@@ -373,8 +407,8 @@ function buildJS() {
 
 gulp.task('build-js', buildJS());
 gulp.task('build-html', buildHtml());
-gulp.task('watch-files-all', gulp.parallel('watch-files', 'watch-fonts', 'watch-favicon'));
-gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-favicon', 'copy-script-inject', 'copy-hub', 'build-htaccess'));
+gulp.task('watch-files-all', gulp.parallel('watch-files', 'watch-fonts', 'watch-map', 'watch-favicon'));
+gulp.task('build-files', gulp.parallel('copy-files', 'copy-fonts', 'copy-map', 'copy-favicon', 'copy-script-inject', 'copy-hub', 'build-htaccess'));
 gulp.task('build', gulp.parallel('build-js', 'build-files', 'build-sass', 'build-img', 'build-sprite', 'build-html', 'build-index'));
 gulp.task('default', gulp.parallel('build', 'watch-files-all', 'watch-js', 'watch-html', 'watch-sass', 'watch-img'));
 

@@ -67,7 +67,7 @@
               <div class="form-group">
                 <label for="phone">Telefone <strong title="Campo Obrigatório">*</strong> </label>
                 <input type="text" name="phone" id="phone" placeholder="Digite o telefone" ng-model="cadastro.phone1"
-                  ng-required="true" ui-br-phone-number>
+                  ng-required="true" ui-br-phone-number-mask>
 
                 <div ng-show="(createForm.phone.$dirty || submitted) && createForm.phone.$invalid">
                   <span class="error" ng-show="createForm.phone.$error.required">Telefone é obrigatório</span>
