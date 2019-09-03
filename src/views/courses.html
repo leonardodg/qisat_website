@@ -189,7 +189,7 @@
                                                         title="{{::course.nome}}">{{::course.nomeLimit}}</span>
                                                 </a>
                                                 <a class="card-course__button has-price_popover"
-                                                    ng-click="buy.addItemCarrinho({ id: course.id, sigla: course.sigla })"
+                                                    ng-click="buy.addItemCarrinho(course)"
                                                     ng-if="list.type!=12&&list.type!=10&&list.type!=8&&list.type!=47"
                                                     title="Adicionar ao carrinho" analytics-on
                                                     analytics-category="buy-cursos" analytics-label="{{::course.sigla}}"
@@ -319,8 +319,7 @@
                                                         title="{{course.modalidade}}">{{::course.modalidade}}</span>
 
                                                     <span class="card-course__name">{{::course.nome}}</span></a><a
-                                                    class="card-course__button"
-                                                    ng-click="buy.addItemCarrinho({ id: course.id, sigla: course.sigla })"
+                                                    class="card-course__button" ng-click="buy.addItemCarrinho(course)"
                                                     analytics-on analytics-category="buy-cursos"
                                                     analytics-label="{{::course.sigla}}"
                                                     analytics-event="addItem">{{::course.preco}}<i
@@ -348,9 +347,8 @@
 
                                                     <span class="card-course__name">{{::course.nome}}</span></a><a
                                                     class="card-course__button has-price_popover"
-                                                    ng-click="buy.addItemCarrinho({ id: course.id, sigla: course.sigla })"
-                                                    analytics-on analytics-category="buy-cursos"
-                                                    analytics-label="{{::course.sigla}}"
+                                                    ng-click="buy.addItemCarrinho(course)" analytics-on
+                                                    analytics-category="buy-cursos" analytics-label="{{::course.sigla}}"
                                                     analytics-event="addItem">{{::course.preco}}<i
                                                         class="material-icons">add_shopping_cart</i><span
                                                         class="card-course__icon-cart">

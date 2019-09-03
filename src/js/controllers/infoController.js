@@ -71,7 +71,7 @@
 							];
 
 							if (user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-							if (typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
+							if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
 						}
 
 						authService.inscricao(produto.id)
@@ -268,17 +268,23 @@
 									return prod.categorias
 										.find(function (tipo) { return tipo.id == 33 });
 							});
+
 						if (itens && itens.length) {
 							itens.map(function (prod) {
 								valorItens += prod.preco;
 								info.produto.id.push(prod.id);
 								if (prod && prod.info) {
+
+									prod.modalidade = "Item da Série";
+									prod.isItem = true;
+
 									aux = {
 										preco: prod.preco,
 										titulo: prod.info.titulo,
 										descricao: prod.info.descricao,
 										dataValor: {
-											produto: prod.id,
+											produto: prod,
+											id: prod.id,
 											sigla: prod.sigla,
 											valor: $filter('currency')(prod.preco, 'R$')
 										},
@@ -311,16 +317,15 @@
 						if (info.promocao) {
 							info.preco = $filter('currency')(info.valorTotal, 'R$');
 							info.promocaoDateend = $filter('date')(info.promocao.datafim * 1000, 'dd/MM/yyyy');
-						} else
+						} else {
 							info.preco = $filter('currency')(info.produto.preco, 'R$');
-
+						}
 
 						if (info.isSetup) {
 							info.precoParcelado = $filter('currency')(info.valorParcelado, 'R$');
 							if (info.promocao)
 								info.precoTotal = $filter('currency')((info.valorTotal / info.parcelas), 'R$');
 						}
-
 
 						if ((info.isPack || info.packCert) && info.produto.produtos && info.produto.produtos.length) {
 							info.conteudos = [];
@@ -448,10 +453,28 @@
 							info.produto.instrutor = info.produto.eventos[0].instrutor;
 						}
 
-						if (vm.turma.valor_produto == 'false')
+						if (vm.turma.valor_produto == 'false') {
 							info.preco = vm.turma.preco;
+						}
 					}
 					vm.info = info;
+
+					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
+
+						dataLayer.push({
+							'event': 'ecommerce.detail',
+							'ecommerce': {
+								'detail': {
+									'products': [{
+										'name': info.produto.sigla,
+										'id': info.ecm_produto_id,
+										'price': info.valorTotal || info.precoTotal,
+										'category': info.modalidade,
+									}]
+								}
+							}
+						});
+					}
 				}
 			}]);
 })();

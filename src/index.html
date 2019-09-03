@@ -31,7 +31,11 @@
 	<link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="stylesheets/app.css?vs=v654321">
-
+	<style>
+		.async-hide {
+			opacity: 0 !important
+		}
+	</style>
 </head>
 
 <body page-buy ng-controller="carrinhoController as buy">
@@ -114,7 +118,7 @@
 							{{item.nomeLimit}}
 						</span>
 						<a class="cd-item-remove cd-img-replace"
-							ng-click="buy.removeItemCarrinho(item.ecm_produto_id, true, item.ecm_curso_presencial_turma_id)"
+							ng-click="buy.removeItemCarrinho(item, true, item.ecm_curso_presencial_turma_id)"
 							analytics-on analytics-event="remover" analytics-category="bloco-carrinho"
 							analytics-value="{{item.ecm_produto.sigla}}"><i class="material-icons">close</i></a>
 					</li>
@@ -379,7 +383,10 @@
 	<!--BEGIN:SCRPIT-INJECT-->
 	<!--END:SCRPIT-INJECT-->
 
-	<script defer async src="js/build.js?version-qi-build=2.0.0"></script>
+	<script defer async src="js/build.js?version-qi-build=2.0.1"></script>
+
+	<!--BEGIN:HTML-->
+	<!--END:HTML-->
 
 </body>
 

@@ -21,14 +21,13 @@
 							analytics-label="{{::vm.info.produto.sigla}}" analytics-event="favorite"><i
 								class="material-icons">favorite</i></a></li>
 
-
 					<li class="hero-course__buttons-group--item"
+						ng-init="(vm.info.isSerie) && (vm.info.produto.preco=vm.info.preco);(vm.info.isSerie) && (vm.info.produto.modalidade=vm.info.modalidade)"
 						ng-if="vm.info.isPack||vm.info.isLecture||vm.info.isOnline||vm.info.isSerie||vm.info.packCert||vm.info.testCert">
 						<a class="button buttom-price has-price_popover card-course__button" anchor-link
-							ng-click="buy.addItemCarrinho({ id: vm.info.produto.id, sigla: vm.info.produto.sigla })"
-							analytics-on analytics-category="info" analytics-label="{{::vm.info.produto.sigla}}"
-							analytics-event="add-item">{{::vm.info.preco}} <span class="cart"><i
-									class="material-icons">shopping_cart</i></span>
+							ng-click="buy.addItemCarrinho(vm.info.produto)" analytics-on analytics-category="info"
+							analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item">{{::vm.info.preco}}
+							<span class="cart"><i class="material-icons">shopping_cart</i></span>
 							<span class="card-course__icon-cart">
 								<div class="price_popover" ng-if="::vm.info.promocaoDateend">
 									<div class="price_popover__header">
@@ -101,7 +100,7 @@
 						</a>
 
 						<a class="button buttom-price has-price_popover card-course__button" anchor-link
-							ng-click="buy.addItemCarrinho({ id: vm.info.ecm_produto_id, sigla: vm.info.produto.sigla }, vm.turma.qtd, vm.turma.id)"
+							ng-click="buy.addItemCarrinho(vm.info.produto, vm.turma.qtd, vm.turma.id)"
 							ng-if="vm.turma.vagas" analytics-on analytics-category="info"
 							analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item"
 							analytics-value="{{vm.turma.id}}"> {{::vm.info.preco}}
@@ -274,7 +273,7 @@
 
 										<div ng-if="vm.turma.vagas">
 											<a class="course__price-group__button button small"
-												ng-click="buy.addItemCarrinho({ id: vm.info.ecm_produto_id, sigla: vm.info.produto.sigla }, vm.turma.qtd, vm.turma.id)"
+												ng-click="buy.addItemCarrinho(vm.info.produto, vm.turma.qtd, vm.turma.id)"
 												analytics-on analytics-category="info"
 												analytics-label="{{::vm.info.produto.sigla}}" analytics-event="add-item"
 												analytics-value="{{::vm.turma.id}}"> <i
@@ -388,7 +387,7 @@
 						<accordion-group heading="{{conteudo.titulo}}" play-demo-modal="{{conteudo.demoplay}}"
 							ng-repeat="conteudo in vm.info.conteudos" class="accordion-navigation tab-title"
 							icon-carrinho="{{conteudo.dataValor.valor}}"
-							add-carrinho="buy.addItemCarrinho( { id: conteudo.dataValor.produto, sigla: conteudo.dataValor.sigla })">
+							add-carrinho="buy.addItemCarrinho( conteudo.dataValor.produto )">
 							<div class="textexpand" ng-bind-html="conteudo.descricao"></div>
 						</accordion-group>
 					</accordion>

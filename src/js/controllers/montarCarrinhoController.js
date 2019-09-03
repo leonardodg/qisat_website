@@ -3,11 +3,12 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('montarCarrinhoController', ['$scope', '$controller', '$location', '$window', '$route', '$filter', '$modal', '$timeout', 'carrinhoServive', 'authService',
-			function (scope, $controller, $location, $window, $route, $filter, $modal, $timeout, carrinhoServive, authService) {
+		.controller('montarCarrinhoController', ['$scope', '$controller', '$location', '$window', '$route', '$filter', '$modal', '$timeout', 'Config', 'carrinhoServive', 'authService',
+			function (scope, $controller, $location, $window, $route, $filter, $modal, $timeout, Config, carrinhoServive, authService) {
 
 				var vm = this;
 				var modalController = $controller('modalController');
+				var itens = carrinhoServive.getItens(), products = [];
 
 				vm.modallogin = modalController.login;
 
@@ -18,6 +19,28 @@
 						carrinhoServive.addItem({ produto: nome, quantidade: 1, presencial: $route.current.params.turma });
 					else
 						carrinhoServive.addItem({ produto: nome });
+				}
+
+				if (typeof dataLayer !== "undefined" && itens && itens.length > 0 && Config.environment == 'production') {
+
+					itens.map(function (item) {
+						products.push({
+							"name": item.ecm_produto.sigla,
+							"price": item.valor_produto_desconto,
+							"quantity": item.quantidade,
+							'category': item.modalidade,
+						});
+					});
+
+					dataLayer.push({
+						'event': 'ecommerce.checkout',
+						'channel': carrinhoServive.isProposta ? 'comercial' : 'self-service',                      // self-service ou comercial
+						'ecommerce': {
+							'checkout': {
+								'products': products
+							}
+						}
+					});
 				}
 
 				vm.nextCompra = function () {

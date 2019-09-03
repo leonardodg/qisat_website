@@ -238,7 +238,7 @@
 										</a>
 
 										<a class="card-course__button  has-price_popover"
-											ng-click="buy.addItemCarrinho({ id: course.id, sigla: course.sigla })"
+											ng-click="buy.addItemCarrinho(course)"
 											ng-if="course.isPack||course.isLecture||course.isOnline||course.isSerie||course.isAltoQi"
 											analytics-on analytics-event="addItem" analytics-category="topcursos"
 											analytics-label="{{::course.sigla}}">{{::course.preco}}

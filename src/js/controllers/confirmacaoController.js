@@ -8,10 +8,9 @@
 				var vm = this;
 				var user = authService.getUser();
 				var data_rd;
-				var siglas = [];
+				var siglas = [], products = [], coupons = [], promotions = [];
 
 				if (venda && (authService.isLogged() && Authenticated)) {
-
 
 					if (Config.environment == 'production') {
 
@@ -19,8 +18,36 @@
 							transaction_id: venda.id
 						});
 
-						if (venda.products && venda.products.length)
-							venda.products.map(function (prod) { siglas.push(prod.sigla); });
+						if (venda.products && venda.products.length) {
+							venda.products.map(function (prod) {
+								siglas.push(prod.sigla);
+								products.push({
+									"name": prod.sigla,
+									"price": prod.valor_produto_desconto,
+									"quantity": prod.quantidade
+								});
+
+								if (typeof prod.ecm_promocao_id !== 'undefined') {
+									promotions.push(prod.ecm_promocao_id);
+								}
+
+								if (typeof prod.ecm_cupom_id !== 'undefined') {
+									coupons.push(prod.ecm_cupom_id);
+								}
+							});
+
+							promotions = promotions.filter(function (el, index, arr) {
+								return index == arr.indexOf(el);
+							});
+
+							coupons = coupons.filter(function (el, index, arr) {
+								return index == arr.indexOf(el);
+							});
+
+							coupons = coupons.join();
+							promotions = promotions.join();
+
+						}
 
 						data_rd = [
 							{ name: 'email', value: user.email },
@@ -32,9 +59,29 @@
 							{ name: 'identificador', value: 'Compra Finalizada - QiSat' }
 						];
 
-						if (typeof user != 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-						if (typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
-						$window.fbq('track', 'Purchase');
+						if (typeof user !== 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+						if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
+
+						if (typeof dataLayer !== "undefined") {
+							dataLayer.push({
+								'event': 'ecommerce.purchase',
+								'ecommerce': {
+									'purchase': {
+										'actionField': {
+											'id': venda.id,
+											'revenue': venda.total,
+											'coupon': coupons,
+											'promotions': promotions
+										},
+										'products': products
+									}
+								}
+							});
+						}
+
+						if ($window.fbq != undefined) {
+							$window.fbq('track', 'Purchase');
+						}
 					}
 
 					if (venda.forma_pagamento && venda.forma_pagamento.toLocaleLowerCase().indexOf('boleto') >= 0) {

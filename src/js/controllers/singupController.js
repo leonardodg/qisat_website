@@ -222,8 +222,11 @@
 										{ name: 'identificador', value: 'Cadastro - QiSat' }
 									];
 
-									if (typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
-									$window.fbq('track', 'CompleteRegistration');
+									if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
+
+									if ($window.fbq != undefined) {
+										$window.fbq('track', 'CompleteRegistration');
+									}
 								}
 
 								if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {

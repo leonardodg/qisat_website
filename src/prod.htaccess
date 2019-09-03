@@ -17,31 +17,38 @@ ErrorDocument 404 /index.html
 # ------- Bloquear listagem de diretórios -------
   Options -Indexes
 
-# ------- http para https ------------ 
-	RewriteCond %{HTTP_HOST} !^www\.
-	RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-	#Now, rewrite to HTTPS:
-	RewriteCond %{HTTPS} off
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   
-	### If the request contains the _escaped_fragment_ query parameter, set a flag to proxify the request to SEO4Ajax
-	RewriteCond %{ENV:PROXIFY} !true
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{QUERY_STRING} _escaped_fragment_= [NC]
-	RewriteRule .* - [E=PROXIFY:true,E=REQUEST_PATH:%{REQUEST_URI}]
 
-	### If the request is issued by another known bot, set a flag to proxify the request to SEO4Ajax
-	### Note: the 5 following lines can be commented if you are using #! URLs
-	RewriteCond %{ENV:PROXIFY} !true
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{HTTP_USER_AGENT} !(googlebot/|googlebot-mobile|yandexbot|pinterest.*ios|mail\.ru|seznambot|screaming) [NC]
-	RewriteCond %{HTTP_USER_AGENT} (bot|spider|pinterest|crawler|archiver|flipboardproxy|mediapartners|facebookexternalhit|quora|whatsapp) [NC]
-	RewriteRule .* - [E=PROXIFY:true,E=REQUEST_PATH:%{REQUEST_URI}]
+## este REDIRECT ativo da problema no certificado 
+## nao esta colocando www ma frete por causa do problema no .com
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
 
-	### Proxify the request to SEO4Ajax
-	RewriteCond %{ENV:PROXIFY} true
-	RewriteRule ^(.*)$ http://api.seo4ajax.com/8364649001f02a6fc4f10d7321e6d46a%{ENV:REQUEST_PATH} [P,QSA,L]
+## REDIRECT PARA .com.br
+RewriteCond %{HTTP_HOST} !\.br$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}.br%{REQUEST_URI} [R=301,L,NE]
+
+ 
+# ------- http para https ------------ 
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+  
+### If the request comes from a bot, set a flag to proxy the request to SEO4Ajax
+RewriteCond %{ENV:PROXY} !true
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{HTTP_USER_AGENT} (google|bot|spider|pinterest|crawler|archiver|flipboardproxy|mediapartners|facebookexternalhit|insights|quora|whatsapp|slurp) [NC,OR]
+RewriteCond %{HTTP:from} .+
+RewriteRule .* - [E=PROXY:true,E=REQUEST_PATH:%{REQUEST_URI}]
+
+### Uncomment the 4 following lines to support the _escaped_fragment_= parameter (useful for testing purposes)
+# RewriteCond %{ENV:PROXY} !true
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{QUERY_STRING} _escaped_fragment_= [NC]
+# RewriteRule .* - [E=PROXY:true,E=REQUEST_PATH:%{REQUEST_URI}]
+
+### Proxy the request to SEO4Ajax
+RewriteCond %{ENV:PROXY} true
+RewriteRule ^(.*)$ http://api.seo4ajax.com/8364649001f02a6fc4f10d7321e6d46a%{ENV:REQUEST_PATH} [P,QSA,L]
 
 	
 <IfModule mod_headers.c>
@@ -49,20 +56,25 @@ ErrorDocument 404 /index.html
 #  Header set Access-Control-Allow-Methods "GET, POST"
   Header unset ETag
   RequestHeader set X-Prerender-Token "F6D9JPkeqIf2bc1pey6z"
+#  Header set Connection keep-alive
+#  RequestHeader set X-Prerender-Version "prerender-apache@2.0.0"
 </IfModule>
 
 #<IfModule mod_rewrite.c>
 #    RewriteEngine On
+#	
+	
+#    SetEnvIf Origin "http(s)?://(www\.)?(qisat\.com\.br|prerender\.io)$" AccessControlAllowOrigin=$0
+#    Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
 
 #    <IfModule mod_proxy_http.c>
-#        RewriteCond %{HTTP_USER_AGENT} googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator [NC,OR]
+#        RewriteCond %{HTTP_USER_AGENT} googlebot|bingbot|yandex|baiduspider|facebookexternalhit|twitterbot|rogerbot|linkedinbot|embedly|quora\ link\ preview|showyoubot|outbrain|pinterest\/0\.|pinterestbot|slackbot|vkShare|W3C_Validator [NC,OR]
 #        RewriteCond %{QUERY_STRING} _escaped_fragment_
-        
-        # Only proxy the request to Prerender if it's a request for HTML
-#        RewriteRule ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff))(.*) https://service.prerender.io/https://www.qisat.com.br/$2 [P,L]
+#        RewriteCond %{REQUEST_URI} ^(?!.*?(\.js|\.css|\.xml|\.less|\.png|\.jpg|\.jpeg|\.gif|\.pdf|\.doc|\.txt|\.ico|\.rss|\.zip|\.mp3|\.rar|\.exe|\.wmv|\.doc|\.avi|\.ppt|\.mpg|\.mpeg|\.tif|\.wav|\.mov|\.psd|\.ai|\.xls|\.mp4|\.m4a|\.swf|\.dat|\.dmg|\.iso|\.flv|\.m4v|\.torrent|\.ttf|\.woff|\.svg))
+
+#        RewriteRule ^(index\.html)?(.*) https://service.prerender.io/%{REQUEST_SCHEME}://%{HTTP_HOST}/$2 [P,END]
 #    </IfModule>
 #</IfModule>
-
 
 
   RewriteRule ^(hub)/?$ hub.html [NC,L]

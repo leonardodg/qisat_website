@@ -109,8 +109,25 @@
 							{ name: 'identificador', value: 'Adicionou Curso - QiSat' }
 						];
 
-						if (typeof user != undefined && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-						if (typeof RdIntegration != undefined) RdIntegration.post(data_rd);
+						if (typeof user !== "undefined" && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
+						if (typeof RdIntegration !== "undefined") RdIntegration.post(data_rd);
+					}
+
+					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
+						dataLayer.push({
+							'event': 'ecommerce.add',
+							'ecommerce': {
+								'add': {
+									'products': [{
+										'name': produto.sigla,
+										'id': produto.id,
+										'price': produto.preco,
+										'category': produto.modalidade,
+										'quantity': qtd,
+									}]
+								}
+							}
+						});
 					}
 
 					vm.loading = true;
@@ -137,9 +154,27 @@
 						});
 				};
 
-				vm.removeItemCarrinho = function (produtoid, all, turma) {
+				vm.removeItemCarrinho = function (item, all, turma) {
 					vm.loading = true;
-					var data = { produto: produtoid };
+
+					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
+						dataLayer.push({
+							'event': 'ecommerce.add',
+							'ecommerce': {
+								'remove': {
+									'products': [{
+										'name': item.ecm_produto.sigla,
+										'id': item.ecm_produto_id,
+										'price': item.valor_produto_desconto,
+										'category': item.modalidade,
+										'quantity': item.quantidade,
+									}]
+								}
+							}
+						});
+					}
+
+					var data = { produto: item.ecm_produto_id };
 					if (typeof turma !== 'undefined') data.presencial = turma;
 					data.remover_tudo = (all && typeof all !== 'undefined') ? 1 : 0;
 

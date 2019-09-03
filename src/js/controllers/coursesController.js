@@ -219,7 +219,7 @@
 								];
 
 								if (user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
-								if (typeof RdIntegration != 'undefined') RdIntegration.post(data_rd);
+								if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
 							}
 
 							authService.inscricao(produto.id)
@@ -579,11 +579,10 @@
 
 							elemts = angular.element('#selectStates option');
 							elemts.map(function (el) { if (el && (elemts[el]) && elemts[el].selected) angular.element(elemts[selected]).prop('selected', false); });
-
-
 							filter = vm.coursesList.filter(function (el) { return (el.parent == 10 || el.parent == 12 || el.parent == 'eventos') && el.selected });
-							if (!filter.length)
+							if (!filter.length) {
 								filter = vm.coursesList.filter(function (el) { return (el.type == 10 || el.type == 12 || el.type == 'eventos') && !el.show });
+							}
 							filter.map(function (el) { if (el.courses.length) el.show = true });
 
 							elemts = angular.element('.map__state.active');

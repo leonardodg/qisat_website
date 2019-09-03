@@ -15,10 +15,7 @@ var source = require("vinyl-source-stream");
 var buffer = require("vinyl-buffer");
 var sourcemaps = require('gulp-sourcemaps');
 
-// gulp-image - corrigir problema npm install gulp-image para windows
-// var image = require('gulp-image');
 var imagemin = require('gulp-imagemin');
-// var imageResize = require('gulp-image-resize');
 
 var del = require('del');
 var replace = require('gulp-replace');
@@ -68,10 +65,12 @@ gulp.task('copy-hub', function (call) {
 gulp.task('build-index', function () {
 	var data = new Date();
 	var script = '<!--[if IE 9]><script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script><script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js"></script><![endif]--><script defer src="https://cdn.polyfill.io/v2/polyfill.js?features=Array.prototype.find,String.prototype.repeat,modernizr:es5array|always"></script><script defer src="https://d335luupugsy2.cloudfront.net/js/integration/stable/rd-js-integration.min.js"></script><script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/94236ac1-9fff-43fd-a2f0-329a83ce47a7-loader.js"></script>';
+	var html = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZLSCG7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><script type="text/javascript" src="https://a.opmnstr.com/app/js/api.min.js" data-account="24" data-user="28741" async></script>';
 
 	if (is_production()) {
 		return gulp.src('src/index.html')
 			.pipe(replace(/(<!--BEGIN:SCRPIT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-->)/gi, '$1\n\t ' + script + ' \n\t$5'))
+			.pipe(replace(/(<!--BEGIN:HTML-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:HTML-->)/gi, '$1\n\t ' + html + ' \n\t$5'))
 			.pipe(replace(/(<!--BEGIN:SCRPIT-INJECT-->)(\n+\s+|\s+\n+|\n+|\s+)?(.+)?(\n+\s+|\s+\n+|\n+|\s+)?(<!--END:SCRPIT-INJECT-->)/gi, '$1\n\t<script defer async src="js/injectScripts.js?vs=' + data.toISOString() + '"></script>\n\t$5'))
 			.pipe(replace(/version-qi-build=(.+)">/gi, 'version-qi-build=' + data.toISOString() + '">'))
 			.pipe(htmlmin({ collapseWhitespace: true }))
@@ -163,7 +162,7 @@ gulp.task('build-img', function () {
  */
 gulp.task('build-sprite', function () {
 	return gulp.src('assets/images/qi-sprite*.png')
-		.pipe(gulpif(is_production(), imagemin({ verbose: true })))
+		.pipe(gulpif(is_production(), imagemin([imagemin.optipng({ optimizationLevel: 5 })], { verbose: true })))
 		.pipe(gulp.dest('assets/images/'));
 });
 
@@ -417,7 +416,7 @@ gulp.task('default', gulp.parallel('build', 'watch-files-all', 'watch-js', 'watc
 
 gulp.task('prod-img', function () {
 	return gulp.src('src/images/upload/**//*')
-.pipe(image())
+.pipe(imagemin())
 .pipe(gulp.dest('assets/images/upload/'));
 });
 

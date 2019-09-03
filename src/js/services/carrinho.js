@@ -8,7 +8,7 @@
 
 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
 					filterLimitName = $filter('limitName'), transacao = null, cupom,
-					contractOnline = false, contractEberick = false, contractQibuilder = false, contractLab1 = false, contractLab2 = false;
+					isProposta = false, contractOnline = false, contractEberick = false, contractQibuilder = false, contractLab1 = false, contractLab2 = false;
 
 				(function load() {
 					if (!carrinho)
@@ -338,6 +338,7 @@
 				function getProposta(id) {
 					var promise;
 					var headers = (authService.isLogged()) ? { 'Authorization': Config.Authorization + " " + authService.getToken() } : {};
+					isProposta = true;
 
 					promise = $http({
 						method: 'post',
@@ -570,6 +571,7 @@
 					hasTrilha: getTrilha,
 					showContract: showContract,
 					getProposta: getProposta,
+					isProposta: isProposta,
 					getTransacao: getTransacao,
 					validCupom: validCupom,
 					getCupom: getCupom
