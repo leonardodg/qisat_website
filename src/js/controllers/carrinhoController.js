@@ -123,7 +123,7 @@
 										'id': produto.id,
 										'price': produto.preco,
 										'category': produto.modalidade,
-										'quantity': qtd,
+										'quantity': qtd || 1,
 									}]
 								}
 							}
@@ -167,7 +167,7 @@
 										'id': item.ecm_produto_id,
 										'price': item.valor_produto_desconto,
 										'category': item.modalidade,
-										'quantity': item.quantidade,
+										'quantity': item.quantidade || 1,
 									}]
 								}
 							}
