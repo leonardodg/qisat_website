@@ -114,6 +114,9 @@
 					}
 
 					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
+
+						var price = (typeof produto.preco == 'string') ? produto.preco.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : produto.preco;
+
 						dataLayer.push({
 							'event': 'ecommerce.add',
 							'ecommerce': {
@@ -121,7 +124,7 @@
 									'products': [{
 										'name': produto.sigla,
 										'id': produto.id,
-										'price': produto.preco,
+										'price': price,
 										'category': produto.modalidade,
 										'quantity': qtd || 1,
 									}]
@@ -158,20 +161,24 @@
 					vm.loading = true;
 
 					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
+
+						var price = (typeof item.valor_produto_desconto == 'string') ? item.valor_produto_desconto.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : item.valor_produto_desconto;
+
 						dataLayer.push({
-							'event': 'ecommerce.add',
+							'event': 'ecommerce.remove',
 							'ecommerce': {
 								'remove': {
 									'products': [{
 										'name': item.ecm_produto.sigla,
 										'id': item.ecm_produto_id,
-										'price': item.valor_produto_desconto,
+										'price': price,
 										'category': item.modalidade,
 										'quantity': item.quantidade || 1,
 									}]
 								}
 							}
 						});
+
 					}
 
 					var data = { produto: item.ecm_produto_id };

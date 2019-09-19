@@ -461,6 +461,9 @@
 
 					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
 
+						var price = info.valorTotal || info.precoTotal;
+						price = price.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4');
+
 						dataLayer.push({
 							'event': 'ecommerce.detail',
 							'ecommerce': {
@@ -468,12 +471,13 @@
 									'products': [{
 										'name': info.produto.sigla,
 										'id': info.ecm_produto_id,
-										'price': info.valorTotal || info.precoTotal,
+										'price': price,
 										'category': info.modalidade,
 									}]
 								}
 							}
 						});
+
 					}
 				}
 			}]);

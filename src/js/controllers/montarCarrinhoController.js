@@ -21,12 +21,15 @@
 						carrinhoServive.addItem({ produto: nome });
 				}
 
-				if (typeof dataLayer !== "undefined" && itens && itens.length > 0 && Config.environment == 'production') {
+				if (typeof dataLayer !== "undefined" && typeof itens !== "undefined" && itens.length > 0 && Config.environment == 'production') {
 
 					itens.map(function (item) {
+
+						var price = (typeof item.valor_produto_desconto == 'string') ? item.valor_produto_desconto.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : item.valor_produto_desconto;
+
 						products.push({
 							"name": item.ecm_produto.sigla,
-							"price": item.valor_produto_desconto,
+							"price": price,
 							"quantity": item.quantidade,
 							'category': item.modalidade,
 						});

@@ -62,16 +62,19 @@
 						if (typeof user !== 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
 						if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
 
+						var price = (typeof venda.total == 'string') ? venda.total.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : venda.total;
+
 						if (typeof dataLayer !== "undefined") {
+
 							dataLayer.push({
 								'event': 'ecommerce.purchase',
+								'promotions': promotions,
 								'ecommerce': {
 									'purchase': {
 										'actionField': {
 											'id': venda.id,
-											'revenue': venda.total,
-											'coupon': coupons,
-											'promotions': promotions
+											'revenue': price,
+											'coupon': coupons
 										},
 										'products': products
 									}
