@@ -462,7 +462,7 @@
 					if (typeof dataLayer !== "undefined" && Config.environment == 'production') {
 
 						var price = info.valorTotal || info.precoTotal;
-						price = price.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4');
+						price = (typeof price == 'string') ? price.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : price;
 
 						dataLayer.push({
 							'event': 'ecommerce.detail',
