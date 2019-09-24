@@ -21,6 +21,8 @@
 							forma.operadoras = forma.operadoras.map(function (op) {
 								if (op.img && op.img.nome)
 									op.img.nome = op.img.nome.replace('.png', '').toUpperCase();
+								if (op.img && op.img.src)
+									op.img.src = op.img.src.replace('upload/https:', 'https:');
 								return op;
 							});
 						}
