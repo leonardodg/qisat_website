@@ -483,6 +483,10 @@
 									$modalInstance.close();
 								};
 
+								$scope.fnAltoQi = function () {
+									$scope.altoqi = !$scope.altoqi;
+								};
+
 								$scope.checkIfEnterKeyWasPressed = function ($event, user) {
 									var keyCode = $event.which || $event.keyCode;
 									if (keyCode === 13) {
@@ -532,6 +536,7 @@
 
 								$scope.login = function (credentials) {
 									credentials.remember = true;
+									credentials.altoqi = ($scope.altoqi) ? true : false;
 									$scope.alert = false;
 
 									authService.login(credentials).then(function (res) {

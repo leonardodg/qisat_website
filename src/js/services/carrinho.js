@@ -7,16 +7,42 @@
 			function ($http, $q, $timeout, $window, Config, $location, $filter, authService) {
 
 				var carrinho = false, itens, valorTotal = 0, promoTheend = [], hasTrilha = false,
-					filterLimitName = $filter('limitName'), transacao = null, cupom,
-					isProposta = false, contractOnline = false, contractEberick = false, contractQibuilder = false, contractLab1 = false, contractLab2 = false;
+					filterLimitName = $filter('limitName'), transacao = null, cupom, load,
+					isProposta = false, isRenovacao = false, contractOnline = false, contractEberick = false, contractQibuilder = false, contractLab1 = false, contractLab2 = false;
 
-				(function load() {
-					if (!carrinho)
+				(load = function () {
+
+					if (!carrinho){
 						carrinho = window.localStorage.getItem('carrinho');
+					}
 
-					if (!carrinho && ($location.path() && ($location.path().indexOf('/carrinho') == 0)))
+					if (!carrinho && ($location.path() && ($location.path().indexOf('/carrinho') == 0))){
 						carrinho = true;
-				})();
+					}
+
+					if ($location.path().indexOf('/proposta') >= 0){
+						isProposta = true;
+					}else{
+
+						if(isProposta === true){
+							destroyCarrinho();
+						}
+
+						isProposta = false;
+					}
+	
+					if ($location.path().indexOf('/renovacao') >= 0){
+						isRenovacao = true;
+					}else{
+
+						if(isRenovacao === true){
+							destroyCarrinho();
+						}
+
+						isRenovacao = false;
+					}
+
+				}).call(this);
 
 				function checkCarrinho() {
 					return (carrinho) ? true : false;
@@ -55,6 +81,15 @@
 
 				function getItens() {
 					return itens;
+				}
+
+				
+				function checkProposta() {
+					return isProposta;
+				}
+
+				function checkRenovacao() {
+					return isRenovacao;
 				}
 
 				function getValorTotal() {
@@ -245,6 +280,30 @@
 							if ((item.isSetup || item.isAltoQi) && item.ecm_produto) {
 								item.precoParcelado = $filter('currency')(item.ecm_produto.valor_parcelado, 'R$');
 								item.parcelas = item.ecm_produto.parcelas;
+							}
+
+							if (item.isAltoQi && item.ecm_carrinho_item_ecm_produto_aplicacao) {
+								
+								if(item.isEberick){
+									item.modulos = [];
+								}
+
+								if(item.isQibuilder){
+									item.apps = [];
+								}
+
+								item.ecm_carrinho_item_ecm_produto_aplicacao.map(function (iApp) {
+									if(iApp.ecm_produto_ecm_aplicacao && iApp.ecm_produto_ecm_aplicacao.ecm_produto_aplicacao){
+										if(item.isEberick && iApp.ecm_produto_ecm_aplicacao.ecm_produto_aplicacao.tecnologia == 'MODULO'){
+											item.modulos.push(iApp.ecm_produto_ecm_aplicacao.ecm_produto_aplicacao);
+										}
+
+										if(item.isQibuilder && iApp.ecm_produto_ecm_aplicacao.ecm_produto_id != item.ecm_produto_id){
+											item.apps.push(iApp.ecm_produto_ecm_aplicacao.ecm_produto_aplicacao);
+										}
+									}
+
+								});
 							}
 
 							if (item.ecm_promocao) {
@@ -571,10 +630,12 @@
 					hasTrilha: getTrilha,
 					showContract: showContract,
 					getProposta: getProposta,
-					isProposta: isProposta,
+					checkProposta: checkProposta,
+					checkRenovacao : checkRenovacao,
 					getTransacao: getTransacao,
 					validCupom: validCupom,
-					getCupom: getCupom
+					getCupom: getCupom, 
+					load : load
 				};
 
 				return sdo;

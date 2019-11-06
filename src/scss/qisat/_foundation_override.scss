@@ -29,6 +29,12 @@
 
   &.success {
     background-color: $secondary-color;
+
+    &.altoqi{
+      background-image: linear-gradient(320.7deg, #2481CB 0%, #24DC86 147.75%);
+      border-radius: 50px;
+      padding: 10px 40px;
+    }
   }
 
   &.primary-dark {

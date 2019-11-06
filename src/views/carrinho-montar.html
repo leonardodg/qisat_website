@@ -113,14 +113,39 @@
               <th class="text-center">Quant. Inscrições</th>
               <th class="text-center">Valor unitário</th>
               <th class="text-center">Valor</th>
-              <th>Ãção</th>
+              <th>Ação</th>
             </tr>
           </thead>
           <tbody>
 
             <tr ng-repeat="item in buy.itens track by item.id">
               <td>
-                <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> {{item.nome}}
+                <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> 
+                {{item.nome}}
+
+                <div ng-if="item.isAltoQi && item.isEberick" >
+                  <table class="table-no-border">
+                      <tbody>
+                        <tr ng-repeat="mod in item.modulos" > 
+                          <td>{{mod.descricao}}</td>
+                          <td>{{mod.ativacao}}</td>
+                          <td>{{mod.licenca}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+              <div ng-if="item.isAltoQi && item.isQibuilder" >
+                    <table class="table-no-border">
+                        <tbody>
+                          <tr ng-repeat="app in item.apps" > 
+                            <td>{{app.descricao}}</td>
+                            <td>{{app.ativacao}}</td>
+                            <td>{{app.licenca}}</td>
+                          </tr>
+                        </tbody>
+                    </table>
+              </div>
+              
               </td>
               <td class="muted qtd">
 

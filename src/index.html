@@ -43,7 +43,7 @@
 		<div class="inner-wrap" ng-controller="modalController as modal">
 
 			<!-- |||||||||||||||||||| MENU LATERAL |||||||||||||||||||||||||||| -->
-			<aside class="right-off-canvas-menu">
+			<aside class="right-off-canvas-menu" ng-hide="buy.renovacao">
 				<ul class="off-canvas-list">
 					<li><label>Menu</label></li>
 					<li>
@@ -68,8 +68,8 @@
 
 			<!-- |||||||||||||||||||||||| MENU PRINCIPAL |||||||||||||||||||||||||||| -->
 			<header class="header-main">
-				<div class="header-main__brand"> <a ng-href="/" class="header-main__logo"> QiSat </a> </div>
-				<nav class="header-main__nav">
+				<div class="header-main__brand"> <a ng-href="/" class="header-main__logo" ng-class="{ altoqi : buy.renovacao }" > QiSat </a> </div>
+				<nav class="header-main__nav" ng-hide="buy.renovacao">
 					<ul class="header-main__ul" menu-active>
 						<li class="show-for-large-up header-main__list ">
 							<a class="header-main__item" ng-href="/" analytics-on analytics-event="Home"
@@ -107,8 +107,8 @@
 
 			<!-- |||||||||||||||||||||||| BLOCO CARRINHO  |||||||||||||||||||||||||||| -->
 			<div id="cd-shadow-layer" ng-class="{ actived : buy.showBuy }" ng-click="buy.activeBuy()" analytics-on
-				analytics-event="Carrinho close"></div>
-			<div id="cd-cart" ng-class="{ actived : buy.showBuy }">
+				analytics-event="Carrinho close" ng-hide="buy.renovacao" ></div>
+			<div id="cd-cart" ng-class="{ actived : buy.showBuy }" ng-hide="buy.renovacao">
 				<h2>Itens no carrinho</h2>
 				<ul class="cd-cart-items">
 					<li ng-repeat="item in buy.itens track by item.id">
@@ -142,7 +142,7 @@
 			<div ng-view></div>
 
 			<!-- ########################## FOOTER ########################## -->
-			<footer class="footer-main">
+			<footer class="footer-main" ng-hide="buy.renovacao">
 
 				<div class="footer-primary">
 					<div class="row">

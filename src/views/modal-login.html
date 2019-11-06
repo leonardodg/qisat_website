@@ -26,14 +26,24 @@
 
   <div ng-if="!remember && !loading && !inscricao">
 
-    <h2>Realizar Login</h2>
+
+    <div class="text-center" ng-show="altoqi">
+      <div class="row">
+        <div class="column small-12">
+          <h2>Acessar Conta</h2>
+          <div alt="AltoQi" class="qi-sprite-altoqi"></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 ng-hide="altoqi">Realizar Login</h2>
     <form name="loginForm" id="loginForm" novalidate>
       <input type="text" id="username" name="username" placeholder="Usuário ou Email" ng-model="user.username">
       <input type="password" id="password" name="password" placeholder="Senha" ng-model="user.password"
         ng-keypress="checkIfEnterKeyWasPressed($event, user)">
       <button type="button" ng-click="login(user)" class="expand primary" analytics-on
         analytics-event="login">Entrar</button>
-      <p class="text-center"><a ng-click="clickremember()">Esqueci meus dados de Acesso</a></p>
+      <p class="text-center" ng-hide="altoqi" ><a ng-click="clickremember()">Esqueci meus dados de Acesso</a></p>
 
     </form>
   </div>
@@ -66,6 +76,22 @@
           class="material-icons">keyboard_arrow_right</i> </button>
 
     </form>
+  </div>
+
+  <div class="row" ng-show="!altoqi">
+    <hr>
+    <div class="large-12 columns text-center" ng-click="fnAltoQi()">
+      <span>Conectar-se com a conta</span>
+      <a analytics-on analytics-event="AltoQI Login">
+        <div alt="AltoQi" class="qi-sprite-altoqi"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row" ng-show="altoqi">
+    <div class="large-12 columns text-center">
+      <button name="cancel" class="secondary" ng-click="fnAltoQi()">Voltar</button>
+    </div>
   </div>
 
   <div class="custom-loading" ng-if="loading">

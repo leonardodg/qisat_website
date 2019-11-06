@@ -463,7 +463,98 @@
               }]
 
             }
-          }).when('/curso/online/:cat/:nome', {
+          }).when('/renovacao-licencas-altoqi/pagamento', {
+            templateUrl: '/views/carrinho-renova-pagamento.html',
+            controller: 'pagamentoController as vm',
+            resolve: {
+              Authenticated: ['authService', function (authService) {
+                return authService.Authenticated('/');
+              }],
+              formasPagamentos: ['carrinhoServive', '$location', function (carrinhoServive, $location) {
+                return carrinhoServive.getCarrinho().then(function () {
+
+                  if (carrinhoServive.hasTrilha() == false) {
+                    return carrinhoServive.getFormas()
+                      .then(function (formas) {
+                        return formas;
+                      });
+                  } else
+                    $location.path('/');
+                });
+              }],
+
+              data: ['ngMeta', function (ngMeta) {
+                ngMeta.setTitle('Renovação | AltoQi');
+                ngMeta.setTag('robots', 'nofollow, noindex');
+                ngMeta.setTag('description', 'Renovação | AltoQi');
+                ngMeta.setTag('keys', 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico');
+                ngMeta.setTag('url', 'https://www.qisat.com.br/renovacao-licencas-altoqi');
+              }]
+
+            }
+          })
+          
+          .when('/renovacao-licencas-altoqi/:id', {
+            templateUrl: '/views/carrinho-renova-montar.html',
+            controller: 'montarCarrinhoController as vm',
+            resolve: {
+              carrinho: ['carrinhoServive', '$route', '$controller', '$location',
+                function (carrinhoServive, $route, $controller, $location) {
+                  var modalController = $controller('modalController');
+                  if (!isNaN($route.current.params.id))
+                    return carrinhoServive.getProposta($route.current.params.id)
+                      .then(function (res) {
+                        if (res.sucesso)
+                          return res.carrinho;
+                        else if (res.mensagem) {
+                          if (res.mensagem == 'Renovação Inexistente'){
+                            modalController.alert({ main: { title: 'Número da Renovação Incorreto' }, error: true });
+                          }else{
+                            modalController.alert({ main: { title: res.mensagem }, error: true });
+                          }
+                          $location.path('/');
+                        }
+                      });
+                }],
+
+              data: ['ngMeta', function (ngMeta) {
+                ngMeta.setTitle('Renovação | AltoQi');
+                ngMeta.setTag('robots', 'nofollow, noindex');
+                ngMeta.setTag('description', 'Renovação AltoQi');
+                ngMeta.setTag('keys', 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico');
+                ngMeta.setTag('url', 'https://www.qisat.com.br/renovacao-licencas-altoqi');
+              }]
+            }
+          }).when('/renovacao-licencas-altoqi/confirmacao/:id', {
+            templateUrl: '/views/carrinho-renova-confirmacao.html',
+            controller: 'confirmacaoController as vm',
+            resolve: {
+              Authenticated: ['authService', function (authService) {
+                return authService.Authenticated('/');
+              }],
+              venda: ['carrinhoServive', '$route',
+                function (carrinhoServive, $route) {
+                  if (carrinhoServive.checkCarrinho())
+                    return carrinhoServive.getVenda($route.current.params.id)
+                      .then(function (res) {
+                        if (res.sucesso)
+                          return res.venda;
+                      });
+                  else
+                    return false;
+                }],
+
+              data: ['ngMeta', function (ngMeta) {
+                ngMeta.setTitle('Renovação | AltoQi');
+                ngMeta.setTag('robots', 'nofollow, noindex');
+                ngMeta.setTag('description', 'Renovação | AltoQi');
+                ngMeta.setTag('keys', 'qisat, curso eberick, curso eberick preço, preço eberick, curso online eberick, curso de projeto, curso alvenaria estrutural, curso incendio, curso projeto eletrico');
+                ngMeta.setTag('url', 'https://www.qisat.com.br/renovacao-licencas-altoqi');
+              }]
+
+            }
+          })
+          .when('/curso/online/:cat/:nome', {
             templateUrl: '/views/info.html',
             controller: 'infoController as vm',
             resolve: {
@@ -766,14 +857,19 @@
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');
 
-      }]).run(['$rootScope', '$location', 'Config', '$analytics', 'ngMeta',
-        function ($rootScope, $location, Config, $analytics, ngMeta) {
+      }]).run(['$rootScope', '$location', 'Config', '$analytics', 'ngMeta', 'carrinhoServive', 'authService', 
+        function ($rootScope, $location, Config, $analytics, ngMeta, carrinhoServive, authService) {
           ngMeta.init();
 
           $rootScope.$on('$locationChangeSuccess', function () {
+
             if (Config.environment == 'production') {
               $analytics.pageTrack($location.path());
             }
+
+            carrinhoServive.load();
+            authService.load();
+
           });
         }]);
 })();

@@ -1,0 +1,61 @@
+<main class="content-main">
+
+	<header class="hero-pages hero-pages__altoqi">
+		<div class="row">
+			<div class="medium-12 columns">
+				<h1 class="hero-pages__title altoqi">Confira o status do seu pedido</h1>
+			</div> <!-- //large-12-->
+		</div> <!-- ///row -->
+	</header>
+
+	<div class="row">
+		<div class="large-3 columns">
+			<div class="widget_content" menu-carrinho-active>
+				<div class="wizard">
+					<div class="v-line"></div>
+					<div class="step step1">
+						<span>Carrinho</span>
+					</div>
+					<div class="step step2">
+						<span>Pagamento</span>
+					</div>
+					<div class="step step3">
+						<span>Confirmação de compra</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="large-9 columns">
+			<div class="widget_content">
+				<p class="title">Status da compra</p>
+
+				<div class="row pag-confirm">
+					<div class="large-1 columns">
+						<i class="material-icons">launch</i>
+					</div>
+
+					<div class="small-12 large-11 columns">
+
+						<div ng-if="vm.venda">
+							<span ng-if="vm.pagamento=='boleto'"> <strong>Compra realizada com sucesso!</strong></span>
+							<br />
+							<span ng-if="vm.pagamento=='cartao'"> <strong>Compra realizada com sucesso!</strong></span><br />
+
+							<span> Numero da Venda: <strong>{{vm.venda}}</strong> </span><br /><br />
+
+							<span>
+								Continue contando conosco para ajudar você neste mercado tão desafiador e gratificante da construção civil.<br /><br />
+								Em breve, nossa equipe comercial entrará em contato para confirmar seus dados de compra e garantir que a sua escolha foi a melhor solução.<br /><br />
+								Durante esse contato é possível tirar possíveis dúvidas e agendar a data de início do curso, caso você tenha adquirido esse produto.<br /><br />
+
+								<strong>Telefone:</strong> (48) 3239-7000 / (11) 2666-4920 <br />
+								<strong>E-mail:</strong> store@altoqi.com.br <br />
+							</span><br />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

@@ -7,7 +7,7 @@
 
 			var authToken, authUser, persistent, checkAuth = false, redirect, reset, load;
 
-			(load = function (window) {
+			(load = function () {
 				var token, user;
 
 				user = window.localStorage.getItem('user') || window.sessionStorage.getItem('user');
@@ -20,7 +20,7 @@
 					reset();
 
 				redirect = window.localStorage.getItem('redirect');
-			}).call(this, window);
+			}).call(this);
 
 			function objectToQuerystring(obj) {
 				return Object.keys(obj).reduce(function (str, key, i) {

@@ -55,9 +55,17 @@ $qi-sprite: sprite-map("qi-sprite/**/*.png", $layout: smart);
     @include qi-sprite-sprite-dimensions(brand_qisat_small);
     background: sprite($qi-sprite, brand_qisat_small);
 
+    &.altoqi {
+        background: sprite($qi-sprite, altoqi_qisat);
+    }
+
     @media only screen and (min-width: 64.063em) {
         @include qi-sprite-sprite-dimensions(brand_qisat_large);
         background: sprite($qi-sprite, brand_qisat_large);
+
+        &.altoqi {
+            background: sprite($qi-sprite, altoqi_qisat);
+        }
     }
 }
 

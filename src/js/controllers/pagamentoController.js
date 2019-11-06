@@ -2,11 +2,13 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('pagamentoController', ['$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$controller', 'carrinhoServive', 'formasPagamentos', 'Authenticated',
-			function (scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated) {
+		.controller('pagamentoController', ['__env', '$scope', '$location', 'authService', '$modal', '$timeout', '$window', '$controller', 'carrinhoServive', 'formasPagamentos', 'Authenticated',
+			function (env, scope, $location, authService, $modal, $timeout, $window, $controller, carrinhoServive, formasPagamentos, Authenticated) {
 
 				var modalController = $controller('modalController');
 				var vm = this;
+
+				vm.environment = env.environment;
 
 				vm.anoVencimento = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
 				vm.mesVencimento = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -48,12 +50,37 @@
 					vm.error = false;
 				}
 
+				vm.classOperadora = function(op) {
+
+					var opEnable = ['Visa','MasterCard','American Express','Diners Club','Discover','JCB','Elo'];
+					var notvalid = opEnable.find(function(el){ return op == el });
+
+					return {
+							'card-number': !op, 
+							'visa': (op == 'Visa'),
+							'master-card': (op == 'MasterCard'),
+							'american-express' : (op =='American Express'),
+							'dinners-club' : (op =='Diners Club'),
+							'discover' : (op == 'Discover'),
+							'jcb' : (op =='JCB'),
+							'elo' : (op =='Elo'),
+							'card-notvalid': (notvalid) ? false : true
+						 }
+				}
+
 				if (Authenticated) {
 
 					vm.user = authService.getUser();
 					if (vm.user && (!vm.user.email || !vm.user.numero)) {
-						modalController.update('/carrinho/pagamento');
-						$location.path('/carrinho/');
+
+						if(carrinhoServive.checkRenovacao()){
+							modalController.update('/renovacao-licencas-altoqi/pagamento');
+							$location.path('/renovacao-licencas-altoqi/');
+						}else{
+							modalController.update('/carrinho/pagamento');
+							$location.path('/carrinho/');
+						}
+						
 					}
 
 					vm.modalContrato = function (tipo) {
@@ -169,7 +196,11 @@
 												if (res.sucesso) {
 													vm.loading = false;
 													if (res.venda && (tipoPagamento.tipo == 'cartao_recorrencia' || tipoPagamento.tipo == 'boleto' || tipoPagamento.dataname == 'api')) {
-														$location.path('/carrinho/confirmacao/' + res.venda);
+														if(carrinhoServive.checkRenovacao()){
+															$location.path('/renovacao-licencas-altoqi/confirmacao/' + res.venda);
+														}else{
+															$location.path('/carrinho/confirmacao/' + res.venda);
+														}
 													} else if (res.url) {
 														vm.redirect = res.url;
 

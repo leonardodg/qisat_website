@@ -9,6 +9,11 @@
 				var vm = this;
 				var modalController = $controller('modalController');
 				var itens = carrinhoServive.getItens(), products = [];
+				var urlNext = '/carrinho/pagamento';
+
+				if (carrinhoServive.checkRenovacao()){
+					urlNext = '/renovacao-licencas-altoqi/pagamento';
+				}
 
 				vm.modallogin = modalController.login;
 
@@ -37,7 +42,7 @@
 
 					dataLayer.push({
 						'event': 'ecommerce.checkout',
-						'channel': carrinhoServive.isProposta ? 'comercial' : 'self-service',                      // self-service ou comercial
+						'channel': carrinhoServive.isProposta ? 'comercial' : 'self-service', // self-service ou comercial
 						'ecommerce': {
 							'checkout': {
 								'products': products
@@ -52,21 +57,21 @@
 					function callback() {
 						var user = authService.getUser();
 						if (user && (!user.email || !user.numero))
-							modalController.update('/carrinho/pagamento');
+							modalController.update(urlNext);
 						else
-							$location.path('/carrinho/pagamento');
+							$location.path(urlNext);
 					}
 
 					if (auth === true) {
 						callback();
 					} else if (auth === false) {
-						modalController.login('/carrinho/pagamento', false, callback);
+						modalController.login(urlNext, false, callback);
 					} else {
 						auth.then(function (res) {
 							if (res === true) {
 								callback();
 							} else {
-								modalController.login('/carrinho/pagamento', false, callback);
+								modalController.login(urlNext, false, callback);
 							}
 						});
 					}

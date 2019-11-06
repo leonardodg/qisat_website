@@ -2,6 +2,21 @@ body.cart-page {
   background-color: #fff;
 }
 
+ 
+.table-no-border {
+  border: 0;
+  background: transparent;
+
+  @media only screen and (max-width: 1025px) { 
+    display: none;
+  }
+
+}
+
+table.table-no-border tr.even, table tr.alt, table tr:nth-of-type(even) {
+  background: transparent;
+}
+
 #cd-cart {
 
 	   box-shadow: 0 0px 4px 4px rgba(0, 0, 0, 0.37) !important;
@@ -268,7 +283,6 @@ body.cart-page {
       padding: 15px;
       background-color: #eee;
     }
- 
 
 .table-cart {
   border: 0;
@@ -288,6 +302,7 @@ body.cart-page {
 
   .qtd {
     min-width: 150px;
+    text-align: center;
   }
 
   .oldPrice {
@@ -332,6 +347,7 @@ body.cart-page {
 
   .muted {
     color: #999;
+    text-align: center;
   }
 
   thead th {
@@ -340,6 +356,11 @@ body.cart-page {
     color: #b0c2c8;
     background-color: #003350;
     text-transform: uppercase;
+
+    &.altoqi {
+      color: #363F44;
+      background-color: #E6EEF0;
+    }
   }
   td, td {
     padding: 1rem;
@@ -392,15 +413,18 @@ body.cart-page {
 
     tr:not(:nth-last-of-type(2)){
       td:nth-of-type(1) { width : 100%; }
-      td:nth-of-type(2) { width : 100%; height : 50px; padding-top: 5px;}
+      td:nth-of-type(2) { width : 100%; height : 50px; padding-top: 15px; 
+      div {  margin-left: 50px;
+
+      } }
       td:nth-of-type(3) { width : 100%; }
       td:nth-of-type(4) { width : 100%; }
 
 
       td:nth-of-type(1):before { content: "Produto"; }
-      td:nth-of-type(2):before { content: "Qtd."; }
-      td:nth-of-type(3):before { content: "Valor Unt."; }
-      td:nth-of-type(4):before { content: "Valor"; }
+      td:nth-of-type(2):before { content: "Quantidade"; text-align: left; padding-left: 10px;}
+      td:nth-of-type(3):before { content: "Valor Unt."; text-align: left; padding-left: 10px;}
+      td:nth-of-type(4):before { content: "Valor"; text-align: left; padding-left: 10px;}
       td:nth-of-type(5) { display : none; }
     }
 
@@ -786,26 +810,29 @@ $progress-indicator-width: 100%;
 
 #trilhaForm, #pagamentoForm{
     #card-number {
-
         input, select{
                 background-color: #fff;
                 border: 1px solid #e5e5e5;
                 color: #333;
         }
+    }
 
+    input#card-number {
+      padding-left: 15px;
     }
 
     .img-operadora{
       background-size: cover;
-      max-width: 50px;
-      max-height: 30px;
+      max-width: 60px;
+      max-height: 35px;
     }
 
     .img-cards {
       @extend .qi-sprite-no-card;
+      max-width: 60px;
+      max-height: 35px;
 
       &.visa {
-        margin: 10px 5px;
         @extend .qi-sprite-visa;
       }
 
@@ -813,9 +840,20 @@ $progress-indicator-width: 100%;
         @extend .qi-sprite-visa-electron;
       }
 
+      &.american-express {
+        @extend .qi-sprite-american-express;
+      }
+      &.dinners-club {
+        @extend .qi-sprite-dinners-club;
+      }
+      &.discover {
+        @extend .qi-sprite-discover;
+      }
+      &.jcb {
+        @extend .qi-sprite-jcb;
+      }
 
       &.master-card {
-        margin: 5px;
         @extend .qi-sprite-mastercard;
       }
 

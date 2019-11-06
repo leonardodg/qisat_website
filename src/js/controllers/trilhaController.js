@@ -69,6 +69,24 @@
 					vm.error = false;
 				};
 
+				vm.classOperadora = function(op) {
+
+					var opEnable = ['Visa','MasterCard','American Express','Diners Club','Discover','JCB','Elo'];
+					var notvalid = opEnable.find(function(el){ return op == el });
+
+					return {
+							'card-number': !op, 
+							'visa': (op == 'Visa'),
+							'master-card': (op == 'MasterCard'),
+							'american-express' : (op =='American Express'),
+							'dinners-club' : (op =='Diners Club'),
+							'discover' : (op == 'Discover'),
+							'jcb' : (op =='JCB'),
+							'elo' : (op =='Elo'),
+							'card-notvalid': (notvalid) ? false : true
+						 }
+				}
+
 				vm.modalContratoLab = function (fase) {
 					vm.user = authService.getUser();
 					var contactLab = (fase == 2) ? 55 : 54; // id tipo produto do LAB I e LAB II;

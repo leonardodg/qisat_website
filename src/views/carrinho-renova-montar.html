@@ -1,0 +1,135 @@
+<main class="content-main">
+
+  <header class="hero-pages hero-pages__altoqi">
+    <div class="row">
+      <div class="medium-12 columns">
+        <h1 class="hero-pages__title altoqi">Licenças disponíveis para renovação</h1>
+      </div> <!-- //large-12-->
+    </div> <!-- ///row -->
+  </header>
+
+  <div class="row">
+    <div class="large-3 columns">
+      <div class="widget_content" menu-carrinho-active>
+        <div class="wizard">
+          <div class="v-line"></div>
+          <div class="step step1">
+            <span>Carrinho</span>
+          </div>
+          <div class="step step2">
+            <span>Pagamento</span>
+          </div>
+          <div class="step step3">
+            <span>Confirmação de compra</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-9 columns">
+
+      <div class="widget_content no-padding carrinho" ng-if="buy.qtdItens||(!buy.hasTrilha&&!buy.qtdItens)">
+        <table width="100%" class="table-cart tableResponsive">
+          <thead>
+            <tr>
+              <th class="altoqi">Produto</th>
+              <th class="text-center altoqi">Quantidade</th>
+              <th class="text-center altoqi">Valor unitário</th>
+              <th class="text-center altoqi">Valor</th>
+              <th class="altoqi" ></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr ng-repeat="item in buy.itens track by item.id">
+              <td>
+                <span ng-show="item.modalidade"> 
+                  <div ng-if="item.isAltoQi" >
+                      Renovação:
+                  </div> 
+                  <div ng-if="!item.isAltoQi" >
+                      {{item.modalidade}}:&nbsp
+                  </div> 
+                </span> {{item.nome}}
+
+                <div ng-if="item.isAltoQi && item.isEberick" >
+                    <table class="table-no-border">
+                        <tbody>
+                          <tr ng-repeat="mod in item.modulos" > 
+                            <td>{{mod.descricao}}</td>
+                            <td>{{mod.ativacao}}</td>
+                            <td>{{mod.licenca}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div ng-if="item.isAltoQi && item.isQibuilder" >
+                      <table class="table-no-border">
+                          <tbody>
+                            <tr ng-repeat="app in item.apps" > 
+                              <td>{{app.descricao}}</td>
+                              <td>{{app.ativacao}}</td>
+                              <td>{{app.licenca}}</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                </div>
+
+              </td>
+              <td class="muted qtd">
+
+                  <input type="hidden" name="qtd" class="quantity"
+                    value="{{item.quantidade}}">
+
+                    {{item.quantidade}}
+
+              </td>
+              <td class="muted">
+                <div ng-if="!item.ecm_promocao && !item.ecm_cupom">
+                  <span class="muted">{{item.valorFormat}}</span>
+                </div>
+                <div ng-if="item.ecm_promocao || item.ecm_cupom">
+                  <span class="oldPrice">{{item.valorFormat}}</span>
+                  <span class="discount" ng-show="item.valorPromocao">Desconto promocional
+                    -{{item.valorPromocaoFormat}}</span>
+                  <span class="discount" ng-show="item.valorCupom">Desconto Cupom -{{item.valorCupomFormat}}</span>
+                  <span class="newPrice">por {{item.precoFormat}}</span>
+                </div>
+              </td>
+              <td class="muted">{{item.totalFormat}}</td>
+              <td width="5%" class="muted text-center">
+              </td>
+            </tr>
+            <tr ng-if="buy.qtdItens" class="rowTotal">
+              <td class="text-right" colspan="3"> <strong> Total da Compra:</strong></td>
+              <td class="text-center"><strong>{{buy.totalCarrinho}}</strong></td>
+              <td colspan="3">
+              </td>
+            </tr>
+
+            <tr ng-if="!buy.qtdItens && !buy.loading && !buy.hasTrilha" ng-cloak>
+              <td colspan="5" class="text-center"> <strong>Nenhum item no carrinho.</strong></td>
+            </tr>
+
+            <tr ng-show="buy.loading">
+              <td colspan="5" class="text-center">
+                <div class="custom-loading">
+                  <i class="material-icons">hdr_weak</i>
+                  <span class="text">Atualizando</span>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="column  small-6 small-offset-6 ">
+          <a class="button success right altoqi" ng-click="vm.nextCompra()" ng-hide="!buy.qtdItens" analytics-on
+            analytics-event="carrinho avanca">Avançar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -44,7 +44,32 @@
 
               <tr ng-repeat="item in buy.itens track by item.id">
                 <td>
-                  <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> {{item.nome}}
+                  <span ng-show="item.modalidade"> {{item.modalidade}}:&nbsp</span> 
+                  {{item.nome}}
+
+                  <div ng-if="item.isAltoQi && item.isEberick" >
+                      <table class="table-no-border">
+                          <tbody>
+                            <tr ng-repeat="mod in item.modulos" > 
+                              <td>{{mod.descricao}}</td>
+                              <td>{{mod.ativacao}}</td>
+                              <td>{{mod.licenca}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                  <div ng-if="item.isAltoQi && item.isQibuilder" >
+                        <table class="table-no-border">
+                            <tbody>
+                              <tr ng-repeat="app in item.apps" > 
+                                <td>{{app.descricao}}</td>
+                                <td>{{app.ativacao}}</td>
+                                <td>{{app.licenca}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                  </div>
+
                 </td>
                 <td class="muted qtd">
                   <span class="newPrice">{{item.quantidade}}</span>
@@ -86,8 +111,8 @@
                   <a ng-click="vm.modalContrato()">Eu aceito termos do CONTRATO ON-LINE DE PRESTAÇÃO DE SERVIÇOS</a>
 
                   <div ng-show="vm.submitted && pagamentoForm.contratoOnline.$invalid">
-                    <span class="error" ng-show="pagamentoForm.contratoOnline.$error.required">Favor ler e aceitar o
-                      Contrato Online.</span>
+                    <span class="error" ng-show="pagamentoForm.contratoOnline.$error.required">Ler e aceitar o
+                      Contrato Online</span>
                   </div>
                 </label>
               </td>
@@ -102,8 +127,8 @@
                   <a ng-click="vm.modalContrato(56)">Eu aceito termos do CONTRATO DOS PRODUTO EBERICK</a>
 
                   <div ng-show="vm.submitted && pagamentoForm.contratoEberick.$invalid">
-                    <span class="error" ng-show="pagamentoForm.contratoEberick.$error.required">Favor ler e aceitar o
-                      Contrato AltoQi.</span>
+                    <span class="error" ng-show="pagamentoForm.contratoEberick.$error.required">Ler e aceitar o
+                      Contrato AltoQi</span>
                   </div>
                 </label>
               </td>
@@ -118,8 +143,8 @@
                   <a ng-click="vm.modalContrato(57)">Eu aceito termos do CONTRATO DOS PRODUTO QIBUILDER</a>
 
                   <div ng-show="vm.submitted && pagamentoForm.contratoQiBuilder.$invalid">
-                    <span class="error" ng-show="pagamentoForm.contratoQiBuilder.$error.required">Favor ler e aceitar o
-                      Contrato AltoQi.</span>
+                    <span class="error" ng-show="pagamentoForm.contratoQiBuilder.$error.required">Ler e aceitar o
+                      Contrato AltoQi</span>
                   </div>
                 </label>
               </td>
@@ -145,7 +170,7 @@
 
                 <div class="row">
                   <div ng-show="vm.submitted && !vm.pagamento" class="medium-12 small-12 columns">
-                    <span class="error">Selecione a Forma de Pagamento!</span>
+                    <span class="error">Selecione a Forma de Pagamento</span>
                   </div>
                 </div>
 
@@ -162,7 +187,7 @@
                 </select>
 
                 <div ng-show="( pagamentoForm.parcelas.$dirty || vm.submitted) && pagamentoForm.parcelas.$invalid">
-                  <span class="error">Numero de Parcelas é obrigatório!</span>
+                  <span class="error">Número de Parcelas é obrigatório</span>
                 </div>
               </td>
             </tr>
@@ -178,7 +203,7 @@
                       ng-model="vm.cartao.nome" ng-required="true">
 
                     <div ng-show="( pagamentoForm.nome.$dirty || vm.submitted) && pagamentoForm.nome.$invalid">
-                      <span class="error">Nome obrigatório!</span>
+                      <span class="error">Nome obrigatório</span>
                     </div>
 
                   </div>
@@ -187,22 +212,24 @@
 
                   <div class="small-1 columns">
                     <span class="prefix">
-                      <div class="img-cards" ng-class="{ 'card-number': ! pagamentoForm.ccNumber.$ccType, 'master-card': pagamentoForm.ccNumber.$ccType == 'MasterCard', 'visa': pagamentoForm.ccNumber.$ccType == 'Visa',
-                      'card-notvalid': ( pagamentoForm.ccNumber.$ccType && pagamentoForm.ccNumber.$ccType != 'Visa' && 
-                      pagamentoForm.ccNumber.$ccType != 'MasterCard' ) }"></div>
+                      <div class="img-cards" ng-class="vm.classOperadora(pagamentoForm.ccNumber.$ccType)" ></div>
                     </span>
                   </div>
 
                   <div class="large-11 columns">
-                    <!-- -->
-                    <input type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card"
-                      placeholder="Número do cartão" maxlength="16" cc-number cc-type="cardType" name="ccNumber"
-                      ng-model="vm.cartao.numero" ng-required="true" onselectstart="return false"
-                      onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false"
-                      onDrop="return false" autocomplete=off>
+
+                    <input ng-if="env.environment=='production'" type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card"
+                    placeholder="Número do cartão" maxlength="16" cc-number cc-type="cardType" name="ccNumber"
+                    ng-model="vm.cartao.numero" ng-required="true" onselectstart="return false"
+                    onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false"
+                    onDrop="return false" autocomplete=off  >
+
+                  <input ng-esle type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card"
+                    placeholder="Número do cartão" maxlength="16" cc-number cc-type="cardType" name="ccNumber"
+                    ng-model="vm.cartao.numero" ng-required="true" >
 
                     <div ng-show="(pagamentoForm.ccNumber.$dirty || vm.submitted) && pagamentoForm.ccNumber.$invalid">
-                      <span class="error">Numero do cartão obrigatório! </span>
+                      <span class="error">Número do cartão obrigatório </span>
                     </div>
                   </div>
                 </div>
@@ -235,10 +262,10 @@
                     </div>
                   </div>
 
-                  <div class="large-3 columns">
-                    <label for="cod">Código Seguraça
+                  <div class="large-3 columns" ng-if="vm.forma.controller!='FastConnect'">
+                    <label for="cod">Cod. Segurança
                       <input type="tel" inputmode="numeric" pattern="[0-9]*" id="cod" name="cod" placeholder="3 Dígitos"
-                        maxlength="4" ng-model="vm.cartao.codigo" ng-required="true">
+                        maxlength="4" ng-model="vm.cartao.codigo" ng-required="vm.forma.controller!='FastConnect'" >
                     </label>
 
                     <span class="card-cod"></span>

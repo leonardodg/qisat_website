@@ -10,10 +10,6 @@
 				var modalController = $controller('modalController');
 
 				vm.loading = true;
-				if ($location.path().indexOf('/proposta') >= 0)
-					vm.editCarrinho = false;
-				else
-					vm.editCarrinho = true;
 
 				function setValues() {
 					vm.itens = carrinhoServive.getItens();
@@ -135,8 +131,9 @@
 
 					vm.loading = true;
 
-					if (($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >= 0))
+					if (($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >= 0) || ($location.path().indexOf('/renovacao') >= 0) ){
 						vm.showBuy = true;
+					}
 
 					var data = { produto: produto.id };
 					if (qtd && typeof qtd !== 'undefined') data.quantidade = qtd;
@@ -209,6 +206,20 @@
 
 				$rootScope.$watch(function () { return carrinhoServive.getItens(); },
 					function (val) { setValues(); }, true);
+
+				$rootScope.$watch(function () {
+									return carrinhoServive.checkProposta(); 
+									},
+								  function (val) { 
+										vm.editCarrinho = carrinhoServive.checkProposta() ? false :  true;
+									}, true);
+
+				$rootScope.$watch( function () { 
+										return carrinhoServive.checkRenovacao(); 
+									} ,
+									function (val) { 
+										vm.renovacao = carrinhoServive.checkRenovacao();
+									}, true);
 
 			}]);
 })();
