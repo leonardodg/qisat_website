@@ -11,10 +11,16 @@
                             <div class="small-10 columns">
                                 <div class="wrapper-search">
                                     <input class="courses-input-search" type="search"
-                                        placeholder="&#xf002 Procure um curso" ng-model="vm.search"
+                                        placeholder="&#xf002 Procure um curso" ng-model="vm.searchCourse"
                                         typeahead="searchOn as searchOn.title for searchOn in vm.searchIn | filter: { title : $viewValue } | limitTo:8"
-                                        typeahead-on-select="vm.searchOnSelect()">
+                                        typeahead-on-select="vm.searchOnSelect()"
+                                        >
                                 </div>
+                            </div>
+                            <div>
+                                <button class="courses-button-search" type="button" ng-click="vm.clickFilter()">
+                                    <i class="material-icons">search</i>
+                                </button>
                             </div>
                         </div>
                     </form>
