@@ -182,7 +182,7 @@
 								<label for="email">Email <strong title="Campo Obrigatório">*</strong> </label>
 								<input type="text" name="email" id="email" placeholder="Digite Email válido"
 									ng-model="user.email" ng-required="true"
-									ng-disabled="(!confirm) || (confirm && !getEmail)" ng-pattern="emailFormat"
+									ng-disabled="!getEmail" ng-pattern="emailFormat"
 									ng-model-options="{ debounce: 1000 }">
 
 								<div ng-show="(editForm.email.$dirty||submited) && editForm.email.$invalid">
@@ -196,7 +196,7 @@
 
 								<label for="phone">Telefone <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="phone" id="phone" placeholder="Digite Telefone"
-									ng-model="user.phone1" ng-required="true" ng-disabled="!confirm"
+									ng-model="user.phone1" ng-required="true" 
 									ui-br-phone-number-mask>
 
 								<div ng-show="(editForm.phone.$dirty||submited) && editForm.phone.$invalid">
@@ -211,7 +211,7 @@
 								<label for="cpfcnpj">CPF ou CNPJ <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="cpfcnpj" id="cpfcnpj" placeholder="Digite CPF ou CNPJ"
 									ng-model="user.cpfcnpj" ui-br-cpfcnpj-mask ng-required="true"
-									ng-disabled="(!confirm) || (confirm && !getCPF)" model-view-value="true" cpf-check>
+									ng-disabled="!getCPF" model-view-value="true" cpf-check>
 
 								<div ng-show="(editForm.cpfcnpj.$dirty||submited) && editForm.cpfcnpj.$invalid">
 									<span class="error" ng-show="editForm.cpfcnpj.$error.required">CPF/CNPJ é
@@ -229,137 +229,6 @@
 							</div>
 						</div>
 
-
-						<div class="row privacy">
-							<div class="columns small-12 medium-6">
-
-								<p class="title"> Privacidade </p>
-								<p><strong>Autorizo receber e-mails, quando:</strong></p>
-
-								<label for="checkbox1"><input id="checkbox1" type="checkbox"
-										ng-model="user.email_oferta" ng-disabled="!confirm"> Houver ofertas e
-									lançamentos do QiSat.</label>
-
-								<label for="checkbox2"><input id="checkbox2" type="checkbox"
-										ng-model="user.email_andamento" ng-disabled="!confirm"> Forem relacionados ao
-									andamento de meus cursos</label>
-
-								<label for="checkbox3"><input id="checkbox3" type="checkbox"
-										ng-model="user.email_mensagem_privada" ng-disabled="!confirm"> Receber uma
-									mensagem privada em minha conta</label>
-
-								<label for="checkbox4"><input id="checkbox4" type="checkbox"
-										ng-model="user.email_ausente" ng-disabled="!confirm"> Eu ficar muito tempo sem
-									acessar meu curso</label>
-
-								<label for="checkbox5"><input id="checkbox5" type="checkbox"
-										ng-model="user.email_suporte" ng-disabled="!confirm"> Quando o instrutor me
-									responder no suporte</label>
-
-							</div>
-							<div class="columns small-12 medium-6">
-
-								<p class="title"> &nbsp </p>
-
-								<p><strong>Autorizo receber ligações, quando:</strong></p>
-
-								<label for="checkbox6"><input id="checkbox6" type="checkbox"
-										ng-model="user.ligacao_lancamentos" ng-disabled="!confirm"> Houver lançamentos
-									relacionados a cursos que já fiz</label>
-
-
-								<label for="checkbox7"><input id="checkbox7" type="checkbox"
-										ng-model="user.ligacao_pagamento" ng-disabled="!confirm"> Tiver algum pagamento
-									em aberto</label>
-
-								<p><strong>Autorizo receber SMS, quando:</strong></p>
-
-								<label for="checkbox8"><input id="checkbox8" type="checkbox"
-										ng-model="user.sms_informacoes" ng-disabled="!confirm"> Houver informações
-									importantes relacionadas ao meu curso</label>
-
-								<label for="checkbox9"><input id="checkbox9" type="checkbox"
-										ng-model="user.sms_lancamentos" ng-disabled="!confirm"> Houver lançamentos
-									relacionados a cursos que já fiz</label>
-							</div>
-						</div>
-
-						<br>
-
-						<div class="row">
-							<div class="large-12 columns">
-								<p class="title">Conselhos Regionais parceiros</p>
-							</div>
-							<div class="large-4 columns">
-								<label>&nbsp</label>
-								<button type="button" ng-show="user.entidades.length<=1&&confirm" ng-click="addCrea()">
-									Sou Associado +1
-									CREA »</button>
-							</div>
-						</div>
-
-
-						<div class="row privacy">
-							<div class="columns small-12">
-								<span for="creas"> Profissionais registrados em Conselhos Regionais parceiros QiSat
-									possuem
-									benefícios.&nbsp</span>
-								<a ng-click="saibamais()">Saiba mais.</a>
-
-							</div>
-						</div>
-
-
-						<div class="row" ng-repeat="crea in user.entidades | limitTo:2">
-							<div class="large-4 columns">
-								<div class="form-group">
-									<label for="crea">CREA <strong title="Campo Obrigatório"
-											ng-show="crea.selectCrea">*</strong></label>
-									<input type="text" name="{{'crea'+$index}}" id="{{'crea'+$index}}"
-										placeholder="Digite o CREA" ng-model="crea.numero" ng-required="crea.selectCrea"
-										ng-disabled="!confirm">
-
-									<div ng-show="(editForm.crea0.$dirty||submited) && editForm.crea0.$invalid">
-										<span class="error" ng-show="editForm.crea.$error.required">Número do CREA é
-											obrigatório para obter
-											desconto do convênio</span>
-									</div>
-
-									<div ng-show="(editForm.crea1.$dirty||submited) && editForm.crea1.$invalid">
-										<span class="error" ng-show="editForm.crea.$error.required">Número do CREA é
-											obrigatório para obter
-											desconto do convênio</span>
-									</div>
-
-								</div>
-							</div>
-
-							<div class="large-4 columns">
-								<div class="form-group">
-									<label for="complemento"> CREA convêniado </label>
-									<select name="{{'selectCrea'+$index}}" id="{{'selectCrea'+$index}}"
-										ng-model="crea.selectCrea" ng-disabled="!confirm"
-										ng-options="option.host as option.local group by option.groupCrea disable when option.notAnOption for option in statesCREAs track by option.host">
-										<option value=""> Selecione o CREA Associado </option>
-
-									</select>
-								</div>
-							</div>
-
-							<div class="large-4 columns">
-								<div class="form-group"> <label for="crea">Situação: </label>
-									<span ng-class="{ 'success' : crea.adimplente,  'Warning' : !crea.adimplente }"
-										class="label" ng-bind="crea.statusA" ng-show="crea.statusA"></span>
-									&nbsp
-									<span ng-class="{ 'success' : crea.confirmado ,  'Warning' : !crea.confirmado }"
-										class="label" ng-bind="crea.statusC" ng-show="crea.statusC"></span>
-									&nbsp
-									<button type="button" ng-click="removeCrea(crea.id)" ng-show="confirm"
-										title="Remove"> <i class="material-icons">close</i> </button>
-								</div>
-							</div>
-						</div>
-
 						<br>
 
 						<div class="row privacy">
@@ -368,7 +237,7 @@
 
 								<label for="cep">CEP <strong title="Campo Obrigatório">*</strong> </label>
 								<input type="text" name="cep" id="cep" placeholder="Digite CEP" ng-model="endereco.cep"
-									ng-required="true" ng-disabled="!confirm" ng-blur="buscaCEP(endereco.cep)"
+									ng-required="true" ng-blur="buscaCEP(endereco.cep)"
 									ui-br-cep-mask>
 
 								<div ng-show="(editForm.cep.$dirty||submited) && editForm.cep.$invalid">
@@ -382,7 +251,7 @@
 								<label for="selectCountry">País
 									<select name="selectCountry" id="selectCountry" class="selectCountry"
 										ng-options="option.pais for option in country track by option.sigla"
-										ng-model="endereco.selectCountry" ng-disabled="!confirm">
+										ng-model="endereco.selectCountry">
 										<option value=""> Selecione o País </option>
 									</select>
 
@@ -391,14 +260,14 @@
 								<label for="selectStates">Selecione o Estado
 									<select name="selectStates" id="selectStates" class="selectStates"
 										ng-options="option.local for option in states track by option.uf"
-										ng-model="endereco.selectStates" ng-disabled="!confirm">
+										ng-model="endereco.selectStates">
 										<option value=""> Selecione o Estado </option>
 									</select>
 								</label>
 
 								<label for="cidade">Cidade <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="cidade" id="cidade" placeholder="Digite a Cidade"
-									ng-model="endereco.cidade" ng-required="true" ng-disabled="!confirm">
+									ng-model="endereco.cidade" ng-required="true">
 
 								<div ng-show="(editForm.cidade.$dirty||submited) && editForm.cidade.$invalid">
 									<span class="error" ng-show="editForm.cidade.$error.required">Informe a
@@ -407,7 +276,7 @@
 
 								<label for="bairro">Bairro <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="bairro" id="bairro" placeholder="Digite o Bairro"
-									ng-model="endereco.bairro" ng-required="true" ng-disabled="!confirm">
+									ng-model="endereco.bairro" ng-required="true">
 
 								<div ng-show="(editForm.bairro.$dirty||submited) && editForm.bairro.$invalid">
 									<span class="error" ng-show="editForm.bairro.$error.required">Informe o
@@ -416,7 +285,7 @@
 
 								<label for="logradouro">Endereço <strong title="Campo Obrigatório">*</strong></label>
 								<input type="text" name="logradouro" id="logradouro" placeholder="Digite o Endereço"
-									ng-model="endereco.logradouro" ng-required="true" ng-disabled="!confirm">
+									ng-model="endereco.logradouro" ng-required="true">
 
 								<div ng-show="(editForm.logradouro.$dirty||submited) && editForm.logradouro.$invalid">
 									<span class="error" ng-show="editForm.logradouro.$error.required">Informe o
@@ -425,21 +294,70 @@
 
 								<label for="numero">Número</label>
 								<input type="text" name="numero" id="numero" placeholder="Número"
-									ng-model="endereco.numero" ng-disabled="!confirm">
+									ng-model="endereco.numero">
 
 								<label for="complemento">Complemento</label>
 								<input type="text" name="complemento" id="complemento" placeholder="Complemento"
-									ng-model="endereco.complemento" ng-disabled="!confirm">
+									ng-model="endereco.complemento">
 
-								<button id="edit" type="button" ng-click="enableInputs()" ng-show="!confirm"> Alterar
-									Dados »</button>
-								<button id="cancel" type="button" ng-click="cancel()" ng-hide="!confirm"> Cancelar
-								</button>
-								&nbsp
-								<button id="salve" type="button" ng-hide="!confirm" ng-click="update()"> Salvar
-									»</button>
+
+								<div class="row privacy">
+									<div class="columns small-12 medium-6">
+		
+										<p class="title"> Privacidade </p>
+										<p><strong>Autorizo receber e-mails, quando:</strong></p>
+		
+										<label for="checkbox1"><input id="checkbox1" type="checkbox"
+												ng-model="user.email_oferta"> Houver ofertas e
+											lançamentos do QiSat.</label>
+		
+										<label for="checkbox2"><input id="checkbox2" type="checkbox"
+												ng-model="user.email_andamento"> Forem relacionados ao
+											andamento de meus cursos</label>
+		
+										<label for="checkbox3"><input id="checkbox3" type="checkbox"
+												ng-model="user.email_mensagem_privada"> Receber uma
+											mensagem privada em minha conta</label>
+		
+										<label for="checkbox4"><input id="checkbox4" type="checkbox"
+												ng-model="user.email_ausente"> Eu ficar muito tempo sem
+											acessar meu curso</label>
+		
+										<label for="checkbox5"><input id="checkbox5" type="checkbox"
+												ng-model="user.email_suporte"> Quando o instrutor me
+											responder no suporte</label>
+		
+									</div>
+									<div class="columns small-12 medium-6">
+		
+										<p class="title"> &nbsp </p>
+		
+										<p><strong>Autorizo receber ligações, quando:</strong></p>
+		
+										<label for="checkbox6"><input id="checkbox6" type="checkbox"
+												ng-model="user.ligacao_lancamentos"> Houver lançamentos
+											relacionados a cursos que já fiz</label>
+		
+		
+										<label for="checkbox7"><input id="checkbox7" type="checkbox"
+												ng-model="user.ligacao_pagamento"> Tiver algum pagamento
+											em aberto</label>
+		
+										<p><strong>Autorizo receber SMS, quando:</strong></p>
+		
+										<label for="checkbox8"><input id="checkbox8" type="checkbox"
+												ng-model="user.sms_informacoes"> Houver informações
+											importantes relacionadas ao meu curso</label>
+		
+										<label for="checkbox9"><input id="checkbox9" type="checkbox"
+												ng-model="user.sms_lancamentos"> Houver lançamentos
+											relacionados a cursos que já fiz</label>
+									</div>
+								</div>
+		
 								<br>
-								<div class="row" ng-show="checkPassword">
+
+								<div class="row">
 									<div class="large-12 columns">
 										<fieldset>
 											<legend> Confirmar Senha de Acesso </legend>
@@ -463,13 +381,14 @@
 												<div class="large-6 columns">
 													<label>&nbsp</label>
 													<button type="button" id="confirmPassword"
-														ng-click="verifyPassword(checkPassword)"> Confirmar
-														Senha »</button>
+														ng-click="verifyPassword(checkPassword)"> Salvar
+														 »</button>
 												</div>
 											</div>
 										</fieldset>
 									</div>
 								</div>
+
 							</div>
 						</div>
 					</form>

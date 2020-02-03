@@ -2,8 +2,8 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('modalController', ['$modal', '$q', '$controller', '$document', 'authService',
-			function ($modal, $q, $controller, $document, authService) {
+		.controller('modalController', ['$modal', '$q', '$controller', '$document', 'authService', 'carrinhoServive', '$http', 'Config', '$location', 
+			function ($modal, $q, $controller, $document, authService, carrinhoServive, $http, Config, $location) {
 				var vm = this;
 
 				vm.termo = function () {
@@ -36,16 +36,21 @@
 						var modalInstance;
 
 						function callbackTrilha() {
-							modalInstance = $modal.open({
-								templateUrl: '/views/compra-trilha.html',
-								windowClass: 'modalTrilha large',
-								controller: 'trilhaController as trilhaCtr',
-								resolve: {
-									produto: function () {
-										return produto;
+							var items = carrinhoServive.getItens();
+							if(items.length && vm.isPagarme){
+								vm.pagarme();
+							}else{
+								modalInstance = $modal.open({
+									templateUrl: '/views/compra-trilha.html',
+									windowClass: 'modalTrilha large',
+									controller: 'trilhaController as trilhaCtr',
+									resolve: {
+										produto: function () {
+											return produto;
+										}
 									}
-								}
-							});
+								});
+							}
 						}
 
 						var user = authService.getUser();
@@ -184,7 +189,7 @@
 
 					function load() {
 						var deferred = $q.defer();
-
+/* jshint expr: true */
 						window.$zopim || (function (d, s, undefined) {
 
 							var z = window.$zopim = function (c) { z._.push(c) }, $ = z.s =
@@ -198,7 +203,7 @@
 							$.async = !0;
 							$.setAttribute("charset", "utf-8");
 							$.src = "https://v2.zopim.com/?2jhFplrC6wQCc6t1tRCcVV3LZTuli01D";
-							z.t = (function () { return Number(new Date); }).call();
+							z.t = (function () { return Number(new Date()); }).call();
 							$.type = "text/javascript";
 							e.parentNode.insertBefore($, e);
 						}).call(window, typeof window !== "undefined" ? window.document : $document, "script");
@@ -470,10 +475,131 @@
 
 				inscricao = layout espeficico do modal inscricao	  
 
-				*/
+				*/				
+
+				vm.pagarme = function () {
+					// Obs.: é necessário passar os valores boolean como string
+					var installments = document.getElementById("installments");
+					if(installments != null){
+						installments = installments.textContent;
+					}else{
+						installments = vm.maxInstallments;
+					}
+					var dados = {
+						amount: carrinhoServive.getValorTotal() * 100,
+						paymentMethods: 'credit_card',
+						customerData: 'true',
+						maxInstallments: installments ? installments : 1, 
+						items: [],
+					};
+
+					var items = carrinhoServive.getItens();
+					items.forEach(function(item){
+						dados.items.push({
+							id: item.id,
+							title: item.nome,
+							unit_price: item.total * 100,
+							quantity: item.quantidade,
+							tangible: false
+						});
+					});
+
+					var user = authService.getUser();
+					if(user){
+						var phone_numbers = [];
+						if(user.phone1)
+							phone_numbers.push("+" + user.phone1.replace(/[^0-9]/g,''));
+						if(user.phone2)
+							phone_numbers.push("+" + user.phone2.replace(/[^0-9]/g,''));
+						
+						dados.reviewInformations = 'true';
+						dados.customer = {
+							external_id: user.id,
+							name: user.firstname+" "+user.lastname,
+							type: user.tipousuario == "fisico" ? 'individual': 'corporation',
+							country: user.country ? user.country.toLowerCase() : 'br',
+							email: user.email,
+							documents: [
+								{
+									type: 'cpf',
+									number: user.numero.replace(/[^0-9]/g,'')
+								},
+							],
+							phone_numbers: phone_numbers
+						};
+						dados.billing = {
+							name: dados.customer.name,
+							address: {
+								country: dados.customer.country,
+								state: user.endereco.state,
+								city: user.city,
+								neighborhood: user.endereco.district,
+								street: user.endereco.logradouro,
+								street_number: user.endereco.number ? user.endereco.number.toString() : null,
+								zipcode: user.endereco.cep ? user.endereco.cep.replace(/[^0-9]/g,'') : null
+							}
+						};
+					}
+
+					var checkout = new PagarMeCheckout.Checkout({
+						encryption_key: Config.pagarme.encryptKey,
+						success: function(data) {
+							data.amount = carrinhoServive.getValorTotal() * 100;
+
+							var length = 10, charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+							data.password = "";
+							for (var i = 0, n = charset.length; i < length; ++i) {
+								data.password += charset.charAt(Math.floor(Math.random() * n));
+							}
+
+							var promise = {
+								method: 'POST',
+								loading: true,
+								url: Config.url.base + '/forma-pagamento-pagar-me/wsc-forma-pagamento-pagar-me/consulta',
+								data: data,
+								headers: {
+									'Content-Type': 'application/json'
+								},
+								withCredentials: true
+							};
+							if(user){ // IF logado 
+								promise.headers.Authorization = Config.Authorization + " " + authService.getToken();
+							}
+							promise = $http(promise);
+							promise.then(function success(res) {
+								if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
+									if(!authService.isLogged()){
+										var credentials = {
+											username: res.data.retorno.usuario.username,
+											password: data.password
+										};
+										authService.login(credentials);
+									}
+								} else {
+									vm.alert({ error: true, main: { title: "Falha no processamento do Pagamento! Favor, entrar em contato com nossa central de inscrições", subtitle: res.mensagem } });
+								}
+
+								$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+							});
+						},
+						error: function(err) {
+							console.log(err);
+						},
+						close: function() {
+							console.log('The modal has been closed.');
+						}
+					});
+
+					checkout.open(dados);
+				}
+
 				vm.login = function (urlBack, urlNext, callback, inscricao) {
-					var modalInstance = $modal.open({
-						templateUrl: '/views/modal-login.html',
+					var templateUrl = '/views/modal-login.html';
+					if(vm.isPagarme)
+						templateUrl = '/views/modal-login-pagarme.html';
+
+					return $modal.open({
+						templateUrl: templateUrl,
 						controller: ['$scope', '$modalInstance', 'QiSatAPI', 'authService', '$location', 'vcRecaptchaService',
 							function ($scope, $modalInstance, QiSatAPI, authService, $location, vcRecaptchaService) {
 
@@ -494,10 +620,29 @@
 									}
 								};
 
+
+								var items = carrinhoServive.getItens();
+								$scope.trilhas = [];
+								if (items && items.length) {
+									items = items.map(function (item) {
+										if (item.isSetup)
+											$scope.trilhas.push(item);
+										else
+											return item;
+									});
+								}
+								$scope.maxInstallments = vm.maxInstallments;
+								
+								
 								$scope.redirectSignup = function () {
 									authService.setRedirect(urlBack);
 									$modalInstance.close();
-									$location.path('/cadastro');
+
+									if(items.length && vm.isPagarme){
+										vm.pagarme();
+									}else{
+										$location.path('/cadastro');
+									}
 								};
 
 								$scope.signin = function () {
@@ -543,24 +688,30 @@
 										var url;
 										if ((res.status == 200) && (res && res.data && res.data.retorno && res.data.retorno.sucesso)) {
 											$modalInstance.close();
-											url = authService.getRedirect();
-											if (url) {
-												authService.setRedirect();
 
-												if (typeof url == "object") {
-													if ("path" in url)
-														$location.path(url.path);
-													if ("search" in url)
-														$location.search(url.search);
-												} else
-													$location.path(url);
+											if(items.length && vm.isPagarme){
+												vm.pagarme();
+											}else{
+												url = authService.getRedirect();
+												if (url) {
+													authService.setRedirect();
 
-											} else if (urlNext)
-												$location.path(urlNext);
-											else if (typeof callback === "function")
-												callback();
+													if (typeof url == "object") {
+														if ("path" in url)
+															$location.path(url.path);
+														if ("search" in url)
+															$location.search(url.search);
+													} else
+														$location.path(url);
 
-											return res.data.retorno.sucesso;
+												} else if (urlNext)
+													$location.path(urlNext);
+												else if (typeof callback === "function")
+													callback();
+
+												return res.data.retorno.sucesso;
+											}
+											
 										} else if ((res.status == 200) && (res && res.data && res.data.retorno && res.data.retorno.mensagem))
 											$scope.alert = { main: { title: "Falha na Autenticação!", subtitle: res.data.retorno.mensagem } };
 										else {

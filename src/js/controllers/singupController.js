@@ -75,9 +75,9 @@
 							error = true;
 						}
 
-					} else if (scope.etapa == 3) {
+					//} else if (scope.etapa == 3) {
 
-						if (scope.createForm.crea.$valid && !scope.createForm.$error.recaptcha) {
+						if (/*scope.createForm.crea.$valid &&*/ !scope.createForm.$error.recaptcha) {
 							scope.submitted = false;
 							scope.create();
 							return;

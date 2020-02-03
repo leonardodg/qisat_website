@@ -481,15 +481,23 @@
 
 				function getFormas(data) {
 
+					var headers = (authService.isLogged()) ? { 
+						'Content-Type': 'application/json',
+						'Authorization': Config.Authorization + " " + authService.getToken() 
+					} : {
+						'Content-Type': 'application/json',
+					};
+
 					var promise = $http({
 						method: 'POST',
 						loading: true,
 						url: Config.url.base + '/forma-pagamento/wsc-forma-pagamento/formas',
 						data: data,
-						headers: {
+						/*headers: {
 							'Content-Type': 'application/json',
 							'Authorization': Config.Authorization + " " + authService.getToken()
-						},
+						},*/
+						headers: headers,
 						withCredentials: true
 					});
 
@@ -568,15 +576,17 @@
 
 				function getVenda(id) {
 
+					var headers = { 'Content-Type': 'application/json' };
+					if(authService.getToken()){ // IF logado 
+						headers.Authorization = Config.Authorization + " " + authService.getToken();
+					}
+
 					var promise = $http({
 						method: 'POST',
 						loading: true,
 						url: Config.url.base + '/vendas/wsc-minhas-compras/get/' + id,
 						dataType: 'jsonp',
-						headers: {
-							'Content-Type': 'application/json',
-							'Authorization': Config.Authorization + " " + authService.getToken()
-						},
+						headers: headers,
 						withCredentials: true
 					});
 
