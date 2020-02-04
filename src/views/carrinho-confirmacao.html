@@ -44,6 +44,73 @@
 									SUCESSO!</strong></span><br />
 
 							<span> Numero da Venda: <strong>{{vm.venda}}</strong> </span><br /><br />
+							
+							<div ng-if="vm.user.emailFormatado">
+							Seu cadastro foi realizado com as informações utilizadas para a compra.
+<br/>Enviamos sua senha para o e-mail {{vm.user.emailFormatado}}, juntamente com as instruções de acesso à plataforma.
+<br/><br/>
+
+<!--div ng-controller="perfilController">
+<form name="passwordForm" id="passwordForm" autocomplete="off" novalidate>
+
+	<input type="hidden" name="currentPassword" id="currentPassword"
+		placeholder="Digite a sua senha Atual" ng-model="currentPassword"
+		ng-required="true" value="vm.user.password">
+
+	<div
+		ng-show="passwordForm.currentPassword.$dirty && passwordForm.currentPassword.$invalid">
+		<span class="error"
+			ng-show="passwordForm.currentPassword.$error.required">Informe sua Atual
+			Senha!</span>
+	</div>
+	<div class="row">
+	<div class="large-6 columns">
+		<label for="newpassword" data-tooltip aria-haspopup="true" class="has-tip tip-top"
+			title="O campos password deverá possuir no mínimo 6 e no máximo 10 caracteres.">
+			Escolha sua senha </label>
+		<input type="password" name="newpassword" id="newpassword"
+			placeholder=" Digite a nova senha" ng-model="newpassword" ng-required="true"
+			autocomplete="off" ng-minlength="6" ng-maxlength="10">
+
+		<div ng-show="passwordForm.newpassword.$dirty && passwordForm.newpassword.$invalid">
+			<span class="error" ng-show="passwordForm.newpassword.$error.required">Informe a
+				nova Senha!</span>
+
+			<span class="error" ng-show="passwordForm.newpassword.$error.minlength">No
+				mínimo 6
+				caracteres.</span>
+			<span class="error" ng-show="passwordForm.newpassword.$error.maxlength">No
+				máximo 10
+				caracteres.</span>
+
+		</div>
+	</div>
+	<div class="large-6 columns">
+
+		<label for="repassword"> Confirme sua senha </label>
+		<input type="password" name="repassword" id="repassword"
+			placeholder="Confirme a senha nova" ng-model="repassword" ng-required="true"
+			pw-check="newpassword" autocomplete="off">
+
+		<div ng-show="passwordForm.repassword.$dirty && passwordForm.repassword.$invalid">
+			<span class="error" ng-show="passwordForm.repassword.$error.required">Confirme a
+				nova Senha!</span>
+
+			<span class="error" ng-show="passwordForm.repassword.$error.pwmatch">
+				Senhas não correspondem.
+			</span>
+		</div>
+	</div>
+	</div>
+
+	<button type="button" id="editPassword" ng-click="editPassword()"> Criar nova senha </button>
+	&nbsp
+	<a href="/lembrete-de-senha"> Esqueci a minha senha! </a>
+
+</form>
+</!--div-->
+
+							</div>
 
 							<span>
 								Instruções para Cursos:<br /> A equipe QiSat entrará em contato com você por telefone

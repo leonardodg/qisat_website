@@ -3,7 +3,7 @@
 
 	var config = require('./../../../config.json');
 	var environment = (config.environment == 'production') ? config.production : config.development;
-
+	
 	angular
 		.module('QiSatApp')
 		.value("Config", {
@@ -13,6 +13,7 @@
 			url: environment.url,
 			tokens: environment.tokens,
 			google: environment.google,
+			pagarme: environment.pagarme,
 
 			imagens: {
 				classInstrutor: "qi-sprite-instrutor",

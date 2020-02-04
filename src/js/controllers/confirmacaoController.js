@@ -3,15 +3,22 @@
 
 	angular
 		.module('QiSatApp')
-		.controller('confirmacaoController', ['Config', '$window', '$analytics', 'authService', 'carrinhoServive', 'venda', 'Authenticated',
+		.controller('confirmacaoController', ['Config', '$window', '$analytics', 'authService', 'carrinhoServive', 'venda', 'Authenticated', 
 			function (Config, $window, $analytics, authService, carrinhoServive, venda, Authenticated) {
 				var vm = this;
 				var user = authService.getUser();
 				var data_rd;
 				var siglas = [], products = [], coupons = [], promotions = [];
 
-				if (venda && (authService.isLogged() && Authenticated)) {
+				if(user && user.email){
+					var email = user.email.split("@");
+					user.emailFormatado = email[0].substr(0,3) + email[0].substr(3).replace(/./g, '*') + '@' + email[1];
+					vm.user = user;
+				}
+				var carrinho = carrinhoServive.getCarrinho();
 
+				if (venda && (carrinho || (authService.isLogged() && Authenticated))) {
+				
 					if (Config.environment == 'production') {
 
 						$analytics.eventTrack('conversion', {
@@ -97,5 +104,8 @@
 					carrinhoServive.destroyCarrinho();
 				} else
 					vm.pedido = false;
+					
+				if(carrinho && carrinho.status == "Finalizado")
+					carrinhoServive.destroyCarrinho();
 			}]);
 })();

@@ -12,25 +12,15 @@
 						filterLimitName = $filter('limitName'),
 						modalController = $controller('modalController'), vm = this;
 
-					var urlParams = new URLSearchParams(window.location.search);
-					var searchCourse = urlParams.get('fl');
-
 					vm.filters = [];
 					vm.navLinks = [];
 					vm.navFilters = [];
 					vm.states = "Selecione o Estado";
 					vm.loading = true;
 					vm.tipos = dataCoursesFilter;
-					vm.searchCourse = "";
-
-					if(searchCourse !== null)
-						vm.search = vm.searchCourse = searchCourse;
 
 					vm.searchOnSelect = function (search) {
-						var strFilter = vm.searchCourse.title;
-						strFilter = strFilter.substring(strFilter.indexOf(": ")+2);
-						vm.searchCourse = strFilter;
-						vm.clickFilter();
+						$location.path(vm.search.url);
 					}
 
 					QiSatAPI.getCourses().then(function (courses) {
@@ -313,18 +303,6 @@
 							}
 						}
 					});
-
-					vm.clickFilter = function () {
-						var qsParam = vm.searchCourse;
-						vm.search = qsParam;
-
-						if (typeof vm.search == "object")
-							qsParam = vm.search.title;
-
-						var params = new URLSearchParams();
-						params.set('fl', qsParam);
-						window.history.replaceState({}, '', `${location.pathname}?${params}`);
-					}
 
 					vm.myFilter = function (item) {
 						function retira_acentos(palavra) {

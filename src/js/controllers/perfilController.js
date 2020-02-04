@@ -339,7 +339,6 @@
 							scope.showEditPassword = false;
 							return res;
 						}, function (res) { modalController.alert({ error: true, main: { title: "Falha ao atualizar os dados!" } }) });
-
 				}
 
 				scope.verifyPassword = function (password) {
@@ -352,6 +351,7 @@
 							else {
 								scope.checkPassword = false;
 								scope.confirm = true;
+								scope.update();
 							}
 
 							return res;

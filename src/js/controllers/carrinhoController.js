@@ -146,9 +146,9 @@
 
 					vm.loading = true;
 
-					if (($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >= 0) || ($location.path().indexOf('/renovacao') >= 0) ){
+					/*if (($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >= 0) || ($location.path().indexOf('/renovacao') >= 0) ){
 						vm.showBuy = true;
-					}
+					}*/
 
 					var data = { produto: produto.id };
 					if (qtd && typeof qtd !== 'undefined') data.quantidade = qtd;
@@ -156,6 +156,29 @@
 
 					carrinhoServive.addItem(data)
 						.then(function (itens) {
+							carrinhoServive.getFormas().then(function (formas) {
+								if (formas) {
+									formas.forEach(function (forma) { 
+										if(forma.controller == "PagarMe"){
+											modalController.isPagarme = true;
+											modalController.maxInstallments = forma.parcelas.length;
+											var installments = document.getElementById("installments");
+											if(installments)
+												installments.textContent = modalController.maxInstallments;
+											return false;
+										}
+									});
+									if(modalController.isPagarme){ 
+										if(authService.isLogged())
+											modalController.pagarme();
+										else if(document.getElementById("pagarme-checkout-ui") == null)
+											vm.modal = modalController.login();
+									} else if (($location.path() != '/carrinho') || ($location.path().indexOf('/proposta') >= 0) || ($location.path().indexOf('/renovacao') >= 0) ){
+										vm.showBuy = true;
+									}
+								}
+								vm.formasPagamentos = formas;
+							});
 							setValues();
 						});
 				};
@@ -199,7 +222,21 @@
 
 					carrinhoServive.removeItem(data)
 						.then(function (itens) {
+							carrinhoServive.getFormas().then(function (formas) {
+								if (formas) {
+									formas.forEach(function (forma) { 
+										if(forma.controller == "PagarMe"){
+											var installments = document.getElementById("installments");
+											if(installments)
+												installments.textContent = forma.parcelas.length;
+											return false;
+										}
+									});
+								}
+							});
 							setValues();
+							if(!vm.valorTotal)
+								document.getElementById("pagarme-checkout-close-link").click();
 						});
 				};
 

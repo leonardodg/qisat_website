@@ -22,11 +22,6 @@
                 <i class="material-icons" ng-show="etapa!=2">check_box_outline_blank</i>
                 Endereço
               </div>
-              <div class="etapa">
-                <i class="material-icons" ng-show="etapa==3">check_box</i>
-                <i class="material-icons" ng-show="etapa!=3">check_box_outline_blank</i>
-                Concluir cadastro
-              </div>
             </div>
           </div>
         </div>
@@ -239,83 +234,40 @@
                     <input type="text" name="complemento" id="complemento" placeholder="Complemento"
                       ng-model="endereco.complemento">
                   </div>
+                </div>
+              </div>
 
+              <div class="row">
+                <div class="column small-6 small-centered">
+                  <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)"
+                    on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
+
+                  <span class="error" ng-show="createForm.$error.recaptcha&&submitted">Verificação Obrigatória!</span>
+                  <br>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column small-6 small-centered">
+                  <label for="emailoferta">
+                    <input id="emailoferta" type="checkbox" ng-model="cadastro.email_oferta" ng-checked="true"> Desejo
+                    receber ofertas e notícias por email. </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="column small-12">
                   <div class="form-group">
                     <button id="volta1" type="button" ng-click="back()" class="secondary left">voltar</button>
-                    <button id="next2" type="button" ng-click="next()" class="primary right" analytics-on
-                      analytics-event="cadastro2">Próximo »</button>
-
+                    <button id="salve" type="submit" ng-click="next()" class="primary right" analytics-on
+                      analytics-event="cadastro">Cadastrar »</button>
                   </div>
                 </div>
               </div>
 
             </div>
           </div>
-
-          <div ng-show="etapa==3">
-
-            <div class="row">
-              <div class="column small-12">
-                <span for="creas"> Profissionais registrados em Conselhos Regionais parceiros QiSat possuem
-                  benefícios.&nbsp</span>
-                <a ng-click="saibamais()">Saiba mais.</a>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="column small-6">
-                <div class="form-group">
-                  <label for="crea">Número do CREA<strong title="Campo Obrigatório"
-                      ng-show="cadastro.selectCrea">*</strong></label>
-                  <input type="text" name="crea" id="crea" placeholder="Digite o CREA" ng-model="cadastro.numero_crea"
-                    ng-required="cadastro.selectCrea">
-
-                  <div ng-show="(createForm.crea.$dirty || submitted) && createForm.crea.$invalid">
-                    <span class="error" ng-show="createForm.crea.$error.required">Número do CREA é obrigatório para
-                      obter desconto do convênio</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="column small-6">
-                <div class="form-group">
-                  <label for="complemento"> CREA Registrado </label>
-                  <select name="selectCrea" id="selectCrea" ng-model="cadastro.selectCrea"
-                    ng-options="option.host as option.local group by option.groupCrea for option in statesCREAs track by option.host">
-                    <option value=""> Selecione o CREA Associado </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="column small-6 small-centered">
-                <div vc-recaptcha ng-model="gRecaptchaResponse" on-create="setWidgetId(widgetId)"
-                  on-success="setResponse(responseRecaptcha)" on-expire="reloadRecaptcha()"> </div>
-
-                <span class="error" ng-show="createForm.$error.recaptcha&&submitted">Verificarção Obrigatória!</span>
-                <br>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="column small-6 small-centered">
-                <label for="emailoferta">
-                  <input id="emailoferta" type="checkbox" ng-model="cadastro.email_oferta" ng-checked="true"> Desejo
-                  receber ofertas e notícias por email. </label>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="column small-12">
-                <div class="form-group">
-                  <button id="volta2" type="button" ng-click="back()" class="secondary left">voltar</button>
-                  <button id="salve" type="submit" ng-click="next()" class="primary right" analytics-on
-                    analytics-event="cadastro">Cadastrar »</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </form>
     </section>
