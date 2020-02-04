@@ -10,7 +10,7 @@
 
 				vm.environment = env.environment;
 
-				vm.anoVencimento = ['2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
+				vm.anoVencimento = ['2020', '2021', '2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'];
 				vm.mesVencimento = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
 				if (formasPagamentos) {
@@ -37,9 +37,14 @@
 					});
 
 					vm.formasPagamentos = formasPagamentos.reverse();
+
+					if(vm.formasPagamentos.length == 1 && vm.formasPagamentos[0].dataname=='api'){
+						vm.forma = vm.formasPagamentos[0];
+					}
 				}
 
 				vm.selectForma = function (forma, pagamento) {
+					
 					vm.pagamento = pagamento;
 					vm.forma = forma;
 					if (vm.forma && vm.forma.parcelas && vm.forma.parcelas.length) {
@@ -58,9 +63,9 @@
 					return {
 							'card-number': !op, 
 							'visa': (op == 'Visa'),
-							'master-card': (op == 'MasterCard'),
-							'american-express' : (op =='American Express'),
-							'dinners-club' : (op =='Diners Club'),
+							'master': (op == 'MasterCard'),
+							'amex' : (op =='American Express'),
+							'dinners' : (op =='Diners Club'),
 							'discover' : (op == 'Discover'),
 							'jcb' : (op =='JCB'),
 							'elo' : (op =='Elo'),
@@ -166,7 +171,7 @@
 						if (vm.pagamento && (vm.nparcelas || ((vm.forma.tipo == 'boleto' && !vm.nparcelas) || (vm.forma.tipo == 'checkout' && !vm.nparcelas))) && (((vm.contratoOnline === true && carrinhoServive.showContract(2)) || ((vm.contratoOnline === false || typeof vm.contratoOnline == 'undefined') && carrinhoServive.showContract(2) === false)) && ((vm.contratoEberick === true && carrinhoServive.showContract(56)) || ((vm.contratoEberick === false || typeof vm.contratoEberick == 'undefined') && carrinhoServive.showContract(56) === false)) && ((vm.contratoQiBuilder === true && carrinhoServive.showContract(57)) || ((vm.contratoQiBuilder === false || typeof vm.contratoQiBuilder == 'undefined') && carrinhoServive.showContract(57) === false)))) {
 							if (vm.forma.tipo == 'cartao_recorrencia' || vm.forma.dataname == 'api') {
 								if (!vm.cartao || !vm.cartao.nome || !vm.cartao.numero || !vm.cartao.mesSelect || !vm.cartao.anoSelect || ((!vm.contratoOnline && carrinhoServive.showContract(2)) || (!vm.contratoEberick && carrinhoServive.showContract(56)) || (!vm.contratoQiBuilder && carrinhoServive.showContract(57)))) {
-									return;
+									return modalController.alert({ error: true, main: { title: "Verificar campos obrigatórios!" } });
 								} else {
 									data.cartao = vm.cartao;
 								}
@@ -227,6 +232,8 @@
 									vm.loading = false;
 									modalController.alert({ error: true, main: { title: "Falha no sistema de Pagamento!", subtitle: "Entre em contato com a nossa Central de Inscrições - (48) 3332-5000" } });
 								});
+						}else{
+							modalController.alert({ error: true, main: { title: "Verificar campos obrigatórios!" } });
 						}
 					}
 

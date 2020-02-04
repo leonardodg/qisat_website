@@ -7,6 +7,13 @@ body.cart-page {
   border: 0;
   background: transparent;
 
+  tbody {
+    tr {
+      td.altoqi {
+        padding : 0 1em;
+      }
+    }
+  }
   @media only screen and (max-width: 1025px) { 
     display: none;
   }
@@ -246,7 +253,7 @@ table.table-no-border tr.even, table tr.alt, table tr:nth-of-type(even) {
     }
 
     .not-member {
-      margin-top: 30px;
+      margin-top: 10px;
 
       p {
         margin: 0;
@@ -260,7 +267,6 @@ table.table-no-border tr.even, table tr.alt, table tr:nth-of-type(even) {
 
       padding: 15px;
       border-radius: 5px;
-      background-color: #eee;
     }
   }
 }
@@ -281,7 +287,6 @@ table.table-no-border tr.even, table tr.alt, table tr:nth-of-type(even) {
       }
 
       padding: 15px;
-      background-color: #eee;
     }
 
 .table-cart {
@@ -825,6 +830,7 @@ $progress-indicator-width: 100%;
       background-size: cover;
       max-width: 60px;
       max-height: 35px;
+      margin: 2px;
     }
 
     .img-cards {
@@ -840,10 +846,10 @@ $progress-indicator-width: 100%;
         @extend .qi-sprite-visa-electron;
       }
 
-      &.american-express {
+      &.amex {
         @extend .qi-sprite-american-express;
       }
-      &.dinners-club {
+      &.dinners {
         @extend .qi-sprite-dinners-club;
       }
       &.discover {
@@ -853,7 +859,7 @@ $progress-indicator-width: 100%;
         @extend .qi-sprite-jcb;
       }
 
-      &.master-card {
+      &.master {
         @extend .qi-sprite-mastercard;
       }
 

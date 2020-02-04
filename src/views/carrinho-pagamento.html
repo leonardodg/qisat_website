@@ -218,15 +218,14 @@
 
                   <div class="large-11 columns">
 
-                    <input ng-if="env.environment=='production'" type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card"
-                    placeholder="Número do cartão" maxlength="16" cc-number cc-type="cardType" name="ccNumber"
+                    <input ng-if="env.environment=='production'" type="text" id="card-number" class="credit-card"
+                    placeholder="Número do cartão" maxlength="19" cc-number cc-format name="ccNumber"
                     ng-model="vm.cartao.numero" ng-required="true" onselectstart="return false"
                     onpaste="return false;" onCopy="return false" onCut="return false" onDrag="return false"
-                    onDrop="return false" autocomplete=off  >
+                    onDrop="return false" autocomplete=off >
 
-                  <input ng-esle type="tel" inputmode="numeric" pattern="[0-9]*" id="card-number" class="credit-card"
-                    placeholder="Número do cartão" maxlength="16" cc-number cc-type="cardType" name="ccNumber"
-                    ng-model="vm.cartao.numero" ng-required="true" >
+                    <input  ng-esle type="text" class="credit-card" id="cardNumber" maxlength="19"  cc-number cc-format name="ccNumber" ng-model="vm.cartao.numero" 
+                    ng-required="true" placeholder="Número do cartão" ng-model="vm.cartao.numero" ng-required="true">
 
                     <div ng-show="(pagamentoForm.ccNumber.$dirty || vm.submitted) && pagamentoForm.ccNumber.$invalid">
                       <span class="error">Número do cartão obrigatório </span>

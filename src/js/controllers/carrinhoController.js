@@ -14,6 +14,7 @@
 				function setValues() {
 					vm.itens = carrinhoServive.getItens();
 					vm.loading = false;
+					vm.licenca = "";
 					vm.hasTrilha = carrinhoServive.hasTrilha();
 					vm.showContractOnline = carrinhoServive.showContract(2);
 					vm.showContractEberick = carrinhoServive.showContract(56);
@@ -41,8 +42,22 @@
 								return a + b.total;
 							}, 0);
 
-						} else
+						} else{
 							vm.valorTotal = carrinhoServive.getValorTotal();
+
+							if(carrinhoServive.checkRenovacao()){
+								vm.itens.map(function (item) {
+
+									if(item.isEberick && item.modulos.length > 0){
+										item.modulos.find(function (mod) { vm.licenca = mod.licenca }); 
+									}
+	
+									if(item.isQibuilder && item.apps.length > 0 && vm.licenca == "" ){
+										item.apps.find(function (app) { vm.licenca = app.licenca }); 
+									}
+								});
+							}
+						}
 
 
 						vm.qtdItens = vm.itens.reduce(function (a, b) {
