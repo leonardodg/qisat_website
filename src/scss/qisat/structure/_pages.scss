@@ -201,13 +201,20 @@ button.close-button, .close-button {
   .courses-input-search{
       @extend .z-1;
       position: relative; 
-      border-radius: 2px !important;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
       font-size: 1rem !important;
       font-family: 'FontAwesome';
       padding-left: 40px;
       text-indent: 40px;
 
   }
+}
+
+.courses-button-search {
+  padding: 6.5px 10px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 //placeholder
