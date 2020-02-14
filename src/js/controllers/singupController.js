@@ -8,7 +8,7 @@
 
 				var modalController = $controller('modalController');
 				scope.etapa = 1;
-				scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,6}$/;
+        		scope.emailFormat = /^[a-z]+[a-z0-9._]+([\.-]?\w+)*@[a-z\.]+[a-z]{2,6}$/;
 				scope.country = Config.country;
 				scope.states = Config.states;
 				scope.statesCREAs = angular.copy(Config.states);

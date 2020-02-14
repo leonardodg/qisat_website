@@ -12,6 +12,12 @@
 			};
 		})
 
+		.filter("stringify", function (){
+			return function (input) {
+				return JSON.stringify(input,null,'\t');
+			};
+		})
+
 	 	.filter("nameInstructor", function (){
 			return function (input, size) {
 				if(input){
