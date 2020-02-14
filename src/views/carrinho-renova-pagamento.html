@@ -57,7 +57,7 @@
                   </span>
                   {{item.nome}}
                   <div
-                    ng-if="item.isAltoQi && item.isEberick && item.modulos.length > 0"
+                    ng-if="item.isAltoQi && item.isEberick && item.modulos.length == 1"
                   >
                     <table class="table-no-border">
                       <tbody>
@@ -68,7 +68,7 @@
                     </table>
                   </div>
                   <div
-                    ng-if="item.isAltoQi && item.isQibuilder && item.apps.length > 0"
+                    ng-if="item.isAltoQi && item.isQibuilder && item.apps.length == 1"
                   >
                     <table class="table-no-border">
                       <tbody>

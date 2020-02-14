@@ -56,7 +56,7 @@ gulp.task('copy-hub', function (call) {
 
 /**
  * Gerar arquivos INDEX Principal 
- * 	- Em ambiente development verifica e compia arquivo
+ * 	- Em ambiente development verifica e copia arquivo
  * 	- Em ambiente production replace e minifica arquivos
  * 
  * 	Origem ./src/index.html
@@ -229,7 +229,7 @@ gulp.task('watch-img', function () {
  * Observar pasta dos arquivos HTML
  */
 gulp.task('watch-html', function () {
-	return watch(['src/views/**/*.html'], gulp.series('build-html'));
+	return watch(['src/views/**/*.html', 'src/index.html'], gulp.series('build-html'));
 });
 
 /**
