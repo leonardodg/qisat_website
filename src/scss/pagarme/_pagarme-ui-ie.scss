@@ -1,0 +1,32 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	#pagarme-checkout-card-container .card .back {
+        display: none;
+    }
+    #pagarme-checkout-card-container {
+        .card {
+            .front {
+                display: block;
+            }
+            &.flipped {
+                .back {
+                    display: block;
+                }
+                .front {
+                    display: none;
+                }
+                &.amex {
+                    .back {
+                        display: none;
+                    }
+                    .front {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    #pagarme-checkout-card-container .card .front,
+    #pagarme-checkout-card-container .card .back {
+        backface-visibility: visible;
+    }
+}
