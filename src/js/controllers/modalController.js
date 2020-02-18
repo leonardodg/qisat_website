@@ -514,7 +514,7 @@
 						
 						dados.reviewInformations = 'true';
 						dados.customer = {
-							external_id: user.id,
+							external_id: "#"+user.id,
 							name: user.firstname+" "+user.lastname,
 							type: user.tipousuario == "fisico" ? 'individual': 'corporation',
 							country: user.country ? user.country.toLowerCase() : 'br',
@@ -567,19 +567,28 @@
 							}
 							promise = $http(promise);
 							promise.then(function success(res) {
+								var promiseLogin;
 								if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
 									if(!authService.isLogged()){
 										var credentials = {
 											username: res.data.retorno.usuario.username,
 											password: data.password
 										};
-										authService.login(credentials);
+										promiseLogin = authService.login(credentials);
 									}
 								} else {
 									vm.alert({ error: true, main: { title: "Falha no processamento do Pagamento! Favor, entrar em contato com nossa central de inscrições", subtitle: res.mensagem } });
 								}
 
-								$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+								if(promiseLogin){
+									promiseLogin.then(function success(resLogin) {
+										$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+									}, function error(resLogin) {
+										$location.path('/login');
+									});
+								}else{
+									$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+								}
 							});
 						},
 						error: function(err) {
