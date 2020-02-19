@@ -465,18 +465,6 @@
 					});
 				}
 
-				/*
-			
-				urlBack = retornar a página especifica após se cadastrar ou login OK
-							String or Object
-
-				urlNext = proxima página apos realizar login OK
-				callback = chamar function após login OK	
-
-				inscricao = layout espeficico do modal inscricao	  
-
-				*/				
-
 				vm.pagarme = function () {
 					// Obs.: é necessário passar os valores boolean como string
 					var installments = document.getElementById("installments");
@@ -567,7 +555,8 @@
 							}
 							promise = $http(promise);
 							promise.then(function success(res) {
-								var promiseLogin;
+								var promiseLogin, urlNext = '/carrinho/confirmacao/' + res.data.retorno.venda;
+
 								if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
 									if(!authService.isLogged()){
 										var credentials = {
@@ -579,15 +568,21 @@
 								} else {
 									vm.alert({ error: true, main: { title: "Falha no processamento do Pagamento! Favor, entrar em contato com nossa central de inscrições", subtitle: res.mensagem } });
 								}
-
-								if(promiseLogin){
-									promiseLogin.then(function success(resLogin) {
-										$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
-									}, function error(resLogin) {
-										$location.path('/login');
+								
+								if (promiseLogin) {
+									promiseLogin.then(function success(res) {
+										if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
+											$location.path(urlNext);
+										} else {
+											vm.isPagarme = false;
+											vm.login($location.path(), urlNext);
+										}
+									}, function error(res) {
+										vm.isPagarme = false;
+										vm.login($location.path(), urlNext);
 									});
-								}else{
-									$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+								} else {
+									$location.path(urlNext);
 								}
 							});
 						},
@@ -601,6 +596,18 @@
 
 					checkout.open(dados);
 				}
+
+				/*
+			
+				urlBack = retornar a página especifica após se cadastrar ou login OK
+							String or Object
+
+				urlNext = proxima página apos realizar login OK
+				callback = chamar function após login OK	
+
+				inscricao = layout espeficico do modal inscricao	  
+
+				*/
 
 				vm.login = function (urlBack, urlNext, callback, inscricao) {
 					var templateUrl = '/views/modal-login.html';
