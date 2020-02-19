@@ -465,18 +465,6 @@
 					});
 				}
 
-				/*
-			
-				urlBack = retornar a página especifica após se cadastrar ou login OK
-							String or Object
-
-				urlNext = proxima página apos realizar login OK
-				callback = chamar function após login OK	
-
-				inscricao = layout espeficico do modal inscricao	  
-
-				*/				
-
 				vm.pagarme = function () {
 					// Obs.: é necessário passar os valores boolean como string
 					var installments = document.getElementById("installments");
@@ -514,7 +502,7 @@
 						
 						dados.reviewInformations = 'true';
 						dados.customer = {
-							external_id: user.id,
+							external_id: "#"+user.id,
 							name: user.firstname+" "+user.lastname,
 							type: user.tipousuario == "fisico" ? 'individual': 'corporation',
 							country: user.country ? user.country.toLowerCase() : 'br',
@@ -567,19 +555,35 @@
 							}
 							promise = $http(promise);
 							promise.then(function success(res) {
+								var promiseLogin, urlNext = '/carrinho/confirmacao/' + res.data.retorno.venda;
+
 								if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
 									if(!authService.isLogged()){
 										var credentials = {
 											username: res.data.retorno.usuario.username,
 											password: data.password
 										};
-										authService.login(credentials);
+										promiseLogin = authService.login(credentials);
 									}
 								} else {
 									vm.alert({ error: true, main: { title: "Falha no processamento do Pagamento! Favor, entrar em contato com nossa central de inscrições", subtitle: res.mensagem } });
 								}
-
-								$location.path('/carrinho/confirmacao/' + res.data.retorno.venda);
+								
+								if (promiseLogin) {
+									promiseLogin.then(function success(res) {
+										if (res && res.data && res.data.retorno && res.data.retorno.sucesso) {
+											$location.path(urlNext);
+										} else {
+											vm.isPagarme = false;
+											vm.login($location.path(), urlNext);
+										}
+									}, function error(res) {
+										vm.isPagarme = false;
+										vm.login($location.path(), urlNext);
+									});
+								} else {
+									$location.path(urlNext);
+								}
 							});
 						},
 						error: function(err) {
@@ -592,6 +596,18 @@
 
 					checkout.open(dados);
 				}
+
+				/*
+			
+				urlBack = retornar a página especifica após se cadastrar ou login OK
+							String or Object
+
+				urlNext = proxima página apos realizar login OK
+				callback = chamar function após login OK	
+
+				inscricao = layout espeficico do modal inscricao	  
+
+				*/
 
 				vm.login = function (urlBack, urlNext, callback, inscricao) {
 					var templateUrl = '/views/modal-login.html';
