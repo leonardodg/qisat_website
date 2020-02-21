@@ -479,6 +479,7 @@
 						customerData: 'true',
 						maxInstallments: installments ? installments : 1, 
 						items: [],
+						postback_url: Config.url.base + "/forma-pagamento-pagar-me/campainha"
 					};
 
 					var items = carrinhoServive.getItens();
