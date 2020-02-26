@@ -501,5 +501,517 @@
    </g:installment>
    <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
   </item>
+  <item>
+   <title><![CDATA[Curso - Marketing para Engenharia, Arquitetura e Agronomia]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/marketing-para-engenharia-arquitetura-e-agronomia]]></link>
+   <description><![CDATA[O curso objetiva maior qualidade dos serviços prestados por profissionais de engenharia, arquitetura e agronomia, tornando-os mais competitivos no mercado.]]></description>
+   <g:id>3</g:id>
+   <g:condition>new</g:condition>
+   <g:price>200.00 BRL</g:price>
+   <g:sale_price>200.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1486639125/curso_marketing_engenharia_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Pacote - Administração e Marketing para Engenharia e Arquitetura]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/pacote/administracao-e-marketing-para-engenharia-e-arquitetura]]></link>
+   <description><![CDATA[Aqui você aprende sobre o que considerar na hora de cobrar seu serviço, estratégias para impulsionar suas vendas e fechar contratos, noções de marketing e gerenciamento do seu portfólio de serviços. Tudo em um único pacote.]]></description>
+   <g:id>601</g:id>
+   <g:condition>new</g:condition>
+   <g:price>1640.00 BRL</g:price>
+   <g:sale_price>1640.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1576086417/pacote_adminstracao_marketing_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>10</g:months>
+    <g:amount>164.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - NBR 15575 – Desempenho de Edificações Habitacionais – Requisitos Gerais]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/serie/nbr-15575-desempenho-de-edificacoes-habitacionais-requisitos-gerais]]></link>
+   <description><![CDATA[NBR 15.575 - Desempenho das edificações residenciais, as responsabilidades dos envolvidos e métodos para elaboração e execução de um projeto eficiente.]]></description>
+   <g:id>193</g:id>
+   <g:condition>new</g:condition>
+   <g:price>630.00 BRL</g:price>
+   <g:sale_price>630.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_desempenho_edificacoes_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>6</g:months>
+    <g:amount>105.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - Gestão de Projetos em Escritórios de Arquitetura e Construção Civil]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/gestao-de-projetos-em-escritorios]]></link>
+   <description><![CDATA[O curso objetiva contribuir na prática dos profissionais da construção civil incentivando mudanças nos escritórios no que tange a gestão dos seus projetos.]]></description>
+   <g:id>23</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_gestao_projetos_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - Alvenaria Estrutural para Construtoras]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/alvenaria-estrutural-construtoras]]></link>
+   <description><![CDATA[Aprimoramento de técnicas para execução e planejamento em alvenaria estrutural utilizando ferramentas adequadas, parâmetros normativos e aplicação prática.]]></description>
+   <g:id>109</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_alvenaria_estrutural_construtoras1_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - Alvenaria Estrutural para Arquitetos]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/alvenaria-estrutural-arquitetos]]></link>
+   <description><![CDATA[O curso tem como objetivo evidenciar as premissas e as necessidades a serem consideradas para idealizar um bom projeto em alvenaria estrutural.]]></description>
+   <g:id>107</g:id>
+   <g:condition>new</g:condition>
+   <g:price>400.00 BRL</g:price>
+   <g:sale_price>400.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_alvenaria_estrutural_arquitetos_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>4</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - NBR 6118:2014 - Concreto Armado: Parte 1]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/nbr-6118-introducao]]></link>
+   <description><![CDATA[Visão geral sobre os conceitos e princípios da NBR 6118 quanto a aspectos de segurança, estados limites, ações e resistência dos materiais.]]></description>
+   <g:id>140</g:id>
+   <g:condition>new</g:condition>
+   <g:price>400.00 BRL</g:price>
+   <g:sale_price>400.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_norma_regulamentadora_NBR1_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>4</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - NBR 6118:2014 - Concreto Armado: Parte 2]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/nbr-6118-analise-da-estrutura]]></link>
+   <description><![CDATA[Aspectos ligados a Análise das Estruturas e Estabilidade Global. Análise das estruturas de concretos, comportamento dos materiais e modelos de cálculos.]]></description>
+   <g:id>141</g:id>
+   <g:condition>new</g:condition>
+   <g:price>200.00 BRL</g:price>
+   <g:sale_price>200.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_norma_regulamentadora_NBR2_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - NBR 6118:2014 - Concreto Armado: Parte 3]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/nbr-6118-topicos-especiais]]></link>
+   <description><![CDATA[Dimensionamento de vigas, pilares, lajes e tópicos especiais previstos na norma, que tratam de regiões de introdução de cargas concentradas, furos e aberturas.]]></description>
+   <g:id>142</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_norma_regulamentadora_NBR3_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Palestra - Durabilidade das Estruturas de Concreto - Diretrizes Normativas para Projeto, Execução e Controle]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/durabilidade-das-estruturas-concreto]]></link>
+   <description><![CDATA[A palestra promove a conscientização sobre a importância de buscar meios que garantam a qualidade dos projetos e da execução de obras em concreto armado.]]></description>
+   <g:id>10</g:id>
+   <g:condition>new</g:condition>
+   <g:price>70.00 BRL</g:price>
+   <g:sale_price>70.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/palestra_durabilidade_estruturas_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>1</g:months>
+    <g:amount>70.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Lab I Estrutural - Desenvolvimento de Projetos em Concreto Armado]]></title>
+   <link><![CDATA[https://altoqilab.qisat.com.br/programas/desenvolvimento-de-projetos-em-concreto-armado]]></link>
+   <description><![CDATA[Adquira aptidão e sensibilidade estrutural para lançar os primeiros projetos, compreenda aspectos de precificação e contratação adequados e domine os principais recursos Eberick.]]></description>
+   <g:id>309</g:id>
+   <g:condition>new</g:condition>
+   <g:price>8220.00 BRL</g:price>
+   <g:sale_price>8220.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://www.qisat.com.br/images/categorias/altoqi_lab.png]]></g:image_link>
+   <g:installment>
+    <g:months>12</g:months>
+    <g:amount>685.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software Eberick 2019]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/eberick-2019]]></link>
+   <description><![CDATA[O curso proporciona conhecimento sobre o Eberick através da elaboração de um projeto, passo a passo, utilizando as principais ferramentas do sistema.]]></description>
+   <g:id>435</g:id>
+   <g:condition>new</g:condition>
+   <g:price>580.00 BRL</g:price>
+   <g:sale_price>580.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1535034257/curso_eberick_2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>116.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiElétrico 2019]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qieletrico-2019]]></link>
+   <description><![CDATA[O curso proporciona conhecimento sobre os principais recursos do QiElétrico, software para elaboração de projetos elétricos prediais de baixa tensão.]]></description>
+   <g:id>434</g:id>
+   <g:condition>new</g:condition>
+   <g:price>580.00 BRL</g:price>
+   <g:sale_price>580.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1536590481/curso_qibuilder_qieletrico2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>116.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiHidrossanitário 2019]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qihidrossanitario-2019]]></link>
+   <description><![CDATA[O curso proporciona conhecimento sobre os principais recursos do QiHidrossanitário, por meio de um projeto exemplo utilizando suas principais ferramentas.]]></description>
+   <g:id>433</g:id>
+   <g:condition>new</g:condition>
+   <g:price>580.00 BRL</g:price>
+   <g:sale_price>580.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1536589647/curso_qibuilder_qihidrossanitario2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>116.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiIncêndio 2019]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qiincendio-2019]]></link>
+   <description><![CDATA[Apresenta as características da nova plataforma QiBuilder com foco nos recursos do QiIncêndio, proporcionando conhecimento sobre os principais recursos do software.]]></description>
+   <g:id>436</g:id>
+   <g:condition>new</g:condition>
+   <g:price>580.00 BRL</g:price>
+   <g:sale_price>580.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1536590361/curso_qibuilder_qiincendio2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>116.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiEditor de Armaduras 2019]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qibuilder-editor-de-armaduras-2019]]></link>
+   <description><![CDATA[O curso objetiva conhecimento sobre os principais recursos do QiEditor de Armaduras, software para edição e detalhamento de armaduras.]]></description>
+   <g:id>437</g:id>
+   <g:condition>new</g:condition>
+   <g:price>280.00 BRL</g:price>
+   <g:sale_price>280.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1534786087/curso_qibuilder_qieditor_armaduras2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>140.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiBuilder 2019 – Gerenciador de Arquivos]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qibuilder-gerenciador-de-arquivos-2019]]></link>
+   <description><![CDATA[O curso apresenta recursos do Gerenciador de Arquivos, bem como criação e finalização de pranchas, a partir do desenvolvimento de projetos exemplos.]]></description>
+   <g:id>438</g:id>
+   <g:condition>new</g:condition>
+   <g:price>280.00 BRL</g:price>
+   <g:sale_price>280.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1538501299/curso_qibuilder_gerenciador_arquivos2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>140.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Online Software QiBuilder 2019 – CAD]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/qibuilder-cad-2019]]></link>
+   <description><![CDATA[O curso apresenta os principais recursos de CAD do QiBuilder a partir do desenvolvimento de um projeto arquitetônico.]]></description>
+   <g:id>439</g:id>
+   <g:condition>new</g:condition>
+   <g:price>280.00 BRL</g:price>
+   <g:sale_price>280.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/produto/1534785500/curso_qibuilder_cad2019.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>140.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Software Eberick Pré-moldado 2018]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/eberick-pre-moldado]]></link>
+   <description><![CDATA[O curso apresenta características, possibilidades de utilização e procedimentos aplicados na elaboração de projetos estruturais em concreto pré-moldado.]]></description>
+   <g:id>225</g:id>
+   <g:condition>new</g:condition>
+   <g:price>560.00 BRL</g:price>
+   <g:sale_price>560.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_eberick_pre-moldado_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>112.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Software Eberick Pré-moldado 2018]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/eberick-pre-moldado]]></link>
+   <description><![CDATA[O curso apresenta características, possibilidades de utilização e procedimentos aplicados na elaboração de projetos estruturais em concreto pré-moldado.]]></description>
+   <g:id>225</g:id>
+   <g:condition>new</g:condition>
+   <g:price>560.00 BRL</g:price>
+   <g:sale_price>560.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_eberick_pre-moldado_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>112.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Elétricas Residenciais]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-eletricas-residenciais]]></link>
+   <description><![CDATA[O curso proporciona conhecimento técnico necessário para concepção e elaboração do projeto de uma instalação elétrica residencial, amparado na NBR 5410.]]></description>
+   <g:id>24</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_instalacoes_eletricas_residenciais_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Elétricas Prediais, Telefonia e TV]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-eletricas-prediais]]></link>
+   <description><![CDATA[O curso objetiva conhecimento técnico para concepção e elaboração de projetos elétricos, telefônicos e de infraestrutura de televisão, amparado na NBR 5410.]]></description>
+   <g:id>37</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_instalacoes_eletricas_prediais_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Norma Regulamentadora 10]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/nr-10]]></link>
+   <description><![CDATA[O curso fornece informações de segurança que se aplicam às execuções de serviços com eletricidade e suas análises de riscos.]]></description>
+   <g:id>143</g:id>
+   <g:condition>new</g:condition>
+   <g:price>250.00 BRL</g:price>
+   <g:sale_price>250.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_norma_regulamentadora10_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>2</g:months>
+    <g:amount>125.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Sistemas de Cabeamento Estruturado Predial]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/sistemas-cabeamento-estruturado]]></link>
+   <description><![CDATA[O curso proporciona conhecimento técnico necessário para análise, concepção e elaboração de projetos e instalações de redes de cabeamento estruturado.]]></description>
+   <g:id>29</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_sistema_cabeamento_lumine_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Água Fria - Fundamentos]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-fria-fundamentos]]></link>
+   <description><![CDATA[O curso aborda sistemas prediais possíveis de serem adotados e traz conceitos indispensáveis para a correta concepção de um projeto hidráulico de água fria.]]></description>
+   <g:id>7</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_agua_fria_fundamentos_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Águas Pluviais]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-aguas-pluviais]]></link>
+   <description><![CDATA[Critérios e princípios da fundamentação e aplicação em projetos de sistemas prediais de águas pluviais, segundo normas técnicas vigentes da ABNT.]]></description>
+   <g:id>4</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_aguas_pluviais_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Água Fria - Dimensionamento]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-fria-dimensionamento]]></link>
+   <description><![CDATA[O curso apresenta noções técnicas fundamentais de dimensionamento para atuação nas áreas de projetos de sistemas prediais hidráulicos.]]></description>
+   <g:id>8</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_agua_fria_dimensionamentos_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Água Quente - Geração]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-quente-geracao]]></link>
+   <description><![CDATA[O curso apresenta sistemas de geração de água quente possíveis de serem adotados, e traz conceitos indispensáveis para a concepção do projeto.]]></description>
+   <g:id>11</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_agua_quente_geracao_online2.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Água Quente - Distribuição]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-agua-quente-distribuicao]]></link>
+   <description><![CDATA[Conceitos para melhoria da distribuição da água quente em projetos prediais hidráulicos, em função do conforto térmico e controle do desperdício de água.]]></description>
+   <g:id>25</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_agua_quente_distribuicao_online3.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso Instalações Prediais de Esgoto Sanitário]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/instalacoes-prediais-de-esgoto-sanitario]]></link>
+   <description><![CDATA[Critérios e princípios da fundamentação e aplicação em projetos de sistemas prediais de esgoto sanitário segundo normas técnicas vigentes da ABNT.]]></description>
+   <g:id>5</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_esgoto_sanitario_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Série Combate a Incêndio – Hidrantes e Mangotinhos]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/serie/combate-a-incendio-hidrantes-e-mangotinhos]]></link>
+   <description><![CDATA[Requisitos exigidos para desenvolvimento de projetos preventivos de incêndio e implementações necessárias para os componentes de hidrantes e mangotinhos.]]></description>
+   <g:id>213</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_combate_incendio_hidrantes_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
+  <item>
+   <title><![CDATA[Curso - Acústica Aplicada a Home Theater]]></title>
+   <link><![CDATA[https://www.qisat.com.br/curso/online/acustica-aplicada-a-home-theater]]></link>
+   <description><![CDATA[O curso visa a conscientização da importância dos elementos de áudio presentes numa sala de Home Theater, assim como do projeto acústico do ambiente.]]></description>
+   <g:id>22</g:id>
+   <g:condition>new</g:condition>
+   <g:price>500.00 BRL</g:price>
+   <g:sale_price>500.00 BRL</g:sale_price>
+   <g:availability><![CDATA[in stock]]></g:availability>
+   <g:image_link><![CDATA[https://e-commerce.qisat.com.br/webroot/upload/info/arquivos/curso_acustica_home_theater_online.jpg]]></g:image_link>
+   <g:installment>
+    <g:months>5</g:months>
+    <g:amount>100.00 BRL</g:amount>
+   </g:installment>
+   <g:brand><![CDATA[QiSat | AltoQi]]></g:brand>
+  </item>
  </channel>
 </rss>
