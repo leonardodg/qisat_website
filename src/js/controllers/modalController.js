@@ -476,7 +476,6 @@
 					var dados = {
 						amount: carrinhoServive.getValorTotal() * 100,
 						paymentMethods: 'credit_card',
-						customerData: 'true',
 						maxInstallments: installments ? installments : 1, 
 						items: [],
 						postback_url: Config.url.base + "/forma-pagamento-pagar-me/campainha"
@@ -495,39 +494,54 @@
 
 					var user = authService.getUser();
 					if(user){
-						var phone_numbers = [];
-						if(user.phone1)
-							phone_numbers.push("+" + user.phone1.replace(/[^0-9]/g,''));
-						if(user.phone2)
-							phone_numbers.push("+" + user.phone2.replace(/[^0-9]/g,''));
-						
+						dados.customerData = 'true';
 						dados.reviewInformations = 'true';
-						dados.customer = {
-							external_id: "#"+user.id,
-							name: user.firstname+" "+user.lastname,
-							type: user.tipousuario == "fisico" ? 'individual': 'corporation',
-							country: user.country ? user.country.toLowerCase() : 'br',
-							email: user.email,
-							documents: [
-								{
-									type: 'cpf',
-									number: user.numero.replace(/[^0-9]/g,'')
-								},
-							],
-							phone_numbers: phone_numbers
+						
+						var phone_numbers = [];
+						if(user.phone1) phone_numbers.push("+" + user.phone1.replace(/[^0-9]/g,''));
+						if(user.phone2) phone_numbers.push("+" + user.phone2.replace(/[^0-9]/g,''));
+						
+						var name = user.firstname+" "+user.lastname;
+						var country = user.country ? user.country.toLowerCase() : 'br';
+						
+						if(user.numero != ""){
+							dados.customer = {
+								name, 
+								external_id: "#"+user.id,
+								type: user.tipousuario == "fisico" ? 'individual': 'corporation',
+								country: country,
+								email: user.email,
+								documents: [
+									{
+										type: 'cpf',
+										number: user.numero.replace(/[^0-9]/g,'')
+									}
+								]
+							};
+							if(phone_numbers.length) dados.customer.phone_numbers = phone_numbers;
+						}
+
+						var address = {
+							state: user.endereco.state,
+							neighborhood: user.endereco.district,
+							street: user.endereco.logradouro,
+							zipcode: user.endereco.cep.replace(/[^0-9]/g,''),
+							street_number: user.endereco.number ? user.endereco.number.toString() : "",
+							country: country,
+							city: user.city
 						};
-						dados.billing = {
-							name: dados.customer.name,
-							address: {
-								country: dados.customer.country,
-								state: user.endereco.state,
-								city: user.city,
-								neighborhood: user.endereco.district,
-								street: user.endereco.logradouro,
-								street_number: user.endereco.number ? user.endereco.number.toString() : null,
-								zipcode: user.endereco.cep ? user.endereco.cep.replace(/[^0-9]/g,'') : null
-							}
-						};
+
+						if (address.street == undefined) address.street = user.address;
+						
+						if (address.state != undefined && address.state != "" && 
+							address.neighborhood != undefined && address.neighborhood != "" && 
+							address.street != undefined && address.street != "" && 
+							address.zipcode != undefined && address.zipcode != "" && 
+							address.street_number != undefined && address.street_number != "") {
+								dados.billing = { name, address };
+								if(dados.customer) dados.customer.address = address;
+						}
+
 					}
 
 					var checkout = new PagarMeCheckout.Checkout({
