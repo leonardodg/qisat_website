@@ -27,10 +27,13 @@
 
 						if (venda.products && venda.products.length) {
 							venda.products.map(function (prod) {
+
+								var priceProd = (typeof prod.valor_produto_desconto == 'string') ? prod.valor_produto_desconto.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : prod.valor_produto_desconto.toFixed(2);
+
 								siglas.push(prod.sigla);
 								products.push({
 									"name": prod.sigla,
-									"price": prod.valor_produto_desconto,
+									"price": priceProd,
 									"quantity": prod.quantidade
 								});
 
@@ -69,19 +72,16 @@
 						if (typeof user !== 'undefined' && user.idnumber) data_rd.push({ name: 'chavealtoqi', value: user.idnumber });
 						if (typeof RdIntegration !== 'undefined') RdIntegration.post(data_rd);
 
-						var price = (typeof venda.total == 'string') ? venda.total.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : venda.total;
+						var price = (typeof venda.total == 'string') ? venda.total.replace(/^(R\$)(\d+)?.?(\d+),([0-9]{2})$/g, '$2$3.$4') : venda.total.toFixed(2);
 
 						if (typeof dataLayer !== "undefined") {
-
 							dataLayer.push({
 								'event': 'ecommerce.purchase',
-								'promotions': promotions,
 								'ecommerce': {
 									'purchase': {
 										'actionField': {
 											'id': venda.id,
-											'revenue': price,
-											'coupon': coupons
+											'revenue': price
 										},
 										'products': products
 									}
