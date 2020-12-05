@@ -9,7 +9,7 @@
   },
   "browserify-shim": {
     "modernizr": "Modernizr",
-    "jquery": "$",
+    "jquery": "jQuery",
     "foundation-sites": "foundation-sites",
     "angular": "angular",
     "angular-foundation": {
@@ -22,31 +22,36 @@
     "owl.carousel": {
       "exports": "owl.carousel",
       "depends": [
-        "jquery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     },
     "jquery-placeholder": {
       "exports": "jquery-placeholder",
       "depends": [
-        "jquery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     },
     "slick-carousel": {
       "exports": "slick-carousel",
       "depends": [
-        "jquery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     },
     "sticky-kit": {
       "exports": "sticky-kit",
       "depends": [
-        "jquery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     },
     "simplelightbox": {
       "exports": "simplelightbox",
       "depends": [
-        "jquery"
+        "jquery:jQuery",
+        "jquery:$"
       ]
     }
   },

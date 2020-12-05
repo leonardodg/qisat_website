@@ -1,9 +1,9 @@
 window.moment = require('moment');
 window.extenso = require('extenso');
 window.humanizeDuration = require("humanize-duration");
+window.jQuery = window.$ = require("jquery");
 
 require('npm-modernizr');
-require("jquery");
 require('foundation-sites');
 require('angular');
 require('angular-foundation');
