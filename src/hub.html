@@ -1,0 +1,14 @@
+<!doctype html>
+<head>
+  <title>Cross Storage Hub</title>
+</head>
+<body>
+  <script type="text/javascript" src="js/hub.js"></script>
+  <script>
+    // Limit requests to any client running on .localhost:300x
+    CrossStorageHub.init([
+      { origin: /ecommerce.qisat.local$/, allow: ['get', 'set', 'del'] }
+    ]);
+  </script>
+</body>
+</html>

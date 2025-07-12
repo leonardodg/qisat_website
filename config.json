@@ -2,11 +2,11 @@
     "environment": "development",
     "development": {
         "url": {
-            "base": "https://ecommerce-local.qisat.com.br",
+            "base": "https://ecommerce.qisat.local",
             "intranetQiSat": "http://intranet.qisat.com.br",
             "intranetAltoQi": "http://intranet.altoqi.com.br",
-            "eCommerce": "https://ecommerce-local.qisat.com.br",
-            "plataforma": "https://moodle-local.qisat.com.br"
+            "eCommerce": "https://ecommerce.qisat.local",
+            "plataforma": "https://moodle.qisat.local"
         },
         "tokens": {
             "rdstation": "f0710cc7a0645abc09e85a7d53c04668",

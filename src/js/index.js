@@ -3,7 +3,7 @@ window.extenso = require('extenso');
 window.humanizeDuration = require("humanize-duration");
 
 require('npm-modernizr');
-require("jquery");
+window.$ = window.jQuery = require("jquery");
 require('foundation-sites');
 require('angular');
 require('angular-foundation');
